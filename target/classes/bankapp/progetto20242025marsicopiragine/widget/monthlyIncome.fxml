@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="bankapp.progetto20242025marsicopiragine.widget.MonthlyIncomeController"
+            fx:controller="bankapp.progetto20242025marsicopiragine.controller.widget.MonthlyIncomeController"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>
