@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="bankapp.progetto20242025marsicopiragine.popup.NotificationController"
+            fx:controller="bankapp.progetto20242025marsicopiragine.controller.popup.NotificationController"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>
