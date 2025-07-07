@@ -5,5 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.SplitPane;
 
-public class FriendsPageController {
+public class FriendsPageController
+{
+
 }

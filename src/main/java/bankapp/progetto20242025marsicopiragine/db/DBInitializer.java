@@ -30,7 +30,7 @@ public class DBInitializer {
             System.out.println("database initialized correctly.");
 
         } catch (Exception e) {
-            System.err.println("error during initialization" + e.getMessage());
+            System.err.println("error during database initialization" + e.getMessage());
             e.printStackTrace();
         }
     }
