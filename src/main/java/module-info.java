@@ -1,6 +1,9 @@
 module bankapp.progetto20242025marsicopiragine {
     requires javafx.controls;
     requires javafx.fxml;
+    requires spring.core;
+    requires spring.jdbc;
+    requires org.xerial.sqlitejdbc;
 
 
     opens bankapp.progetto20242025marsicopiragine to javafx.fxml;
