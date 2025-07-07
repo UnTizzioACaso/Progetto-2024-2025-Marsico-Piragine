@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS Utente (
+    id_utente INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cognome TEXT NOT NULL,
+    nome_utente TEXT UNIQUE NOT NULL,
+    data_nascita DATE NOT NULL CHECK (data_nascita <= DATE('now', '-18 years')),
+    luogo_nascita TEXT NOT NULL,
+    codice_fiscale TEXT UNIQUE NOT NULL CHECK (LENGTH(codice_fiscale) = 16),
+    sesso TEXT NOT NULL CHECK (sesso IN ('M', 'F', 'Altro')),
+    email TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    numero_telefono TEXT NOT NULL UNIQUE,
+    stato TEXT NOT NULL,
+    provincia TEXT NOT NULL,
+    citta TEXT NOT NULL,
+    indirizzo TEXT NOT NULL,
+    numero_civico TEXT NOT NULL,
+    pin_hash TEXT NOT NULL,
+    salva_cred BOOLEAN DEFAULT FALSE,
+    data_ultimo_accesso DATETIME NOT NULL,
+    tema TEXT DEFAULT 'chiaro' CHECK (tema IN ('chiaro', 'scuro'))
+);
