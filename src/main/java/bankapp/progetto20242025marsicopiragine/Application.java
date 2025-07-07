@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
+    //running the application
     @Override
     public void start(Stage stage) throws IOException {
         DBInitializer.initialize();
