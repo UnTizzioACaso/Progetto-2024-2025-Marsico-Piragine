@@ -28,7 +28,7 @@
       <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="143.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TextField fx:id="nameRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Nome" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Nome" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <effect>
             <DropShadow>
                <color>
@@ -37,7 +37,7 @@
             </DropShadow>
          </effect>
       </TextField>
-      <TextField fx:id="surnameRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Cognome" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Cognome" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <effect>
             <DropShadow>
                <color>
@@ -63,7 +63,7 @@
             <Font name="Constantia" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="cfRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Codice fiscale" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Codice fiscale" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <effect>
             <DropShadow>
                <color>
@@ -76,7 +76,7 @@
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <children>
             <Region minHeight="0.0" minWidth="0.0" HBox.hgrow="ALWAYS" />
-            <TextField fx:id="birthDayRegisterTextField" maxHeight="30.0" maxWidth="86.0" prefHeight="30.0" prefWidth="67.0" promptText="Giorno --" style="-fx-background-radius: 8;">
+            <TextField maxHeight="30.0" maxWidth="86.0" prefHeight="30.0" prefWidth="67.0" promptText="Giorno --" style="-fx-background-radius: 8;">
                <effect>
                   <DropShadow>
                      <color>
@@ -86,7 +86,7 @@
                </effect>
             </TextField>
             <Region minHeight="0.0" minWidth="5.0" />
-            <TextField fx:id="birthMonthRegisterTextField" maxHeight="30.0" maxWidth="86.0" prefHeight="30.0" prefWidth="62.0" promptText="Mese --" style="-fx-background-radius: 8;">
+            <TextField maxHeight="30.0" maxWidth="86.0" prefHeight="30.0" prefWidth="62.0" promptText="Mese --" style="-fx-background-radius: 8;">
                <effect>
                   <DropShadow>
                      <color>
@@ -96,7 +96,7 @@
                </effect>
             </TextField>
             <Region minHeight="0.0" minWidth="5.0" />
-            <TextField fx:id="birthYearRegisterTextField" maxHeight="30.0" maxWidth="77.0" prefHeight="30.0" prefWidth="120.0" promptText="Anno ----" style="-fx-background-radius: 8;">
+            <TextField maxHeight="30.0" maxWidth="77.0" prefHeight="30.0" prefWidth="120.0" promptText="Anno ----" style="-fx-background-radius: 8;">
                <effect>
                   <DropShadow>
                      <color>
