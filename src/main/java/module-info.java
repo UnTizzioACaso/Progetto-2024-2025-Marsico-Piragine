@@ -1,4 +1,4 @@
-module bankapp.progetto20242025marsicopiragine {
+module bankapp.progetto20242025piragine {
     requires javafx.controls;
     requires javafx.fxml;
     requires spring.core;
@@ -6,11 +6,11 @@ module bankapp.progetto20242025marsicopiragine {
     requires org.xerial.sqlitejdbc;
 
 
-    opens bankapp.progetto20242025marsicopiragine to javafx.fxml;
-    exports bankapp.progetto20242025marsicopiragine;
-    exports bankapp.progetto20242025marsicopiragine.controller;
-    exports bankapp.progetto20242025marsicopiragine.controller.component to javafx.fxml;
-    opens bankapp.progetto20242025marsicopiragine.controller to javafx.fxml;
-    opens bankapp.progetto20242025marsicopiragine.controller.page to javafx.fxml;
+    opens bankapp.progetto20242025piragine to javafx.fxml;
+    exports bankapp.progetto20242025piragine;
+    exports bankapp.progetto20242025piragine.controller;
+    exports bankapp.progetto20242025piragine.controller.component to javafx.fxml;
+    opens bankapp.progetto20242025piragine.controller to javafx.fxml;
+    opens bankapp.progetto20242025piragine.controller.page to javafx.fxml;
 
 }

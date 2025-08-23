@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: lightgray; -fx-background: transparent; -fx-background-radius: 20;" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.FavoritesCardController">
+   <content>
+      <HBox alignment="CENTER" prefHeight="200.0" prefWidth="500.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-background-color: transparent;" />
+   </content>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</ScrollPane>

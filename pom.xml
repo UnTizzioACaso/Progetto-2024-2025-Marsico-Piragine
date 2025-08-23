@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>BankApp</groupId>
-    <artifactId>Progetto-2024-2025-Marsico-Piragine</artifactId>
+    <artifactId>Progetto-2024-2025-Piragine</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Progetto-2024-2025-Marsico-Piragine</name>
 
@@ -88,7 +88,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                bankapp.progetto20242025marsicopiragine/bankapp.progetto20242025marsicopiragine.Application
+                                bankapp.progetto20242025marsicopiragine/bankapp.progetto20242025piragine.Application
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

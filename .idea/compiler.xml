@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Progetto-2024-2025-Marsico-Piragine" />
+        <module name="Progetto-2024-2025-Piragine" />
       </profile>
     </annotationProcessing>
   </component>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="-Infinity" prefHeight="60.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TopbarController">
+   <children>
+      <ImageView fx:id="bankIcon" fitHeight="36.0" fitWidth="38.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="12.0">
+         <image>
+            <Image url="@../../imgs/bankicon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="forwarArrowButton" fitHeight="20.0" fitWidth="15.0" layoutX="92.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="19.083538055419922" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="21.0">
+         <image>
+            <Image url="@../../imgs/backbutton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backArrowButton" fitHeight="20.0" fitWidth="12.0" layoutX="65.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" AnchorPane.bottomAnchor="19.083538055419922" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="21.0">
+         <image>
+            <Image url="@../../imgs/backbutton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="reloadArrowButton" fitHeight="25.0" fitWidth="25.0" layoutX="552.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="18.773761749267578" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="18.0">
+         <image>
+            <Image url="@../../imgs/reloadicon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="notificationButton" fitHeight="23.0" fitWidth="21.0" layoutX="517.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="18.0">
+         <image>
+            <Image url="@../../imgs/bellicon.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
