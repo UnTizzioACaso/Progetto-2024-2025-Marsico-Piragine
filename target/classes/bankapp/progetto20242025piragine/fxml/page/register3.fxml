@@ -11,21 +11,21 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register1Controller">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register3Controller">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="88.5" minHeight="10.0" percentHeight="20.0" prefHeight="86.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="15.0" prefHeight="86.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="88.5" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="88.5" minHeight="10.0" percentHeight="5.0" prefHeight="88.5" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="15.0" percentHeight="5.0" prefHeight="15.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="128.0" minHeight="0.0" percentHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="54.5" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="118.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="25.0" prefHeight="118.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <TextField fx:id="emailRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Email" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="3">

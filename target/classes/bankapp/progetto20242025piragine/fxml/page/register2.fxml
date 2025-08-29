@@ -12,22 +12,22 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register2Controller">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register2Controller">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="88.5" minHeight="10.0" percentHeight="20.0" prefHeight="46.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="88.5" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="88.5" minHeight="10.0" percentHeight="5.0" prefHeight="88.5" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="128.0" minHeight="0.0" percentHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="54.5" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="0.0" percentHeight="25.0" prefHeight="75.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="15.0" prefHeight="46.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="15.0" prefHeight="34.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="15.0" percentHeight="5.0" prefHeight="15.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="62.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="54.5" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="266.0" minHeight="0.0" percentHeight="25.0" prefHeight="75.0" valignment="CENTER" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <Label fx:id="bankTItleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="76.0" prefWidth="211.0" text="N Bank" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1">
@@ -96,7 +96,7 @@
             </DropShadow>
          </effect>
          <GridPane.margin>
-            <Insets top="-50.0" />
+            <Insets />
          </GridPane.margin>
       </Button>
       <HBox alignment="CENTER_LEFT" maxWidth="250.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
 
-
-<BorderPane fx:id="rootWindow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.RootWindowController" />
+<BorderPane fx:id="rootWindow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.RootWindowController">
+   <left>
+      <Region prefHeight="200.0" prefWidth="37.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="129.0" layoutY="37.0" prefHeight="109.0" prefWidth="89.0" style="-fx-background-color: pink;" AnchorPane.rightAnchor="0.3333333333333286" AnchorPane.topAnchor="37.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

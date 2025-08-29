@@ -10,13 +10,14 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     //running the application
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException
+    {
         DBInitializer.initialize(); //initialization
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/rootWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
-        stage.setMinWidth(560);
-        stage.setMinHeight(500);
+        stage.setMinWidth(600);
+        stage.setMinHeight(600);
         stage.setScene(scene);
         stage.show();
     }

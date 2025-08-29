@@ -15,7 +15,7 @@ public  class RootWindowController {
 
 
     @FXML
-    public void loadPage(String fxml) //this method sets the fxml pages that have to be in the center of the BorderPane "rootWindow"
+    public void loadPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {
         try
         {
@@ -39,4 +39,32 @@ public  class RootWindowController {
     }
 
 
+    public void loadLeftBar(String fxml) //this method loads a node on the left side of root's BorderPane
+    {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
+            Parent node = fxmlLoader.load(); //creating the node from the loader
+            rootWindow.setLeft(node); //setting the node to the left
+        }
+        catch (IOException e)
+        {
+            System.err.println("error loading on the left " + fxml + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    public void loadTopBar(String fxml) //this method loads a node on the top side of root's BorderPane
+     {
+        try
+        {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
+            Parent node = fxmlLoader.load(); //creating the node from the loader
+            rootWindow.setTop(node); //setting the node to the top
+        }
+        catch (IOException e)
+        {
+            System.err.println("error loading on top " + fxml + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

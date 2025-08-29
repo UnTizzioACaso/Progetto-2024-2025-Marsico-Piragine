@@ -13,11 +13,11 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="loginGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="373.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.LoginController">
+<GridPane fx:id="loginGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="373.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.LoginController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="10.0" percentWidth="33.0" prefWidth="180.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" percentWidth="33.0" prefWidth="186.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" percentWidth="33.0" prefWidth="244.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" percentWidth="33.0" prefWidth="180.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" percentWidth="33.0" prefWidth="186.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" percentWidth="33.0" prefWidth="244.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="176.0" percentHeight="25.0" prefHeight="91.0" vgrow="SOMETIMES" />
