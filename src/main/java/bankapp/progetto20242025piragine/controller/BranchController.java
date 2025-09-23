@@ -1,8 +1,6 @@
-package bankapp.progetto20242025piragine.controller.page;
+package bankapp.progetto20242025piragine.controller;
 
-import bankapp.progetto20242025piragine.controller.RootWindowController;
-
-public abstract class BranchPageController {
+public abstract class BranchController {
 
     protected RootWindowController rootController; //access to RootWindow
 

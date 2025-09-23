@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="57.0" prefWidth="575.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" onMouseClicked="#nextPage" prefHeight="57.0" prefWidth="575.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TopbarController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
     <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
@@ -28,12 +28,12 @@
             <Insets />
          </GridPane.margin>
       </ImageView>
-      <ImageView fx:id="backArrowButton" fitHeight="15.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <ImageView fx:id="backArrowButton" fitHeight="15.0" fitWidth="10.0" onMouseClicked="#backPage" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <image>
             <Image url="@../../imgs/backbutton.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="forwarArrowButton" fitHeight="15.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <ImageView fx:id="forwarArrowButton" fitHeight="15.0" fitWidth="10.0" onMouseClicked="#nextPage" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <image>
             <Image url="@../../imgs/backbutton.png" />
          </image>
@@ -43,7 +43,7 @@
             <Image url="@../../imgs/bellicon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="17.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+      <ImageView fx:id="reloadPageButton" fitHeight="17.0" fitWidth="17.0" onMouseClicked="#reloadPage" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
          <image>
             <Image url="@../../imgs/reloadicon.png" />
          </image>

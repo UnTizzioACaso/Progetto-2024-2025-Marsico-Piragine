@@ -1,8 +1,9 @@
 package bankapp.progetto20242025piragine.controller.page;
 
+import bankapp.progetto20242025piragine.controller.BranchController;
 import javafx.fxml.FXML;
 
-public class Register2Controller extends BranchPageController {
+public class Register2Controller extends BranchController {
     @FXML
     public void loadRegisterPage2() //loading the register page n.2
     {
