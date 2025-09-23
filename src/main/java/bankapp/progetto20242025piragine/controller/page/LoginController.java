@@ -1,12 +1,11 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 
+import bankapp.progetto20242025piragine.controller.BranchController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 
-import java.io.IOException;
-
-public class LoginController extends BranchPageController {
+public class LoginController extends BranchController {
     @FXML
     GridPane loginGridPane;
 

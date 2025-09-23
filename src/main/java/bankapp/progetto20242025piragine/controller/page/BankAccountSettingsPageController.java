@@ -1,4 +1,6 @@
 package bankapp.progetto20242025piragine.controller.page;
 
-public class BankAccountSettingsPageController extends BranchPageController{
+import bankapp.progetto20242025piragine.controller.BranchController;
+
+public class BankAccountSettingsPageController extends BranchController {
 }

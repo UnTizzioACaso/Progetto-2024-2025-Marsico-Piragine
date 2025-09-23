@@ -1,18 +1,20 @@
 package bankapp.progetto20242025piragine.controller;
 
 
-import bankapp.progetto20242025piragine.controller.page.BranchPageController;
+import bankapp.progetto20242025piragine.controller.component.TopbarController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
-public  class RootWindowController {
+public  class RootWindowController extends BranchController {
     @FXML
     private BorderPane rootWindow;
 
+    private TopbarController topbar = null;
 
     @FXML
     public void loadPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
@@ -21,9 +23,13 @@ public  class RootWindowController {
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
             Parent node = fxmlLoader.load(); //creating the node from the loader
-            BranchPageController controller = fxmlLoader.getController(); //getting the controller from the loader
-            controller.setRootController(this); //giving to the new page's controller the current RootController istance
+            BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
+            controller.setRootController(this); //giving to the new page's controller the current RootController instance
             rootWindow.setCenter(node); //setting the page to the center
+            if (topbar != null) //if topbar's controller is already initialized
+            {
+                topbar.visitPage(fxml); //adds the loaded page to the backwardStack
+            }
         }
         catch (IOException e)
         {
@@ -35,7 +41,7 @@ public  class RootWindowController {
     @FXML
     public void initialize() //initializing the first page to load
     {
-        loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
+        loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml"); //loading login.fxml
     }
 
 
@@ -59,7 +65,10 @@ public  class RootWindowController {
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
             Parent node = fxmlLoader.load(); //creating the node from the loader
+            topbar = fxmlLoader.getController(); //getting the controller from the loader
+            topbar.setRootController(this); //giving to the new page's controller the current RootController instance
             rootWindow.setTop(node); //setting the node to the top
+
         }
         catch (IOException e)
         {

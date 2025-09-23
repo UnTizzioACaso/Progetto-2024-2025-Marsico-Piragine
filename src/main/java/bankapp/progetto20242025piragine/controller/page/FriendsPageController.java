@@ -1,6 +1,8 @@
 package bankapp.progetto20242025piragine.controller.page;
 
-public class FriendsPageController extends BranchPageController
+import bankapp.progetto20242025piragine.controller.BranchController;
+
+public class FriendsPageController extends BranchController
 {
 
 }

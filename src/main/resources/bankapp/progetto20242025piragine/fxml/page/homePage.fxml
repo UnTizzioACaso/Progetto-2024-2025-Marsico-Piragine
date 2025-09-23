@@ -22,11 +22,11 @@
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="27.5" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="300.0" minWidth="20.0" prefHeight="188.0" prefWidth="313.0" style="-fx-border-color: gray; -fx-background: transparent; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: null;" vbarPolicy="NEVER" GridPane.columnIndex="1" GridPane.valignment="TOP">
+            <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="250.0" minWidth="20.0" prefHeight="188.0" prefWidth="313.0" style="-fx-border-color: gray; -fx-background: transparent; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: null;" vbarPolicy="NEVER" GridPane.columnIndex="1" GridPane.valignment="TOP">
                <content>
                   <HBox fx:id="favouriteCardsHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="346.0">
                      <children>
-                        <Region maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0" />
+                        <Region maxWidth="1.7976931348623157E308" minHeight="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0" HBox.hgrow="ALWAYS" />
                      </children>
                      <opaqueInsets>
                         <Insets />
