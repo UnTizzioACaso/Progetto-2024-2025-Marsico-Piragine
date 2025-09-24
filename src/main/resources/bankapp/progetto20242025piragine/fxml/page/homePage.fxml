@@ -1,43 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.HomePageController">
    <children>
-      <GridPane fx:id="stockNonRemovableWidgetsGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="390.0" prefWidth="580.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <GridPane fx:id="homePageGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="390.0" prefWidth="580.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="40.0" prefWidth="233.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="60.0" prefWidth="367.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="40.0" prefWidth="233.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="60.0" prefWidth="367.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="200.0" minHeight="10.0" percentHeight="45.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="27.5" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="27.5" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="200.0" minHeight="10.0" percentHeight="45.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="27.5" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="27.5" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
-            <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="250.0" minWidth="20.0" prefHeight="188.0" prefWidth="313.0" style="-fx-border-color: gray; -fx-background: transparent; -fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: null;" vbarPolicy="NEVER" GridPane.columnIndex="1" GridPane.valignment="TOP">
-               <content>
-                  <HBox fx:id="favouriteCardsHBox" alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="346.0">
-                     <children>
-                        <Region maxWidth="1.7976931348623157E308" minHeight="20.0" minWidth="20.0" prefHeight="200.0" prefWidth="20.0" HBox.hgrow="ALWAYS" />
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </HBox>
-               </content>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </ScrollPane>
-         </children>
       </GridPane>
    </children>
 </AnchorPane>
