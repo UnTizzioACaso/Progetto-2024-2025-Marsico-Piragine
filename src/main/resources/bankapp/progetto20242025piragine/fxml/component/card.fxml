@@ -5,12 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="162.0" prefWidth="256.5" style="-fx-background-color: cyan; -fx-background-radius: 15; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="246.0" style="-fx-background-color: cyan; -fx-background-radius: 15; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CardController">
    <children>
-      <Button fx:id="cardShowInfoButton" layoutX="14.0" layoutY="123.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="mostra  informazioni" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="10.0" />
-      <Button fx:id="cardBlockButton" layoutX="91.0" layoutY="123.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="blocca" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="90.5" AnchorPane.rightAnchor="90.5" />
-      <Button fx:id="cardSettingsButton" layoutX="168.0" layoutY="123.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="impostazioni" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="10.0" />
+      <Button fx:id="cardShowInfoButton" layoutX="10.0" layoutY="115.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="mostra  informazioni" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+      <Button fx:id="cardBlockButton" layoutX="91.0" layoutY="115.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="blocca" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="91.0" />
+      <Button fx:id="cardSettingsButton" layoutX="161.0" layoutY="115.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="impostazioni" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <Label fx:id="cardNicknameLabel" alignment="CENTER_RIGHT" layoutX="190.0" layoutY="14.0" prefHeight="25.0" prefWidth="75.0" text="Nickname" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="16.0" />

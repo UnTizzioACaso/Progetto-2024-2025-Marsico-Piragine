@@ -4,6 +4,8 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -23,8 +25,12 @@ public class HomePageController extends BranchController
         try
         {
             FXMLLoader favouritesCardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml"));
-            Parent favouritesCard = favouritesCardLoader.load();
+            FXMLLoader bankAccountLoader = new FXMLLoader (getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml"));
+            Node favouritesCard = favouritesCardLoader.load();
+            Node bankAccount = bankAccountLoader.load();
             homePageGridPane.add(favouritesCard, 1, 0);
+            GridPane.setMargin(bankAccount, new Insets(0, 10, 0, 0));
+            homePageGridPane.add(bankAccount, 0, 0);
         }
         catch (Exception e)
         {
