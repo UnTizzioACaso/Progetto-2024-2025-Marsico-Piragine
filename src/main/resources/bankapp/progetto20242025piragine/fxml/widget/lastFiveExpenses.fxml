@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="bankapp.progetto20242025piragine.controller.widget.LastFiveExpensesController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="354.0" style="-fx-background-radius: 20; -fx-background-color: red;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.LastFiveExpensesController">
+   <children>
+      <TextArea fx:id="lastFiveExpensesTitleTextArea" layoutX="31.2" layoutY="30.0" prefHeight="135.0" prefWidth="109.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="214.0" AnchorPane.topAnchor="30.0" />
+      <TextArea fx:id="lastFiveExpensesValueTextArea1" layoutX="188.0" layoutY="31.0" prefHeight="135.0" prefWidth="109.0" />
+   </children>
 </AnchorPane>
