@@ -26,15 +26,19 @@ public class HomePageController extends BranchController
         {
             FXMLLoader favouritesCardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml"));
             FXMLLoader bankAccountLoader = new FXMLLoader (getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml"));
+            FXMLLoader fiveExpensesLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml"));
             Node favouritesCard = favouritesCardLoader.load();
             Node bankAccount = bankAccountLoader.load();
+            Node fiveExpenses = fiveExpensesLoader.load();
             homePageGridPane.add(favouritesCard, 1, 0);
             GridPane.setMargin(bankAccount, new Insets(0, 10, 0, 0));
+            GridPane.setMargin(fiveExpenses, new Insets(20, 35, 20, 25));
             homePageGridPane.add(bankAccount, 0, 0);
+            homePageGridPane.add(fiveExpenses, 0, 1);
         }
         catch (Exception e)
         {
-
+            System.err.println("error during initializzation");
             throw new RuntimeException(e);
         }
     }
