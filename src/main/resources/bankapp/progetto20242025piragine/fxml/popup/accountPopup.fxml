@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="bankapp.progetto20242025piragine.controller.popup.AccountPopupController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="246.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
+    <children>
+
+        <!-- Header -->
+        <Button layoutX="29.0" layoutY="45.0" minHeight="19.0" mnemonicParsing="false" prefHeight="19.0" style="-fx-background-color: transparent; -fx-text-fill: #6E6E6E; -fx-font-size: 18px; -fx-font-weight: 400; -fx-padding: 0; -fx-cursor: hand; -fx-translate-y: -19;" text="✕" />
+        <Label layoutX="62.0" layoutY="25.0" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1F1F1F;" text="Account" AnchorPane.leftAnchor="62.0" AnchorPane.topAnchor="25.0">
+            <font>
+                <Font size="14.0" />
+            </font></Label>
+
+        <!-- Separator 1 -->
+        <Separator layoutX="11.0" layoutY="67.0" prefWidth="562.1" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
+
+        <!-- Email row -->
+        <Label layoutX="34.0" layoutY="83.0" style="-fx-font-size: 15px; -fx-text-fill: #1F1F1F;" text="frocio@pisello.duro" AnchorPane.leftAnchor="34.0" />
+        <Button layoutX="314.0" layoutY="78.0" mnemonicParsing="false" style="-fx-background-radius: 8; -fx-background-color: #E6E6E6; -fx-text-fill: #1F1F1F; -fx-font-weight: 500; -fx-padding: 6 14;" text="Logout" AnchorPane.rightAnchor="33.0" />
+
+        <!-- Separator 2 -->
+        <Separator layoutX="11.0" layoutY="118.0" prefWidth="562.1" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
+
+        <!-- Theme row -->
+        <Label layoutX="35.0" layoutY="136.0" style="-fx-font-size: 13px; -fx-text-fill: #5F6368;" text="Tema applicazione" AnchorPane.leftAnchor="35.0" />
+        <Label layoutX="319.0" layoutY="134.0" style="-fx-text-fill: #1F1F1F; -fx-mark-color: #10A37F; -fx-padding: 2 0;" text="Chiaro" AnchorPane.rightAnchor="59.0" />
+        <RadioButton layoutX="360.0" layoutY="136.0" mnemonicParsing="false" AnchorPane.rightAnchor="37.0" />
+
+        <!-- Separator 3 -->
+        <Separator layoutX="11.0" layoutY="168.0" prefHeight="3.0" prefWidth="562.0" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
+
+        <!-- Bottom centered button (proporzionato) -->
+        <Button layoutX="113.0" layoutY="183.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: #10A37F; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 18; -fx-background-radius: 10;" text="Impostazioni account ↗" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.0" />
+    </children>
 </AnchorPane>
