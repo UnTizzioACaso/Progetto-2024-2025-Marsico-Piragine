@@ -59,7 +59,7 @@
             </DropShadow>
          </effect>
       </TextField>
-      <Label fx:id="wellcomeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="204.0" text="Ben tornato" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label fx:id="wellcomeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="204.0" text="Bentornato" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Constantia" size="16.0" />
          </font>
