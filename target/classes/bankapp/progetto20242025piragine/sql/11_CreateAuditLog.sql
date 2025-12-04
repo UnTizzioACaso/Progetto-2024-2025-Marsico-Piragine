@@ -5,5 +5,5 @@ CREATE TABLE IF NOT EXISTS Audit_Log (
     dettagli TEXT,
     esito TEXT CHECK(esito IN ('SUCCESSO', 'FALLITO')),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE
+    FOREIGN KEY (id_utente) REFERENCES User(id_utente) ON DELETE CASCADE
 );

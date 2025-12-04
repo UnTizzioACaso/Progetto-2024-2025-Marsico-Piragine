@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS Home_Widget_Custom (
     grandezza TEXT,
     pos INTEGER,
     rimovibile BOOLEAN,
-    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (id_utente) REFERENCES User(id_utente) ON DELETE CASCADE,
     UNIQUE (id_utente, pos)
 );

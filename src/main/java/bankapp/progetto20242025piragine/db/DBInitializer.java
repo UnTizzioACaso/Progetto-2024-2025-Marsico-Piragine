@@ -18,6 +18,7 @@ public class DBInitializer {
             PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
             Resource[] resources = resolver.getResources("classpath:bankapp/progetto20242025piragine/sql/*.sql");
+            System.out.println("Trovati file SQL: " + resources.length);
 
             // adding al files found in a populator
             for (Resource resource : resources) {

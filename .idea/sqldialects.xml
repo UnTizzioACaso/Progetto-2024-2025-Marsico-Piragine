@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/main/java/bankapp/progetto20242025piragine/db/UserDAO.java" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/01_CreateUser.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/02_CreateBankAccount.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/03_CreateCard.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/04_CreateFriendRequest.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/05_CreateFriendship.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/06_CreateBlock.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/07_CreateTransation.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/08_CreateNotify.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/10_CreateShortcutSidebar.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/bankapp/progetto20242025piragine/sql/11_CreateAuditLog.sql" dialect="SQLite" />
+  </component>
+</project>
