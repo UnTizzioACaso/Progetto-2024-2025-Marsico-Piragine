@@ -48,7 +48,7 @@ public  class RootWindowController extends BranchController {
     }
 
 
-    public void loadLeftBar(String fxml) //this method loads a node on the left side of root's BorderPane
+    public void loadSideBar(String fxml) //this method loads a node on the left side of root's BorderPane
     {
         try
         {

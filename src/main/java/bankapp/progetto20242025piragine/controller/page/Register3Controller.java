@@ -9,8 +9,8 @@ public class Register3Controller extends BranchController
     @FXML
     public void completeRegistration()
     {
-        rootController.loadLeftBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml");
-        rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml");
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
+        rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading the sidebar
+        rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading the topbar
     }
 }
