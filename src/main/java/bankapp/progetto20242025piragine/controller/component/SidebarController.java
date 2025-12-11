@@ -24,13 +24,16 @@ public class SidebarController extends BranchController {
             Parent root = loader.load(); //creating the node from the loader
             Stage popupStage = new Stage(); //creating a new stage for the accountPopup
             popupStage.setTitle("Account"); //setting the title
-            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.setMinWidth(420); //setting popup's minimum width
+            popupStage.setMinHeight(300); //setting popup's minimum height
+            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
-            popupStage.showAndWait();
+            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
         }
         catch (IOException e)
         {
-            throw new RuntimeException(e);
+            System.err.println("error loading the account popup" +  e.getMessage());
+            e.printStackTrace();
         }
     }
 }

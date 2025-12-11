@@ -4,6 +4,7 @@ module bankapp.progetto20242025piragine {
     requires spring.core;
     requires spring.jdbc;
     requires org.xerial.sqlitejdbc;
+    requires java.desktop;
 
 
     opens bankapp.progetto20242025piragine to javafx.fxml;
@@ -14,6 +15,7 @@ module bankapp.progetto20242025piragine {
     opens bankapp.progetto20242025piragine.controller.page to javafx.fxml;
     opens bankapp.progetto20242025piragine.controller.component to javafx.fxml;
     opens bankapp.progetto20242025piragine.controller.widget to javafx.fxml;
+    opens bankapp.progetto20242025piragine.css;
 
 
 }
