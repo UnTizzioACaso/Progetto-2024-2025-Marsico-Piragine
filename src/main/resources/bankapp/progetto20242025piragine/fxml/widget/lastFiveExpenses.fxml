@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane fx:id="lastFiveExepensesWidgetGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="10.0" minWidth="20.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: lightgray;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
+<GridPane fx:id="lastFiveExepensesWidgetGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="10.0" minWidth="20.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: lightgray;" xmlns:fx="http://javafx.com/fxml" xmlns="http://javafx.com/javafx">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>

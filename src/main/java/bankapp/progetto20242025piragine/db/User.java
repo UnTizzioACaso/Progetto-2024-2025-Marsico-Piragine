@@ -15,12 +15,20 @@ public class User {
     private String province;
     private String city;
     private String address;
-    private String streetNumber;      // Numero civico
+    private String streetNumber;
+    private String cap;
     private String pinHash;
     private boolean rememberCredentials;
     private String lastAccessDate;
     private String theme;
-
+    public void setCap(String cap)
+    {
+        this.cap = cap;
+    }
+    public String getCap()
+    {
+        return this.cap;
+    }
     public void setAddress(String address)
     {
         this.address = address;

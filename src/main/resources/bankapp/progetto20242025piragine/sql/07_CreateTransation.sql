@@ -1,17 +1,17 @@
-CREATE TABLE IF NOT EXISTS Transation (
-    id_transazione INTEGER PRIMARY KEY AUTOINCREMENT,
-    mittente INTEGER,
-    destinatario INTEGER,
-    importo DECIMAL CHECK (importo > 0),
-    motivazione TEXT,
-    data_transazione DATETIME,
-    stato TEXT CHECK(stato IN ('inviata','fallita')),
-    tipo TEXT CHECK(tipo IN ('Ricarica','Bonifico', 'Invio Rapido')),
-    carta_utilizzata INTEGER,
-    FOREIGN KEY (mittente) REFERENCES Bank_Account(id_conto) ON DELETE SET NULL,
-    FOREIGN KEY (destinatario) REFERENCES Bank_Account(id_conto) ON DELETE SET NULL,
-    FOREIGN KEY (carta_utilizzata) REFERENCES Bank_Account(id_carta) ON DELETE SET NULL
+CREATE TABLE IF NOT EXISTS Transaction1 (
+    id_transaction INTEGER PRIMARY KEY AUTOINCREMENT,
+    sender INTEGER,
+    beneficiary INTEGER,
+    ammount DECIMAL CHECK (ammount > 0),
+    note TEXT,
+    transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status TEXT CHECK(status IN ('send','declined')),
+    type TEXT CHECK(type IN ('recharge','bank transfer', 'fast send')),
+    used_card INTEGER,
+    FOREIGN KEY (sender) REFERENCES Bank_Account(id_account) ON DELETE SET NULL,
+    FOREIGN KEY (beneficiary) REFERENCES Bank_Account(id_account) ON DELETE SET NULL,
+    FOREIGN KEY (used_card) REFERENCES Card(id_card) ON DELETE SET NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_transazione_mittente ON Transation(mittente);
-CREATE INDEX IF NOT EXISTS idx_transazione_destinatario ON Transation(destinatario);
+CREATE INDEX IF NOT EXISTS idx_transazione_mittente ON Transaction1(sender);
+CREATE INDEX IF NOT EXISTS idx_transazione_destinatario ON Transaction1(beneficiary);
