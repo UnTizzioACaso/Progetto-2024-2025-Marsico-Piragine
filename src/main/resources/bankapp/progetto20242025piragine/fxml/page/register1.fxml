@@ -67,7 +67,7 @@
             <Font name="Constantia" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="birthDateRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Luogo di nascita" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField fx:id="birthPlaceRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Luogo di nascita" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <effect>
             <DropShadow>
                <color>
@@ -76,8 +76,8 @@
             </DropShadow>
          </effect>
       </TextField>
-      <Label fx:id="accessErrorMessageLabel" alignment="CENTER" prefHeight="17.0" prefWidth="200.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <DatePicker fx:id="birthDatePicker" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="210.0" promptText="Data di nascita" stylesheets="@/bankapp/progetto20242025piragine/css/dark.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <Label fx:id="errorMessageLabel" alignment="CENTER" prefHeight="17.0" prefWidth="200.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <DatePicker fx:id="birthDateRegisterDatePicker" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="210.0" promptText="Data di nascita" stylesheets="@/bankapp/progetto20242025piragine/css/dark.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <effect>
             <DropShadow>
                <color>

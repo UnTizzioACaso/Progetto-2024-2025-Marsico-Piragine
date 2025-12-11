@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS Friendship (
-    id_amicizia INTEGER PRIMARY KEY AUTOINCREMENT,
-    utente1 INTEGER,
-    utente2 INTEGER,
-    data_creazione DATETIME,
-    FOREIGN KEY (utente1) REFERENCES User(id_utente) ON DELETE CASCADE,
-    FOREIGN KEY (utente2) REFERENCES User(id_utente) ON DELETE CASCADE,
-    UNIQUE (utente1, utente2),
-    CHECK (utente1 < utente2)
+    id_friendship INTEGER PRIMARY KEY AUTOINCREMENT,
+    user1 INTEGER,
+    user2 INTEGER,
+    date_friendship DATETIME default  current_timestamp,
+    FOREIGN KEY (user1) REFERENCES User(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (user2) REFERENCES User(user_id) ON DELETE CASCADE,
+    UNIQUE (user1, user2),
+    CHECK (user1 < user2)
 );

@@ -1,15 +1,16 @@
 CREATE TABLE IF NOT EXISTS Card (
-    id_carta INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_conto INTEGER,
-    numero TEXT CHECK (LENGTH(numero) = 16),
-    cvv_hash TEXT,
-    scadenza DATE,
+    id_card INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL UNIQUE,
+    id_account INTEGER NOT NULL UNIQUE ,
+    pan_last4 CHAR(4) NOT NULL,
+    pan_encrypted BLOB NOT NULL,
+    expired DATE NOT NULL,
+    cvv_encrypted BLOB NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     nickname TEXT,
-    colore TEXT,
-    preferita BOOLEAN,
-    soglia_spesa_mensile DECIMAL CHECK (soglia_spesa_mensile >= 0),
-    attiva BOOLEAN,
-    FOREIGN KEY (id_conto) REFERENCES Bank_Account(id_conto) ON DELETE CASCADE
+    colour TEXT,
+    favourite BOOLEAN,
+    spending_limit DECIMAL CHECK (spending_limit >= 0),
+    status BOOLEAN CHECK ( True or False ),
+    FOREIGN KEY (user_id) REFERENCES Bank_Account(user_id) ON DELETE CASCADE
 );
-
-CREATE INDEX IF NOT EXISTS idx_carta_id_conto ON Card(id_conto);

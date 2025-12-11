@@ -1,9 +1,9 @@
 CREATE TABLE IF NOT EXISTS Audit_Log (
     id_log INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_utente INTEGER,
-    azione TEXT,
-    dettagli TEXT,
-    esito TEXT CHECK(esito IN ('SUCCESSO', 'FALLITO')),
+    user_id INTEGER,
+    action TEXT,
+    Details TEXT,
+    Result TEXT CHECK(Result IN ('SUCCESSO', 'FALLITO')),
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (id_utente) REFERENCES User(id_utente) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE
 );
