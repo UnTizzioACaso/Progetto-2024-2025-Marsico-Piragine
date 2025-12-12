@@ -1,0 +1,37 @@
+                           /* --------------------- DATEPICKERS ------------------------- */
+                           /* --------------------- DATEPICKERS ------------------------- */
+                           /* --------------------- DATEPICKERS ------------------------- */
+.date-picker
+{
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.date-picker > .arrow-button
+{
+    -fx-background-radius: 8; /* arrotondamento */
+}
+
+.date-picker .text-field
+{
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.date-picker-popup
+{
+    -fx-background-radius: 8;
+}
+
+.date-picker-popup > .month-year-pane
+{
+    -fx-background-radius: 8;
+}
+
+.date-picker .day-cell
+{
+    -fx-background-radius: 8;
+}
+                           /* --------------------- DATEPICKERS ------------------------- */
+                           /* --------------------- DATEPICKERS ------------------------- */
+                           /* --------------------- DATEPICKERS ------------------------- */
