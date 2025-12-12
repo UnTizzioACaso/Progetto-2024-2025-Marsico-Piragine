@@ -32,6 +32,7 @@ public class LoginController extends BranchController {
     {
         if (passwordLoginTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$") && emailLoginTextField.getText().matches("^[a-z0-9]+@[a-z0-9]+\\.[a-z]{2,}$")) //checking if the password and the email is valid
         {
+
             rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
             rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading the sidebar
             rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading the topbar
