@@ -5,6 +5,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import java.time.LocalDate;
+import java.time.Period;
 
 
 public class Register1Controller extends RegisterController {
@@ -30,17 +32,42 @@ public class Register1Controller extends RegisterController {
     @FXML
     public void loadRegisterPage2() //loading the register page n.2
     {
-        if (surnameRegisterTextField.getText().isEmpty()  || nameRegisterTextField.getText().isEmpty() || birthPlaceRegisterTextField.getText().isEmpty() || birthDateRegisterDatePicker.getValue()==null|| sexChoiceBox.getValue() == null) { errorMessageLabel.setText("Tutti i campi devono essere compilati!"); }
-        else
+        if (surnameRegisterTextField.getText().isEmpty()  || nameRegisterTextField.getText().isEmpty() || birthPlaceRegisterTextField.getText().isEmpty() || birthDateRegisterDatePicker.getValue()==null|| sexChoiceBox.getValue() == null )
         {
-            user.setFirstName(nameRegisterTextField.getText());
-            user.setLastName(surnameRegisterTextField.getText());
-            user.setBirthPlace(birthPlaceRegisterTextField.getText());
-            user.setBirthDate(birthDateRegisterDatePicker.getValue().toString());
-            user.setGender(sexChoiceBox.getValue());
-            rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml", user); //loading next registerer page, is triggered by the enterRegisterButton's on action event
+            errorMessageLabel.setText("Tutti i campi devono essere compilati!");
         }
 
+        else
+        {
+            LocalDate birthDate = birthDateRegisterDatePicker.getValue();
+            LocalDate today = LocalDate.now();
+            int age = Period.between(birthDate, today).getYears();
+
+            if (age < 18) {
+                errorMessageLabel.setText("Devi avere almeno 18 anni per registrarti!");
+                return;
+            }
+
+            if (sexChoiceBox.getValue().toString() != "- Sesso -")
+            {
+                System.out.println(sexChoiceBox.getValue().toString());
+                user.setFirstName(nameRegisterTextField.getText());
+                user.setLastName(surnameRegisterTextField.getText());
+                user.setBirthPlace(birthPlaceRegisterTextField.getText());
+                user.setBirthDate(birthDateRegisterDatePicker.getValue().toString());
+                user.setGender(sexChoiceBox.getValue().toString());
+                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml", user); //loading next registerer page, is triggered by the enterRegisterButton's on action event
+
+            }
+            errorMessageLabel.setText("Devi selezionare un genere valido!");
+                    }
+
+    }
+
+    @FXML
+    public void initialize()
+    {
+        sexChoiceBox.setValue("- Sesso -");
     }
 }
 
