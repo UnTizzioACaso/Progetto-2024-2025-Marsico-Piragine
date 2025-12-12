@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class UserDAO
 {
-    public void registerUser (User user) throws SQLException
+    public static boolean registerUser(User user) throws SQLException
     {
 
         String sql = "INSERT INTO User (" +
-                "first_name, last_name, username, birth_day, birth_place, tax_code, " +
+                "first_name, last_name, username, birth_day, birth_place, " +
                 "gender, email, password_hash, phone_number, state, province, city, " +
                 "address, street_number,cap, pin_hash, remember_credentials, last_access_date, theme" +
                 ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -40,6 +40,7 @@ public class UserDAO
             stmt.setString(19, user.getTheme());
 
             stmt.executeUpdate();
+            return true;
         }
 
     }
