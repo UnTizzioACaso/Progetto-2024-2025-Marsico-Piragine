@@ -48,7 +48,9 @@ public class Register1Controller extends RegisterController {
                 return;
             }
 
-            if (sexChoiceBox.getValue().toString() != "- Sesso -")
+            if (sexChoiceBox.getValue().equals("- Sesso -"))
+            { errorMessageLabel.setText("Devi selezionare un genere valido!");}
+            else
             {
                 System.out.println(sexChoiceBox.getValue().toString());
                 user.setFirstName(nameRegisterTextField.getText());
@@ -59,7 +61,7 @@ public class Register1Controller extends RegisterController {
                 rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml", user); //loading next registerer page, is triggered by the enterRegisterButton's on action event
 
             }
-            errorMessageLabel.setText("Devi selezionare un genere valido!");
+
                     }
 
     }
