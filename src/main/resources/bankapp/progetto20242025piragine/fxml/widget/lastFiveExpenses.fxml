@@ -1,59 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane fx:id="lastFiveExepensesWidgetGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="10.0" minWidth="20.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: lightgray;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-      <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" percentHeight="5.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <TextField minHeight="20.0" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField minHeight="20.0" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField minHeight="20.0" GridPane.rowIndex="5">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField minHeight="20.0" GridPane.rowIndex="7">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField minHeight="20.0" GridPane.rowIndex="9">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ultime 5 uscite:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </Text>
-   </children>
-</GridPane>
+<AnchorPane prefWidth="342.55"
+            scaleX="0.85" scaleY="0.85"
+            GridPane.rowIndex="1"
+            GridPane.columnIndex="0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            style="-fx-background-color: white; -fx-background-radius: 18;">
+
+    <children>
+
+        <VBox spacing="1.0"
+              AnchorPane.topAnchor="0.0"
+              AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0">
+
+            <children>
+
+                <VBox spacing="1.0"
+                      style="-fx-background-color: #10A37F; -fx-background-radius: 18 18 0 0;">
+                    <children>
+
+                        <Label text="Ultime cinque uscite" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="20.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets left="14.0" top="2.0" bottom="0.0"/>
+                            </VBox.margin>
+                        </Label>
+
+                        <Label text="Controllo" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets left="14.0" bottom="2.0"/>
+                            </VBox.margin>
+                        </Label>
+
+                    </children>
+                </VBox>
+
+                <VBox spacing="3.0">
+                    <padding>
+                        <Insets top="3.0" bottom="5.0" left="14.0" right="14.0"/>
+                    </padding>
+
+                    <children>
+
+                        <GridPane hgap="6.0" vgap="0.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <children>
+                                <Label text="Amazon" GridPane.rowIndex="0">
+                                    <font><Font name="System Bold" size="13.0"/></font>
+                                </Label>
+                                <Label text="30 novembre" GridPane.rowIndex="1"/>
+                                <Label text="-37,87 €" style="-fx-text-fill: #990000;"
+                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                       GridPane.halignment="RIGHT"/>
+                            </children>
+                        </GridPane>
+
+                        <GridPane hgap="6.0" vgap="0.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <children>
+                                <Label text="Trenitalia" GridPane.rowIndex="0">
+                                    <font><Font name="System Bold" size="13.0"/></font>
+                                </Label>
+                                <Label text="26 novembre" GridPane.rowIndex="1"/>
+                                <Label text="-163,80 €" style="-fx-text-fill: #990000;"
+                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                       GridPane.halignment="RIGHT"/>
+                            </children>
+                        </GridPane>
+
+                        <GridPane hgap="6.0" vgap="0.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <children>
+                                <Label text="Zalando" GridPane.rowIndex="0">
+                                    <font><Font name="System Bold" size="13.0"/></font>
+                                </Label>
+                                <Label text="18 novembre" GridPane.rowIndex="1"/>
+                                <Label text="-82,34 €" style="-fx-text-fill: #990000;"
+                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                       GridPane.halignment="RIGHT"/>
+                            </children>
+                        </GridPane>
+
+                        <GridPane hgap="6.0" vgap="0.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <children>
+                                <Label text="Apple" GridPane.rowIndex="0">
+                                    <font><Font name="System Bold" size="13.0"/></font>
+                                </Label>
+                                <Label text="15 novembre" GridPane.rowIndex="1"/>
+                                <Label text="-1499,99 €" style="-fx-text-fill: #990000;"
+                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                       GridPane.halignment="RIGHT"/>
+                            </children>
+                        </GridPane>
+
+                        <GridPane hgap="6.0" vgap="0.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                                <ColumnConstraints hgrow="ALWAYS"/>
+                            </columnConstraints>
+                            <children>
+                                <Label text="DAZN" GridPane.rowIndex="0">
+                                    <font><Font name="System Bold" size="13.0"/></font>
+                                </Label>
+                                <Label text="9 novembre" GridPane.rowIndex="1"/>
+                                <Label text="-129,00 €" style="-fx-text-fill: #990000;"
+                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                       GridPane.halignment="RIGHT"/>
+                            </children>
+                        </GridPane>
+
+                    </children>
+                </VBox>
+
+            </children>
+
+        </VBox>
+
+    </children>
+</AnchorPane>

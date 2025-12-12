@@ -7,14 +7,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane hgap="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25">
+<GridPane hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="602.0" vgap="15.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
     </columnConstraints>
+
     <rowConstraints>
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -31,39 +34,54 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
+
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
     </padding>
+
     <children>
+
         <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Impostazioni conto" GridPane.columnSpan="2" />
+
         <Label style="-fx-font-weight: bold;" text="Informazioni:" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+
         <Label text="IBAN:" GridPane.rowIndex="2" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="BIC/SWIFT:" GridPane.rowIndex="3" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Banca:" GridPane.rowIndex="4" />
+
+        <Text text="BIC/SWIFT:" GridPane.rowIndex="3" />
+
+        <Text text="Banca:" GridPane.rowIndex="4" />
+
         <Label style="-fx-font-weight: bold;" text="Gestione conto:" GridPane.columnSpan="2" GridPane.rowIndex="6" />
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Soglia massima per invii rapidi" GridPane.rowIndex="7" />
+
+        <Text text="Soglia massima per invii rapidi" GridPane.rowIndex="7" />
+
+        <TextField alignment="CENTER" style="-fx-pref-width: 60; -fx-max-width: 60;" text="50" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
         <Button fx:id="salvaSogliaBtn" mnemonicParsing="false" text="Salva soglia" GridPane.columnIndex="1" GridPane.rowIndex="7">
             <GridPane.margin>
                 <Insets left="70.0" />
             </GridPane.margin>
         </Button>
+
         <Label style="-fx-font-weight: bold;" text="Sicurezza:" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+
         <Button fx:id="cambiaPinBtn" mnemonicParsing="false" text="Cambia PIN" GridPane.rowIndex="10" />
-        <CheckBox fx:id="richiediSempreCheck" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" selected="true" text="Richiedi sempre il codice anche per invii rapidi" wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="11" />
-        <Button contentDisplay="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 100; -fx-padding: 0; -fx-font-weight: bold; -fx-font-size: 11px;" text="i" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
-            <GridPane.margin>
-                <Insets right="230.0" />
-            </GridPane.margin>
-        </Button>
-        <Button mnemonicParsing="false" style="-fx-background-color: #990000; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 30; -fx-background-radius: 10;" text="CHIUDI IL CONTO" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="13">
-            <GridPane.margin>
-                <Insets />
-            </GridPane.margin>
-        </Button>
+
+
+        <HBox spacing="10" GridPane.columnSpan="2" GridPane.rowIndex="11">
+            <CheckBox fx:id="richiediSempreCheck" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" selected="true" text="Richiedi sempre il codice anche per invii rapidi" wrapText="true" HBox.hgrow="ALWAYS" />
+            <Button contentDisplay="CENTER" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" style="-fx-background-radius: 100; -fx-padding: 0; -fx-font-weight: bold; -fx-font-size: 11px;" text="i" />
+        </HBox>
+
+        <Button mnemonicParsing="false" style="-fx-background-color: #990000; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 30; -fx-background-radius: 10;" text="CHIUDI IL CONTO" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
+
         <Label fx:id="bicField" text="AAAA-BB-CC-XXX" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
         <Label fx:id="bancaField" text="Nome banca – Sede" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        <TextField alignment="CENTER" style="-fx-pref-width: 60; -fx-max-width: 60;" text="50" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+
         <Label fx:id="ibanField" text="IT96W0585611601050570111111" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
     </children>
 </GridPane>
