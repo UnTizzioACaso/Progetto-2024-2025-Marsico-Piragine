@@ -30,7 +30,7 @@ public class LoginController extends BranchController {
     public void loadHomePage() //giving access to the homepage
 
     {
-        if (passwordLoginTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$") && emailLoginTextField.getText().matches("^[a-z0-9]+@[a-z0-9]+\\.[a-z]{2,}$")) //checking if the password and the email is valid
+        if (passwordLoginTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$") && emailLoginTextField.getText().matches("^[a-z0-9]+@[a-z0-9]+\\.[a-z]{2,}$")) //checking if the password and the email are valid
         {
 
             rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
