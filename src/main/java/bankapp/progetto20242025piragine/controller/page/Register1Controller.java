@@ -32,44 +32,43 @@ public class Register1Controller extends RegisterController {
     @FXML
     public void loadRegisterPage2() //loading the register page n.2
     {
-        if (surnameRegisterTextField.getText().isEmpty()  || nameRegisterTextField.getText().isEmpty() || birthPlaceRegisterTextField.getText().isEmpty() || birthDateRegisterDatePicker.getValue()==null|| sexChoiceBox.getValue() == null )
+        if (surnameRegisterTextField.getText().isEmpty()  || nameRegisterTextField.getText().isEmpty() || birthPlaceRegisterTextField.getText().isEmpty() || birthDateRegisterDatePicker.getValue()==null|| sexChoiceBox.getValue() == null ) //checking if all forms are compiled
         {
-            errorMessageLabel.setText("Tutti i campi devono essere compilati!");
+            errorMessageLabel.setText("Tutti i campi devono essere compilati!"); //giving the message error
         }
 
         else
         {
-            LocalDate birthDate = birthDateRegisterDatePicker.getValue();
-            LocalDate today = LocalDate.now();
-            int age = Period.between(birthDate, today).getYears();
+            LocalDate birthDate = birthDateRegisterDatePicker.getValue(); //getting the birthdate from the date picker
+            LocalDate today = LocalDate.now(); //getting today's date
+            int age = Period.between(birthDate, today).getYears(); //calculating the period between today's date with the birthdate, in years
 
-            if (age < 18) {
-                errorMessageLabel.setText("Devi avere almeno 18 anni per registrarti!");
-                return;
-            }
-
-            if (sexChoiceBox.getValue().equals("- Sesso -"))
-            { errorMessageLabel.setText("Devi selezionare un genere valido!");}
-            else
+            if (sexChoiceBox.getValue().equals("- Sesso -")) //checking if a valid gender is selected
             {
-                System.out.println(sexChoiceBox.getValue());
-                user.setFirstName(nameRegisterTextField.getText());
-                user.setLastName(surnameRegisterTextField.getText());
-                user.setBirthPlace(birthPlaceRegisterTextField.getText());
-                user.setBirthDate(birthDateRegisterDatePicker.getValue().toString());
-                user.setGender(sexChoiceBox.getValue());
-                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml", user); //loading next registerer page, is triggered by the enterRegisterButton's on action event
-
+                errorMessageLabel.setText("Devi selezionare un genere valido!"); //giving the message error
+                return; //stopping the code
             }
 
-                    }
+            if (age < 18) //if the period is under 18 years
+            {
+                errorMessageLabel.setText("Devi avere almeno 18 anni per registrarti!"); //giving the message error
+                return; //stopping the code
+            }
+
+            user.setFirstName(nameRegisterTextField.getText()); //getting the name from the respective form for the user obj
+            user.setLastName(surnameRegisterTextField.getText()); //getting the surname from the respective form for the user obj
+            user.setBirthPlace(birthPlaceRegisterTextField.getText()); //getting the birthplace from the respective form for the user obj
+            user.setBirthDate(birthDateRegisterDatePicker.getValue().toString()); //getting the birthdate from the respective form for the user obj
+            user.setGender(sexChoiceBox.getValue()); //getting the gender from the respective form for the user obj
+            rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml", user); //loading next registerer page, is triggered by the enterRegisterButton's on action event
+        }
 
     }
 
     @FXML
-    public void initialize()
+    public void initialize() //initializing the page
     {
-        sexChoiceBox.setValue("- Sesso -");
+        sexChoiceBox.setValue("- Sesso -"); //giving to sexChoiceBox the standard value "- Sesso -"
     }
 }
 
