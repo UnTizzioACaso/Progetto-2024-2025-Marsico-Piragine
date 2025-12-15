@@ -48,7 +48,7 @@ public class Register3Controller extends RegisterController {
             return; //stopping the code
         }
 
-        if (!(passwordTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[^a-zA-Z0-9]).{8,}$")))
+        if (!(passwordTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$")))
         {
             errorMessageLabel.setText("la password deve avere una maiuscola, una minuscola, un numero, un simbolo e deve essere lunga almeno 8 caratteri!"); //giving message error
             return; //stopping the code

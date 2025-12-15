@@ -60,12 +60,12 @@ public class UserDAO
         }
 
     }
-    public static User getUserByUsername(String username) throws SQLException {
-        String sql = "SELECT * FROM User WHERE username = ?";
+    public static User getUserByEmail(String email) throws SQLException {
+        String sql = "SELECT * FROM User WHERE email = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, username);
+            stmt.setString(1, email);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
 
@@ -80,5 +80,6 @@ public class UserDAO
             }
         }
     }
+
 
 }
