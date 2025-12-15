@@ -11,6 +11,7 @@ public class UserDAO
 {
 
 
+
     public static boolean loginCheck(String email, String password) throws SQLException
     {
         String sql = "SELECT password FROM User WHERE email = ?"; //query string for searching the password hash of the respective email
