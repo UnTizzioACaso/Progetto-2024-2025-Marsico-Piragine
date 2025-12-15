@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register3Controller">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register3Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
@@ -64,7 +64,7 @@
             <Font name="Constantia" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="accessErrorMessageLabel" alignment="CENTER" prefHeight="17.0" prefWidth="200.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label fx:id="accessErrorMessageLabel" alignment="CENTER" prefHeight="18.0" prefWidth="506.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <Button fx:id="finishRegisterButton" mnemonicParsing="false" onAction="#completeRegistration" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #08abab;" text="FINITO" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <effect>
             <DropShadow>

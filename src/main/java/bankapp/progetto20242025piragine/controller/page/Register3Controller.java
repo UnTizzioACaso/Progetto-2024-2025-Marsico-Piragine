@@ -28,7 +28,7 @@ public class Register3Controller extends RegisterController {
     PasswordField passwordConfirmTextField;
 
     @FXML
-    Label accessErrorMessageLabel;
+    Label errorMessageLabel;
 
     @FXML
     public void completeRegistration() throws SQLException //loads the user in the db an automaticaly logins in to the app
@@ -38,19 +38,19 @@ public class Register3Controller extends RegisterController {
         if (emailRegisterTextField.getText().isEmpty() || usernameRegisterTextField.getText().isEmpty() || cellphoneRegisterTextField1.getText().isEmpty() || passwordTextField.getText().isEmpty() || passwordConfirmTextField.getText().isEmpty()) //checking if all forms are compiled
         {
 
-            accessErrorMessageLabel.setText("Tutti i campi devono essere compilati!"); //giving message error
+            errorMessageLabel.setText("Tutti i campi devono essere compilati!"); //giving message error
             return; //stopping the code
         }
 
         if (!passwordTextField.getText().equals(passwordConfirmTextField.getText()))
         {
-            accessErrorMessageLabel.setText("Le password non coincidono!"); //giving message error
+            errorMessageLabel.setText("Le password non coincidono!"); //giving message error
             return; //stopping the code
         }
 
         if (!(passwordTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\\\d)(?=.*[^a-zA-Z0-9]).{8,}$")))
         {
-            accessErrorMessageLabel.setText("la password deve avere una maiuscola, una minuscola, un numero, un simbolo e deve essere lunga almeno 8 caratteri!"); //giving message error
+            errorMessageLabel.setText("la password deve avere una maiuscola, una minuscola, un numero, un simbolo e deve essere lunga almeno 8 caratteri!"); //giving message error
             return; //stopping the code
         }
 
@@ -65,7 +65,7 @@ public class Register3Controller extends RegisterController {
 
         if (!result) //check if user got registered
         {
-            accessErrorMessageLabel.setText("Errore durante la registrazione."); //giving message error
+            errorMessageLabel.setText("Errore durante la registrazione."); //giving message error
             return; //stopping the code
         }
 

@@ -76,7 +76,7 @@
             </DropShadow>
          </effect>
       </TextField>
-      <Label fx:id="errorMessageLabel" alignment="CENTER" prefHeight="18.0" prefWidth="557.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+      <Label fx:id="errorMessageLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="18.0" prefWidth="557.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
       <DatePicker fx:id="birthDateRegisterDatePicker" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="210.0" promptText="Data di nascita" stylesheets="@/bankapp/progetto20242025piragine/css/dark.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <effect>
             <DropShadow>
