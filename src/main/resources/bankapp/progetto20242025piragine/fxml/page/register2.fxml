@@ -57,7 +57,7 @@
             </DropShadow>
          </effect>
       </TextField>
-      <Label fx:id="accessErrorMessageLabel" alignment="CENTER" prefHeight="17.0" prefWidth="200.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label fx:id="errorMessageLabel" alignment="CENTER" prefHeight="18.0" prefWidth="518.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
       <TextField fx:id="CapTextField1" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="114.0" promptText="CAP" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <effect>
             <DropShadow>
