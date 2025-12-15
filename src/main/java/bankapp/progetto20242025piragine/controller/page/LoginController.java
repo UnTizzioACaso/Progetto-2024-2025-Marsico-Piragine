@@ -30,16 +30,16 @@ public class LoginController extends BranchController {
     @FXML
     public void loadHomePage() throws SQLException //giving access to the homepage
     {
-        if (passwordLoginTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$") && emailLoginTextField.getText().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) //checking if the password and the email are valid
-        {
+        //if (passwordLoginTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$") && emailLoginTextField.getText().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) //checking if the password and the email are valid
+        //{
             if(UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginTextField.getText()));
             {
                 rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
                 rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading the sidebar
                 rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading the topbar
             }
-        }
-        else
+       // }
+        //else
         {
             accessErrorMessageLabel.setText("credenziali errate riprova"); //giving the message error if the password or email is not valid
         }

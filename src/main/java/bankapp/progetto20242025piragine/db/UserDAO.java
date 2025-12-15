@@ -20,7 +20,7 @@ public class UserDAO
             try (ResultSet rs = stmt.executeQuery())
             {
                 if (!rs.next()) {return false;} //return false if the email does not exist
-                String passwordHash = rs.getString("password"); //saving the password hash found
+                String passwordHash = rs.getString("password_hash"); //saving the password hash found
                 return BCrypt.checkpw(password, passwordHash); //checking if the password is the same as the hash password found in the db
             }
         }
@@ -60,4 +60,25 @@ public class UserDAO
         }
 
     }
+    public static User getUserByUsername(String username) throws SQLException {
+        String sql = "SELECT * FROM User WHERE username = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) return null;
+
+                User user = new User();
+                user.setUsername(rs.getString("username"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setTheme(rs.getString("theme"));
+                user.setPhoneNumber(rs.getString("phone_number"));
+                return user;
+            }
+        }
+    }
+
 }
