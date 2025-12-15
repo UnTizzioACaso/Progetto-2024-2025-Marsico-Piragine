@@ -10,11 +10,9 @@ import java.sql.SQLException;
 public class UserDAO
 {
 
-
-
     public static boolean loginCheck(String email, String password) throws SQLException
     {
-        String sql = "SELECT password FROM User WHERE email = ?"; //query string for searching the password hash of the respective email
+        String sql = "SELECT password_hash FROM User WHERE email = ?"; //query string for searching the password hash of the respective email
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) //opening (and closing at the end of the block) Connection and PreparedStatement automatically
         {
@@ -42,16 +40,15 @@ public class UserDAO
             stmt.setString(3, user.getUsername());
             stmt.setString(4, user.getBirthDate());
             stmt.setString(5, user.getBirthPlace());
-            stmt.setString(6, user.getTaxCode());
-            stmt.setString(7, user.getGender());
-            stmt.setString(8, user.getEmail());
-            stmt.setString(9, user.getPasswordHash());
-            stmt.setString(10, user.getPhoneNumber());
-            stmt.setString(11, user.getState());
-            stmt.setString(12, user.getProvince());
-            stmt.setString(13, user.getCity());
-            stmt.setString(14, user.getAddress());
-            stmt.setString(15, user.getStreetNumber());
+            stmt.setString(6, user.getGender());
+            stmt.setString(7, user.getEmail());
+            stmt.setString(8, user.getPasswordHash());
+            stmt.setString(9, user.getPhoneNumber());
+            stmt.setString(10, user.getState());
+            stmt.setString(11, user.getProvince());
+            stmt.setString(12, user.getCity());
+            stmt.setString(13, user.getAddress());
+            stmt.setString(14, user.getStreetNumber());
             stmt.setString(15, user.getCap());
             stmt.setString(16, user.getPinHash());
             stmt.setBoolean(17, user.isRememberCredentials());

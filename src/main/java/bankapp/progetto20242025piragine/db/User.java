@@ -6,7 +6,6 @@ public class User {
     private String username;
     private String birthDate;
     private String birthPlace;
-    private String taxCode;           // Codice Fiscale
     private String gender;
     private String email;
     private String passwordHash;
@@ -95,14 +94,6 @@ public class User {
         return this.birthPlace;
     }
 
-    public void setTaxCode(String taxCode)
-    {
-        this.taxCode = taxCode;
-    }
-    public String getTaxCode()
-    {
-        return this.taxCode;
-    }
 
     public void setGender(String gender)
     {
