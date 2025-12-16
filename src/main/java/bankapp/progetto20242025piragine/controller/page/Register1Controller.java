@@ -1,5 +1,6 @@
 package bankapp.progetto20242025piragine.controller.page;
 
+import bankapp.progetto20242025piragine.controller.BranchController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 
-public class Register1Controller extends RegisterController {
+public class Register1Controller extends BranchController {
 
     @FXML
     TextField surnameRegisterTextField;
@@ -55,12 +56,12 @@ public class Register1Controller extends RegisterController {
                 return; //stopping the code
             }
 
-            user.setFirstName(nameRegisterTextField.getText()); //getting the name from the respective form for the user obj
-            user.setLastName(surnameRegisterTextField.getText()); //getting the surname from the respective form for the user obj
-            user.setBirthPlace(birthPlaceRegisterTextField.getText()); //getting the birthplace from the respective form for the user obj
-            user.setBirthDate(birthDateRegisterDatePicker.getValue().toString()); //getting the birthdate from the respective form for the user obj
-            user.setGender(sexChoiceBox.getValue()); //getting the gender from the respective form for the user obj
-            rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml", user); //loading next registerer page, is triggered by the enterRegisterButton's on action event
+            rootController.user.setFirstName(nameRegisterTextField.getText()); //getting the name from the respective form for the user obj
+            rootController.user.setLastName(surnameRegisterTextField.getText()); //getting the surname from the respective form for the user obj
+            rootController.user.setBirthPlace(birthPlaceRegisterTextField.getText()); //getting the birthplace from the respective form for the user obj
+            rootController.user.setBirthDate(birthDateRegisterDatePicker.getValue().toString()); //getting the birthdate from the respective form for the user obj
+            rootController.user.setGender(sexChoiceBox.getValue()); //getting the gender from the respective form for the user obj
+            rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml"); //loading next registerer page, is triggered by the enterRegisterButton's on action event
         }
 
     }

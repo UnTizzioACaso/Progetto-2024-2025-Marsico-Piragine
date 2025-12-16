@@ -2,11 +2,9 @@ package bankapp.progetto20242025piragine.controller;
 
 
 import bankapp.progetto20242025piragine.controller.component.TopbarController;
-import bankapp.progetto20242025piragine.controller.page.RegisterController;
 import bankapp.progetto20242025piragine.db.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
@@ -23,6 +21,8 @@ public  class RootWindowController extends BranchController {
     public User user = new User();
 
 
+
+
     @FXML
     public void loadPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {
@@ -35,35 +35,11 @@ public  class RootWindowController extends BranchController {
                 BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
                 controller.setRootController(this); //giving to the new page's controller the current RootController instance
                 rootWindow.setCenter(node); //setting the page to the center
+                controller.rootController.user = user;;
                 if (topbar != null) //if topbar's controller is already initialized
                 {
                     topbar.visitPage(fxml); //adds the loaded page to the backwardStack
                 }
-            } catch (IOException e) {
-                System.err.println("error loading " + fxml + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-    }
-
-    @FXML
-    public void loadPage(String fxml, User u) //this method sets to the center the application's main pages "rootWindow"
-    {
-        if (!(fxml.equals(currentPage)))
-        {
-            try {
-                currentPage = fxml;
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-                Parent node = fxmlLoader.load(); //creating the node from the loader
-                BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-                controller.setRootController(this); //giving to the new page's controller the current RootController instance
-                rootWindow.setCenter(node); //setting the page to the center
-                controller.user = u;;
-                if (topbar != null) //if topbar's controller is already initialized
-                {
-                    topbar.visitPage(fxml); //adds the loaded page to the backwardStack
-                }
-                user = u;
             } catch (IOException e) {
                 System.err.println("error loading " + fxml + e.getMessage());
                 e.printStackTrace();
@@ -86,7 +62,7 @@ public  class RootWindowController extends BranchController {
             Parent node = fxmlLoader.load(); //creating the node from the loader
             BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
             controller.setRootController(this);
-
+            controller.rootController.user = user;
             rootWindow.setLeft(node); //setting the node to the left
         }
         catch (IOException e)

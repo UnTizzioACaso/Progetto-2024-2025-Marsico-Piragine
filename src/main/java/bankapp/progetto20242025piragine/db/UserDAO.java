@@ -76,6 +76,7 @@ public class UserDAO
                 user.setEmail(rs.getString("email"));
                 user.setTheme(rs.getString("theme"));
                 user.setPhoneNumber(rs.getString("phone_number"));
+                user.setTheme(rs.getString("theme"));
                 return user;
             }
         }

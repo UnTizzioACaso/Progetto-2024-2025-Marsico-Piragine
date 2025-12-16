@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.controller.popup.AccountPopupController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,10 +21,12 @@ public class SidebarController extends BranchController {
     {
         try
         {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml")); //getting the fxml in the loader
             Parent root = loader.load(); //creating the node from the loader
-            BranchController controller = loader.getController(); //getting the controller from the loader
+            AccountPopupController controller = loader.getController(); //getting the controller from the loader
             controller.setRootController(rootController);
+            controller.showCorrectValues();
             Stage popupStage = new Stage(); //creating a new stage for the accountPopup
             popupStage.setTitle("Account"); //setting the title
             popupStage.setMinWidth(420); //setting popup's minimum width
