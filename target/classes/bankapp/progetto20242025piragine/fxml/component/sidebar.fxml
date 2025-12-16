@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="70.0" prefHeight="400.0" prefWidth="70.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.SidebarController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="70.0" prefHeight="400.0" prefWidth="70.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.SidebarController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
     </columnConstraints>
@@ -22,10 +22,31 @@
         <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="2" />
-        <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="3" />
-        <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="4" />
+        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#loadHomePage" GridPane.rowIndex="1">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imgs/homeicon.jpg" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#loadSettingsPage" GridPane.rowIndex="2">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../imgs/settingsicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+        <Button mnemonicParsing="false" GridPane.rowIndex="3">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Button>
+        <Button mnemonicParsing="false" GridPane.rowIndex="4">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Button>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
             <children>
                 <Button fx:id="accountPopupButton" layoutX="9.0" layoutY="60.0" mnemonicParsing="false" onAction="#openAccountPopup" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: null;" AnchorPane.bottomAnchor="17.599999999999994" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.399999999999999">
