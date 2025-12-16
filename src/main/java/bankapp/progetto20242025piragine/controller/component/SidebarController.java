@@ -15,7 +15,14 @@ import java.io.IOException;
 public class SidebarController extends BranchController {
 
     @FXML
-    Button accountPopupButton;
+    public Button accountPopupButton;
+
+    @FXML
+    public Button settingsButton;
+
+    @FXML
+    public Button homeButton;
+
     @FXML
     void openAccountPopup() //opening the account popup
     {
@@ -40,5 +47,16 @@ public class SidebarController extends BranchController {
             System.err.println("error loading the account popup" +  e.getMessage());
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void loadHomePage()
+    {
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
+    }
+
+    @FXML
+    public void loadSettingsPage()
+    {
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
     }
 }
