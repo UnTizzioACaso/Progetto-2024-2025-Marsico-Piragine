@@ -36,10 +36,9 @@ public class LoginController extends BranchController {
             if(UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginTextField.getText()))
             {
                 rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
-
-                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
                 rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading the sidebar
                 rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading the topbar
+                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
             }
        // }
         //else

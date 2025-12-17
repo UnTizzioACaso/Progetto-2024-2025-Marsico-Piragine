@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" onMouseClicked="#nextPage" prefHeight="57.0" prefWidth="575.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="bankapp.progetto20242025piragine.controller.component.TopbarController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="57.0" prefWidth="575.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TopbarController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
     <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
