@@ -2,144 +2,252 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="342.55"
-            scaleX="0.85" scaleY="0.85"
-            GridPane.rowIndex="1"
-            GridPane.columnIndex="0"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            style="-fx-background-color: white; -fx-background-radius: 18;">
-
-    <children>
-
-        <VBox spacing="1.0"
-              AnchorPane.topAnchor="0.0"
-              AnchorPane.leftAnchor="0.0"
-              AnchorPane.rightAnchor="0.0">
-
-            <children>
-
-                <VBox spacing="1.0"
-                      style="-fx-background-color: #10A37F; -fx-background-radius: 18 18 0 0;">
-                    <children>
-
-                        <Label text="Ultime cinque uscite" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="20.0"/>
-                            </font>
-                            <VBox.margin>
-                                <Insets left="14.0" top="2.0" bottom="0.0"/>
-                            </VBox.margin>
-                        </Label>
-
-                        <Label text="Controllo" textFill="WHITE">
-                            <VBox.margin>
-                                <Insets left="14.0" bottom="2.0"/>
-                            </VBox.margin>
-                        </Label>
-
-                    </children>
-                </VBox>
-
-                <VBox spacing="3.0">
-                    <padding>
-                        <Insets top="3.0" bottom="5.0" left="14.0" right="14.0"/>
-                    </padding>
-
-                    <children>
-
-                        <GridPane hgap="6.0" vgap="0.0">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                            </columnConstraints>
-                            <children>
-                                <Label text="Amazon" GridPane.rowIndex="0">
-                                    <font><Font name="System Bold" size="13.0"/></font>
-                                </Label>
-                                <Label text="30 novembre" GridPane.rowIndex="1"/>
-                                <Label text="-37,87 €" style="-fx-text-fill: #990000;"
-                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
-                                       GridPane.halignment="RIGHT"/>
-                            </children>
-                        </GridPane>
-
-                        <GridPane hgap="6.0" vgap="0.0">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                            </columnConstraints>
-                            <children>
-                                <Label text="Trenitalia" GridPane.rowIndex="0">
-                                    <font><Font name="System Bold" size="13.0"/></font>
-                                </Label>
-                                <Label text="26 novembre" GridPane.rowIndex="1"/>
-                                <Label text="-163,80 €" style="-fx-text-fill: #990000;"
-                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
-                                       GridPane.halignment="RIGHT"/>
-                            </children>
-                        </GridPane>
-
-                        <GridPane hgap="6.0" vgap="0.0">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                            </columnConstraints>
-                            <children>
-                                <Label text="Zalando" GridPane.rowIndex="0">
-                                    <font><Font name="System Bold" size="13.0"/></font>
-                                </Label>
-                                <Label text="18 novembre" GridPane.rowIndex="1"/>
-                                <Label text="-82,34 €" style="-fx-text-fill: #990000;"
-                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
-                                       GridPane.halignment="RIGHT"/>
-                            </children>
-                        </GridPane>
-
-                        <GridPane hgap="6.0" vgap="0.0">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                            </columnConstraints>
-                            <children>
-                                <Label text="Apple" GridPane.rowIndex="0">
-                                    <font><Font name="System Bold" size="13.0"/></font>
-                                </Label>
-                                <Label text="15 novembre" GridPane.rowIndex="1"/>
-                                <Label text="-1499,99 €" style="-fx-text-fill: #990000;"
-                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
-                                       GridPane.halignment="RIGHT"/>
-                            </children>
-                        </GridPane>
-
-                        <GridPane hgap="6.0" vgap="0.0">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                                <ColumnConstraints hgrow="ALWAYS"/>
-                            </columnConstraints>
-                            <children>
-                                <Label text="DAZN" GridPane.rowIndex="0">
-                                    <font><Font name="System Bold" size="13.0"/></font>
-                                </Label>
-                                <Label text="9 novembre" GridPane.rowIndex="1"/>
-                                <Label text="-129,00 €" style="-fx-text-fill: #990000;"
-                                       GridPane.columnIndex="1" GridPane.rowIndex="0"
-                                       GridPane.halignment="RIGHT"/>
-                            </children>
-                        </GridPane>
-
-                    </children>
-                </VBox>
-
-            </children>
-
-        </VBox>
-
-    </children>
-</AnchorPane>
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: #10A37F; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+         <children>
+            <Label prefHeight="16.0" prefWidth="205.0" text="Ultime cinque uscite" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="14.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Controllo" textFill="WHITE">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="15.0" top="-5.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <GridPane minHeight="5.0" vgap="0.0" VBox.vgrow="ALWAYS">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints hgrow="ALWAYS" />
+         </columnConstraints>
+         <children>
+            <Label fx:id="titleExpenseLabel1" text="Amazon" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateExpenseLabel1" text="30 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="-3.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label text="-37,87 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-8.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <rowConstraints>
+            <RowConstraints minHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints minHeight="0.0" valignment="TOP" vgrow="ALWAYS" />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets left="3.0" right="3.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </GridPane>
+      <Separator prefWidth="200.0" style="-fx-background-color: d7d7d7;">
+         <VBox.margin>
+            <Insets left="8.0" right="8.0" />
+         </VBox.margin>
+      </Separator>
+      <GridPane minHeight="5.0" vgap="0.0" VBox.vgrow="ALWAYS">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints hgrow="ALWAYS" />
+         </columnConstraints>
+         <children>
+            <Label fx:id="titleExpenseLabel2" text="Trenitalia" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateExpenseLabel2" text="26 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="-3.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label text="-163,80 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-8.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <rowConstraints>
+            <RowConstraints minHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints minHeight="0.0" valignment="TOP" vgrow="ALWAYS" />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets left="3.0" right="3.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </GridPane>
+      <Separator prefWidth="200.0" style="-fx-background-color: d7d7d7;">
+         <VBox.margin>
+            <Insets left="8.0" right="8.0" />
+         </VBox.margin>
+      </Separator>
+      <GridPane minHeight="5.0" vgap="0.0" VBox.vgrow="ALWAYS">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints hgrow="ALWAYS" />
+         </columnConstraints>
+         <children>
+            <Label fx:id="titleExpenseLabel3" text="Zalando" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateExpenseLabel3" text="18 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="-3.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label text="-82,34 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-8.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <rowConstraints>
+            <RowConstraints minHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints minHeight="0.0" valignment="TOP" vgrow="ALWAYS" />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets left="3.0" right="3.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </GridPane>
+      <Separator prefWidth="200.0" style="-fx-background-color: d7d7d7;">
+         <VBox.margin>
+            <Insets left="8.0" right="8.0" />
+         </VBox.margin>
+      </Separator>
+      <GridPane minHeight="5.0" vgap="0.0" VBox.vgrow="ALWAYS">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints hgrow="ALWAYS" />
+         </columnConstraints>
+         <children>
+            <Label fx:id="titleExpenseLabel4" text="Apple" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateExpenseLabel4" text="15 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="-3.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label text="-1499,99 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-8.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <rowConstraints>
+            <RowConstraints minHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints minHeight="0.0" vgrow="ALWAYS" />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets left="3.0" right="3.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </GridPane>
+      <Separator prefWidth="200.0" style="-fx-background-color: d7d7d7;">
+         <VBox.margin>
+            <Insets left="8.0" right="8.0" />
+         </VBox.margin>
+      </Separator>
+      <GridPane minHeight="5.0" vgap="0.0" VBox.vgrow="ALWAYS">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints hgrow="ALWAYS" />
+         </columnConstraints>
+         <children>
+            <Label fx:id="titleExpenseLabel5" text="DAZN" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateExpenseLabel5" text="9 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="-3.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label text="-129,00 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-8.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <rowConstraints>
+            <RowConstraints minHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+            <RowConstraints minHeight="0.0" valignment="TOP" vgrow="ALWAYS" />
+         </rowConstraints>
+         <VBox.margin>
+            <Insets bottom="3.0" left="3.0" right="3.0" />
+         </VBox.margin>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </GridPane>
+   </children>
+</VBox>

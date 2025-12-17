@@ -1,5 +1,7 @@
 package bankapp.progetto20242025piragine.controller;
 
+import bankapp.progetto20242025piragine.db.User;
+
 public abstract class BranchController {
 
     protected RootWindowController rootController; //access to RootWindow

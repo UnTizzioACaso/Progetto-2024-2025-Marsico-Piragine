@@ -13,14 +13,13 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException
     {
         DBInitializer.initialize(); //initialization
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/rootWindow.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("PSP bankkkkk!");
-        stage.setMinWidth(600);
-        stage.setMinHeight(600);
-        stage.setScene(scene);
-        stage.show();
-
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/rootWindow.fxml")); //getting the main window's fxml
+        Scene scene = new Scene(fxmlLoader.load()); //crating the scene with the fxml
+        stage.setTitle("PSP bankkkkk!"); //setting the window's title
+        stage.setMinWidth(650); //setting the window's min width
+        stage.setMinHeight(650); //setting the window's min lenght
+        stage.setScene(scene); //setting the scene in the window
+        stage.show(); //showing the window
     }
 
 

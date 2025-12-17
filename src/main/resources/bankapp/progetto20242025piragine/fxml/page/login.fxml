@@ -5,6 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="loginGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="373.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.LoginController">
+<GridPane fx:id="loginGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="396.0" prefWidth="466.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="bankapp.progetto20242025piragine.controller.page.LoginController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" percentWidth="33.0" prefWidth="180.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" percentWidth="33.0" prefWidth="186.0" />
@@ -59,7 +60,7 @@
             </DropShadow>
          </effect>
       </TextField>
-      <Label fx:id="wellcomeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="204.0" text="Ben tornato" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label fx:id="wellcomeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="204.0" text="Bentornato" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="Constantia" size="16.0" />
          </font>
@@ -72,7 +73,7 @@
             <Insets bottom="82.0" />
          </GridPane.margin>
       </Label>
-      <CheckBox mnemonicParsing="false" text="Ricorda l'accesso" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+      <CheckBox mnemonicParsing="false" text="Ricorda l'accesso" textFill="#08abab" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
          <effect>
             <InnerShadow>
                <color>
@@ -88,7 +89,7 @@
          </padding>
       </CheckBox>
       <Label fx:id="accessErrorMessageLabel" alignment="CENTER" onMouseClicked="#loadRegisterPage" prefHeight="17.0" prefWidth="200.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <Button fx:id="enterLoginButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #08abab;" text="INVIO" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+      <Button fx:id="enterLoginButton" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #08abab;" text="INVIO" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
          <effect>
             <DropShadow>
                <color>
@@ -98,4 +99,7 @@
          </effect>
       </Button>
    </children>
+   <effect>
+      <ColorAdjust />
+   </effect>
 </GridPane>

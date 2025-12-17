@@ -12,21 +12,22 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register2Controller">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register2Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="15.0" prefHeight="46.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="15.0" prefHeight="34.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="15.0" percentHeight="5.0" prefHeight="15.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="62.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="54.5" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="11.0" prefHeight="46.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="11.0" prefHeight="34.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="62.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="62.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="54.5" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="266.0" minHeight="0.0" percentHeight="25.0" prefHeight="75.0" valignment="CENTER" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
@@ -47,7 +48,7 @@
             <Font name="Constantia" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="streetRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Via" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField fx:id="streetRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Via" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <effect>
             <DropShadow>
                <color>
@@ -56,8 +57,8 @@
             </DropShadow>
          </effect>
       </TextField>
-      <Label fx:id="accessErrorMessageLabel" alignment="CENTER" prefHeight="17.0" prefWidth="200.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="phoneNumberRegisterTextField1" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="234.0" promptText="N. di telefono" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <Label fx:id="errorMessageLabel" alignment="CENTER" prefHeight="18.0" prefWidth="518.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+      <TextField fx:id="CapTextField1" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="114.0" promptText="CAP" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <effect>
             <DropShadow>
                <color>
@@ -87,7 +88,7 @@
             </DropShadow>
          </effect>
       </TextField>
-      <Button fx:id="enterRegisterButton" mnemonicParsing="false" onAction="#loadRegisterPage2" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #08abab;" text="INVIO" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <Button fx:id="enterRegisterButton" mnemonicParsing="false" onAction="#loadRegisterPage2" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #08abab;" text="INVIO" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <effect>
             <DropShadow>
                <color>
@@ -99,7 +100,7 @@
             <Insets />
          </GridPane.margin>
       </Button>
-      <HBox alignment="CENTER_LEFT" maxWidth="250.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <HBox alignment="CENTER_LEFT" maxWidth="250.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <children>
             <TextField fx:id="houseNumberDayRegisterTextField" maxHeight="30.0" maxWidth="118.0" prefHeight="30.0" prefWidth="59.0" promptText="N. civico" style="-fx-background-radius: 8;">
                <effect>
@@ -112,5 +113,14 @@
             </TextField>
          </children>
       </HBox>
+      <TextField fx:id="cityRegisterTextField1" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Comune" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color green="1.0" blue="1.0" opacity="0.5" />
+               </color>
+            </DropShadow>
+         </effect>
+      </TextField>
    </children>
 </GridPane>
