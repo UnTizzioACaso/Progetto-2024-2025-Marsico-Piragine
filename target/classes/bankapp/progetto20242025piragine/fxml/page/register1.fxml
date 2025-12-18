@@ -1,116 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register1Controller">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" percentWidth="33.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" percentWidth="33.0" prefWidth="100.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="11.0" prefHeight="86.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="11.0" prefHeight="60.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="128.0" minHeight="0.0" percentHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="54.5" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="67.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="10.0" prefHeight="67.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="10.0" percentHeight="25.0" prefHeight="118.0" vgrow="SOMETIMES" />
-   </rowConstraints>
-   <children>
-      <TextField fx:id="nameRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Nome" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-      </TextField>
-      <TextField fx:id="surnameRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Cognome" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-      </TextField>
-      <Label fx:id="bankTItleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="76.0" prefWidth="211.0" text="N Bank" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1">
-         <font>
-            <Font name="Constantia" size="41.0" />
-         </font>
-         <effect>
-            <DropShadow height="81.46" radius="35.375" width="62.04">
-               <color>
-                  <Color opacity="0.47328245639801025" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Label>
-      <Label fx:id="wellcomeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="47.0" prefWidth="215.0" text="Registrazione 1 di 3 (anagrafica)" textAlignment="CENTER" textFill="#08abab" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <font>
-            <Font name="Constantia" size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="birthPlaceRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Luogo di nascita" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="5">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-      </TextField>
-      <Label fx:id="errorMessageLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" prefHeight="18.0" prefWidth="557.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-      <DatePicker fx:id="birthDateRegisterDatePicker" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="210.0" promptText="Data di nascita" stylesheets="@/bankapp/progetto20242025piragine/css/dark.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.49808427691459656" />
-               </color>
-            </DropShadow>
-         </effect>
-      </DatePicker>
-      <Button fx:id="enterRegisterButton" mnemonicParsing="false" onAction="#loadRegisterPage2" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #08abab;" text="INVIO" GridPane.columnIndex="1" GridPane.rowIndex="8">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color opacity="0.47328245639801025" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Button>
-      <ChoiceBox fx:id="sexChoiceBox" prefHeight="26.0" prefWidth="218.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-          <items>
-              <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="- Sesso -" />
-                  <String fx:value="Femmina" />
-                  <String fx:value="Maschio" />
+<GridPane gridLinesVisible="false" prefHeight="700" prefWidth="1200" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
 
-              </FXCollections>
-          </items>
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.49808427691459656" />
-               </color>
-            </DropShadow>
-         </effect>
-      </ChoiceBox>
-   </children>
+    <columnConstraints>
+        <ColumnConstraints percentWidth="45.0" />
+        <ColumnConstraints percentWidth="55.0" />
+    </columnConstraints>
+
+    <rowConstraints>
+        <RowConstraints prefHeight="45.0" vgrow="NEVER" />
+        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints prefHeight="60.0" vgrow="NEVER" />
+    </rowConstraints>
+
+    <Region style="-fx-background-color: #E4E5E0;" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+
+    <GridPane alignment="CENTER" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+
+        <padding>
+            <Insets left="30.0" />
+        </padding>
+
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="520.0" minWidth="520.0" prefWidth="520.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+            <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+
+        <rowConstraints>
+            <RowConstraints vgrow="ALWAYS" />
+
+            <RowConstraints prefHeight="54.0" vgrow="NEVER" />
+            <RowConstraints prefHeight="28.0" vgrow="NEVER" />
+            <RowConstraints prefHeight="28.0" vgrow="NEVER" />
+
+            <RowConstraints prefHeight="66.0" vgrow="NEVER" />
+            <RowConstraints prefHeight="66.0" vgrow="NEVER" />
+            <RowConstraints prefHeight="66.0" vgrow="NEVER" />
+            <RowConstraints prefHeight="66.0" vgrow="NEVER" />
+            <RowConstraints prefHeight="66.0" vgrow="NEVER" />
+
+            <RowConstraints maxHeight="49.0666564941406" minHeight="0.0" prefHeight="0.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="114.0" minHeight="34.53339843750001" prefHeight="54.80000000000001" vgrow="NEVER" />
+            <RowConstraints maxHeight="135.46670532226562" minHeight="0.0" prefHeight="0.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="171.39999999999998" minHeight="5.533294677734375" prefHeight="91.93325805664062" vgrow="NEVER" />
+
+            <RowConstraints maxHeight="193.60003662109375" minHeight="0.0" prefHeight="0.0" vgrow="ALWAYS" />
+        </rowConstraints>
+
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #222;" text="Registrazione 1 di 3" GridPane.columnIndex="0" GridPane.rowIndex="1">
+            <font><Font size="36.0" /></font>
+            <GridPane.margin><Insets bottom="4" /></GridPane.margin>
+        </Label>
+
+        <Label text="(anagrafica)" GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <font><Font size="20.0" /></font>
+            <GridPane.margin><Insets bottom="0" /></GridPane.margin>
+        </Label>
+
+        <TextField maxWidth="10000" prefHeight="56.0" promptText="Nome" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="4">
+            <GridPane.margin><Insets bottom="14" /></GridPane.margin>
+            <GridPane.hgrow><Priority fx:constant="ALWAYS" /></GridPane.hgrow>
+        </TextField>
+
+        <TextField maxWidth="10000" prefHeight="56.0" promptText="Cognome" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="5">
+            <GridPane.margin><Insets bottom="14" /></GridPane.margin>
+            <GridPane.hgrow><Priority fx:constant="ALWAYS" /></GridPane.hgrow>
+        </TextField>
+
+        <TextField maxWidth="10000" prefHeight="56.0" promptText="Luogo di nascita" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="6">
+            <GridPane.margin><Insets bottom="14" /></GridPane.margin>
+            <GridPane.hgrow><Priority fx:constant="ALWAYS" /></GridPane.hgrow>
+        </TextField>
+
+        <DatePicker maxWidth="10000" prefHeight="58.0" prefWidth="520.0" promptText="Data di nascita" style="-fx-font-size: 16;" GridPane.columnIndex="0" GridPane.rowIndex="7">
+            <GridPane.margin><Insets bottom="14" /></GridPane.margin>
+            <GridPane.hgrow><Priority fx:constant="ALWAYS" /></GridPane.hgrow>
+        </DatePicker>
+
+        <ComboBox fx:id="sessoBox" maxWidth="10000" prefHeight="49.0" prefWidth="520.0" promptText="- Sesso -" style="-fx-font-size: 16; -fx-background-radius: 10;" GridPane.columnIndex="0" GridPane.rowIndex="8">
+            <GridPane.margin><Insets bottom="26" /></GridPane.margin>
+            <GridPane.hgrow><Priority fx:constant="ALWAYS" /></GridPane.hgrow>
+        </ComboBox>
+
+        <Button maxWidth="10000" prefHeight="62.0" prefWidth="527.0" style="-fx-background-color: #d70707; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-background-radius: 14; -fx-padding: 16;" text="INVIO " GridPane.columnIndex="0" GridPane.rowIndex="10">
+            <GridPane.margin><Insets bottom="0" /></GridPane.margin>
+            <GridPane.hgrow><Priority fx:constant="ALWAYS" /></GridPane.hgrow>
+            <effect>
+                <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                    <color>
+                        <Color opacity="0.25" />
+                    </color>
+                </InnerShadow>
+            </effect>
+        </Button>
+
+        <ImageView fitHeight="300.0" fitWidth="270.0" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
+            <image>
+                <Image url="@../../imgs/mazeBankCards.png" />
+            </image>
+            <GridPane.margin>
+                <Insets bottom="-25.0" />
+            </GridPane.margin>
+            <effect>
+                <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                    <color>
+                        <Color opacity="0.25" />
+                    </color>
+                </InnerShadow>
+            </effect>
+        </ImageView>
+
+        <ProgressBar prefHeight="19.0" prefWidth="503.0" progress="0.33" style="-fx-accent: #d70707; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.rowSpan="2147483647" GridPane.valignment="BOTTOM">
+            <GridPane.margin>
+                <Insets />
+            </GridPane.margin>
+        </ProgressBar>
+        <opaqueInsets>
+            <Insets />
+        </opaqueInsets>
+        <GridPane.margin>
+            <Insets left="30.0" />
+        </GridPane.margin>
+
+    </GridPane>
+
+    <Region prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d70707;" GridPane.rowIndex="2">
+        <effect>
+            <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                <color>
+                    <Color opacity="0.25" />
+                </color>
+            </InnerShadow>
+        </effect>
+    </Region>
+
+    <Region prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.rowIndex="1" />
+    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+
+    <!-- LOGO: reso "fermo" tramite AnchorPane overlay, senza cambiare grandezze -->
+    <AnchorPane mouseTransparent="true" pickOnBounds="false" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" GridPane.rowSpan="3">
+        <ImageView fitHeight="160.0" fitWidth="317.0" preserveRatio="true" AnchorPane.leftAnchor="111.5" AnchorPane.topAnchor="225.0">
+            <image>
+                <Image url="@../../imgs/LogoMazeBank.png" />
+            </image>
+            <effect>
+                <InnerShadow choke="0.17" offsetY="-10.0" radius="18.835" width="56.34">
+                    <color>
+                        <Color opacity="0.25" />
+                    </color>
+                </InnerShadow>
+            </effect>
+        </ImageView>
+    </AnchorPane>
+
+    <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #1E1E1E; -fx-padding: 0 6 0 6;" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+        <GridPane.margin>
+            <Insets left="15.0" />
+        </GridPane.margin>
+    </Button>
+
+    <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #1E1E1E; -fx-padding: 0 6 0 6;" text="&gt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+        <GridPane.margin>
+            <Insets left="50.0" />
+        </GridPane.margin>
+    </Button>
+
 </GridPane>
