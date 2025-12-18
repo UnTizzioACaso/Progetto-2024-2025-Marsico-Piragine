@@ -7,15 +7,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 
 import java.io.IOException;
 
 public class SidebarController extends BranchController {
 
     @FXML
-    public Button accountPopupButton;
+    public ImageView accountPopupButton;
 
     @FXML
     public Button settingsButton;
@@ -28,7 +30,6 @@ public class SidebarController extends BranchController {
     {
         try
         {
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml")); //getting the fxml in the loader
             Parent root = loader.load(); //creating the node from the loader
             AccountPopupController controller = loader.getController(); //getting the controller from the loader

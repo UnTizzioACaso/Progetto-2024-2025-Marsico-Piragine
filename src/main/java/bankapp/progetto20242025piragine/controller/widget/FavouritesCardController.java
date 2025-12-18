@@ -2,7 +2,9 @@ package bankapp.progetto20242025piragine.controller.widget;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -40,8 +42,11 @@ public class FavouritesCardController {
             try
             {
                 FXMLLoader cardloader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml")); //getting the card base fxml
-                Parent card = cardloader.load(); //creating the card object from the fxml
+                AnchorPane card = cardloader.load(); //creating the card object from the fxml
+                HBox.setMargin(card, new Insets(0, 5, 5, 0));
                 addFavouriteCard(card);
+                double ratio = 53.98 / 85.60;
+                card.prefHeightProperty().bind(card.prefWidthProperty().multiply(ratio));
             }
             catch (IOException e)
             {

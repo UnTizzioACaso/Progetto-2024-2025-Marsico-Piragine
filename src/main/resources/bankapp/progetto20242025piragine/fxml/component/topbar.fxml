@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" onMouseClicked="#nextPage" prefHeight="57.0" prefWidth="575.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="bankapp.progetto20242025piragine.controller.component.TopbarController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="57.0" prefWidth="575.0" style="-fx-background-color: #d70707;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TopbarController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
     <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
@@ -49,4 +51,11 @@
          </image>
       </ImageView>
    </children>
+   <effect>
+      <InnerShadow choke="0.17" height="55.0" offsetX="-10.0" offsetY="-10.0" radius="27.0" width="55.0">
+         <color>
+            <Color opacity="0.24521072208881378" />
+         </color>
+      </InnerShadow>
+   </effect>
 </GridPane>
