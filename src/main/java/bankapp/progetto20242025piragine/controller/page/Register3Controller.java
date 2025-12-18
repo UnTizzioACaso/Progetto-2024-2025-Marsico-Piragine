@@ -1,7 +1,6 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.User;
 import bankapp.progetto20242025piragine.db.UserDAO;
 import bankapp.progetto20242025piragine.util.PasswordUtil;
 import javafx.fxml.FXML;
@@ -20,13 +19,13 @@ public class Register3Controller extends BranchController {
     TextField usernameRegisterTextField;
 
     @FXML
-    TextField cellphoneRegisterTextField1;
+    TextField cellphoneRegisterTextField;
 
     @FXML
-    PasswordField passwordTextField;
+    PasswordField passwordPasswordField;
 
     @FXML
-    PasswordField passwordConfirmTextField;
+    PasswordField passwordConfirmPasswordField;
 
     @FXML
     Label errorMessageLabel;
@@ -35,21 +34,20 @@ public class Register3Controller extends BranchController {
     public void completeRegistration() throws SQLException //loads the user in the db an automaticaly logins in to the app
     {
 
-
-        if (emailRegisterTextField.getText().isEmpty() || usernameRegisterTextField.getText().isEmpty() || cellphoneRegisterTextField1.getText().isEmpty() || passwordTextField.getText().isEmpty() || passwordConfirmTextField.getText().isEmpty()) //checking if all forms are compiled
+        if (emailRegisterTextField.getText().isEmpty() || usernameRegisterTextField.getText().isEmpty() || cellphoneRegisterTextField.getText().isEmpty() || passwordPasswordField.getText().isEmpty() || passwordConfirmPasswordField.getText().isEmpty()) //checking if all forms are compiled
         {
 
             errorMessageLabel.setText("Tutti i campi devono essere compilati!"); //giving message error
             return; //stopping the code
         }
 
-        if (!passwordTextField.getText().equals(passwordConfirmTextField.getText()))
+        if (!passwordPasswordField.getText().equals(passwordConfirmPasswordField.getText()))
         {
             errorMessageLabel.setText("Le password non coincidono!"); //giving message error
             return; //stopping the code
         }
 
-        if (!(passwordTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$")))
+        if (!(passwordPasswordField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$")))
         {
             errorMessageLabel.setText("la password deve avere una maiuscola, una minuscola, un numero, un simbolo e deve essere lunga almeno 8 caratteri!"); //giving message error
             return; //stopping the code
@@ -57,9 +55,9 @@ public class Register3Controller extends BranchController {
 
         rootController.user.setEmail(emailRegisterTextField.getText()); //taking the email from the rispective form to the user object
         rootController.user.setUsername(usernameRegisterTextField.getText()); //taking the username from the rispective form to the user object
-        rootController.user.setPhoneNumber(cellphoneRegisterTextField1.getText()); //taking the phone number from the rispective form to the user object
+        rootController.user.setPhoneNumber(cellphoneRegisterTextField.getText()); //taking the phone number from the rispective form to the user object
         PasswordUtil passwordUtil = new PasswordUtil(); // creating the password utility object for hashing the password
-        rootController.user.setPasswordHash( passwordUtil.hashPassword(passwordTextField.getText())); //hashing the password and taking it to the user object
+        rootController.user.setPasswordHash( passwordUtil.hashPassword(passwordPasswordField .getText())); //hashing the password and taking it to the user object
 
 
         boolean result = UserDAO.registerUser(rootController.user); //trying to add the user to the db
