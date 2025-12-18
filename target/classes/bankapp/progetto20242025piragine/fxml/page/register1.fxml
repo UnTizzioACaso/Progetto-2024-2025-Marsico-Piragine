@@ -10,7 +10,6 @@
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Priority?>
@@ -19,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane gridLinesVisible="false" prefHeight="700" prefWidth="1200" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane gridLinesVisible="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="948.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
 
     <columnConstraints>
         <ColumnConstraints percentWidth="45.0" />
@@ -34,16 +33,16 @@
 
     <Region style="-fx-background-color: #E4E5E0;" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
 
-    <GridPane alignment="CENTER" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <GridPane alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
 
         <padding>
             <Insets left="30.0" />
         </padding>
 
         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" maxWidth="520.0" minWidth="520.0" prefWidth="520.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
-            <ColumnConstraints hgrow="ALWAYS" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="520.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="40.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" />
         </columnConstraints>
 
         <rowConstraints>
@@ -66,6 +65,22 @@
 
             <RowConstraints maxHeight="193.60003662109375" minHeight="0.0" prefHeight="0.0" vgrow="ALWAYS" />
         </rowConstraints>
+
+        <ImageView fitHeight="300.0" fitWidth="270.0" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
+            <image>
+                <Image url="@../../imgs/mazeBankCards.png" />
+            </image>
+            <GridPane.margin>
+                <Insets bottom="-25.0" />
+            </GridPane.margin>
+            <effect>
+                <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                    <color>
+                        <Color opacity="0.25" />
+                    </color>
+                </InnerShadow>
+            </effect>
+        </ImageView>
 
         <Label style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #222;" text="Registrazione 1 di 3" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <font><Font size="36.0" /></font>
@@ -114,22 +129,6 @@
             </effect>
         </Button>
 
-        <ImageView fitHeight="300.0" fitWidth="270.0" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
-            <image>
-                <Image url="@../../imgs/mazeBankCards.png" />
-            </image>
-            <GridPane.margin>
-                <Insets bottom="-25.0" />
-            </GridPane.margin>
-            <effect>
-                <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
-                    <color>
-                        <Color opacity="0.25" />
-                    </color>
-                </InnerShadow>
-            </effect>
-        </ImageView>
-
         <ProgressBar prefHeight="19.0" prefWidth="503.0" progress="0.33" style="-fx-accent: #d70707; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.halignment="CENTER" GridPane.rowIndex="12" GridPane.rowSpan="2147483647" GridPane.valignment="BOTTOM">
             <GridPane.margin>
                 <Insets />
@@ -155,34 +154,17 @@
     </Region>
 
     <Region prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.rowIndex="1" />
-    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
-
-    <!-- LOGO: reso "fermo" tramite AnchorPane overlay, senza cambiare grandezze -->
-    <AnchorPane mouseTransparent="true" pickOnBounds="false" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" GridPane.rowSpan="3">
-        <ImageView fitHeight="160.0" fitWidth="317.0" preserveRatio="true" AnchorPane.leftAnchor="111.5" AnchorPane.topAnchor="225.0">
-            <image>
-                <Image url="@../../imgs/LogoMazeBank.png" />
-            </image>
-            <effect>
-                <InnerShadow choke="0.17" offsetY="-10.0" radius="18.835" width="56.34">
-                    <color>
-                        <Color opacity="0.25" />
-                    </color>
-                </InnerShadow>
-            </effect>
-        </ImageView>
-    </AnchorPane>
-
-    <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #1E1E1E; -fx-padding: 0 6 0 6;" text="&lt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-        <GridPane.margin>
-            <Insets left="15.0" />
-        </GridPane.margin>
-    </Button>
-
-    <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-font-size: 26; -fx-font-weight: bold; -fx-text-fill: #1E1E1E; -fx-padding: 0 6 0 6;" text="&gt;" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
-        <GridPane.margin>
-            <Insets left="50.0" />
-        </GridPane.margin>
-    </Button>
+     <ImageView fitHeight="160.0" fitWidth="317.0" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <image>
+             <Image url="@../../imgs/LogoMazeBank.png" />
+         </image>
+         <effect>
+             <InnerShadow choke="0.17" offsetY="-10.0" radius="18.835" width="56.34">
+                 <color>
+                     <Color opacity="0.25" />
+                 </color>
+             </InnerShadow>
+         </effect>
+     </ImageView>
 
 </GridPane>
