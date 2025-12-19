@@ -22,9 +22,9 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ImageView fx:id="bankIcon" fitHeight="36.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <ImageView fx:id="bankIcon" fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <image>
-            <Image url="@../../imgs/bankicon.png" />
+            <Image url="@../../imgs/mazebanksimplelogo.png" />
          </image>
          <GridPane.margin>
             <Insets />
