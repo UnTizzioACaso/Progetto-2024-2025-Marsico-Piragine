@@ -17,7 +17,7 @@ import java.io.IOException;
 public class SidebarController extends BranchController {
 
     @FXML
-    public ImageView accountPopupButton;
+    public Button accountPopupButton;
 
     @FXML
     public Button settingsButton;
