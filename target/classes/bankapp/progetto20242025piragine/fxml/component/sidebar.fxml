@@ -22,8 +22,8 @@
         <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="2" />
+        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#loadHomePage" text="Home" GridPane.rowIndex="1" />
+        <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#loadSettingsPage" text="impostazioni" GridPane.rowIndex="2" />
         <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="3" />
         <Button mnemonicParsing="false" text="Button" GridPane.rowIndex="4" />
         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
