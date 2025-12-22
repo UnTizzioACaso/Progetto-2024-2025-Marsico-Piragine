@@ -73,5 +73,12 @@ public class Register3Controller extends BranchController {
         rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading sidebar
         rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading topbar
     }
+
+    @FXML
+    public void returnToLogin()
+    {
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
+    }
+
 }
 

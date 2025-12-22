@@ -47,5 +47,12 @@ public class Register2Controller extends BranchController {
             rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register3.fxml"); //loading next registerer page, is triggered by the enterRegisterButton's on action event
         }
     }
+
+    @FXML
+    public void returnToLogin()
+    {
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
+    }
+
 }
 
