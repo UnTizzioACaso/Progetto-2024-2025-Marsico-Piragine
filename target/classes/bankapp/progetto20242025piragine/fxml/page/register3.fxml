@@ -99,7 +99,7 @@
                </padding>
             </TextField>
             <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 3 di 3                 (Account)" wrapText="true" GridPane.columnIndex="1">
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 3 di 3               (Account)" wrapText="true" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
