@@ -124,7 +124,7 @@
                 </items>
             </ChoiceBox>
              <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 1 di 3                 (Anagrafe)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 1 di 3" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
@@ -133,10 +133,7 @@
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin></ProgressBar>
-            <Label fx:id="loginReturnLabel" prefHeight="5.0" prefWidth="111.0" text="Ho gia un account" textFill="#e10000" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <padding>
-                  <Insets bottom="35.0" />
-               </padding>
+            <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho gia un account" textFill="#e10000" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>
@@ -150,6 +147,17 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <GridPane.margin>
+                  <Insets bottom="35.0" />
+               </GridPane.margin>
+            </Label>
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="(Anagrafe)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-55.0" />
+               </GridPane.margin>
             </Label>
          </children>
       </GridPane>
