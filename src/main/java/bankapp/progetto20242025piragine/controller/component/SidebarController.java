@@ -58,6 +58,7 @@ public class SidebarController extends BranchController {
     @FXML
     public void loadSettingsPage()
     {
+
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
     }
 }
