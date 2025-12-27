@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.db.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -63,12 +64,18 @@ public class Register1Controller extends BranchController {
             rootController.user.setGender(sexChoiceBox.getValue()); //getting the gender from the respective form for the user obj
             rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml"); //loading next registerer page, is triggered by the enterRegisterButton's on action event
         }
+    }
 
+    @FXML
+    public void loadLogin()
+    {
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 
     @FXML
     public void initialize() //initializing the page
     {
+        rootController.user = new User();
         sexChoiceBox.setValue("- Sesso -"); //giving to sexChoiceBox the standard value "- Sesso -"
     }
 }
