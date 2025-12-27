@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -74,7 +76,7 @@
                   <Insets />
                </GridPane.margin>
             </ImageView>
-            <Button fx:id="enterRegisterButton" maxWidth="300.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="52.0" prefWidth="290.0" style="-fx-background-color: #d70707;fx-text-fill: white;                            -fx-font-size: 20px;                            -fx-font-weight: bold;                            -fx-background-radius: 14;                            -fx-padding: 16 0 16 0;" text="FATTO" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+            <Button fx:id="enterRegisterButton" maxWidth="300.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="52.0" prefWidth="290.0" style="-fx-background-color: #d70707;fx-text-fill: white;                            -fx-font-size: 20px;                            -fx-font-weight: bold;                            -fx-background-radius: 14;                            -fx-padding: 16 0 16 0;" text="FATTO" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                <effect>
                   <InnerShadow choke="0.17" height="54.86" offsetX="-10.0" offsetY="-10.0" radius="27.3" width="56.34">
                      <color>
@@ -114,12 +116,41 @@
                   <Insets left="10.0" />
                </padding>
             </TextField>
-            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 2 di 3               (Residenza)" wrapText="true" GridPane.columnIndex="1">
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 2 di 3" wrapText="true" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="registerProgressBar" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="20.0" prefWidth="290.0" progress="0.66" style="-fx-accent: #d70707; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+            <ProgressBar fx:id="registerProgressBar" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="20.0" prefWidth="290.0" progress="0.66" style="-fx-accent: #d70707; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="-20.0" />
+               </GridPane.margin></ProgressBar>
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="(Residenza)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-55.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho gia un account" textFill="#e10000" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow height="53.62" radius="38.17" spread="0.82" width="101.06">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <GridPane.margin>
+                  <Insets bottom="35.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
       <Pane maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="57.0" prefWidth="857.0" style="-fx-background-color: #d70707;" GridPane.halignment="LEFT" GridPane.rowIndex="2">

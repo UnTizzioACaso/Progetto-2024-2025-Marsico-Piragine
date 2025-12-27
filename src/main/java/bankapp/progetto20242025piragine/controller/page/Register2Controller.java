@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.db.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
@@ -47,5 +48,13 @@ public class Register2Controller extends BranchController {
             rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register3.fxml"); //loading next registerer page, is triggered by the enterRegisterButton's on action event
         }
     }
+
+    @FXML
+    public void loadLogin()
+    {
+        rootController.user = new User();
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
+    }
+
 }
 

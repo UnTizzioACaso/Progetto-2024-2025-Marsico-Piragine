@@ -81,7 +81,7 @@
      </rowConstraints>
       <children>
    
-                                    <Button maxWidth="300.0" minWidth="270.0" onAction="#loadHomePage" prefWidth="300.0" style="-fx-background-color: #d70707;fx-text-fill: white;                            -fx-font-size: 20px;                            -fx-font-weight: bold;                            -fx-background-radius: 14;                            -fx-padding: 16 0 16 0;" text="ACCEDI" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                    <Button maxWidth="300.0" minWidth="270.0" onAction="#loadHomePage" prefWidth="300.0" style="-fx-background-color: #d70707;fx-text-fill: white;                            -fx-font-size: 20px;                            -fx-font-weight: bold;                            -fx-background-radius: 14;                            -fx-padding: 16 0 16 0;" text="ACCEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                 <effect>
                     <InnerShadow choke="0.17" height="54.86" offsetX="-10.0" offsetY="-10.0" radius="27.3" width="56.34">
                         <color>
