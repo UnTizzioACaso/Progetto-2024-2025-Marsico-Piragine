@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.db.User;
 import bankapp.progetto20242025piragine.db.UserDAO;
 import bankapp.progetto20242025piragine.util.PasswordUtil;
 import javafx.fxml.FXML;
@@ -75,8 +76,9 @@ public class Register3Controller extends BranchController {
     }
 
     @FXML
-    public void returnToLogin()
+    public void loadLogin()
     {
+        rootController.user = new User();
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 
