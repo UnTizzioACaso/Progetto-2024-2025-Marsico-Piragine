@@ -28,8 +28,7 @@ public class SidebarController extends BranchController {
     @FXML
     void openAccountPopup() //opening the account popup
     {
-        try
-        {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml")); //getting the fxml in the loader
             Parent root = loader.load(); //creating the node from the loader
             AccountPopupController controller = loader.getController(); //getting the controller from the loader
@@ -42,22 +41,26 @@ public class SidebarController extends BranchController {
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the account popup" +  e.getMessage());
+        } catch (IOException e) {
+            System.err.println("error loading the account popup" + e.getMessage());
             e.printStackTrace();
         }
     }
+
     @FXML
-    public void loadHomePage()
-    {
+    public void loadHomePage() {
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
     }
 
     @FXML
-    public void loadSettingsPage()
+    public void loadCardsPage() {
+
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml");
+    }
+
+    @FXML
+    public void loadFriendsPage()
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml");
     }
 }

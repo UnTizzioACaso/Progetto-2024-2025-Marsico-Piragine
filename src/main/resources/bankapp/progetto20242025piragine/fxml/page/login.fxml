@@ -95,18 +95,6 @@
                <Insets left="10.0" />
             </padding>
          </PasswordField>
-
-                               <Button alignment="CENTER" contentDisplay="RIGHT" focusTraversable="false" maxHeight="20.0" maxWidth="40.0" minHeight="20.0" minWidth="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="40.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="👁" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
-            <GridPane.margin>
-               <Insets right="10.0" />
-            </GridPane.margin>
-            <padding>
-               <Insets right="16.0" />
-            </padding>
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Button>
    
                                     <Label alignment="CENTER" maxWidth="Infinity" onMouseClicked="#loadRegisterPage" style="-fx-text-fill: #d70707; -fx-font-weight: bold; -fx-underline: true;" text="Registrati" GridPane.columnIndex="1" GridPane.rowIndex="6">
                 <effect>
@@ -164,6 +152,23 @@
                <Insets left="10.0" />
             </padding>
          </TextField>
+         <TextField fx:id="passwordLoginTextField1" disable="true" maxHeight="40.0" maxWidth="300.0" minHeight="0.0" minWidth="270.0" prefHeight="0.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <padding>
+               <Insets left="10.0" />
+            </padding>
+         </TextField>
+
+                               <Button fx:id="eyeLabel" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="20.0" maxWidth="40.0" minHeight="20.0" minWidth="30.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="👁" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets right="5.0" />
+            </GridPane.margin>
+            <font>
+               <Font size="18.0" />
+            </font>
+            <padding>
+               <Insets left="1.0" right="1.0" top="-2.0" />
+            </padding>
+         </Button>
       </children>
    </GridPane>
 

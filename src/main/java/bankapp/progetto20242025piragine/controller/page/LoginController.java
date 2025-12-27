@@ -45,7 +45,13 @@ public class LoginController extends BranchController {
         {
             accessErrorMessageLabel.setText("credenziali errate riprova"); //giving the message error if the password or email is not valid
         }
-
     }
+
+    @FXML
+    public void showPassword()
+    {
+    }
+
+
 
 }
