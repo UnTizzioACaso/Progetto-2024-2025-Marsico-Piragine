@@ -106,7 +106,11 @@
             </Separator>
 
                         <!-- CHIUDI -->
-            <Button style="-fx-background-color: #d70707; -fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: 900; -fx-padding: 16 70; -fx-background-radius: 12;" text="CHIUDI IL CONTO" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
+            <Button style="-fx-background-color: #d70707; -fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: 900; -fx-padding: 16 70; -fx-background-radius: 12;" text="CHIUDI IL CONTO" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="12">
+            <GridPane.margin>
+               <Insets bottom="20.0" />
+            </GridPane.margin>
+         </Button>
             <rowConstraints>
                 <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
                 <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
