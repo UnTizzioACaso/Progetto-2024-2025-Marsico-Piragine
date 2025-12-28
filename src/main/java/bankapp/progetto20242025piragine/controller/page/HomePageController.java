@@ -20,7 +20,7 @@ public class HomePageController extends BranchController
     @FXML
     private GridPane homePageGridPane;
 
-    @FXML
+    @Override
     public void initialize() //initializing the home page
     {
         try
@@ -45,5 +45,10 @@ public class HomePageController extends BranchController
             System.err.println("error during initializzation");
             throw new RuntimeException(e);
         }
+    }
+
+    public void spreadControllers()
+    {
+
     }
 }

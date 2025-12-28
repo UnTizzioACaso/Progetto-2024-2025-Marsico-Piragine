@@ -21,7 +21,8 @@ public class BankAccountController extends BranchController {
     private Button accountSettingsButton;
 
     @FXML
-    private void openAccountSettings(){
+    private void openAccountSettings()
+    {
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
     }
 }

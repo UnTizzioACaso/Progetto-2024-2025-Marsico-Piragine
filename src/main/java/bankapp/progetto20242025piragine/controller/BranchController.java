@@ -16,7 +16,7 @@ public abstract class BranchController {
         return rootController;
     }
 
+    public void initialize() {
 
-
-
+    }
 }
