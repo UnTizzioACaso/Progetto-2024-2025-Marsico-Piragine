@@ -31,6 +31,8 @@ public class HomePageController extends BranchController
             Node favouritesCards = favouritesCardLoader.load(); //creating favouritesCards widget's node
             Node bankAccount = bankAccountLoader.load(); //creating bankAccount widget's node
             Node fiveExpenses = fiveExpensesLoader.load(); //creating fiveExpenses widget's node
+            BranchController controller = bankAccountLoader.getController(); //getting the bankAccount widget's controller
+            controller.setRootController(rootController); //setting the rootController in the bankAccount widget's
             homePageGridPane.add(favouritesCards, 1, 0); //adding the favouriteCards Node to homePageGridPane
             GridPane.setMargin(bankAccount, new Insets(10, 10, 0, 10)); //setting GridPanes margins for the bankAccount widget
             GridPane.setMargin(fiveExpenses, new Insets(10, 10, 0, 10)); //setting GridPanes margins for the fiveExpenses widget

@@ -42,10 +42,6 @@
             </InnerShadow>
          </effect>
         </Separator>
-        <ImageView fitHeight="101.0" fitWidth="329.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-            <image>
-                <Image url="@Progetto-2024-2025-Marsico-Piragine/src/main/resources/bankapp/progetto20242025piragine/imgs/LogoMazeBank2.png" />
-            </image></ImageView>
       <ImageView fitHeight="101.0" fitWidth="329.0" GridPane.halignment="CENTER">
          <image>
             <Image url="@../../imgs/LogoMazeBank2.png" />

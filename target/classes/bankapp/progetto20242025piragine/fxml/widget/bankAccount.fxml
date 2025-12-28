@@ -44,7 +44,7 @@
                      </color>
                   </InnerShadow>
                </effect></Button>
-            <Button minWidth="35.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: transparent;">
+            <Button fx:id="accountSettingsButton" minWidth="35.0" mnemonicParsing="false" onAction="#openAccountSettings" prefHeight="34.0" prefWidth="35.0">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>

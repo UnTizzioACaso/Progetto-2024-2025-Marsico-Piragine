@@ -25,7 +25,7 @@
         <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Button fx:id="settingsButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadCardsPage" prefHeight="46.0" prefWidth="59.0" style="-fx-background-color: ff0000; -fx-border-color: derive(#d70707, -20%); -fx-font-size: 20px; -fx-font-weight: 800;" text="Carte" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+        <Button fx:id="settingsButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadCardsPage" prefHeight="46.0" prefWidth="59.0" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800;" text="Carte" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                <color>
@@ -33,7 +33,7 @@
                </color>
             </InnerShadow>
          </effect></Button>
-      <Button fx:id="settingsButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFriendsPage" prefHeight="23.0" prefWidth="86.0" style="-fx-background-color: ff0000; -fx-border-color: derive(#d70707, -20%); -fx-font-size: 20px; -fx-font-weight: 800;" text="Amici" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Button fx:id="settingsButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFriendsPage" prefHeight="23.0" prefWidth="86.0" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800;" text="Amici" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                <color>
@@ -42,7 +42,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button fx:id="settingsButton2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadHomePage" style="-fx-background-color: ff0000; -fx-border-color: derive(#d70707, -20%); -fx-font-size: 20px; -fx-font-weight: 800;" text="Home" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="settingsButton2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadHomePage" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800;" text="Home" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                <color>
@@ -51,7 +51,7 @@
             </InnerShadow>
          </effect>
       </Button>
-          <Button fx:id="accountPopupButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openAccountPopup" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: ff0000; -fx-border-radius: 0; -fx-border-color: derive(#d70707, -20%);" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+          <Button fx:id="accountPopupButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openAccountPopup" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: ff0000;" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
               <graphic>
                   <ImageView fx:id="userIconImage" fitHeight="41.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                       <image>
@@ -70,12 +70,12 @@
             </InnerShadow>
          </effect>
           </Button>
-      <Line endX="-6.498425483703613" endY="-0.2070990949869156" startX="-72.92466735839844" startY="-0.20710445940494537" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Line endX="-6.498425483703613" endY="-0.2070990949869156" startX="-72.92466735839844" startY="-0.20710445940494537" stroke="#4b4b4b" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin>
       </Line>
-      <Line endX="-6.498425483703613" endY="-0.2070990949869156" fill="#848484" startX="-72.92466735839844" startY="-0.20710445940494537" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+      <Line endX="-6.498425483703613" endY="-0.2070990949869156" fill="#848484" startX="-72.92466735839844" startY="-0.20710445940494537" stroke="#4b4b4b" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="10.0" />
          </GridPane.margin>
