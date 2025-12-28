@@ -36,16 +36,9 @@
         <image>
             <Image url="@../../imgs/LogoMazeBank.png" />
         </image>
-        <effect>
-            <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
-                <color>
-                    <Color opacity="0.25" />
-                </color>
-            </InnerShadow>
-        </effect>
     </ImageView>
 
-    <Pane minWidth="-Infinity" prefHeight="57.0" prefWidth="857.0" style="-fx-background-color: #d70707;" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+    <Pane minWidth="-Infinity" prefHeight="57.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
         <effect>
             <InnerShadow choke="0.17" height="54.86" offsetX="10.0" offsetY="-10.0" radius="27.3" width="56.34">
                 <color>
@@ -54,7 +47,7 @@
             </InnerShadow>
         </effect></Pane>
 
-    <Pane minWidth="-Infinity" prefHeight="77.0" prefWidth="847.0" style="-fx-background-color: #d70707;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
+    <Pane minWidth="-Infinity" prefHeight="77.0" prefWidth="847.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
         <effect>
             <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                 <color>
@@ -81,7 +74,7 @@
      </rowConstraints>
       <children>
    
-                                    <Button maxWidth="300.0" minWidth="270.0" onAction="#loadHomePage" prefWidth="300.0" style="-fx-background-color: #d70707;fx-text-fill: white;                            -fx-font-size: 20px;                            -fx-font-weight: bold;                            -fx-background-radius: 14;                            -fx-padding: 16 0 16 0;" text="ACCEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                    <Button maxWidth="300.0" minWidth="270.0" onAction="#loadHomePage" prefWidth="300.0" style="-fx-background-color: ff0000; fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-background-radius: 14; -fx-padding: 16 0 16 0;" text="ACCEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                 <effect>
                     <InnerShadow choke="0.17" height="54.86" offsetX="-10.0" offsetY="-10.0" radius="27.3" width="56.34">
                         <color>
@@ -108,14 +101,7 @@
             </font>
          </Button>
    
-                                    <Label alignment="CENTER" maxWidth="Infinity" onMouseClicked="#loadRegisterPage" style="-fx-text-fill: #d70707; -fx-font-weight: bold; -fx-underline: true;" text="Registrati" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                <effect>
-                    <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
-                        <color>
-                            <Color opacity="0.25" />
-                        </color>
-                    </InnerShadow>
-                </effect>
+                                    <Label alignment="CENTER" maxWidth="Infinity" onMouseClicked="#loadRegisterPage" style="-fx-text-fill: ff0000; -fx-font-weight: bold; -fx-underline: true;" text="Registrati" GridPane.columnIndex="1" GridPane.rowIndex="6">
             <font>
                <Font size="16.0" />
             </font>
