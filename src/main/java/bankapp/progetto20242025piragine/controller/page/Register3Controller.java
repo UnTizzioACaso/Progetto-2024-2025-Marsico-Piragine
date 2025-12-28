@@ -1,5 +1,6 @@
 package bankapp.progetto20242025piragine.controller.page;
 
+import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.User;
 import bankapp.progetto20242025piragine.db.UserDAO;
 import bankapp.progetto20242025piragine.util.PasswordUtil;
@@ -10,7 +11,7 @@ import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 
-public class Register3Controller extends RegisterController {
+public class Register3Controller extends BranchController {
 
     @FXML
     TextField emailRegisterTextField;
@@ -54,14 +55,14 @@ public class Register3Controller extends RegisterController {
             return; //stopping the code
         }
 
-        user.setEmail(emailRegisterTextField.getText()); //taking the email from the rispective form to the user object
-        user.setUsername(usernameRegisterTextField.getText()); //taking the username from the rispective form to the user object
-        user.setPhoneNumber(cellphoneRegisterTextField1.getText()); //taking the phone number from the rispective form to the user object
+        rootController.user.setEmail(emailRegisterTextField.getText()); //taking the email from the rispective form to the user object
+        rootController.user.setUsername(usernameRegisterTextField.getText()); //taking the username from the rispective form to the user object
+        rootController.user.setPhoneNumber(cellphoneRegisterTextField1.getText()); //taking the phone number from the rispective form to the user object
         PasswordUtil passwordUtil = new PasswordUtil(); // creating the password utility object for hashing the password
-        user.setPasswordHash( passwordUtil.hashPassword(passwordTextField.getText())); //hashing the password and taking it to the user object
+        rootController.user.setPasswordHash( passwordUtil.hashPassword(passwordTextField.getText())); //hashing the password and taking it to the user object
 
 
-        boolean result = UserDAO.registerUser(user); //trying to add the user to the db
+        boolean result = UserDAO.registerUser(rootController.user); //trying to add the user to the db
 
         if (!result) //check if user got registered
         {
@@ -71,6 +72,8 @@ public class Register3Controller extends RegisterController {
 
 
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading home page
+        rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading sidebar
+        rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading topbar
     }
 }
 

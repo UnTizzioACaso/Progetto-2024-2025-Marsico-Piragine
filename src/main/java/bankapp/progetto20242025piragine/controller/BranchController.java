@@ -6,7 +6,6 @@ public abstract class BranchController {
 
     protected RootWindowController rootController; //access to RootWindow
 
-    public User user;
     public void setRootController(RootWindowController rootController) //sets the access to the RootController
     {
         this.rootController = rootController;
