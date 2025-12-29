@@ -51,7 +51,7 @@ public  class RootWindowController extends BranchController {
                 Parent node = fxmlLoader.load(); //creating the node from the loader
                 BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
                 controller.setRootController(this);//giving to the new page's controller the current RootController instance
-                controller.initialize();
+                controller.initializer();
                 rootWindow.setCenter(node); //setting the page to the center
                 if (topbar != null) //if topbar's controller is already initialized
                 {

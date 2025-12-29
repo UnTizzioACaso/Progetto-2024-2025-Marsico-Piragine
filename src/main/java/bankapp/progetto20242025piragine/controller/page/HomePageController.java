@@ -21,7 +21,7 @@ public class HomePageController extends BranchController
     private GridPane homePageGridPane;
 
     @Override
-    public void initialize() //initializing the home page
+    public void initializer() //initializing the home page
     {
         try
         {
