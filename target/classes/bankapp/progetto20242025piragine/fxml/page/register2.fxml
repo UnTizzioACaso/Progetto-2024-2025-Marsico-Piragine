@@ -1,126 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="401.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register2Controller">
+<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register2Controller">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" percentWidth="50.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" percentWidth="50.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="11.0" prefHeight="46.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="60.0" percentHeight="11.0" prefHeight="34.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="62.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="62.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="54.5" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="72.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="8.33333333333" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="266.0" minHeight="0.0" percentHeight="25.0" prefHeight="75.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" />
+      <RowConstraints vgrow="ALWAYS" />
+      <RowConstraints minHeight="70.0" prefHeight="70.0" />
    </rowConstraints>
    <children>
-      <Label fx:id="bankTItleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="76.0" prefWidth="211.0" text="N Bank" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1">
-         <font>
-            <Font name="Constantia" size="41.0" />
-         </font>
+      <Pane maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="77.0" prefWidth="847.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
          <effect>
-            <DropShadow height="81.46" radius="35.375" width="62.04">
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
-                  <Color opacity="0.47328245639801025" />
+                  <Color opacity="0.25" />
                </color>
-            </DropShadow>
+            </InnerShadow>
          </effect>
-      </Label>
-      <Label fx:id="registerPrgressLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="215.0" text="Registrazione 2 di 3 (residenza)" textAlignment="CENTER" textFill="#08abab" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <font>
-            <Font name="Constantia" size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="streetRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Via" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="6">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-      </TextField>
-      <Label fx:id="errorMessageLabel" alignment="CENTER" prefHeight="18.0" prefWidth="518.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
-      <TextField fx:id="CapTextField1" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="114.0" promptText="CAP" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="8">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="stateRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Stato" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-      </TextField>
-      <TextField fx:id="provinceRegisterTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Provincia" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-      </TextField>
-      <Button fx:id="enterRegisterButton" mnemonicParsing="false" onAction="#loadRegisterPage2" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #08abab;" text="INVIO" GridPane.columnIndex="1" GridPane.rowIndex="9">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color opacity="0.47328245639801025" />
-               </color>
-            </DropShadow>
-         </effect>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </Button>
-      <HBox alignment="CENTER_LEFT" maxWidth="250.0" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      </Pane>
+      <ImageView fitHeight="159.0" fitWidth="310.0" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+         <image>
+            <Image url="@../../imgs/LogoMazeBank.png" />
+         </image>
+      </ImageView>
+      <Label style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Registrati" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+      <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="10.0" minWidth="10.0" prefWidth="325.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+         <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="20.0" prefWidth="62.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="300.0" minWidth="270.0" percentWidth="60.0" prefWidth="280.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="20.0" prefWidth="71.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="174.0" minHeight="10.0" percentHeight="20.0" prefHeight="111.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="173.0" minHeight="0.0" percentHeight="8.66" prefHeight="54.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="232.0" minHeight="10.0" percentHeight="8.66" prefHeight="59.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="148.0" minHeight="6.0" percentHeight="8.66" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="148.0" minHeight="0.0" percentHeight="8.66" prefHeight="59.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="148.0" minHeight="10.0" percentHeight="8.66" prefHeight="59.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="148.0" minHeight="10.0" percentHeight="8.66" prefHeight="59.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="139.0" minHeight="0.0" percentHeight="15.0" prefHeight="73.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="142.0" minHeight="10.0" percentHeight="13.0" prefHeight="70.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <TextField fx:id="houseNumberDayRegisterTextField" maxHeight="30.0" maxWidth="118.0" prefHeight="30.0" prefWidth="59.0" promptText="N. civico" style="-fx-background-radius: 8;">
+            <ImageView fitHeight="304.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.rowSpan="2147483647" GridPane.valignment="BOTTOM">
+               <image>
+                  <Image url="@../../imgs/mazeBankCards.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </ImageView>
+            <Button fx:id="enterRegisterButton" maxWidth="300.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="52.0" prefWidth="290.0" style="-fx-background-color: ff0000; fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-background-radius: 14; -fx-padding: 16 0 16 0;" text="FATTO" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                <effect>
-                  <DropShadow>
+                  <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                      <color>
-                        <Color green="1.0" blue="1.0" opacity="0.5" />
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+            </Button>
+            <TextField fx:id="stateRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Stato" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="cityRegisterTextField1" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Comune" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="provinceRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Provincia" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextField>
+            <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+            <TextField fx:id="streetRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Indirizzo" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="houseNumberRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Numero civico" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="CapTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="CAP" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextField>
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 2 di 3" wrapText="true" GridPane.columnIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="registerProgressBar" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="20.0" prefWidth="290.0" progress="0.66" style="-fx-accent: ff0000; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="-20.0" />
+               </GridPane.margin></ProgressBar>
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="(Residenza)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-55.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" textFill="RED" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow height="53.62" radius="38.17" spread="0.82" width="101.06">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
                      </color>
                   </DropShadow>
                </effect>
-            </TextField>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <GridPane.margin>
+                  <Insets bottom="35.0" />
+               </GridPane.margin>
+            </Label>
          </children>
-      </HBox>
-      <TextField fx:id="cityRegisterTextField1" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Comune" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      </GridPane>
+      <Pane maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="57.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.halignment="LEFT" GridPane.rowIndex="2">
          <effect>
-            <DropShadow>
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
+                  <Color opacity="0.25" />
                </color>
-            </DropShadow>
+            </InnerShadow>
          </effect>
-      </TextField>
+      </Pane>
    </children>
 </GridPane>

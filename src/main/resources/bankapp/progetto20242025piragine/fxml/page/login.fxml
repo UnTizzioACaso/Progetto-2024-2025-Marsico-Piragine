@@ -4,102 +4,158 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="loginGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="396.0" prefWidth="466.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="bankapp.progetto20242025piragine.controller.page.LoginController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" percentWidth="33.0" prefWidth="180.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" percentWidth="33.0" prefWidth="186.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" percentWidth="33.0" prefWidth="244.0" />
-  </columnConstraints>
-  <rowConstraints>
-      <RowConstraints maxHeight="176.0" percentHeight="25.0" prefHeight="91.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="176.0" minHeight="10.0" percentHeight="15.0" prefHeight="51.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="176.0" percentHeight="5.0" prefHeight="22.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="227.0" percentHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="267.0" percentHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="267.0" percentHeight="15.0" prefHeight="156.0" valignment="CENTER" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="267.0" minHeight="10.0" percentHeight="30.0" prefHeight="156.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Label fx:id="bankTItleLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="76.0" prefWidth="211.0" text="N Bank" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <font>
-            <Font name="Constantia" size="41.0" />
-         </font>
-         <effect>
-            <DropShadow height="64.4675" radius="31.126875" width="62.04">
-               <color>
-                  <Color opacity="0.47328245639801025" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Label>
-      <TextField fx:id="emailLoginTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="191.0" promptText="Email" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-      </TextField>
-      <TextField fx:id="passwordLoginTextField" maxHeight="30.0" maxWidth="250.0" prefHeight="30.0" prefWidth="190.0" promptText="Password" style="-fx-background-radius: 8;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.5" />
-               </color>
-            </DropShadow>
-         </effect>
-      </TextField>
-      <Label fx:id="wellcomeLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="204.0" text="Bentornato" textAlignment="CENTER" textFill="#08abab" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <font>
-            <Font name="Constantia" size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="registerLinkLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#loadRegisterPage" prefHeight="17.0" prefWidth="200.0" text="Sei un nuovo cliente? Registrati qui" textAlignment="CENTER" textFill="#00d7ff" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
-         <font>
-            <Font name="System Italic" size="12.0" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="82.0" />
-         </GridPane.margin>
-      </Label>
-      <CheckBox mnemonicParsing="false" text="Ricorda l'accesso" textFill="#08abab" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
-         <effect>
-            <InnerShadow>
-               <color>
-                  <Color green="1.0" blue="1.0" opacity="0.3854961693286896" />
-               </color>
+<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="650.0" prefWidth="968.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.LoginController">
+
+    <columnConstraints>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" percentWidth="50.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" percentWidth="50.0" />
+    </columnConstraints>
+
+    <rowConstraints>
+        <RowConstraints prefHeight="80.0" />
+        <RowConstraints vgrow="ALWAYS" />
+        <RowConstraints prefHeight="60.0" />
+    </rowConstraints>
+
+
+    <ImageView fitHeight="159.0" fitWidth="310.0" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+        <image>
+            <Image url="@../../imgs/LogoMazeBank.png" />
+        </image>
+    </ImageView>
+
+    <Pane minWidth="-Infinity" prefHeight="57.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+        <effect>
+            <InnerShadow choke="0.17" height="54.86" offsetX="10.0" offsetY="-10.0" radius="27.3" width="56.34">
+                <color>
+                    <Color opacity="0.25" />
+                </color>
             </InnerShadow>
-         </effect>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-         <padding>
-            <Insets left="10.0" />
-         </padding>
-      </CheckBox>
-      <Label fx:id="accessErrorMessageLabel" alignment="CENTER" onMouseClicked="#loadRegisterPage" prefHeight="17.0" prefWidth="200.0" textAlignment="CENTER" textFill="#da0000" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-      <Button fx:id="enterLoginButton" mnemonicParsing="false" onAction="#loadHomePage" prefHeight="29.0" prefWidth="82.0" style="-fx-background-color: #08abab;" text="INVIO" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-         <effect>
-            <DropShadow>
-               <color>
-                  <Color opacity="0.47328245639801025" />
-               </color>
-            </DropShadow>
-         </effect>
-      </Button>
-   </children>
-   <effect>
-      <ColorAdjust />
-   </effect>
+        </effect></Pane>
+
+    <Pane minWidth="-Infinity" prefHeight="77.0" prefWidth="847.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
+        <effect>
+            <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                <color>
+                    <Color opacity="0.25" />
+                </color>
+            </InnerShadow>
+        </effect></Pane>
+
+    <Label style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Accedi al tuo conto" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+   <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="10.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+     <columnConstraints>
+       <ColumnConstraints fillWidth="false" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="20.0" prefWidth="62.0" />
+       <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="300.0" minWidth="270.0" prefWidth="280.0" />
+         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="20.0" prefWidth="71.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="173.0" minHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="232.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="148.0" minHeight="6.0" prefHeight="24.0" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="139.0" minHeight="0.0" prefHeight="135.0" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="96.0" minHeight="4.0" prefHeight="50.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+   
+                                    <Button maxWidth="300.0" minWidth="270.0" onAction="#loadHomePage" prefWidth="300.0" style="-fx-background-color: ff0000; fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-background-radius: 14; -fx-padding: 16 0 16 0;" text="ACCEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                <effect>
+                    <InnerShadow choke="0.17" height="54.86" offsetX="-10.0" offsetY="-10.0" radius="27.3" width="56.34">
+                        <color>
+                            <Color opacity="0.25" />
+                        </color>
+                    </InnerShadow>
+                </effect>
+         </Button>
+         <PasswordField fx:id="passwordLoginPasswordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-border-color: #d9d9d9; -fx-background-color: #f2f2f2; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <padding>
+               <Insets left="10.0" />
+            </padding>
+         </PasswordField>
+   
+                                    <Label alignment="CENTER" maxWidth="Infinity" onMouseClicked="#loadRegisterPage" style="-fx-text-fill: ff0000; -fx-font-weight: bold; -fx-underline: true;" text="Registrati" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <font>
+               <Font size="16.0" />
+            </font>
+            <GridPane.margin>
+               <Insets bottom="30.0" />
+            </GridPane.margin>
+         </Label>
+   
+                              <HBox alignment="CENTER" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="31.0" prefWidth="290.0" spacing="14.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                <Separator opacity="0.5" HBox.hgrow="ALWAYS" />
+                <Label style="-fx-text-fill: #222;" text="Sei un nuovo cliente?">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+                <Separator opacity="0.5" HBox.hgrow="ALWAYS" />
+            </HBox>
+   
+                              <GridPane maxHeight="40.0" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="47.0" />
+               <ColumnConstraints percentWidth="53.0" />
+                </columnConstraints>
+   
+                                  <CheckBox text="Ricorda l'accesso" GridPane.columnIndex="0">
+               <font>
+                  <Font size="12.0" />
+               </font></CheckBox>
+   
+                                  <Label style="-fx-text-fill: #555;" text="Credenziali dimenticate?" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="accessErrorMessageLabel" textFill="#a10000" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                <rowConstraints>
+                    <RowConstraints />
+               <RowConstraints />
+                </rowConstraints>
+            <GridPane.margin>
+               <Insets left="2.0" right="2.0" top="4.0" />
+            </GridPane.margin>
+            </GridPane>
+         <TextField fx:id="emailLoginTextField" maxHeight="40.0" maxWidth="300.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <padding>
+               <Insets left="10.0" />
+            </padding>
+         </TextField>
+         <TextField fx:id="passwordLoginTextField" disable="true" maxHeight="40.0" maxWidth="300.0" minHeight="0.0" minWidth="270.0" prefHeight="0.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <padding>
+               <Insets left="10.0" />
+            </padding>
+         </TextField>
+
+                               <Button fx:id="eyeButton" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="20.0" maxWidth="40.0" minHeight="20.0" minWidth="30.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#showPassword" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="👁" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets right="5.0" />
+            </GridPane.margin>
+            <font>
+               <Font size="18.0" />
+            </font>
+            <padding>
+               <Insets left="1.0" right="1.0" top="-2.0" />
+            </padding>
+         </Button>
+      </children>
+   </GridPane>
+
 </GridPane>

@@ -4,7 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="246.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AccountPopupController">
@@ -19,7 +21,7 @@
         <Separator layoutX="11.0" layoutY="67.0" prefWidth="562.1" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
 
         <!-- Email row -->
-        <Label fx:id="emailPopupAccountLabel" layoutX="34.0" layoutY="83.0" style="-fx-font-size: 15px; -fx-text-fill: #1F1F1F;" text="frocio@pisello.duro" AnchorPane.leftAnchor="34.0" />
+        <Label fx:id="emailPopupAccountLabel" layoutX="34.0" layoutY="83.0" style="-fx-font-size: 15px; -fx-text-fill: #1F1F1F;" text="utente@gmail.com" AnchorPane.leftAnchor="34.0" />
         <Button fx:id="logoutAccountPopupButton" layoutX="314.0" layoutY="78.0" mnemonicParsing="false" style="-fx-background-radius: 8; -fx-background-color: #E6E6E6; -fx-text-fill: #1F1F1F; -fx-font-weight: 500; -fx-padding: 6 14;" text="Logout" AnchorPane.rightAnchor="33.0" />
 
         <!-- Separator 2 -->
@@ -34,7 +36,14 @@
         <Separator layoutX="11.0" layoutY="168.0" prefHeight="3.0" prefWidth="562.0" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
 
         <!-- Bottom centered button (proporzionato) -->
-        <Button fx:id="settingsAccountPopupButton" layoutX="113.0" layoutY="183.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: #10A37F; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 18; -fx-background-radius: 10;" text="Impostazioni account ↗" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.0" />
+        <Button fx:id="settingsAccountPopupButton" layoutX="113.0" layoutY="183.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-font-weight: 700;" text="Impostazioni account ↗" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.0">
+         <effect>
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect></Button>
         <Label fx:id="nameSurnameAccountPopupLabel" layoutX="123.2" layoutY="27.4" text="Nome e Cognome" textFill="#0000008f" AnchorPane.leftAnchor="123.2" AnchorPane.topAnchor="27.4">
             <font>
                 <Font size="16.0" />
