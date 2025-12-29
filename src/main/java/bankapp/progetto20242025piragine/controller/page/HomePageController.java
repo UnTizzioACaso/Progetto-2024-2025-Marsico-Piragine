@@ -47,8 +47,4 @@ public class HomePageController extends BranchController
         }
     }
 
-    public void spreadControllers()
-    {
-
-    }
 }
