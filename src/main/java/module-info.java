@@ -6,6 +6,7 @@ module bankapp.progetto20242025piragine {
     requires org.xerial.sqlitejdbc;
     requires java.desktop;
     requires jbcrypt;
+    requires java.smartcardio;
 
 
     opens bankapp.progetto20242025piragine to javafx.fxml;
