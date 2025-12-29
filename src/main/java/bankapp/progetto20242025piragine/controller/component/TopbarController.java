@@ -1,62 +1,142 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.db.Notify;
+import bankapp.progetto20242025piragine.db.NotifyDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
+
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Stack;
-import java.util.Vector;
 
-
-public class TopbarController extends BranchController
-{
-    private Node Topbar;
-    private Stack<String> backwardStack = new Stack<>(); //this stack saves the pages you explored only in forward
-    private Stack<String> forwardStack = new Stack<>(); //this stack saves the pages you explored when went back to previous pages
+public class TopbarController extends BranchController {
 
     @FXML
-    public void visitPage(String fxml) //this method updates the
-    {
-        backwardStack.push(fxml); //adding the new page to
-        forwardStack.clear(); //deleting forward pages visited before
+    private ImageView notificationButton;
+    @FXML
+    private ImageView backArrowButton;
+    @FXML
+    private ImageView forwarArrowButton;
+    @FXML
+    private ImageView reloadPageButton;
+
+    private Popup notifyPopup;
+    private VBox popupContent;
+    private boolean popupVisible = false;
+
+    private Stack<String> backwardStack = new Stack<>();
+    private Stack<String> forwardStack = new Stack<>();
+
+    @FXML
+    public void initialize() {
+        // Crea popup notifiche
+        notifyPopup = new Popup();
+        popupContent = new VBox();
+        popupContent.setStyle(
+                "-fx-background-color: white; " +
+                        "-fx-border-color: gray; " +
+                        "-fx-padding: 5;"
+        );
+        notifyPopup.getContent().add(popupContent);
+
+        // Mostra o nasconde popup al click sulla campanella
+        notificationButton.setOnMouseClicked(e -> {
+            try {
+                if (!popupVisible) {
+                    updateNotifications();
+                    javafx.geometry.Bounds bounds = notificationButton.localToScreen(notificationButton.getBoundsInLocal());
+                    notifyPopup.show(notificationButton, bounds.getMinX(), bounds.getMaxY());
+                    popupVisible = true;
+                } else {
+                    notifyPopup.hide();
+                    popupVisible = false;
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        // Nasconde popup quando clicchi fuori
+        popupContent.setOnMouseExited(e -> {
+            notifyPopup.hide();
+            popupVisible = false;
+        });
+    }
+
+    private void updateNotifications() throws SQLException {
+        popupContent.getChildren().clear();
+
+        int currentUserId = 1; // TODO: sostituire con ID utente corrente
+
+        List<Notify> notifies = NotifyDAO.getNotifyByUserId(currentUserId);
+
+        if (notifies.isEmpty()) {
+            Label empty = new Label("Nessuna notifica");
+            empty.setStyle("-fx-padding: 5;");
+            popupContent.getChildren().add(empty);
+        } else {
+            for (Notify n : notifies) {
+                Label label = new Label(n.getMessage());
+                label.setStyle(
+                        "-fx-padding: 5; " +
+                                "-fx-border-color: lightgray; " +
+                                "-fx-border-width: 0 0 1 0;"
+                );
+                // Cliccando su notifica -> marca come letta e chiude popup
+                label.setOnMouseClicked(event -> {
+                    try {
+                        NotifyDAO.markAsRead(n.getIdNotify());
+                        notifyPopup.hide();
+                        popupVisible = false;
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+                popupContent.getChildren().add(label);
+            }
+        }
+    }
+
+    // ======= Navigazione pagine =======
+    @FXML
+    public void visitPage(String fxml) {
+        backwardStack.push(fxml);
+        forwardStack.clear();
     }
 
     @FXML
-    public void backPage() //this method loads last page from the backwardStack
-    {
-        if (backwardStack.size() > 1 ) //if the stack has at least 2 pages
-        {
-            String current = backwardStack.pop(); //taking current page away from the backwardStack and storing it
-            forwardStack.push(current); //pushing the page removed from the backwardStack
-            rootController.switchPage(backwardStack.peek()); //loading the new current page, the last on the backwardStack
+    public void backPage() {
+        if (backwardStack.size() > 1) {
+            String current = backwardStack.pop();
+            forwardStack.push(current);
+            rootController.switchPage(backwardStack.peek());
         }
     }
 
     @FXML
-    public void nextPage() //this method loads next pag from the forwardStack
-    {
-        if (forwardStack.size() > 0 ) //if the stack has at least one page
-        {
-            String page = forwardStack.pop(); //taking current page away from the forwardStack and storing it
-            backwardStack.push(page); //pushing the page removed from the forwardStack
-            rootController.switchPage(page); //loading the new current page, the last on the forwardStack (before it was removed)
+    public void nextPage() {
+        if (!forwardStack.isEmpty()) {
+            String page = forwardStack.pop();
+            backwardStack.push(page);
+            rootController.switchPage(page);
         }
     }
 
     @FXML
-    public void reloadPage() //loading the last page(the current one) in the backwardStack
-    {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek())); //getting the fxml in the loader
-            Parent node = fxmlLoader.load(); //creating the node from the loader
-            BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-            controller.setRootController(rootController); //giving to the new page's controller the current RootController instance
-        }
-        catch (IOException e)
-        {
+    public void reloadPage() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek()));
+            Parent node = fxmlLoader.load();
+            BranchController controller = fxmlLoader.getController();
+            controller.setRootController(rootController);
+        } catch (IOException e) {
             System.err.println("error reloading " + backwardStack.peek() + e.getMessage());
             e.printStackTrace();
         }
