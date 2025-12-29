@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+
+<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="100.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController">
+
+    <padding>
+        <Insets bottom="25" left="25" right="25" top="25" />
+    </padding>
+
+    <rowConstraints>
+        <RowConstraints maxHeight="150.0" minHeight="100.0" prefHeight="100.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="40.0" minHeight="20.0" vgrow="ALWAYS" />
+        <RowConstraints maxHeight="1.7976931348623157E308" minHeight="100.0" vgrow="ALWAYS" />
+    </rowConstraints>
+
+    <children>
+
+        <!-- LINEA ROSSA (Separator) -->
+        <Separator prefWidth="760" style="-fx-background-color: ff0000; -fx-border-color: ff0000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <GridPane.margin>
+                <Insets bottom="10.0" top="10.0" />
+            </GridPane.margin>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color opacity="0.20000000298023224" />
+               </color>
+            </InnerShadow>
+         </effect>
+        </Separator>
+      <ImageView fitHeight="101.0" fitWidth="329.0" GridPane.halignment="CENTER">
+         <image>
+            <Image url="@../../imgs/LogoMazeBank2.png" />
+         </image>
+      </ImageView>
+
+                    <!-- CARD (contenuto) -->
+        <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="760" minHeight="10.0" prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: white; -fx-background-radius: 26;                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.20), 24, 0.18, 0, 8);" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+
+                        <padding>
+                <Insets left="32.0" right="32.0" />
+            </padding>
+
+                        <columnConstraints>
+                <ColumnConstraints percentWidth="45" />
+                <ColumnConstraints halignment="RIGHT" percentWidth="55" />
+            </columnConstraints>
+
+                        <!-- INFORMAZIONI -->
+            <Label style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="INFORMAZIONI CONTO" GridPane.columnSpan="2">
+            <effect>
+               <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                  <color>
+                     <Color opacity="0.25" />
+                  </color>
+               </InnerShadow>
+            </effect></Label>
+
+                        <Label style="-fx-font-size: 15px;" text="IBAN:" GridPane.rowIndex="1" />
+            <Label fx:id="ibanField" style="-fx-font-size: 15px;" text="IT96W0585611601050570111111" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label style="-fx-font-size: 15px;" text="BIC/SWIFT:" GridPane.rowIndex="2" />
+            <Label fx:id="bicField" style="-fx-font-size: 15px;" text="AAAA-BB-CC-XXX" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <Label style="-fx-font-size: 15px;" text="Banca:" GridPane.rowIndex="3" />
+            <Label fx:id="bancaField" style="-fx-font-size: 15px;" text="Maze Bank – Sede" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                        <Separator GridPane.columnSpan="2" GridPane.rowIndex="4">
+                <GridPane.margin>
+               <Insets bottom="6" top="10" />
+            </GridPane.margin>
+            </Separator>
+
+                        <!-- GESTIONE -->
+            <Label style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="GESTIONE" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <effect>
+               <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                  <color>
+                     <Color opacity="0.25" />
+                  </color>
+               </InnerShadow>
+            </effect></Label>
+
+                        <Label style="-fx-font-size: 15px;" text="Soglia massima per invii rapidi" GridPane.rowIndex="6" />
+
+                        <HBox alignment="CENTER_RIGHT" spacing="14" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <TextField fx:id="sogliaField" alignment="CENTER" prefHeight="38.0" prefWidth="90" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #cfcfcf;" text="50" />
+                <Button fx:id="salvaSogliaBtn" prefHeight="32.0" prefWidth="129.0" style="-fx-background-color: ff0000; -fx-font-weight: 800; -fx-padding: 10 22; -fx-background-radius: 8; -fx-text-fill: white;" text="SALVA SOGLIA">
+               <effect>
+                  <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect></Button>
+            </HBox>
+
+                        <Separator GridPane.columnSpan="2" GridPane.rowIndex="7">
+                <GridPane.margin>
+               <Insets bottom="6" top="10" />
+            </GridPane.margin>
+            </Separator>
+
+                        <!-- SICUREZZA -->
+            <Label style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="SICUREZZA" GridPane.columnSpan="2" GridPane.rowIndex="8">
+            <effect>
+               <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                  <color>
+                     <Color opacity="0.25" />
+                  </color>
+               </InnerShadow>
+            </effect></Label>
+
+                        <Button fx:id="cambiaPinBtn" style="-fx-background-color: ff0000; -fx-border-radius: 6; -fx-background-radius: 6; -fx-font-weight: 800; -fx-text-fill: white; -fx-padding: 10 18;" text="CAMBIA PIN" GridPane.rowIndex="9">
+            <effect>
+               <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                  <color>
+                     <Color opacity="0.25" />
+                  </color>
+               </InnerShadow>
+            </effect></Button>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12" GridPane.columnSpan="2" GridPane.rowIndex="10">
+                <CheckBox fx:id="richiediSempreCheck" nodeOrientation="RIGHT_TO_LEFT" selected="true" style="-fx-font-size: 15px;" text="Richiedi sempre il codice anche per invii rapidi" />
+                <Button prefHeight="28" prefWidth="28" style="-fx-background-color: #efefef; -fx-background-radius: 999;                                -fx-font-weight: 900; -fx-text-fill: #444;" text="i" />
+            </HBox>
+
+                        <Separator GridPane.columnSpan="2" GridPane.rowIndex="11">
+                <GridPane.margin>
+               <Insets bottom="12" top="10" />
+            </GridPane.margin>
+            </Separator>
+
+                        <!-- CHIUDI -->
+            <Button style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: 900; -fx-padding: 16 70; -fx-background-radius: 12;" text="CHIUDI IL CONTO" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="12">
+            <GridPane.margin>
+               <Insets bottom="20.0" />
+            </GridPane.margin>
+            <effect>
+               <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                  <color>
+                     <Color opacity="0.25" />
+                  </color>
+               </InnerShadow>
+            </effect>
+         </Button>
+            <rowConstraints>
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+                <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
+            </rowConstraints>
+        </GridPane>
+
+    </children>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+</GridPane>

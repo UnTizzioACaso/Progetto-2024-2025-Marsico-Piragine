@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="307.0" style="-fx-background-color: lightgray; -fx-border-radius: 15; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.MonthlyBalanceController">
+   <children>
+      <Line endX="-7.0" endY="37.0" layoutX="160.0" layoutY="81.0" startX="-7.0" startY="-55.0" strokeWidth="2.0" AnchorPane.leftAnchor="152.5" AnchorPane.rightAnchor="153.5" AnchorPane.topAnchor="25.5" />
+      <Label fx:id="monthlyBalanceWidgetTitle" layoutX="14.0" layoutY="17.0" style="-fx-font: red;" text="Bilancio" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="9.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="monthyIncomeTotal" layoutX="53.0" layoutY="57.0" prefHeight="30.0" prefWidth="100.0" text="+ 000 $" textFill="#38ad05" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="57.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="monthyExpensesTotal" alignment="CENTER_RIGHT" layoutX="153.0" layoutY="57.0" prefHeight="30.0" prefWidth="100.0" text="- 000 $" textFill="#cd0000" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="57.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

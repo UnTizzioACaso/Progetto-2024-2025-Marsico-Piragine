@@ -1,0 +1,160 @@
+CREATE TABLE IF NOT EXISTS Utente (
+    id_utente INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cognome TEXT NOT NULL,
+    nome_utente TEXT UNIQUE NOT NULL,
+    data_nascita DATE NOT NULL CHECK (data_nascita <= DATE('now', '-18 years')),
+    luogo_nascita TEXT NOT NULL,
+    codice_fiscale TEXT UNIQUE NOT NULL CHECK (LENGTH(codice_fiscale) = 16),
+    sesso TEXT NOT NULL CHECK (sesso IN ('M', 'F', 'Altro')),
+    email TEXT NOT NULL UNIQUE,
+    password_hash TEXT NOT NULL,
+    numero_telefono TEXT NOT NULL UNIQUE,
+    stato TEXT NOT NULL,
+    provincia TEXT NOT NULL,
+    citta TEXT NOT NULL,
+    indirizzo TEXT NOT NULL,
+    numero_civico TEXT NOT NULL,
+    pin_hash TEXT NOT NULL,
+    salva_cred BOOLEAN DEFAULT FALSE,
+    data_ultimo_accesso DATETIME NOT NULL,
+    tema TEXT DEFAULT 'chiaro' CHECK (tema IN ('chiaro', 'scuro'))
+);
+
+
+CREATE TABLE IF NOT EXISTS Conto (
+    id_conto INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_utente INTEGER NOT NULL UNIQUE,
+    saldo DECIMAL CHECK (saldo >= 0),
+    valuta TEXT CHECK (valuta IN ('EUR', 'USD', 'GBP')),
+    iban TEXT UNIQUE,
+    bic_swift TEXT,
+    sede_banca TEXT,
+    soglia_invio_rapido DECIMAL DEFAULT 50,
+    forza_pin_rapido BOOLEAN DEFAULT FALSE,
+    stato_conto TEXT CHECK (stato_conto IN ('attivo', 'chiuso')),
+    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_conto_id_utente ON Conto(id_utente);
+
+
+CREATE TABLE IF NOT EXISTS Carta (
+    id_carta INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_conto INTEGER,
+    numero TEXT CHECK (LENGTH(numero) = 16),
+    cvv_hash TEXT,
+    scadenza DATE,
+    nickname TEXT,
+    colore TEXT,
+    preferita BOOLEAN,
+    soglia_spesa_mensile DECIMAL CHECK (soglia_spesa_mensile >= 0),
+    attiva BOOLEAN,
+    FOREIGN KEY (id_conto) REFERENCES Conto(id_conto) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_carta_id_conto ON Carta(id_conto);
+
+
+CREATE TABLE IF NOT EXISTS RichiestaAmicizia (
+    id_richiesta INTEGER PRIMARY KEY AUTOINCREMENT,
+    richiedente INTEGER NOT NULL,
+    destinatario INTEGER NOT NULL,
+    data_invio DATETIME NOT NULL,
+    stato TEXT CHECK(stato IN ('in_attesa', 'rifiutata')) DEFAULT 'in_attesa',
+    FOREIGN KEY (richiedente) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (destinatario) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    UNIQUE (richiedente, destinatario)
+);
+
+
+CREATE TABLE IF NOT EXISTS Amicizia (
+    id_amicizia INTEGER PRIMARY KEY AUTOINCREMENT,
+    utente1 INTEGER,
+    utente2 INTEGER,
+    data_creazione DATETIME,
+    FOREIGN KEY (utente1) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (utente2) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    UNIQUE (utente1, utente2),
+    CHECK (utente1 < utente2)
+);
+
+
+CREATE TABLE IF NOT EXISTS UtenteBloccato (
+    id_blocco INTEGER PRIMARY KEY AUTOINCREMENT,
+    bloccante INTEGER NOT NULL,
+    bloccato INTEGER NOT NULL,
+    data_blocco DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (bloccante) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (bloccato) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    UNIQUE (bloccante, bloccato),
+    CHECK (bloccante != bloccato)
+);
+
+
+CREATE TABLE IF NOT EXISTS Transazione (
+    id_transazione INTEGER PRIMARY KEY AUTOINCREMENT,
+    mittente INTEGER,
+    destinatario INTEGER,
+    importo DECIMAL CHECK (importo > 0),
+    motivazione TEXT,
+    data_transazione DATETIME,
+    stato TEXT CHECK(stato IN ('inviata','fallita')),
+    tipo TEXT CHECK(tipo IN ('Ricarica','Bonifico', 'Invio Rapido')),
+    carta_utilizzata INTEGER,
+    FOREIGN KEY (mittente) REFERENCES Conto(id_conto) ON DELETE SET NULL,
+    FOREIGN KEY (destinatario) REFERENCES Conto(id_conto) ON DELETE SET NULL,
+    FOREIGN KEY (carta_utilizzata) REFERENCES Carta(id_carta) ON DELETE SET NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_transazione_mittente ON Transazione(mittente);
+CREATE INDEX IF NOT EXISTS idx_transazione_destinatario ON Transazione(destinatario);
+
+
+CREATE TABLE IF NOT EXISTS Notifica (
+    id_notifica INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_utente INTEGER,
+    id_transazione INTEGER,
+    id_richiesta_amicizia INTEGER,
+    id_amicizia INTEGER,
+    messaggio TEXT,
+    letta BOOLEAN,
+    data_creazione DATETIME,
+    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    FOREIGN KEY (id_transazione) REFERENCES Transazione(id_transazione) ON DELETE CASCADE,
+    FOREIGN KEY (id_richiesta_amicizia) REFERENCES RichiestaAmicizia(id_richiesta) ON DELETE CASCADE,
+    FOREIGN KEY (id_amicizia) REFERENCES Amicizia(id_amicizia) ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS Home_Widget_Custom (
+    id_widget INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_utente INTEGER,
+    tipo_widget TEXT,
+    grandezza TEXT,
+    pos INTEGER,
+    rimovibile BOOLEAN,
+    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    UNIQUE (id_utente, pos)
+);
+
+
+CREATE TABLE IF NOT EXISTS Scorciatoia_sidebar (
+    id_custom INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_utente INTEGER,
+    tipo_scorciatoia TEXT,
+    ordine INTEGER,
+    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE,
+    UNIQUE (id_utente, tipo_scorciatoia)
+);
+
+
+CREATE TABLE IF NOT EXISTS Audit_Log (
+    id_log INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_utente INTEGER,
+    azione TEXT,
+    dettagli TEXT,
+    esito TEXT CHECK(esito IN ('SUCCESSO', 'FALLITO')),
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_utente) REFERENCES Utente(id_utente) ON DELETE CASCADE
+);
