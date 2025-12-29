@@ -12,9 +12,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="bankAccountWidget" maxHeight="250.0" minHeight="40.0" minWidth="40.0" prefHeight="175.0" prefWidth="261.0" style="-fx-background-radius: 18; -fx-background-color: #d70707;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.BankAccountController">
+<AnchorPane fx:id="bankAccountWidget" maxHeight="250.0" minHeight="40.0" minWidth="40.0" prefHeight="183.0" prefWidth="401.0" style="-fx-background-radius: 18; -fx-background-color: ff0000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.BankAccountController">
    <children>
-      <Region prefHeight="169.0" prefWidth="261.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 10;" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Region prefHeight="176.0" prefWidth="401.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 10;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Label alignment="CENTER" layoutX="42.0" layoutY="45.0" prefHeight="45.0" prefWidth="157.0" text="-----,-- €" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="45.0">
          <font>
             <Font size="30.0" />
@@ -22,12 +22,29 @@
       </Label>
       <HBox alignment="CENTER" layoutX="6.0" layoutY="109.0" prefHeight="45.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0">
          <children>
-            <Region maxWidth="1.7976931348623157E308" minWidth="10.0" prefHeight="200.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
-            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Aggiungi credito" />
-            <Region maxWidth="1.7976931348623157E308" minWidth="10.0" prefHeight="200.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
-            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Invia denaro" />
-            <Region maxWidth="1.7976931348623157E308" minWidth="10.0" prefHeight="45.0" prefWidth="59.0" HBox.hgrow="ALWAYS" />
-            <Button minWidth="41.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="41.0">
+            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: ff0000; -fx-font-weight: 700; -fx-text-fill: white;" text="Aggiungi credito">
+               <effect>
+                  <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></Button>
+            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: ff0000; -fx-font-weight: 700; -fx-text-fill: white;" text="Invia denaro">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+               <effect>
+                  <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect></Button>
+            <Button fx:id="accountSettingsButton" minWidth="35.0" mnemonicParsing="false" onAction="#openAccountSettings" prefHeight="34.0" prefWidth="35.0">
                <graphic>
                   <ImageView fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -36,10 +53,9 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets />
+                  <Insets left="10.0" right="5.0" />
                </HBox.margin>
             </Button>
-            <Region maxWidth="1.7976931348623157E308" minWidth="10.0" prefHeight="200.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
    </children>

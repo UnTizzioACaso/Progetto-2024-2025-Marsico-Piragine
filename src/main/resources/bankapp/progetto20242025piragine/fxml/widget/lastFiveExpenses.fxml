@@ -13,7 +13,7 @@
 
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: #d70707; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+      <VBox prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
          <children>
             <Label prefHeight="16.0" prefWidth="205.0" text="Ultime cinque uscite" textFill="WHITE">
                <font>
@@ -33,9 +33,9 @@
             </Label>
          </children>
          <effect>
-            <InnerShadow choke="0.17" height="50.41" offsetX="-10.0" offsetY="-10.0" radius="26.1875" width="56.34">
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
-                  <Color opacity="0.24521072208881378" />
+                  <Color opacity="0.25" />
                </color>
             </InnerShadow>
          </effect>
@@ -59,13 +59,20 @@
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label text="-37,87 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+            <Label text="-37,87 €" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
                <font>
                   <Font size="11.0" />
                </font>
                <GridPane.margin>
                   <Insets bottom="-8.0" />
                </GridPane.margin>
+               <effect>
+                  <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </Label>
          </children>
          <rowConstraints>
@@ -103,13 +110,20 @@
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label text="-163,80 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+            <Label text="-163,80 €" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
                <font>
                   <Font size="11.0" />
                </font>
                <GridPane.margin>
                   <Insets bottom="-8.0" />
                </GridPane.margin>
+               <effect>
+                  <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </Label>
          </children>
          <rowConstraints>
@@ -147,13 +161,20 @@
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label text="-82,34 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+            <Label text="-82,34 €" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
                <font>
                   <Font size="11.0" />
                </font>
                <GridPane.margin>
                   <Insets bottom="-8.0" />
                </GridPane.margin>
+               <effect>
+                  <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </Label>
          </children>
          <rowConstraints>
@@ -191,13 +212,20 @@
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label text="-1499,99 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+            <Label text="-1499,99 €" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
                <font>
                   <Font size="11.0" />
                </font>
                <GridPane.margin>
                   <Insets bottom="-8.0" />
                </GridPane.margin>
+               <effect>
+                  <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </Label>
          </children>
          <rowConstraints>
@@ -235,13 +263,20 @@
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label text="-129,00 €" textFill="#990000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+            <Label text="-129,00 €" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
                <font>
                   <Font size="11.0" />
                </font>
                <GridPane.margin>
                   <Insets bottom="-8.0" />
                </GridPane.margin>
+               <effect>
+                  <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </Label>
          </children>
          <rowConstraints>
