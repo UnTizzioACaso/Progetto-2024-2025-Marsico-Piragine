@@ -6,6 +6,7 @@ import bankapp.progetto20242025piragine.db.User;
 import bankapp.progetto20242025piragine.db.UserDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -15,6 +16,9 @@ public class LoginController extends BranchController {
 
     @FXML
     private TextField emailLoginTextField;
+
+    @FXML
+    private PasswordField passwordLoginPasswordField;
 
     @FXML
     private TextField passwordLoginTextField;
@@ -31,21 +35,58 @@ public class LoginController extends BranchController {
     @FXML
     public void loadHomePage() throws SQLException //giving access to the homepage
     {
-        //if (passwordLoginTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$") && emailLoginTextField.getText().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) //checking if the password and the email are valid
-        //{
-            if(UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginTextField.getText()))
-            {
+        if(passwordLoginPasswordField.isDisabled()) {
+            //if (passwordLoginTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$") && emailLoginTextField.getText().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) //checking if the password and the email are valid
+            //{
+            if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginTextField.getText())) {
                 rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
                 rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading the sidebar
                 rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading the topbar
                 rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
             }
-       // }
-        //else
-        {
-            accessErrorMessageLabel.setText("credenziali errate riprova"); //giving the message error if the password or email is not valid
+            // }
+            //else
+            {
+                accessErrorMessageLabel.setText("credenziali errate riprova"); //giving the message error if the password or email is not valid
+            }
         }
-
+        else
+        {
+            if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginPasswordField.getText())) {
+                rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
+                rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading the sidebar
+                rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading the topbar
+                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
+            }
+            // }
+            //else
+            {
+                accessErrorMessageLabel.setText("credenziali errate riprova"); //giving the message error if the password or email is not valid
+            }
+        }
     }
+
+    @FXML
+    public void showPassword()
+    {
+        if(passwordLoginTextField.isDisabled())
+        {
+            passwordLoginTextField.setDisable(false);
+            passwordLoginTextField.setVisible(true);
+            passwordLoginPasswordField.setDisable(true);
+            passwordLoginPasswordField.setVisible(false);
+            passwordLoginTextField.setText(passwordLoginPasswordField.getText());
+        }
+        else
+        {
+            passwordLoginTextField.setDisable(true);
+            passwordLoginTextField.setVisible(false);
+            passwordLoginPasswordField.setDisable(false);
+            passwordLoginPasswordField.setVisible(true);
+            passwordLoginPasswordField.setText(passwordLoginTextField.getText());
+        }
+    }
+
+
 
 }
