@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardDAO {
-
-    // 🔹 Prendere tutte le carte di un utente
     public static List<Card> getCardsByUserId(int userId) throws SQLException {
         String sql = "SELECT * FROM Card WHERE user_id = ?";
         List<Card> cards = new ArrayList<>();
@@ -42,7 +40,6 @@ public class CardDAO {
         return cards;
     }
 
-    // 🔹 Prendere una carta singola per id_card
     public static Card getCardById(int idCard) throws SQLException {
         String sql = "SELECT * FROM Card WHERE id_card = ?";
 
@@ -103,7 +100,6 @@ public class CardDAO {
                     card.setIdCard(generatedKeys.getInt(1)); // assegna id generato
                 }
             }
-
             return true;
         }
     }
