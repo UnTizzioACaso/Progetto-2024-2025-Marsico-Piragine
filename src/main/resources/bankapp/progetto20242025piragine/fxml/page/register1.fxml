@@ -37,26 +37,19 @@
          <image>
             <Image url="@../../imgs/LogoMazeBank.png" />
          </image>
-         <effect>
-            <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
-               <color>
-                  <Color opacity="0.25" />
-               </color>
-            </InnerShadow>
-         </effect>
       </ImageView>
-      <Pane maxHeight="70.0" maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="850.0" style="-fx-background-color: #d70707;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+      <Pane maxHeight="70.0" maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="850.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
          <effect>
-            <InnerShadow choke="0.17" height="54.86" offsetX="10.0" offsetY="-10.0" radius="27.3" width="56.34">
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
                   <Color opacity="0.25" />
                </color>
             </InnerShadow>
          </effect>
       </Pane>
-      <Pane maxHeight="70.0" maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="850.0" style="-fx-background-color: #d70707;" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+      <Pane maxHeight="70.0" maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="850.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
          <effect>
-            <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
                   <Color opacity="0.25" />
                </color>
@@ -89,9 +82,9 @@
                   <Insets />
                </GridPane.margin>
             </ImageView>
-            <Button fx:id="enterRegisterButton" maxWidth="300.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="52.0" prefWidth="290.0" style="-fx-background-color: #d70707;fx-text-fill: white;                            -fx-font-size: 20px;                            -fx-font-weight: bold;                            -fx-background-radius: 14;                            -fx-padding: 16 0 16 0;" text="FATTO" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <Button fx:id="enterRegisterButton" maxWidth="300.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="52.0" prefWidth="290.0" style="-fx-background-color: ff0000; fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-background-radius: 14; -fx-padding: 16 0 16 0;" text="FATTO" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <effect>
-                  <InnerShadow choke="0.17" height="54.86" offsetX="-10.0" offsetY="-10.0" radius="27.3" width="56.34">
+                  <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                      <color>
                         <Color opacity="0.25" />
                      </color>
@@ -129,11 +122,11 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <ProgressBar fx:id="registerProgressBar" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="20.0" prefWidth="290.0" progress="0.33" style="-fx-accent: #d70707; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+            <ProgressBar fx:id="registerProgressBar" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="20.0" prefWidth="290.0" progress="0.33" style="-fx-accent: ff0000; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin></ProgressBar>
-            <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho gia un account" textFill="#e10000" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" textFill="RED" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>
