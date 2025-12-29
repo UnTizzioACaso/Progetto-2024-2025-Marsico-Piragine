@@ -14,7 +14,7 @@
 
     <children>
 
-        <Label layoutX="75.0" layoutY="14.0" prefHeight="74.0" prefWidth="329.0" style="-fx-font-weight: BOLD;" styleClass="title" text="LE TUE CARTE">
+        <Label layoutX="51.2" layoutY="14.0" minWidth="0" prefHeight="74.0" prefWidth="550.0" style="-fx-font-weight: BOLD;" styleClass="title" text="LE TUE CARTE" textOverrun="ELLIPSIS" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="249.0">
             <font>
                 <Font size="38.0" />
             </font>
@@ -22,7 +22,7 @@
 
         <Separator layoutX="28.0" layoutY="81.0" opacity="0.8" prefHeight="6.0" prefWidth="794.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" />
 
-        <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="580.0" layoutY="31.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: left;" styleClass="create-card" text="CREA NUOVA CARTA" textFill="WHITE" AnchorPane.rightAnchor="75.0">
+        <Button layoutY="32.0" maxWidth="165.0" minWidth="165.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: left;" styleClass="create-card" text="CREA NUOVA CARTA" textFill="WHITE" AnchorPane.rightAnchor="55.0">
             <font>
                 <Font size="14.0" />
             </font>
