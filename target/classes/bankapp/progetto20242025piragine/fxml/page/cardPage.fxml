@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="bankapp.progetto20242025piragine.controller.page.CardPageController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="600.0" prefWidth="850.0" style="-fx-background-color: white;" stylesheets="@../../css/cardPage.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.CardPageController">
+
+    <children>
+
+        <Label layoutX="51.2" layoutY="14.0" minWidth="0" prefHeight="74.0" prefWidth="550.0" style="-fx-font-weight: BOLD;" styleClass="title" text="LE TUE CARTE" textOverrun="ELLIPSIS" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="249.0">
+            <font>
+                <Font size="38.0" />
+            </font>
+        </Label>
+
+        <Separator layoutX="28.0" layoutY="81.0" opacity="0.8" prefHeight="6.0" prefWidth="794.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0" />
+
+        <Button layoutY="32.0" maxWidth="165.0" minWidth="165.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: left;" styleClass="create-card" text="CREA NUOVA CARTA" textFill="WHITE" AnchorPane.rightAnchor="55.0">
+            <font>
+                <Font size="14.0" />
+            </font>
+            <effect>
+                <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                    <color>
+                        <Color opacity="0.25" />
+                    </color>
+                </InnerShadow>
+            </effect>
+        </Button>
+
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="30.0" layoutY="94.4" prefHeight="490.0" prefWidth="794.0" style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-border-color: transparent; -fx-border-width: 0;" styleClass="cards-scroll" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="94.0">
+
+            <content>
+                <VBox fx:id="cardsContainer" minHeight="1000.0" prefWidth="780.0" style="-fx-background-color: transparent; -fx-padding: 0 10 0 0;" />
+            </content>
+
+        </ScrollPane>
+
+    </children>
 
 </AnchorPane>
