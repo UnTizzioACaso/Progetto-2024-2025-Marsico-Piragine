@@ -9,7 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 
-public  class RootWindowController extends BranchController {
+public  class RootWindowController extends BranchController
+{
     @FXML
     private BorderPane rootWindow;
 
@@ -18,7 +19,6 @@ public  class RootWindowController extends BranchController {
     private String currentPage = "";
 
     public User user = new User();
-
 
     @FXML
     public void switchPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
@@ -40,6 +40,7 @@ public  class RootWindowController extends BranchController {
             }
         }
     }
+
     @FXML
     public void loadPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {
@@ -89,6 +90,7 @@ public  class RootWindowController extends BranchController {
             e.printStackTrace();
         }
     }
+
     public void loadTopBar(String fxml) //this method loads a node on the top side of root's BorderPane and gives back his controller
     {
         try

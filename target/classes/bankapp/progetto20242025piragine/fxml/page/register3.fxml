@@ -24,7 +24,7 @@
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" percentWidth="50.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" />
+      <RowConstraints minHeight="70.0" prefHeight="70.0" />
       <RowConstraints vgrow="ALWAYS" />
       <RowConstraints minHeight="70.0" prefHeight="70.0" />
    </rowConstraints>
@@ -141,7 +141,7 @@
             </Label>
          </children>
       </GridPane>
-      <Pane maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="57.0" prefWidth="857.0" style="-fx-background-color: #d70707;" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+      <Pane maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="57.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.halignment="LEFT" GridPane.rowIndex="2">
          <effect>
             <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
