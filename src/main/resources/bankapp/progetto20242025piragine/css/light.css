@@ -1,0 +1,38 @@
+/* light.css - Tema chiaro per Account Popup */
+#root {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);
+}
+
+/* Label principali */
+.label {
+    -fx-text-fill: #1F1F1F;
+}
+
+/* Label secondarie / descrittive */
+#themeApplicationAccountPopupLabel {
+    -fx-text-fill: #5F6368;
+}
+
+/* RadioButton */
+.radio-button {
+    -fx-text-fill: #1F1F1F;
+}
+
+/* Button generico */
+.button {
+    -fx-background-radius: 8;
+    -fx-background-color: #E6E6E6;
+    -fx-text-fill: #1F1F1F;
+    -fx-font-weight: 500;
+}
+
+/* Pulsante impostazioni */
+#settingsAccountPopupButton {
+    -fx-background-color: #ff0000;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10;
+    -fx-font-weight: 700;
+}

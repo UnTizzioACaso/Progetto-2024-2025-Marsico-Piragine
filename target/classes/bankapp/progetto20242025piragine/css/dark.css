@@ -1,37 +1,43 @@
-                           /* --------------------- DATEPICKERS ------------------------- */
-                           /* --------------------- DATEPICKERS ------------------------- */
-                           /* --------------------- DATEPICKERS ------------------------- */
-.date-picker
-{
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+/* dark.css - Tema scuro per Account Popup */
+#root {
+    -fx-background-color: #2C2C2C;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 24, 0, 0, 8);
 }
 
-.date-picker > .arrow-button
-{
-    -fx-background-radius: 8; /* arrotondamento */
+/* Label principali */
+.label {
+    -fx-text-fill: #E0E0E0;
 }
 
-.date-picker .text-field
-{
-    -fx-background-radius: 8;
-    -fx-border-radius: 8;
+/* Label secondarie / descrittive */
+#themeApplicationAccountPopupLabel {
+    -fx-text-fill: #B0B0B0;
 }
 
-.date-picker-popup
-{
-    -fx-background-radius: 8;
+/* Label del tema */
+#themeColorAccountPopupLabel {
+    -fx-text-fill: #10A37F;
 }
 
-.date-picker-popup > .month-year-pane
-{
-    -fx-background-radius: 8;
+/* RadioButton */
+.radio-button {
+    -fx-text-fill: #E0E0E0;
 }
 
-.date-picker .day-cell
-{
+/* Button generico */
+.button {
     -fx-background-radius: 8;
+    -fx-background-color: #444444;
+    -fx-text-fill: #E0E0E0;
+    -fx-font-weight: 500;
 }
-                           /* --------------------- DATEPICKERS ------------------------- */
-                           /* --------------------- DATEPICKERS ------------------------- */
-                           /* --------------------- DATEPICKERS ------------------------- */
+
+/* Pulsante impostazioni */
+#settingsAccountPopupButton {
+    -fx-background-color: #10A37F;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 10;
+    -fx-font-weight: 700;
+}
