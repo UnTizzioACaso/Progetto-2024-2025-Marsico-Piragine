@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,10 +13,9 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.FriendsPageController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.FriendsPageController">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="362.0" />
     <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="238.0" />
@@ -34,19 +32,12 @@
                </content>
             </ScrollPane>
             <Region prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <TextField fx:id="friendsSearchBar" layoutX="110.0" layoutY="16.0" prefHeight="10.0" prefWidth="142.0" promptText="   Cerca amico" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="111.60000000000002" AnchorPane.topAnchor="16.0">
+            <TextField fx:id="friendsSearchBar" layoutX="52.0" layoutY="16.0" prefHeight="25.0" prefWidth="183.0" promptText="   Cerca amico" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
-               <effect>
-                  <DropShadow blurType="GAUSSIAN" height="25.0" radius="12.0" width="25.0">
-                     <color>
-                        <Color opacity="0.3244274854660034" />
-                     </color>
-                  </DropShadow>
-               </effect>
             </TextField>
-            <ImageView fitHeight="13.0" fitWidth="14.0" layoutX="164.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="123.28754329681396" AnchorPane.topAnchor="22.0">
+            <ImageView fitHeight="13.0" fitWidth="14.0" layoutX="207.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.28754329681396" AnchorPane.topAnchor="22.0">
                <image>
                   <Image url="@../../imgs/lenticon.png" />
                </image>
@@ -54,13 +45,10 @@
                   <ColorAdjust brightness="0.34" contrast="-1.0" hue="0.02" saturation="-0.05" />
                </effect>
             </ImageView>
-            <Button layoutX="197.0" layoutY="15.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-radius: 50; -fx-background-color: #d70707; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 0; -fx-cursor: hand; -fx-text-fill: white;" text="+" AnchorPane.rightAnchor="76.6" AnchorPane.topAnchor="15.0">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="254.0" layoutY="16.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="25.0" style="-fx-background-radius: 50; -fx-background-color: ff0000; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 0; -fx-cursor: hand; -fx-text-fill: white;" text="+" textAlignment="CENTER" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font size="25.0" />
                </font>
-               <effect>
-                  <DropShadow height="12.0" radius="5.5" width="12.0" />
-               </effect>
             </Button>
          </children>
       </AnchorPane>
