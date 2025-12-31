@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="bankapp.progetto20242025piragine.controller.widget.MonthlyIncomeController"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
 
-</AnchorPane>
+    <children>
+
+        <VBox prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+
+            <children>
+                <Label prefHeight="16.0" prefWidth="205.0" text="Entrate mensili" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="17.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets left="14.0" />
+                    </VBox.margin>
+                </Label>
+
+                <Label text="Controllo" textFill="WHITE">
+                    <VBox.margin>
+                        <Insets bottom="2.0" left="15.0" top="-5.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                </Label>
+            </children>
+
+            <effect>
+                <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                    <color>
+                        <Color opacity="0.25" />
+                    </color>
+                </InnerShadow>
+            </effect>
+        </VBox>
+
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+            <content>
+                <VBox />
+            </content>
+        </ScrollPane>
+
+    </children>
+</VBox>
