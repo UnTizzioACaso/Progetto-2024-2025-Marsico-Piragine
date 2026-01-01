@@ -50,7 +50,7 @@
                   </font>
               </Label>
       
-              <Button maxWidth="165.0" minWidth="165.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: left;" styleClass="create-card" text="CREA NUOVA CARTA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+              <Button maxWidth="165.0" minWidth="165.0" mnemonicParsing="false" onAction="#createCard" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: left;" styleClass="create-card" text="CREA NUOVA CARTA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                   <font>
                       <Font size="14.0" />
                   </font>

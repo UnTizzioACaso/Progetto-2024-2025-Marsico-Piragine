@@ -30,7 +30,7 @@ public class UserDAO
     public static boolean registerUser(User user) throws SQLException
     {
 
-        String sql = "INSERT INTO User (" + "first_name, last_name, username, birth_day, birth_place, " + "gender, email, password_hash, phone_number, state, province, city, " + "address, street_number, cap, pin_hash, remember_credentials, last_access_date, theme" + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //insert string command for the db
+        String sql = "INSERT INTO User (" + "first_name, last_name, username, birth_day, birth_place, " + "gender, email, password_hash, phone_number, state, province, city, " + "address, street_number, cap, pin_hash, remember_credentials, last_access_date, theme, user_id" + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //insert string command for the db
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
         {
@@ -54,6 +54,7 @@ public class UserDAO
             stmt.setBoolean(17, user.isRememberCredentials());
             stmt.setString(18, user.getLastAccessDate());
             stmt.setString(19, user.getTheme());
+            stmt.setInt(20, user.getUserID());
 
             stmt.executeUpdate();
             return true;

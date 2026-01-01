@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.db;
 
 public class User {
+    private int userID;
     private String firstName;
     private String lastName;
     private String username;
@@ -20,6 +21,8 @@ public class User {
     private boolean rememberCredentials;
     private String lastAccessDate;
     private String theme;
+    public void setUserID(int id){this.userID = id;}
+    public int getUserID() {return userID;}
     public void setCap(String cap)
     {
         this.cap = cap;
