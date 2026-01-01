@@ -1,33 +1,37 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.db.Card;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
 public class CreditCardRectangleController extends BranchController
 {
-
+    @FXML
+    public Label limitValueLabel;
 
     @FXML
     public AnchorPane rectangleAnchorPane;
 
-    @Override
-    public void initializer()
+
+    public void fill(Card card)
     {
         try
         {
             FXMLLoader cardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
-            Node card = cardLoader.load();
-            AnchorPane.setBottomAnchor(card, 30.00);
-            AnchorPane.setLeftAnchor(card, 30.00);
-            BranchController controller = cardLoader.getController();
+            Node visualCard = cardLoader.load();
+            AnchorPane.setBottomAnchor(visualCard, 30.00);
+            AnchorPane.setLeftAnchor(visualCard, 30.00);
+            CardController controller = cardLoader.getController();
             controller.setRootController(rootController);
-            controller.initializer();
-            rectangleAnchorPane.getChildren().add(card);
+            controller.setup(card);
+            rectangleAnchorPane.getChildren().add(visualCard);
+            limitValueLabel.setText("€ " + card.getSpendingLimit().toString());
         }
         catch (IOException e)
         {
