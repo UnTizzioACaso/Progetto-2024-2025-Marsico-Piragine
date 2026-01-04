@@ -12,8 +12,7 @@ import java.time.LocalDate;
 public class CardService
 {
 
-    public static Card createCard(int userId, int idAccount, String nickname, String colour, BigDecimal spendingLimit) throws Exception
-    {
+    public static Card createCard(int userId, int idAccount, String nickname, String colour, BigDecimal spendingLimit) throws Exception {
 
 
         String pan = generatePan();
