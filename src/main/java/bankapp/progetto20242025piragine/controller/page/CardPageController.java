@@ -4,7 +4,6 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.component.CreditCardRectangleController;
 import bankapp.progetto20242025piragine.controller.popup.AccountPopupController;
 import bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController;
-import bankapp.progetto20242025piragine.db.BankAccount;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
@@ -30,7 +29,7 @@ public class CardPageController extends BranchController
 
 
     @FXML
-    public void openCreateCard()
+    public void openCreateCard() throws SQLException
     {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml")); //getting the fxml in the loader
@@ -44,13 +43,14 @@ public class CardPageController extends BranchController
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
-
         }
         catch (IOException e)
         {
             System.err.println("error loading the create card popup" + e.getMessage());
             e.printStackTrace();
         }
+
+        Card card= CardService.createCard(rootController.user.getUserID(), BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getIdAccount(), );
     }
 
     @Override
