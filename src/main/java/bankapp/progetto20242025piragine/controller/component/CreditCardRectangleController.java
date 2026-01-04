@@ -35,7 +35,7 @@ public class CreditCardRectangleController extends BranchController
         }
         catch (IOException e)
         {
-            System.err.println("error loading the account popup" + e.getMessage());
+            System.err.println("error loading the card" + e.getMessage());
             e.printStackTrace();
         }
     }
