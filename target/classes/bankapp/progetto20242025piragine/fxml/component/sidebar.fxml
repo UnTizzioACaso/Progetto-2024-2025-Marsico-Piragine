@@ -25,7 +25,7 @@
         <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Button fx:id="settingsButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#loadCardsPage" prefHeight="46.0" prefWidth="59.0" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800;" text="Carte" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+        <Button fx:id="settingsButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#loadCardsPage" prefHeight="46.0" prefWidth="59.0" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800; -fx-background-radius: 0;" text="Carte" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                <color>
@@ -33,7 +33,7 @@
                </color>
             </InnerShadow>
          </effect></Button>
-      <Button fx:id="settingsButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#loadFriendsPage" prefHeight="23.0" prefWidth="86.0" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800;" text="Amici" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Button fx:id="settingsButton1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#loadFriendsPage" prefHeight="23.0" prefWidth="86.0" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800; -fx-background-radius: 0;" text="Amici" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                <color>
@@ -42,7 +42,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button fx:id="settingsButton2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#loadHomePage" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800;" text="Home" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="settingsButton2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#loadHomePage" style="-fx-background-color: ff0000; -fx-font-size: 20px; -fx-font-weight: 800; -fx-background-radius: 0;" text="Home" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                <color>
@@ -51,7 +51,7 @@
             </InnerShadow>
          </effect>
       </Button>
-          <Button fx:id="accountPopupButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#openAccountPopup" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: ff0000;" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+          <Button fx:id="accountPopupButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#openAccountPopup" prefHeight="42.0" prefWidth="52.0" style="-fx-background-color: ff0000; -fx-background-radius: 0;" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
               <graphic>
                   <ImageView fx:id="userIconImage" fitHeight="41.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                       <image>
