@@ -22,7 +22,7 @@
                 <Font size="17.0" />
             </font>
         </Button>
-        <Label alignment="CENTER" layoutX="719.0" layoutY="74.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="238.0" style="-fx-font-weight: BOLD;" text="€ 20.000,00" AnchorPane.rightAnchor="-15.0">
+        <Label fx:id="limitValueLabel" alignment="CENTER" layoutX="719.0" layoutY="74.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="238.0" style="-fx-font-weight: BOLD;" text="€ 20.000,00" AnchorPane.rightAnchor="-15.0">
             <font>
                 <Font size="15.0" />
             </font>
