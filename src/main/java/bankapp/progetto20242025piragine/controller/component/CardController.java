@@ -13,17 +13,35 @@ public class CardController extends BranchController
     public Button cardBlockButton, cardSettingsButton, showCardInformationsButton;
 
     @FXML
-    public Label cardNumberLabel, cardNicknameLabel, cardCreditLabel, cardCvvLabel, cardExpirationLabel;
+    public Label cardNumberLabel, cardNicknameLabel, cardCreditLabel, cardExpirationLabel;
 
     @FXML
     public AnchorPane cardBackground;
 
-    public void setup(Card c)
+    public void removeButtons()
     {
         cardBlockButton.setVisible(false);
         cardBlockButton.setDisable(true);
         cardSettingsButton.setVisible(false);
         cardSettingsButton.setDisable(true);
+    }
+
+    public void updateNickname(String nickname)
+    {
+        cardNicknameLabel.setText(nickname);
+    }
+
+    public void setup(Card c)
+    {
+        removeButtons();
+        cardBackground.setStyle("-fx-background-color: " + c.getColour());
+        cardNicknameLabel.setText(c.getNickname());
+        cardExpirationLabel.setText(c.getExpired().toString());
+        cardNumberLabel.setText("- - - -  - - - -  - - - -  " + c.getPanLast4());
+    }
+
+    public void setupFavourites(Card c)
+    {
         cardBackground.setStyle("-fx-background-color: " + c.getColour());
         cardNicknameLabel.setText(c.getNickname());
         cardExpirationLabel.setText(c.getExpired().toString());
