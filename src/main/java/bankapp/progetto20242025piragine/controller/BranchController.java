@@ -1,7 +1,5 @@
 package bankapp.progetto20242025piragine.controller;
 
-import java.sql.SQLException;
-
 public abstract class BranchController {
 
     protected RootWindowController rootController; //access to RootWindow
@@ -16,7 +14,7 @@ public abstract class BranchController {
         return rootController;
     }
 
-    public void initializer() throws SQLException {
+    public void initializer() {
 
     }
 }
