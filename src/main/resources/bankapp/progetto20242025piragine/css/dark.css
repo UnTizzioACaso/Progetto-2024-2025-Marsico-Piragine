@@ -1,12 +1,12 @@
 /* Root principale */
 #root {
-    -fx-background-color: #2C2C2C !important;
+    -fx-background-color: black !important;
     -fx-background-radius: 12 !important;
 }
 
 /* AnchorPane interni (popup, contenitori) */
 .anchor-pane {
-    -fx-background-color: #2C2C2C !important;
+    -fx-background-color: black !important;
 }
 
 /* Label principali */
