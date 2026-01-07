@@ -1,0 +1,70 @@
+.root {
+    -fx-background-color: white;
+}
+
+.label.title {
+    -fx-font-weight: bold;
+    -fx-font-size: 38px;
+}
+
+.separator {
+    -fx-opacity: 1;
+}
+
+.button.create-card {
+    -fx-background-color: #ff0000;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-alignment: center-left;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.scroll-pane.cards-scroll {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.scroll-pane.cards-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane.cards-scroll .corner {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane.cards-scroll .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12px;
+}
+
+.scroll-pane.cards-scroll .scroll-bar:vertical .track {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px;
+}
+
+.scroll-pane.cards-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: #ff0000;
+    -fx-background-radius: 6px;
+    -fx-background-insets: 2;
+}
+
+.scroll-pane.cards-scroll .scroll-bar:vertical .increment-button,
+.scroll-pane.cards-scroll .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane.cards-scroll .scroll-bar:vertical .increment-arrow,
+.scroll-pane.cards-scroll .scroll-bar:vertical .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
