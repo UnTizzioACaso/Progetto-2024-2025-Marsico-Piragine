@@ -39,6 +39,10 @@ public class CardController extends BranchController
         cardExpirationLabel.setText(c.getExpired().toString());
         cardNumberLabel.setText("- - - -  - - - -  - - - -  " + c.getPanLast4());
     }
+    public void getNickname()
+    {
+
+    }
 
     public void setupFavourites(Card c)
     {

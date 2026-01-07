@@ -23,9 +23,7 @@ public class CardDAO {
                     card.setUserId(rs.getInt("user_id"));
                     card.setIdAccount(rs.getInt("id_account"));
                     card.setPanLast4(rs.getString("pan_last4"));
-                    card.setPanEncrypted(rs.getBytes("pan_encrypted"));
                     card.setExpired(rs.getDate("expired"));
-                    card.setCvvEncrypted(rs.getBytes("cvv_encrypted"));
                     card.setCreatedAt(rs.getTimestamp("created_at"));
                     card.setNickname(rs.getString("nickname"));
                     card.setColour(rs.getString("colour"));
@@ -56,9 +54,7 @@ public class CardDAO {
                 card.setUserId(rs.getInt("user_id"));
                 card.setIdAccount(rs.getInt("id_account"));
                 card.setPanLast4(rs.getString("pan_last4"));
-                card.setPanEncrypted(rs.getBytes("pan_encrypted"));
                 card.setExpired(rs.getDate("expired"));
-                card.setCvvEncrypted(rs.getBytes("cvv_encrypted"));
                 card.setCreatedAt(rs.getTimestamp("created_at"));
                 card.setNickname(rs.getString("nickname"));
                 card.setColour(rs.getString("colour"));
@@ -73,7 +69,7 @@ public class CardDAO {
 
     // 🔹 Inserire una nuova carta
     public static boolean insertCard(Card card) throws SQLException {
-        String sql = "INSERT INTO Card (user_id, id_account, pan_last4, pan_encrypted, expired, cvv_encrypted, nickname, colour, favourite, spending_limit, status) " +
+        String sql = "INSERT INTO Card (user_id, id_account, pan_last4, expired, nickname, colour, favourite, spending_limit, status) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -82,14 +78,12 @@ public class CardDAO {
             stmt.setInt(1, card.getUserId());
             stmt.setInt(2, card.getIdAccount());
             stmt.setString(3, card.getPanLast4());
-            stmt.setBytes(4, card.getPanEncrypted());
-            stmt.setDate(5, card.getExpired());
-            stmt.setBytes(6, card.getCvvEncrypted());
-            stmt.setString(7, card.getNickname());
-            stmt.setString(8, card.getColour());
-            stmt.setBoolean(9, card.isFavourite());
-            stmt.setBigDecimal(10, card.getSpendingLimit());
-            stmt.setBoolean(11, card.isStatus());
+            stmt.setDate(4, card.getExpired());
+            stmt.setString(5, card.getNickname());
+            stmt.setString(6, card.getColour());
+            stmt.setBoolean(7, card.isFavourite());
+            stmt.setBigDecimal(8, card.getSpendingLimit());
+            stmt.setBoolean(9, card.isStatus());
 
             int affectedRows = stmt.executeUpdate();
 
