@@ -18,6 +18,7 @@ public class AccountPopupController extends BranchController {
     @FXML
     private AnchorPane root;
 
+
     /**
      * Mostra i valori dell’utente e il tema corretto
      */
@@ -40,6 +41,8 @@ public class AccountPopupController extends BranchController {
     private void toggleTheme() {
         // Cambia tema globale e applica alla scena della popup (e alla finestra principale)
         ThemeManager.setDarkMode(root.getScene(), themeColorAccountPopupRadioButton.isSelected());
+        ThemeManager.setDarkMode(rootController.rootWindow.getScene(), themeColorAccountPopupRadioButton.isSelected());
+
 
         // Aggiorna la label
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
