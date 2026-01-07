@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine;
 
 import bankapp.progetto20242025piragine.db.DBInitializer;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,22 +12,20 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
+        // Inizializza il database
         DBInitializer.initialize();
 
+        // Carica il FXML principale
         FXMLLoader fxmlLoader = new FXMLLoader(
                 Application.class.getResource("fxml/rootWindow.fxml")
         );
 
         Scene scene = new Scene(fxmlLoader.load());
 
-        // 🎨 CSS TEMA CHIARO
-        scene.getStylesheets().add(
-                Application.class
-                        .getResource("css/light.css")
-                        .toExternalForm()
-        );
+        // Applica il tema globale (chiaro/scuro) all'apertura
+        ThemeManager.applyTheme(scene);
 
+        // Imposta le proprietà della finestra principale
         stage.setTitle("PSP bankkkkk!");
         stage.setMinWidth(650);
         stage.setMinHeight(650);
