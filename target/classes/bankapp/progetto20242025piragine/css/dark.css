@@ -1,43 +1,51 @@
-/* dark.css - Tema scuro per Account Popup */
+/* Root principale */
 #root {
-    -fx-background-color: #2C2C2C;
-    -fx-background-radius: 12;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 24, 0, 0, 8);
+    -fx-background-color: #2C2C2C !important;
+    -fx-background-radius: 12 !important;
+}
+
+/* AnchorPane interni (popup, contenitori) */
+.anchor-pane {
+    -fx-background-color: #2C2C2C !important;
 }
 
 /* Label principali */
 .label {
-    -fx-text-fill: #E0E0E0;
+    -fx-text-fill: #E0E0E0 !important;
 }
 
 /* Label secondarie / descrittive */
 #themeApplicationAccountPopupLabel {
-    -fx-text-fill: #B0B0B0;
+    -fx-text-fill: #B0B0B0 !important;
 }
 
-/* Label del tema */
 #themeColorAccountPopupLabel {
-    -fx-text-fill: #10A37F;
+    -fx-text-fill: #10A37F !important;
 }
 
 /* RadioButton */
 .radio-button {
-    -fx-text-fill: #E0E0E0;
+    -fx-text-fill: #E0E0E0 !important;
 }
 
 /* Button generico */
 .button {
-    -fx-background-radius: 8;
-    -fx-background-color: #444444;
-    -fx-text-fill: #E0E0E0;
-    -fx-font-weight: 500;
+    -fx-background-radius: 8 !important;
+    -fx-background-color: #444444 !important;
+    -fx-text-fill: #E0E0E0 !important;
+    -fx-font-weight: 500 !important;
 }
 
 /* Pulsante impostazioni */
 #settingsAccountPopupButton {
-    -fx-background-color: #10A37F;
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-background-radius: 10;
-    -fx-font-weight: 700;
+    -fx-background-color: #10A37F !important;
+    -fx-text-fill: white !important;
+    -fx-font-size: 14px !important;
+    -fx-background-radius: 10 !important;
+    -fx-font-weight: 700 !important;
+}
+
+/* Separatori */
+.separator {
+    -fx-opacity: 0.7 !important;
 }

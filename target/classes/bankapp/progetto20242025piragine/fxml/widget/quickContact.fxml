@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: #ffffff; -fx-background-radius: 26;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 26;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="52.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="52.0">
+      <Button fx:id="sendContactButton" layoutX="52.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="52.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -25,7 +25,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button layoutX="213.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="52.0">
+      <Button fx:id="requestContactButton" layoutX="213.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="52.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -37,7 +37,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Label alignment="CENTER" layoutX="41.0" layoutY="95.0" prefHeight="35.0" prefWidth="269.0" text="Ruud Gullit" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="41.0">
+      <Label fx:id="quickContactNameLabel" alignment="CENTER" layoutX="41.0" layoutY="95.0" prefHeight="35.0" prefWidth="269.0" text="Ruud Gullit" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="41.0">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
