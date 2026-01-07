@@ -11,13 +11,14 @@ import java.io.IOException;
 
 public  class RootWindowController extends BranchController {
     @FXML
-    private BorderPane rootWindow;
+    public BorderPane rootWindow;
 
     private TopbarController topbar = null;
 
     private String currentPage = "";
 
     public User user = new User();
+
 
 
     @FXML

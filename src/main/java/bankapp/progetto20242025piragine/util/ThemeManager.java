@@ -34,6 +34,7 @@ public class ThemeManager {
     public static void setDarkMode(Scene scene, boolean dark) {
         darkMode = dark;
         applyTheme(scene);
+
     }
 
     /**
