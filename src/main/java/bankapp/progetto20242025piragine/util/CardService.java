@@ -1,58 +1,58 @@
 package bankapp.progetto20242025piragine.util;
+
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
+
 import java.math.BigDecimal;
-import java.security.SecureRandom;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class CardService
-{
+public class CardService {
 
-    public static Card createCard(int userId, int idAccount, String nickname, String colour, BigDecimal spendingLimit) throws Exception {
+    /**
+     * Generates a random 4-digit string representing
+     * the last 4 digits of a credit card PAN.
+     * For testing/demo purposes only.
+     */
+    private static String generateLastFourDigits() {
+        int number = ThreadLocalRandom.current().nextInt(0, 10000);
+        return String.format("%04d", number);
+    }
 
+    public static Card createCard(
+            int userId,
+            int idAccount,
+            String nickname,
+            String colour,
+            BigDecimal spendingLimit
+    ) throws Exception {
 
-        String panLast4 = pan.substring(pan.length() - 4);
+        // Generate the last 4 digits of the PAN
+        String panLast4 = generateLastFourDigits();
 
+        // Set the card expiry date to 3 years from now
         LocalDate expiry = LocalDate.now().plusYears(3);
 
+        // Create the card object
+        Card card = new Card(
+                0,                     // id (auto-generated in DB)
+                userId,
+                idAccount,
+                panLast4,
+                Date.valueOf(expiry),
+                new Timestamp(System.currentTimeMillis()),
+                nickname,
+                colour,
+                false,                 // blocked
+                spendingLimit,
+                true                   // active
+        );
 
-        Card card = new Card(0, userId, idAccount, panLast4, Date.valueOf(expiry), new Timestamp(System.currentTimeMillis()), nickname, colour,false, spendingLimit,true );
-
+        // Insert the card into the database
         CardDAO.insertCard(card);
 
         return card;
-    }
-
-
-    public static String getFullPan(Card card) throws Exception
-    {
-        return CryptoUtil.decrypt(card.getPanEncrypted());
-    }
-
-    public static String getCvv(Card card) throws Exception
-    {
-        return CryptoUtil.decrypt(card.getCvvEncrypted());
-    }
-
-
-    private static String generatePan()
-    {
-        SecureRandom random = new SecureRandom();
-        StringBuilder pan = new StringBuilder("4"); // Visa-like
-
-        for (int i = 0; i < 15; i++)
-        {
-            pan.append(random.nextInt(10));
-        }
-        return pan.toString();
-    }
-
-    private static String generateCvv()
-    {
-        SecureRandom random = new SecureRandom();
-        int cvv = random.nextInt(900) + 100;
-        return String.valueOf(cvv);
     }
 }

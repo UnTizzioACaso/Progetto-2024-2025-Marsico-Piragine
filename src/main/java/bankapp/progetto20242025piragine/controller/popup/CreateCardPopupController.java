@@ -50,7 +50,7 @@ public class CreateCardPopupController extends BranchController
             controller = cardLoader.getController();
             controller.setRootController(rootController);
             controller.removeButtons();
-            colorMenu.setText("Bianco");
+            colorMenu.setText("white");
 
         }
         catch (IOException e)
