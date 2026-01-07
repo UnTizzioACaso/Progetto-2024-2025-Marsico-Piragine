@@ -60,7 +60,6 @@ public class Register3Controller extends BranchController {
         PasswordUtil passwordUtil = new PasswordUtil(); // creating the password utility object for hashing the password
         rootController.user.setPasswordHash( passwordUtil.hashPassword(passwordPasswordField .getText())); //hashing the password and taking it to the user object
 
-
         boolean result = UserDAO.registerUser(rootController.user); //trying to add the user to the db
 
         if (!result) //check if user got registered
@@ -68,6 +67,7 @@ public class Register3Controller extends BranchController {
             errorMessageLabel.setText("Errore durante la registrazione."); //giving message error
             return; //stopping the code
         }
+
 
 
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading home page
