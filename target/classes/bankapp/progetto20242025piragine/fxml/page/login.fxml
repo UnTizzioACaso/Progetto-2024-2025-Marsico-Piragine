@@ -26,9 +26,9 @@
     </columnConstraints>
 
     <rowConstraints>
-        <RowConstraints prefHeight="80.0" />
+        <RowConstraints prefHeight="70.0" />
         <RowConstraints vgrow="ALWAYS" />
-        <RowConstraints prefHeight="60.0" />
+        <RowConstraints prefHeight="70.0" />
     </rowConstraints>
 
 
@@ -38,7 +38,7 @@
         </image>
     </ImageView>
 
-    <Pane minWidth="-Infinity" prefHeight="57.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+    <Pane minWidth="-Infinity" prefHeight="77.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
         <effect>
             <InnerShadow choke="0.17" height="54.86" offsetX="10.0" offsetY="-10.0" radius="27.3" width="56.34">
                 <color>
@@ -47,7 +47,7 @@
             </InnerShadow>
         </effect></Pane>
 
-    <Pane minWidth="-Infinity" prefHeight="77.0" prefWidth="847.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
+    <Pane minWidth="-Infinity" prefHeight="77.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0">
         <effect>
             <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                 <color>
