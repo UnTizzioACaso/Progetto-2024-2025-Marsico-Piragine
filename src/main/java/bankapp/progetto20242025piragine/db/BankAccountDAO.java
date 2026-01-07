@@ -60,8 +60,8 @@ public class BankAccountDAO {
 
     // 🔹 Inserisce un nuovo conto
     public static boolean insertAccount(BankAccount account) throws SQLException {
-        String sql = "INSERT INTO Bank_Account (user_id, money, currency, iban, max_transfer, force_pin, check_account) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Bank_Account ( money, currency, iban, max_transfer, force_pin, check_account) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
