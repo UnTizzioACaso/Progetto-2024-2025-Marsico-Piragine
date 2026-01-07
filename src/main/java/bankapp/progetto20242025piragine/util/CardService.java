@@ -1,8 +1,6 @@
 package bankapp.progetto20242025piragine.util;
-
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
-
 import java.math.BigDecimal;
 import java.security.SecureRandom;
 import java.sql.Date;
@@ -15,17 +13,12 @@ public class CardService
     public static Card createCard(int userId, int idAccount, String nickname, String colour, BigDecimal spendingLimit) throws Exception {
 
 
-        String pan = generatePan();
-        String cvv = generateCvv();
-
         String panLast4 = pan.substring(pan.length() - 4);
 
         LocalDate expiry = LocalDate.now().plusYears(3);
 
-        byte[] panEncrypted = CryptoUtil.encrypt(pan);
-        byte[] cvvEncrypted = CryptoUtil.encrypt(cvv);
 
-        Card card = new Card(0, userId, idAccount, panLast4, panEncrypted, Date.valueOf(expiry), cvvEncrypted, new Timestamp(System.currentTimeMillis()), nickname, colour,false, spendingLimit,true );
+        Card card = new Card(0, userId, idAccount, panLast4, Date.valueOf(expiry), new Timestamp(System.currentTimeMillis()), nickname, colour,false, spendingLimit,true );
 
         CardDAO.insertCard(card);
 
