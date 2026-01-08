@@ -1,48 +1,63 @@
 /* Root principale */
 #root {
-    -fx-background-color: black !important;
-    -fx-background-radius: 12 !important;
+    -fx-background-color: #4a4a4a !important;
 }
 
-/* AnchorPane interni (popup, contenitori) */
+
 .anchor-pane {
-    -fx-background-color: black !important;
+    -fx-background-color: #4a4a4a !important;
 }
 
-/* Label principali */
+
 .label {
-    -fx-text-fill: #E0E0E0 !important;
+    -fx-text-fill: white !important;
+}
+
+.grid-pane {
+    -fx-background-color: #4a4a4a;
 }
 
 /* Label secondarie / descrittive */
 #themeApplicationAccountPopupLabel {
-    -fx-text-fill: #B0B0B0 !important;
+    -fx-text-fill: black !important;
 }
 
-#themeColorAccountPopupLabel {
-    -fx-text-fill: #10A37F !important;
+#accountAccountPopupLabel, #nameSurnameAccountPopupLabel, #emailPopupAccountLabel, #themeApplicationAccountPopupLabel {
+    -fx-text-fill: #E0E0E0 !important;
+}
+
+
+#lastFiveExpensesVBox > .Label{
+    -fx-text-fill: #E0E0E0 !important;
+}
+
+#lastFiveExpensesVBox {
+    -fx-background-color: #4a4a4a;
 }
 
 /* RadioButton */
-.radio-button {
+#themeColorAccountPopupLabel {
     -fx-text-fill: #E0E0E0 !important;
 }
 
 /* Button generico */
 .button {
-    -fx-background-radius: 8 !important;
-    -fx-background-color: #444444 !important;
-    -fx-text-fill: #E0E0E0 !important;
-    -fx-font-weight: 500 !important;
+
+    -fx-text-fill: black !important;
+
+}
+
+#favouritesCardScrollPane > .viewport {
+    -fx-background-color: #4a4a4a;
 }
 
 /* Pulsante impostazioni */
 #settingsAccountPopupButton {
-    -fx-background-color: #10A37F !important;
-    -fx-text-fill: white !important;
-    -fx-font-size: 14px !important;
-    -fx-background-radius: 10 !important;
-    -fx-font-weight: 700 !important;
+    -fx-text-fill: black !important;
+}
+
+#lastFiveExpensesTitleLabel{
+    -fx-text-fill: black !important;
 }
 
 /* Separatori */
