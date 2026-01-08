@@ -39,7 +39,6 @@ public class Register3Controller extends BranchController {
 
         if (emailRegisterTextField.getText().isEmpty() || usernameRegisterTextField.getText().isEmpty() || cellphoneRegisterTextField.getText().isEmpty() || passwordPasswordField.getText().isEmpty() || passwordConfirmPasswordField.getText().isEmpty()) //checking if all forms are compiled
         {
-
             errorMessageLabel.setText("Tutti i campi devono essere compilati!"); //giving message error
             return; //stopping the code
         }
@@ -59,7 +58,7 @@ public class Register3Controller extends BranchController {
         rootController.user.setEmail(emailRegisterTextField.getText()); //taking the email from the rispective form to the user object
         rootController.user.setUsername(usernameRegisterTextField.getText()); //taking the username from the rispective form to the user object
         rootController.user.setPhoneNumber(cellphoneRegisterTextField.getText()); //taking the phone number from the rispective form to the user object
-        PasswordUtil passwordUtil = new PasswordUtil(); // creating the password utility object for hashing the password
+        PasswordUtil passwordUtil = new PasswordUtil(); //creating the password utility object for hashing the password
         rootController.user.setPasswordHash( passwordUtil.hashPassword(passwordPasswordField .getText())); //hashing the password and taking it to the user object
 
         boolean result = UserDAO.registerUser(rootController.user); //trying to add the user to the db
@@ -69,32 +68,24 @@ public class Register3Controller extends BranchController {
             errorMessageLabel.setText("Errore durante la registrazione."); //giving message error
             return; //stopping the code
         }
-        BankAccount bankAccount = createBankAccount(rootController.user.getUserID());  // Create a bank account for the user
-        boolean accountCreated = BankAccountDAO.insertAccount(bankAccount);  // Insert the bank account into the database
+        String userEmail = rootController.user.getEmail();
+        rootController.user = UserDAO.getUserByEmail(userEmail);
+        int id = rootController.user.getUserID();
+        BankAccount bankAccount = new BankAccount(id);
+        bankAccount.setUserId(id); //Create a bank account for the user
+        boolean accountCreated = BankAccountDAO.insertAccount(bankAccount); //Insert the bank account into the database
 
         if (!accountCreated) {
-            errorMessageLabel.setText("Errore durante la creazione del conto bancario."); // Error message if account creation fails
+            errorMessageLabel.setText("Errore durante la creazione del conto bancario."); //Error message if account creation fails
+            UserDAO.deleteUserById(rootController.user.getUserID());
             return;
         }
-
 
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading home page
         rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading sidebar
         rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading topbar
     }
-    private BankAccount createBankAccount(int userId) {
-        BankAccount bankAccount = new BankAccount();
 
-        bankAccount.setUserId(userId);
-        bankAccount.setMoney(0.0);  // Initial balance
-        bankAccount.setCurrency("EUR");  // Default currency
-        bankAccount.setIban("IT00000");  // Generate a unique IBAN
-        bankAccount.setMaxTransfer(10000.0);  // Default max transfer limit
-        bankAccount.setForcePin(false);  // Initially no forced PIN
-        bankAccount.setCheckAccount("open");  // Account status: open
-
-        return bankAccount;
-    }
 
 
     @FXML
