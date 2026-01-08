@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="transactionGridPane" minHeight="5.0" vgap="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TransactionController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" />
+      <ColumnConstraints hgrow="ALWAYS" />
+   </columnConstraints>
+   <children>
+      <Label fx:id="expenseBeneficiaryLabel" text="Amazon" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="expenseDateLabel" text="30 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <GridPane.margin>
+            <Insets top="-3.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="expanseValueLabel" text="-37,87 €" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="11.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-8.0" />
+         </GridPane.margin>
+         <effect>
+            <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Label>
+   </children>
+   <rowConstraints>
+      <RowConstraints minHeight="0.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints minHeight="0.0" valignment="TOP" vgrow="ALWAYS" />
+   </rowConstraints>
+   <padding>
+      <Insets left="5.0" right="5.0" />
+   </padding>
+</GridPane>

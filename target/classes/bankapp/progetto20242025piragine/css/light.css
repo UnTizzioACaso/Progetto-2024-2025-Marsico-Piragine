@@ -18,11 +18,13 @@
 }
 .radio-button {
     -fx-text-fill: #1F1F1F !important;
+
 }
 
+
+
 .button {
-    -fx-background-color: #E6E6E6 !important;
-    -fx-text-fill: #1F1F1F !important;
+    -fx-text-fill: white !important;
 
 }
 
