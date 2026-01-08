@@ -58,33 +58,44 @@ public class BankAccountDAO {
         }
     }
 
-    // 🔹 Inserisce un nuovo conto
     public static boolean insertAccount(BankAccount account) throws SQLException {
-        String sql = "INSERT INTO Bank_Account ( money, currency, iban, max_transfer, force_pin, check_account) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        String sql = """
+        INSERT INTO Bank_Account
+        (user_id, money, currency, max_transfer, force_pin, check_account)
+        VALUES (?, ?, ?, ?, ?, ?)
+    """;
 
-            stmt.setInt(1, account.getUserId());
-            stmt.setDouble(2, account.getMoney());
-            stmt.setString(3, account.getCurrency());
-            stmt.setString(4, account.getIban());
-            stmt.setDouble(5, account.getMaxTransfer());
-            stmt.setBoolean(6, account.isForcePin());
-            stmt.setString(7, account.getCheckAccount());
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection()) {
 
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows == 0) return false;
+            // INSERT
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            try (ResultSet keys = stmt.getGeneratedKeys()) {
-                if (keys.next()) {
-                    account.setIdAccount(keys.getInt(1));
+                stmt.setInt(1, account.getUserId());
+                stmt.setDouble(2, account.getMoney());
+                stmt.setString(3, account.getCurrency());
+                stmt.setDouble(5, account.getMaxTransfer());
+                stmt.setBoolean(6, account.isForcePin());
+                stmt.setString(7, account.getCheckAccount());
+
+                int affectedRows = stmt.executeUpdate();
+                if (affectedRows == 0) return false;
+            }
+
+            // Recupero ID generato (SQLite way)
+            try (Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery("SELECT last_insert_rowid()")) {
+
+                if (rs.next()) {
+                    account.setIdAccount(rs.getInt(1));
+                    return true;
                 }
             }
-            return true;
         }
+
+        throw new SQLException("Impossibile recuperare id_account");
     }
+
 
     // 🔹 Aggiorna il saldo
     public static boolean updateBalance(int idAccount, double newBalance) throws SQLException {

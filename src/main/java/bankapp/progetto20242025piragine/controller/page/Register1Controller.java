@@ -66,8 +66,7 @@ public class Register1Controller extends BranchController {
         }
     }
 
-    @FXML
-    public void loadLogin()
+    @FXML public void loadLogin()
     {
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
