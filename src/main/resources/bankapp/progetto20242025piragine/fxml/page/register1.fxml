@@ -10,7 +10,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -21,7 +20,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register1Controller">
+<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register1Controller">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" percentWidth="50.0" />
@@ -126,17 +125,10 @@
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin></ProgressBar>
-            <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" textFill="RED" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="loginReturnLabel" alignment="CENTER" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" textFill="RED" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>
-               <effect>
-                  <DropShadow height="53.62" radius="38.17" spread="0.82" width="101.06">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </DropShadow>
-               </effect>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
