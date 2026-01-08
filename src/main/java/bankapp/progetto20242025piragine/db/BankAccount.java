@@ -1,15 +1,28 @@
 package bankapp.progetto20242025piragine.db;
 
+import bankapp.progetto20242025piragine.util.IbanGenerator;
+
+import java.sql.SQLException;
+
 public class BankAccount {
 
     private int idAccount;
     private int userId;
-    private double money;
-    private String currency;
+    private double money = 0;
+    private String currency = "EUR";
     private String iban;
-    private double maxTransfer;
-    private boolean forcePin;
-    private String checkAccount; // open / closed
+    private double maxTransfer = 50;
+    private boolean forcePin = true;
+    private String checkAccount = "open"; // open / closed
+
+    public BankAccount(int Id) throws SQLException {
+        iban = IbanGenerator.generateItalianIban();
+        while(BankAccountDAO.existsByIban(iban))
+        {
+            iban = IbanGenerator.generateItalianIban();
+        }
+        this.userId = Id;;
+    }
 
     // 🔹 Costruttore vuoto
     public BankAccount() {}

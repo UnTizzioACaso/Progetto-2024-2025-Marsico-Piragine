@@ -30,6 +30,19 @@ public class BankAccountDAO {
             }
         }
     }
+    public static boolean existsByIban(String iban) throws SQLException {
+        String sql = "SELECT 1 FROM Bank_Account WHERE iban = ? LIMIT 1";
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, iban);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next();
+            }
+        }
+    }
 
     // 🔹 Recupera account tramite id_account
     public static BankAccount getAccountById(int idAccount) throws SQLException {
@@ -59,12 +72,13 @@ public class BankAccountDAO {
     }
 
     // 🔹 Inserisce un nuovo conto
-    public static boolean insertAccount(BankAccount account) throws SQLException {
-        String sql = "INSERT INTO Bank_Account ( money, currency, iban, max_transfer, force_pin, check_account) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+    public static boolean insertAccount(BankAccount account) throws SQLException
+    {
+        String sql = "INSERT INTO Bank_Account ( user_id, money, currency, iban, max_transfer, force_pin, check_account) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
+        {
 
             stmt.setInt(1, account.getUserId());
             stmt.setDouble(2, account.getMoney());
@@ -74,14 +88,7 @@ public class BankAccountDAO {
             stmt.setBoolean(6, account.isForcePin());
             stmt.setString(7, account.getCheckAccount());
 
-            int affectedRows = stmt.executeUpdate();
-            if (affectedRows == 0) return false;
-
-            try (ResultSet keys = stmt.getGeneratedKeys()) {
-                if (keys.next()) {
-                    account.setIdAccount(keys.getInt(1));
-                }
-            }
+            stmt.executeUpdate();
             return true;
         }
     }

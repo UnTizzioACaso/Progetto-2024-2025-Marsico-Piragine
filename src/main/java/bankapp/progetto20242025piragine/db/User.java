@@ -1,6 +1,8 @@
 package bankapp.progetto20242025piragine.db;
 
 public class User {
+
+    // 🔹 Campi
     private int userID;
     private String firstName;
     private String lastName;
@@ -10,6 +12,7 @@ public class User {
     private String gender;
     private String email;
     private String passwordHash;
+    private String pinHash;
     private String phoneNumber;
     private String state;
     private String province;
@@ -17,195 +20,68 @@ public class User {
     private String address;
     private String streetNumber;
     private String cap;
-    private String pinHash;
     private boolean rememberCredentials;
     private String lastAccessDate;
     private String theme;
-    public void setUserID(int id){this.userID = id;}
-    public int getUserID() {return userID;}
-    public void setCap(String cap)
-    {
-        this.cap = cap;
-    }
-    public String getCap()
-    {
-        return this.cap;
-    }
-    public void setAddress(String address)
-    {
-        this.address = address;
-    }
-    public String getAddress()
-    {
-        return this.address;
-    }
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
-    public String getEmail()
-    {
-        return this.email;
-    }
-    public  void setPasswordHash(String passwordHash)
-    {
-        this.passwordHash = passwordHash;
-    }
-    public String getPasswordHash()
-    {
-        return this.passwordHash;
-    }
-    public  void setFirstName(String firstName)
-    {
-        this.firstName = firstName;
-    }
-    public String getFirstName()
-    {
-        return this.firstName;
-    }
-    public   void setLastName(String lastName)
-    {
-        this.lastName = lastName;
-    }
-    public String getLastName()
-    {
-        return this.lastName;
-    }
-    public  void setUsername(String userName)
-    {
-        this.username = userName;
-    }
-    public String getUsername()
-    {
-        return this.username;
-    }
-    public  void setBirthDate(String birthDate)
-    {
-        this.birthDate = birthDate;
-    }
-    public String getBirthDate()
-    {
-        return this.birthDate;
-    }
-
-    public void setBirthPlace(String birthPlace)
-    {
-        this.birthPlace = birthPlace;
-    }
-    public String getBirthPlace()
-    {
-        return this.birthPlace;
-    }
 
 
-    public void setGender(String gender)
-    {
-        this.gender = gender;
-    }
+    public int getUserID() { return userID; }
+    public void setUserID(int userID) { this.userID = userID; }
 
-    public String getGender()
-    {
-        return this.gender;
-    }
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public void setState(String state)
-    {
-        this.state = state;
-    }
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public String getState()
-    {
-        return this.state;
-    }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public void setProvince(String province)
-    {
-        this.province = province;
-    }
+    public String getBirthDate() { return birthDate; }
+    public void setBirthDate(String birthDate) { this.birthDate = birthDate; }
 
-    public String getProvince()
-    {
-        return this.province;
-    }
+    public String getBirthPlace() { return birthPlace; }
+    public void setBirthPlace(String birthPlace) { this.birthPlace = birthPlace; }
 
+    public String getGender() { return gender; }
+    public void setGender(String gender) { this.gender = gender; }
 
-    public void setCity(String city)
-    {
-        this.city = city;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getCity()
-    {
-        return this.city;
-    }
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public String getLastAccessDate()
-    {
-        return lastAccessDate;
-    }
+    public String getState() { return state; }
+    public void setState(String state) { this.state = state; }
 
-    public void setLastAccessDate(String lastAccessDate)
-    {
-        this.lastAccessDate = lastAccessDate;
-    }
+    public String getProvince() { return province; }
+    public void setProvince(String province) { this.province = province; }
 
-    public String getPhoneNumber()
-    {
-        return phoneNumber;
-    }
-    public void setPhoneNumber(String phoneNumber)
-    {
-        this.phoneNumber = phoneNumber;
-    }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
 
-    public String getTheme()
-    {
-        return theme;
-    }
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 
-    public void setTheme(String theme)
-    {
-        this.theme = theme;
-    }
+    public String getStreetNumber() { return streetNumber; }
+    public void setStreetNumber(String streetNumber) { this.streetNumber = streetNumber; }
 
-    public boolean isRememberCredentials()
-    {
-        return rememberCredentials;
-    }
+    public String getCap() { return cap; }
+    public void setCap(String cap) { this.cap = cap; }
 
-    public void setRememberCredentials (boolean rememberCredentials)
-    {
-        this.rememberCredentials = rememberCredentials;
-    }
+    public String getPasswordHash() { return passwordHash; }
+    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
 
+    public String getPinHash() { return pinHash; }
+    public void setPinHash(String pinHash) { this.pinHash = pinHash; }
 
-    public String getLastAccess()
-    {
-        return lastAccessDate;
-    }
+    public boolean isRememberCredentials() { return rememberCredentials; }
+    public void setRememberCredentials(boolean rememberCredentials) { this.rememberCredentials = rememberCredentials; }
 
-    public void setLastAccess(String lastAccess)
-    {
-        this.lastAccessDate = lastAccess;
-    }
+    public String getLastAccessDate() { return lastAccessDate; }
+    public void setLastAccessDate(String lastAccessDate) { this.lastAccessDate = lastAccessDate; }
 
-    public String getPinHash()
-    {
-        return pinHash;
-    }
-
-    public void setPinHash(String pinHash)
-    {
-        this.pinHash = pinHash;
-    }
-
-    public String getStreetNumber()
-    {
-        return streetNumber;
-    }
-
-    public void setStreetNumber(String streetNumber)
-    {
-        this.streetNumber = streetNumber;
-    }
+    public String getTheme() { return theme; }
+    public void setTheme(String theme) { this.theme = theme; }
 }
