@@ -47,8 +47,9 @@
 
 }
 
-#favouritesCardScrollPane > .viewport {
+.scroll-pane > .viewport {
     -fx-background-color: #4a4a4a;
+    -fx-background-radius: 0 15 0 15 ;
 }
 
 /* Pulsante impostazioni */
