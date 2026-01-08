@@ -86,5 +86,30 @@ public class UserDAO
         }
     }
 
+    public static User getUserByUserID(String userid) throws SQLException {
+        String sql = "SELECT * FROM User WHERE user_id = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, userid);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) return null;
+
+                User user = new User();
+                user.setUsername(rs.getString("username"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setTheme(rs.getString("theme"));
+                user.setPhoneNumber(rs.getString("phone_number"));
+                user.setGender(rs.getString("gender"));
+                user.setBirthDate(rs.getString("birth_day"));
+                user.setBirthPlace(rs.getString("birth_place"));
+                user.setCap(rs.getString("cap"));
+                return user;
+            }
+        }
+    }
+
 
 }

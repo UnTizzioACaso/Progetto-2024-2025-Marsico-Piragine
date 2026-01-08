@@ -40,6 +40,8 @@ public class CreateCardPopupController extends BranchController
         controller.updateNickname(nicknameTextField.getText());
     }
 
+
+
     @FXML
     public void initialize()
     {
