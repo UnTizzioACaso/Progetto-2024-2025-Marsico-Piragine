@@ -62,8 +62,8 @@ public class BankAccountDAO {
 
         String sql = """
         INSERT INTO Bank_Account
-        (user_id, money, currency, max_transfer, force_pin, check_account)
-        VALUES (?, ?, ?, ?, ?, ?)
+        (user_id, money, currency, max_transfer, force_pin)
+        VALUES (?, ?, ?, ?, ?)
     """;
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection()) {
@@ -74,9 +74,9 @@ public class BankAccountDAO {
                 stmt.setInt(1, account.getUserId());
                 stmt.setDouble(2, account.getMoney());
                 stmt.setString(3, account.getCurrency());
-                stmt.setDouble(5, account.getMaxTransfer());
-                stmt.setBoolean(6, account.isForcePin());
-                stmt.setString(7, account.getCheckAccount());
+                stmt.setDouble(4, account.getMaxTransfer());
+                stmt.setBoolean(5, account.isForcePin());
+
 
                 int affectedRows = stmt.executeUpdate();
                 if (affectedRows == 0) return false;
