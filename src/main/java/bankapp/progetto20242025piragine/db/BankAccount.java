@@ -9,10 +9,31 @@ public class BankAccount {
     private String iban;
     private double maxTransfer;
     private boolean forcePin;
-    private String checkAccount; // open / closed
 
     // 🔹 Costruttore vuoto
     public BankAccount() {}
+    // 🔹 Costruttore completo
+    public BankAccount(int idAccount, int userId, double money, String currency, String iban,
+                       double maxTransfer, boolean forcePin) {
+        this.idAccount = idAccount;
+        this.userId = userId;
+        this.money = money;
+        this.currency = currency;
+        this.iban = iban;
+        this.maxTransfer = maxTransfer;
+        this.forcePin = forcePin;
+    }
+
+    // 🔹 Costruttore senza idAccount (per inserimento nuovo conto)
+    public BankAccount(int userId, double money, String currency, String iban,
+                       double maxTransfer, boolean forcePin) {
+        this.userId = userId;
+        this.money = money;
+        this.currency = currency;
+        this.iban = iban;
+        this.maxTransfer = maxTransfer;
+        this.forcePin = forcePin;
+    }
 
     // 🔹 Getter & Setter
     public int getIdAccount() {
@@ -71,11 +92,4 @@ public class BankAccount {
         this.forcePin = forcePin;
     }
 
-    public String getCheckAccount() {
-        return checkAccount;
-    }
-
-    public void setCheckAccount(String checkAccount) {
-        this.checkAccount = checkAccount;
-    }
 }

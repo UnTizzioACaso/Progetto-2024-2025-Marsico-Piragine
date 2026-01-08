@@ -91,7 +91,6 @@ public class Register3Controller extends BranchController {
         bankAccount.setIban("IT00000");  // Generate a unique IBAN
         bankAccount.setMaxTransfer(10000.0);  // Default max transfer limit
         bankAccount.setForcePin(false);  // Initially no forced PIN
-        bankAccount.setCheckAccount("open");  // Account status: open
 
         return bankAccount;
     }

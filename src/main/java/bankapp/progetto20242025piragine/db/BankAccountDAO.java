@@ -24,7 +24,6 @@ public class BankAccountDAO {
                 account.setIban(rs.getString("iban"));
                 account.setMaxTransfer(rs.getDouble("max_transfer"));
                 account.setForcePin(rs.getBoolean("force_pin"));
-                account.setCheckAccount(rs.getString("check_account"));
 
                 return account;
             }
@@ -51,7 +50,6 @@ public class BankAccountDAO {
                 account.setIban(rs.getString("iban"));
                 account.setMaxTransfer(rs.getDouble("max_transfer"));
                 account.setForcePin(rs.getBoolean("force_pin"));
-                account.setCheckAccount(rs.getString("check_account"));
 
                 return account;
             }
@@ -59,7 +57,10 @@ public class BankAccountDAO {
     }
 
     public static boolean insertAccount(BankAccount account) throws SQLException {
-
+        // Verifica se l'utente ha già un conto
+        if (getAccountByUserId(account.getUserId()) != null) {
+            throw new SQLException("L'utente ha già un conto.");
+        }
         String sql = """
         INSERT INTO Bank_Account
         (user_id, money, currency, max_transfer, force_pin)

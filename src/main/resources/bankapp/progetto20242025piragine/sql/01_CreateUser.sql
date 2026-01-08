@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS User (
     phone_number INTEGER NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
     username TEXT UNIQUE NOT NULL,
-    --tax_code TEXT UNIQUE NOT NULL CHECK (LENGTH(tax_code) = 16),
     password_hash TEXT ,
     pin_hash TEXT ,
     remember_credentials BOOLEAN DEFAULT FALSE,
