@@ -24,8 +24,22 @@ public class BankAccountDAO {
                 account.setIban(rs.getString("iban"));
                 account.setMaxTransfer(rs.getDouble("max_transfer"));
                 account.setForcePin(rs.getBoolean("force_pin"));
+                account.setCheckAccount(rs.getString("check_account"));
 
                 return account;
+            }
+        }
+    }
+    public static boolean existsByIban(String iban) throws SQLException {
+        String sql = "SELECT 1 FROM Bank_Account WHERE iban = ? LIMIT 1";
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, iban);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next();
             }
         }
     }
@@ -50,53 +64,34 @@ public class BankAccountDAO {
                 account.setIban(rs.getString("iban"));
                 account.setMaxTransfer(rs.getDouble("max_transfer"));
                 account.setForcePin(rs.getBoolean("force_pin"));
+                account.setCheckAccount(rs.getString("check_account"));
 
                 return account;
             }
         }
     }
 
-    public static boolean insertAccount(BankAccount account) throws SQLException {
-        // Verifica se l'utente ha già un conto
-        if (getAccountByUserId(account.getUserId()) != null) {
-            throw new SQLException("L'utente ha già un conto.");
+    // 🔹 Inserisce un nuovo conto
+    public static boolean insertAccount(BankAccount account) throws SQLException
+    {
+        String sql = "INSERT INTO Bank_Account ( user_id, money, currency, iban, max_transfer, force_pin, check_account) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+
+            stmt.setInt(1, account.getUserId());
+            stmt.setDouble(2, account.getMoney());
+            stmt.setString(3, account.getCurrency());
+            stmt.setString(4, account.getIban());
+            stmt.setDouble(5, account.getMaxTransfer());
+            stmt.setBoolean(6, account.isForcePin());
+            stmt.setString(7, account.getCheckAccount());
+
+            stmt.executeUpdate();
+            return true;
         }
-        String sql = """
-        INSERT INTO Bank_Account
-        (user_id, money, currency, max_transfer, force_pin)
-        VALUES (?, ?, ?, ?, ?)
-    """;
-
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection()) {
-
-            // INSERT
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-                stmt.setInt(1, account.getUserId());
-                stmt.setDouble(2, account.getMoney());
-                stmt.setString(3, account.getCurrency());
-                stmt.setDouble(4, account.getMaxTransfer());
-                stmt.setBoolean(5, account.isForcePin());
-
-
-                int affectedRows = stmt.executeUpdate();
-                if (affectedRows == 0) return false;
-            }
-
-            // Recupero ID generato (SQLite way)
-            try (Statement stmt = conn.createStatement();
-                 ResultSet rs = stmt.executeQuery("SELECT last_insert_rowid()")) {
-
-                if (rs.next()) {
-                    account.setIdAccount(rs.getInt(1));
-                    return true;
-                }
-            }
-        }
-
-        throw new SQLException("Impossibile recuperare id_account");
     }
-
 
     // 🔹 Aggiorna il saldo
     public static boolean updateBalance(int idAccount, double newBalance) throws SQLException {

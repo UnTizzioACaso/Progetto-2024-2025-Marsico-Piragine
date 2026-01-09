@@ -1,39 +1,31 @@
 package bankapp.progetto20242025piragine.db;
 
+import bankapp.progetto20242025piragine.util.IbanGenerator;
+
+import java.sql.SQLException;
+
 public class BankAccount {
 
     private int idAccount;
     private int userId;
-    private double money;
-    private String currency;
+    private double money = 0;
+    private String currency = "EUR";
     private String iban;
-    private double maxTransfer;
-    private boolean forcePin;
+    private double maxTransfer = 50;
+    private boolean forcePin = true;
+    private String checkAccount = "open"; // open / closed
+
+    public BankAccount(int Id) throws SQLException {
+        iban = IbanGenerator.generateItalianIban();
+        while(BankAccountDAO.existsByIban(iban))
+        {
+            iban = IbanGenerator.generateItalianIban();
+        }
+        this.userId = Id;;
+    }
 
     // 🔹 Costruttore vuoto
     public BankAccount() {}
-    // 🔹 Costruttore completo
-    public BankAccount(int idAccount, int userId, double money, String currency, String iban,
-                       double maxTransfer, boolean forcePin) {
-        this.idAccount = idAccount;
-        this.userId = userId;
-        this.money = money;
-        this.currency = currency;
-        this.iban = iban;
-        this.maxTransfer = maxTransfer;
-        this.forcePin = forcePin;
-    }
-
-    // 🔹 Costruttore senza idAccount (per inserimento nuovo conto)
-    public BankAccount(int userId, double money, String currency, String iban,
-                       double maxTransfer, boolean forcePin) {
-        this.userId = userId;
-        this.money = money;
-        this.currency = currency;
-        this.iban = iban;
-        this.maxTransfer = maxTransfer;
-        this.forcePin = forcePin;
-    }
 
     // 🔹 Getter & Setter
     public int getIdAccount() {
@@ -92,4 +84,11 @@ public class BankAccount {
         this.forcePin = forcePin;
     }
 
+    public String getCheckAccount() {
+        return checkAccount;
+    }
+
+    public void setCheckAccount(String checkAccount) {
+        this.checkAccount = checkAccount;
+    }
 }
