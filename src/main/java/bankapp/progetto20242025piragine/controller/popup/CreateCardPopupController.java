@@ -31,7 +31,7 @@ public class CreateCardPopupController extends BranchController
     public void createCard() throws Exception
     {
         BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
-        CardService.createCard(rootController.user.getUserID(), bankAccount.getIdAccount(), nicknameTextField.getText(), colorMenu.getText(), new BigDecimal(spendingLimitTextField.getText()+",00"));
+        CardService.createCard(rootController.user.getUserID(), bankAccount.getIdAccount(), nicknameTextField.getText(), colorMenu.getText(), new BigDecimal(spendingLimitTextField.getText()+".00"));
     }
 
     @FXML

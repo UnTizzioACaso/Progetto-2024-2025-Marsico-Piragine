@@ -70,7 +70,7 @@ public class CardDAO {
     // 🔹 Inserire una nuova carta
     public static boolean insertCard(Card card) throws SQLException {
         String sql = "INSERT INTO Card (user_id, id_account, pan_last4, expired, nickname, colour, favourite, spending_limit, status) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
