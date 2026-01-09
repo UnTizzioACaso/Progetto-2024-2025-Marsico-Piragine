@@ -116,10 +116,13 @@
                 </items>
             </ChoiceBox>
              <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 1 di 3" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="12.0" prefWidth="270.0" style="-fx-font-weight: bold;" text="Registrazione 1 di 3" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
             </Label>
             <ProgressBar fx:id="registerProgressBar" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="20.0" prefWidth="290.0" progress="0.33" style="-fx-accent: ff0000; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                <GridPane.margin>
@@ -136,12 +139,12 @@
                   <Insets bottom="35.0" />
                </GridPane.margin>
             </Label>
-            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="(Anagrafe)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="23.0" prefWidth="270.0" style="-fx-font-weight: bold;" text="(Anagrafe)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
                <GridPane.margin>
-                  <Insets bottom="-55.0" />
+                  <Insets bottom="-40.0" />
                </GridPane.margin>
             </Label>
          </children>

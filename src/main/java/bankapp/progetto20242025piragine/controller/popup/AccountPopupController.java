@@ -9,42 +9,48 @@ import javafx.scene.layout.AnchorPane;
 
 public class AccountPopupController extends BranchController {
 
+    // Labels used to display user's email, selected theme and full name
     @FXML
     private Label emailPopupAccountLabel, themeColorAccountPopupLabel, nameSurnameAccountPopupLabel;
 
+    // RadioButton used to toggle between light and dark theme
     @FXML
     public RadioButton themeColorAccountPopupRadioButton;
 
+    // Root pane of the popup, used to apply theme changes
     @FXML
     private AnchorPane root;
 
-
-    /**
-     * Mostra i valori dell’utente e il tema corretto
-     */
+    // Fills the popup with the correct user data and current theme
     public void showCorrectValues() {
+        // Display user's email
         emailPopupAccountLabel.setText(rootController.user.getEmail());
+
+        // Display user's full name
         nameSurnameAccountPopupLabel.setText(rootController.user.getFirstName() + " " + rootController.user.getLastName());
 
+        // Check if the user's theme is dark
         boolean dark = "Scuro".equalsIgnoreCase(rootController.user.getTheme());
+
+        // Update radio button and theme label based on user's theme
         themeColorAccountPopupRadioButton.setSelected(dark);
         themeColorAccountPopupLabel.setText(dark ? "Scuro" : "Chiaro");
 
-        // Applica il tema globale alla scena della popup
+        // Apply the selected theme to the popup scene
         ThemeManager.setDarkMode(root.getScene(), dark);
     }
 
-    /**
-     * Chiamato quando l’utente clicca il RadioButton per cambiare tema
-     */
+    // Handles theme switching when the radio button is toggled
     @FXML
     private void toggleTheme() {
-        // Cambia tema globale e applica alla scena della popup (e alla finestra principale)
+
+        // Apply the selected theme to the popup window
         ThemeManager.setDarkMode(root.getScene(), themeColorAccountPopupRadioButton.isSelected());
+
+        // Apply the selected theme to the main application window
         ThemeManager.setDarkMode(rootController.rootWindow.getScene(), themeColorAccountPopupRadioButton.isSelected());
 
-
-        // Aggiorna la label
+        // Update the theme label text based on the selected theme
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
     }
 }

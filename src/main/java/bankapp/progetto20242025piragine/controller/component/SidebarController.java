@@ -38,6 +38,7 @@ public class SidebarController extends BranchController {
             popupStage.setTitle("Account"); //setting the title
             popupStage.setMinWidth(420); //setting popup's minimum width
             popupStage.setMinHeight(300); //setting popup's minimum height
+            popupStage.setResizable(false);
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed

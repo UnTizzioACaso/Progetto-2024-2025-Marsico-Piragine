@@ -20,55 +20,90 @@ import java.util.List;
 
 public class CardPageController extends BranchController
 {
+    // VBox that will contain all the user's cards
     @FXML
     VBox cardsContainerVBox;
 
-
-
+    // Opens the popup to create a new card
     @FXML
     public void openCreateCard()
     {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml")); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            CreateCardPopupController controller = loader.getController(); //getting the controller from the loader
-            controller.setRootController(rootController);
-            Stage popupStage = new Stage(); //creating a new stage for the accountPopup
-            popupStage.setTitle("Crea e personalizza la carta"); //setting the title
-            popupStage.setMinWidth(500); //setting popup's minimum width
-            popupStage.setMinHeight(400); //setting popup's minimum height
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            popupStage.setScene(new Scene(root));
-            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
+        try
+        {
+            // Load the create card popup FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml"));
 
+            // Create the root node from the FXML
+            Parent root = loader.load();
+
+            // Retrieve the popup controller
+            CreateCardPopupController controller = loader.getController();
+            controller.setRootController(rootController);
+
+            // Create a new stage for the popup
+            Stage popupStage = new Stage();
+            popupStage.setTitle("Crea e personalizza la carta");
+
+            // Set minimum popup dimensions
+            popupStage.setMinWidth(500);
+            popupStage.setMinHeight(400);
+
+            // Block interaction with other windows until the popup is closed
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Set the scene and show the popup
+            popupStage.setScene(new Scene(root));
+            popupStage.showAndWait(); // Blocks execution until popup is closed
         }
         catch (IOException e)
         {
-            System.err.println("error loading the create card popup" + e.getMessage());
+            // Handle errors while loading the popup
+            System.err.println("error loading the create card popup: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
+    // Called automatically when the page is initialized
     @Override
-    public void initializer() {
-        try {
+    public void initializer()
+    {
+        try
+        {
+            // Retrieve all cards associated with the logged-in user
             List<Card> cards = CardDAO.getCardsByUserId(rootController.user.getUserID());
 
-            for (int i = 0; i < cards.size(); i++) {
-                try {
+            // Create a UI component for each card
+            for (int i = 0; i < cards.size(); i++)
+            {
+                try
+                {
+                    // Load the credit card rectangle component
                     FXMLLoader cardRectangleLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/creditCardRectangle.fxml"));
+
+                    // Create the node from the FXML
                     Node cardRectangle = cardRectangleLoader.load();
+
+                    // Get the controller for the card component
                     CreditCardRectangleController controller = cardRectangleLoader.getController();
                     controller.setRootController(rootController);
+
+                    // Fill the card component with data
                     controller.fill(cards.get(i));
+
+                    // Add the card component to the VBox
                     cardsContainerVBox.getChildren().add(cardRectangle);
-                } catch (IOException e) {
-                    System.err.println("error loading the credit card rectangle" + e.getMessage());
+                }
+                catch (IOException e)
+                {
+                    // Handle errors while loading card components
+                    System.err.println("error loading the credit card rectangle: " + e.getMessage());
                     e.printStackTrace();
                 }
             }
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
+            // Handle database errors
             throw new RuntimeException(e);
         }
     }
