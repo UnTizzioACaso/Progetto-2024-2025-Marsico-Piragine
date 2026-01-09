@@ -108,21 +108,24 @@
                   <Insets left="10.0" />
                </padding>
             </TextField>
-            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="Registrazione 2 di 3" wrapText="true" GridPane.columnIndex="1">
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="32.0" prefWidth="270.0" style="-fx-font-weight: bold;" text="Registrazione 2 di 3" wrapText="true" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
             </Label>
             <ProgressBar fx:id="registerProgressBar" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="20.0" prefWidth="290.0" progress="0.66" style="-fx-accent: ff0000; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin></ProgressBar>
-            <Label maxWidth="300.0" minWidth="270.0" prefHeight="92.0" prefWidth="300.0" style="-fx-font-weight: bold;" text="(Residenza)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <Label maxWidth="300.0" minWidth="270.0" prefHeight="25.0" prefWidth="270.0" style="-fx-font-weight: bold;" text="(Residenza)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
                <GridPane.margin>
-                  <Insets bottom="-55.0" />
+                  <Insets bottom="-47.0" />
                </GridPane.margin>
             </Label>
             <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" textFill="RED" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="8">
