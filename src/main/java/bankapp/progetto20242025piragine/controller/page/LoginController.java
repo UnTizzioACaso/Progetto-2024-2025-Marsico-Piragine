@@ -1,6 +1,5 @@
 package bankapp.progetto20242025piragine.controller.page;
 
-
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.User;
 import bankapp.progetto20242025piragine.db.UserDAO;
@@ -14,79 +13,104 @@ import java.sql.SQLException;
 
 public class LoginController extends BranchController {
 
+    // TextField for the user's email input
     @FXML
     private TextField emailLoginTextField;
 
+    // PasswordField used when the password is hidden
     @FXML
     private PasswordField passwordLoginPasswordField;
 
+    // TextField used when the password is shown in plain text
     @FXML
     private TextField passwordLoginTextField;
 
+    // Label used to display login error messages
     @FXML
     private Label accessErrorMessageLabel;
 
+    // Loads the first registration page
     @FXML
-    public void loadRegisterPage() //switching to the register section
+    public void loadRegisterPage() // switching to the register section
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register1.fxml"); //loading first register page
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register1.fxml"); // loading first register page
     }
 
+    // Attempts to log the user in and load the home page
     @FXML
-    public void loadHomePage() throws SQLException //giving access to the homepage
+    public void loadHomePage() throws SQLException // giving access to the homepage
     {
-        if(passwordLoginPasswordField.isDisabled()) {
-            //if (passwordLoginTextField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$") && emailLoginTextField.getText().matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) //checking if the password and the email are valid
-            //{
-            if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginTextField.getText())) {
-                rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
-                rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading the sidebar
-                rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading the topbar
-                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
-            }
-            // }
-            //else
+        // Check if the password is currently shown in plain text
+        if(passwordLoginPasswordField.isDisabled())
+        {
+            // Login check using the visible password TextField
+            if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginTextField.getText()))
             {
-                accessErrorMessageLabel.setText("credenziali errate riprova"); //giving the message error if the password or email is not valid
+                // Retrieve the logged-in user from the database
+                rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
+
+                // Load application UI components after successful login
+                rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
+                rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
+                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
+            }
+
+            // Display error message if login fails
+            {
+                accessErrorMessageLabel.setText("credenziali errate riprova"); // error message for invalid credentials
             }
         }
         else
         {
-            if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginPasswordField.getText())) {
-                rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
-                rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); //loading the sidebar
-                rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); //loading the topbar
-                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); //loading the home page
-            }
-            // }
-            //else
+            // Login check using the hidden PasswordField
+            if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginPasswordField.getText()))
             {
-                accessErrorMessageLabel.setText("credenziali errate riprova"); //giving the message error if the password or email is not valid
+                // Retrieve the logged-in user from the database
+                rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
+
+                // Load application UI components after successful login
+                rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
+                rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
+                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
+            }
+
+            // Display error message if login fails
+            {
+                accessErrorMessageLabel.setText("credenziali errate riprova"); // error message for invalid credentials
             }
         }
     }
 
+    // Toggles password visibility between hidden and plain text
     @FXML
     public void showPassword()
     {
+        // If the password is currently hidden
         if(passwordLoginTextField.isDisabled())
         {
+            // Show password as plain text
             passwordLoginTextField.setDisable(false);
             passwordLoginTextField.setVisible(true);
+
+            // Hide PasswordField
             passwordLoginPasswordField.setDisable(true);
             passwordLoginPasswordField.setVisible(false);
+
+            // Copy password value to the visible TextField
             passwordLoginTextField.setText(passwordLoginPasswordField.getText());
         }
         else
         {
+            // Hide plain text password
             passwordLoginTextField.setDisable(true);
             passwordLoginTextField.setVisible(false);
+
+            // Show PasswordField
             passwordLoginPasswordField.setDisable(false);
             passwordLoginPasswordField.setVisible(true);
+
+            // Copy password value back to the PasswordField
             passwordLoginPasswordField.setText(passwordLoginTextField.getText());
         }
     }
-
-
-
 }

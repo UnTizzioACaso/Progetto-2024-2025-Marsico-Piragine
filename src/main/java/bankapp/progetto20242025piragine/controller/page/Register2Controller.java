@@ -6,55 +6,65 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
-
 public class Register2Controller extends BranchController {
 
+    // TextField for street name
     @FXML
     TextField streetRegisterTextField;
 
+    // Label used to display validation error messages
     @FXML
     Label errorMessageLabel;
 
+    // TextField for postal code (CAP)
     @FXML
     TextField CapTextField;
 
+    // TextField for state
     @FXML
     TextField stateRegisterTextField;
 
+    // TextField for province
     @FXML
     TextField provinceRegisterTextField;
 
+    // TextField for house/street number
     @FXML
     TextField houseNumberRegisterTextField;
 
+    // TextField for city
     @FXML
     TextField cityRegisterTextField1;
 
+    // Validates address data and loads the third registration page
     @FXML
-    public void loadRegisterPage2() //loading the register page n.2
+    public void loadRegisterPage2() // loading the second registration page
     {
-        if (streetRegisterTextField.getText().isEmpty()  || CapTextField.getText().isEmpty() || stateRegisterTextField.getText().isEmpty() || provinceRegisterTextField.getText().isEmpty()|| houseNumberRegisterTextField.getText().isEmpty()|| cityRegisterTextField1.getText() == null) //checking if all forms are compiled
+        // Check if all required address fields are filled
+        if (streetRegisterTextField.getText().isEmpty() || CapTextField.getText().isEmpty() || stateRegisterTextField.getText().isEmpty() || provinceRegisterTextField.getText().isEmpty() || houseNumberRegisterTextField.getText().isEmpty() || cityRegisterTextField1.getText() == null)
         {
-            errorMessageLabel.setText("Tutti i campi devono essere compilati!");} //giving the message error
-
+            errorMessageLabel.setText("Tutti i campi devono essere compilati!"); // error message if any field is empty
+        }
         else
         {
-            rootController.user.setAddress(streetRegisterTextField.getText()); //setting the address parameter to the User obj
-            rootController.user.setCap(CapTextField.getText()); //setting the cap parameter to the User obj
-            rootController.user.setState(stateRegisterTextField.getText()); //setting the state parameter to the User obj
-            rootController.user.setProvince(provinceRegisterTextField.getText()); //setting the province parameter to the User obj
-            rootController.user.setCity(cityRegisterTextField1.getText()); //setting the province parameter to the User obj
-            rootController.user.setStreetNumber(houseNumberRegisterTextField.getText()); //setting the street number parameter to the User obj
-            rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register3.fxml"); //loading next registerer page, is triggered by the enterRegisterButton's on action event
+            // Save address information into the shared User object
+            rootController.user.setAddress(streetRegisterTextField.getText()); // set user's street address
+            rootController.user.setCap(CapTextField.getText()); // set user's postal code (CAP)
+            rootController.user.setState(stateRegisterTextField.getText()); // set user's state
+            rootController.user.setProvince(provinceRegisterTextField.getText()); // set user's province
+            rootController.user.setCity(cityRegisterTextField1.getText()); // set user's city
+            rootController.user.setStreetNumber(houseNumberRegisterTextField.getText()); // set user's house number
+
+            // Load the next registration page
+            rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register3.fxml");
         }
     }
 
+    // Returns to the login page and resets the User object
     @FXML
     public void loadLogin()
     {
-        rootController.user = new User();
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
+        rootController.user = new User(); // reset user data
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml"); // load login page
     }
-
 }
-
