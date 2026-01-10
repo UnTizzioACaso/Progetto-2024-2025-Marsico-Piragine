@@ -51,10 +51,13 @@ public class CreatePinPopupController extends BranchController
             return;
         }
 
+        // Hash and set the user's PIN
+        rootController.user.setPinHash(PasswordUtil.hashPassword(insertPinPasswordField.getText()));
+
         // Try to register the user in the database
         try
         {
-            boolean result = UserDAO.registerUser(rootController.user); // Insert user into DB
+            boolean result = UserDAO.registerUser(rootController.user);// Insert user into DB
             if (!result) // Registration failed
             {
                 errorMessageLabel.setText("Errore durante la registrazione.");
@@ -71,8 +74,7 @@ public class CreatePinPopupController extends BranchController
         // Try to create the bank account for the newly registered user
         try
         {
-            // Hash and set the user's PIN
-            rootController.user.setPinHash(PasswordUtil.hashPassword(insertPinPasswordField.getText()));
+
 
             // Reload user from database to retrieve generated ID
             String userEmail = rootController.user.getEmail();

@@ -23,7 +23,7 @@ public class Application extends javafx.application.Application {
         Scene scene = new Scene(fxmlLoader.load());
 
         // Applica il tema globale (chiaro/scuro) all'apertura
-        ThemeManager.applyTheme(scene);
+        ThemeManager.applyTheme(scene, "light");
 
         // Imposta le proprietà della finestra principale
         stage.setTitle("PSP bankkkkk!");

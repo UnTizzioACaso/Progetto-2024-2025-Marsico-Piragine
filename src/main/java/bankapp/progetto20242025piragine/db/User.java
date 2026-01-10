@@ -20,9 +20,9 @@ public class User {
     private String address;
     private String streetNumber;
     private String cap;
-    private boolean rememberCredentials;
+    private boolean rememberCredentials = false;
     private String lastAccessDate;
-    private String theme;
+    private String theme = "Light";
 
 
     public int getUserID() { return userID; }
