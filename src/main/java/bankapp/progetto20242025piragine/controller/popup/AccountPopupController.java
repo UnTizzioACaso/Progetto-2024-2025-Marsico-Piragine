@@ -1,11 +1,14 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.db.UserDAO;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+
+import java.sql.SQLException;
 
 public class AccountPopupController extends BranchController {
 
@@ -29,28 +32,41 @@ public class AccountPopupController extends BranchController {
         // Display user's full name
         nameSurnameAccountPopupLabel.setText(rootController.user.getFirstName() + " " + rootController.user.getLastName());
 
-        // Check if the user's theme is dark
-        boolean dark = "Scuro".equalsIgnoreCase(rootController.user.getTheme());
-
         // Update radio button and theme label based on user's theme
-        themeColorAccountPopupRadioButton.setSelected(dark);
-        themeColorAccountPopupLabel.setText(dark ? "Scuro" : "Chiaro");
+        if(rootController.user.getTheme().equals("light")) {themeColorAccountPopupRadioButton.setSelected(false);}
+        if(rootController.user.getTheme().equals("dark")) {themeColorAccountPopupRadioButton.setSelected(true);}
+        themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
 
         // Apply the selected theme to the popup scene
-        ThemeManager.setDarkMode(root.getScene(), dark);
+        ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
     }
 
     // Handles theme switching when the radio button is toggled
     @FXML
-    private void toggleTheme() {
-
-        // Apply the selected theme to the popup window
-        ThemeManager.setDarkMode(root.getScene(), themeColorAccountPopupRadioButton.isSelected());
-
-        // Apply the selected theme to the main application window
-        ThemeManager.setDarkMode(rootController.rootWindow.getScene(), themeColorAccountPopupRadioButton.isSelected());
+    private void toggleTheme()
+    {
 
         // Update the theme label text based on the selected theme
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
+        String themeColor = themeColorAccountPopupRadioButton.isSelected() ? "dark" : "light";
+        rootController.user.setTheme(themeColor);
+
+        try
+        {
+            UserDAO.updateUserTheme(rootController.user.getUserID(), themeColor);
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during updating" + e.getMessage());
+            e.printStackTrace();
+            return;
+        }
+
+        // Apply the selected theme to the popup window
+        ThemeManager.applyTheme(root.getScene(), themeColor);
+
+        // Apply the selected theme to the main application window
+        ThemeManager.applyTheme(rootController.rootWindow.getScene(), themeColor);
+
     }
 }

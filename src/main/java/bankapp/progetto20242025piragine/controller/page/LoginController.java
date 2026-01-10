@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.controller.page;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.User;
 import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -16,6 +17,9 @@ public class LoginController extends BranchController {
     // TextField for the user's email input
     @FXML
     private TextField emailLoginTextField;
+
+    @FXML
+    private GridPane loginRootGridPane;
 
     // PasswordField used when the password is hidden
     @FXML
@@ -67,6 +71,9 @@ public class LoginController extends BranchController {
             {
                 // Retrieve the logged-in user from the database
                 rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
+
+                // Setting correct theme
+                ThemeManager.applyTheme(loginRootGridPane.getScene(), rootController.user.getTheme());
 
                 // Load application UI components after successful login
                 rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar

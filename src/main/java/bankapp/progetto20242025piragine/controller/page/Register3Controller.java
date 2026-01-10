@@ -77,7 +77,6 @@ public class Register3Controller extends BranchController {
         rootController.user.setUsername(usernameRegisterTextField.getText()); // set user's username
         rootController.user.setPhoneNumber(cellphoneRegisterTextField.getText()); // set user's phone number
         rootController.user.setPasswordHash(PasswordUtil.hashPassword(passwordPasswordField.getText())); // hash and store user's password
-
         try {
             // Load the create PIN popup FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/createPinPopup.fxml"));
