@@ -26,6 +26,40 @@ public class UserDAO
         }
     }
 
+    public static boolean deleteUserById(int userId) throws SQLException {
+
+        String sql = "DELETE FROM User WHERE user_id = ?";
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, userId);
+
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0;
+        }
+    }
+
+    public static boolean updateUserTheme(int userId, String theme) throws SQLException
+    {
+        // Allow only valid theme values
+        if (!"light".equalsIgnoreCase(theme) && !"dark".equalsIgnoreCase(theme))
+        {
+            throw new IllegalArgumentException("Theme must be 'light' or 'dark'");
+        }
+
+        String sql = "UPDATE User SET theme = ? WHERE user_id = ?";
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+            stmt.setString(1, theme.toLowerCase()); // normalize value
+            stmt.setInt(2, userId);
+
+            return stmt.executeUpdate() > 0; // true if at least one row was updated
+        }
+    }
+
 
     public static boolean registerUser(User user) throws SQLException
     {
@@ -66,6 +100,42 @@ public class UserDAO
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) return null;
+
+                User user = new User();
+                user.setUserID(rs.getInt("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setPasswordHash(rs.getString("password_hash"));
+                user.setPinHash(rs.getString("pin_hash"));
+                user.setTheme(rs.getString("theme"));
+                user.setPhoneNumber(rs.getString("phone_number"));
+                user.setGender(rs.getString("gender"));
+                user.setBirthDate(rs.getString("birth_day"));
+                user.setBirthPlace(rs.getString("birth_place"));
+                user.setState(rs.getString("state"));
+                user.setProvince(rs.getString("province"));
+                user.setCity(rs.getString("city"));
+                user.setAddress(rs.getString("address"));
+                user.setStreetNumber(rs.getString("street_number"));
+                user.setCap(rs.getString("cap"));
+                user.setRememberCredentials(rs.getBoolean("remember_credentials"));
+                user.setLastAccessDate(rs.getString("last_access_date"));
+
+                return user;
+            }
+        }
+    }
+
+    public static User getUserByUserID(String userid) throws SQLException {
+        String sql = "SELECT * FROM User WHERE user_id = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, userid);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
 
