@@ -34,7 +34,9 @@ public class AccountPopupController extends BranchController {
 
         // Update radio button and theme label based on user's theme
         if(rootController.user.getTheme().equals("light")) {themeColorAccountPopupRadioButton.setSelected(false);}
-        if(rootController.user.getTheme().equals("dark")) {themeColorAccountPopupRadioButton.setSelected(true);}
+        else if(rootController.user.getTheme().equals("dark")) {themeColorAccountPopupRadioButton.setSelected(true);}
+
+        // Update theme color label based on radio button
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
 
         // Apply the selected theme to the popup scene
@@ -45,7 +47,6 @@ public class AccountPopupController extends BranchController {
     @FXML
     private void toggleTheme()
     {
-
         // Update the theme label text based on the selected theme
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
         String themeColor = themeColorAccountPopupRadioButton.isSelected() ? "dark" : "light";
@@ -67,6 +68,5 @@ public class AccountPopupController extends BranchController {
 
         // Apply the selected theme to the main application window
         ThemeManager.applyTheme(rootController.rootWindow.getScene(), themeColor);
-
     }
 }

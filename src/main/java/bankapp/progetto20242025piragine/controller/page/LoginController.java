@@ -3,8 +3,10 @@ package bankapp.progetto20242025piragine.controller.page;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.User;
 import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.util.RememberMeUtil;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -20,6 +22,9 @@ public class LoginController extends BranchController {
 
     @FXML
     private GridPane loginRootGridPane;
+
+    @FXML
+    private CheckBox rememberAccessCheckBox;
 
     // PasswordField used when the password is hidden
     @FXML
@@ -57,8 +62,16 @@ public class LoginController extends BranchController {
                 rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
                 rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
                 rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
+                ThemeManager.applyTheme(rootController.rootWindow.getScene(), rootController.user.getTheme());
             }
 
+            if (rememberAccessCheckBox.isSelected())
+            {
+                try {RememberMeUtil.saveEmail(emailLoginTextField.getText());}
+                catch (Exception e) {System.out.println("error during email storing "+ e); e.printStackTrace();}
+                return;
+            }
+            RememberMeUtil.deleteSavedEmail();
             // Display error message if login fails
             {
                 accessErrorMessageLabel.setText("credenziali errate riprova"); // error message for invalid credentials
@@ -72,13 +85,20 @@ public class LoginController extends BranchController {
                 // Retrieve the logged-in user from the database
                 rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
 
-                // Setting correct theme
-                ThemeManager.applyTheme(loginRootGridPane.getScene(), rootController.user.getTheme());
 
                 // Load application UI components after successful login
                 rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
                 rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
                 rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
+                ThemeManager.applyTheme(rootController.rootWindow.getScene(), rootController.user.getTheme());
+
+                if (rememberAccessCheckBox.isSelected())
+                    {
+                        try {RememberMeUtil.saveEmail(emailLoginTextField.getText());}
+                        catch (Exception e) {System.out.println("error during email storing "+ e); e.printStackTrace();}
+                        return;
+                    }
+                RememberMeUtil.deleteSavedEmail();
             }
 
             // Display error message if login fails
@@ -87,6 +107,13 @@ public class LoginController extends BranchController {
             }
         }
     }
+
+    @FXML
+    public void deleteEmail() throws SQLException
+    {
+        if(!(rememberAccessCheckBox.isSelected())){RememberMeUtil.deleteSavedEmail();}
+    }
+
 
     // Toggles password visibility between hidden and plain text
     @FXML
@@ -120,4 +147,13 @@ public class LoginController extends BranchController {
             passwordLoginPasswordField.setText(passwordLoginTextField.getText());
         }
     }
+
+    @FXML
+    public void initialize()
+    {
+        emailLoginTextField.setText(RememberMeUtil.loadSavedEmail());
+        if(emailLoginTextField.getText()==(null)) {rememberAccessCheckBox.setSelected(false);}
+        else{rememberAccessCheckBox.setSelected(true);}
+    }
+
 }
