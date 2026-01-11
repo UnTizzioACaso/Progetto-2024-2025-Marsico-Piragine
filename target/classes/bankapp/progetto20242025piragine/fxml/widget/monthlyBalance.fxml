@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="monthlyBalanceGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="202.0" prefWidth="200.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="88.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="91.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <Pane prefHeight="38.0" prefWidth="339.0" style="-fx-background-radius: 15 15 0 0; -fx-background-color: red;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="6.0" text="Bilancio mensile" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
+      <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
          <effect>
             <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
@@ -25,71 +30,55 @@
                </color>
             </InnerShadow>
          </effect>
-      </Pane>
-      <Pane layoutX="106.0" layoutY="60.0" prefHeight="52.0" prefWidth="96.0" style="-fx-background-color: white; -fx-background-radius: 5;">
          <children>
-            <Pane prefHeight="20.0" prefWidth="96.0" style="-fx-background-color: red; -fx-background-radius: 5 5 0 0;">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="2.0" text="USCITE" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-               <effect>
-                  <InnerShadow choke="0.17" height="56.25" offsetX="-10.0" offsetY="-10.0" radius="27.6475" width="56.34">
-                     <color>
-                        <Color opacity="0.20000000298023224" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </Pane>
-            <Label fx:id="expensesLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="25.0" prefHeight="20.0" prefWidth="85.0" text="- 0 €" textAlignment="CENTER">
+            <Label fx:id="lastFiveExpensesTitleLabel1" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="205.0" text="Bilancio di questo mese" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="1.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" maxHeight="60.0" maxWidth="300.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: green; -fx-background-radius: 15;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <children>
+            <Label fx:id="balanceLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Bilancio" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
          </children>
-      </Pane>
-      <Pane layoutX="3.0" layoutY="60.0" prefHeight="52.0" prefWidth="96.0" style="-fx-background-color: white; -fx-background-radius: 5;">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </VBox>
+      <VBox alignment="CENTER" maxHeight="60.0" maxWidth="200.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: green; -fx-background-radius: 15;" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
          <children>
-            <Pane prefHeight="20.0" prefWidth="96.0" style="-fx-background-color: green; -fx-background-radius: 5 5 0 0;">
-               <children>
-                  <Label layoutX="22.0" layoutY="2.0" text="ENTRATE" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-               <effect>
-                  <InnerShadow height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                     <color>
-                        <Color opacity="0.10000000149011612" />
-                     </color>
-                  </InnerShadow>
-               </effect>
-            </Pane>
-            <Label fx:id="incomesLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="6.0" layoutY="25.0" prefHeight="20.0" prefWidth="85.0" text="+37,87 €" textAlignment="CENTER">
+            <Label fx:id="incomesLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Entrate" textFill="WHITE">
                <font>
-                  <Font size="14.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
          </children>
-      </Pane>
-      <Region fx:id="balanceRegion" layoutX="3.0" layoutY="123.4" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: green; -fx-background-radius: 5;" AnchorPane.topAnchor="123.4">
-         <effect>
-            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-               <color>
-                  <Color opacity="0.25" />
-               </color>
-            </InnerShadow>
-         </effect>
-      </Region>
-      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="138.0" style="-fx-font-weight: Bold;" text="IN POSITIVO" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="balanceValueLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="94.0" layoutY="139.0" prefHeight="18.0" prefWidth="105.0" style="-fx-font-weight: bold;" text="+37,87 €" textFill="WHITE" />
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </VBox>
+      <VBox alignment="CENTER" maxHeight="60.0" maxWidth="200.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: d70000; -fx-background-radius: 15;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="exitsLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Uscite" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </VBox>
    </children>
-</AnchorPane>
+</GridPane>
