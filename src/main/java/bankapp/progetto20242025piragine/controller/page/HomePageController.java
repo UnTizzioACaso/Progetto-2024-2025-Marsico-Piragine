@@ -28,18 +28,14 @@ public class HomePageController extends BranchController
         {
             FXMLLoader favouritesCardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml")); //getting favouritesCard widget's fxml
             FXMLLoader bankAccountLoader = new FXMLLoader (getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml")); //getting bankAccount widget's fxml
-            FXMLLoader fiveExpensesLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncome.fxml")); //getting lastFiveExpenses widget's fxml
             Node favouritesCards = favouritesCardLoader.load(); //creating favouritesCards widget's node
             Node bankAccount = bankAccountLoader.load(); //creating bankAccount widget's node
-            Node fiveExpenses = fiveExpensesLoader.load(); //creating fiveExpenses widget's node
             BranchController bankAccountController = bankAccountLoader.getController(); //getting the bankAccount widget's controller
             bankAccountController.setRootController(rootController); //setting the rootController in the bankAccount widget's
             homePageGridPane.add(favouritesCards, 1, 0); //adding the favouriteCards Node to homePageGridPane
             GridPane.setMargin(bankAccount, new Insets(10, 10, 0, 10)); //setting GridPanes margins for the bankAccount widget
-            GridPane.setMargin(fiveExpenses, new Insets(10, 10, 0, 10)); //setting GridPanes margins for the fiveExpenses widget
             GridPane.setMargin(favouritesCards, new Insets(10, 10, 0, 10)); //setting GridPanes margins for the favouritesCards widget
             homePageGridPane.add(bankAccount, 0, 0); //adding the bankAccount Node to homePageGridPane
-            homePageGridPane.add(fiveExpenses, 0, 1); //adding the fiveExpenses Node to homePageGridPane
         }
         catch (Exception e)
         {
@@ -49,7 +45,7 @@ public class HomePageController extends BranchController
     }
 
     @FXML
-    public void addWidget12()
+    public void loadAddWidget12()
     {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml")); //getting the fxml in the loader
@@ -64,6 +60,7 @@ public class HomePageController extends BranchController
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             controller.disableUsedWidgets(homePageGridPane);
+            controller.homePageController = this;
             popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
         }
         catch (IOException e)
@@ -74,7 +71,7 @@ public class HomePageController extends BranchController
     }
 
     @FXML
-    public void addWidget01()
+    public void loadAddWidget01()
     {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml")); //getting the fxml in the loader
@@ -89,6 +86,7 @@ public class HomePageController extends BranchController
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             controller.disableUsedWidgets(homePageGridPane);
+            controller.homePageController = this;
             popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
         }
         catch (IOException e)
@@ -99,7 +97,7 @@ public class HomePageController extends BranchController
     }
 
     @FXML
-    public void addWidget11()
+    public void loadAddWidget11()
     {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml")); //getting the fxml in the loader
@@ -114,6 +112,7 @@ public class HomePageController extends BranchController
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             controller.disableUsedWidgets(homePageGridPane);
+            controller.homePageController = this;
             popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
         }
         catch (IOException e)
@@ -124,7 +123,7 @@ public class HomePageController extends BranchController
     }
 
     @FXML
-    public void addWidget02()
+    public void loadAddWidget02()
     {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml")); //getting the fxml in the loader
@@ -153,7 +152,7 @@ public class HomePageController extends BranchController
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader (getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/quickContact.fxml"));
+            FXMLLoader loader = new FXMLLoader (getClass().getResource(fxml));
             Node node = loader.load();
             WidgetController controller = loader.getController();
             controller.setRootController(rootController);

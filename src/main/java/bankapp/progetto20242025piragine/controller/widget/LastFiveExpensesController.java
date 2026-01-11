@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.List;
 
-public class LastFiveExpensesController extends BranchController
+public class LastFiveExpensesController extends WidgetController
 {
     // VBox container that will hold the last five expense transactions
     @FXML

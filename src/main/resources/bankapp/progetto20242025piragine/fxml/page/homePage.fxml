@@ -25,7 +25,7 @@
       <Insets left="10.0" right="10.0" top="10.0" />
    </padding>
    <children>
-      <Button fx:id="addButton3" mnemonicParsing="false" onAction="#addWidget12" prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Button fx:id="addButton3" mnemonicParsing="false" onAction="#loadAddWidget12" prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                <color>
@@ -48,7 +48,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="addButton31" mnemonicParsing="false" onAction="#addWidget01" prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 25;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="addButton31" mnemonicParsing="false" onAction="#loadAddWidget01" prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 25;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                <color>
@@ -71,7 +71,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="addButton32" mnemonicParsing="false" onAction="#addWidget11" prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="addButton32" mnemonicParsing="false" onAction="#loadAddWidget11" prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 25;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <effect>
             <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                <color>
@@ -94,7 +94,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="addButton33" mnemonicParsing="false" onAction="#addWidget02" prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 25;" GridPane.rowIndex="2">
+      <Button fx:id="addButton33" mnemonicParsing="false" onAction="#loadAddWidget02" prefHeight="48.0" prefWidth="85.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 25;" GridPane.rowIndex="2">
          <effect>
             <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                <color>

@@ -35,7 +35,7 @@ public class HomeWidgetCustomDAO {
         }
     }
 
-    // 🔹 Widget di un utente
+    // 🔹 WidgetController di un utente
     public static List<HomeWidgetCustom> getWidgetsByUserId(int userId) throws SQLException {
         String sql = "SELECT * FROM Home_Widget_Custom WHERE user_id = ? ORDER BY position";
         List<HomeWidgetCustom> list = new ArrayList<>();
