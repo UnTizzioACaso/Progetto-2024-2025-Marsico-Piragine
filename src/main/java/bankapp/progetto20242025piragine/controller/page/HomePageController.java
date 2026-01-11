@@ -2,6 +2,7 @@ package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.popup.*;
+import bankapp.progetto20242025piragine.controller.widget.WidgetController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
@@ -27,7 +28,7 @@ public class HomePageController extends BranchController
         {
             FXMLLoader favouritesCardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml")); //getting favouritesCard widget's fxml
             FXMLLoader bankAccountLoader = new FXMLLoader (getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml")); //getting bankAccount widget's fxml
-            FXMLLoader fiveExpensesLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/monthlyBalance.fxml")); //getting lastFiveExpenses widget's fxml
+            FXMLLoader fiveExpensesLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncome.fxml")); //getting lastFiveExpenses widget's fxml
             Node favouritesCards = favouritesCardLoader.load(); //creating favouritesCards widget's node
             Node bankAccount = bankAccountLoader.load(); //creating bankAccount widget's node
             Node fiveExpenses = fiveExpensesLoader.load(); //creating fiveExpenses widget's node
@@ -63,7 +64,6 @@ public class HomePageController extends BranchController
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             controller.disableUsedWidgets(homePageGridPane);
-
             popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
         }
         catch (IOException e)
@@ -139,12 +139,31 @@ public class HomePageController extends BranchController
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             controller.disableUsedWidgets(homePageGridPane);
-
+            controller.homePageController = this;
             popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
         }
         catch (IOException e)
         {
             System.err.println("error loading the add widget (0,2) popup" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void addWidget(String fxml, int column, int row)
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader (getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/quickContact.fxml"));
+            Node node = loader.load();
+            WidgetController controller = loader.getController();
+            controller.setRootController(rootController);
+            homePageGridPane.add(node, column, row);
+            GridPane.setMargin(node, new Insets(10, 10, 10, 10));
+            controller.homePageGridPane = homePageGridPane;
+        }
+        catch (Exception e)
+        {
+            System.err.println("error during adding "+ fxml + "widget" + e.getMessage());
             e.printStackTrace();
         }
     }

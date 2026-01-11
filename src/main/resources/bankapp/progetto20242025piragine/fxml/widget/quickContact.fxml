@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="quickContactGridPane" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="quickContactGridPane" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.QuickContactController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -73,5 +73,6 @@
             <Insets bottom="12.0" left="30.0" right="30.0" top="12.0" />
          </GridPane.margin>
       </Button>
+      <Button mnemonicParsing="false" onAction="#remove" text="rimuovi" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
    </children>
 </GridPane>
