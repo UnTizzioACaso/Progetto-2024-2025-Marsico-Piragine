@@ -38,7 +38,7 @@
             </effect>
         </VBox>
 
-        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;" styleClass="scroll-pane maze-scroll" VBox.vgrow="ALWAYS">
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" VBox.vgrow="ALWAYS">
             <content>
                 <VBox />
             </content>

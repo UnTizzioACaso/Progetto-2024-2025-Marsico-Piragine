@@ -14,7 +14,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="transactionHistoryAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="360.0" prefWidth="500.0" style="-fx-background-radius: 15; -fx-border-color: null;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.TransactionHistoryController">
+<AnchorPane fx:id="transactionHistoryAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="291.0" style="-fx-background-radius: 15; -fx-border-color: null;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.TransactionHistoryController">
    <children>
       <VBox alignment="CENTER" minHeight="0.0" minWidth="0.0" prefHeight="32.0" prefWidth="500.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,7 +32,7 @@
             </InnerShadow>
          </effect>
       </VBox>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="128.0" minHeight="0.0" minWidth="0.0" prefHeight="232.0" prefWidth="500.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="128.0" minHeight="0.0" minWidth="232.0" prefHeight="232.0" prefWidth="500.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="128.0">
          <content>
             <VBox fx:id="monthlyExpensesVbox" alignment="CENTER" maxWidth="Infinity" prefWidth="456.0" spacing="8.0">
                <padding>
