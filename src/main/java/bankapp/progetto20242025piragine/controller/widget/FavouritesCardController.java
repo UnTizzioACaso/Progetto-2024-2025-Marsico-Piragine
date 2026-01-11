@@ -11,7 +11,7 @@ import javafx.scene.layout.Region;
 
 import java.io.IOException;
 
-public class FavouritesCardController {
+public class FavouritesCardController extends WidgetController{
 
     // HBox that holds all favourite cards
     @FXML

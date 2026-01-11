@@ -1,4 +1,6 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-public class MonthlyExpensesRectangleController {
+import bankapp.progetto20242025piragine.controller.BranchController;
+
+public class MonthlyExpensesRectangleController extends WidgetController {
 }

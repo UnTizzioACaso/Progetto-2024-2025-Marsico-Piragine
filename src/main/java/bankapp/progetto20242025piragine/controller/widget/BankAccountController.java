@@ -4,7 +4,8 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class BankAccountController extends BranchController {
+public class BankAccountController extends WidgetController
+{
 
     // Button to open the bank account settings page
     @FXML

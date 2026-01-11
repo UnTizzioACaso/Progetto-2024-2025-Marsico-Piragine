@@ -47,4 +47,12 @@ public class AddWidget02Controller extends BranchController
     }
 
 
+    @FXML
+    public void addMonthlyBalanceWidget() {
+        homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyBalance.fxml", 0, 2);
+        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        stage.close();
+    }
+
+
 }
