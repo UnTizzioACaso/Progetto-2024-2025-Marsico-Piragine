@@ -33,7 +33,6 @@ public  class RootWindowController extends BranchController {
                 controller.setRootController(this); //giving to the new page's controller the current RootController instance
                 rootWindow.setCenter(node); //setting the page to the center
                 controller.initializer();
-                controller.rootController.user = user;;
             }
             catch (IOException e)
             {

@@ -6,7 +6,9 @@ import bankapp.progetto20242025piragine.controller.widget.WidgetController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,8 +35,6 @@ public class HomePageController extends BranchController
             BranchController bankAccountController = bankAccountLoader.getController(); //getting the bankAccount widget's controller
             bankAccountController.setRootController(rootController); //setting the rootController in the bankAccount widget's
             homePageGridPane.add(favouritesCards, 1, 0); //adding the favouriteCards Node to homePageGridPane
-            GridPane.setMargin(bankAccount, new Insets(10, 10, 0, 10)); //setting GridPanes margins for the bankAccount widget
-            GridPane.setMargin(favouritesCards, new Insets(10, 10, 0, 10)); //setting GridPanes margins for the favouritesCards widget
             homePageGridPane.add(bankAccount, 0, 0); //adding the bankAccount Node to homePageGridPane
         }
         catch (Exception e)
@@ -157,7 +157,8 @@ public class HomePageController extends BranchController
             WidgetController controller = loader.getController();
             controller.setRootController(rootController);
             homePageGridPane.add(node, column, row);
-            GridPane.setMargin(node, new Insets(10, 10, 10, 10));
+            GridPane.setHalignment(node, HPos.CENTER );
+            GridPane.setValignment(node, VPos.CENTER);
             controller.homePageGridPane = homePageGridPane;
         }
         catch (Exception e)
