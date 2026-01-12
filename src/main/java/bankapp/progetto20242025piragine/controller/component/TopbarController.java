@@ -8,8 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -27,51 +26,57 @@ public class TopbarController extends BranchController {
     @FXML
     private ImageView reloadPageButton;
 
-    private Popup notifyPopup;
-    private VBox popupContent;
-    private boolean popupVisible = false;
-
+    private AnchorPane notificationAnchorPane;
+    private NotificationAnchorPaneController notificationAnchorPaneController;
     private Stack<String> backwardStack = new Stack<>();
     private Stack<String> forwardStack = new Stack<>();
 
+    @Override
+    public void initializer()
+    {
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/notificationScrollPane.fxml"));
+            notificationAnchorPane =  loader.load();
+            notificationAnchorPaneController = loader.getController();
+            notificationAnchorPaneController.setRootController(rootController);
+            notificationAnchorPaneController.initializer();
+            hidePopup();
+        }
+        catch (Exception e)
+        {
+            System.err.println("error during loading /bankapp/progetto20242025piragine/fxml/component/notificationAnchorPane.fxml" + e);
+            e.printStackTrace();
+        }
+        rootController.rootWindow.setRight(notificationAnchorPane);
+    }
+
     @FXML
-    public void initialize() {
-        // Crea popup notifiche
-        notifyPopup = new Popup();
-        popupContent = new VBox();
-        popupContent.setStyle(
-                "-fx-background-color: white; " +
-                        "-fx-border-color: gray; " +
-                        "-fx-padding: 5;"
-        );
-        notifyPopup.getContent().add(popupContent);
+    public void hidePopup()
+    {
+        rootController.rootWindow.setRight(null);
+    }
 
-        // Mostra o nasconde popup al click sulla campanella
-        notificationButton.setOnMouseClicked(e -> {
-            try {
-                if (!popupVisible) {
-                    updateNotifications();
-                    javafx.geometry.Bounds bounds = notificationButton.localToScreen(notificationButton.getBoundsInLocal());
-                    notifyPopup.show(notificationButton, bounds.getMinX(), bounds.getMaxY());
-                    popupVisible = true;
-                } else {
-                    notifyPopup.hide();
-                    popupVisible = false;
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+    @FXML
+    public void showPopup()
+    {
+        try {
+            if (rootController.rootWindow.getRight() == null)
+            {
+                updateNotifications();
+                rootController.rootWindow.setRight(notificationAnchorPane);
             }
-        });
-
-        // Nasconde popup quando clicchi fuori
-        popupContent.setOnMouseExited(e -> {
-            notifyPopup.hide();
-            popupVisible = false;
-        });
+            else
+            {
+                hidePopup();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void updateNotifications() throws SQLException {
-        popupContent.getChildren().clear();
+        notificationAnchorPaneController.notificationVBox.getChildren().clear();
 
         int currentUserId = 1; // TODO: sostituire con ID utente corrente
 
@@ -80,7 +85,7 @@ public class TopbarController extends BranchController {
         if (notifies.isEmpty()) {
             Label empty = new Label("Nessuna notifica");
             empty.setStyle("-fx-padding: 5;");
-            popupContent.getChildren().add(empty);
+            notificationAnchorPaneController.notificationVBox.getChildren().add(empty);
         } else {
             for (Notify n : notifies) {
                 Label label = new Label(n.getMessage());
@@ -93,13 +98,12 @@ public class TopbarController extends BranchController {
                 label.setOnMouseClicked(event -> {
                     try {
                         NotifyDAO.markAsRead(n.getIdNotify());
-                        notifyPopup.hide();
-                        popupVisible = false;
+                        hidePopup();
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
                 });
-                popupContent.getChildren().add(label);
+                notificationAnchorPaneController.notificationVBox.getChildren().add(label);
             }
         }
     }
@@ -135,6 +139,8 @@ public class TopbarController extends BranchController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek()));
             Parent node = fxmlLoader.load();
             BranchController controller = fxmlLoader.getController();
+            controller.initializer();
+            rootController.rootWindow.setCenter(node);
             controller.setRootController(rootController);
         } catch (IOException e) {
             System.err.println("error reloading " + backwardStack.peek() + e.getMessage());

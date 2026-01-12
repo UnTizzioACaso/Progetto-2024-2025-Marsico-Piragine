@@ -32,7 +32,7 @@ public  class RootWindowController extends BranchController {
                 BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
                 controller.setRootController(this); //giving to the new page's controller the current RootController instance
                 rootWindow.setCenter(node); //setting the page to the center
-                controller.rootController.user = user;;
+                controller.initializer();
             }
             catch (IOException e)
             {
@@ -83,6 +83,7 @@ public  class RootWindowController extends BranchController {
             BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
             controller.setRootController(this);
             rootWindow.setLeft(node); //setting the node to the left
+            controller.initializer();
         }
         catch (IOException e)
         {
@@ -99,6 +100,7 @@ public  class RootWindowController extends BranchController {
             topbar = fxmlLoader.getController(); //getting the controller from the loader
             topbar.setRootController(this); //giving to the new page's controller the current RootController instance
             rootWindow.setTop(node); //setting the node to the top
+            topbar.initializer();
         }
         catch (IOException e)
         {

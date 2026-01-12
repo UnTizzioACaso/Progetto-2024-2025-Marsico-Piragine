@@ -13,16 +13,13 @@
     -fx-text-fill: white !important;
 }
 
-.grid-pane {
-    -fx-background-color: #4a4a4a;
-}
 
 /* Label secondarie / descrittive */
-#themeApplicationAccountPopupLabel {
+#themeApplicationAccountPopupLabel, #cardCreditLabel, #cardNicknameLabel, #cardNumberLabel, #cardExpirationLabel, #settingsAccountPopupButton, #lastFiveExpensesTitleLabel{
     -fx-text-fill: black !important;
 }
 
-#accountAccountPopupLabel, #nameSurnameAccountPopupLabel, #emailPopupAccountLabel, #themeApplicationAccountPopupLabel {
+#accountAccountPopupLabel, #nameSurnameAccountPopupLabel, #emailPopupAccountLabel, #themeApplicationAccountPopupLabel, #themeColorAccountPopupLabel{
     -fx-text-fill: #E0E0E0 !important;
 }
 
@@ -31,20 +28,17 @@
     -fx-text-fill: #E0E0E0 !important;
 }
 
-#lastFiveExpensesVBox {
-    -fx-background-color: #4a4a4a;
-}
-
-/* RadioButton */
-#themeColorAccountPopupLabel {
-    -fx-text-fill: #E0E0E0 !important;
+#lastFiveExpensesVBox, #sidebarGridPane , #transactionHistoryAnchorPane{
+    -fx-background-color: #4a4a4a !important;
 }
 
 /* Button generico */
 .button {
-
     -fx-text-fill: black !important;
+}
 
+#homePageGridPane{
+    -fx-background-color: #3c3c3c !important;
 }
 
 .scroll-pane > .viewport {
@@ -52,14 +46,6 @@
     -fx-background-radius: 15 ;
 }
 
-/* Pulsante impostazioni */
-#settingsAccountPopupButton {
-    -fx-text-fill: black !important;
-}
-
-#lastFiveExpensesTitleLabel{
-    -fx-text-fill: black !important;
-}
 
 /* Separatori */
 .separator {

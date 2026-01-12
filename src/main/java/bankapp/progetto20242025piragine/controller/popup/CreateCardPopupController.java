@@ -16,44 +16,53 @@ import java.math.BigDecimal;
 
 public class CreateCardPopupController extends BranchController
 {
+    // VBox container to hold the card preview component
     @FXML
     public VBox cardSlotVbox;
 
+    // MenuButton to select the card color
     @FXML
     public MenuButton colorMenu;
 
+    // Controller of the card preview component
     public CardController controller;
 
+    // TextField for the card nickname
     @FXML
-    public TextField nicknameTextField, spendingLimitTextField;
+    public TextField nicknameTextField;
 
+    // TextField for the card spending limit
+    @FXML
+    public TextField spendingLimitTextField;
+
+    // Creates the card using CardService and user's bank account data
     @FXML
     public void createCard() throws Exception
     {
-        BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
-        CardService.createCard(rootController.user.getUserID(), bankAccount.getIdAccount(), nicknameTextField.getText(), colorMenu.getText(), new BigDecimal(spendingLimitTextField.getText()+".00"));
+        BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()); //getting the user's bank account
+        //calling CardService to create the card with nickname, color and spending limit
+        CardService.createCard(rootController.user.getUserID(), bankAccount.getIdAccount(), nicknameTextField.getText(), colorMenu.getText(), new BigDecimal(spendingLimitTextField.getText() + ",00"));
     }
 
+    // Updates the card nickname in the preview component as the user types
     @FXML
     public void updateCardExample()
     {
         controller.updateNickname(nicknameTextField.getText());
     }
 
-
-
+    // Initializes the popup by loading the card preview component
     @FXML
     public void initialize()
     {
         try
         {
             FXMLLoader cardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
-            cardSlotVbox.getChildren().add(cardLoader.load());
-            controller = cardLoader.getController();
-            controller.setRootController(rootController);
-            controller.removeButtons();
-            colorMenu.setText("white");
-
+            cardSlotVbox.getChildren().add(cardLoader.load()); //add the card component to the VBox
+            controller = cardLoader.getController(); //get the controller of the card component
+            controller.setRootController(rootController); //set the root controller for communication
+            controller.removeButtons(); //remove buttons from the preview card
+            colorMenu.setText("white"); //set default color menu text
         }
         catch (IOException e)
         {
@@ -62,6 +71,7 @@ public class CreateCardPopupController extends BranchController
         }
     }
 
+    // Following methods handle color selection and update the card preview accordingly
     @FXML
     public void selectRed()
     {

@@ -40,6 +40,25 @@ public class UserDAO
         }
     }
 
+    public static boolean updateUserTheme(int userId, String theme) throws SQLException
+    {
+        // Allow only valid theme values
+        if (!"light".equalsIgnoreCase(theme) && !"dark".equalsIgnoreCase(theme))
+        {
+            throw new IllegalArgumentException("Theme must be 'light' or 'dark'");
+        }
+
+        String sql = "UPDATE User SET theme = ? WHERE user_id = ?";
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+            stmt.setString(1, theme.toLowerCase()); // normalize value
+            stmt.setInt(2, userId);
+
+            return stmt.executeUpdate() > 0; // true if at least one row was updated
+        }
+    }
 
 
     public static boolean registerUser(User user) throws SQLException

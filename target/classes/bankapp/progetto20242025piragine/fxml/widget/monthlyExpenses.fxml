@@ -9,14 +9,14 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="monthlyExpensesVBox" maxHeight="250.0" maxWidth="850.0" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.MonthlyExpensesController">
 
     <children>
 
         <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
 
             <children>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="205.0" text="Spese di questo mese" textFill="WHITE">
+                <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showMenu" prefHeight="35.0" prefWidth="205.0" text="Spese di questo mese" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
@@ -38,7 +38,7 @@
             </effect>
         </VBox>
 
-        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;" styleClass="scroll-pane maze-scroll" VBox.vgrow="ALWAYS">
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" VBox.vgrow="ALWAYS">
             <content>
                 <VBox />
             </content>

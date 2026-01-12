@@ -2,27 +2,19 @@ package bankapp.progetto20242025piragine.controller.widget;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
+public class BankAccountController extends WidgetController
+{
 
-public class BankAccountController extends BranchController {
-
+    // Button to open the bank account settings page
     @FXML
     private Button accountSettingsButton;
 
+    // Opens the bank account settings page when the button is clicked
     @FXML
     private void openAccountSettings()
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");//loads the bank account settings page
     }
 }
