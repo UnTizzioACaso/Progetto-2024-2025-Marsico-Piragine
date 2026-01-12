@@ -57,7 +57,7 @@
         </ImageView>
 
         <!-- Campanella notifiche -->
-        <ImageView fx:id="notificationButton" fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="LEFT">
+        <ImageView fx:id="notificationButton" fitHeight="15.0" fitWidth="15.0" onMouseClicked="#showPopup" onMouseExited="#hidePopup" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="LEFT">
             <image>
                 <Image url="@../../imgs/bellicon.png" />
             </image>
