@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="30.0" prefHeight="398.0" prefWidth="85.0" style="-fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.SidebarController">
+<GridPane fx:id="sidebarGridPane" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="30.0" prefHeight="398.0" prefWidth="85.0" style="-fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.SidebarController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="85.0" minWidth="0.0" prefWidth="80.0" />
     </columnConstraints>

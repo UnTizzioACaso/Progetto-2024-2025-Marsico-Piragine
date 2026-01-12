@@ -1,83 +1,72 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import javafx.event.ActionEvent;
+import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 
+import java.sql.SQLException;
+
 public class AccountPopupController extends BranchController {
 
-    // Label della popup
+    // Labels used to display user's email, selected theme and full name
     @FXML
     private Label emailPopupAccountLabel, themeColorAccountPopupLabel, nameSurnameAccountPopupLabel;
 
-    // RadioButton per il tema
+    // RadioButton used to toggle between light and dark theme
     @FXML
     public RadioButton themeColorAccountPopupRadioButton;
 
-    // Nodo root della popup
+    // Root pane of the popup, used to apply theme changes
     @FXML
     private AnchorPane root;
 
-    // Stato corrente del tema
-    private boolean darkMode = false;
-
-    /**
-     * Imposta i valori corretti nelle label quando la popup viene aperta
-     */
+    // Fills the popup with the correct user data and current theme
     public void showCorrectValues() {
-        // dati utente
+        // Display user's email
         emailPopupAccountLabel.setText(rootController.user.getEmail());
+
+        // Display user's full name
         nameSurnameAccountPopupLabel.setText(rootController.user.getFirstName() + " " + rootController.user.getLastName());
 
-        // tema salvato dell'utente
-        String theme = rootController.user.getTheme();
-        themeColorAccountPopupLabel.setText(theme);
+        // Update radio button and theme label based on user's theme
+        if(rootController.user.getTheme().equals("light")) {themeColorAccountPopupRadioButton.setSelected(false);}
+        else if(rootController.user.getTheme().equals("dark")) {themeColorAccountPopupRadioButton.setSelected(true);}
 
-        if ("Scuro".equalsIgnoreCase(theme)) {
-            darkMode = true;
-            themeColorAccountPopupRadioButton.setSelected(true);
-            applyTheme(true);
-        } else {
-            darkMode = false;
-            themeColorAccountPopupRadioButton.setSelected(false);
-            applyTheme(false);
-        }
+        // Update theme color label based on radio button
+        themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
+
+        // Apply the selected theme to the popup scene
+        ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
     }
 
-    /**
-     * Metodo chiamato quando l'utente clicca il RadioButton
-     */
+    // Handles theme switching when the radio button is toggled
     @FXML
-    private void toggleTheme() {
-        darkMode = themeColorAccountPopupRadioButton.isSelected();
-        applyTheme(darkMode);
-    }
+    private void toggleTheme()
+    {
+        // Update the theme label text based on the selected theme
+        themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
+        String themeColor = themeColorAccountPopupRadioButton.isSelected() ? "dark" : "light";
+        rootController.user.setTheme(themeColor);
 
-    /**
-     * Applica il CSS alla popup e aggiorna anche lo sfondo inline se necessario
-     * @param dark true = tema scuro, false = tema chiaro
-     */
-    private void applyTheme(boolean dark) {
-        // Aggiorna Label
-        themeColorAccountPopupLabel.setText(dark ? "Scuro" : "Chiaro");
-
-        // Aggiorna la scena con il CSS corretto
-        if (root.getScene() != null) {
-            root.getScene().getStylesheets().clear();
-            String cssPath = dark
-                    ? "/bankapp/progetto20242025piragine/css/dark.css"
-                    : "/bankapp/progetto20242025piragine/css/light.css";
-            root.getScene().getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+        try
+        {
+            UserDAO.updateUserTheme(rootController.user.getUserID(), themeColor);
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during updating" + e.getMessage());
+            e.printStackTrace();
+            return;
         }
 
-        // Aggiorna sfondo inline del root per sicurezza
-        root.setStyle(dark
-                ? "-fx-background-color: #2C2C2C; -fx-background-radius: 12;"
-                : "-fx-background-color: white; -fx-background-radius: 12;"
-        );
-    }
+        // Apply the selected theme to the popup window
+        ThemeManager.applyTheme(root.getScene(), themeColor);
 
+        // Apply the selected theme to the main application window
+        ThemeManager.applyTheme(rootController.rootWindow.getScene(), themeColor);
+    }
 }

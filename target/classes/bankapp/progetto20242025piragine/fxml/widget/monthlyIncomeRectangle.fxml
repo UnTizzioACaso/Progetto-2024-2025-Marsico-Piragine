@@ -28,7 +28,7 @@
             </GridPane.margin>
         </Label>
 
-        <Label text="+37,87 €" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+        <Label style="-fx-text-fill: green;" text="+37,87 €" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
             <font>
                 <Font size="11.0" />
             </font>

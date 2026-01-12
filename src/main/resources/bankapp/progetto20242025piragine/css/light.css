@@ -12,6 +12,14 @@
     -fx-text-fill: black !important;
 }
 
+#eyeButton {
+    -fx-text-fill: black !important;
+}
+
+#accessTitleLabel{
+    -fx-text-fill: white !important;
+}
+
 #themeApplicationAccountPopupLabel,
 #themeColorAccountPopupLabel {
     -fx-text-fill: black !important;
