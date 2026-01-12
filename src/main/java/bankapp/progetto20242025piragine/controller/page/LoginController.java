@@ -47,7 +47,7 @@ public class LoginController extends BranchController {
 
     // Attempts to log the user in and load the home page
     @FXML
-    public void loadHomePage() throws SQLException // giving access to the homepage
+    public void loadHomePage() throws SQLException //giving access to the homepage
     {
         // Check if the password is currently shown in plain text
         if(passwordLoginPasswordField.isDisabled())
