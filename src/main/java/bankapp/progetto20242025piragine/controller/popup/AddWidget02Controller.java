@@ -39,13 +39,11 @@ public class AddWidget02Controller extends BranchController
     }
 
     @FXML
-    public void addQuickContactWidget()
-    {
+    public void addQuickContactWidget() {
         homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/quickContact.fxml", 0, 2);
         Stage stage = (Stage) widgetsVBox.getScene().getWindow();
         stage.close();
     }
-
 
     @FXML
     public void addMonthlyBalanceWidget() {
@@ -54,5 +52,27 @@ public class AddWidget02Controller extends BranchController
         stage.close();
     }
 
+    @FXML
+    public void addMonthlyExpensesWidget()
+    {
+        homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", 0, 2);
+        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        stage.close();
+    }
 
+    @FXML
+    public void addLastFiveExpensesWidget()
+    {
+        homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", 0, 2);
+        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void addMonthlyIncomeWidget()
+    {
+        homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncome.fxml", 0, 2);
+        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        stage.close();
+    }
 }
