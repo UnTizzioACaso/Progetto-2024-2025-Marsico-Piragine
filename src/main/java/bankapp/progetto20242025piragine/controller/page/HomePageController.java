@@ -13,10 +13,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class HomePageController extends BranchController
 {
@@ -154,11 +156,10 @@ public class HomePageController extends BranchController
         {
             FXMLLoader loader = new FXMLLoader (getClass().getResource(fxml));
             Node node = loader.load();
+            if (column == 0) {node.setStyle("-fx-max-width: 400");}
             WidgetController controller = loader.getController();
             controller.setRootController(rootController);
             homePageGridPane.add(node, column, row);
-            GridPane.setHalignment(node, HPos.CENTER );
-            GridPane.setValignment(node, VPos.CENTER);
             controller.homePageGridPane = homePageGridPane;
         }
         catch (Exception e)

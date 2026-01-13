@@ -9,7 +9,7 @@ public class FriendshipDAO {
         this.conn = conn;
     }
 
-    public List<Integer> getFriends(int userId) throws SQLException {
+    public static List<Integer> getFriends(int userId) throws SQLException {
         String sql = "SELECT user1, user2 FROM Friendship WHERE user1 = ? OR user2 = ?";
         List<Integer> friends = new ArrayList<>();
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {

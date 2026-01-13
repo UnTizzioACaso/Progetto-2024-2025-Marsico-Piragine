@@ -18,7 +18,7 @@ public class TransactionController extends BranchController
         expenseDateLabel.setText(transaction.getTransactionDate().toString());
         try
         {
-            String name = UserDAO.getUserByUserID(transaction.getBeneficiary().toString()).getUsername();
+            String name = UserDAO.getUserByUserID(transaction.getBeneficiary()).getUsername();
             expenseBeneficiaryLabel.setText(name);
         }
         catch (Exception e)

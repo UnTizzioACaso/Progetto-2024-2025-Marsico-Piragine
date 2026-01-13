@@ -3,12 +3,14 @@ package bankapp.progetto20242025piragine.controller.component;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.Notify;
 import bankapp.progetto20242025piragine.db.NotifyDAO;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,21 +43,18 @@ public class TopbarController extends BranchController {
             notificationAnchorPaneController = loader.getController();
             notificationAnchorPaneController.setRootController(rootController);
             notificationAnchorPaneController.initializer();
-            hidePopup();
         }
         catch (Exception e)
         {
             System.err.println("error during loading /bankapp/progetto20242025piragine/fxml/component/notificationAnchorPane.fxml" + e);
             e.printStackTrace();
         }
-        rootController.rootWindow.setRight(notificationAnchorPane);
     }
 
-    @FXML
-    public void hidePopup()
-    {
-        rootController.rootWindow.setRight(null);
-    }
+
+
+
+
 
     @FXML
     public void showPopup()
@@ -65,12 +64,23 @@ public class TopbarController extends BranchController {
             {
                 updateNotifications();
                 rootController.rootWindow.setRight(notificationAnchorPane);
+                notificationAnchorPane.setTranslateX(190);
+                TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), notificationAnchorPane);
+                slideIn.setFromX(190);
+                slideIn.setToX(0);
+                slideIn.play();
             }
             else
             {
-                hidePopup();
+                TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), notificationAnchorPane);
+                slideOut.setFromX(0);
+                slideOut.setToX(190);
+                slideOut.setOnFinished(e -> {rootController.rootWindow.setRight(null);});
+                slideOut.play();
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             ex.printStackTrace();
         }
     }
@@ -78,31 +88,23 @@ public class TopbarController extends BranchController {
     private void updateNotifications() throws SQLException {
         notificationAnchorPaneController.notificationVBox.getChildren().clear();
 
-        int currentUserId = 1; // TODO: sostituire con ID utente corrente
 
-        List<Notify> notifies = NotifyDAO.getNotifyByUserId(currentUserId);
+        List<Notify> notifies = NotifyDAO.getNotifyByUserId(rootController.user.getUserID());
 
-        if (notifies.isEmpty()) {
+        if (notifies.isEmpty())
+        {
             Label empty = new Label("Nessuna notifica");
             empty.setStyle("-fx-padding: 5;");
             notificationAnchorPaneController.notificationVBox.getChildren().add(empty);
-        } else {
-            for (Notify n : notifies) {
+        }
+        else
+        {
+            for (Notify n : notifies)
+            {
                 Label label = new Label(n.getMessage());
-                label.setStyle(
-                        "-fx-padding: 5; " +
-                                "-fx-border-color: lightgray; " +
-                                "-fx-border-width: 0 0 1 0;"
-                );
+                label.setStyle("-fx-padding: 5; -fx-border-color: lightgray; -fx-border-width: 0 0 1 0;");
                 // Cliccando su notifica -> marca come letta e chiude popup
-                label.setOnMouseClicked(event -> {
-                    try {
-                        NotifyDAO.markAsRead(n.getIdNotify());
-                        hidePopup();
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
-                });
+                label.setOnMouseClicked(event -> {try {NotifyDAO.markAsRead(n.getIdNotify());} catch (SQLException ex) {ex.printStackTrace();}});
                 notificationAnchorPaneController.notificationVBox.getChildren().add(label);
             }
         }
@@ -110,14 +112,17 @@ public class TopbarController extends BranchController {
 
     // ======= Navigazione pagine =======
     @FXML
-    public void visitPage(String fxml) {
+    public void visitPage(String fxml)
+    {
         backwardStack.push(fxml);
         forwardStack.clear();
     }
 
     @FXML
-    public void backPage() {
-        if (backwardStack.size() > 1) {
+    public void backPage()
+    {
+        if (backwardStack.size() > 1)
+        {
             String current = backwardStack.pop();
             forwardStack.push(current);
             rootController.switchPage(backwardStack.peek());
@@ -125,8 +130,10 @@ public class TopbarController extends BranchController {
     }
 
     @FXML
-    public void nextPage() {
-        if (!forwardStack.isEmpty()) {
+    public void nextPage()
+    {
+        if (!forwardStack.isEmpty())
+        {
             String page = forwardStack.pop();
             backwardStack.push(page);
             rootController.switchPage(page);
@@ -134,15 +141,19 @@ public class TopbarController extends BranchController {
     }
 
     @FXML
-    public void reloadPage() {
-        try {
+    public void reloadPage()
+    {
+        try
+        {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek()));
             Parent node = fxmlLoader.load();
             BranchController controller = fxmlLoader.getController();
             controller.initializer();
             rootController.rootWindow.setCenter(node);
             controller.setRootController(rootController);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.err.println("error reloading " + backwardStack.peek() + e.getMessage());
             e.printStackTrace();
         }

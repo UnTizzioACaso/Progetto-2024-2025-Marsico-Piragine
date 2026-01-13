@@ -54,6 +54,53 @@ public class TransactionDAO {
         return getTransactions(sql, senderId);
     }
 
+    public static List<Transaction> getTransactionsBetweenUserAndFriend(
+            int userAccountId,
+            int friendAccountId
+    ) throws SQLException {
+
+        List<Transaction> transactions = new ArrayList<>();
+
+        String sql = """
+        SELECT *
+        FROM Transaction1
+        WHERE (sender = ? AND beneficiary = ?)
+           OR (sender = ? AND beneficiary = ?)
+        ORDER BY transaction_date DESC
+        """;
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt.setInt(1, userAccountId);
+            stmt.setInt(2, friendAccountId);
+            stmt.setInt(3, friendAccountId);
+            stmt.setInt(4, userAccountId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+
+                    Transaction t = new Transaction();
+                            t.setIdTransaction(rs.getInt("id_transaction"));
+                            t.setSender(rs.getInt("sender"));
+                            t.setBeneficiary(rs.getInt("beneficiary"));
+                            t.setAmmount(rs.getBigDecimal("ammount"));
+                            t.setNote(rs.getString("note"));
+                            t.setTransactionDate(rs.getTimestamp("transaction_date"));
+                            t.setStatus(rs.getString("status"));
+                            t.setType(rs.getString("type"));
+                            t.setUsedCard(rs.getInt("used_card"));
+
+
+                    transactions.add(t);
+                }
+            }
+        }
+
+        return transactions;
+    }
+
+
     // 🔹 Transazioni ricevute da un conto
     public static List<Transaction> getTransactionsByBeneficiary(int beneficiaryId) throws SQLException {
         String sql = "SELECT * FROM Transaction1 WHERE beneficiary = ? ORDER BY transaction_date DESC";
