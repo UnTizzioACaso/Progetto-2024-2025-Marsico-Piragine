@@ -2,11 +2,20 @@ package bankapp.progetto20242025piragine.controller;
 
 
 import bankapp.progetto20242025piragine.controller.component.TopbarController;
+import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
+import bankapp.progetto20242025piragine.controller.page.CardPageController;
+import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
+import bankapp.progetto20242025piragine.controller.page.HomePageController;
 import bankapp.progetto20242025piragine.db.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public  class RootWindowController extends BranchController {
@@ -19,7 +28,15 @@ public  class RootWindowController extends BranchController {
 
     public User user = new User();
 
+    public GridPane homePageGridPane;
 
+    public HomePageController homePageController;
+
+    public FriendsPageController friendsPageController;
+
+    public CardPageController cardPageController;
+
+    public BankAccountSettingsPageController bankAccountSettingsPageController;
 
     @FXML
     public void switchPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
@@ -41,6 +58,33 @@ public  class RootWindowController extends BranchController {
             }
         }
     }
+
+    public void showPopUp(String title, String fxml, int width, int height)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
+            Parent root = loader.load(); //creating the node from the loader
+            BranchController controller = loader.getController(); //getting the controller from the loader
+            controller.setRootController(this);
+            Stage popupStage = new Stage(); //creating a new stage for the accountPopup
+            popupStage.setTitle(title); //setting the title
+            popupStage.setMinWidth(width); //setting popup's minimum width
+            popupStage.setMaxWidth(width);
+            popupStage.setMinHeight(height); //setting popup's minimum height
+            popupStage.setMaxHeight(height);
+            popupStage.setResizable(false);
+            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
+            popupStage.setScene(new Scene(root));
+            controller.initializer();
+            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
+        }
+        catch (IOException e)
+        {
+            System.err.println("error loading the account popup" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void loadPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {
@@ -50,6 +94,23 @@ public  class RootWindowController extends BranchController {
                 currentPage = fxml;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
                 Parent node = fxmlLoader.load(); //creating the node from the loader
+                if(fxml.equals("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"))
+                {
+                    homePageController = fxmlLoader.getController();
+                    homePageGridPane = (GridPane) node;
+                }
+                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml"))
+                {
+                    friendsPageController = fxmlLoader.getController();
+                }
+                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml"))
+                {
+                    cardPageController = fxmlLoader.getController();
+                }
+                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
+                {
+                    cardPageController = fxmlLoader.getController();
+                }
                 BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
                 controller.setRootController(this);//giving to the new page's controller the current RootController instance
                 controller.initializer();

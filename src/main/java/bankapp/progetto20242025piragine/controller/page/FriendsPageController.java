@@ -2,6 +2,8 @@ package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.component.FriendContactController;
+import bankapp.progetto20242025piragine.db.Friendship;
+import bankapp.progetto20242025piragine.db.FriendshipDAO;
 import bankapp.progetto20242025piragine.db.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +23,18 @@ public class FriendsPageController extends BranchController
     @Override
     public void initializer()
     {
-        List<Integer> friends = new ArrayList<>(); //da sostituire con una chiama del DAO quando davide lo sistemerà
-        for(Integer id : friends)
+        List<Integer> friends = new ArrayList<>();
+        try
+        {
+            friends = FriendshipDAO.getFriendshipsByUserId(rootController.user.getUserID());
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during loading all friends list" + e.getMessage());
+            e.printStackTrace();
+        }
+
+        for(Integer id: friends)
         {
             try
             {

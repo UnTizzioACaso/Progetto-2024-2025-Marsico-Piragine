@@ -25,7 +25,9 @@ public class AccountPopupController extends BranchController {
     private AnchorPane root;
 
     // Fills the popup with the correct user data and current theme
-    public void showCorrectValues() {
+    @Override
+    public void initializer()
+    {
         // Display user's email
         emailPopupAccountLabel.setText(rootController.user.getEmail());
 
@@ -40,7 +42,7 @@ public class AccountPopupController extends BranchController {
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
 
         // Apply the selected theme to the popup scene
-        ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
+            ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
     }
 
     // Handles theme switching when the radio button is toggled
