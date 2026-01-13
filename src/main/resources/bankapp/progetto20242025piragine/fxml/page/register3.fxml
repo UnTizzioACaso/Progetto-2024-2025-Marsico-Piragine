@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register3Controller">
+<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register3Controller">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" percentWidth="50.0" />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" percentWidth="50.0" />
@@ -42,7 +42,7 @@
             <Image url="@../../imgs/LogoMazeBank.png" />
          </image>
       </ImageView>
-      <Label style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Registrati" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+      <Label id="registerTitleLabel3" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Registrati" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
       <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="10.0" minWidth="10.0" prefWidth="325.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
          <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="20.0" prefWidth="62.0" />
@@ -92,7 +92,9 @@
                   <Insets left="10.0" />
                </padding>
             </TextField>
-            <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+
+            <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" style="-fx-text-alignment: center;" textFill="#a10000" wrapText="true" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+
             <Label maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="270.0" style="-fx-font-weight: bold;" text="Registrazione 3 di 3" wrapText="true" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />

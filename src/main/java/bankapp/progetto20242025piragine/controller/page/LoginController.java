@@ -74,7 +74,7 @@ public class LoginController extends BranchController {
             RememberMeUtil.deleteSavedEmail();
             // Display error message if login fails
             {
-                accessErrorMessageLabel.setText("credenziali errate riprova"); // error message for invalid credentials
+                accessErrorMessageLabel.setText("Credenziali errate riprova"); // error message for invalid credentials
             }
         }
         else
@@ -103,7 +103,7 @@ public class LoginController extends BranchController {
 
             // Display error message if login fails
             {
-                accessErrorMessageLabel.setText("credenziali errate riprova"); // error message for invalid credentials
+                accessErrorMessageLabel.setText("Credenziali errate riprova"); // error message for invalid credentials
             }
         }
     }

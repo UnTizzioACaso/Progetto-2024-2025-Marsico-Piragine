@@ -22,7 +22,7 @@ public class User {
     private String cap;
     private boolean rememberCredentials = false;
     private String lastAccessDate;
-    private String theme = "Light";
+    private String theme = "light";
 
 
     public int getUserID() { return userID; }

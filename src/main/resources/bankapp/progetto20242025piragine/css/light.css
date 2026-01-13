@@ -43,3 +43,8 @@
 
 }
 
+#registerTitleLabel1,
+#registerTitleLabel2,
+#registerTitleLabel3 {
+    -fx-text-fill: white !important;
+}

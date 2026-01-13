@@ -70,6 +70,18 @@ public class Register1Controller extends BranchController {
                 return; // stop execution
             }
 
+            String name = nameRegisterTextField.getText();
+            String surname = surnameRegisterTextField.getText();
+            String birthPlace = birthPlaceRegisterTextField.getText();
+
+            String regex = "^[A-Za-zÀ-ÿ ]+$";
+
+            if (!name.matches(regex) || !surname.matches(regex) || !birthPlace.matches(regex))
+            {
+                errorMessageLabel.setText("Nome, cognome e luogo di nascita non possono contenere numeri o caratteri speciali!");
+                return;
+            }
+
             // Save user personal data into the shared User object
             rootController.user.setFirstName(nameRegisterTextField.getText()); // set user's name
             rootController.user.setLastName(surnameRegisterTextField.getText()); // set user's surname

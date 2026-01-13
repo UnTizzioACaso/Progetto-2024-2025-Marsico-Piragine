@@ -68,7 +68,7 @@ public class Register3Controller extends BranchController {
         // Check password complexity requirements
         if (!(passwordPasswordField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$")))
         {
-            errorMessageLabel.setText("la password deve avere una maiuscola, una minuscola, un numero, un simbolo e deve essere lunga almeno 8 caratteri!"); // error message for invalid password
+            errorMessageLabel.setText("La password deve avere una maiuscola, una minuscola, un numero, un simbolo e deve essere lunga almeno 8 caratteri!"); // error message for invalid password
             return; // stop execution
         }
 

@@ -87,7 +87,13 @@ public class UserDAO
             stmt.setString(16, user.getPinHash());
             stmt.setBoolean(17, user.isRememberCredentials());
             stmt.setString(18, user.getLastAccessDate());
-            stmt.setString(19, user.getTheme());
+            String theme = user.getTheme();
+            if (theme == null) theme = "light";
+            theme = theme.toLowerCase();
+            if (!theme.equals("light") && !theme.equals("dark")) theme = "light";
+
+            stmt.setString(19, theme);
+
 
             stmt.executeUpdate();
             return true;
