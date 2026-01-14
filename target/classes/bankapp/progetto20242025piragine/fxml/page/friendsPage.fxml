@@ -48,7 +48,7 @@
                   <ColorAdjust brightness="0.34" contrast="-1.0" hue="0.02" saturation="-0.05" />
                </effect>
             </ImageView>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: ff0000; -fx-font-weight: bold; -fx-padding: 0; -fx-cursor: hand; -fx-text-fill: white; -fx-background-radius: 10; -fx-label-padding: -14 0 -10 0;" text="+" textAlignment="CENTER" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="16.0">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#loadFriendshipRequestPopup" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: ff0000; -fx-font-weight: bold; -fx-padding: 0; -fx-cursor: hand; -fx-text-fill: white; -fx-background-radius: 10; -fx-label-padding: -14 0 -10 0;" text="+" textAlignment="CENTER" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font size="25.0" />
                </font>

@@ -32,11 +32,11 @@ public class FriendshipRequestController extends BranchController {
     @FXML
     public void switchToUsername() {
         searchByUsernameField.setDisable(false);
-        searchByUsernameField.setOpacity(1.0);
+        searchByUsernameField.setVisible(true);
         searchByPhoneNumberField.setDisable(true);
-        searchByPhoneNumberField.setOpacity(0.0);
+        searchByPhoneNumberField.setVisible(false);
         searchByEmailField.setDisable(true);
-        searchByEmailField.setOpacity(0.0);
+        searchByEmailField.setVisible(false);
         toggleUsername.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 8 0 0 8; -fx-border-color: transparent;");
         toggleEmail.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 0; -fx-border-color: gray; -fx-border-width: 0 1 0 1;");
         togglePhoneNumber.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
@@ -46,26 +46,26 @@ public class FriendshipRequestController extends BranchController {
     @FXML
     public void switchToPhoneNumber() {
         searchByUsernameField.setDisable(true);
-        searchByUsernameField.setOpacity(0.0);
+        searchByUsernameField.setVisible(false);
         searchByPhoneNumberField.setDisable(false);
-        searchByPhoneNumberField.setOpacity(1.0);
+        searchByPhoneNumberField.setVisible(true);
         searchByEmailField.setDisable(true);
-        searchByEmailField.setOpacity(0.0);
-        toggleUsername.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
+        searchByEmailField.setVisible(false);
+        toggleUsername.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 8 0 0 8; -fx-border-color: transparent;");
         toggleEmail.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 0; -fx-border-color: gray; -fx-border-width: 0 1 0 1;");
-        togglePhoneNumber.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 8 0 0 8; -fx-border-color: transparent;");
+        togglePhoneNumber.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
 
     }
 
     @FXML
     public void switchToEmail() {
         searchByUsernameField.setDisable(true);
-        searchByUsernameField.setOpacity(0.0);
+        searchByUsernameField.setVisible(false);
         searchByPhoneNumberField.setDisable(true);
-        searchByPhoneNumberField.setOpacity(0.0);
+        searchByPhoneNumberField.setVisible(false);
         searchByEmailField.setDisable(false);
-        searchByEmailField.setOpacity(1.0);
-        toggleUsername.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
+        searchByEmailField.setVisible(true);
+        toggleUsername.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 8 0 0 8; -fx-border-color: transparent;");
         toggleEmail.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-background-radius: 0; -fx-border-color: gray; -fx-border-width: 0 1 0 1;");
         togglePhoneNumber.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
     }
