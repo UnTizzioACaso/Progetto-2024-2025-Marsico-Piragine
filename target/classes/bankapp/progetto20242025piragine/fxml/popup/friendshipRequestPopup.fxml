@@ -56,10 +56,11 @@
                </effect></ToggleButton>
             </children>
         </HBox>
-      <TextField fx:id="searchByEmailField" disable="true" layoutX="19.0" layoutY="83.0" opacity="0.0" prefHeight="30.0" prefWidth="376.0" promptText="Email amico" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="82.0" />
-      <TextField fx:id="searchByPhoneNumberField" disable="true" layoutX="19.0" layoutY="83.0" opacity="0.0" prefHeight="30.0" prefWidth="376.0" promptText="Numero di telefono amico" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="82.0" />
+      <TextField fx:id="searchByEmailField" layoutX="19.0" layoutY="83.0" prefHeight="30.0" prefWidth="376.0" promptText="Email amico" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" visible="false" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="82.0" />
+      <TextField fx:id="searchByPhoneNumberField" layoutX="19.0" layoutY="83.0" prefHeight="30.0" prefWidth="376.0" promptText="Numero di telefono amico" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" visible="false" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="82.0" />
 
-        <Button fx:id="sendButton" layoutX="357.0" layoutY="85.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="12.0" prefWidth="47.0" text="Invia" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="85.0" />
+        <Button fx:id="sendButton" layoutX="357.0" layoutY="85.0" mnemonicParsing="false" onAction="#findHypotheticalFriend" prefHeight="12.0" prefWidth="47.0" text="Invia" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="85.0" />
+      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="123.0" prefHeight="17.0" prefWidth="375.0" textFill="RED" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" />
 
     </children>
 </AnchorPane>
