@@ -216,3 +216,4 @@ public class FriendshipRequestController extends BranchController {
         return lastFilteredUsers;
     }
 }
+
