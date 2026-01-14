@@ -20,7 +20,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register1Controller">
+<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="600.0" prefHeight="650.0" prefWidth="650.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.Register1Controller">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" percentWidth="50.0" />
@@ -55,7 +55,7 @@
             </InnerShadow>
          </effect>
       </Pane>
-      <Label style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Registrati" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+      <Label id="registerTitleLabel1" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Registrati" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
       <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="10.0" minWidth="10.0" prefWidth="40.0" style="-fx-background-color: transparent;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
          <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="0.0" percentWidth="20.0" prefWidth="62.0" />
@@ -107,15 +107,15 @@
                </padding>
             </TextField>
             <ChoiceBox fx:id="sexChoiceBox" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="26.0" prefWidth="300.0" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="- Sesso -" />
-                        <String fx:value="Femmina" />
-                        <String fx:value="Maschio" />
-                    </FXCollections>
-                </items>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="- Sesso -" />
+                     <String fx:value="Maschio" />
+                     <String fx:value="Femmina" />
+                  </FXCollections>
+               </items>
             </ChoiceBox>
-             <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+            <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" wrapText="true" style="-fx-text-alignment: center;" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
             <Label maxWidth="300.0" minWidth="270.0" prefHeight="12.0" prefWidth="270.0" style="-fx-font-weight: bold;" text="Registrazione 1 di 3" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />

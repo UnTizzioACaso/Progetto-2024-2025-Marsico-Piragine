@@ -8,63 +8,123 @@ import javafx.scene.control.Label;
 
 public class Register2Controller extends BranchController {
 
-    // TextField for street name
     @FXML
     TextField streetRegisterTextField;
 
-    // Label used to display validation error messages
     @FXML
     Label errorMessageLabel;
 
-    // TextField for postal code (CAP)
     @FXML
     TextField CapTextField;
 
-    // TextField for state
     @FXML
     TextField stateRegisterTextField;
 
-    // TextField for province
     @FXML
     TextField provinceRegisterTextField;
 
-    // TextField for house/street number
     @FXML
     TextField houseNumberRegisterTextField;
 
-    // TextField for city
     @FXML
     TextField cityRegisterTextField1;
 
-    // Validates address data and loads the third registration page
     @FXML
-    public void loadRegisterPage2() // loading the second registration page
+    public void loadRegisterPage2()
     {
-        // Check if all required address fields are filled
-        if (streetRegisterTextField.getText().isEmpty() || CapTextField.getText().isEmpty() || stateRegisterTextField.getText().isEmpty() || provinceRegisterTextField.getText().isEmpty() || houseNumberRegisterTextField.getText().isEmpty() || cityRegisterTextField1.getText() == null)
+        if (streetRegisterTextField.getText().isEmpty()
+                || CapTextField.getText().isEmpty()
+                || stateRegisterTextField.getText().isEmpty()
+                || provinceRegisterTextField.getText().isEmpty()
+                || houseNumberRegisterTextField.getText().isEmpty()
+                || cityRegisterTextField1.getText() == null)
         {
-            errorMessageLabel.setText("Tutti i campi devono essere compilati!"); // error message if any field is empty
+            errorMessageLabel.setText("Tutti i campi devono essere compilati!");
         }
         else
         {
-            // Save address information into the shared User object
-            rootController.user.setAddress(streetRegisterTextField.getText()); // set user's street address
-            rootController.user.setCap(CapTextField.getText()); // set user's postal code (CAP)
-            rootController.user.setState(stateRegisterTextField.getText()); // set user's state
-            rootController.user.setProvince(provinceRegisterTextField.getText()); // set user's province
-            rootController.user.setCity(cityRegisterTextField1.getText()); // set user's city
-            rootController.user.setStreetNumber(houseNumberRegisterTextField.getText()); // set user's house number
+            String street = streetRegisterTextField.getText();
+            String cap = CapTextField.getText();
+            String state = stateRegisterTextField.getText();
+            String province = provinceRegisterTextField.getText();
+            String houseNumber = houseNumberRegisterTextField.getText();
+            String city = cityRegisterTextField1.getText();
 
-            // Load the next registration page
+            String textRegex = "^[A-Za-zÀ-ÿ ]+$";
+
+            if (!state.matches(textRegex) || !province.matches(textRegex) || !street.matches(textRegex))
+            {
+                errorMessageLabel.setText("Stato, provincia e indirizzo non possono contenere numeri o caratteri speciali!");
+                return;
+            }
+
+            if (!city.matches(textRegex))
+            {
+                errorMessageLabel.setText("La città non può contenere numeri o caratteri speciali!");
+                return;
+            }
+
+            if (!houseNumber.matches("^\\d+$"))
+            {
+                errorMessageLabel.setText("Il numero civico deve essere composto solo da numeri!");
+                return;
+            }
+
+            int houseNumberValue;
+            try
+            {
+                houseNumberValue = Integer.parseInt(houseNumber);
+            }
+            catch (NumberFormatException e)
+            {
+                errorMessageLabel.setText("Il numero civico non è valido!");
+                return;
+            }
+
+            if (houseNumberValue < 1 || houseNumberValue > 15000)
+            {
+                errorMessageLabel.setText("Il numero civico non è valido!");
+                return;
+            }
+
+            if (!cap.matches("^\\d{5}$"))
+            {
+                errorMessageLabel.setText("Il CAP non è valido!");
+                return;
+            }
+
+            int capValue;
+            try
+            {
+                capValue = Integer.parseInt(cap);
+            }
+            catch (NumberFormatException e)
+            {
+                errorMessageLabel.setText("Il CAP non è valido!");
+                return;
+            }
+
+            if (capValue < 10 || capValue > 98168)
+            {
+                errorMessageLabel.setText("Il CAP non è valido!");
+                return;
+            }
+
+            rootController.user.setAddress(street);
+            rootController.user.setCap(cap);
+            rootController.user.setState(state);
+            rootController.user.setProvince(province);
+            rootController.user.setCity(city);
+            rootController.user.setStreetNumber(houseNumber);
+
             rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register3.fxml");
         }
     }
 
-    // Returns to the login page and resets the User object
     @FXML
     public void loadLogin()
     {
-        rootController.user = new User(); // reset user data
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml"); // load login page
+        rootController.user = new User();
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 }
