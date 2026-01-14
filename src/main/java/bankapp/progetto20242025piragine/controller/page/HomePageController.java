@@ -1,23 +1,15 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.controller.popup.*;
+
 import bankapp.progetto20242025piragine.controller.widget.WidgetController;
+import bankapp.progetto20242025piragine.db.HomeWidgetCustom;
+import bankapp.progetto20242025piragine.db.HomeWidgetCustomDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.List;
 
 public class HomePageController extends BranchController
@@ -38,6 +30,27 @@ public class HomePageController extends BranchController
             bankAccountController.setRootController(rootController); //setting the rootController in the bankAccount widget's
             homePageGridPane.add(favouritesCards, 1, 0); //adding the favouriteCards Node to homePageGridPane
             homePageGridPane.add(bankAccount, 0, 0); //adding the bankAccount Node to homePageGridPane
+            List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getWidgetsByUserId(rootController.user.getUserID());
+            for(HomeWidgetCustom widget : widgets)
+            {
+                if (!widget.isRemove())
+                {
+                    switch (widget.getTypeWidget()) {
+                        case "lastFiveExpensesVBox" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", widget.getColumn(), widget.getRow());
+                        case "monthlyBalanceGridPane" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyBalance.fxml", widget.getColumn(), widget.getRow());
+                        case "monthlyExpensesVBox" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", widget.getColumn(), widget.getRow());
+                        case "monthlyIncomesVBox" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", widget.getColumn(), widget.getRow());
+                        case "quickContactGridPane" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/quickContact.fxml", widget.getColumn(), widget.getRow());
+                        case "transactionHistoryGridPane" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", widget.getColumn(), widget.getRow());
+                    }
+                }
+            }
         }
         catch (Exception e)
         {
@@ -76,11 +89,12 @@ public class HomePageController extends BranchController
         {
             FXMLLoader loader = new FXMLLoader (getClass().getResource(fxml));
             Node node = loader.load();
-            if (column == 0) {node.setStyle("-fx-max-width: 400");}
+            if (column == 0) {node.setStyle(node.getStyle() + "-fx-max-width: 400");}
             WidgetController controller = loader.getController();
             controller.setRootController(rootController);
             homePageGridPane.add(node, column, row);
             controller.homePageGridPane = homePageGridPane;
+            HomeWidgetCustomDAO.updatePosition(rootController.user.getUserID(), controller.getWidgetType(), row, column, false);
         }
         catch (Exception e)
         {

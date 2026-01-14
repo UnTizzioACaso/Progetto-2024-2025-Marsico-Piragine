@@ -1,11 +1,9 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.controller.page.HomePageController;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -47,7 +45,7 @@ public class AddWidget12Controller extends BranchController
     @FXML
     public void addMonthlyIncomeWidget()
     {
-        rootController.homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncome.fxml", 1, 2);
+        rootController.homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", 1, 2);
         Stage stage = (Stage) widgetsVBox.getScene().getWindow();
         stage.close();
     }

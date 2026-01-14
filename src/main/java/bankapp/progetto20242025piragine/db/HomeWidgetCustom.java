@@ -5,12 +5,18 @@ public class HomeWidgetCustom {
     private int idWidget;
     private int userId;
     private String typeWidget;
-    private boolean remove;
-    private int row;
-    private int coloumn;
+    private boolean remove = true;
+    private int row = 1;
+    private int column = 1;
 
     // 🔹 Costruttore vuoto
     public HomeWidgetCustom() {}
+
+    public HomeWidgetCustom( int userId, String typeWidget)
+    {
+        this.userId = userId;
+        this.typeWidget = typeWidget;
+    }
 
     // 🔹 Getter & Setter
     public int getIdWidget() {
@@ -51,10 +57,10 @@ public class HomeWidgetCustom {
     public void setRow(int row) {
         this.row= row;
     }
-    public int getColoumn() {
-        return coloumn;
+    public int getColumn() {
+        return column;
     }
-    public void setColoumn(int coloumn) {
-        this.coloumn= coloumn;
+    public void setColumn(int column) {
+        this.column = column;
     }
 }
