@@ -29,7 +29,7 @@ public class TopbarController extends BranchController {
     private ImageView reloadPageButton;
 
     private AnchorPane notificationAnchorPane;
-    private NotificationAnchorPaneController notificationAnchorPaneController;
+    private NotificationSliderController notificationAnchorPaneController;
     private Stack<String> backwardStack = new Stack<>();
     private Stack<String> forwardStack = new Stack<>();
 
@@ -38,7 +38,7 @@ public class TopbarController extends BranchController {
     {
         try
         {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/notificationScrollPane.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/notificationSlider.fxml"));
             notificationAnchorPane =  loader.load();
             notificationAnchorPaneController = loader.getController();
             notificationAnchorPaneController.setRootController(rootController);
@@ -85,7 +85,7 @@ public class TopbarController extends BranchController {
         }
     }
 
-    private void updateNotifications() throws SQLException {
+    public void updateNotifications() throws SQLException {
         notificationAnchorPaneController.notificationVBox.getChildren().clear();
 
 

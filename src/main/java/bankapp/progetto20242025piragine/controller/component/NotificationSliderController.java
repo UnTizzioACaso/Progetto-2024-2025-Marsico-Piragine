@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-public class NotificationAnchorPaneController extends BranchController
+public class NotificationSliderController extends BranchController
 {
     @FXML
     public VBox notificationVBox;
