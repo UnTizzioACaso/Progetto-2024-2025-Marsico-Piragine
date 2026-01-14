@@ -22,7 +22,7 @@ public  class RootWindowController extends BranchController {
     @FXML
     public BorderPane rootWindow;
 
-    private TopbarController topbar = null;
+    public TopbarController topbarController = null;
 
     private String currentPage = "";
 
@@ -59,12 +59,13 @@ public  class RootWindowController extends BranchController {
         }
     }
 
-    public void showPopUp(String title, String fxml, int width, int height)
+    public BranchController showPopUp(String title, String fxml, int width, int height)
     {
+        BranchController controller =  null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
             Parent root = loader.load(); //creating the node from the loader
-            BranchController controller = loader.getController(); //getting the controller from the loader
+            controller = loader.getController(); //getting the controller from the loader
             controller.setRootController(this);
             Stage popupStage = new Stage(); //creating a new stage for the accountPopup
             popupStage.setTitle(title); //setting the title
@@ -83,6 +84,7 @@ public  class RootWindowController extends BranchController {
             System.err.println("error loading the account popup" + e.getMessage());
             e.printStackTrace();
         }
+        return controller;
     }
 
     @FXML
@@ -115,9 +117,9 @@ public  class RootWindowController extends BranchController {
                 controller.setRootController(this);//giving to the new page's controller the current RootController instance
                 controller.initializer();
                 rootWindow.setCenter(node); //setting the page to the center
-                if (topbar != null) //if topbar's controller is already initialized
+                if (topbarController != null) //if topbarController's controller is already initialized
                 {
-                    topbar.visitPage(fxml); //adds the loaded page to the backwardStack
+                    topbarController.visitPage(fxml); //adds the loaded page to the backwardStack
                 }
             }
             catch (IOException e)
@@ -152,16 +154,17 @@ public  class RootWindowController extends BranchController {
             e.printStackTrace();
         }
     }
+
     public void loadTopBar(String fxml) //this method loads a node on the top side of root's BorderPane and gives back his controller
     {
         try
         {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
             Parent node = fxmlLoader.load(); //creating the node from the loader
-            topbar = fxmlLoader.getController(); //getting the controller from the loader
-            topbar.setRootController(this); //giving to the new page's controller the current RootController instance
+            topbarController = fxmlLoader.getController(); //getting the controller from the loader
+            topbarController.setRootController(this); //giving to the new page's controller the current RootController instance
             rootWindow.setTop(node); //setting the node to the top
-            topbar.initializer();
+            topbarController.initializer();
         }
         catch (IOException e)
         {

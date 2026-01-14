@@ -9,7 +9,7 @@ import javafx.scene.control.ToggleButton;
 
 import java.sql.SQLException;
 
-public class FriendshipRequestController extends BranchController {
+public class FriendshipRequestPopupController extends BranchController {
     @FXML
     private TextField searchByUsernameField;
 
