@@ -5,110 +5,109 @@ import bankapp.progetto20242025piragine.db.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
 import java.time.LocalDate;
 import java.time.Period;
 
 public class Register1Controller extends BranchController {
 
-    // TextField for user's surname
-    @FXML
-    TextField surnameRegisterTextField;
+    private static final int NAME_MIN_LENGTH = 2;
+    private static final int NAME_MAX_LENGTH = 50;
+    private static final int BIRTH_PLACE_MIN_LENGTH = 3;
+    private static final int BIRTH_PLACE_MAX_LENGTH = 255;
+    private static final String NAME_REGEX = "^[A-Za-zÀ-ÿ ]+$";
 
-    // Label used to display validation error messages
     @FXML
-    Label errorMessageLabel;
+    private TextField nameRegisterTextField;
 
-    // TextField for user's name
     @FXML
-    TextField nameRegisterTextField;
+    private TextField surnameRegisterTextField;
 
-    // TextField for user's birth place
     @FXML
-    TextField birthPlaceRegisterTextField;
+    private TextField birthPlaceRegisterTextField;
 
-    // DatePicker for user's birth date
     @FXML
-    DatePicker birthDateRegisterDatePicker;
+    private DatePicker birthDateRegisterDatePicker;
 
-    // ChoiceBox for user's gender selection
     @FXML
-    ChoiceBox<String> sexChoiceBox;
+    private ChoiceBox<String> sexChoiceBox;
 
-    // Validates input fields and loads the second registration page
     @FXML
-    public void loadRegisterPage2() // loading the second registration page
+    private Label errorMessageLabel;
+
+    @FXML
+    public void loadRegisterPage2()
     {
-        // Check if all required fields are filled
-        if (surnameRegisterTextField.getText().isEmpty() || nameRegisterTextField.getText().isEmpty() || birthPlaceRegisterTextField.getText().isEmpty() || birthDateRegisterDatePicker.getValue() == null || sexChoiceBox.getValue() == null)
+        String name = nameRegisterTextField.getText().trim();
+        String surname = surnameRegisterTextField.getText().trim();
+        String birthPlace = birthPlaceRegisterTextField.getText().trim();
+        LocalDate birthDate = birthDateRegisterDatePicker.getValue();
+        String gender = sexChoiceBox.getValue();
+
+        if (name.isEmpty() || surname.isEmpty() || birthPlace.isEmpty() || birthDate == null || gender == null)
         {
-            errorMessageLabel.setText("Tutti i campi devono essere compilati!"); // error message if any field is empty
+            errorMessageLabel.setText("Tutti i campi devono essere compilati!");
+            return;
         }
-        else
+
+        if (gender.equals("- Sesso -"))
         {
-            // Retrieve selected birth date
-            LocalDate birthDate = birthDateRegisterDatePicker.getValue();
-
-            // Get current date
-            LocalDate today = LocalDate.now();
-
-            // Calculate user's age in years
-            int age = Period.between(birthDate, today).getYears();
-
-            // Check if a valid gender has been selected
-            if (sexChoiceBox.getValue().equals("- Sesso -"))
-            {
-                errorMessageLabel.setText("Devi selezionare un genere valido!"); // invalid gender selection message
-                return; // stop execution
-            }
-
-            // Check if user is at least 18 years old
-            if (age < 18)
-            {
-                errorMessageLabel.setText("Devi avere almeno 18 anni per registrarti!"); // underage error message
-                return; // stop execution
-            }
-
-            String name = nameRegisterTextField.getText();
-            String surname = surnameRegisterTextField.getText();
-            String birthPlace = birthPlaceRegisterTextField.getText();
-
-            String regex = "^[A-Za-zÀ-ÿ ]+$";
-
-            if (!name.matches(regex) || !surname.matches(regex) || !birthPlace.matches(regex))
-            {
-                errorMessageLabel.setText("Nome, cognome e luogo di nascita non possono contenere numeri o caratteri speciali!");
-                return;
-            }
-
-            // Save user personal data into the shared User object
-            rootController.user.setFirstName(nameRegisterTextField.getText()); // set user's name
-            rootController.user.setLastName(surnameRegisterTextField.getText()); // set user's surname
-            rootController.user.setBirthPlace(birthPlaceRegisterTextField.getText()); // set user's birth place
-            rootController.user.setBirthDate(birthDateRegisterDatePicker.getValue().toString()); // set user's birth date
-            rootController.user.setGender(sexChoiceBox.getValue()); // set user's gender
-
-            // Load the next registration page
-            rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml");
+            errorMessageLabel.setText("Devi selezionare un genere valido!");
+            return;
         }
+
+        int age = Period.between(birthDate, LocalDate.now()).getYears();
+        if (age < 18)
+        {
+            errorMessageLabel.setText("Devi avere almeno 18 anni per registrarti!");
+            return;
+        }
+
+        if (name.length() < NAME_MIN_LENGTH || name.length() > NAME_MAX_LENGTH ||
+                surname.length() < NAME_MIN_LENGTH || surname.length() > NAME_MAX_LENGTH)
+        {
+            errorMessageLabel.setText(
+                    "Nome e cognome devono contenere tra "
+                            + NAME_MIN_LENGTH + " e " + NAME_MAX_LENGTH + " caratteri!"
+            );
+            return;
+        }
+
+        if (birthPlace.length() < BIRTH_PLACE_MIN_LENGTH || birthPlace.length() > BIRTH_PLACE_MAX_LENGTH)
+        {
+            errorMessageLabel.setText("Luogo di nascita non valido");
+            return;
+        }
+
+        if (!name.matches(NAME_REGEX) || !surname.matches(NAME_REGEX) || !birthPlace.matches(NAME_REGEX))
+        {
+            errorMessageLabel.setText(
+                    "Nome, cognome e luogo di nascita non possono contenere numeri o caratteri speciali!"
+            );
+            return;
+        }
+
+        rootController.user.setFirstName(name);
+        rootController.user.setLastName(surname);
+        rootController.user.setBirthPlace(birthPlace);
+        rootController.user.setBirthDate(birthDate.toString());
+        rootController.user.setGender(gender);
+
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml");
     }
 
-    // Loads the login page
     @FXML
     public void loadLogin()
     {
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 
-    // Initializes the registration page
     @Override
-    public void initializer() // initializing the page
+    public void initializer()
     {
-        // Create a new User instance for the registration process
         rootController.user = new User();
-
-        // Set default value for the gender ChoiceBox
         sexChoiceBox.setValue("- Sesso -");
     }
 }
