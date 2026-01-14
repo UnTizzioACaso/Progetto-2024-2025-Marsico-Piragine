@@ -12,9 +12,10 @@ public class FriendRequestDAO {
     }
 
 
-    public void sendRequest(FriendRequest request) throws SQLException {
+    public static void sendRequest(FriendRequest request) throws SQLException {
         String sql = "INSERT INTO Friend_Request (Requester, Beneficiary, date, transaction_status) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
+        {
             stmt.setInt(1, request.getRequester());
             stmt.setInt(2, request.getBeneficiary());
             stmt.setTimestamp(3, Timestamp.valueOf(request.getDateRequest()));
@@ -25,6 +26,11 @@ public class FriendRequestDAO {
 
     public List<FriendRequest> getPendingRequests(int beneficiaryId) throws SQLException {
         String sql = "SELECT id_richiesta, Requester, Beneficiary, date, transaction_status FROM Friend_Request WHERE Beneficiary = ? AND transaction_status = 'pending'";
+
+
+        {
+
+        }
         List<FriendRequest> requests = new ArrayList<>();
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, beneficiaryId);

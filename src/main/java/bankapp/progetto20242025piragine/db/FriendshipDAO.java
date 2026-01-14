@@ -36,4 +36,6 @@ public class FriendshipDAO
         return friends;
     }
 
+
+
 }
