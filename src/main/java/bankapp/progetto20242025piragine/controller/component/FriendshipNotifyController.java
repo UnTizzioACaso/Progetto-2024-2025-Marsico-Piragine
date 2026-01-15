@@ -25,7 +25,7 @@ public class FriendshipNotifyController extends BranchController
             e.printStackTrace();
         }
 
-        BlockUserPopupController controller = (BlockUserPopupController) rootController.showPopUp("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
+        BlockUserPopupController controller = (BlockUserPopupController) rootController.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.username = friendshipUsernameLabel.getText();
     }

@@ -62,25 +62,25 @@ public class HomePageController extends BranchController
     @FXML
     public void loadAddWidget12()
     {
-        rootController.showPopUp("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml", 600, 600);
+        rootController.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget01()
     {
-        rootController.showPopUp("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml", 600, 600);
+        rootController.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget11()
     {
-        rootController.showPopUp("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml", 600, 600);
+        rootController.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget02()
     {
-        rootController.showPopUp("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml", 600, 600);
+        rootController.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml", 600, 600);
     }
 
     public void addWidget(String fxml, int column, int row)

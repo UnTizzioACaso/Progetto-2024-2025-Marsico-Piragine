@@ -23,7 +23,7 @@ public class FriendsPageController extends BranchController
     @FXML
     public void loadFriendshipRequestPopup()
     {
-        rootController.showPopUp("Invia aggiungi un amico", "/bankapp/progetto20242025piragine/fxml/popup/friendshipRequestPopup.fxml", 420, 300);
+        rootController.showPopup("Invia aggiungi un amico", "/bankapp/progetto20242025piragine/fxml/popup/friendshipRequestPopup.fxml", 420, 300);
     }
 
     @Override

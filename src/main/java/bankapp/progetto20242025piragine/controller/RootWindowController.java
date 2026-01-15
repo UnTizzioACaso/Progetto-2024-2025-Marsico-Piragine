@@ -59,7 +59,7 @@ public  class RootWindowController extends BranchController {
         }
     }
 
-    public BranchController showPopUp(String title, String fxml, int width, int height)
+    public BranchController showPopup(String title, String fxml, int width, int height)
     {
         BranchController controller =  null;
         try {

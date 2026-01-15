@@ -28,7 +28,7 @@ public class CardDAO {
                     card.setNickname(rs.getString("nickname"));
                     card.setColour(rs.getString("colour"));
                     card.setFavourite(rs.getBoolean("favourite"));
-                    card.setSpendingLimit(rs.getBigDecimal("spending_limit"));
+                    card.setSpendingLimit(rs.getBigDecimal("spending_limit").divide(BigDecimal.valueOf(100)));
                     card.setStatus(rs.getBoolean("status"));
 
                     cards.add(card);
@@ -36,6 +36,30 @@ public class CardDAO {
             }
         }
         return cards;
+    }
+
+    public static BigDecimal updateCardSpendingLimit(int cardId, BigDecimal spendingLimit) throws SQLException {
+        String sql = "UPDATE Card SET spending_limit = ? WHERE id_card = ?";
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, spendingLimit.multiply(BigDecimal.valueOf(100)).intValue() );
+            stmt.setInt(2, cardId);
+            stmt.executeUpdate();
+            return spendingLimit;
+        }
+    }
+
+    public static Boolean updateCardFavourite(int cardId, boolean favourite) throws SQLException {
+        String sql = "UPDATE Card SET favourite = ? WHERE id_card = ?";
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setBoolean(1, favourite);
+            stmt.setInt(2, cardId);
+            stmt.executeUpdate();
+            return favourite;
+        }
     }
 
     public static Card getCardById(int idCard) throws SQLException {
@@ -59,7 +83,7 @@ public class CardDAO {
                 card.setNickname(rs.getString("nickname"));
                 card.setColour(rs.getString("colour"));
                 card.setFavourite(rs.getBoolean("favourite"));
-                card.setSpendingLimit(rs.getBigDecimal("spending_limit"));
+                card.setSpendingLimit(rs.getBigDecimal("spending_limit").divide(BigDecimal.valueOf(100)));
                 card.setStatus(rs.getBoolean("status"));
 
                 return card;
@@ -82,7 +106,7 @@ public class CardDAO {
             stmt.setString(5, card.getNickname());
             stmt.setString(6, card.getColour());
             stmt.setBoolean(7, card.isFavourite());
-            stmt.setBigDecimal(8, card.getSpendingLimit());
+            stmt.setBigDecimal(8, card.getSpendingLimit().multiply(BigDecimal.valueOf(100)));
             stmt.setBoolean(9, card.isStatus());
 
             int affectedRows = stmt.executeUpdate();

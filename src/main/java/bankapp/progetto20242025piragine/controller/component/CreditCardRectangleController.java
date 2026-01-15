@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.controller.popup.MenageCardPopupController;
 import bankapp.progetto20242025piragine.db.Card;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +13,17 @@ import java.io.IOException;
 
 public class CreditCardRectangleController extends BranchController
 {
-    @FXML public Label limitValueLabel;
-    @FXML public AnchorPane rectangleAnchorPane;
+    @FXML
+    public Label limitValueLabel;
 
-    public void fill(Card card)
+    public Card card;
+
+    @FXML
+    public AnchorPane rectangleAnchorPane;
+
+    public void fill(Card c)
     {
+        this.card = c;
         try
         {
             FXMLLoader cardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
@@ -36,5 +43,9 @@ public class CreditCardRectangleController extends BranchController
         }
     }
 
-    @FXML private void menageCard() { rootController.showPopup("GESTISCI", "/bankapp/progetto20242025piragine/fxml/PERCORSO_POPUP.fxml", 400, 300); }
+    @FXML private void menageCard()
+    {
+        MenageCardPopupController controller = (MenageCardPopupController) rootController.showPopup("Gestisci la carta", "/bankapp/progetto20242025piragine/fxml/menageCardPopup.fxml", 400, 300);
+        controller.card = card;
+    }
 }
