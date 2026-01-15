@@ -12,12 +12,8 @@ import java.io.IOException;
 
 public class CreditCardRectangleController extends BranchController
 {
-    @FXML
-    public Label limitValueLabel;
-
-    @FXML
-    public AnchorPane rectangleAnchorPane;
-
+    @FXML public Label limitValueLabel;
+    @FXML public AnchorPane rectangleAnchorPane;
 
     public void fill(Card card)
     {
@@ -40,4 +36,5 @@ public class CreditCardRectangleController extends BranchController
         }
     }
 
+    @FXML private void menageCard() { rootController.showPopup("GESTISCI", "/bankapp/progetto20242025piragine/fxml/PERCORSO_POPUP.fxml", 400, 300); }
 }
