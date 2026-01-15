@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS Card (
     nickname TEXT,
     colour TEXT,
     favourite BOOLEAN,
-    spending_limit DECIMAL CHECK (spending_limit >= 0),
+    spending_limit INTEGER CHECK (spending_limit >= 0),
     status BOOLEAN CHECK ( True or False ),
     FOREIGN KEY (user_id) REFERENCES Bank_Account(user_id) ON DELETE CASCADE
 );
