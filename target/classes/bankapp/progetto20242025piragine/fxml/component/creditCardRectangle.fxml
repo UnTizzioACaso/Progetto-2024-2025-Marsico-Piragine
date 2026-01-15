@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="rectangleAnchorPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="300.0" prefHeight="201.0" prefWidth="942.0" style="-fx-background-color: white; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CreditCardRectangleController">
     <children>
-        <Button layoutX="766.0" layoutY="115.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: center;" text="GESTISCI" textFill="WHITE" AnchorPane.rightAnchor="40.0">
+        <Button layoutX="766.0" layoutY="115.0" mnemonicParsing="false" onAction="#menageCard" prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: center;" text="GESTISCI" textFill="WHITE" AnchorPane.rightAnchor="40.0">
             <effect>
                 <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                     <color>
