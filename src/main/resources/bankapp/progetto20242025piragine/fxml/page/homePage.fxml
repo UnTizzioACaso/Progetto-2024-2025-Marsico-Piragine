@@ -18,7 +18,7 @@
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="230.0" minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="33.5" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="33.5" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" percentHeight="33.5" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
    </rowConstraints>
    <padding>

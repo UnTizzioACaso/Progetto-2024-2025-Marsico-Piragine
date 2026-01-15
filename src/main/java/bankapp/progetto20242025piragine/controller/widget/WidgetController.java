@@ -8,6 +8,8 @@ public class WidgetController extends BranchController {
 
     public GridPane homePageGridPane;
 
+    public String getWidgetType(){ return "";}
+
     @FXML
     public void showMenu(){
 

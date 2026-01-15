@@ -11,8 +11,8 @@ public class Transaction {
     private BigDecimal ammount;
     private String note;
     private Timestamp transactionDate;
-    private String status; // send / declined
-    private String type;   // recharge / bank transfer / fast send
+    private String status; // tryToSendRequest / declined
+    private String type;   // recharge / bank transfer / fast tryToSendRequest
     private Integer usedCard; // id_card (può essere null)
 
     // 🔹 Costruttore vuoto

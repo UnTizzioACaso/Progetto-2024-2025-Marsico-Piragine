@@ -1,22 +1,16 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.controller.popup.*;
+
 import bankapp.progetto20242025piragine.controller.widget.WidgetController;
+import bankapp.progetto20242025piragine.db.HomeWidgetCustom;
+import bankapp.progetto20242025piragine.db.HomeWidgetCustomDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.util.List;
 
 public class HomePageController extends BranchController
 {
@@ -36,6 +30,27 @@ public class HomePageController extends BranchController
             bankAccountController.setRootController(rootController); //setting the rootController in the bankAccount widget's
             homePageGridPane.add(favouritesCards, 1, 0); //adding the favouriteCards Node to homePageGridPane
             homePageGridPane.add(bankAccount, 0, 0); //adding the bankAccount Node to homePageGridPane
+            List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getWidgetsByUserId(rootController.user.getUserID());
+            for(HomeWidgetCustom widget : widgets)
+            {
+                if (!widget.isRemove())
+                {
+                    switch (widget.getTypeWidget()) {
+                        case "lastFiveExpensesVBox" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", widget.getColumn(), widget.getRow());
+                        case "monthlyBalanceGridPane" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyBalance.fxml", widget.getColumn(), widget.getRow());
+                        case "monthlyExpensesVBox" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", widget.getColumn(), widget.getRow());
+                        case "monthlyIncomesVBox" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", widget.getColumn(), widget.getRow());
+                        case "quickContactGridPane" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/quickContact.fxml", widget.getColumn(), widget.getRow());
+                        case "transactionHistoryGridPane" ->
+                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", widget.getColumn(), widget.getRow());
+                    }
+                }
+            }
         }
         catch (Exception e)
         {
@@ -47,105 +62,25 @@ public class HomePageController extends BranchController
     @FXML
     public void loadAddWidget12()
     {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml")); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            AddWidget12Controller controller = loader.getController(); //getting the controller from the loader
-            controller.setRootController(rootController);
-            Stage popupStage = new Stage(); //creating a new stage for the accountPopup
-            popupStage.setTitle("Aggiungi un widget"); //setting the title
-            popupStage.setMinWidth(420); //setting popup's minimum width
-            popupStage.setMinHeight(300); //setting popup's minimum height
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            popupStage.setScene(new Scene(root));
-            controller.disableUsedWidgets(homePageGridPane);
-            controller.homePageController = this;
-            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the add widget (1,2) popup" + e.getMessage());
-            e.printStackTrace();
-        }
+        rootController.showPopUp("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget01()
     {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml")); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            AddWidget01Controller controller = loader.getController(); //getting the controller from the loader
-            controller.setRootController(rootController);
-            Stage popupStage = new Stage(); //creating a new stage for the accountPopup
-            popupStage.setTitle("Aggiungi un widget"); //setting the title
-            popupStage.setMinWidth(420); //setting popup's minimum width
-            popupStage.setMinHeight(300); //setting popup's minimum height
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            popupStage.setScene(new Scene(root));
-            controller.disableUsedWidgets(homePageGridPane);
-            controller.homePageController = this;
-            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the add widget (0,1) popup" + e.getMessage());
-            e.printStackTrace();
-        }
+        rootController.showPopUp("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget11()
     {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml")); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            AddWidget11Controller controller = loader.getController(); //getting the controller from the loader
-            controller.setRootController(rootController);
-            Stage popupStage = new Stage(); //creating a new stage for the accountPopup
-            popupStage.setTitle("Aggiungi un widget"); //setting the title
-            popupStage.setMinWidth(420); //setting popup's minimum width
-            popupStage.setMinHeight(300); //setting popup's minimum height
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            popupStage.setScene(new Scene(root));
-            controller.disableUsedWidgets(homePageGridPane);
-            controller.homePageController = this;
-            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the add widget (1,1) popup" + e.getMessage());
-            e.printStackTrace();
-        }
+        rootController.showPopUp("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget02()
     {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml")); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            AddWidget02Controller controller = loader.getController(); //getting the controller from the loader
-            controller.setRootController(rootController);
-            Stage popupStage = new Stage(); //creating a new stage for the accountPopup
-            popupStage.setTitle("Aggiungi un widget"); //setting the title
-            popupStage.setMinWidth(420); //setting popup's minimum width
-            popupStage.setMinHeight(300); //setting popup's minimum height
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            popupStage.setScene(new Scene(root));
-            controller.disableUsedWidgets(homePageGridPane);
-            controller.homePageController = this;
-            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the add widget (0,2) popup" + e.getMessage());
-            e.printStackTrace();
-        }
+        rootController.showPopUp("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml", 600, 600);
     }
 
     public void addWidget(String fxml, int column, int row)
@@ -154,12 +89,12 @@ public class HomePageController extends BranchController
         {
             FXMLLoader loader = new FXMLLoader (getClass().getResource(fxml));
             Node node = loader.load();
+            if (column == 0) {node.setStyle(node.getStyle() + "-fx-max-width: 400");}
             WidgetController controller = loader.getController();
             controller.setRootController(rootController);
             homePageGridPane.add(node, column, row);
-            GridPane.setHalignment(node, HPos.CENTER );
-            GridPane.setValignment(node, VPos.CENTER);
             controller.homePageGridPane = homePageGridPane;
+            HomeWidgetCustomDAO.updatePosition(rootController.user.getUserID(), controller.getWidgetType(), row, column, false);
         }
         catch (Exception e)
         {

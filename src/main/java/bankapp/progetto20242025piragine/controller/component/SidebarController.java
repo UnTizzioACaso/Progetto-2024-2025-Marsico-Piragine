@@ -28,26 +28,7 @@ public class SidebarController extends BranchController {
     @FXML
     void openAccountPopup() //opening the account popup
     {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml")); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            AccountPopupController controller = loader.getController(); //getting the controller from the loader
-            controller.setRootController(rootController);
-            Stage popupStage = new Stage(); //creating a new stage for the accountPopup
-            popupStage.setTitle("Account"); //setting the title
-            popupStage.setMinWidth(420); //setting popup's minimum width
-            popupStage.setMinHeight(300); //setting popup's minimum height
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            popupStage.setScene(new Scene(root));
-            controller.showCorrectValues();
-            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the account popup" + e.getMessage());
-            e.printStackTrace();
-        }
+        rootController.showPopUp("Account", "/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml", 420, 300);
     }
 
     @FXML
