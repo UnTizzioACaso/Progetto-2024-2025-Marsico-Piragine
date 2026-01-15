@@ -1,7 +1,6 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.BankAccount;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Transaction;
 import bankapp.progetto20242025piragine.db.TransactionDAO;
@@ -46,7 +45,7 @@ public class FriendContactController extends BranchController
             {
                 try
                 {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/toFriendTransactionCloud.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
                     Node toFriend = fxmlLoader.load();
                     ToFriendTransactionCloudController controller = fxmlLoader.getController();
                     controller.valueLabel.setText(transaction.getAmmount().toString());
