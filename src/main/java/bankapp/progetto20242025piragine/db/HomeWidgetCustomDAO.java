@@ -1,16 +1,14 @@
 package bankapp.progetto20242025piragine.db;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 public class HomeWidgetCustomDAO {
 
     // 🔹 Inserisce un widget
     public static boolean insertWidget(HomeWidgetCustom w) throws SQLException {
         String sql = """
             INSERT INTO Home_Widget_Custom
-            (user_id, type_widget, size, position, remove)
+            (user_id, type_widget, y, x, remove)
             VALUES (?, ?, ?, ?, ?)
             """;
 
@@ -19,25 +17,18 @@ public class HomeWidgetCustomDAO {
 
             stmt.setInt(1, w.getUserId());
             stmt.setString(2, w.getTypeWidget());
-            stmt.setString(3, w.getSize());
-            stmt.setInt(4, w.getPosition());
+            stmt.setInt(3, w.getRow());
+            stmt.setInt(4, w.getColumn());
             stmt.setBoolean(5, w.isRemove());
 
-            int rows = stmt.executeUpdate();
-            if (rows == 0) return false;
-
-            try (ResultSet keys = stmt.getGeneratedKeys()) {
-                if (keys.next()) {
-                    w.setIdWidget(keys.getInt(1));
-                }
-            }
+            stmt.executeUpdate();
             return true;
         }
     }
 
     // 🔹 WidgetController di un utente
     public static List<HomeWidgetCustom> getWidgetsByUserId(int userId) throws SQLException {
-        String sql = "SELECT * FROM Home_Widget_Custom WHERE user_id = ? ORDER BY position";
+        String sql = "SELECT * FROM Home_Widget_Custom WHERE user_id = ? ORDER BY y,x";
         List<HomeWidgetCustom> list = new ArrayList<>();
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -55,26 +46,30 @@ public class HomeWidgetCustomDAO {
     }
 
     // 🔹 Aggiorna posizione widget
-    public static boolean updatePosition(int idWidget, int newPosition) throws SQLException {
-        String sql = "UPDATE Home_Widget_Custom SET position = ? WHERE id_widget = ?";
+    public static boolean updatePosition(int userId, String widgetType, int newRow, int newColumn, Boolean remove) throws SQLException {
+        String sql = "UPDATE Home_Widget_Custom SET y = ?, x = ?, remove = ? WHERE type_widget = ? AND user_id = ?;";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, newPosition);
-            stmt.setInt(2, idWidget);
+            stmt.setInt(1, newRow);
+            stmt.setInt(2, newColumn);
+            stmt.setBoolean(3, remove);
+            stmt.setString(4, widgetType);
+            stmt.setInt(5, userId);
             return stmt.executeUpdate() > 0;
         }
     }
 
     // 🔹 Rimuove (soft delete)
-    public static boolean markAsRemoved(int idWidget) throws SQLException {
-        String sql = "UPDATE Home_Widget_Custom SET remove = 1 WHERE id_widget = ?";
+    public static boolean markAsRemoved(int userid, String widgetType) throws SQLException {
+        String sql = "UPDATE Home_Widget_Custom SET remove = true WHERE user_id = ? AND type_widget = ?;";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, idWidget);
+            stmt.setInt(1, userid);
+            stmt.setString(2, widgetType);
             return stmt.executeUpdate() > 0;
         }
     }
@@ -97,8 +92,8 @@ public class HomeWidgetCustomDAO {
         w.setIdWidget(rs.getInt("id_widget"));
         w.setUserId(rs.getInt("user_id"));
         w.setTypeWidget(rs.getString("type_widget"));
-        w.setSize(rs.getString("size"));
-        w.setPosition(rs.getInt("position"));
+        w.setRow(rs.getInt("y"));
+        w.setColumn(rs.getInt("x"));
         w.setRemove(rs.getBoolean("remove"));
         return w;
     }

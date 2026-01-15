@@ -136,12 +136,48 @@ public class UserDAO
         }
     }
 
-    public static User getUserByUserID(String userid) throws SQLException {
+    public static User getUserByUsername(String username) throws SQLException {
+        String sql = "SELECT * FROM User WHERE username = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) return null;
+
+                User user = new User();
+                user.setUserID(rs.getInt("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setPasswordHash(rs.getString("password_hash"));
+                user.setPinHash(rs.getString("pin_hash"));
+                user.setTheme(rs.getString("theme"));
+                user.setPhoneNumber(rs.getString("phone_number"));
+                user.setGender(rs.getString("gender"));
+                user.setBirthDate(rs.getString("birth_day"));
+                user.setBirthPlace(rs.getString("birth_place"));
+                user.setState(rs.getString("state"));
+                user.setProvince(rs.getString("province"));
+                user.setCity(rs.getString("city"));
+                user.setAddress(rs.getString("address"));
+                user.setStreetNumber(rs.getString("street_number"));
+                user.setCap(rs.getString("cap"));
+                user.setRememberCredentials(rs.getBoolean("remember_credentials"));
+                user.setLastAccessDate(rs.getString("last_access_date"));
+
+                return user;
+            }
+        }
+    }
+
+    public static User getUserByUserID(int userid) throws SQLException {
         String sql = "SELECT * FROM User WHERE user_id = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setString(1, userid);
+            stmt.setInt(1, userid);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
 
@@ -162,4 +198,41 @@ public class UserDAO
     }
 
 
+    public static User getUserByCellphone(String phoneNumber) throws SQLException {
+
+        String sql = "SELECT * FROM User WHERE phone_number = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, phoneNumber);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (!rs.next()) return null;
+
+                User user = new User();
+                user.setUserID(rs.getInt("user_id"));
+                user.setUsername(rs.getString("username"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setPasswordHash(rs.getString("password_hash"));
+                user.setPinHash(rs.getString("pin_hash"));
+                user.setTheme(rs.getString("theme"));
+                user.setPhoneNumber(rs.getString("phone_number"));
+                user.setGender(rs.getString("gender"));
+                user.setBirthDate(rs.getString("birth_day"));
+                user.setBirthPlace(rs.getString("birth_place"));
+                user.setState(rs.getString("state"));
+                user.setProvince(rs.getString("province"));
+                user.setCity(rs.getString("city"));
+                user.setAddress(rs.getString("address"));
+                user.setStreetNumber(rs.getString("street_number"));
+                user.setCap(rs.getString("cap"));
+                user.setRememberCredentials(rs.getBoolean("remember_credentials"));
+                user.setLastAccessDate(rs.getString("last_access_date"));
+
+                return user;
+            }
+        }
+
+    }
 }
