@@ -44,12 +44,14 @@ public class MenageCardPopupController extends BranchController {
     @FXML
     public void updateSpendingLimit()
     {
-        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$"))
-        {
-            BigDecimal spendingLimit = new BigDecimal(spendingLimitTextField.getText().replace(",","."));
-            try
+        String spendingLimitText;
+
+        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {spendingLimitText = spendingLimitTextField.getText().replace(",", ".");}
+        else if (spendingLimitTextField.getText().matches("^\\d+(.\\d{1,2})?$")) {spendingLimitText =spendingLimitTextField.getText();}
+        else {errorLabel.setText("il limite è in formato non valido"); return;}
+        try
             {
-                card.setSpendingLimit(CardDAO.updateCardSpendingLimit(card.getIdCard(), spendingLimit));
+                card.setSpendingLimit(CardDAO.updateCardSpendingLimit(card.getIdCard(), new BigDecimal(spendingLimitText)));
                 spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
                 rootController.topbarController.reloadPage();
             }
@@ -59,8 +61,8 @@ public class MenageCardPopupController extends BranchController {
                 e.printStackTrace();
             }
         }
-        else {errorLabel.setText("il limite è in formato non valido");}
-    }
+
+
 
     @FXML
     public void addToFavourites()

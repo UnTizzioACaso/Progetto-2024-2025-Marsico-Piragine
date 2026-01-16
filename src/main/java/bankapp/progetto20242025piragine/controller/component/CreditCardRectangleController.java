@@ -27,9 +27,9 @@ public class CreditCardRectangleController extends BranchController
         Node visualCard = CardCreator.cardCorrectValuesWithoutButtons(rootController, card);
         rectangleAnchorPane.getChildren().add(visualCard);
         limitValueLabel.setText("€ " + card.getSpendingLimit().toString());
+
         AnchorPane.setBottomAnchor(visualCard, 30.00);
         AnchorPane.setLeftAnchor(visualCard, 30.00);
-
     }
 
     @FXML

@@ -2,6 +2,7 @@ package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 
+import bankapp.progetto20242025piragine.controller.widget.FavouritesCardController;
 import bankapp.progetto20242025piragine.controller.widget.WidgetController;
 import bankapp.progetto20242025piragine.db.HomeWidgetCustom;
 import bankapp.progetto20242025piragine.db.HomeWidgetCustomDAO;
@@ -28,6 +29,9 @@ public class HomePageController extends BranchController
             Node bankAccount = bankAccountLoader.load(); //creating bankAccount widget's node
             BranchController bankAccountController = bankAccountLoader.getController(); //getting the bankAccount widget's controller
             bankAccountController.setRootController(rootController); //setting the rootController in the bankAccount widget's
+            FavouritesCardController favouritesCardController = favouritesCardLoader.getController();
+            favouritesCardController.setRootController(rootController);
+            favouritesCardController.initializer();
             homePageGridPane.add(favouritesCards, 1, 0); //adding the favouriteCards Node to homePageGridPane
             homePageGridPane.add(bankAccount, 0, 0); //adding the bankAccount Node to homePageGridPane
             List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getWidgetsByUserId(rootController.user.getUserID());

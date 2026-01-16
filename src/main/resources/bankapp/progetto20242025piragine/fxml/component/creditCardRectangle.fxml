@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rectangleAnchorPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="300.0" prefHeight="201.0" prefWidth="942.0" style="-fx-background-color: white; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CreditCardRectangleController">
+<AnchorPane fx:id="rectangleAnchorPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="300.0" prefHeight="201.0" prefWidth="942.0" style="-fx-background-color: white; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CreditCardRectangleController">
     <children>
         <Button layoutX="766.0" layoutY="115.0" mnemonicParsing="false" onAction="#menageCard" prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: center;" text="GESTISCI" textFill="WHITE" AnchorPane.rightAnchor="40.0">
             <effect>
@@ -22,9 +22,9 @@
                 <Font size="17.0" />
             </font>
         </Button>
-        <Label fx:id="limitValueLabel" alignment="CENTER" layoutX="719.0" layoutY="74.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="238.0" style="-fx-font-weight: BOLD;" text="€ 20.000,00" AnchorPane.rightAnchor="-15.0">
+        <Label fx:id="limitValueLabel" alignment="CENTER" layoutX="719.0" layoutY="74.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="238.0" text="€ 20.000,00" AnchorPane.rightAnchor="-15.0">
             <font>
-                <Font size="15.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Label>
         <Text fx:id="limitLabel" layoutX="812.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Limite:" wrappingWidth="53.3367919921875" AnchorPane.rightAnchor="76.6632080078125">
