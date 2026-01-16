@@ -28,7 +28,7 @@ public class Application extends javafx.application.Application {
         ThemeManager.applyTheme(scene, "light");
 
         // Imposta le proprietà della finestra principale
-        stage.setTitle("PSP bankkkkk!");
+        stage.setTitle("Maze Bank");
         stage.setMinWidth(850);
         stage.setMinHeight(650);
         stage.setScene(scene);

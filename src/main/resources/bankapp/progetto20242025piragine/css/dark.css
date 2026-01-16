@@ -38,7 +38,7 @@
 
 /* Button generico */
 .button {
-    -fx-text-fill: black !important;
+    -fx-text-fill: white !important;
 }
 
 #homePageGridPane{
@@ -54,5 +54,110 @@
 .separator {
     -fx-opacity: 0.7 !important;
 }
+
+#labelBankAccount{
+    -fx-text-fill: black !important;
+}
+
+#sidebarGridPane{
+    -fx-background-color: #595959 !important;
+}
+
+Line{
+    -fx-stroke: white !important;
+}
+
+
+#logoutAccountPopupButton {
+    -fx-background-color: #595959 !important;
+}
+
+#settingsAccountPopupButton{
+    -fx-text-fill: white !important;
+}
+
+.label {
+    -fx-text-fill: white !important;
+}
+
+#anchorPaneCardPage{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#gridPaneFriends {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#AnchorPaneFriendsPage {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#regionFriend {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#scrollPaneFriends {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#scrollPaneFriends .viewport {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#scrollPaneFriends .content {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#scrollPaneFriends .corner {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#friendsVBox {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#anchorePaneFriends2 {
+    -fx-background-color: #595959 !important;
+}
+
+#scrollPaneFriends2 {
+    -fx-background-color: #595959 !important;
+}
+
+#scrollPaneFriends2 .viewport {
+    -fx-background-color: #595959 !important;
+}
+
+#scrollPaneFriends2 .content {
+    -fx-background-color: #595959 !important;
+}
+
+#scrollPaneFriends2 .corner {
+    -fx-background-color: #595959 !important;
+}
+
+#chatVBox {
+    -fx-background-color: #595959 !important;
+}
+
+#friendsSearchBar {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+}
+
+#favouriteCardsHBox {
+    -fx-background-color: #595959 !important;
+}
+
+
+
+
+
+
+
+
+
+
 
 
