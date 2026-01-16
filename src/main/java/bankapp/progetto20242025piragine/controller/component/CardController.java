@@ -10,10 +10,10 @@ import javafx.scene.layout.AnchorPane;
 public class CardController extends BranchController
 {
     @FXML
-    public Button cardBlockButton, cardSettingsButton, showCardInformationsButton;
+    public Button cardBlockButton, cardSettingsButton;
 
     @FXML
-    public Label cardNumberLabel, cardNicknameLabel, cardCreditLabel, cardExpirationLabel;
+    public Label cardNumberLabel, cardNicknameLabel, cardExpirationLabel;
 
     @FXML
     public AnchorPane cardBackground;
@@ -22,7 +22,6 @@ public class CardController extends BranchController
     {
         cardBlockButton.setVisible(false);
         cardSettingsButton.setVisible(false);
-        showCardInformationsButton.setVisible(false);
     }
 
     public void updateNickname(String nickname)
@@ -35,19 +34,15 @@ public class CardController extends BranchController
         removeButtons();
         cardBackground.setStyle("-fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: " + c.getColor());
         cardNicknameLabel.setText(c.getNickname());
-        cardExpirationLabel.setText(c.getExpired().toString());
+        cardExpirationLabel.setText(c.getExpired().toString().replaceAll("-", "/").substring(2, 7));
         cardNumberLabel.setText("- - - -  - - - -  - - - -  " + c.getPanLast4());
-    }
-    public void getNickname()
-    {
-
     }
 
     public void setupFavourites(Card c)
     {
         cardBackground.setStyle("-fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: " + c.getColor());
         cardNicknameLabel.setText(c.getNickname());
-        cardExpirationLabel.setText(c.getExpired().toString());
+        cardExpirationLabel.setText(c.getExpired().toString().replaceAll("-", "/").substring(2, 7));
         cardNumberLabel.setText("- - - -  - - - -  - - - -  " + c.getPanLast4());
     }
 

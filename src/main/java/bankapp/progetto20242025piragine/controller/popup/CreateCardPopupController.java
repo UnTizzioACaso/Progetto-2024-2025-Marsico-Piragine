@@ -6,13 +6,17 @@ import bankapp.progetto20242025piragine.db.BankAccount;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.util.CardCreator;
 import bankapp.progetto20242025piragine.util.last4DigitsPan;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -39,24 +43,40 @@ public class CreateCardPopupController extends BranchController
     @FXML
     public TextField spendingLimitTextField;
 
+    @FXML
+    private Label errorLabel;
+
     private String color = "e4e4e4";
 
-    Stage s = (Stage) colorMenu.getScene().getWindow();
+    public Stage s;
 
     // Creates the card using last4DigitsPan and user's bank account data
     @FXML
     public void createCard() throws Exception
     {
-        try
+
+        String spendingLimitText;
+
+        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {spendingLimitText = spendingLimitTextField.getText().replace(",", ".");}
+        else if (spendingLimitTextField.getText().matches("^\\d+(.\\d{1,2})?$")) {spendingLimitText =spendingLimitTextField.getText();}
+        else {errorLabel.setText("il limite è in formato non valido"); return;}
         {
-            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
             try
             {
-                Card card = new Card(rootController.user.getUserID(), bankAccount.getIdAccount(), last4DigitsPan.generateLastFourDigits() ,nicknameTextField.getText(), color, new BigDecimal(spendingLimitTextField.getText()));
-                CardDAO.insertCard(card);
-                s.close();
-                rootController.topbarController.reloadPage();
+                BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
+                try
+                {
+                    Card card = new Card(rootController.user.getUserID(), bankAccount.getIdAccount(), last4DigitsPan.generateLastFourDigits() ,nicknameTextField.getText(), color, new BigDecimal(spendingLimitText));
+                    CardDAO.insertCard(card);
+                    s.close();
+                    rootController.topbarController.reloadPage();
 
+                }
+                catch (SQLException e)
+                {
+                    System.err.println("error during getting bank account with user id " + e.getMessage());
+                    e.printStackTrace();
+                }
             }
             catch (SQLException e)
             {
@@ -64,38 +84,16 @@ public class CreateCardPopupController extends BranchController
                 e.printStackTrace();
             }
         }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting bank account with user id " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 
-    // Updates the card nickname in the preview component as the user types
-    @FXML
-    public void updateCardExample()
-    {
-        controller.updateNickname(nicknameTextField.getText());
     }
 
     // Initializes the popup by loading the card preview component
     @FXML
-    public void initialize()
+    public void initializer()
     {
-        try
-        {
-            FXMLLoader cardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
-            cardSlotVbox.getChildren().add(cardLoader.load()); //add the card component to the VBox
-            controller = cardLoader.getController(); //get the controller of the card component
-            controller.setRootController(rootController); //set the root controller for communication
-            controller.removeButtons(); //remove buttons from the preview card
-            colorMenu.setText("Bianco"); //set default color menu text
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the createCardPopup" + e.getMessage());
-            e.printStackTrace();
-        }
+        s = (Stage) colorMenu.getScene().getWindow();
+        cardSlotVbox.getChildren().add(CardCreator.cardWithoutButtons(rootController)); //add the card component to the VBox
+        colorMenu.setText("Bianco"); //set default color menu text
     }
 
     // Following methods handle color selection and update the card preview accordingly

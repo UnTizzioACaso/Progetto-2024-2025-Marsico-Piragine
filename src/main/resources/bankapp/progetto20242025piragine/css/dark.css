@@ -8,6 +8,10 @@
     -fx-background-color: #4a4a4a !important;
 }
 
+#rectangleAnchorPane {
+    -fx-background-color: gray !important;
+}
+
 
 .label {
     -fx-text-fill: white !important;

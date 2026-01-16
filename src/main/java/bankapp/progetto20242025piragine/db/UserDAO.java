@@ -197,6 +197,45 @@ public class UserDAO
         }
     }
 
+    public static boolean existUserByUsername(String username) throws SQLException
+    {
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE username = ? LIMIT 1"))
+        {
+            stmt.setString(1, username);
+            try (ResultSet rs = stmt.executeQuery())
+            {
+                return rs.next();
+            }
+        }
+    }
+
+
+    public static boolean existUserByPhone(int phone) throws SQLException
+    {
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE phone_number = ? LIMIT 1"))
+        {
+            stmt.setInt(1, phone);
+            try (ResultSet rs = stmt.executeQuery())
+            {
+                return rs.next();
+            }
+        }
+    }
+
+    public static boolean existUserByEmail(String email) throws SQLException
+    {
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE email = ? LIMIT 1"))
+        {
+            stmt.setString(1, email);
+            try (ResultSet rs = stmt.executeQuery())
+            {
+                return rs.next();
+            }
+        }
+    }
 
     public static User getUserByCellphone(String phoneNumber) throws SQLException {
 

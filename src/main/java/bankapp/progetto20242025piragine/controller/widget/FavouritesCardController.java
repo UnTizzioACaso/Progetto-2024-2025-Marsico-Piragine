@@ -38,8 +38,8 @@ public class FavouritesCardController extends WidgetController{
     }
 
     // Initializes the favourite cards widget with default cards
-    @FXML
-    public void initialize()
+    @Override
+    public void initializer()
     {
         int valoreneldb = 3; // Example value representing number of cards from database
         for (int i = 0; i < valoreneldb; i++)
