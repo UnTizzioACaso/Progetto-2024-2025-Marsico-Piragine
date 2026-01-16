@@ -23,17 +23,8 @@ public class HomePageController extends BranchController
     {
         try
         {
-            FXMLLoader favouritesCardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml")); //getting favouritesCard widget's fxml
-            FXMLLoader bankAccountLoader = new FXMLLoader (getClass().getResource("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml")); //getting bankAccount widget's fxml
-            Node favouritesCards = favouritesCardLoader.load(); //creating favouritesCards widget's node
-            Node bankAccount = bankAccountLoader.load(); //creating bankAccount widget's node
-            BranchController bankAccountController = bankAccountLoader.getController(); //getting the bankAccount widget's controller
-            bankAccountController.setRootController(rootController); //setting the rootController in the bankAccount widget's
-            FavouritesCardController favouritesCardController = favouritesCardLoader.getController();
-            favouritesCardController.setRootController(rootController);
-            favouritesCardController.initializer();
-            homePageGridPane.add(favouritesCards, 1, 0); //adding the favouriteCards Node to homePageGridPane
-            homePageGridPane.add(bankAccount, 0, 0); //adding the bankAccount Node to homePageGridPane
+            addWidget("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml", 1, 0); //getting favouritesCard widget's fxml
+            addWidget("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml", 0, 0); //getting favouritesCard widget's fxml
             List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getWidgetsByUserId(rootController.user.getUserID());
             for(HomeWidgetCustom widget : widgets)
             {
@@ -98,6 +89,7 @@ public class HomePageController extends BranchController
             controller.setRootController(rootController);
             homePageGridPane.add(node, column, row);
             controller.homePageGridPane = homePageGridPane;
+            controller.initializer();
             HomeWidgetCustomDAO.updatePosition(rootController.user.getUserID(), controller.getWidgetType(), row, column, false);
         }
         catch (Exception e)

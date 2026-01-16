@@ -45,6 +45,23 @@ public class BankAccountDAO {
         }
     }
 
+    public static int getUserIdByAccountId(int accountId) throws SQLException {
+        String sql = "SELECT user_id FROM Bank_Account WHERE account_id = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+            stmt.setInt(1, accountId);
+            try (ResultSet rs = stmt.executeQuery())
+            {
+                if (rs.next())
+                {
+                    return rs.getInt("user_id");
+                }
+            }
+        }
+        return -1;
+    }
+
     // 🔹 Recupera account tramite id_account
     public static BankAccount getAccountById(int idAccount) throws SQLException {
         String sql = "SELECT * FROM Bank_Account WHERE id_account = ?";
@@ -71,6 +88,20 @@ public class BankAccountDAO {
             }
         }
     }
+
+    public static int getIdAccountById(int userId) throws SQLException {
+        String sql = "SELECT id_account FROM Bank_Account WHERE user_id = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+            stmt.setInt(1, userId);
+            try (ResultSet rs = stmt.executeQuery())
+            {
+                if (rs.next()) {return rs.getInt("id_account");}
+            }
+        }
+        return -1;
+    }
+
 
     // 🔹 Inserisce un nuovo conto
     public static boolean insertAccount(BankAccount account) throws SQLException

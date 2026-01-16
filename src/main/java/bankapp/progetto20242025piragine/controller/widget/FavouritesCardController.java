@@ -23,6 +23,12 @@ public class FavouritesCardController extends WidgetController{
     @FXML
     private HBox favouriteCardsHBox;
 
+
+    public String getWidgetType()
+    {
+        return favouriteCardsHBox.getId();
+    }
+
     // Adds a card to the favouriteCardsHBox along with a spacer
     @FXML
     public void addFavouriteCard(Node card)
