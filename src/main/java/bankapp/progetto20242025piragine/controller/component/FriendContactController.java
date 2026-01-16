@@ -48,7 +48,7 @@ public class FriendContactController extends BranchController
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
                     Node toFriend = fxmlLoader.load();
                     ToFriendTransactionCloudController controller = fxmlLoader.getController();
-                    controller.valueLabel.setText(transaction.getAmmount().toString());
+                    controller.valueLabel.setText(transaction.getAmount().toString());
                     VBox toFriendVBox = new VBox();
                     toFriendVBox.setAlignment(Pos.CENTER_RIGHT);
                     toFriendVBox.setMaxWidth(140.0);
@@ -69,7 +69,7 @@ public class FriendContactController extends BranchController
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
                     Node toFriend = fxmlLoader.load();
                     ToFriendTransactionCloudController controller = fxmlLoader.getController();
-                    controller.valueLabel.setText(transaction.getAmmount().toString());
+                    controller.valueLabel.setText(transaction.getAmount().toString());
                     VBox toFriendVBox = new VBox();
                     toFriendVBox.setAlignment(Pos.CENTER_LEFT);
                     toFriendVBox.setMaxWidth(140.0);

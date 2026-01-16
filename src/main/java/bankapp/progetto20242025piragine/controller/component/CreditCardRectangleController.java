@@ -43,9 +43,15 @@ public class CreditCardRectangleController extends BranchController
         }
     }
 
-    @FXML private void menageCard()
+    @FXML
+    private void menageCard()
     {
-        MenageCardPopupController controller = (MenageCardPopupController) rootController.showPopup("Gestisci la carta", "/bankapp/progetto20242025piragine/fxml/menageCardPopup.fxml", 400, 300);
+        MenageCardPopupController controller = (MenageCardPopupController) rootController.showPopup("Gestisci la carta", "/bankapp/progetto20242025piragine/fxml/popup/menageCardPopup.fxml", 500, 300);
+        if(controller != null) {System.out.println("controller");}
         controller.card = card;
+        controller.removeFavouritesButton.setVisible(card.isFavourite());
+        controller.addFavouritesButton.setVisible(!card.isFavourite());
+        controller.blockButton.setVisible(card.isStatus());
+        controller.unblockButton.setVisible(!card.isStatus());
     }
 }

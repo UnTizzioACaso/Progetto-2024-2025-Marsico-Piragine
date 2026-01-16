@@ -28,39 +28,7 @@ public class CardPageController extends BranchController
     @FXML
     public void openCreateCard()
     {
-        try
-        {
-            // Load the create card popup FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml"));
-
-            // Create the root node from the FXML
-            Parent root = loader.load();
-
-            // Retrieve the popup controller
-            CreateCardPopupController controller = loader.getController();
-            controller.setRootController(rootController);
-
-            // Create a new stage for the popup
-            Stage popupStage = new Stage();
-            popupStage.setTitle("Crea e personalizza la carta");
-
-            // Set minimum popup dimensions
-            popupStage.setMinWidth(500);
-            popupStage.setMinHeight(400);
-
-            // Block interaction with other windows until the popup is closed
-            popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            // Set the scene and show the popup
-            popupStage.setScene(new Scene(root));
-            popupStage.showAndWait(); // Blocks execution until popup is closed
-        }
-        catch (IOException e)
-        {
-            // Handle errors while loading the popup
-            System.err.println("error loading the create card popup: " + e.getMessage());
-            e.printStackTrace();
-        }
+        BranchController controller = rootController.showPopup("Crea e personalizza la carta","/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml", 500, 400);
     }
 
     // Called automatically when the page is initialized
@@ -86,7 +54,6 @@ public class CardPageController extends BranchController
                     // Get the controller for the card component
                     CreditCardRectangleController controller = cardRectangleLoader.getController();
                     controller.setRootController(rootController);
-
                     // Fill the card component with data
                     controller.fill(cards.get(i));
 

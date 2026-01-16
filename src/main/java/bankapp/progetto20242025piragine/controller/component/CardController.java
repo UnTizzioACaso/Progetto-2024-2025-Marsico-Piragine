@@ -21,9 +21,8 @@ public class CardController extends BranchController
     public void removeButtons()
     {
         cardBlockButton.setVisible(false);
-        cardBlockButton.setDisable(true);
         cardSettingsButton.setVisible(false);
-        cardSettingsButton.setDisable(true);
+        showCardInformationsButton.setVisible(false);
     }
 
     public void updateNickname(String nickname)
@@ -34,7 +33,7 @@ public class CardController extends BranchController
     public void setup(Card c)
     {
         removeButtons();
-        cardBackground.setStyle("-fx-background-color: " + c.getColour());
+        cardBackground.setStyle("-fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: " + c.getColor());
         cardNicknameLabel.setText(c.getNickname());
         cardExpirationLabel.setText(c.getExpired().toString());
         cardNumberLabel.setText("- - - -  - - - -  - - - -  " + c.getPanLast4());
@@ -46,7 +45,7 @@ public class CardController extends BranchController
 
     public void setupFavourites(Card c)
     {
-        cardBackground.setStyle("-fx-background-color: " + c.getColour());
+        cardBackground.setStyle("-fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: " + c.getColor());
         cardNicknameLabel.setText(c.getNickname());
         cardExpirationLabel.setText(c.getExpired().toString());
         cardNumberLabel.setText("- - - -  - - - -  - - - -  " + c.getPanLast4());

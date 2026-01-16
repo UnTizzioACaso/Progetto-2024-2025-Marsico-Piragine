@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="246.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.FriendshipRequestController">
+<AnchorPane fx:id="root" prefHeight="246.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.FriendshipRequestPopupController">
 
     <children>
         <Label layoutX="23.0" layoutY="22.0" prefHeight="30.0" prefWidth="358.0" style="-fx-font-size: 20px; -fx-font-weight: 700;" text="Invia richiesta d'amicizia" textFill="RED" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="32.0">

@@ -14,7 +14,7 @@ public class TransactionController extends BranchController
 
 
     public void SetCorrectValues(Transaction transaction) {
-        expanseValueLabel.setText("-" + transaction.getAmmount().toString() + " €");
+        expanseValueLabel.setText("-" + transaction.getAmount().toString() + " €");
         expenseDateLabel.setText(transaction.getTransactionDate().toString());
         try
         {

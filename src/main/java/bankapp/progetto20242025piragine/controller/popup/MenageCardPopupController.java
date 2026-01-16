@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -14,16 +15,16 @@ import java.sql.SQLException;
 public class MenageCardPopupController extends BranchController {
 
     @FXML
-    private Button addFavouritesButton;
+    public Button addFavouritesButton;
 
     @FXML
-    private Button removeFavouritesButton;
+    public Button removeFavouritesButton;
 
     @FXML
-    private Button blockButton;
+    public Button blockButton;
 
     @FXML
-    private Button unblockButton;
+    public Button unblockButton;
 
     @FXML
     private TextField spendingLimitTextField;
@@ -31,15 +32,27 @@ public class MenageCardPopupController extends BranchController {
     @FXML
     private Label errorLabel;
 
+    private Stage s;
+
     public Card card;
 
+    @Override
+    public void initializer()
+    {
+        s = (Stage) errorLabel.getScene().getWindow();
+    }
     @FXML
     public void updateSpendingLimit()
     {
-        if (spendingLimitTextField.getText().matches("^\\d+(\\.\\d+)?$"))
+        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$"))
         {
-            BigDecimal spendingLimit = new BigDecimal(spendingLimitTextField.getText());
-            try {card.setSpendingLimit(CardDAO.updateCardSpendingLimit(card.getIdCard(), spendingLimit));}
+            BigDecimal spendingLimit = new BigDecimal(spendingLimitTextField.getText().replace(",","."));
+            try
+            {
+                card.setSpendingLimit(CardDAO.updateCardSpendingLimit(card.getIdCard(), spendingLimit));
+                spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
+                rootController.topbarController.reloadPage();
+            }
             catch (SQLException e)
             {
                 System.out.println("error during updatig card spending limit " + e.getMessage());
@@ -52,7 +65,13 @@ public class MenageCardPopupController extends BranchController {
     @FXML
     public void addToFavourites()
     {
-        try {card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), true));}
+        try
+        {
+            card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), true));
+            addFavouritesButton.setVisible(false);
+            removeFavouritesButton.setVisible(true);
+            rootController.topbarController.reloadPage();
+        }
         catch (SQLException e)
         {
             System.out.println("error during updating card favourite state to true" + e.getMessage());
@@ -63,7 +82,13 @@ public class MenageCardPopupController extends BranchController {
     @FXML
     public void removeFromFavourites()
     {
-        try {card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), false));}
+        try
+        {
+            card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), false));
+            addFavouritesButton.setVisible(true);
+            removeFavouritesButton.setVisible(false);
+            rootController.topbarController.reloadPage();
+        }
         catch (SQLException e)
         {
             System.out.println("error during updating card favourite state to false" + e.getMessage());
@@ -77,7 +102,9 @@ public class MenageCardPopupController extends BranchController {
     {
         try
         {
-
+            CardDAO.deleteCard(card.getIdCard());
+            s.close();
+            rootController.topbarController.reloadPage();
         }
         catch (SQLException e)
         {
@@ -85,4 +112,37 @@ public class MenageCardPopupController extends BranchController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void blockCard()
+    {
+        try
+        {
+            CardDAO.updateCardStatus(card.getIdCard(), false);
+            s.close();
+            rootController.topbarController.reloadPage();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("error during updating card favourite state to false" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void unblockCard()
+    {
+        try
+        {
+            CardDAO.updateCardStatus(card.getIdCard(), true);
+            s.close();
+            rootController.topbarController.reloadPage();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("error during updating card status state to true" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 }

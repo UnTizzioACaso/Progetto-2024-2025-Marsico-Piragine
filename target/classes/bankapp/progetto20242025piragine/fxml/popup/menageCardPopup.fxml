@@ -9,27 +9,12 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="246.0" prefWidth="413.0"
-            style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);"
-            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="bankapp.progetto20242025piragine.controller.popup.FriendshipRequestController">
 
     <children>
 
-        <Separator layoutX="10.4" layoutY="61.0" prefWidth="560.0" style="-fx-opacity: 1;"
-                   AnchorPane.topAnchor="61.0" AnchorPane.leftAnchor="10.4" AnchorPane.rightAnchor="10.399999999999977" />
 
-        <Separator layoutX="10.4" layoutY="203.4" prefWidth="560.0" style="-fx-opacity: 1;"
-                   AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="10.4" AnchorPane.rightAnchor="10.399999999999977" />
 
-        <Button fx:id="searchButton" layoutX="333.0" layoutY="84.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="54.0"
-                style="-fx-background-color: transparent;"
-                AnchorPane.topAnchor="85.0" AnchorPane.rightAnchor="22.0" />
 
-        <Button layoutX="36.0" layoutY="188.4" mnemonicParsing="false" prefHeight="36.0" prefWidth="163.0"
-                style="-fx-background-color: ff0000; -fx-font-weight: 800; -fx-background-radius: 8; -fx-text-fill: white;"
-                text="🔒 BLOCCA"
-                AnchorPane.leftAnchor="36.0" AnchorPane.bottomAnchor="21.6">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -38,14 +23,9 @@
                 </InnerShadow>
             </effect>
             <font>
-                <Font size="14.0" />
             </font>
         </Button>
 
-        <Button layoutX="225.0" layoutY="188.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="163.0"
-                style="-fx-background-color: ff0000; -fx-font-weight: 800; -fx-background-radius: 8; -fx-text-fill: white;"
-                text="❌ ELIMINA"
-                AnchorPane.rightAnchor="25.0" AnchorPane.bottomAnchor="22.0">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -54,14 +34,9 @@
                 </InnerShadow>
             </effect>
             <font>
-                <Font size="14.0" />
             </font>
         </Button>
 
-        <Button layoutX="23.0" layoutY="14.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="202.0"
-                style="-fx-background-color: ff0000; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: 800;"
-                text="❤ AGGIUNGI AI PREFERITI"
-                AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="14.0">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -70,18 +45,10 @@
                 </InnerShadow>
             </effect>
             <font>
-                <Font size="14.0" />
             </font>
         </Button>
 
-        <TextField layoutX="213.0" layoutY="104.0" prefHeight="38.0" prefWidth="77.0"
-                   style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #cfcfcf;"
-                   AnchorPane.leftAnchor="213.0" AnchorPane.topAnchor="104.0" />
 
-        <Button layoutX="301.0" layoutY="104.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="86.0"
-                style="-fx-background-color: ff0000; -fx-font-weight: 800; -fx-background-radius: 8; -fx-text-fill: white;"
-                text="AGGIORNA"
-                AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="104.0">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -91,9 +58,6 @@
             </effect>
         </Button>
 
-        <Label contentDisplay="CENTER" layoutX="25.0" layoutY="105.0" prefHeight="36.0" prefWidth="163.0"
-               text="Spesa massima:"
-               AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="105.0">
             <font>
                 <Font size="22.0" />
             </font>

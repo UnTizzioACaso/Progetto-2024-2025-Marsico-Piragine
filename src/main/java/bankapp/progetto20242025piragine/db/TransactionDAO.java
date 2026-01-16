@@ -1,4 +1,5 @@
 package bankapp.progetto20242025piragine.db;
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ public class TransactionDAO {
     public static boolean insertTransaction(Transaction t) throws SQLException {
         String sql = """
             INSERT INTO Transaction1
-            (sender, beneficiary, ammount, note, status, type, used_card)
+            (sender, beneficiary, amount, note, status, type, used_card)
             VALUES (?, ?, ?, ?, ?, ?, ?)
             """;
 
@@ -26,7 +27,7 @@ public class TransactionDAO {
             else
                 stmt.setNull(2, Types.INTEGER);
 
-            stmt.setBigDecimal(3, t.getAmmount());
+            stmt.setInt(3, t.getAmount().multiply(BigDecimal.valueOf(100)).intValue());
             stmt.setString(4, t.getNote());
             stmt.setString(5, t.getStatus());
             stmt.setString(6, t.getType());
@@ -51,6 +52,7 @@ public class TransactionDAO {
     // 🔹 Transazioni inviate da un conto
     public static List<Transaction> getTransactionsBySender(int senderId) throws SQLException {
         String sql = "SELECT * FROM Transaction1 WHERE sender = ? ORDER BY transaction_date DESC";
+
         return getTransactions(sql, senderId);
     }
 
@@ -84,7 +86,7 @@ public class TransactionDAO {
                             t.setIdTransaction(rs.getInt("id_transaction"));
                             t.setSender(rs.getInt("sender"));
                             t.setBeneficiary(rs.getInt("beneficiary"));
-                            t.setAmmount(rs.getBigDecimal("ammount"));
+                            t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
                             t.setNote(rs.getString("note"));
                             t.setTransactionDate(rs.getTimestamp("transaction_date"));
                             t.setStatus(rs.getString("status"));
@@ -147,7 +149,7 @@ public class TransactionDAO {
         t.setIdTransaction(rs.getInt("id_transaction"));
         t.setSender((Integer) rs.getObject("sender"));
         t.setBeneficiary((Integer) rs.getObject("beneficiary"));
-        t.setAmmount(rs.getBigDecimal("ammount"));
+        t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
         t.setNote(rs.getString("note"));
         t.setTransactionDate(rs.getTimestamp("transaction_date"));
         t.setStatus(rs.getString("status"));

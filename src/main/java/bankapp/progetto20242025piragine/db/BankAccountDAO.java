@@ -1,5 +1,6 @@
 package bankapp.progetto20242025piragine.db;
 
+import java.math.BigDecimal;
 import java.sql.*;
 
 public class BankAccountDAO {
@@ -19,10 +20,10 @@ public class BankAccountDAO {
                 BankAccount account = new BankAccount();
                 account.setIdAccount(rs.getInt("id_account"));
                 account.setUserId(rs.getInt("user_id"));
-                account.setMoney(rs.getDouble("money"));
+                account.setMoney(BigDecimal.valueOf(rs.getInt("money"), 2));
                 account.setCurrency(rs.getString("currency"));
                 account.setIban(rs.getString("iban"));
-                account.setMaxTransfer(rs.getDouble("max_transfer"));
+                account.setMaxTransfer(BigDecimal.valueOf( rs.getInt("max_transfer"), 2));
                 account.setForcePin(rs.getBoolean("force_pin"));
                 account.setCheckAccount(rs.getString("check_account"));
 
@@ -59,10 +60,10 @@ public class BankAccountDAO {
                 BankAccount account = new BankAccount();
                 account.setIdAccount(rs.getInt("id_account"));
                 account.setUserId(rs.getInt("user_id"));
-                account.setMoney(rs.getDouble("money"));
+                account.setMoney(BigDecimal.valueOf(rs.getInt("money"), 2));
                 account.setCurrency(rs.getString("currency"));
                 account.setIban(rs.getString("iban"));
-                account.setMaxTransfer(rs.getDouble("max_transfer"));
+                account.setMaxTransfer(BigDecimal.valueOf(rs.getInt("max_transfer"), 2));
                 account.setForcePin(rs.getBoolean("force_pin"));
                 account.setCheckAccount(rs.getString("check_account"));
 
@@ -81,10 +82,10 @@ public class BankAccountDAO {
         {
 
             stmt.setInt(1, account.getUserId());
-            stmt.setDouble(2, account.getMoney());
+            stmt.setInt(2, account.getMoney().movePointRight(2).intValueExact());
             stmt.setString(3, account.getCurrency());
             stmt.setString(4, account.getIban());
-            stmt.setDouble(5, account.getMaxTransfer());
+            stmt.setInt(5, account.getMaxTransfer().movePointRight(2).intValueExact());
             stmt.setBoolean(6, account.isForcePin());
             stmt.setString(7, account.getCheckAccount());
 
@@ -94,13 +95,13 @@ public class BankAccountDAO {
     }
 
     // 🔹 Aggiorna il saldo
-    public static boolean updateBalance(int idAccount, double newBalance) throws SQLException {
+    public static boolean updateBalance(int idAccount, BigDecimal newBalance) throws SQLException {
         String sql = "UPDATE Bank_Account SET money = ? WHERE id_account = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setDouble(1, newBalance);
+            stmt.setInt(1, newBalance.movePointRight(2).intValueExact());
             stmt.setInt(2, idAccount);
 
             return stmt.executeUpdate() > 0;

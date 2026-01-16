@@ -4,15 +4,19 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.component.CardController;
 import bankapp.progetto20242025piragine.db.BankAccount;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.util.CardService;
+import bankapp.progetto20242025piragine.db.Card;
+import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.util.last4DigitsPan;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 
 public class CreateCardPopupController extends BranchController
 {
@@ -35,13 +39,36 @@ public class CreateCardPopupController extends BranchController
     @FXML
     public TextField spendingLimitTextField;
 
-    // Creates the card using CardService and user's bank account data
+    private String color = "e4e4e4";
+
+    Stage s = (Stage) colorMenu.getScene().getWindow();
+
+    // Creates the card using last4DigitsPan and user's bank account data
     @FXML
     public void createCard() throws Exception
     {
-        BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()); //getting the user's bank account
-        //calling CardService to create the card with nickname, color and spending limit
-        CardService.createCard(rootController.user.getUserID(), bankAccount.getIdAccount(), nicknameTextField.getText(), colorMenu.getText(), new BigDecimal(spendingLimitTextField.getText() + ",00"));
+        try
+        {
+            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
+            try
+            {
+                Card card = new Card(rootController.user.getUserID(), bankAccount.getIdAccount(), last4DigitsPan.generateLastFourDigits() ,nicknameTextField.getText(), color, new BigDecimal(spendingLimitTextField.getText()));
+                CardDAO.insertCard(card);
+                s.close();
+                rootController.topbarController.reloadPage();
+
+            }
+            catch (SQLException e)
+            {
+                System.err.println("error during getting bank account with user id " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during getting bank account with user id " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     // Updates the card nickname in the preview component as the user types
@@ -62,7 +89,7 @@ public class CreateCardPopupController extends BranchController
             controller = cardLoader.getController(); //get the controller of the card component
             controller.setRootController(rootController); //set the root controller for communication
             controller.removeButtons(); //remove buttons from the preview card
-            colorMenu.setText("white"); //set default color menu text
+            colorMenu.setText("Bianco"); //set default color menu text
         }
         catch (IOException e)
         {
@@ -76,6 +103,7 @@ public class CreateCardPopupController extends BranchController
     public void selectRed()
     {
         colorMenu.setText("Rosso");
+        color = "red";
         cardSlotVbox.getChildren().getFirst().setStyle("-fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: red;");
     }
 
@@ -83,6 +111,7 @@ public class CreateCardPopupController extends BranchController
     public void selectGreen()
     {
         colorMenu.setText("Verde");
+        color = "green";
         cardSlotVbox.getChildren().getFirst().setStyle("-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: green;");
     }
 
@@ -90,6 +119,7 @@ public class CreateCardPopupController extends BranchController
     public void selectBlue()
     {
         colorMenu.setText("Blu");
+        color = "blue";
         cardSlotVbox.getChildren().getFirst().setStyle("-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: blue;");
     }
 
@@ -97,6 +127,7 @@ public class CreateCardPopupController extends BranchController
     public void selectYellow()
     {
         colorMenu.setText("Giallo");
+        color = "yellow";
         cardSlotVbox.getChildren().getFirst().setStyle(" -fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: yellow;");
     }
 
@@ -104,6 +135,7 @@ public class CreateCardPopupController extends BranchController
     public void selectWhite()
     {
         colorMenu.setText("Bianco");
+        color = "e4e4e4";
         cardSlotVbox.getChildren().getFirst().setStyle(" -fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: e4e4e4;");
     }
 }
