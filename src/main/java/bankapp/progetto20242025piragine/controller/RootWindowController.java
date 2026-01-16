@@ -81,7 +81,7 @@ public  class RootWindowController extends BranchController {
         }
         catch (IOException e)
         {
-            System.err.println("error loading the account popup" + e.getMessage());
+            System.err.println("error loading the " + fxml + " popup " + e.getMessage());
             e.printStackTrace();
         }
         return null;
