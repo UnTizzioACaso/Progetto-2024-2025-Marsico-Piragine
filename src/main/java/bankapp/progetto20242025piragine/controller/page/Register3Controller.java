@@ -3,7 +3,7 @@ package bankapp.progetto20242025piragine.controller.page;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.popup.CreatePinPopupController;
 import bankapp.progetto20242025piragine.db.User;
-import bankapp.progetto20242025piragine.db.DataSourceProvider;
+import bankapp.progetto20242025piragine.db.UserDAO;
 import bankapp.progetto20242025piragine.util.PasswordUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,30 +16,33 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Register3Controller extends BranchController {
 
     @FXML
-    TextField emailRegisterTextField;
+    private TextField emailRegisterTextField;
 
     @FXML
-    TextField usernameRegisterTextField;
+    private TextField usernameRegisterTextField;
 
     @FXML
-    TextField cellphoneRegisterTextField;
+    private TextField cellphoneRegisterTextField;
 
     @FXML
-    PasswordField passwordPasswordField;
+    private PasswordField passwordPasswordField;
 
     @FXML
-    PasswordField passwordConfirmPasswordField;
+    private PasswordField passwordConfirmPasswordField;
 
     @FXML
-    Label errorMessageLabel;
+    private Label errorMessageLabel;
+
+    private static final String USERNAME_REGEX = "^[a-z0-9_]{3,30}$";
+
+    private static final String EMAIL_REGEX = "^(?!.*\\.\\.)[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+
+    private static final String PHONE_REGEX = "^[0-9]{10}$";
 
     @FXML
     public void openCreatePinPopup()
@@ -54,40 +57,71 @@ public class Register3Controller extends BranchController {
         String username = usernameRegisterTextField.getText();
         String phone = cellphoneRegisterTextField.getText();
 
-        if (!username.matches("^[a-z0-9_]{3,30}$"))
+
+        //filtering username
+        if (!username.matches(USERNAME_REGEX))
         {
             errorMessageLabel.setText("L'username può contenere solo lettere minuscole, numeri e '_'");
             return;
         }
 
-        if (email.contains(" ") || email.contains("&") || email.contains("=") || email.contains("\\") || !email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"))
+        //filtering email
+        if (!email.matches(EMAIL_REGEX))
         {
             errorMessageLabel.setText("Email non valida!");
             return;
         }
 
-        if (!phone.matches("^\\d{10}$"))
+        //filtering phone
+        if (!phone.matches(PHONE_REGEX))
         {
             errorMessageLabel.setText("Numero di telefono non valido!");
             return;
         }
 
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE username = ? LIMIT 1"))
+        try
         {
-            stmt.setString(1, username);
-            try (ResultSet rs = stmt.executeQuery())
+            if(UserDAO.existUserByUsername(username))
             {
-                if (rs.next())
-                {
-                    errorMessageLabel.setText("Username già in uso!");
-                    return;
-                }
+                errorMessageLabel.setText("Username già in uso!");
+                return;
             }
         }
         catch (SQLException e)
         {
-            errorMessageLabel.setText("Errore durante la verifica dell'username!");
+            System.err.println("error during username research " + e.getMessage());
+            e.printStackTrace();
+            return;
+        }
+
+        try
+        {
+            if(UserDAO.existUserByPhone(Integer.parseInt(phone)))
+            {
+                errorMessageLabel.setText("Numero di telefono già in uso!");
+                return;
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during phone number research " + e.getMessage());
+            e.printStackTrace();
+            return;
+        }
+
+
+        try
+        {
+            if(UserDAO.existUserByEmail(email))
+            {
+                errorMessageLabel.setText("Email già in uso!");
+                return;
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during email research " + e.getMessage());
+            e.printStackTrace();
             return;
         }
 

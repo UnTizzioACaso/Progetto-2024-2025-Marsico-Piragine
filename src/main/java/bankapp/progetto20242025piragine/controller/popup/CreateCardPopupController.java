@@ -6,13 +6,16 @@ import bankapp.progetto20242025piragine.db.BankAccount;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.util.CardCreator;
 import bankapp.progetto20242025piragine.util.last4DigitsPan;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -41,7 +44,7 @@ public class CreateCardPopupController extends BranchController
 
     private String color = "e4e4e4";
 
-    Stage s = (Stage) colorMenu.getScene().getWindow();
+    public Stage s;
 
     // Creates the card using last4DigitsPan and user's bank account data
     @FXML
@@ -80,22 +83,11 @@ public class CreateCardPopupController extends BranchController
 
     // Initializes the popup by loading the card preview component
     @FXML
-    public void initialize()
+    public void initializer()
     {
-        try
-        {
-            FXMLLoader cardLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
-            cardSlotVbox.getChildren().add(cardLoader.load()); //add the card component to the VBox
-            controller = cardLoader.getController(); //get the controller of the card component
-            controller.setRootController(rootController); //set the root controller for communication
-            controller.removeButtons(); //remove buttons from the preview card
-            colorMenu.setText("Bianco"); //set default color menu text
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the createCardPopup" + e.getMessage());
-            e.printStackTrace();
-        }
+        s = (Stage) colorMenu.getScene().getWindow();
+        cardSlotVbox.getChildren().add(CardCreator.cardWithoutButtons(rootController)); //add the card component to the VBox
+        colorMenu.setText("Bianco"); //set default color menu text
     }
 
     // Following methods handle color selection and update the card preview accordingly
