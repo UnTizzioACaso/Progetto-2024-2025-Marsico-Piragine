@@ -9,12 +9,17 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
+<AnchorPane prefHeight="246.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.MenageCardPopupController">
 
     <children>
 
+        <Separator layoutX="10.4" layoutY="61.0" prefWidth="560.0" style="-fx-opacity: 1;" AnchorPane.leftAnchor="10.4" AnchorPane.rightAnchor="10.399999999999977" AnchorPane.topAnchor="61.0" />
 
+        <Separator layoutX="10.4" layoutY="203.4" prefWidth="560.0" style="-fx-opacity: 1;" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="10.4" AnchorPane.rightAnchor="10.399999999999977" />
 
+        <Button fx:id="searchButton" layoutX="333.0" layoutY="84.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="54.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="85.0" />
 
+        <Button fx:id="blockButton" layoutX="36.0" layoutY="188.4" mnemonicParsing="false" onAction="#blockCard" prefHeight="36.0" prefWidth="163.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="🔒 BLOCCA" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="25.0">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -23,9 +28,11 @@
                 </InnerShadow>
             </effect>
             <font>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Button>
 
+        <Button layoutX="225.0" layoutY="188.0" mnemonicParsing="false" onAction="#deleteCard" prefHeight="36.0" prefWidth="163.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="❌ ELIMINA" textFill="WHITE" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="25.0">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -34,9 +41,11 @@
                 </InnerShadow>
             </effect>
             <font>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Button>
 
+        <Button fx:id="addFavouritesButton" layoutX="112.0" layoutY="14.0" mnemonicParsing="false" onAction="#addToFavourites" prefHeight="38.0" prefWidth="202.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="❤ AGGIUNGI AI PREFERITI" textFill="WHITE" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="14.0">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -45,10 +54,13 @@
                 </InnerShadow>
             </effect>
             <font>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Button>
 
+        <TextField fx:id="spendingLimitTextField" layoutX="213.0" layoutY="104.0" prefHeight="38.0" prefWidth="77.0" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #cfcfcf;" AnchorPane.topAnchor="104.0" />
 
+        <Button layoutX="301.0" layoutY="104.0" mnemonicParsing="false" onAction="#updateSpendingLimit" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="AGGIORNA" textFill="WHITE" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="104.0">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -56,12 +68,41 @@
                     </color>
                 </InnerShadow>
             </effect>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
         </Button>
 
+        <Label contentDisplay="CENTER" layoutX="25.0" layoutY="105.0" prefHeight="36.0" prefWidth="163.0" text="Spesa massima:" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="105.0">
             <font>
                 <Font size="22.0" />
             </font>
         </Label>
+      <Button fx:id="unblockButton" layoutX="36.0" layoutY="188.0" mnemonicParsing="false" onAction="#unblockCard" prefHeight="36.0" prefWidth="163.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="🔓 SBLOCCA" textFill="WHITE" visible="false">
+         <effect>
+            <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="removeFavouritesButton" layoutX="112.0" layoutY="14.0" mnemonicParsing="false" onAction="#removeFromFavourites" prefHeight="38.0" prefWidth="202.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="💔 RIMUOVI DAI PREFERITI" textFill="WHITE" visible="false">
+         <effect>
+            <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="154.0" textFill="RED" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
 
     </children>
 </AnchorPane>

@@ -1,5 +1,8 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
+import bankapp.progetto20242025piragine.controller.component.CardController;
+import bankapp.progetto20242025piragine.db.Card;
+import bankapp.progetto20242025piragine.db.CardDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -10,6 +13,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class FavouritesCardController extends WidgetController{
 
@@ -23,12 +27,11 @@ public class FavouritesCardController extends WidgetController{
     {
         try
         {
-            // Load the spacer FXML
             FXMLLoader spaceloader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/favouriteCardsSpacingRegion.fxml"));
-            Region spacer = spaceloader.load(); // Create the spacer between cards
-            HBox.setHgrow(spacer, Priority.ALWAYS); // Make the spacer expand to fill available horizontal space
-            favouriteCardsHBox.getChildren().add(card); // Add the card to the HBox
-            favouriteCardsHBox.getChildren().add(spacer); // Add the spacer after the card
+            Region spacer = spaceloader.load();
+            HBox.setHgrow(spacer, Priority.ALWAYS);
+            favouriteCardsHBox.getChildren().add(card);
+            favouriteCardsHBox.getChildren().add(spacer);
         }
         catch (IOException e)
         {
@@ -39,26 +42,36 @@ public class FavouritesCardController extends WidgetController{
 
     // Initializes the favourite cards widget with default cards
     @FXML
-    public void initialize()
+    public void initializer()
     {
-        int valoreneldb = 3; // Example value representing number of cards from database
-        for (int i = 0; i < valoreneldb; i++)
+        try
         {
-            try
+            for (Card c : CardDAO.getCardsByUserId(rootController.user.getUserID()))
             {
-                FXMLLoader cardloader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
-                // Load the card FXML
-                AnchorPane card = cardloader.load(); // Create the card object from FXML
-                HBox.setMargin(card, new Insets(0, 5, 5, 0)); // Add margin around the card
-                addFavouriteCard(card); // Add the card with a spacer to the HBox
-                double ratio = 53.98 / 85.60; // Maintain card height-to-width ratio
-                card.prefHeightProperty().bind(card.prefWidthProperty().multiply(ratio)); // Bind height to width
+                if (c.isFavourite())
+                {
+                    try
+                    {
+                        FXMLLoader cardloader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
+                        AnchorPane card = cardloader.load();
+                        CardController controller = cardloader.getController();
+                        controller.setupFavourites(c);
+                        HBox.setMargin(card, new Insets(0, 5, 5, 0));
+                        addFavouriteCard(card);
+                        double ratio = 53.98 / 85.60;
+                        card.prefHeightProperty().bind(card.prefWidthProperty().multiply(ratio));
+                    }
+                    catch (IOException e)
+                    {
+                        System.err.println("Error loading an element in favourite cards widget: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                }
             }
-            catch (IOException e)
-            {
-                System.err.println("Error loading an element in favourite cards widget: " + e.getMessage()); // Handle any exception during favourite cards creation
-                e.printStackTrace();
-            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
         }
     }
 }

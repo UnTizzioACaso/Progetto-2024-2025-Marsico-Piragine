@@ -11,11 +11,11 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="80.0" maxWidth="190.0" minHeight="80.0" minWidth="0.0" prefHeight="80.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.FriendshipNotifyController">
+<AnchorPane maxHeight="80.0" maxWidth="190.0" minHeight="80.0" minWidth="0.0" prefHeight="80.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.FriendshipNotifyController">
    <children>
-      <Label fx:id="friendshipUsernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="55.0" prefHeight="17.0" prefWidth="230.0" text="nome" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label fx:id="friendshipUsernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="55.0" prefHeight="17.0" prefWidth="230.0" text="Benny Musso" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="79.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="79.0">
@@ -23,10 +23,10 @@
             <Image url="@../../imgs/quickContact.png" />
          </image>
          <effect>
-            <ColorAdjust contrast="0.64" hue="-0.86" />
+            <ColorAdjust brightness="-0.25" contrast="1.0" hue="-0.84" />
          </effect>
       </ImageView>
-      <Button layoutX="8.0" layoutY="39.0" mnemonicParsing="false" onAction="#declineRequest" prefHeight="19.0" prefWidth="51.0" style="-fx-background-color: ff0000; -fx-background-radius: 14;" text="✖" textFill="WHITE" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="8.0">
+      <Button layoutX="8.0" layoutY="39.0" mnemonicParsing="false" onAction="#declineRequest" prefHeight="19.0" prefWidth="51.0" style="-fx-background-color: ff0000; -fx-background-radius: 14;" text="✖" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="8.0">
          <effect>
             <InnerShadow offsetX="-10.0" offsetY="-10.0">
                <color>
@@ -35,7 +35,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button layoutX="122.0" layoutY="38.0" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="25.0" prefWidth="51.0" style="-fx-background-color: ff0000; -fx-background-radius: 14;" text="✔" textFill="WHITE" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="8.0">
+      <Button layoutX="122.0" layoutY="38.0" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="25.0" prefWidth="51.0" style="-fx-background-color: ff0000; -fx-background-radius: 14;" text="✔" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="8.0">
          <effect>
             <InnerShadow offsetX="-10.0" offsetY="-10.0">
                <color>
@@ -58,6 +58,9 @@
                </color>
             </InnerShadow>
          </effect>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
       </Label>
    </children>
 </AnchorPane>
