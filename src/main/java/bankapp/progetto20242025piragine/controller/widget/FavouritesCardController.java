@@ -75,3 +75,5 @@ public class FavouritesCardController extends WidgetController{
         }
     }
 }
+
+
