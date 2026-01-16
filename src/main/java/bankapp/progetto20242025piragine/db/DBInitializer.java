@@ -3,8 +3,8 @@ package bankapp.progetto20242025piragine.db;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
-
 import javax.sql.DataSource;
+
 
 public class DBInitializer {
 

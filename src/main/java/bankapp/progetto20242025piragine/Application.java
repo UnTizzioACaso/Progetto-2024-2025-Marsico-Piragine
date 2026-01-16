@@ -12,6 +12,8 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
+
         // Inizializza il database
         DBInitializer.initialize();
 

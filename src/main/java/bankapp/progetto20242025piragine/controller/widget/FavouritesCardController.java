@@ -3,9 +3,11 @@ package bankapp.progetto20242025piragine.controller.widget;
 import bankapp.progetto20242025piragine.controller.component.CardController;
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.util.CardCreator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -23,7 +25,7 @@ public class FavouritesCardController extends WidgetController{
 
     // Adds a card to the favouriteCardsHBox along with a spacer
     @FXML
-    public void addFavouriteCard(Parent card)
+    public void addFavouriteCard(Node card)
     {
         try
         {
@@ -50,27 +52,14 @@ public class FavouritesCardController extends WidgetController{
             {
                 if (c.isFavourite())
                 {
-                    try
-                    {
-                        FXMLLoader cardloader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
-                        AnchorPane card = cardloader.load();
-                        CardController controller = cardloader.getController();
-                        controller.setupFavourites(c);
-                        HBox.setMargin(card, new Insets(0, 5, 5, 0));
-                        addFavouriteCard(card);
-                        double ratio = 53.98 / 85.60;
-                        card.prefHeightProperty().bind(card.prefWidthProperty().multiply(ratio));
-                    }
-                    catch (IOException e)
-                    {
-                        System.err.println("Error loading an element in favourite cards widget: " + e.getMessage());
-                        e.printStackTrace();
-                    }
+                    Node card = CardCreator.cardCorrectValues(rootController, c);
+                    addFavouriteCard(card);
                 }
             }
         }
         catch (SQLException e)
         {
+            System.err.println("error finding all user's cards: " + e.getMessage());
             e.printStackTrace();
         }
     }
