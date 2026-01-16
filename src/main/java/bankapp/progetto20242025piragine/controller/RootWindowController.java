@@ -61,13 +61,12 @@ public  class RootWindowController extends BranchController {
 
     public BranchController showPopup(String title, String fxml, int width, int height)
     {
-        BranchController controller =  null;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
             Parent root = loader.load(); //creating the node from the loader
-            controller = loader.getController(); //getting the controller from the loader
+            BranchController controller = loader.getController(); //getting the controller from the loader
             controller.setRootController(this);
-            Stage popupStage = new Stage(); //creating a new stage for the accountPopup
+            Stage popupStage = new Stage(); //creating a new stage for the popup
             popupStage.setTitle(title); //setting the title
             popupStage.setMinWidth(width); //setting popup's minimum width
             popupStage.setMaxWidth(width);
@@ -77,14 +76,15 @@ public  class RootWindowController extends BranchController {
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
             popupStage.setScene(new Scene(root));
             controller.initializer();
-            popupStage.showAndWait(); //blocks openAccountPopup event until the app gets closed
+            popupStage.show();
+            return controller;
         }
         catch (IOException e)
         {
             System.err.println("error loading the account popup" + e.getMessage());
             e.printStackTrace();
         }
-        return controller;
+        return null;
     }
 
     @FXML

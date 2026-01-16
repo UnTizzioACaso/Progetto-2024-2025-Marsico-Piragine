@@ -1,6 +1,8 @@
 package bankapp.progetto20242025piragine.db;
 import java.math.BigDecimal;
+import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public class Card {
 
@@ -11,32 +13,26 @@ public class Card {
     private java.sql.Date expired;
     private Timestamp createdAt;
     private String nickname;
-    private String colour;
-    private boolean favourite;
+    private String color;
+    private boolean favourite = false;
     private BigDecimal spendingLimit;
-    private boolean status;
+    private boolean status = true;
 
     // Costruttore vuoto (necessario per DAO)
     public Card() {
     }
 
     // Costruttore completo (opzionale)
-    public Card(int idCard, int userId, int idAccount, String panLast4,
-                java.sql.Date expired, Timestamp createdAt,
-                String nickname, String colour, boolean favourite, BigDecimal spendingLimit,
-                boolean status) {
-
-        this.idCard = idCard;
+    public Card( int userId, int idAccount, String panLast4, String nickname, String color, BigDecimal spendingLimit) {
         this.userId = userId;
         this.idAccount = idAccount;
         this.panLast4 = panLast4;
-        this.expired = expired;
-        this.createdAt = createdAt;
+        this.expired = Date.valueOf(LocalDate.now().plusYears(3));
+        this.createdAt = new Timestamp(System.currentTimeMillis());
         this.nickname = nickname;
-        this.colour = colour;
-        this.favourite = favourite;
+        this.color = color;
         this.spendingLimit = spendingLimit;
-        this.status = status;
+
     }
 
     // GETTER e SETTER
@@ -63,8 +59,8 @@ public class Card {
     public String getNickname() { return nickname; }
     public void setNickname(String nickname) { this.nickname = nickname; }
 
-    public String getColour() { return colour; }
-    public void setColour(String colour) { this.colour = colour; }
+    public String getColor() { return color; }
+    public void setColor(String color) { this.color = color; }
 
     public boolean isFavourite() { return favourite; }
     public void setFavourite(boolean favourite) { this.favourite = favourite; }

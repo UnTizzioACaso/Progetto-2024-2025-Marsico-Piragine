@@ -2,16 +2,17 @@ package bankapp.progetto20242025piragine.db;
 
 import bankapp.progetto20242025piragine.util.IbanGenerator;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 public class BankAccount {
 
     private int idAccount;
     private int userId;
-    private double money = 0;
+    private BigDecimal money = BigDecimal.valueOf(0);
     private String currency = "EUR";
     private String iban;
-    private double maxTransfer = 50;
+    private BigDecimal maxTransfer = BigDecimal.valueOf(50);
     private boolean forcePin = true;
     private String checkAccount = "open"; // open / closed
 
@@ -44,11 +45,11 @@ public class BankAccount {
         this.userId = userId;
     }
 
-    public double getMoney() {
+    public BigDecimal getMoney() {
         return money;
     }
 
-    public void setMoney(double money) {
+    public void setMoney(BigDecimal money) {
         this.money = money;
     }
 
@@ -68,11 +69,11 @@ public class BankAccount {
         this.iban = iban;
     }
 
-    public double getMaxTransfer() {
+    public BigDecimal getMaxTransfer() {
         return maxTransfer;
     }
 
-    public void setMaxTransfer(double maxTransfer) {
+    public void setMaxTransfer(BigDecimal maxTransfer) {
         this.maxTransfer = maxTransfer;
     }
 

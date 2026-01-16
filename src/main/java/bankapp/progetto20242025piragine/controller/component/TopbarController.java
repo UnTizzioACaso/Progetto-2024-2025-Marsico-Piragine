@@ -148,6 +148,7 @@ public class TopbarController extends BranchController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek()));
             Parent node = fxmlLoader.load();
             BranchController controller = fxmlLoader.getController();
+            controller.setRootController(rootController);
             controller.initializer();
             rootController.rootWindow.setCenter(node);
             controller.setRootController(rootController);

@@ -8,7 +8,7 @@ public class Transaction {
     private int idTransaction;
     private Integer sender;        // id_account (può essere null)
     private Integer beneficiary;   // id_account (può essere null)
-    private BigDecimal ammount;
+    private BigDecimal amount;
     private String note;
     private Timestamp transactionDate;
     private String status; // tryToSendRequest / declined
@@ -43,12 +43,12 @@ public class Transaction {
         this.beneficiary = beneficiary;
     }
 
-    public BigDecimal getAmmount() {
-        return ammount;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setAmmount(BigDecimal ammount) {
-        this.ammount = ammount;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public String getNote() {
