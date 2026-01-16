@@ -224,6 +224,20 @@ public class UserDAO
         }
     }
 
+    public static String getUsernameByUserId(int userId) throws  SQLException
+    {
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE phone_number = ? LIMIT 1"))
+        {
+            stmt.setInt(1, userId);
+            try (ResultSet rs = stmt.executeQuery())
+            {
+                if (rs.next()) {return rs.getString("username");}
+            }
+        }
+        return null;
+    }
+
     public static boolean existUserByEmail(String email) throws SQLException
     {
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();

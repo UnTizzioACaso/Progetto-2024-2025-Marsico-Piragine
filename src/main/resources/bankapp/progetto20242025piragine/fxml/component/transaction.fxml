@@ -9,18 +9,18 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="transactionGridPane" minHeight="5.0" vgap="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TransactionController">
+<GridPane fx:id="transactionGridPane" minHeight="5.0" prefHeight="29.0" prefWidth="216.0" style="-fx-border-color: black; -fx-border-width: 0 0 1 0;" vgap="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TransactionController">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" />
       <ColumnConstraints hgrow="ALWAYS" />
    </columnConstraints>
    <children>
-      <Label fx:id="expenseBeneficiaryLabel" text="Amazon" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+      <Label fx:id="transactionSubjectLabel" text="Amazon" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="expenseDateLabel" text="30 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="TransactionDateLabel" text="30 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="-3.0" />
          </GridPane.margin>
@@ -28,7 +28,7 @@
             <Font size="11.0" />
          </font>
       </Label>
-      <Label fx:id="expanseValueLabel" text="-37,87 €" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+      <Label fx:id="transactionValueLabel" text="-37,87 €" textFill="RED" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
          <font>
             <Font size="11.0" />
          </font>
