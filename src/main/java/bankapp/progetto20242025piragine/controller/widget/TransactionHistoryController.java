@@ -5,9 +5,12 @@ import bankapp.progetto20242025piragine.db.Transaction;
 import bankapp.progetto20242025piragine.db.TransactionDAO;
 import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Popup;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -17,6 +20,7 @@ public class TransactionHistoryController extends WidgetController
     @FXML
     private GridPane transactionHistoryGridPane;
 
+
     @FXML
     private VBox transactionHistoryVBox;
 
@@ -24,9 +28,9 @@ public class TransactionHistoryController extends WidgetController
     public String getWidgetType(){ return transactionHistoryGridPane.getId();}
 
     @FXML
-    public void search()
+    public void showMenu()
     {
-
+        menuShower(transactionHistoryGridPane, "/bankapp/progetto20242025piragine/fxml/popup/largeTransactionHistory.fxml",   "Tutte le transazioni");
     }
 
     @Override
@@ -47,5 +51,7 @@ public class TransactionHistoryController extends WidgetController
             e.printStackTrace();
         }
     }
+
+
 
 }

@@ -42,6 +42,11 @@ public class LastFiveExpensesController extends WidgetController
         }
     }
 
+    @FXML
+    public void showMenu()
+    {
+        miniMenuShower(lastFiveExpensesVBox);
+    }
 
     @Override
     public String getWidgetType()
