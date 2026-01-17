@@ -46,5 +46,61 @@
 #registerTitleLabel1,
 #registerTitleLabel2,
 #registerTitleLabel3 {
-    -fx-text-fill: white !important;
+    -fx-text-fill: white !important !important;
+}
+
+#gridPaneFriends {
+    -fx-background-color: white !important;
+}
+
+#AnchorPaneFriendsPage {
+    -fx-background-color: white !important;
+}
+
+#regionFriend {
+    -fx-background-color: white !important;
+}
+
+#scrollPaneFriends {
+    -fx-background-color: white !important;
+}
+
+#scrollPaneFriends .viewport {
+    -fx-background-color: white !important;
+}
+
+#scrollPaneFriends .content {
+    -fx-background-color: white !important;
+}
+
+#scrollPaneFriends .corner {
+    -fx-background-color: white !important;
+}
+
+#friendsVBox {
+    -fx-background-color: white !important;
+}
+
+#anchorePaneFriends2 {
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#scrollPaneFriends2 {
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#scrollPaneFriends2 .viewport {
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#scrollPaneFriends2 .content {
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#scrollPaneFriends2 .corner {
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#chatVBox {
+    -fx-background-color: #e4e4e4 !important;
 }
