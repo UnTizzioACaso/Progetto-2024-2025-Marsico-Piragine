@@ -154,6 +154,66 @@ Line{
 
 
 
+/* Header rosso */
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #ff0000;
+    /* INNER SHADOW */
+        -fx-effect: innershadow(
+            three-pass-box,
+            rgba(0, 0, 0, 0.25),
+            27.63,
+            0.17,
+            -10,
+            -10
+        );
+}
+
+/* Testo mese/anno */
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Bottoni frecce */
+.date-picker-popup .month-year-pane .button {
+    -fx-background-color: transparent;
+}
+
+/* 🔥 COLORE FRECCE (SOLUZIONE CORRETTA) */
+.date-picker-popup .month-year-pane .button {
+    -fx-mark-color: white;
+}
+
+/* Fallback per alcune versioni JavaFX */
+.date-picker-popup .left-arrow,
+.date-picker-popup .right-arrow {
+    -fx-background-color: white;
+}
+
+/* Bottone calendario (icona a destra del DatePicker) */
+.date-picker > .arrow-button {
+    -fx-background-color: #ff0000;
+    /* INNER SHADOW */
+        -fx-effect: innershadow(
+            three-pass-box,
+            rgba(0, 0, 0, 0.15),
+            27.63,
+            0.17,
+            -10,
+            -10
+        );
+}
+
+/* Icona calendario BIANCA */
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+
+
+
+
+
+
 
 
 

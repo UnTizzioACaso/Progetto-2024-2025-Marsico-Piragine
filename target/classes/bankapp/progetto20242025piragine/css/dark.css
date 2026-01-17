@@ -154,61 +154,70 @@ Line{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ===== SCROLL BAR BASE (TUTTO) ===== */
-.scroll-bar {
-    -fx-background-color: transparent;
-}
-
-/* TRACK (sfondo) */
-.scroll-bar .track {
-    -fx-background-color: transparent;
-}
-
-/* THUMB (parte che si muove) */
-.scroll-bar .thumb {
+/* Header rosso */
+.date-picker-popup .month-year-pane {
     -fx-background-color: #ff0000;
-    -fx-background-radius: 6;
+    /* INNER SHADOW */
+        -fx-effect: innershadow(
+            three-pass-box,
+            rgba(0, 0, 0, 0.25),
+            27.63,
+            0.17,
+            -10,
+            -10
+        );
 }
 
-/* Hover leggero (non glow) */
-.scroll-bar .thumb:hover {
-    -fx-background-color: #ff0000;
+/* Testo mese/anno */
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
 }
 
-/* Dimensioni sottili */
-.scroll-bar:vertical {
-    -fx-pref-width: 6;
-}
-
-.scroll-bar:horizontal {
-    -fx-pref-height: 6;
-}
-
-/* Rimuove bottoni frecce */
-.scroll-bar .increment-button,
-.scroll-bar .decrement-button {
+/* Bottoni frecce */
+.date-picker-popup .month-year-pane .button {
     -fx-background-color: transparent;
-    -fx-padding: 0;
 }
 
-/* Rimuove icone frecce */
-.scroll-bar .increment-arrow,
-.scroll-bar .decrement-arrow {
-    -fx-shape: "";
-    -fx-padding: 0;
+/* 🔥 COLORE FRECCE (SOLUZIONE CORRETTA) */
+.date-picker-popup .month-year-pane .button {
+    -fx-mark-color: white;
 }
+
+/* Fallback per alcune versioni JavaFX */
+.date-picker-popup .left-arrow,
+.date-picker-popup .right-arrow {
+    -fx-background-color: white;
+}
+
+/* Bottone calendario (icona a destra del DatePicker) */
+.date-picker > .arrow-button {
+    -fx-background-color: #ff0000;
+    /* INNER SHADOW */
+        -fx-effect: innershadow(
+            three-pass-box,
+            rgba(0, 0, 0, 0.15),
+            27.63,
+            0.17,
+            -10,
+            -10
+        );
+}
+
+/* Icona calendario BIANCA */
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
