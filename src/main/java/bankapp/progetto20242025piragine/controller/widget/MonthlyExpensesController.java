@@ -20,6 +20,12 @@ public class MonthlyExpensesController extends WidgetController {
     @Override
     public String getWidgetType(){ return monthlyExpensesVBox.getId();}
 
+    @FXML
+    public void showMenu()
+    {
+        menuShower(monthlyExpensesVBox, "/bankapp/progetto20242025piragine/fxml/popup/largeMonthlyExpenses.fxml", "Spese di questo mese");
+    }
+
     @Override
     public void initializer()
     {

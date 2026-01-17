@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -13,16 +14,11 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-            minHeight="250.0" minWidth="0.0" prefHeight="360.0" prefWidth="500.0"
-            style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;"
-            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="0.0" prefHeight="360.0" prefWidth="500.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.LargeTransactionHistoryController">
 
     <children>
 
-        <Pane prefHeight="47.0"
-              style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0;"
-              AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Pane prefHeight="47.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
             <children>
                 <Label layoutX="14.0" layoutY="5.0" text="Transazioni" textFill="WHITE">
@@ -41,44 +37,27 @@
             </effect>
         </Pane>
 
-        <TextField fx:id="searchField"
-                   layoutX="14.0" layoutY="57.0"
-                   prefWidth="184.0" promptText="Cerca..." />
+        <TextField fx:id="searchField" layoutX="14.0" layoutY="57.0" prefWidth="184.0" promptText="Cerca..." />
 
-        <DatePicker fx:id="fromDatePicker"
-                    layoutX="208.0" layoutY="57.0"
-                    prefWidth="130.0" />
+        <DatePicker fx:id="fromDatePicker" layoutX="208.0" layoutY="57.0" prefWidth="130.0" />
 
-        <DatePicker fx:id="toDatePicker"
-                    layoutX="348.0" layoutY="57.0"
-                    prefWidth="130.0" />
+        <DatePicker fx:id="toDatePicker" layoutX="348.0" layoutY="57.0" prefWidth="130.0" />
 
-        <RadioButton fx:id="rbEntrata"
-                     layoutX="14.0" layoutY="95.0"
-                     text="Entrata">
+        <RadioButton fx:id="rbEntrata" layoutX="14.0" layoutY="95.0" text="Entrata">
             <toggleGroup>
                 <ToggleGroup fx:id="typeToggleGroup" />
             </toggleGroup>
         </RadioButton>
 
-        <RadioButton fx:id="rbUscita"
-                     layoutX="100.0" layoutY="95.0"
-                     selected="true" text="Uscita"
-                     toggleGroup="$typeToggleGroup" />
+        <RadioButton fx:id="rbUscita" layoutX="100.0" layoutY="95.0" selected="true" text="Uscita" toggleGroup="$typeToggleGroup" />
 
-        <ScrollPane fitToWidth="true" hbarPolicy="NEVER"
-                    style="-fx-background-color: transparent;"
-                    vbarPolicy="ALWAYS"
-                    AnchorPane.topAnchor="122.0"
-                    AnchorPane.leftAnchor="0.0"
-                    AnchorPane.rightAnchor="0.0"
-                    AnchorPane.bottomAnchor="0.0">
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="122.0">
 
             <content>
 
                 <VBox fx:id="contentBox" prefWidth="456.0" spacing="8.0">
                     <padding>
-                        <javafx.geometry.Insets top="10" right="14" bottom="10" left="14"/>
+                        <javafx.geometry.Insets bottom="10" left="14" right="14" top="10" />
                     </padding>
                 </VBox>
             </content>

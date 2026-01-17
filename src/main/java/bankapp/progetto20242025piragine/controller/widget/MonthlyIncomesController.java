@@ -19,6 +19,13 @@ public class MonthlyIncomesController extends WidgetController {
     @Override
     public String getWidgetType(){ return monthlyIncomesVBox.getId();}
 
+
+    @FXML
+    public void showMenu()
+    {
+        menuShower(monthlyIncomesVBox, "/bankapp/progetto20242025piragine/fxml/popup/largeMonthlyIncomes.fxml",  "Entrate di questo mese");
+    }
+
     @Override
     public void initializer()
     {

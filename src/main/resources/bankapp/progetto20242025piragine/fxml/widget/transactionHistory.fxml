@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="transactionHistoryGridPane" maxHeight="250.0" maxWidth="850.0" minHeight="180.0" prefHeight="222.0" prefWidth="400.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.TransactionHistoryController">
+<GridPane fx:id="transactionHistoryGridPane" maxHeight="250.0" maxWidth="850.0" minHeight="180.0" prefHeight="222.0" prefWidth="400.0" style="-fx-background-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.TransactionHistoryController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -29,7 +29,7 @@
    <children>
       <VBox alignment="CENTER" minHeight="32.0" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="205.0" text="Storico transazioni" textFill="WHITE">
+            <Label fx:id="widgetTitleLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#showMenu" prefHeight="17.0" prefWidth="153.0" text="Storico transazioni" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
