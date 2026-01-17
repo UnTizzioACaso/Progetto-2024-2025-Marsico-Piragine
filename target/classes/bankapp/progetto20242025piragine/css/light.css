@@ -1,50 +1,129 @@
-
 #root {
-    -fx-background-color: white !important;
-    -fx-background-radius: 12 !important;
+    -fx-background-color: white;
+    -fx-background-radius: 12;
 }
 
 .anchor-pane {
-    -fx-background-color: white !important;
+    -fx-background-color: white;
 }
 
-.label {
-    -fx-text-fill: black !important;
+#root .label {
+    -fx-text-fill: black;
 }
 
 #eyeButton {
-    -fx-text-fill: black !important;
+    -fx-text-fill: black;
 }
 
 #accessTitleLabel{
-    -fx-text-fill: white !important;
+    -fx-text-fill: white;
 }
 
 #themeApplicationAccountPopupLabel,
 #themeColorAccountPopupLabel {
-    -fx-text-fill: black !important;
-}
-.radio-button {
-    -fx-text-fill: #1F1F1F !important;
-
-}
-
-
-
-.button {
-    -fx-text-fill: white !important;
-
-}
-
-
-#settingsAccountPopupButton {
-    -fx-background-color: #ff0000 !important;
-    -fx-text-fill: white !important;
-
+    -fx-text-fill: black;
 }
 
 #registerTitleLabel1,
 #registerTitleLabel2,
 #registerTitleLabel3 {
+    -fx-text-fill: white;
+}
+
+.radio-button {
+    -fx-text-fill: #1F1F1F;
+}
+
+#root .button {
+    -fx-text-fill: white;
+}
+
+#settingsAccountPopupButton {
+    -fx-background-color: #ff0000;
+    -fx-text-fill: white;
+}
+
+#gridPaneFriends,
+#AnchorPaneFriendsPage,
+#regionFriend,
+#scrollPaneFriends,
+#scrollPaneFriends .viewport,
+#scrollPaneFriends .content,
+#scrollPaneFriends .corner,
+#friendsVBox {
+    -fx-background-color: white;
+}
+
+#anchorePaneFriends2,
+#scrollPaneFriends2,
+#scrollPaneFriends2 .viewport,
+#scrollPaneFriends2 .content,
+#scrollPaneFriends2 .corner,
+#chatVBox {
+    -fx-background-color: #e4e4e4;
+}
+
+.date-picker {
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 10;
+    -fx-border-color: #d9d9d9;
+    -fx-border-radius: 10;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: #ff0000;
+    -fx-background-radius: 8;
+    -fx-effect: innershadow(
+        three-pass-box,
+        rgba(0, 0, 0, 0.15),
+        27.63,
+        0.17,
+        -10,
+        -10
+    );
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #ff0000 !important;
+    -fx-effect: innershadow(
+        three-pass-box,
+        rgba(0, 0, 0, 0.25),
+        27.63,
+        0.17,
+        -10,
+        -10
+    ) !important;
+}
+
+.date-picker-popup .month-year-pane .label {
     -fx-text-fill: white !important;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup .month-year-pane .button {
+    -fx-background-color: transparent !important;
+    -fx-mark-color: white !important;
+}
+
+.date-picker-popup .left-arrow,
+.date-picker-popup .right-arrow {
+    -fx-background-color: white !important;
+}
+
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #ff0000;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: rgba(255, 0, 0, 0.20);
+}
+
+.date-picker-popup .day-cell:today {
+    -fx-border-color: rgba(255, 0, 0, 0.55);
+    -fx-border-width: 1;
 }
