@@ -20,7 +20,7 @@ public class TransactionController extends BranchController
     public void SetCorrectValues(Transaction transaction)
     {
         int id = 0;
-        try {id = BankAccountDAO.getIdAccountById(rootController.user.getUserID());}
+        try {id = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());}
         catch (SQLException e)
         {
             System.err.println("error finding id account by user id " + e.getMessage());

@@ -89,7 +89,7 @@ public class BankAccountDAO {
         }
     }
 
-    public static int getIdAccountById(int userId) throws SQLException {
+    public static int getIdAccountByUserId(int userId) throws SQLException {
         String sql = "SELECT id_account FROM Bank_Account WHERE user_id = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
         {

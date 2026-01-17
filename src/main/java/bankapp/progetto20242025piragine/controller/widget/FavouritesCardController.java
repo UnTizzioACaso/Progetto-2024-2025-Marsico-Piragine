@@ -1,15 +1,11 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-import bankapp.progetto20242025piragine.controller.component.CardController;
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
-import bankapp.progetto20242025piragine.util.CardCreator;
+import bankapp.progetto20242025piragine.util.VisualCardCreator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -58,7 +54,7 @@ public class FavouritesCardController extends WidgetController{
             {
                 if (c.isFavourite())
                 {
-                    Node card = CardCreator.cardCorrectValues(rootController, c);
+                    Node card = VisualCardCreator.cardCorrectValues(rootController, c);
                     addFavouriteCard(card);
                 }
             }

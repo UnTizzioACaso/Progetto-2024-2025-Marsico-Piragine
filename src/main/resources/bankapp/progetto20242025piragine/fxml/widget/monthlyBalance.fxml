@@ -44,7 +44,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER" maxHeight="60.0" maxWidth="300.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: green; -fx-background-radius: 15;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <VBox fx:id="balanceVBox" alignment="CENTER" maxHeight="60.0" maxWidth="300.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: green; -fx-background-radius: 15;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <children>
             <Label fx:id="balanceLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Bilancio" textFill="WHITE">
                <font>
@@ -70,7 +70,7 @@
       </VBox>
       <VBox alignment="CENTER" maxHeight="60.0" maxWidth="200.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: d70000; -fx-background-radius: 15;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
          <children>
-            <Label fx:id="exitsLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Uscite" textFill="WHITE">
+            <Label fx:id="expensesLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Uscite" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

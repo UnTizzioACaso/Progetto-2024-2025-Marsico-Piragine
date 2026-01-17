@@ -81,7 +81,7 @@
       </GridPane>
       <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="150.0" prefWidth="383.0" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
          <content>
-            <VBox fx:id="transationHistoryVBox" />
+            <VBox fx:id="transactionHistoryVBox" />
          </content>
       </ScrollPane>
    </children>
