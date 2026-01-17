@@ -6,7 +6,7 @@ import bankapp.progetto20242025piragine.db.Card;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
-public class CardCreator
+public class VisualCardCreator
 {
 
     //gives a visual card with correct values but without buttons
@@ -14,7 +14,7 @@ public class CardCreator
     {
         try
         {
-            FXMLLoader cardLoader = new FXMLLoader(CardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
+            FXMLLoader cardLoader = new FXMLLoader(VisualCardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
             Node visualCard = cardLoader.load();
             CardController controller = cardLoader.getController();
             controller.setRootController(rootController);
@@ -35,7 +35,7 @@ public class CardCreator
     {
         try
         {
-            FXMLLoader cardLoader = new FXMLLoader(CardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
+            FXMLLoader cardLoader = new FXMLLoader(VisualCardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
             Node visualCard = cardLoader.load();
             CardController controller = cardLoader.getController();
             controller.setRootController(rootController);
@@ -55,7 +55,7 @@ public class CardCreator
     {
         try
         {
-            FXMLLoader cardLoader = new FXMLLoader(CardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
+            FXMLLoader cardLoader = new FXMLLoader(VisualCardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
             Node visualCard = cardLoader.load();
             CardController controller = cardLoader.getController();
             controller.setRootController(rootController);

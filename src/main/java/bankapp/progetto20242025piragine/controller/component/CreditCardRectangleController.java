@@ -3,13 +3,11 @@ package bankapp.progetto20242025piragine.controller.component;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.popup.MenageCardPopupController;
 import bankapp.progetto20242025piragine.db.Card;
-import bankapp.progetto20242025piragine.util.CardCreator;
+import bankapp.progetto20242025piragine.util.VisualCardCreator;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
 
 public class CreditCardRectangleController extends BranchController
 {
@@ -24,7 +22,7 @@ public class CreditCardRectangleController extends BranchController
     public void fill(Card c)
     {
         this.card = c;
-        Node visualCard = CardCreator.cardCorrectValuesWithoutButtons(rootController, card);
+        Node visualCard = VisualCardCreator.cardCorrectValuesWithoutButtons(rootController, card);
         rectangleAnchorPane.getChildren().add(visualCard);
         limitValueLabel.setText("€ " + card.getSpendingLimit().toString());
 

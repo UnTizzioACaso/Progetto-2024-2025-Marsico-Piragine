@@ -6,19 +6,15 @@ import bankapp.progetto20242025piragine.db.BankAccount;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
-import bankapp.progetto20242025piragine.util.CardCreator;
+import bankapp.progetto20242025piragine.util.VisualCardCreator;
 import bankapp.progetto20242025piragine.util.last4DigitsPan;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 
@@ -92,7 +88,7 @@ public class CreateCardPopupController extends BranchController
     public void initializer()
     {
         s = (Stage) colorMenu.getScene().getWindow();
-        cardSlotVbox.getChildren().add(CardCreator.cardWithoutButtons(rootController)); //add the card component to the VBox
+        cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(rootController)); //add the card component to the VBox
         colorMenu.setText("Bianco"); //set default color menu text
     }
 

@@ -56,7 +56,45 @@ public class TransactionDAO {
         return getTransactions(sql, senderId);
     }
 
-    public static List<Transaction> getTransactionsBetweenUserAndFriend(
+    public static List<Transaction> getAllTransactionsByAccount(int accountId) throws SQLException {
+        String sql = """
+        SELECT *
+        FROM Transaction1
+        WHERE sender = ?
+           OR beneficiary = ?
+        ORDER BY transaction_date DESC
+        """;
+
+        List<Transaction> transactions = new ArrayList<>();
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, accountId);
+            stmt.setInt(2, accountId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Transaction t = new Transaction();
+                    t.setIdTransaction(rs.getInt("id_transaction"));
+                    t.setSender(rs.getInt("sender"));
+                    t.setBeneficiary(rs.getInt("beneficiary"));
+                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
+                    t.setNote(rs.getString("note"));
+                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
+                    t.setStatus(rs.getString("status"));
+                    t.setType(rs.getString("type"));
+                    t.setUsedCard(rs.getInt("used_card"));
+                    transactions.add(t);
+                }
+            }
+        }
+
+        return transactions;
+    }
+
+
+    public static List<Transaction> getTransactionsBetweenUserAndUser2(
             int userAccountId,
             int friendAccountId
     ) throws SQLException {
@@ -81,17 +119,17 @@ public class TransactionDAO {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-
                     Transaction t = new Transaction();
-                            t.setIdTransaction(rs.getInt("id_transaction"));
-                            t.setSender(rs.getInt("sender"));
-                            t.setBeneficiary(rs.getInt("beneficiary"));
-                            t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
-                            t.setNote(rs.getString("note"));
-                            t.setTransactionDate(rs.getTimestamp("transaction_date"));
-                            t.setStatus(rs.getString("status"));
-                            t.setType(rs.getString("type"));
-                            t.setUsedCard(rs.getInt("used_card"));
+                    t.setIdTransaction(rs.getInt("id_transaction"));
+                    t.setSender(rs.getInt("sender"));
+                    t.setBeneficiary(rs.getInt("beneficiary"));
+                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
+                    t.setNote(rs.getString("note"));
+                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
+                    t.setStatus(rs.getString("status"));
+                    t.setType(rs.getString("type"));
+                    t.setUsedCard(rs.getInt("used_card"));
+                    transactions.add(t);
 
 
                     transactions.add(t);
@@ -142,6 +180,80 @@ public class TransactionDAO {
         }
         return list;
     }
+
+    public static List<Transaction> getCurrentMonthTransactionsByBeneficiary(int accountId) throws SQLException {
+        String sql = """
+        SELECT *
+        FROM Transaction1
+        WHERE beneficiary = ?
+          AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
+        ORDER BY transaction_date DESC
+        """;
+
+        List<Transaction> transactions = new ArrayList<>();
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, accountId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Transaction t = new Transaction();
+                    t.setIdTransaction(rs.getInt("id_transaction"));
+                    t.setSender(rs.getInt("sender"));
+                    t.setBeneficiary(rs.getInt("beneficiary"));
+                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
+                    t.setNote(rs.getString("note"));
+                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
+                    t.setStatus(rs.getString("status"));
+                    t.setType(rs.getString("type"));
+                    t.setUsedCard(rs.getInt("used_card"));
+                    transactions.add(t);
+                }
+            }
+        }
+
+        return transactions;
+    }
+
+
+    public static List<Transaction> getCurrentMonthTransactionsBySender(int accountId) throws SQLException {
+        String sql = """
+        SELECT *
+        FROM Transaction1
+        WHERE sender = ?
+          AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
+        ORDER BY transaction_date DESC
+        """;
+
+        List<Transaction> transactions = new ArrayList<>();
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, accountId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Transaction t = new Transaction();
+                    t.setIdTransaction(rs.getInt("id_transaction"));
+                    t.setSender(rs.getInt("sender"));
+                    t.setBeneficiary(rs.getInt("beneficiary"));
+                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
+                    t.setNote(rs.getString("note"));
+                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
+                    t.setStatus(rs.getString("status"));
+                    t.setType(rs.getString("type"));
+                    t.setUsedCard(rs.getInt("used_card"));
+                    transactions.add(t);
+                }
+            }
+        }
+
+        return transactions;
+    }
+
 
     // 🔹 Mapping ResultSet → Transaction
     private static Transaction mapRow(ResultSet rs) throws SQLException {

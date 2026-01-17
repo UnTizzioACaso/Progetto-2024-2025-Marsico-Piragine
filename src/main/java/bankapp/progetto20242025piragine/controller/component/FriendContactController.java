@@ -32,7 +32,7 @@ public class FriendContactController extends BranchController
         {
             userAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getIdAccount();
             friendAccount = BankAccountDAO.getAccountByUserId(friendId).getIdAccount();
-            transactions = TransactionDAO.getTransactionsBetweenUserAndFriend(userAccount, friendAccount);
+            transactions = TransactionDAO.getTransactionsBetweenUserAndUser2(userAccount, friendAccount);
         }
         catch(SQLException e)
         {

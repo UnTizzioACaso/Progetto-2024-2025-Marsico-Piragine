@@ -6,17 +6,30 @@ import java.sql.Timestamp;
 public class Transaction {
 
     private int idTransaction;
-    private Integer sender;        // id_account (può essere null)
-    private Integer beneficiary;   // id_account (può essere null)
+    private int sender;
+    private int beneficiary;
     private BigDecimal amount;
     private String note;
     private Timestamp transactionDate;
-    private String status; // tryToSendRequest / declined
-    private String type;   // recharge / bank transfer / fast tryToSendRequest
-    private Integer usedCard; // id_card (può essere null)
+    private String status;
+    private String type;
+    private int usedCard;
 
     // 🔹 Costruttore vuoto
     public Transaction() {}
+
+    public Transaction(int idTransaction, int sender, int beneficiary, BigDecimal amount, String note, Timestamp transactionDate, String status, String type, int usedCard)
+    {
+        this.idTransaction = idTransaction;
+        this.sender = sender;
+        this.beneficiary = beneficiary;
+        this.amount = amount;
+        this.note = note;
+        this.transactionDate = transactionDate;
+        this.status = status;
+        this.type = type;
+        this.usedCard = usedCard;
+    }
 
     // 🔹 Getter & Setter
     public int getIdTransaction() {
