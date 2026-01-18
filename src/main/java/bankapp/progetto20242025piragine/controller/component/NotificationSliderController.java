@@ -13,7 +13,7 @@ public class NotificationSliderController extends BranchController
     public VBox notificationVBox;
 
     @FXML
-    AnchorPane notificationAnchorPane;
+    private AnchorPane notificationAnchorPane;
 
     @FXML
     public void close()

@@ -17,7 +17,7 @@ public class TransactionController extends BranchController
     private Label transactionSubjectLabel, TransactionDateLabel, transactionValueLabel;
 
 
-    public void SetCorrectValues(Transaction transaction)
+    public void setCorrectValues(Transaction transaction)
     {
         int id = 0;
         try {id = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());}

@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="80.0" maxWidth="190.0" minHeight="80.0" minWidth="0.0" prefHeight="80.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.FriendshipNotifyController">
+<AnchorPane maxHeight="80.0" maxWidth="190.0" minHeight="80.0" minWidth="0.0" prefHeight="80.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.FriendshipNotifyController">
    <children>
       <Label fx:id="friendshipUsernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="55.0" prefHeight="17.0" prefWidth="230.0" text="Benny Musso" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>

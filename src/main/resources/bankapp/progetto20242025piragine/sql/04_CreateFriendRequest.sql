@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS Friend_Request (
-    id_richiesta INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_request INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL UNIQUE,
-    Requester INTEGER NOT NULL,
-    Beneficiary INTEGER NOT NULL,
+    requester INTEGER NOT NULL,
+    beneficiary INTEGER NOT NULL,
     date DATETIME NOT NULL,
     transaction_status TEXT CHECK(transaction_status IN ('pending', 'declined', 'completed')) DEFAULT 'pending',
-    FOREIGN KEY (Requester) REFERENCES User(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (Beneficiary) REFERENCES User(user_id) ON DELETE CASCADE
+    FOREIGN KEY (requester) REFERENCES User(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (beneficiary) REFERENCES User(user_id) ON DELETE CASCADE
 );
