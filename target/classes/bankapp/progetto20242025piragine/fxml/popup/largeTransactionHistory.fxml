@@ -39,25 +39,25 @@
             </effect>
         </Pane>
 
-        <TextField fx:id="searchField" layoutX="14.0" layoutY="57.0" prefHeight="25.0" prefWidth="231.0" promptText="Filtra per emittente/beneficiario" />
+        <TextField fx:id="searchField" layoutX="14.0" layoutY="57.0" onAction="#filter" prefHeight="25.0" prefWidth="231.0" promptText="Filtra per emittente/beneficiario" />
 
-        <DatePicker fx:id="fromDatePicker" layoutX="277.0" layoutY="57.0" prefHeight="25.0" prefWidth="83.0" promptText="Da data" />
+        <DatePicker fx:id="fromDatePicker" layoutX="275.0" layoutY="57.0" onAction="#filter" prefHeight="25.0" prefWidth="99.0" promptText="Da inizio" />
 
-        <DatePicker fx:id="toDatePicker" layoutX="395.0" layoutY="57.0" prefHeight="25.0" prefWidth="83.0" promptText="A data" />
+        <DatePicker fx:id="toDatePicker" layoutX="387.0" layoutY="57.0" onAction="#filter" prefHeight="25.0" prefWidth="99.0" promptText="A fine" />
 
-        <RadioButton fx:id="incomesRadioButton" layoutX="14.0" layoutY="95.0" onAction="#switchExpensesIncomes" text="Entrata">
+        <RadioButton fx:id="incomesRadioButton" layoutX="14.0" layoutY="95.0" onAction="#switchIncomes" text="Entrata">
             <toggleGroup>
                 <ToggleGroup fx:id="typeToggleGroup" />
             </toggleGroup>
         </RadioButton>
 
-        <RadioButton fx:id="expensesRadioButton" layoutX="100.0" layoutY="95.0" onAction="#switchExpensesIncomes" selected="true" text="Uscita" toggleGroup="$typeToggleGroup" />
+        <RadioButton fx:id="expensesRadioButton" layoutX="100.0" layoutY="95.0" onAction="#switchExpenses" selected="true" text="Uscita" toggleGroup="$typeToggleGroup" />
 
         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="122.0">
 
             <content>
 
-                <VBox fx:id="contentBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="86.0" prefWidth="485.0" spacing="8.0">
+                <VBox fx:id="transactionHistoryVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="225.0" prefWidth="485.0" spacing="8.0">
                     <padding>
                         <javafx.geometry.Insets bottom="10" left="14" right="14" top="10" />
                     </padding>
@@ -69,6 +69,7 @@
             <Image url="@../../imgs/lenticon.png" />
          </image>
       </ImageView>
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="166.0" layoutY="95.0" prefHeight="17.0" prefWidth="317.0" textFill="RED" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="17.0" />
 
     </children>
 </AnchorPane>

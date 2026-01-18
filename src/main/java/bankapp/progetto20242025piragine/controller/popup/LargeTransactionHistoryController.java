@@ -16,6 +16,8 @@ import javafx.scene.layout.VBox;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LargeTransactionHistoryController extends BranchController {
@@ -41,95 +43,194 @@ public class LargeTransactionHistoryController extends BranchController {
     @FXML
     private TextField searchField;
 
+    private Timestamp fromDate;
+
+    private Timestamp toDate;
+
     @FXML
     public void filter()
     {
-
-        String fromDateString = fromDatePicker.getValue().toString().replace("/", "-");
-        Timestamp fromDate =  Timestamp.valueOf(fromDateString);
-        String toDateString = toDatePicker.getValue().toString().replace("/", "-");
-        Timestamp toDate =  Timestamp.valueOf(toDateString);
-        try
+        fixDate();
+        if(incomesRadioButton.isSelected()) //positive transactions
         {
-            List<Transaction> transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            transactionHistoryVBox.getChildren().clear();
-            for(Transaction transaction : transactions)
+            List<Transaction> transactions = getPositiveTransaction();
+            for (Transaction t : transactions)
             {
-                try
+                if(filterBySearchField(t, "expense"))
                 {
-                    if(incomesRadioButton.isSelected() && transaction.getBeneficiary().equals(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID())))
+                    if(t.getTransactionDate().getTime() < toDate.getTime() && fromDate.getTime() < t.getTransactionDate().getTime())
                     {
-                        if(fromDate.getTime() < toDate.getTime() && fromDate.getTime() < transaction.getTransactionDate().getTime() && transaction.getIdTransaction() < toDate.getTime())
-                        {
-                            if(!searchField.getText().isEmpty())
-                            {
-                                Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
-                                transactionHistoryVBox.getChildren().add(visualTransaction);
-                            }
-                            else
-                            {
-                                try
-                                {
-                                    if (searchField.getText().contains(UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getSender()))))
-                                    {
-                                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
-                                        transactionHistoryVBox.getChildren().add(visualTransaction);
-                                    }
-                                }
-                                catch(SQLException e)
-                                {
-                                    System.err.println("error during finding transaction sender username" + e.getMessage());
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                        else {errorLabel.setText("La data di inizio deve essere piu vecchia di quella di fine"); return;}
-
-                    }
-                    else if (expensesRadioButton.isSelected() && transaction.getSender().equals(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID())))
-                    {
-                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
+                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, t);
                         transactionHistoryVBox.getChildren().add(visualTransaction);
                     }
                 }
-                catch (SQLException e)
-                {
-                    System.err.println("error during getting user's bank account id " + e.getMessage());
-                    e.printStackTrace();
-                }
-
-
             }
+        }
+        else if (expensesRadioButton.isSelected()) //negative transactions
+        {
+            List<Transaction> transactions = getNegativeTransactions();
+            for (Transaction t : transactions)
+            {
+                if(filterBySearchField(t, "expense"))
+                {
+                    if(t.getTransactionDate().getTime() < toDate.getTime() && fromDate.getTime() < t.getTransactionDate().getTime())
+                    {
+                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, t);
+                        transactionHistoryVBox.getChildren().add(visualTransaction);
+                    }
+                }
+            }
+        }
+        else //all transactions
+        {
+            List<Transaction> transactions = getAllTransactions();
+            for (Transaction t : transactions)
+            {
+                if(filterBySearchField(t, ""))
+                {
+                    if(t.getTransactionDate().getTime() < toDate.getTime() && fromDate.getTime() < t.getTransactionDate().getTime())
+                    {
+                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, t);
+                        transactionHistoryVBox.getChildren().add(visualTransaction);
+                    }
+                }
+            }
+        }
+    }
+
+    private List<Transaction> getAllTransactions()
+    {
+        List<Transaction> transactions = new ArrayList<>();
+        try
+        {
+            transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            return  transactions;
         }
         catch (SQLException e)
         {
             System.err.println("error during getting all transaction " + e.getMessage());
             e.printStackTrace();
+            return transactions;
+        }
+    }
+
+    private List<Transaction> getNegativeTransactions()
+    {
+        List<Transaction> transactions = new ArrayList<>();
+        try
+        {
+            transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            return  transactions;
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during getting all transaction " + e.getMessage());
+            e.printStackTrace();
+            return transactions;
+        }
+    }
+
+    private List<Transaction> getPositiveTransaction()
+    {
+        List<Transaction> transactions = new ArrayList<>();
+        try
+        {
+            transactions = TransactionDAO.getTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            return  transactions;
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during getting all positive transaction " + e.getMessage());
+            e.printStackTrace();
+            return transactions;
         }
     }
 
     @FXML
-    public void switchExpensesIncomes()
+    public void switchIncomes()
     {
-        if(expensesRadioButton.isSelected())
-        {
-            incomesRadioButton.setSelected(false);
-            filter();
-        }
-        else if (incomesRadioButton.isSelected())
-        {
-            expensesRadioButton.setSelected(false);
-            filter();
-        }
+        if(expensesRadioButton.isSelected()){expensesRadioButton.setSelected(false);}
+        filter();
     }
 
-    private void filterBy()
+    @FXML
+    public void switchExpenses()
     {
+        if (incomesRadioButton.isSelected()){incomesRadioButton.setSelected(false);}
+        filter();
+    }
 
+
+
+    private boolean filterBySearchField(Transaction transaction, String inOrOut) //finds out
+    {
+        if(searchField.getText().isEmpty()){return true;}
+        if(inOrOut.equals("income"))
+        {
+            try
+            {
+                return searchField.getText().contains(UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getBeneficiary())));
+            }
+            catch(SQLException e)
+            {
+                System.err.println("error during finding transaction sender username" + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
+        }
+        else if(inOrOut.equals("expense"))
+        {
+            try
+            {
+                return searchField.getText().contains(UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getBeneficiary())));
+            }
+            catch(SQLException e)
+            {
+                System.err.println("error during finding transaction beneficiary username" + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
+        }
+        else
+        {
+            try
+            {
+                return searchField.getText().contains(UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getBeneficiary()))) || searchField.getText().contains(UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getBeneficiary())));
+            }
+            catch(SQLException e)
+            {
+                System.err.println("error during finding transaction beneficiary username" + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+    }
+
+
+    private void fixDate()
+    {
+        if (fromDatePicker.getValue() != null && toDatePicker.getValue() != null) {
+            fromDate = Timestamp.valueOf(fromDatePicker.getValue().atStartOfDay());
+            toDate   = Timestamp.valueOf(toDatePicker.getValue().atTime(23, 59, 59));
+        }
+        else if (fromDatePicker.getValue() == null && toDatePicker.getValue() != null) {
+            fromDate = Timestamp.valueOf(LocalDateTime.MIN);
+            toDate   = Timestamp.valueOf(toDatePicker.getValue().atTime(23, 59, 59));
+        }
+        else if (fromDatePicker.getValue() != null && toDatePicker.getValue() == null) {
+            fromDate = Timestamp.valueOf(fromDatePicker.getValue().atStartOfDay());
+            toDate   = Timestamp.valueOf(LocalDateTime.now());
+        }
+        else {
+            fromDate = Timestamp.valueOf(LocalDateTime.MIN);
+            toDate   = Timestamp.valueOf(LocalDateTime.now());
+        }
     }
 
     @Override
-    public void initializer() {
-
+    public void initializer()
+    {
+        filter();
     }
 }
