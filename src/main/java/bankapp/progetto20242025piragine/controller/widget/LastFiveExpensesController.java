@@ -30,7 +30,7 @@ public class LastFiveExpensesController extends WidgetController
             List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
             for(int i = 0; i < 5; i++)
             {
-
+                if(i>=transactions.size()){return;}
                 Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transactions.get(i));
                 lastFiveExpensesVBox.getChildren().add(visualTransaction);
             }

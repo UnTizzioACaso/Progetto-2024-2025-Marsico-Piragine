@@ -6,6 +6,7 @@ import bankapp.progetto20242025piragine.db.BankAccount;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import bankapp.progetto20242025piragine.util.VisualCardCreator;
 import bankapp.progetto20242025piragine.util.last4DigitsPan;
 import javafx.fxml.FXML;
@@ -90,6 +91,7 @@ public class CreateCardPopupController extends BranchController
         s = (Stage) colorMenu.getScene().getWindow();
         cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(rootController)); //add the card component to the VBox
         colorMenu.setText("Bianco"); //set default color menu text
+        ThemeManager.applyTheme(colorMenu.getScene(), rootController.user.getTheme());
     }
 
     // Following methods handle color selection and update the card preview accordingly

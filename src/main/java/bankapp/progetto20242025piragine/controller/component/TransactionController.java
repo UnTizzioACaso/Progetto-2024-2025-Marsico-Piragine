@@ -27,7 +27,7 @@ public class TransactionController extends BranchController
             e.printStackTrace();
             return;
         }
-        if (transaction.getBeneficiary() == id)
+        if (transaction.getBeneficiary() == id) //positive transactions
         {
             try
             {
@@ -43,7 +43,7 @@ public class TransactionController extends BranchController
                 e.printStackTrace();
             }
         }
-        else
+        else //negative transactions
         {
             try
             {
