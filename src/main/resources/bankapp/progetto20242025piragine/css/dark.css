@@ -209,7 +209,11 @@ Line{
     -fx-background-color: white;
 }
 
-
+#transationHistoryTextField{
+    -fx-background-color: #4a4a4a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+}
 
 
 
