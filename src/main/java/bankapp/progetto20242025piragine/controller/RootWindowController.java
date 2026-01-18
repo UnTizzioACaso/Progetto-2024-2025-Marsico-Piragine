@@ -6,6 +6,7 @@ import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageC
 import bankapp.progetto20242025piragine.controller.page.CardPageController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
 import bankapp.progetto20242025piragine.controller.page.HomePageController;
+import bankapp.progetto20242025piragine.controller.widget.BankAccountController;
 import bankapp.progetto20242025piragine.db.User;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
@@ -31,13 +32,14 @@ public  class RootWindowController extends BranchController {
 
     public GridPane homePageGridPane;
 
+    public BankAccountSettingsPageController  bankAccountSettingsPageController;
+
     public HomePageController homePageController;
 
     public FriendsPageController friendsPageController;
 
     public CardPageController cardPageController;
 
-    public BankAccountSettingsPageController bankAccountSettingsPageController;
 
     @FXML
     public void switchPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
@@ -112,7 +114,7 @@ public  class RootWindowController extends BranchController {
                 }
                 else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
                 {
-                    cardPageController = fxmlLoader.getController();
+                    bankAccountSettingsPageController = fxmlLoader.getController();
                 }
                 BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
                 controller.setRootController(this);//giving to the new page's controller the current RootController instance

@@ -5,21 +5,21 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="friendAnchorPane" prefHeight="43.0" prefWidth="260.0" style="-fx-background-color: gray; -fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.NotificationController">
+<AnchorPane fx:id="friendAnchorPane" prefHeight="29.0" prefWidth="216.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.NotificationController">
     <children>
-        <Label fx:id="titleLabel" layoutX="14.0" layoutY="7.2" prefHeight="19.0" prefWidth="199.0" text="Title" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="4.0">
+        <Label fx:id="titleLabel" layoutX="14.0" layoutY="7.2" prefHeight="3.0" prefWidth="199.0" text="Title" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0">
             <font>
-                <Font name="System Bold" size="13.0" />
+                <Font name="System Bold" size="11.0" />
             </font>
         </Label>
-        <Label fx:id="secondaryTitleLabel" layoutX="15.0" layoutY="20.0" prefHeight="19.0" prefWidth="199.0" text="Secondary title" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="53.0">
+        <Label fx:id="secondaryTitleLabel" layoutX="15.0" layoutY="20.0" prefHeight="0.0" prefWidth="199.0" text="Secondary title" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0">
             <font>
-                <Font size="13.0" />
+                <Font size="11.0" />
             </font>
         </Label>
-        <Label fx:id="valueLabel" alignment="TOP_RIGHT" layoutX="218.0" layoutY="14.0" prefHeight="20.0" prefWidth="78.0" text="Value" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="14.0">
+        <Label fx:id="valueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="14.0" prefHeight="20.0" prefWidth="78.0" text="Value" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="1.0">
             <font>
-                <Font size="13.0" />
+                <Font size="11.0" />
             </font>
         </Label>
         <Region fx:id="transparentRegion" layoutY="-1.6" onMouseClicked="#readNotify" prefHeight="10.0" prefWidth="260.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
