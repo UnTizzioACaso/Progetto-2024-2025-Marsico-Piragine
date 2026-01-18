@@ -10,8 +10,10 @@
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -19,246 +21,316 @@
 
 <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="510.0" prefWidth="568.0" style="-fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AddWidget02Controller">
    <content>
-      <VBox fx:id="widgetsVBox" minWidth="-Infinity" prefHeight="0.0" prefWidth="40.0" spacing="80.0">
+      <VBox fx:id="widgetsVBox" alignment="CENTER" minWidth="-Infinity" prefHeight="0.0" prefWidth="40.0" spacing="80.0">
          <children>
-            <GridPane fx:id="monthlyBalanceGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="202.0" prefWidth="200.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 15;">
-               <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="88.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="91.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
-                     <effect>
-                        <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                           <color>
-                              <Color opacity="0.25" />
-                           </color>
-                        </InnerShadow>
-                     </effect>
+                  <VBox fx:id="lastFiveExpensesVBox" maxHeight="250.0" maxWidth="850.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label fx:id="lastFiveExpensesTitleLabel11" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="45.0" prefWidth="205.0" text="Bilancio di questo mese" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="1.0" />
-                           </VBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </Label>
+                        <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                           <effect>
+                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                           <children>
+                              <Label fx:id="widgetTitleLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="166.0" text="Ultime cinque uscite" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="1.0" />
+                                 </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" maxHeight="60.0" maxWidth="300.0" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: green; -fx-background-radius: 15;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                     <children>
-                        <Label fx:id="balanceLabel" alignment="CENTER" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="34.0" prefWidth="160.0" text="Bilancio" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </GridPane.margin>
-                  </VBox>
-                  <VBox alignment="CENTER" maxHeight="60.0" maxWidth="200.0" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: green; -fx-background-radius: 15;" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
-                     <children>
-                        <Label fx:id="incomesLabel" alignment="CENTER" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="34.0" prefWidth="160.0" text="Entrate" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </GridPane.margin>
-                  </VBox>
-                  <VBox alignment="CENTER" maxHeight="60.0" maxWidth="200.0" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: d70000; -fx-background-radius: 15;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
-                     <children>
-                        <Label fx:id="exitsLabel" alignment="CENTER" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="34.0" prefWidth="160.0" text="Uscite" textFill="WHITE">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </GridPane.margin>
-                  </VBox>
+                  <Region onMouseClicked="#addLastFiveExpensesWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Region>
                </children>
-            </GridPane>
+            </AnchorPane>
             <Separator prefWidth="200.0" style="-fx-background-color: red;">
                <VBox.margin>
                   <Insets left="-20.0" right="-20.0" />
                </VBox.margin>
             </Separator>
-            <GridPane fx:id="quickContactGridPane" minHeight="180.0" minWidth="0.0" onMouseClicked="#addQuickContactWidget" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <ImageView fitHeight="59.0" fitWidth="51.0" onMouseClicked="#addQuickContactWidget" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
-                     <image>
-                        <Image url="@../../imgs/quickContact.png" />
-                     </image>
-                     <effect>
-                        <ColorAdjust brightness="0.02" contrast="0.4" hue="-0.82" />
-                     </effect>
-                     <GridPane.margin>
-                        <Insets top="40.0" />
-                     </GridPane.margin>
-                  </ImageView>
-                  <Label fx:id="quickContactNameLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#addQuickContactWidget" prefHeight="35.0" prefWidth="269.0" text="Contatto rapido" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold Italic" size="24.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets top="14.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Button fx:id="requestContactButton" maxHeight="60.0" maxWidth="200.0" mnemonicParsing="false" onAction="#addQuickContactWidget" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.vgrow="SOMETIMES">
-                     <font>
-                        <Font name="System Bold" size="10.0" />
-                     </font>
-                     <effect>
-                        <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                           <color>
-                              <Color opacity="0.25" />
-                           </color>
-                        </InnerShadow>
-                     </effect>
-                     <GridPane.margin>
-                        <Insets bottom="12.0" left="30.0" right="30.0" top="12.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="sendContactButton" maxHeight="60.0" maxWidth="200.0" mnemonicParsing="false" onAction="#addQuickContactWidget" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Bold" size="10.0" />
-                     </font>
-                     <effect>
-                        <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                           <color>
-                              <Color opacity="0.25" />
-                           </color>
-                        </InnerShadow>
-                     </effect>
-                     <GridPane.margin>
-                        <Insets bottom="12.0" left="30.0" right="30.0" top="12.0" />
-                     </GridPane.margin>
-                  </Button>
+                  <GridPane fx:id="monthlyBalanceGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="202.0" prefWidth="200.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="88.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="91.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="33.0" minHeight="33.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
+                           <effect>
+                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                           <children>
+                              <Label fx:id="widgetTitleLabel1" alignment="CENTER" contentDisplay="CENTER" prefHeight="14.0" prefWidth="191.0" text="Bilancio di questo mese" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="1.0" />
+                                 </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="balanceVBox" alignment="CENTER" maxHeight="60.0" maxWidth="300.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: #bfb600; -fx-background-radius: 15;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <children>
+                              <Label fx:id="balanceLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Bilancio" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" maxHeight="60.0" maxWidth="200.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: green; -fx-background-radius: 15;" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
+                           <children>
+                              <Label fx:id="incomesLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Entrate" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" maxHeight="60.0" maxWidth="200.0" prefHeight="58.0" prefWidth="180.0" style="-fx-background-color: d70000; -fx-background-radius: 15;" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1">
+                           <children>
+                              <Label fx:id="expensesLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Uscite" textFill="WHITE">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <GridPane.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </GridPane.margin>
+                        </VBox>
+                     </children>
+                  </GridPane>
+                  <Region onMouseClicked="#addMonthlyBalanceWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Region>
                </children>
-            </GridPane>
+            </AnchorPane>
             <Separator prefWidth="200.0" style="-fx-background-color: red;">
                <VBox.margin>
                   <Insets left="-20.0" right="-20.0" />
                </VBox.margin>
             </Separator>
-            <VBox fx:id="monthlyExpensesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" onMouseClicked="#addMonthlyExpensesWidget" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;">
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <VBox alignment="CENTER" onMouseClicked="#addMonthlyExpensesWidget" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                  <VBox fx:id="monthlyExpensesVBox" maxHeight="250.0" maxWidth="850.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#addMonthlyExpensesWidget" prefHeight="35.0" prefWidth="205.0" text="Spese di questo mese" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Label>
+                        <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                           <children>
+                              <Label fx:id="widgetTitleLabel2" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="177.0" text="Uscite di questo mese" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                           <effect>
+                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </VBox>
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" VBox.vgrow="ALWAYS">
+                           <content>
+                              <VBox fx:id="expensesVbox" />
+                           </content>
+                        </ScrollPane>
                      </children>
-                     <effect>
-                        <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                           <color>
-                              <Color opacity="0.25" />
-                           </color>
-                        </InnerShadow>
-                     </effect>
                   </VBox>
-                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" onMouseClicked="#addMonthlyExpensesWidget" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
-                     <content>
-                        <VBox onMouseClicked="#addMonthlyExpensesWidget" />
-                     </content>
-                  </ScrollPane>
+                  <Region onMouseClicked="#addMonthlyExpensesWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Region>
                </children>
-            </VBox>
+            </AnchorPane>
             <Separator prefWidth="200.0" style="-fx-background-color: red;">
                <VBox.margin>
                   <Insets left="-20.0" right="-20.0" />
                </VBox.margin>
             </Separator>
-            <VBox fx:id="lastFiveExpensesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" onMouseClicked="#addLastFiveExpensesWidget" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;">
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" onMouseClicked="#addLastFiveExpensesWidget" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
-                     <effect>
-                        <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                           <color>
-                              <Color opacity="0.25" />
-                           </color>
-                        </InnerShadow>
-                     </effect>
+                  <VBox fx:id="monthlyIncomesVBox" maxHeight="250.0" maxWidth="850.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label fx:id="lastFiveExpensesTitleLabel1" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#addLastFiveExpensesWidget" prefHeight="45.0" prefWidth="205.0" text="Ultime cinque uscite" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="1.0" />
-                           </VBox.margin>
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </Label>
+                        <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                           <children>
+                              <Label fx:id="widgetTitleLabel3" alignment="CENTER" contentDisplay="CENTER" prefHeight="11.0" prefWidth="187.0" text="Entrate di questo mese" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                           <effect>
+                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </VBox>
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" VBox.vgrow="ALWAYS">
+                           <content>
+                              <VBox />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </VBox>
+                  <Region onMouseClicked="#addMonthlyIncomeWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Region>
                </children>
-            </VBox>
+            </AnchorPane>
             <Separator prefWidth="200.0" style="-fx-background-color: red;">
                <VBox.margin>
                   <Insets left="-20.0" right="-20.0" />
                </VBox.margin>
             </Separator>
-            <VBox fx:id="monthlyIncomesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" onMouseClicked="#addMonthlyIncomeWidget" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;">
+            <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <VBox alignment="CENTER" onMouseClicked="#addMonthlyIncomeWidget" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                  <GridPane fx:id="quickContactGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="32.0" minHeight="32.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="106.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#addMonthlyIncomeWidget" prefHeight="16.0" prefWidth="205.0" text="Entrate di questo mese" textFill="WHITE">
+                        <ImageView fitHeight="59.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
+                           <image>
+                              <Image url="@../../imgs/quickContact.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="0.02" contrast="0.4" hue="-0.82" />
+                           </effect>
+                           <GridPane.margin>
+                              <Insets top="110.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <Label fx:id="quickContactNameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="269.0" text="Ruud Gullit" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
-                              <Font name="System Bold" size="17.0" />
+                              <Font name="System Bold Italic" size="24.0" />
                            </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
+                           <GridPane.margin>
+                              <Insets top="70.0" />
+                           </GridPane.margin>
                         </Label>
+                        <Button fx:id="requestContactButton" maxHeight="60.0" maxWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.vgrow="SOMETIMES">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <effect>
+                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                           <GridPane.margin>
+                              <Insets bottom="12.0" left="30.0" right="30.0" top="12.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="sendContactButton" maxHeight="60.0" maxWidth="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <effect>
+                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                           <GridPane.margin>
+                              <Insets bottom="12.0" left="30.0" right="30.0" top="12.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
+                           <children>
+                              <Label fx:id="widgetTitleLabel4" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="134.0" text="Contatto rapido" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                           <effect>
+                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                 <color>
+                                    <Color opacity="0.25" />
+                                 </color>
+                              </InnerShadow>
+                           </effect>
+                        </VBox>
                      </children>
-                     <effect>
-                        <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                           <color>
-                              <Color opacity="0.25" />
-                           </color>
-                        </InnerShadow>
-                     </effect>
-                  </VBox>
-                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" onMouseClicked="#addMonthlyIncomeWidget" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
-                     <content>
-                        <VBox onMouseClicked="#addMonthlyIncomeWidget" />
-                     </content>
-                  </ScrollPane>
+                  </GridPane>
+                  <Region minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#addQuickContactWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Region>
                </children>
-            </VBox>
+            </AnchorPane>
          </children>
          <padding>
             <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
