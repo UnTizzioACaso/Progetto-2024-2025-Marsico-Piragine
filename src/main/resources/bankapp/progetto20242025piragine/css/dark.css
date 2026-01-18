@@ -41,6 +41,7 @@
     -fx-text-fill: white !important;
 }
 
+
 #homePageGridPane{
     -fx-background-color: #3c3c3c !important;
 }
@@ -116,23 +117,23 @@ Line{
     -fx-background-color: #4a4a4a !important;
 }
 
-#anchorePaneFriends2 {
+#anchorPaneChat {
     -fx-background-color: #595959 !important;
 }
 
-#scrollPaneFriends2 {
+#scrollPaneChat {
     -fx-background-color: #595959 !important;
 }
 
-#scrollPaneFriends2 .viewport {
+#scrollPaneChat .viewport {
     -fx-background-color: #595959 !important;
 }
 
-#scrollPaneFriends2 .content {
+#scrollPaneChat .content {
     -fx-background-color: #595959 !important;
 }
 
-#scrollPaneFriends2 .corner {
+#scrollPaneChat .corner {
     -fx-background-color: #595959 !important;
 }
 
@@ -157,7 +158,6 @@ Line{
 /* Header rosso */
 .date-picker-popup .month-year-pane {
     -fx-background-color: #ff0000;
-    /* INNER SHADOW */
         -fx-effect: innershadow(
             three-pass-box,
             rgba(0, 0, 0, 0.25),

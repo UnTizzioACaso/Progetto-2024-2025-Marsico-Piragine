@@ -28,7 +28,7 @@ public class LargeMonthlyExpensesController extends BranchController {
     @Override
     public void initializer()
     {
-        ThemeManager.applyTheme(monthlyExpensesVBox.getScene(), rootController.user.getTheme());
+
         try
         {
             List<Transaction> transactions = TransactionDAO.getCurrentMonthTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
@@ -36,6 +36,7 @@ public class LargeMonthlyExpensesController extends BranchController {
             {
                 Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
                 monthlyExpensesVBox.getChildren().add(visualTransaction);
+                ThemeManager.applyTheme(monthlyExpensesVBox.getScene(), rootController.user.getTheme());
             }
         }
         catch (SQLException e)
@@ -61,6 +62,7 @@ public class LargeMonthlyExpensesController extends BranchController {
                         Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
                         monthlyExpensesVBox.getChildren().clear();
                         monthlyExpensesVBox.getChildren().add(visualTransaction);
+                        ThemeManager.applyTheme(monthlyExpensesVBox.getScene(), rootController.user.getTheme());
                     }
                 }
                 catch (SQLException e)

@@ -2,6 +2,7 @@ package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -31,6 +32,11 @@ public class FriendshipRequestPopupController extends BranchController {
     @FXML
     private ToggleButton togglePhoneNumber;
 
+    @Override
+    public void initializer()
+    {
+        ThemeManager.applyTheme(errorLabel.getScene(), rootController.user.getTheme());
+    }
 
     @FXML
     public void switchToUsername() {

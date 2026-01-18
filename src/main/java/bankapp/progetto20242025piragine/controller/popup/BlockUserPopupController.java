@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.controller.popup;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.BlockDAO;
 import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -45,6 +46,7 @@ public class BlockUserPopupController extends BranchController {
     public void initializer()
     {
         stage.setOnCloseRequest(event -> declineBlock());
+        ThemeManager.applyTheme(wouldYouLikeToBlockLabel.getScene(), rootController.user.getTheme());
     }
 
     @FXML

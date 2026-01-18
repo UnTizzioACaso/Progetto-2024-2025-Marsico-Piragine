@@ -5,6 +5,7 @@ import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Transaction;
 import bankapp.progetto20242025piragine.db.TransactionDAO;
 import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -32,6 +33,7 @@ public class LargeMonthlyIncomeController extends BranchController {
                 Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
                 monthlyIncomesVBox.getChildren().add(visualTransaction);
             }
+            ThemeManager.applyTheme(monthlyIncomesVBox.getScene(), rootController.user.getTheme());
         }
         catch (SQLException e)
         {
