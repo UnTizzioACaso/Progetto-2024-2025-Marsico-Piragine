@@ -10,7 +10,7 @@ public class NotifyDAO {
     public static boolean insertNotify(Notify n) throws SQLException {
         String sql = """
             INSERT INTO Notify
-            (user_id, id_transaction, id_friend_request, id_friend, message, read, data_creation)
+            (user_id, id_transaction, id_friend_request, message, read, data_creation)
             VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
             """;
 
@@ -32,10 +32,6 @@ public class NotifyDAO {
             else
                 stmt.setNull(3, Types.INTEGER);
 
-            if (n.getIdFriend() != null)
-                stmt.setInt(4, n.getIdFriend());
-            else
-                stmt.setNull(4, Types.INTEGER);
 
             stmt.setString(5, n.getMessage());
             stmt.setBoolean(6, n.isRead());
@@ -102,7 +98,6 @@ public class NotifyDAO {
         n.setUserId((Integer) rs.getObject("user_id"));
         n.setIdTransaction((Integer) rs.getObject("id_transaction"));
         n.setIdFriendRequest((Integer) rs.getObject("id_friend_request"));
-        n.setIdFriend((Integer) rs.getObject("id_friend"));
         n.setMessage(rs.getString("message"));
         n.setRead(rs.getBoolean("read"));
         n.setDataCreation(rs.getTimestamp("data_creation"));

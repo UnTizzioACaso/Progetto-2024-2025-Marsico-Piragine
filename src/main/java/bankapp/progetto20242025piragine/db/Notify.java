@@ -8,7 +8,6 @@ public class Notify {
     private Integer userId;
     private Integer idTransaction;
     private Integer idFriendRequest;
-    private Integer idFriend;
     private String message;
     private boolean read;
     private Timestamp dataCreation;
@@ -47,14 +46,6 @@ public class Notify {
 
     public void setIdFriendRequest(Integer idFriendRequest) {
         this.idFriendRequest = idFriendRequest;
-    }
-
-    public Integer getIdFriend() {
-        return idFriend;
-    }
-
-    public void setIdFriend(Integer idFriend) {
-        this.idFriend = idFriend;
     }
 
     public String getMessage() {

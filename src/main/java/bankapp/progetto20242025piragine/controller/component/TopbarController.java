@@ -3,15 +3,18 @@ package bankapp.progetto20242025piragine.controller.component;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.Notify;
 import bankapp.progetto20242025piragine.db.NotifyDAO;
+import bankapp.progetto20242025piragine.util.VisualNotificationCreator;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
+import javax.management.Notification;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -101,16 +104,16 @@ public class TopbarController extends BranchController {
         {
             for (Notify n : notifies)
             {
-                Label label = new Label(n.getMessage());
-                label.setStyle("-fx-padding: 5; -fx-border-color: lightgray; -fx-border-width: 0 0 1 0;");
-                // Cliccando su notifica -> marca come letta e chiude popup
-                label.setOnMouseClicked(event -> {try {NotifyDAO.markAsRead(n.getIdNotify());} catch (SQLException ex) {ex.printStackTrace();}});
-                notificationAnchorPaneController.notificationVBox.getChildren().add(label);
+                if(!n.isRead())
+                {
+                    Node notification = VisualNotificationCreator.createVisualTransaction(rootController, n);
+                    notificationAnchorPaneController.notificationVBox.getChildren().add(notification);
+                }
             }
         }
     }
 
-    // ======= Navigazione pagine =======
+
     @FXML
     public void visitPage(String fxml)
     {

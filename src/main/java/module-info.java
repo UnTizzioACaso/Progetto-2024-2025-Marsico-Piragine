@@ -7,6 +7,7 @@ module bankapp.progetto20242025piragine {
     requires java.desktop;
     requires jbcrypt;
     requires java.smartcardio;
+    requires java.management;
 
 
     opens bankapp.progetto20242025piragine to javafx.fxml;
@@ -19,7 +20,7 @@ module bankapp.progetto20242025piragine {
     opens bankapp.progetto20242025piragine.controller.widget to javafx.fxml;
     opens bankapp.progetto20242025piragine.css;
     opens bankapp.progetto20242025piragine.controller.popup to javafx.fxml;
-
+    exports bankapp.progetto20242025piragine.controller.popup to javafx.fxml;
 
 
 }
