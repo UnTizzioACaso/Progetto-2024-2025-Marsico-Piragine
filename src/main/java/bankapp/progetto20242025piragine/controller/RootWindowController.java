@@ -7,6 +7,7 @@ import bankapp.progetto20242025piragine.controller.page.CardPageController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
 import bankapp.progetto20242025piragine.controller.page.HomePageController;
 import bankapp.progetto20242025piragine.db.User;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -2,12 +2,15 @@ package bankapp.progetto20242025piragine.controller.widget;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.HomeWidgetCustomDAO;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 
@@ -53,6 +56,7 @@ public class WidgetController extends BranchController {
             return;
         }
         Bounds bounds = widgetTitleLabel.localToScreen(widgetTitleLabel.getBoundsInLocal());
+        ThemeManager.applyTheme(popup.getScene(), rootController.user.getTheme());
         popup.show(widgetTitleLabel, bounds.getMinX(), bounds.getMaxY());
     }
 
@@ -66,6 +70,7 @@ public class WidgetController extends BranchController {
             return;
         }
         Bounds bounds = widgetTitleLabel.localToScreen(widgetTitleLabel.getBoundsInLocal());
+        ThemeManager.applyTheme(popup.getScene(), rootController.user.getTheme());
         popup.show(widgetTitleLabel, bounds.getMinX(), bounds.getMaxY());
     }
 
@@ -76,15 +81,36 @@ public class WidgetController extends BranchController {
         popup.setAutoHide(true);
         popup.setAutoFix(true);
 
-        VBox content = new VBox(5);
-        content.setStyle("-fx-background-color: white; -fx-border-color: black; -fx-alignment: CENTER;" );
+        VBox content = new VBox(1);
+        content.setStyle("-fx-background-color: black; -fx-border-color: black; -fx-alignment: CENTER;" );
         Button one = new Button("ingrandisci " + widgetTitleLabel.getText());
         Button two = new Button("rimuovi " + widgetTitleLabel.getText());
         one.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         two.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        one.setStyle( "    -fx-background-color: #ff0000;\n" +
+                "        -fx-effect: innershadow(\n" +
+                "            three-pass-box,\n" +
+                "            rgba(0, 0, 0, 0.25),\n" +
+                "            27.63,\n" +
+                "            0.17,\n" +
+                "            -10,\n" +
+                "            -10\n" +
+                "        );");
+
+        two.setStyle( "    -fx-background-color: #ff0000;\n" +
+                "        -fx-effect: innershadow(\n" +
+                "            three-pass-box,\n" +
+                "            rgba(0, 0, 0, 0.25),\n" +
+                "            27.63,\n" +
+                "            0.17,\n" +
+                "            -10,\n" +
+                "            -10\n" +
+                "        );");
+
         one.setOnAction(e -> {rootController.showPopup(title, fxml, 600, 600);});
         two.setOnAction(e -> {removeWidget(root);});
-        content.getChildren().addAll(one,two);
+        content.getChildren().addAll(one, two);
 
         popup.getContent().add(content);
         return popup;
@@ -96,10 +122,21 @@ public class WidgetController extends BranchController {
         popup.setAutoHide(true);
         popup.setAutoFix(true);
 
-        VBox content = new VBox(5);
-        content.setStyle("-fx-background-color: white; -fx-border-color: #ccc; -fx-spacing: 8; -fx-alignment: CENTER;" );
+        VBox content = new VBox();
+        content.setStyle("-fx-background-color: black; -fx-border-color: black; -fx-alignment: CENTER;" );
         Button button = new Button("rimuovi " + widgetTitleLabel.getText());
         button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        button.setStyle( "    -fx-background-color: #ff0000;\n" +
+                "        -fx-effect: innershadow(\n" +
+                "            three-pass-box,\n" +
+                "            rgba(0, 0, 0, 0.25),\n" +
+                "            27.63,\n" +
+                "            0.17,\n" +
+                "            -10,\n" +
+                "            -10\n" +
+                "        );");
+
         button.setOnAction(e -> {removeWidget(root);});
         content.getChildren().add(button);
 
