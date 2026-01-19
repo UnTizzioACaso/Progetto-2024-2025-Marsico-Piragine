@@ -63,19 +63,17 @@ public class LoginController extends BranchController {
                 rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
                 rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
                 ThemeManager.applyTheme(rootController.rootWindow.getScene(), rootController.user.getTheme());
+                if (rememberAccessCheckBox.isSelected())
+                {
+                    try {RememberMeUtil.saveEmail(emailLoginTextField.getText());}
+                    catch (Exception e) {System.out.println("error during email storing "+ e); e.printStackTrace();}
+                    return;
+                }
+                RememberMeUtil.deleteSavedEmail();
             }
 
-            if (rememberAccessCheckBox.isSelected())
-            {
-                try {RememberMeUtil.saveEmail(emailLoginTextField.getText());}
-                catch (Exception e) {System.out.println("error during email storing "+ e); e.printStackTrace();}
-                return;
-            }
-            RememberMeUtil.deleteSavedEmail();
-            // Display error message if login fails
-            {
-                accessErrorMessageLabel.setText("Credenziali errate riprova"); // error message for invalid credentials
-            }
+            accessErrorMessageLabel.setText("Credenziali errate riprova"); // error message for invalid credentials
+
         }
         else
         {
@@ -100,11 +98,7 @@ public class LoginController extends BranchController {
                     }
                 RememberMeUtil.deleteSavedEmail();
             }
-
-            // Display error message if login fails
-            {
                 accessErrorMessageLabel.setText("Credenziali errate riprova"); // error message for invalid credentials
-            }
         }
     }
 
