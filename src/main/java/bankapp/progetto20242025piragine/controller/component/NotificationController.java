@@ -17,10 +17,20 @@ public class NotificationController extends BranchController{
 
     public Notify notify;
 
+    private Boolean imTheSender = false;
+
     @FXML
     public void readNotify()
     {
-
+        if(!imTheSender)
+        {
+            try { NotifyDAO.markAsRead(notify.getIdNotify());}
+            catch (SQLException e)
+            {
+                System.err.println("error marking notify as read " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
         try
         {
             if(titleLabel.getText().equals("Richiesta di denaro"))
@@ -43,24 +53,38 @@ public class NotificationController extends BranchController{
     }
 
 
-
     public void setCorrectValues(Notify n)
     {
         notify = n;
         if(notify.getIdTransaction() != null)
         {
-            transactionNotify(notify);
+            transactionRequestNotify();
         }
         else if(notify.getIdFriendRequest() != null)
         {
-            friendshipRequestNotify(notify);
+            friendshipRequestNotify();
         }
     }
 
-
-    private void friendshipRequestNotify(Notify n) //if notify is a friendship request
+    private void transactionRequestNotify()
     {
-        titleLabel.setText(getBeneficiaryUsernameF(notify.getIdFriendRequest()));
+        titleLabel.setText(getBeneficiaryUsernameT(notify.getIdTransaction()));
+        valueLabel.setText(getTransactionRequestValue(notify.getIdTransaction()).toString());
+        secondaryLabel.setText("Richiesta di denaro");
+    }
+
+    private void friendshipRequestNotify() //if notify is a friendship request
+    {
+        if(getBeneficiaryUsernameF(notify.getIdFriendRequest()).equals(rootController.user.getUsername())) //user is the beneficiary
+        {
+            valueLabel.setText("");
+            secondaryLabel.setText("Richiesta d'amicizia");
+            titleLabel.setText(getRequesterUsernameT(notify.getIdFriendRequest()));
+            return;
+        }
+
+        imTheSender = true;
+        titleLabel.setText(getBeneficiaryUsernameF(notify.getIdFriendRequest())); //user is the sender
         switch (checkFriendshipStatus(notify.getIdFriendRequest()))
         {
             case "accepted":
@@ -142,7 +166,23 @@ public class NotificationController extends BranchController{
         }
     }
 
+    private String getRequesterUsernameT(int idTransaction) {
+        try {
+            Transaction t = TransactionDAO.getTransactionById(idTransaction);
+            try {
+                return UserDAO.getUsernameByUserId(t.getSender());
 
+            } catch (SQLException e) {
+                System.err.println("error getting username by user id " + e);
+                e.printStackTrace();
+                return null;
+            }
+        } catch (SQLException e) {
+            System.err.println("error getting friend request by id " + e);
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     private BigDecimal getTransactionRequestValue(int idTransaction)
     {
@@ -160,10 +200,5 @@ public class NotificationController extends BranchController{
 
 
 
-    private void transactionNotify(Notify n)
-    {
-        titleLabel.setText(getBeneficiaryUsernameT(notify.getIdTransaction()));
-        valueLabel.setText(getTransactionRequestValue(notify.getIdTransaction()).toString());
-        secondaryLabel.setText("Richiesta di denaro");
-    }
+
 }

@@ -33,8 +33,8 @@ public class NotifyDAO {
                 stmt.setNull(3, Types.INTEGER);
 
 
-            stmt.setString(5, n.getMessage());
-            stmt.setBoolean(6, n.isRead());
+            stmt.setString(4, n.getMessage());
+            stmt.setBoolean(5, n.isRead());
 
             int rows = stmt.executeUpdate();
             if (rows == 0) return false;
