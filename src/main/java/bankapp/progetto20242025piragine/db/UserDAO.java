@@ -100,6 +100,7 @@ public class UserDAO
         }
 
     }
+
     public static User getUserByEmail(String email) throws SQLException {
         String sql = "SELECT * FROM User WHERE email = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();

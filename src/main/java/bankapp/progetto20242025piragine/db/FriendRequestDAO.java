@@ -42,7 +42,14 @@ public class FriendRequestDAO {
 
 
     public static List<FriendRequest> getPendingRequests(int beneficiaryId) throws SQLException {
-        String sql = "SELECT id_request, requester, beneficiary, date, transaction_status FROM Friend_Request WHERE Beneficiary = ? AND transaction_status = 'pending'";
+        String sql = """
+            SELECT id_request, requester, beneficiary, date, transaction_status
+            FROM Friend_Request
+            WHERE beneficiary = ?
+            AND transaction_status = 'pending'
+            ORDER BY date DESC
+            """;
+
 
         List<FriendRequest> requests = new ArrayList<>();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){

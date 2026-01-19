@@ -70,21 +70,21 @@ public class FriendshipRequestPopupController extends BranchController {
         togglePhoneNumber.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
     }
 
-    private void sendRequest(User user) //checking if requester has been blocked by requested
+    private void sendRequest(User beneficiaryUser) //checking if requester has been blocked by requested
     {
 
-        if (user != null)
+        if (beneficiaryUser != null)
         {
             errorLabel.setText("Utente non trovato");
             return;
         }
-        if(user.equals(rootController.user))
+        if(beneficiaryUser.equals(rootController.user))
         {
             errorLabel.setText("Utente non trovato");
             return;
         }
         boolean blocked = false;
-        try {blocked = BlockDAO.isBlocked(user.getUserID(), rootController.user.getUserID());}
+        try {blocked = BlockDAO.isBlocked(beneficiaryUser.getUserID(), rootController.user.getUserID());}
         catch (SQLException e)
         {
             System.err.println("error during checking block " + e.getMessage());
@@ -95,11 +95,25 @@ public class FriendshipRequestPopupController extends BranchController {
             errorLabel.setText("Utente non trovato");
             return;
         }
-        FriendRequest request = new FriendRequest(rootController.user.getUserID(), user.getUserID());
-        try {FriendRequestDAO.sendRequest(request);}
+        FriendRequest request = new FriendRequest(rootController.user.getUserID(), beneficiaryUser.getUserID());
+        try
+        {
+            FriendRequestDAO.sendRequest(request);
+            Notify n = new Notify();
+            n.setRead(false);
+            n.setIdFriendRequest(FriendRequestDAO.getPendingRequests(beneficiaryUser.getUserID()).getFirst().getIdRequest());
+
+            //notifying sender
+            n.setUserId(rootController.user.getUserID());
+            NotifyDAO.insertNotify(n);
+
+            //notifying beneficiary
+            n.setUserId(beneficiaryUser.getUserID());
+            NotifyDAO.insertNotify(n);
+        }
         catch (SQLException e)
         {
-            System.err.println("error during sending request " + e.getMessage());
+            System.err.println("error during sending request and getting notified " + e.getMessage());
             e.printStackTrace();
         }
         errorLabel.setText("richiesta inviata");
@@ -111,14 +125,14 @@ public class FriendshipRequestPopupController extends BranchController {
         //Send request with username
         if (searchByUsernameField.isVisible())
         {
-            User user = null;
-            try {user = UserDAO.getUserByUsername(searchByUsernameField.getText());}
+            User beneficiaryUser = null;
+            try {beneficiaryUser = UserDAO.getUserByUsername(searchByUsernameField.getText());}
             catch (SQLException e)
             {
-                System.err.println("error during user research in db by username" + e.getMessage());
+                System.err.println("error during beneficiaryUser research in db by username" + e.getMessage());
                 e.printStackTrace();
             }
-            sendRequest(user);
+            sendRequest(beneficiaryUser);
         }
 
         //Send request with email
