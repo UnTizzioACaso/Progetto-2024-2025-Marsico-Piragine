@@ -12,16 +12,16 @@ public class UserDAO
 
     public static boolean loginCheck(String email, String password) throws SQLException
     {
-        String sql = "SELECT password_hash FROM User WHERE email = ?"; //query string for searching the password hash of the respective email
+        String sql = "SELECT password_hash FROM User WHERE email = ?";
 
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) //opening (and closing at the end of the block) Connection and PreparedStatement automatically
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
         {
-            stmt.setString(1, email); //changing the first "?" with the email string
+            stmt.setString(1, email);
             try (ResultSet rs = stmt.executeQuery())
             {
-                if (!rs.next()) {return false;} //return false if the email does not exist
-                String passwordHash = rs.getString("password_hash"); //saving the password hash found
-                return BCrypt.checkpw(password, passwordHash); //checking if the password is the same as the hash password found in the db
+                if (!rs.next()) {return false;}
+                String passwordHash = rs.getString("password_hash");
+                return BCrypt.checkpw(password, passwordHash);
             }
         }
     }
@@ -42,7 +42,6 @@ public class UserDAO
 
     public static boolean updateUserTheme(int userId, String theme) throws SQLException
     {
-        // Allow only valid theme values
         if (!"light".equalsIgnoreCase(theme) && !"dark".equalsIgnoreCase(theme))
         {
             throw new IllegalArgumentException("Theme must be 'light' or 'dark'");
@@ -53,10 +52,10 @@ public class UserDAO
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql))
         {
-            stmt.setString(1, theme.toLowerCase()); // normalize value
+            stmt.setString(1, theme.toLowerCase());
             stmt.setInt(2, userId);
 
-            return stmt.executeUpdate() > 0; // true if at least one row was updated
+            return stmt.executeUpdate() > 0;
         }
     }
 
@@ -64,7 +63,7 @@ public class UserDAO
     public static boolean registerUser(User user) throws SQLException
     {
 
-        String sql = "INSERT INTO User (" + "first_name, last_name, username, birth_day, birth_place, " + "gender, email, password_hash, phone_number, state, province, city, " + "address, street_number, cap, pin_hash, remember_credentials, last_access_date, theme" + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; //insert string command for the db
+        String sql = "INSERT INTO User (" + "first_name, last_name, username, birth_day, birth_place, " + "gender, email, password_hash, phone_number, state, province, city, " + "address, street_number, cap, pin_hash, remember_credentials, last_access_date, theme" + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
         {
@@ -217,6 +216,19 @@ public class UserDAO
              PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE phone_number = ? LIMIT 1"))
         {
             stmt.setInt(1, phone);
+            try (ResultSet rs = stmt.executeQuery())
+            {
+                return rs.next();
+            }
+        }
+    }
+
+    public static boolean existUserByPhone(String phone) throws SQLException
+    {
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE phone_number = ? LIMIT 1"))
+        {
+            stmt.setString(1, phone);
             try (ResultSet rs = stmt.executeQuery())
             {
                 return rs.next();

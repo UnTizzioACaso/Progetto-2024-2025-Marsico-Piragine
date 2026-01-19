@@ -57,22 +57,18 @@ public class Register3Controller extends BranchController {
         String username = usernameRegisterTextField.getText();
         String phone = cellphoneRegisterTextField.getText();
 
-
-        //filtering username
         if (!username.matches(USERNAME_REGEX))
         {
             errorMessageLabel.setText("L'username può contenere solo lettere minuscole, numeri e '_'");
             return;
         }
 
-        //filtering email
         if (!email.matches(EMAIL_REGEX))
         {
             errorMessageLabel.setText("Email non valida!");
             return;
         }
 
-        //filtering phone
         if (!phone.matches(PHONE_REGEX))
         {
             errorMessageLabel.setText("Numero di telefono non valido!");
@@ -96,7 +92,7 @@ public class Register3Controller extends BranchController {
 
         try
         {
-            if(UserDAO.existUserByPhone(Integer.parseInt(phone)))
+            if(UserDAO.existUserByPhone(phone))
             {
                 errorMessageLabel.setText("Numero di telefono già in uso!");
                 return;
@@ -108,7 +104,6 @@ public class Register3Controller extends BranchController {
             e.printStackTrace();
             return;
         }
-
 
         try
         {

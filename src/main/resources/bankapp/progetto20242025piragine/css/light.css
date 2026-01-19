@@ -115,15 +115,19 @@
 }
 
 .date-picker-popup .day-cell:selected {
-    -fx-background-color: #ff0000;
-    -fx-text-fill: white;
+    -fx-background-color: #ff0000 !important;
+    -fx-text-fill: white !important;
 }
 
 .date-picker-popup .day-cell:hover {
-    -fx-background-color: rgba(255, 0, 0, 0.20);
+    -fx-background-color: rgba(255, 0, 0, 0.20) !important;
 }
 
 .date-picker-popup .day-cell:today {
-    -fx-border-color: rgba(255, 0, 0, 0.55);
-    -fx-border-width: 1;
+    -fx-border-color: rgba(255, 0, 0, 0.55) !important;
+    -fx-border-width: 1 !important;
+}
+
+.menu-button .arrow {
+    -fx-background-color: white !important;
 }

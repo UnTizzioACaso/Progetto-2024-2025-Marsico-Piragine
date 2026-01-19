@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.controller.popup;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.Card;
 import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,6 +41,7 @@ public class MenageCardPopupController extends BranchController {
     public void initializer()
     {
         s = (Stage) errorLabel.getScene().getWindow();
+        ThemeManager.applyTheme(s.getScene(),rootController.user.getTheme());
     }
     @FXML
     public void updateSpendingLimit()

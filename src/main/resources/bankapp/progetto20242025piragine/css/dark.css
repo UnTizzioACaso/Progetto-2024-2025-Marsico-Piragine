@@ -85,73 +85,68 @@ Line{
     -fx-background-color: #4a4a4a !important;
 }
 
-#gridPaneFriends {
+
+/* Colori base */
+#gridPaneFriends, #AnchorPaneFriendsPage, #regionFriend, #friendsVBox {
     -fx-background-color: #4a4a4a !important;
 }
 
-#AnchorPaneFriendsPage {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#regionFriend {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#scrollPaneFriends {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#scrollPaneFriends .viewport {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#scrollPaneFriends .content {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#scrollPaneFriends .corner {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#friendsVBox {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#anchorPaneChat {
+#anchorPaneChat, #chatVBox {
     -fx-background-color: #595959 !important;
 }
 
-#scrollPaneChat {
-    -fx-background-color: #595959 !important;
+/* ScrollPane: elimina bordo/focus e uniforma interno */
+#scrollPaneFriends, #scrollPaneChat {
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
 }
 
-#scrollPaneChat .viewport {
-    -fx-background-color: #595959 !important;
+#scrollPaneFriends { -fx-background-color: #4a4a4a !important; }
+#scrollPaneChat    { -fx-background-color: #595959 !important; }
+
+#scrollPaneFriends .viewport, #scrollPaneFriends .content, #scrollPaneFriends .corner,
+#scrollPaneChat .viewport, #scrollPaneChat .content, #scrollPaneChat .corner {
+    -fx-background-color: transparent !important;
 }
 
-#scrollPaneChat .content {
-    -fx-background-color: #595959 !important;
-}
-
-#scrollPaneChat .corner {
-    -fx-background-color: #595959 !important;
-}
-
-#chatVBox {
-    -fx-background-color: #595959 !important;
-}
-
+/* Search bar */
 #friendsSearchBar {
     -fx-background-color: #3a3a3a !important;
     -fx-text-fill: white !important;
     -fx-prompt-text-fill: #bdbdbd !important;
 }
 
-#favouriteCardsHBox {
-    -fx-background-color: #595959 !important;
+.menu-button .arrow {
+    -fx-background-color: white !important;
 }
 
 
+.context-menu {
+    -fx-background-color: #2e2e2e;
+    -fx-background-radius: 6;
+    -fx-border-color: transparent;
+}
+
+.context-menu .menu-item {
+    -fx-background-color: transparent;
+}
+
+.context-menu .menu-item .label {
+    -fx-text-fill: white;
+}
+
+.context-menu .menu-item:hover {
+    -fx-background-color: #444444;
+}
+
+
+#anchorePaneCardPopup{
+    -fx-background-color: #4a4a4a !important;
+}
 
 
 
@@ -179,7 +174,7 @@ Line{
     -fx-background-color: transparent;
 }
 
-/* 🔥 COLORE FRECCE (SOLUZIONE CORRETTA) */
+/* COLORE FRECCE (SOLUZIONE CORRETTA) */
 .date-picker-popup .month-year-pane .button {
     -fx-mark-color: white;
 }
@@ -217,8 +212,33 @@ Line{
 
 
 
+#labelMenageCardPopup{
+    -fx-text-fill: white !important;
+}
 
+#anchorePaneMenageCardPopup{
+    -fx-background-color: #4a4a4a !important;
+}
 
+#spendingLimitTextField {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+
+    -fx-background-radius: 6 !important;
+    -fx-border-radius: 6 !important;
+    -fx-border-color: #5a5a5a !important;
+    -fx-border-width: 1 !important;
+
+    -fx-highlight-fill: #ff0000 !important;
+    -fx-highlight-text-fill: white !important;
+    -fx-caret-color: white !important;
+}
+
+#cardsContainerVBox{
+    -fx-background-color: #2b2b2b !important;
+
+}
 
 
 
