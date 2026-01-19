@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,18 +14,20 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="gridPaneFriends" fx:id="gridPaneFriends" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="550.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.FriendsPageController">
+<GridPane id="gridPaneFriends" fx:id="gridPaneFriends" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="550.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.FriendsPageController">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="362.0" />
     <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="238.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="535.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <AnchorPane id="AnchorPaneFriendsPage" fx:id="AnchorPaneFriendsPage">
+      <AnchorPane id="AnchorPaneFriendsPage" fx:id="AnchorPaneFriendsPage" GridPane.rowSpan="2147483647">
          <children>
             <ScrollPane id="scrollPaneFriends" fx:id="scrollPaneFriends" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
@@ -35,7 +38,7 @@
                </content>
             </ScrollPane>
             <Region id="regionFriend" fx:id="regionFriend" prefHeight="58.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <TextField id="friendsSearchBar" fx:id="friendsSearchBar" layoutX="52.0" layoutY="16.0" prefHeight="26.0" prefWidth="183.0" promptText="   Cerca amico" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="16.0">
+            <TextField fx:id="friendsSearchBar" layoutX="52.0" layoutY="16.0" prefHeight="26.0" prefWidth="183.0" promptText="   Cerca amico" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font name="System Italic" size="13.0" />
                </font>
@@ -48,24 +51,72 @@
                   <ColorAdjust brightness="0.34" contrast="-1.0" hue="0.02" saturation="-0.05" />
                </effect>
             </ImageView>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#loadFriendshipRequestPopup" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: ff0000; -fx-font-weight: bold; -fx-padding: 0; -fx-cursor: hand; -fx-text-fill: white; -fx-background-radius: 10; -fx-label-padding: -14 0 -10 0;" text="+" textAlignment="CENTER" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="16.0">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="250.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#loadFriendshipRequestPopup" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: ff0000; -fx-padding: 0; -fx-background-radius: 10; -fx-label-padding: -14 0 -10 0;" text="+" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="16.0">
                <font>
-                  <Font size="25.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <effect>
+                  <InnerShadow offsetX="-10.0" offsetY="-10.0">
+                     <color>
+                        <Color opacity="0.10305345058441162" />
+                     </color>
+                  </InnerShadow>
+               </effect>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane id="anchorPaneChat" fx:id="anchorPaneChat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1">
+      <AnchorPane id="anchorePaneFriends2" fx:id="anchorPaneChat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="580.0" prefWidth="300.0" GridPane.columnIndex="1">
          <children>
-            <ScrollPane id="scrollPaneChat" fx:id="scrollPaneChat" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="19.0" layoutY="120.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane id="scrollPaneFriends2" fx:id="scrollPaneChat" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="19.0" layoutY="120.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
                   <VBox id="chatVBox" fx:id="chatVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
                </content>
             </ScrollPane>
          </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
       </AnchorPane>
+      <Button fx:id="sendButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="80.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <GridPane.margin>
+            <Insets left="170.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="requestButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="80.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <GridPane.margin>
+            <Insets right="170.0" />
+         </GridPane.margin>
+      </Button>
+      <TextField fx:id="valueField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="26.0" prefHeight="35.0" prefWidth="70.0" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets left="115.0" right="115.0" />
+         </GridPane.margin>
+      </TextField>
    </children>
 </GridPane>

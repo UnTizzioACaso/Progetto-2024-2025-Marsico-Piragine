@@ -17,7 +17,7 @@ public class VisualTransactionCreator {
             Node visualTransaction = fxmlLoader.load();
             TransactionController controller = fxmlLoader.getController();
             controller.setRootController(rootController);
-            controller.SetCorrectValues(transaction);
+            controller.setCorrectValues(transaction);
             return visualTransaction;
         }
         catch(Exception e)

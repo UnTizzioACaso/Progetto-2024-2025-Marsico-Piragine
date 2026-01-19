@@ -1,38 +1,28 @@
-package bankapp.progetto20242025piragine.controller.component;
+package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.controller.popup.BlockUserPopupController;
-import bankapp.progetto20242025piragine.db.User;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.db.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 import java.sql.SQLException;
 
-public class PaymentRequest extends BranchController {
-
+public class FriendshipNotifyController extends BranchController
+{
     public int idRequest;
 
     @FXML
     private Label friendshipUsernameLabel;
 
     @FXML
-    private Label moneyLabel;
-
-
-    @FXML
     public void declineRequest()
     {
-        /*
-        try {
-            FriendRequestDAO.declineRequest(idRequest);}
+        try {FriendRequestDAO.declineRequest(idRequest);}
         catch (SQLException e)
         {
             System.err.println("error during friendship request declining " + e.getMessage());
             e.printStackTrace();
         }
-        */
-
 
         BlockUserPopupController controller = (BlockUserPopupController) rootController.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
@@ -42,7 +32,6 @@ public class PaymentRequest extends BranchController {
     @FXML
     public void acceptRequest()
     {
-        /*
         try
         {
             User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
@@ -71,8 +60,6 @@ public class PaymentRequest extends BranchController {
             System.err.println("error during getting user from the db " + e.getMessage());
             e.printStackTrace();
         }
-        */
-
     }
 
 }
