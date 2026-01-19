@@ -6,6 +6,8 @@ import bankapp.progetto20242025piragine.db.FriendshipDAO;
 import bankapp.progetto20242025piragine.db.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,6 +21,11 @@ public class FriendsPageController extends BranchController
     @FXML
     public VBox chatVBox;
 
+    @FXML
+    private Button sendButton, requestButton;
+
+    @FXML
+    private TextField valueField;
 
     @FXML
     public void loadFriendshipRequestPopup()
@@ -29,6 +36,8 @@ public class FriendsPageController extends BranchController
     @Override
     public void initializer()
     {
+
+
         List<Integer> friends = new ArrayList<>();
         try {friends = FriendshipDAO.getFriendshipsByUserId(rootController.user.getUserID());}
         catch (SQLException e)
