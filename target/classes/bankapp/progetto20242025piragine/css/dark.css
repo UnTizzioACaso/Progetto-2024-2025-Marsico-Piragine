@@ -174,7 +174,7 @@ Line{
     -fx-background-color: transparent;
 }
 
-/* 🔥 COLORE FRECCE (SOLUZIONE CORRETTA) */
+/* COLORE FRECCE (SOLUZIONE CORRETTA) */
 .date-picker-popup .month-year-pane .button {
     -fx-mark-color: white;
 }
@@ -240,24 +240,6 @@ Line{
 
 }
 
-
-
-
-
-
-
-
-
-.scroll-bar .increment-arrow,
-.scroll-bar .decrement-arrow {
-    -fx-background-color: transparent;
-    -fx-shape: "";
-}
-
-.scroll-bar .increment-button,
-.scroll-bar .decrement-button {
-    -fx-background-color: transparent;
-}
 
 
 

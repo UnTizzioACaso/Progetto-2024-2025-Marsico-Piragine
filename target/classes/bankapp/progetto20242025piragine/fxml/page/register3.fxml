@@ -125,7 +125,7 @@
                   <Insets bottom="-40.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" textFill="RED" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="loginReturnLabel" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>

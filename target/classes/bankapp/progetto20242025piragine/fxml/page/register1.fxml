@@ -115,7 +115,7 @@
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" wrapText="true" style="-fx-text-alignment: center;" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+            <Label fx:id="errorMessageLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" style="-fx-text-alignment: center;" textFill="#a10000" wrapText="true" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
             <Label maxWidth="300.0" minWidth="270.0" prefHeight="12.0" prefWidth="270.0" style="-fx-font-weight: bold;" text="Registrazione 1 di 3" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font size="20.0" />
@@ -128,7 +128,7 @@
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin></ProgressBar>
-            <Label fx:id="loginReturnLabel" alignment="CENTER" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" textFill="RED" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="loginReturnLabel" alignment="CENTER" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>

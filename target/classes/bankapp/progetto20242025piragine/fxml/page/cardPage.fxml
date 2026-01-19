@@ -29,10 +29,10 @@
         </rowConstraints>
          <children>
       
-              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="950.0" minHeight="200.0" minWidth="200.0" prefHeight="490.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-border-color: transparent; -fx-border-width: 0;" styleClass="cards-scroll" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="950.0" minHeight="200.0" minWidth="200.0" prefHeight="490.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-border-color: transparent; -fx-border-width: 0; -fx-background: transparent;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
       
                   <content>
-                      <VBox fx:id="cardsContainerVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="780.0" spacing="10.0" style="-fx-background-color: e4e4e4;">
+                      <VBox fx:id="cardsContainerVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="780.0" spacing="10.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 30;">
                      <padding>
                         <Insets left="15.0" right="15.0" top="10.0" />
                      </padding>
@@ -50,9 +50,9 @@
                   </font>
               </Label>
       
-              <Button maxWidth="165.0" minWidth="165.0" mnemonicParsing="false" onAction="#openCreateCard" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-font-weight: BOLD; -fx-background-radius: 8; -fx-alignment: left;" styleClass="create-card" text="CREA NUOVA CARTA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+              <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="165.0" minWidth="165.0" mnemonicParsing="false" onAction="#openCreateCard" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" styleClass="create-card" text="CREA NUOVA CARTA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                   <font>
-                      <Font size="14.0" />
+                      <Font name="System Bold" size="14.0" />
                   </font>
                   <effect>
                       <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">

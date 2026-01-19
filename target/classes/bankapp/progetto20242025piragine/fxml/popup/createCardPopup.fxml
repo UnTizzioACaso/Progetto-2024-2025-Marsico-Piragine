@@ -12,9 +12,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="318.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController">
+<AnchorPane fx:id="anchorePaneCardPopup" prefHeight="318.0" prefWidth="413.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController">
    <children>
-      <Button fx:id="createCardButton" layoutX="113.0" layoutY="183.0" mnemonicParsing="false" onAction="#createCard" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-background-radius: 10; -fx-font-weight: 700;" text="Crea carta" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.0">
+      <Button fx:id="createCardButton" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="183.0" mnemonicParsing="false" onAction="#createCard" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="Crea carta" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.0">
          <effect>
             <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
@@ -23,7 +23,7 @@
             </InnerShadow>
          </effect>
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Button>
       <VBox fx:id="cardSlotVbox" alignment="CENTER" layoutX="46.0" layoutY="78.0" prefHeight="200.0" prefWidth="322.0" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="78.0" />
@@ -32,12 +32,12 @@
             <Insets left="10.0" />
          </padding>
       </TextField>
-      <TextField fx:id="spendingLimitTextField" layoutX="301.0" layoutY="18.0" maxHeight="40.0" maxWidth="300.0" minWidth="58.0" prefHeight="25.0" prefWidth="92.0" promptText="Limite spesa" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;">
+      <TextField fx:id="spendingLimitTextField" layoutX="301.0" layoutY="18.0" maxHeight="40.0" maxWidth="300.0" minWidth="58.0" prefHeight="25.0" prefWidth="92.0" promptText="Limite spesa" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="18.0">
          <padding>
             <Insets left="10.0" />
          </padding>
       </TextField>
-      <MenuButton fx:id="colorMenu" layoutX="14.0" layoutY="18.0" text="Scegli colore" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="18.0">
+      <MenuButton fx:id="colorMenu" layoutX="14.0" layoutY="18.0" style="-fx-background-color: ff0000; -fx-background-radius: 6;" text="Scegli colore" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="18.0">
          <items>
             <MenuItem onAction="#selectRed" text="Rosso" />
             <MenuItem onAction="#selectGreen" text="Verde" />
@@ -45,6 +45,16 @@
             <MenuItem onAction="#selectYellow" text="Giallo" />
             <MenuItem onAction="#selectWhite" text="Bianco" />
          </items>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <effect>
+            <InnerShadow choke="0.17" height="56.3" offsetX="-10.0" offsetY="-10.0" radius="27.66" width="56.34">
+               <color>
+                  <Color opacity="0.11999999731779099" />
+               </color>
+            </InnerShadow>
+         </effect>
       </MenuButton>
       <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="232.0" textFill="RED" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
