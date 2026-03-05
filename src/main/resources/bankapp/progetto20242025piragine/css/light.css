@@ -54,6 +54,7 @@
     -fx-background-color: white;
 }
 
+/* BLOCCO VECCHIO (LO LASCIO INALTERATO COME RICHIESTO) */
 #anchorePaneFriends2,
 #scrollPaneFriends2,
 #scrollPaneFriends2 .viewport,
@@ -62,6 +63,21 @@
 #chatVBox {
     -fx-background-color: #e4e4e4;
 }
+
+/* ========================= */
+/* 🔥 AGGIUNTA CORREZIONE 🔥 */
+/* ========================= */
+
+#anchorPaneChat,
+#scrollPaneChat,
+#scrollPaneChat .viewport,
+#scrollPaneChat .content,
+#scrollPaneChat .corner,
+#chatVBox {
+    -fx-background-color: #e4e4e4;
+}
+
+/* ========================= */
 
 .date-picker {
     -fx-background-color: #f2f2f2;
@@ -130,4 +146,133 @@
 
 .menu-button .arrow {
     -fx-background-color: white !important;
+}
+
+#regionChat {
+    -fx-border-color: #e4e4e4 !important;
+    -fx-background-color: white !important;
+    -fx-border-width: 2 !important;
+}
+
+#notificationVBox {
+    -fx-background-color: #e4e4e4 !important;
+
+}
+
+#notificationAnchorPane {
+    -fx-border-color: black !important;
+    -fx-border-width: 0.25;
+}
+
+#vBoxNotificationSlider {
+    -fx-background-color: #ebebeb !important;
+    -fx-border-color: grey !important;
+    -fx-border-width: 0.20;
+}
+
+
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ScrollBar base */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+/* Track (la barra dietro) */
+.scroll-bar .track {
+    -fx-background-color: #8b0000;
+    -fx-background-radius: 8;
+}
+
+/* Thumb normale */
+.scroll-bar .thumb {
+    -fx-background-color: #ff0000;
+    -fx-background-radius: 8;
+}
+
+/* Hover - effetto InnerShadow rosso */
+.scroll-bar .thumb:hover {
+    -fx-background-color: #ff0000;
+    -fx-effect: innershadow(three-pass-box, #ff0000, 28, 0.17, -10, -10);
+}
+
+/* Quando viene cliccata */
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #cc0000;
+    -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6);
+}
+
+/* ELIMINA FRECCE */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* ScrollPane di sfondo */
+#favouritesCardScrollPane {
+    -fx-background-color: #4a4a4a;
+}
+
+/* Viewport trasparente */
+#favouritesCardScrollPane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ScrollBar orizzontale */
+#favouritesCardScrollPane .scroll-bar:horizontal {
+    -fx-padding: 0 15  0 15;
+    -fx-background-color: transparent;
+}
+
+/* Track */
+#favouritesCardScrollPane .scroll-bar:horizontal .track {
+    -fx-background-color: #8b0000;
+    -fx-background-radius: 8;
+}
+
+/* Thumb */
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb {
+    -fx-background-color: #ff0000;
+    -fx-background-radius: 8;
+}
+
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb:hover {
+    -fx-effect: innershadow(three-pass-box, #ff0000, 28, 0.17, -10, -10);
+}
+
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb:pressed {
+    -fx-background-color: #cc0000;
+    -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6);
+}
+
+#favouritesCardScrollPane .scroll-bar:horizontal .increment-button,
+#favouritesCardScrollPane .scroll-bar:horizontal .decrement-button,
+#favouritesCardScrollPane .scroll-bar:horizontal .increment-arrow,
+#favouritesCardScrollPane .scroll-bar:horizontal .decrement-arrow {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-shape: "";
+}
+
+#favouritesCardScrollPane{
+    -fx-background-color:  #e4e4e4 !important;
+}
+
+#buttonNotificationSlider{
+    -fx-background-radius:  6 !important;
+    -fx-font-weight: bold !important;
+}
+
+#limitLabel{
+    -fx-font-weight: bold !important;
 }
