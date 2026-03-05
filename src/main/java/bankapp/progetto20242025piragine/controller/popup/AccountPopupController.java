@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
@@ -26,8 +27,7 @@ public class AccountPopupController extends BranchController {
 
     // Fills the popup with the correct user data and current theme
     @Override
-    public void initializer()
-    {
+    public void initializer() {
         // Display user's email
         emailPopupAccountLabel.setText(rootController.user.getEmail());
 
@@ -35,15 +35,28 @@ public class AccountPopupController extends BranchController {
         nameSurnameAccountPopupLabel.setText(rootController.user.getFirstName() + " " + rootController.user.getLastName());
 
         // Update radio button and theme label based on user's theme
-        if(rootController.user.getTheme().equals("light")) {themeColorAccountPopupRadioButton.setSelected(false);}
-        else if(rootController.user.getTheme().equals("dark")) {themeColorAccountPopupRadioButton.setSelected(true);}
+        if (rootController.user.getTheme().equals("light")) {
+            themeColorAccountPopupRadioButton.setSelected(false);
+        } else if (rootController.user.getTheme().equals("dark")) {
+            themeColorAccountPopupRadioButton.setSelected(true);
+        }
 
         // Update theme color label based on radio button
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
 
         // Apply the selected theme to the popup scene
-            ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
     }
+
+
+    @FXML
+    private void loadAccountSettingsPage()
+    {
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
+        Stage stage = (Stage)root.getScene().getWindow();
+        stage.close();
+    }
+
 
     // Handles theme switching when the radio button is toggled
     @FXML
