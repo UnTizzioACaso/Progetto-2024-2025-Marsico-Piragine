@@ -32,7 +32,7 @@
 
         <Separator layoutX="11.0" layoutY="168.0" prefHeight="3.0" prefWidth="562.0" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
 
-        <Button fx:id="settingsAccountPopupButton" layoutX="113.0" layoutY="183.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-font-weight: 700;" text="Impostazioni account ↗" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.0">
+        <Button fx:id="settingsAccountPopupButton" layoutX="113.0" layoutY="183.0" mnemonicParsing="false" onAction="#loadAccountSettingsPage" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-font-weight: 700;" text="Impostazioni account ↗" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.0">
             <effect>
                 <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                     <color>
