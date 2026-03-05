@@ -1,8 +1,8 @@
-/* Root principale */
+/* ================= ROOT ================= */
+
 #root {
     -fx-background-color: #4a4a4a !important;
 }
-
 
 .anchor-pane {
     -fx-background-color: #4a4a4a !important;
@@ -13,117 +13,184 @@
 }
 
 
+/* ================= LABEL ================= */
+
 .label {
     -fx-text-fill: white !important;
 }
 
-
-/* Label secondarie / descrittive */
-#themeApplicationAccountPopupLabel, #cardCreditLabel, #cardNicknameLabel, #cardNumberLabel, #cardExpirationLabel, #settingsAccountPopupButton, #lastFiveExpensesTitleLabel{
+#themeApplicationAccountPopupLabel,
+#cardCreditLabel,
+#cardNicknameLabel,
+#cardNumberLabel,
+#cardExpirationLabel,
+#lastFiveExpensesTitleLabel {
     -fx-text-fill: black !important;
 }
 
-#accountAccountPopupLabel, #nameSurnameAccountPopupLabel, #emailPopupAccountLabel, #themeApplicationAccountPopupLabel, #themeColorAccountPopupLabel{
+#accountAccountPopupLabel,
+#nameSurnameAccountPopupLabel,
+#emailPopupAccountLabel,
+#themeColorAccountPopupLabel {
     -fx-text-fill: #E0E0E0 !important;
 }
 
-
-#lastFiveExpensesVBox > .Label{
+#lastFiveExpensesVBox > .label {
     -fx-text-fill: #E0E0E0 !important;
 }
 
-#lastFiveExpensesVBox, #sidebarGridPane , #transactionHistoryAnchorPane{
+#favouritesCardScrollPane {
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#labelMenageCardPopup {
+    -fx-text-fill: black !important;
+}
+
+
+/* ================= LAYOUT ================= */
+
+#lastFiveExpensesVBox,
+#sidebarGridPane,
+#transactionHistoryAnchorPane,
+#anchorPaneCardPage,
+#anchorePaneCardPopup,
+#anchorePaneMenageCardPopup {
     -fx-background-color: #4a4a4a !important;
 }
 
-/* Button generico */
-.button {
-    -fx-text-fill: white !important;
-}
-
-
-#homePageGridPane{
+#homePageGridPane {
     -fx-background-color: #3c3c3c !important;
 }
 
-.scroll-pane > .viewport {
-    -fx-background-color: #4a4a4a;
-    -fx-background-radius: 15 ;
-}
-
-/* Separatori */
-.separator {
-    -fx-opacity: 0.7 !important;
-}
-
-#labelBankAccount{
-    -fx-text-fill: black !important;
-}
-
-#sidebarGridPane{
+#sidebarGridPane {
     -fx-background-color: #595959 !important;
 }
 
-Line{
-    -fx-stroke: white !important;
+#gridPaneFriends,
+#AnchorPaneFriendsPage,
+#regionFriend,
+#friendsVBox {
+    -fx-background-color: #4a4a4a !important;
 }
 
+#anchorPaneChat,
+#chatVBox {
+    -fx-background-color: #595959 !important;
+}
+
+#regionChat {
+    -fx-border-color: #595959 !important;
+    -fx-background-color: #4a4a4a !important;
+    -fx-border-width: 2 !important;
+}
+
+#vBoxNotificationSlider {
+    -fx-background-color: #595959 !important;
+    -fx-border-color: grey !important;
+    -fx-border-width: 0.15;
+}
+
+#notificationAnchorPane {
+    -fx-border-color: black !important;
+    -fx-border-width: 0.50;
+}
+
+
+/* ================= BUTTON ================= */
+
+.button {
+    -fx-text-fill: white !important;
+}
 
 #logoutAccountPopupButton {
     -fx-background-color: #595959 !important;
 }
 
-#settingsAccountPopupButton{
+#settingsAccountPopupButton {
     -fx-text-fill: white !important;
 }
 
-.label {
-    -fx-text-fill: white !important;
-}
 
-#anchorPaneCardPage{
-    -fx-background-color: #4a4a4a !important;
-}
+/* ================= INPUT ================= */
 
-
-/* Colori base */
-#gridPaneFriends, #AnchorPaneFriendsPage, #regionFriend, #friendsVBox {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#anchorPaneChat, #chatVBox {
-    -fx-background-color: #595959 !important;
-}
-
-/* ScrollPane: elimina bordo/focus e uniforma interno */
-#scrollPaneFriends, #scrollPaneChat {
-    -fx-background-insets: 0 !important;
-    -fx-padding: 0 !important;
-    -fx-border-color: transparent !important;
-    -fx-border-width: 0 !important;
-    -fx-focus-color: transparent !important;
-    -fx-faint-focus-color: transparent !important;
-}
-
-#scrollPaneFriends { -fx-background-color: #4a4a4a !important; }
-#scrollPaneChat    { -fx-background-color: #595959 !important; }
-
-#scrollPaneFriends .viewport, #scrollPaneFriends .content, #scrollPaneFriends .corner,
-#scrollPaneChat .viewport, #scrollPaneChat .content, #scrollPaneChat .corner {
-    -fx-background-color: transparent !important;
-}
-
-/* Search bar */
 #friendsSearchBar {
     -fx-background-color: #3a3a3a !important;
     -fx-text-fill: white !important;
     -fx-prompt-text-fill: #bdbdbd !important;
 }
 
+#transationHistoryTextField {
+    -fx-background-color: #4a4a4a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+}
+
+#spendingLimitTextField {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-background-radius: 6 !important;
+    -fx-border-radius: 6 !important;
+    -fx-border-color: #5a5a5a !important;
+    -fx-border-width: 1 !important;
+    -fx-highlight-fill: #ff0000 !important;
+    -fx-highlight-text-fill: white !important;
+    -fx-caret-color: white !important;
+}
+
+
+/* ================= DATE PICKER ================= */
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #ff0000;
+    -fx-effect: innershadow(
+        three-pass-box,
+        rgba(0,0,0,0.25),
+        27.63,
+        0.17,
+        -10,
+        -10
+    );
+}
+
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup .month-year-pane .button {
+    -fx-background-color: transparent;
+    -fx-mark-color: white;
+}
+
+.date-picker-popup .left-arrow,
+.date-picker-popup .right-arrow {
+    -fx-background-color: white;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: #ff0000;
+    -fx-effect: innershadow(
+        three-pass-box,
+        rgba(0,0,0,0.15),
+        27.63,
+        0.17,
+        -10,
+        -10
+    );
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white;
+}
+
+
+/* ================= MENU ================= */
+
 .menu-button .arrow {
     -fx-background-color: white !important;
 }
-
 
 .context-menu {
     -fx-background-color: #2e2e2e;
@@ -144,104 +211,150 @@ Line{
 }
 
 
-#anchorePaneCardPopup{
+/* ================= SCROLLPANE ================= */
+
+.scroll-pane {
+    -fx-background-color: #4a4a4a;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: #4a4a4a;
+    -fx-background-radius: 15;
+}
+
+#scrollPaneFriends,
+#scrollPaneChat {
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+}
+
+#scrollPaneFriends {
     -fx-background-color: #4a4a4a !important;
 }
 
-
-
-/* Header rosso */
-.date-picker-popup .month-year-pane {
-    -fx-background-color: #ff0000;
-        -fx-effect: innershadow(
-            three-pass-box,
-            rgba(0, 0, 0, 0.25),
-            27.63,
-            0.17,
-            -10,
-            -10
-        );
+#scrollPaneChat {
+    -fx-background-color: #595959 !important;
 }
 
-/* Testo mese/anno */
-.date-picker-popup .month-year-pane .label {
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
+#scrollPaneFriends .viewport,
+#scrollPaneFriends .content,
+#scrollPaneFriends .corner,
+#scrollPaneChat .viewport,
+#scrollPaneChat .content,
+#scrollPaneChat .corner {
+    -fx-background-color: transparent !important;
 }
 
-/* Bottoni frecce */
-.date-picker-popup .month-year-pane .button {
+
+/* ================= SCROLLBAR ================= */
+
+.scroll-bar {
     -fx-background-color: transparent;
 }
 
-/* COLORE FRECCE (SOLUZIONE CORRETTA) */
-.date-picker-popup .month-year-pane .button {
-    -fx-mark-color: white;
+.scroll-bar .track {
+    -fx-background-color: #8b0000;
+    -fx-background-radius: 8;
 }
 
-/* Fallback per alcune versioni JavaFX */
-.date-picker-popup .left-arrow,
-.date-picker-popup .right-arrow {
-    -fx-background-color: white;
-}
-
-/* Bottone calendario (icona a destra del DatePicker) */
-.date-picker > .arrow-button {
+.scroll-bar .thumb {
     -fx-background-color: #ff0000;
-    /* INNER SHADOW */
-        -fx-effect: innershadow(
-            three-pass-box,
-            rgba(0, 0, 0, 0.15),
-            27.63,
-            0.17,
-            -10,
-            -10
-        );
+    -fx-background-radius: 8;
 }
 
-/* Icona calendario BIANCA */
-.date-picker > .arrow-button > .arrow {
-    -fx-background-color: white;
+.scroll-bar .thumb:hover {
+    -fx-effect: innershadow(three-pass-box, #ff0000, 28, 0.17, -10, -10);
 }
 
-#transationHistoryTextField{
-    -fx-background-color: #4a4a4a !important;
-    -fx-text-fill: white !important;
-    -fx-prompt-text-fill: #bdbdbd !important;
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #cc0000;
+    -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
 }
 
 
+/* ================= FAVOURITES SCROLLPANE ================= */
 
-#labelMenageCardPopup{
-    -fx-text-fill: white !important;
+#favouritesCardScrollPane {
+    -fx-background-color: #4a4a4a;
 }
 
-#anchorePaneMenageCardPopup{
-    -fx-background-color: #4a4a4a !important;
+#favouritesCardScrollPane .viewport {
+    -fx-background-color: transparent;
 }
 
-#spendingLimitTextField {
-    -fx-background-color: #3a3a3a !important;
-    -fx-text-fill: white !important;
-    -fx-prompt-text-fill: #bdbdbd !important;
+#favouritesCardScrollPane .scroll-bar:horizontal {
+    -fx-padding: 0 15 0 15;
+    -fx-background-color: transparent;
+}
 
+#favouritesCardScrollPane .scroll-bar:horizontal .track {
+    -fx-background-color: #8b0000;
+    -fx-background-radius: 8;
+}
+
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb {
+    -fx-background-color: #ff0000;
+    -fx-background-radius: 8;
+}
+
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb:hover {
+    -fx-effect: innershadow(three-pass-box, #ff0000, 28, 0.17, -10, -10);
+}
+
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb:pressed {
+    -fx-background-color: #cc0000;
+    -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6);
+}
+
+#favouritesCardScrollPane .scroll-bar:horizontal .increment-button,
+#favouritesCardScrollPane .scroll-bar:horizontal .decrement-button,
+#favouritesCardScrollPane .scroll-bar:horizontal .increment-arrow,
+#favouritesCardScrollPane .scroll-bar:horizontal .decrement-arrow {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-shape: "";
+}
+
+
+/* ================= MISC ================= */
+
+.separator {
+    -fx-opacity: 0.7 !important;
+}
+
+Line {
+    -fx-stroke: white !important;
+}
+
+#labelBankAccount {
+    -fx-text-fill: black !important;
+}
+
+#quickContactNameLabel {
+    -fx-text-fill: black !important;
+}
+
+#buttonNotificationSlider {
     -fx-background-radius: 6 !important;
-    -fx-border-radius: 6 !important;
-    -fx-border-color: #5a5a5a !important;
-    -fx-border-width: 1 !important;
-
-    -fx-highlight-fill: #ff0000 !important;
-    -fx-highlight-text-fill: white !important;
-    -fx-caret-color: white !important;
+    -fx-font-weight: bold !important;
 }
 
-#cardsContainerVBox{
-    -fx-background-color: #2b2b2b !important;
-
+#limitLabel {
+    -fx-font-weight: bold !important;
 }
-
-
-
-
-
-
