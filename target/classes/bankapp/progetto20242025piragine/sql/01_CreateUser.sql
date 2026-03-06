@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS User (
     address TEXT NOT NULL,
     street_number TEXT NOT NULL,
     cap TEXT NOT NULL,
-    phone_number INTEGER NOT NULL UNIQUE,
+    phone_number TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
     username TEXT UNIQUE NOT NULL,
     password_hash TEXT ,

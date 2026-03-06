@@ -32,6 +32,8 @@ public class FriendshipRequestPopupController extends BranchController {
     @FXML
     private ToggleButton togglePhoneNumber;
 
+    private User user2 = new User();
+
     @Override
     public void initializer()
     {
@@ -70,21 +72,21 @@ public class FriendshipRequestPopupController extends BranchController {
         togglePhoneNumber.setStyle("-fx-background-color: white; -fx-text-fill: red; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
     }
 
-    private void sendRequest(User beneficiaryUser) //checking if requester has been blocked by requested
+    private void sendRequest() //checking if requester has been blocked by requested
     {
-
-        if (beneficiaryUser != null)
+        System.out.println(user2.getEmail());
+        if (user2 == null)
         {
-            errorLabel.setText("Utente non trovato");
+            errorLabel.setText("Utente non trovato, nullo");
             return;
         }
-        if(beneficiaryUser.equals(rootController.user))
+        if(user2.equals(rootController.user))
         {
-            errorLabel.setText("Utente non trovato");
+            errorLabel.setText("l'Utente inserito è il tuo");
             return;
         }
         boolean blocked = false;
-        try {blocked = BlockDAO.isBlocked(beneficiaryUser.getUserID(), rootController.user.getUserID());}
+        try {blocked = BlockDAO.isBlocked(user2.getUserID(), rootController.user.getUserID());}
         catch (SQLException e)
         {
             System.err.println("error during checking block " + e.getMessage());
@@ -92,23 +94,23 @@ public class FriendshipRequestPopupController extends BranchController {
         }
         if(blocked)
         {
-            errorLabel.setText("Utente non trovato");
+            errorLabel.setText("Utente non trovato, c'è un blocco");
             return;
         }
-        FriendRequest request = new FriendRequest(rootController.user.getUserID(), beneficiaryUser.getUserID());
+        FriendRequest request = new FriendRequest(rootController.user.getUserID(), user2.getUserID());
         try
         {
             FriendRequestDAO.sendRequest(request);
             Notify n = new Notify();
             n.setRead(false);
-            n.setIdFriendRequest(FriendRequestDAO.getPendingRequests(beneficiaryUser.getUserID()).getFirst().getIdRequest());
+            n.setIdFriendRequest(FriendRequestDAO.getPendingRequests(user2.getUserID()).getFirst().getIdRequest());
 
             //notifying sender
             n.setUserId(rootController.user.getUserID());
             NotifyDAO.insertNotify(n);
 
             //notifying beneficiary
-            n.setUserId(beneficiaryUser.getUserID());
+            n.setUserId(user2.getUserID());
             NotifyDAO.insertNotify(n);
         }
         catch (SQLException e)
@@ -125,41 +127,39 @@ public class FriendshipRequestPopupController extends BranchController {
         //Send request with username
         if (searchByUsernameField.isVisible())
         {
-            User beneficiaryUser = null;
-            try {beneficiaryUser = UserDAO.getUserByUsername(searchByUsernameField.getText());}
+            try {user2 = UserDAO.getUserByUsername(searchByUsernameField.getText());}
             catch (SQLException e)
             {
                 System.err.println("error during beneficiaryUser research in db by username" + e.getMessage());
                 e.printStackTrace();
             }
-            sendRequest(beneficiaryUser);
         }
 
         //Send request with email
         else if (searchByEmailField.isVisible())
         {
-            User user = new User();
-            try {user = UserDAO.getUserByEmail(searchByEmailField.getText());}
+
+
+            try {user2 = UserDAO.getUserByEmail(searchByEmailField.getText());}
             catch (SQLException e)
             {
                 System.err.println("error during user research in db by email " + e.getMessage());
                 e.printStackTrace();
             }
-            sendRequest(user);
+
         }
 
         //Send request with phone number
         else if (searchByPhoneNumberField.isVisible())
         {
-            User user = new User();
-            try {user = UserDAO.getUserByCellphone(searchByPhoneNumberField.getText());}
+            try {user2 = UserDAO.getUserByCellphone(searchByPhoneNumberField.getText());}
             catch (SQLException e)
             {
                 System.err.println("error during user research in db by phone number " + e.getMessage());
                 e.printStackTrace();
             }
-            sendRequest(user);
         }
+        sendRequest();
     }
 }
 

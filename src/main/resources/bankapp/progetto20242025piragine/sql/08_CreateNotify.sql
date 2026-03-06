@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Notify (
+ CREATE TABLE IF NOT EXISTS Notify (
     id_notify INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER,
     id_transaction INTEGER,
