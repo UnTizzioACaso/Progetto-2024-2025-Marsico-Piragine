@@ -11,7 +11,7 @@ public class QuickContactController extends WidgetController
     @FXML
     public void showMenu()
     {
-        miniMenuShower(quickContactGridPane);
+        removeWidget(quickContactGridPane);
     }
 
     @Override
