@@ -355,6 +355,7 @@ Line {
     -fx-font-weight: bold !important;
 }
 
-#limitLabel {
+#limitLabelCreditCardRectangle {
     -fx-font-weight: bold !important;
+    -fx-text-fill: white !important;
 }
