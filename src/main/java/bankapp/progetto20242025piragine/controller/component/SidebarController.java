@@ -16,7 +16,10 @@ public class SidebarController extends BranchController {
     public Button homeButton;
 
     @FXML
-    void openAccountPopup() //opening the account popup
+    public Button aiButton;
+
+    @FXML
+    void openAccountPopup()
     {
         rootController.showPopup("Account", "/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml", 420, 300);
     }
@@ -28,14 +31,17 @@ public class SidebarController extends BranchController {
 
     @FXML
     public void loadCardsPage() {
-
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml");
     }
 
     @FXML
-    public void loadFriendsPage()
-    {
+    public void loadFriendsPage() {
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml");
+    }
+
+    @FXML
+    public void loadArtificialIntelligence() {
+        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/artificialIntelligencePage.fxml");
     }
 
 }
