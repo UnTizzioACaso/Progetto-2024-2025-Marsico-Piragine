@@ -71,7 +71,7 @@ public class MonthlyBalanceController extends WidgetController {
     @FXML
     public void showMenu()
     {
-        miniMenuShower(monthlyBalanceGridPane);
+        removeWidget(monthlyBalanceGridPane);
     }
 
 }

@@ -30,7 +30,7 @@ public class TransactionHistoryController extends WidgetController
     @FXML
     public void showMenu()
     {
-        menuShower(transactionHistoryGridPane, "/bankapp/progetto20242025piragine/fxml/popup/largeTransactionHistory.fxml",   "Tutte le transazioni");
+        removeWidget(transactionHistoryGridPane);
     }
 
     @Override
