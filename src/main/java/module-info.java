@@ -8,6 +8,8 @@ module bankapp.progetto20242025piragine {
     requires jbcrypt;
     requires java.smartcardio;
     requires java.management;
+    requires langchain4j.google.ai.gemini;
+    requires langchain4j;
 
 
     opens bankapp.progetto20242025piragine to javafx.fxml;
