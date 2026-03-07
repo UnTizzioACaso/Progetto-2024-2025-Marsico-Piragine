@@ -26,12 +26,12 @@
                   <Font name="System Bold" size="15.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="HAND" />
+                  <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Label>
-            <Button alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="30.0" prefWidth="33.0" style="-fx-background-color: transparent;" text="⋮" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+            <Button alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="30.0" prefWidth="33.0" style="-fx-background-color: transparent;" text="❎" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                <font>
-                  <Font name="Symbol" size="17.0" />
+                  <Font name="Symbol" size="14.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />

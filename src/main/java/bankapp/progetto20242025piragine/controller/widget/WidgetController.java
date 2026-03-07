@@ -46,5 +46,102 @@ public class WidgetController extends BranchController {
         }
     }
 
+    //same as menuShower, but without the option to show the bigger version of the widget
+    public void miniMenuShower(Node root)
+    {
+        Popup popup = getMiniMenuPopup(root);
+        if (popup.isShowing())
+        {
+            popup.hide();
+            return;
+        }
+        Bounds bounds = widgetTitleLabel.localToScreen(widgetTitleLabel.getBoundsInLocal());
+        ThemeManager.applyTheme(popup.getScene(), rootController.user.getTheme());
+        popup.show(widgetTitleLabel, bounds.getMinX(), bounds.getMaxY());
+    }
+
+    //takes a string with the name visualized on the given node as root, creates and shows the menu popup
+    public void menuShower(Node root, String fxml, String title)
+    {
+        Popup popup = getMenuPopup(root,  fxml, title);
+        if (popup.isShowing())
+        {
+            popup.hide();
+            return;
+        }
+        Bounds bounds = widgetTitleLabel.localToScreen(widgetTitleLabel.getBoundsInLocal());
+        ThemeManager.applyTheme(popup.getScene(), rootController.user.getTheme());
+        popup.show(widgetTitleLabel, bounds.getMinX(), bounds.getMaxY());
+    }
+
+
+    //takes a string with the name visualized on the given node as root, and creates the menu popup with relative buttons
+    public Popup getMenuPopup(Node root, String fxml, String title) {
+        Popup popup = new Popup();
+        popup.setAutoHide(true);
+        popup.setAutoFix(true);
+
+        VBox content = new VBox(1);
+        content.setStyle("-fx-background-color: black; -fx-border-color: black; -fx-alignment: CENTER;" );
+        Button one = new Button("ingrandisci " + widgetTitleLabel.getText());
+        Button two = new Button("rimuovi " + widgetTitleLabel.getText());
+        one.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        two.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        one.setStyle( "    -fx-background-color: #ff0000;\n" +
+                "        -fx-effect: innershadow(\n" +
+                "            three-pass-box,\n" +
+                "            rgba(0, 0, 0, 0.25),\n" +
+                "            27.63,\n" +
+                "            0.17,\n" +
+                "            -10,\n" +
+                "            -10\n" +
+                "        );");
+
+        two.setStyle( "    -fx-background-color: #ff0000;\n" +
+                "        -fx-effect: innershadow(\n" +
+                "            three-pass-box,\n" +
+                "            rgba(0, 0, 0, 0.25),\n" +
+                "            27.63,\n" +
+                "            0.17,\n" +
+                "            -10,\n" +
+                "            -10\n" +
+                "        );");
+
+        one.setOnAction(e -> {rootController.showPopup(title, fxml, 600, 600);});
+        two.setOnAction(e -> {removeWidget(root);});
+        content.getChildren().addAll(one, two);
+
+        popup.getContent().add(content);
+        return popup;
+    }
+
+    //same as getMenuPopup, but without the option to show the bigger version of the widget
+    public Popup getMiniMenuPopup(Node root) {
+        Popup popup = new Popup();
+        popup.setAutoHide(true);
+        popup.setAutoFix(true);
+
+        VBox content = new VBox();
+        content.setStyle("-fx-background-color: black; -fx-border-color: black; -fx-alignment: CENTER;" );
+        Button button = new Button("rimuovi " + widgetTitleLabel.getText());
+        button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        button.setStyle( "    -fx-background-color: #ff0000;\n" +
+                "        -fx-effect: innershadow(\n" +
+                "            three-pass-box,\n" +
+                "            rgba(0, 0, 0, 0.25),\n" +
+                "            27.63,\n" +
+                "            0.17,\n" +
+                "            -10,\n" +
+                "            -10\n" +
+                "        );");
+
+        button.setOnAction(e -> {removeWidget(root);});
+        content.getChildren().add(button);
+
+        popup.getContent().add(content);
+        return popup;
+    }
 
 }
