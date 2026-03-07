@@ -28,7 +28,7 @@ public class CardDAO {
                     card.setNickname(rs.getString("nickname"));
                     card.setColor(rs.getString("color"));
                     card.setFavourite(rs.getBoolean("favourite"));
-                    card.setSpendingLimit(BigDecimal.valueOf(rs.getInt("spending_limit"), 2));
+                    card.setSpendingLimit(BigDecimal.valueOf(rs.getLong("spending_limit"), 2));
                     card.setStatus(rs.getBoolean("status"));
 
                     cards.add(card);
@@ -43,7 +43,7 @@ public class CardDAO {
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, spendingLimit.movePointRight(2).intValueExact());
+            stmt.setLong(1, spendingLimit.movePointRight(2).longValueExact());
             stmt.setInt(2, cardId);
             stmt.executeUpdate();
             return spendingLimit;
@@ -95,7 +95,7 @@ public class CardDAO {
                 card.setNickname(rs.getString("nickname"));
                 card.setColor(rs.getString("color"));
                 card.setFavourite(rs.getBoolean("favourite"));
-                card.setSpendingLimit(BigDecimal.valueOf(rs.getInt("spending_limit"), 2));
+                card.setSpendingLimit(BigDecimal.valueOf(rs.getLong("spending_limit"), 2));
                 card.setStatus(rs.getBoolean("status"));
 
                 return card;
@@ -129,7 +129,7 @@ public class CardDAO {
             stmt.setString(5, card.getNickname());
             stmt.setString(6, card.getColor());
             stmt.setBoolean(7, card.isFavourite());
-            stmt.setInt(8, card.getSpendingLimit().movePointRight(2).intValueExact());
+            stmt.setLong(8, card.getSpendingLimit().movePointRight(2).longValueExact());
             stmt.setBoolean(9, card.isStatus());
 
             int affectedRows = stmt.executeUpdate();
