@@ -49,39 +49,60 @@ public class CreateCardPopupController extends BranchController
 
     // Creates the card using last4DigitsPan and user's bank account data
     @FXML
-    public void createCard() throws Exception
-    {
-
+    public void createCard() throws Exception {
         String spendingLimitText;
 
-        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {spendingLimitText = spendingLimitTextField.getText().replace(",", ".");}
-        else if (spendingLimitTextField.getText().matches("^\\d+(.\\d{1,2})?$")) {spendingLimitText =spendingLimitTextField.getText();}
-        else {errorLabel.setText("il limite è in formato non valido"); return;}
-        {
-            try
-            {
-                BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
-                try
-                {
-                    Card card = new Card(rootController.user.getUserID(), bankAccount.getIdAccount(), last4DigitsPan.generateLastFourDigits() ,nicknameTextField.getText(), color, new BigDecimal(spendingLimitText));
-                    CardDAO.insertCard(card);
-                    s.close();
-                    rootController.topbarController.reloadPage();
-
-                }
-                catch (SQLException e)
-                {
-                    System.err.println("error during getting bank account with user id " + e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-            catch (SQLException e)
-            {
-                System.err.println("error during getting bank account with user id " + e.getMessage());
-                e.printStackTrace();
-            }
+        // Validazione formato
+        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {
+            spendingLimitText = spendingLimitTextField.getText().replace(",", ".");
+        } else if (spendingLimitTextField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {
+            spendingLimitText = spendingLimitTextField.getText();
+        } else {
+            errorLabel.setText("Formato non valido (es: 10,10 o 10.10)");
+            return;
         }
 
+        BigDecimal limit = new BigDecimal(spendingLimitText);
+        BigDecimal maxLimit = new BigDecimal("1000000000.00");
+
+        // Validazione valore numerico
+        if (limit.compareTo(maxLimit) > 0) {
+            errorLabel.setText("Il limite massimo è 1.000.000.000");
+            return;
+        }
+        if (limit.compareTo(BigDecimal.ZERO) < 0) {
+            errorLabel.setText("Il limite non può essere negativo");
+            return;
+        }
+
+        try {
+            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
+
+            if (bankAccount == null) {
+                errorLabel.setText("Conto corrente non trovato");
+                return;
+            }
+
+            Card card = new Card(
+                    rootController.user.getUserID(),
+                    bankAccount.getIdAccount(),
+                    last4DigitsPan.generateLastFourDigits(),
+                    nicknameTextField.getText(),
+                    color,
+                    limit
+            );
+
+            if (CardDAO.insertCard(card)) {
+                s.close(); // Assumendo che 's' sia lo Stage/Finestra
+                rootController.topbarController.reloadPage();
+            } else {
+                errorLabel.setText("Errore durante il salvataggio della carta");
+            }
+
+        } catch (SQLException e) {
+            errorLabel.setText("Errore database: contattare assistenza");
+            e.printStackTrace();
+        }
     }
 
     // Initializes the popup by loading the card preview component

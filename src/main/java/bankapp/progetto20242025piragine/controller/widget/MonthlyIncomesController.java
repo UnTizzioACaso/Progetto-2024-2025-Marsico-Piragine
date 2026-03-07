@@ -23,7 +23,7 @@ public class MonthlyIncomesController extends WidgetController {
     @FXML
     public void showMenu()
     {
-        menuShower(monthlyIncomesVBox, "/bankapp/progetto20242025piragine/fxml/popup/largeMonthlyIncomes.fxml",  "Entrate di questo mese");
+        removeWidget(monthlyIncomesVBox);
     }
 
     @Override
