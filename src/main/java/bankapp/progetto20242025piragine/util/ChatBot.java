@@ -9,12 +9,13 @@ public class ChatBot {
     // Questa interfaccia definisce la "personalità" del bot
     public interface AssistenteVirtuale {
         @SystemMessage("""
-            Sei l'assistente virtuale della 'Piragine Bank'. 
+            Sei l'assistente virtuale della 'Maze Bank' un'applicazione fatta da studenti universitari come progetto d'esame. 
             Il tuo obiettivo è aiutare i clienti con informazioni su:
-            - Come effettuare bonifici.
-            - Spiegare cos'è un tasso d'interesse o un IBAN.
+            - Blocco carta
+            - Creazione carta
+            - Spiegare cos'è un IBAN.
             - Dare consigli sulla sicurezza (es. non condividere mai la password).
-            Sii professionale, gentile e non dare mai veri consigli finanziari legali.
+            Sii professionale e gentile.
             """)
         String chiedi(String messaggioUtente);
     }
