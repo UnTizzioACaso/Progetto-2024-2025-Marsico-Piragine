@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -9,13 +10,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="57.0" prefWidth="575.0" style="-fx-background-color: #ff0000;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TopbarController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="57.0" prefWidth="575.0" style="-fx-background-color: #ff0000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.TopbarController">
 
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
         <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
         <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="NEVER" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="273.66666412353516" />
+        <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="40.0" minWidth="40.0" prefWidth="100.0" />
         <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
     </columnConstraints>
@@ -37,7 +39,7 @@
         </ImageView>
 
         <!-- Freccia indietro -->
-        <ImageView fx:id="backArrowButton" fitHeight="15.0" fitWidth="10.0" onMouseClicked="#backPage" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <ImageView fx:id="backArrowButton" fitHeight="17.0" fitWidth="17.0" onMouseClicked="#backPage" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
             <image>
                 <Image url="@../../imgs/backbutton.png" />
             </image>
@@ -47,7 +49,7 @@
         </ImageView>
 
         <!-- Freccia avanti -->
-        <ImageView fx:id="forwarArrowButton" fitHeight="15.0" fitWidth="10.0" onMouseClicked="#nextPage" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+        <ImageView fx:id="forwarArrowButton" fitHeight="17.0" fitWidth="17.0" onMouseClicked="#nextPage" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
             <image>
                 <Image url="@../../imgs/backbutton.png" />
             </image>
@@ -57,23 +59,42 @@
         </ImageView>
 
         <!-- Campanella notifiche -->
-        <ImageView fx:id="notificationButton" fitHeight="15.0" fitWidth="15.0" onMouseClicked="#showPopup" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="LEFT">
+        <ImageView fx:id="notificationButton" fitHeight="17.0" fitWidth="17.0" onMouseClicked="#showPopup" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="LEFT">
             <image>
                 <Image url="@../../imgs/bellicon.png" />
             </image>
             <effect>
                 <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
             </effect>
+         <GridPane.margin>
+            <Insets left="4.0" />
+         </GridPane.margin>
         </ImageView>
 
         <!-- Reload pagina -->
-        <ImageView fx:id="reloadPageButton" fitHeight="17.0" fitWidth="17.0" onMouseClicked="#reloadPage" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+        <ImageView fx:id="reloadPageButton" fitHeight="17.0" fitWidth="17.0" onMouseClicked="#reloadPage" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
             <image>
                 <Image url="@../../imgs/reloadicon.png" />
             </image>
             <effect>
                 <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
             </effect>
+            <GridPane.margin>
+                <Insets />
+            </GridPane.margin>
+        </ImageView>
+
+        <!-- Chat assistenza -->
+        <ImageView fx:id="assistanceButton" fitHeight="30.0" fitWidth="60.0" onMouseClicked="#showAssistance" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <GridPane.margin>
+                <Insets top="1.0" />
+            </GridPane.margin>
+         <image>
+            <Image url="@../../imgs/LogoAssistenza.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
+         </effect>
         </ImageView>
 
     </children>

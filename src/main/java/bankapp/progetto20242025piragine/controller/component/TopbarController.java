@@ -30,6 +30,9 @@ public class TopbarController extends BranchController {
     private ImageView forwarArrowButton;
     @FXML
     private ImageView reloadPageButton;
+    @FXML
+    private ImageView assistanceButton;
+
 
     private AnchorPane notificationAnchorPane;
     private NotificationSliderController notificationAnchorPaneController;
@@ -161,5 +164,10 @@ public class TopbarController extends BranchController {
             System.err.println("error reloading " + backwardStack.peek() + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void showAssistance() {
+        System.out.println();
     }
 }

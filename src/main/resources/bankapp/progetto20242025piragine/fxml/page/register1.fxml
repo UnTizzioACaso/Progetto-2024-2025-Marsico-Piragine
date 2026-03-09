@@ -10,6 +10,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -24,7 +26,7 @@
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" percentWidth="50.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" percentWidth="50.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="200.0" percentWidth="50.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" />
@@ -37,16 +39,16 @@
             <Image url="@../../imgs/LogoMazeBank.png" />
          </image>
       </ImageView>
-      <Pane maxHeight="70.0" maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="850.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+      <Pane minWidth="-Infinity" prefHeight="70.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
          <effect>
-            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+            <InnerShadow choke="0.17" height="54.86" offsetX="-10.0" offsetY="-10.0" radius="27.3" width="56.34">
                <color>
                   <Color opacity="0.25" />
                </color>
             </InnerShadow>
          </effect>
       </Pane>
-      <Pane maxHeight="70.0" maxWidth="70.0" minHeight="70.0" minWidth="-Infinity" prefHeight="70.0" prefWidth="850.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+      <Pane minWidth="-Infinity" prefHeight="70.0" prefWidth="857.0" style="-fx-background-color: #ff0000;" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
          <effect>
             <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
@@ -80,10 +82,21 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+               <effect>
+                  <ColorAdjust brightness="-0.39" contrast="0.68">
+                     <input>
+                        <DropShadow height="28.96" offsetX="-10.0" offsetY="5.0" radius="13.175" spread="0.38" width="25.74">
+                           <color>
+                              <Color red="0.6431372761726379" green="0.6431372761726379" blue="0.6431372761726379" />
+                           </color>
+                        </DropShadow>
+                     </input>
+                  </ColorAdjust>
+               </effect>
             </ImageView>
             <Button fx:id="enterRegisterButton" maxWidth="300.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="52.0" prefWidth="290.0" style="-fx-background-color: ff0000; fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-background-radius: 14; -fx-padding: 16 0 16 0;" text="FATTO" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <effect>
-                  <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                  <InnerShadow choke="0.17" height="55.6" offsetX="-10.0" offsetY="-10.0" radius="27.485" width="56.34">
                      <color>
                         <Color opacity="0.25" />
                      </color>
@@ -123,14 +136,17 @@
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
+               <effect>
+                  <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0" />
+               </effect>
             </Label>
             <ProgressBar fx:id="registerProgressBar" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="20.0" prefWidth="290.0" progress="0.33" style="-fx-accent: ff0000; -fx-background-color: #e0e0e0; -fx-background-radius: 10; -fx-background-insets: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets bottom="-20.0" />
                </GridPane.margin></ProgressBar>
-            <Label fx:id="loginReturnLabel" alignment="CENTER" onMouseClicked="#loadLogin" prefHeight="5.0" prefWidth="111.0" text="Ho già un account" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="loginReturnLabel" alignment="CENTER" onMouseClicked="#loadLogin" prefHeight="19.0" prefWidth="118.0" text="Ho già un account" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
-                  <Font name="System Bold Italic" size="13.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -138,6 +154,16 @@
                <GridPane.margin>
                   <Insets bottom="35.0" />
                </GridPane.margin>
+               <effect>
+                  <DropShadow height="38.89" radius="22.6725" spread="0.74" width="53.8">
+                     <color>
+                        <Color red="0.9372549057006836" green="0.9176470637321472" blue="0.9176470637321472" />
+                     </color>
+                     <input>
+                        <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0" />
+                     </input>
+                  </DropShadow>
+               </effect>
             </Label>
             <Label maxWidth="300.0" minWidth="270.0" prefHeight="23.0" prefWidth="270.0" style="-fx-font-weight: bold;" text="(Anagrafe)" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
@@ -146,6 +172,9 @@
                <GridPane.margin>
                   <Insets bottom="-40.0" />
                </GridPane.margin>
+               <effect>
+                  <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0" />
+               </effect>
             </Label>
          </children>
       </GridPane>
