@@ -6,38 +6,47 @@ import dev.langchain4j.service.SystemMessage;
 
 public class ChatBot {
 
-    // Questa interfaccia definisce la "personalità" del bot
-    public interface AssistenteVirtuale {
+    // This interface defines the bot's "personality"
+    public interface VirtualAssistant {
         @SystemMessage("""
-            Sei l'assistente virtuale della 'Maze Bank' un'applicazione fatta da studenti universitari come progetto d'esame. 
-            Il tuo obiettivo è aiutare i clienti con informazioni su:
-            - Blocco carta
-            - Creazione carta
-            - Spiegare cos'è un IBAN.
-            - Dare consigli sulla sicurezza (es. non condividere mai la password).
-            Sii professionale e gentile.
+                Sei l'assistente virtuale della 'Maze Bank' un'applicazione fatta da studenti universitari come progetto d'esame.
+                Il tuo obiettivo è aiutare i clienti con informazioni su:
+                - Blocco carta, il blocc avviene andando su "carte" , selezioni la carta che vuoi bloccare -> gestisci -> blocca carta
+                - Creazione carta (non esiste debito o credito)carte -> crea nuova carta -> ricorda di ineserire un mnickname e un limite di spesa valido ->  crea carta
+                - Spiegare cos'è un IBAN.
+                - Dare consigli sulla sicurezza (es. non condividere mai la password).
+                Sii professionale e gentile.
+                non ricordare il menù ogni volta, sii piu un assistente, formatta bene il codice
             """)
-        String chiedi(String messaggioUtente);
+        String ask(String userMessage);
     }
 
-    private final AssistenteVirtuale bot;
+    private final VirtualAssistant bot;
 
     public ChatBot() {
-        // Configuriamo Gemini con la tua API Key
+        // Configuring Gemini with your API Key
         GoogleAiGeminiChatModel model = GoogleAiGeminiChatModel.builder()
-                .apiKey("AIzaSyBXXtFOTcC7G3S1DfxdUjyfWv7dIPrz7PM")
-                .modelName("gemini-1.5-flash")
+                .apiKey("AIzaSyCRxVRF0VhnbIBBZmrC7AFw-BQNgaD2n7A")
+                .modelName("gemini-flash-latest") // Riportiamolo al nome base
+                .timeout(java.time.Duration.ofSeconds(60))
+                .logRequestsAndResponses(true)
                 .build();
 
-        // Creiamo il servizio AI
-        this.bot = AiServices.create(AssistenteVirtuale.class, model);
+        this.bot = AiServices.create(VirtualAssistant.class, model);
+        // Creating the AI service
     }
 
-    public String generaRisposta(String testo) {
+    public String generateResponse(String text) {
         try {
-            return bot.chiedi(testo);
+            System.out.println("DEBUG: Provo a contattare Gemini...");
+            return bot.ask(text);
         } catch (Exception e) {
-            return "Spiacente, il servizio di assistenza è momentaneamente offline. Riprova più tardi.";
+            // QUESTO CI DIRÀ TUTTO:
+            System.err.println("--- LOG ERRORE GEMINI ---");
+            e.printStackTrace();
+
+            // Restituisci l'errore specifico alla chat per vederlo subito
+            return "Errore Tecnico: " + e.getClass().getSimpleName() + " - " + e.getMessage();
         }
     }
 }
