@@ -9,9 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import javax.management.Notification;
@@ -32,6 +35,7 @@ public class TopbarController extends BranchController {
     private ImageView reloadPageButton;
     @FXML
     private ImageView assistanceButton;
+
 
 
     private AnchorPane notificationAnchorPane;
@@ -165,9 +169,31 @@ public class TopbarController extends BranchController {
             e.printStackTrace();
         }
     }
-
     @FXML
     public void showAssistance() {
-        System.out.println();
-    }
-}
+        System.out.println("DEBUG: Click sul logo rilevato!");
+        try {
+            // CORREGGI IL PERCORSO SE NECESSARIO
+            String path = "/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml";
+            java.net.URL resource = getClass().getResource(path);
+
+            if (resource == null) {
+                System.err.println("DEBUG: ERRORE - File FXML non trovato al percorso: " + path);
+                return;
+            }
+
+            FXMLLoader loader = new FXMLLoader(resource);
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Assistenza Maze Bank");
+            stage.setScene(new Scene(root));
+            stage.show();
+            System.out.println("DEBUG: Popup aperto correttamente!");
+
+        } catch (Exception e) {
+            System.err.println("DEBUG: Errore fatale durante il caricamento del popup!");
+            e.printStackTrace(); // <--- Questo stamperà l'errore vero (es. ID mancante)
+        }
+    }}

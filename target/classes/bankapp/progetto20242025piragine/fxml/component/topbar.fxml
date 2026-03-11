@@ -92,6 +92,9 @@
          <image>
             <Image url="@../../imgs/LogoAssistenza.png" />
          </image>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
+         </effect>
         </ImageView>
 
     </children>

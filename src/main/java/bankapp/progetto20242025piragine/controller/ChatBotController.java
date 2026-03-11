@@ -5,55 +5,54 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 
-public class ChatBotController{
+public class ChatBotController {
 
     @FXML private TextArea chatDisplay;
     @FXML private TextField inputField;
 
-    // Colleghiamo la classe di utilità che hai creato
+    // Linking the utility class you created
     private final ChatBot geminiService = new ChatBot();
 
     @FXML
     public void initialize() {
-        // Messaggio di benvenuto automatico all'avvio
-        chatDisplay.appendText("PiragineBot: Benvenuto in Piragine Bank! Come posso aiutarti oggi?\n\n");
+        // Automatic welcome message on startup
+        chatDisplay.appendText("MazeBot: Benvenuto in Maze Bank, come posso aiutarti?\n\n");
     }
 
     @FXML
     private void onSendButtonClick() {
-        String messaggioUtente = inputField.getText();
-        if (messaggioUtente == null || messaggioUtente.trim().isEmpty()) return;
+        String userMessage = inputField.getText();
+        if (userMessage == null || userMessage.trim().isEmpty()) return;
 
-        processaMessaggio(messaggioUtente);
+        processMessage(userMessage);
         inputField.clear();
     }
 
-    // Gestione dei pulsanti rapidi (come nello screenshot dell'assistenza)
+    // Quick button handling (as seen in the support screenshot)
     @FXML
-    private void onSaldoButtonClick() {
+    private void onBalanceButtonClick() {
         chatDisplay.appendText("Tu: [Richiesta Saldo]\n");
-        processaMessaggio("Vorrei conoscere il mio saldo attuale.");
+        processMessage("Vorrei conoscere il mio saldo attuale.");
     }
 
     @FXML
-    private void onSicurezzaButtonClick() {
+    private void onSecurityButtonClick() {
         chatDisplay.appendText("Tu: [Info Sicurezza]\n");
-        processaMessaggio("Dammi dei consigli su come proteggere il mio conto.");
+        processMessage("Dammi dei consigli su come proteggere il mio conto.");
     }
 
-    // Metodo centrale per gestire la comunicazione con l'IA
-    private void processaMessaggio(String testo) {
-        chatDisplay.appendText("Tu: " + testo + "\n");
+    // Central method to handle communication with the AI
+    private void processMessage(String text) {
+        chatDisplay.appendText("Tu: " + text + "\n");
 
-        // IMPORTANTE: Eseguiamo l'IA in un thread separato per non bloccare la grafica (UI)
+        // IMPORTANT: Run the AI in a separate thread to avoid freezing the UI
         new Thread(() -> {
-            String rispostaIA = geminiService.generaRisposta(testo);
+            String aiResponse = geminiService.generateResponse(text);
 
-            // Torniamo sul thread principale di JavaFX per aggiornare l'interfaccia
+            // Switch back to the JavaFX Application Thread to update the UI
             Platform.runLater(() -> {
-                chatDisplay.appendText("PiragineBot: " + rispostaIA + "\n\n");
+                chatDisplay.appendText("MazeBot: " + aiResponse + "\n\n");
             });
         }).start();
     }
