@@ -7,14 +7,18 @@ import bankapp.progetto20242025piragine.util.VisualNotificationCreator;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
+import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import javax.management.Notification;
@@ -34,8 +38,7 @@ public class TopbarController extends BranchController {
     @FXML
     private ImageView reloadPageButton;
     @FXML
-    private ImageView assistanceButton;
-
+    private Button assistanceButton;
 
 
     private AnchorPane notificationAnchorPane;
@@ -169,31 +172,47 @@ public class TopbarController extends BranchController {
             e.printStackTrace();
         }
     }
-    @FXML
-    public void showAssistance() {
-        System.out.println("DEBUG: Click sul logo rilevato!");
+
+
+    public void showBottomRightPopup(String fxmlPath, Stage primaryStage) {
         try {
-            // CORREGGI IL PERCORSO SE NECESSARIO
-            String path = "/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml";
-            java.net.URL resource = getClass().getResource(path);
-
-            if (resource == null) {
-                System.err.println("DEBUG: ERRORE - File FXML non trovato al percorso: " + path);
-                return;
-            }
-
-            FXMLLoader loader = new FXMLLoader(resource);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
 
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Assistenza Maze Bank");
-            stage.setScene(new Scene(root));
-            stage.show();
-            System.out.println("DEBUG: Popup aperto correttamente!");
+            Stage popupStage = new Stage();
+            popupStage.initStyle(StageStyle.TRANSPARENT);
 
-        } catch (Exception e) {
-            System.err.println("DEBUG: Errore fatale durante il caricamento del popup!");
-            e.printStackTrace(); // <--- Questo stamperà l'errore vero (es. ID mancante)
+            // Chiude se clicchi fuori dal popup
+            popupStage.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+                if (!isNowFocused) {
+                    popupStage.close();
+                }
+            });
+
+            Scene scene = new Scene(root);
+            scene.setFill(Color.TRANSPARENT);
+            popupStage.setScene(scene);
+
+            // Importante: mostrare prima di calcolare le dimensioni
+            popupStage.show();
+
+            // CALCOLO POSIZIONE RISPETTO ALLA FINESTRA PRINCIPALE
+            // Coordinata X: Inizio finestra + Larghezza finestra - Larghezza popup - Margine
+            double x = primaryStage.getX() + primaryStage.getWidth() - popupStage.getWidth() - 20;
+
+            // Coordinata Y: Inizio finestra + Altezza finestra - Altezza popup - Margine
+            double y = primaryStage.getY() + primaryStage.getHeight() - popupStage.getHeight() - 20;
+
+            popupStage.setX(x);
+            popupStage.setY(y);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }}
+    }
+    @FXML
+    public void showAssistance() {
+        showBottomRightPopup("/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml", (Stage) backArrowButton.getScene().getWindow());
+
+    }
+}
