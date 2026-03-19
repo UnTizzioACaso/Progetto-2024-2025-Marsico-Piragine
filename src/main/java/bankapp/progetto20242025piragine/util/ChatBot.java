@@ -26,7 +26,7 @@ public class ChatBot {
     public ChatBot() {
         // Configuring Gemini with your API Key
         GoogleAiGeminiChatModel model = GoogleAiGeminiChatModel.builder()
-                .apiKey("AIzaSyCRxVRF0VhnbIBBZmrC7AFw-BQNgaD2n7A")
+                .apiKey("AIzaSyC4Z95BbUFRNM69JxtOQtPco_v6xv0yxZA")
                 .modelName("gemini-flash-latest") // Riportiamolo al nome base
                 .timeout(java.time.Duration.ofSeconds(60))
                 .logRequestsAndResponses(true)

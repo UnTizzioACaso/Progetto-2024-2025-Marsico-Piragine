@@ -29,19 +29,6 @@ public class ChatBotController {
         inputField.clear();
     }
 
-    // Quick button handling (as seen in the support screenshot)
-    @FXML
-    private void onBalanceButtonClick() {
-        chatDisplay.appendText("Tu: [Richiesta Saldo]\n");
-        processMessage("Vorrei conoscere il mio saldo attuale.");
-    }
-
-    @FXML
-    private void onSecurityButtonClick() {
-        chatDisplay.appendText("Tu: [Info Sicurezza]\n");
-        processMessage("Dammi dei consigli su come proteggere il mio conto.");
-    }
-
     // Central method to handle communication with the AI
     private void processMessage(String text) {
         chatDisplay.appendText("Tu: " + text + "\n");
