@@ -1,52 +1,67 @@
 package bankapp.progetto20242025piragine.util;
 
-import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;
-import dev.langchain4j.service.AiServices;
-import dev.langchain4j.service.SystemMessage;
+import com.google.genai.Client;
+import com.google.genai.types.Content;
+import com.google.genai.types.GenerateContentResponse;
+import com.google.genai.types.Part;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChatBot {
 
-    // This interface defines the bot's "personality"
-    public interface VirtualAssistant {
-        @SystemMessage("""
-                Sei l'assistente virtuale della 'Maze Bank' un'applicazione fatta da studenti universitari come progetto d'esame.
-                Il tuo obiettivo è aiutare i clienti con informazioni su:
-                - Blocco carta, il blocc avviene andando su "carte" , selezioni la carta che vuoi bloccare -> gestisci -> blocca carta
-                - Creazione carta (non esiste debito o credito)carte -> crea nuova carta -> ricorda di ineserire un mnickname e un limite di spesa valido ->  crea carta
-                - Spiegare cos'è un IBAN.
-                - Dare consigli sulla sicurezza (es. non condividere mai la password).
-                Sii professionale e gentile.
-                non ricordare il menù ogni volta, sii piu un assistente, formatta bene il codice
-            """)
-        String ask(String userMessage);
-    }
+    // Il client per comunicare con Google Gemini
+    private final Client client = new Client();
 
-    private final VirtualAssistant bot;
+    // Lista per mantenere la cronologia (così il bot ha memoria)
+    private final List<Content> history = new ArrayList<>();
 
-    public ChatBot() {
-        // Configuring Gemini with your API Key
-        GoogleAiGeminiChatModel model = GoogleAiGeminiChatModel.builder()
-                .apiKey("AIzaSyC4Z95BbUFRNM69JxtOQtPco_v6xv0yxZA")
-                .modelName("gemini-flash-latest") // Riportiamolo al nome base
-                .timeout(java.time.Duration.ofSeconds(60))
-                .logRequestsAndResponses(true)
-                .build();
 
-        this.bot = AiServices.create(VirtualAssistant.class, model);
-        // Creating the AI service
-    }
-
-    public String generateResponse(String text) {
+    public String Chat(String text) {
         try {
-            System.out.println("DEBUG: Provo a contattare Gemini...");
-            return bot.ask(text);
-        } catch (Exception e) {
-            // QUESTO CI DIRÀ TUTTO:
-            System.err.println("--- LOG ERRORE GEMINI ---");
-            e.printStackTrace();
+            // 1. Se è il primo messaggio, impostiamo il comportamento da Maze Bank
+            if (history.isEmpty()) {
+                history.add(Content.builder()
+                        .role("user")
+                        .parts(List.of(Part.builder()
+                                .text("Sei l'assistente virtuale di Maze Bank. " +
+                                        " Sei l'assistente virtuale della 'Maze Bank' un'applicazione fatta da studenti universitari come progetto d'esame.\n" +
+                                        "                Il tuo obiettivo è aiutare i clienti con informazioni su:\n" +
+                                        "                - Blocco carta, il blocc avviene andando su \"carte\" , selezioni la carta che vuoi bloccare -> gestisci -> blocca carta\n" +
+                                        "                - Creazione carta (non esiste debito o credito)carte -> crea nuova carta -> ricorda di ineserire un mnickname e un limite di spesa valido ->  crea carta\n" +
+                                        "                - Spiegare cos'è un IBAN.\n" +
+                                        "                - Dare consigli sulla sicurezza (es. non condividere mai la password).\n" +
+                                        "                Sii professionale e gentile.\n" +
+                                        "                non ricordare il menù ogni volta, sii piu un assistente, formatta bene il codice")
+                                .build()))
+                        .build());
+            }
 
-            // Restituisci l'errore specifico alla chat per vederlo subito
-            return "Errore Tecnico: " + e.getClass().getSimpleName() + " - " + e.getMessage();
+            // 2. Aggiungiamo il messaggio dell'utente alla storia
+            history.add(Content.builder()
+                    .role("user")
+                    .parts(List.of(Part.builder().text(text).build()))
+                    .build());
+
+            // 3. Chiamata al modello Gemini (Flash 3 è perfetto per velocità e costi)
+            GenerateContentResponse response = client.models.generateContent(
+                    "gemini-3-flash-preview",
+                    history,
+                    null
+            );
+
+            String botResponse = response.text();
+
+            // 4. Salviamo la risposta dell'AI nella storia
+            history.add(Content.builder()
+                    .role("model")
+                    .parts(List.of(Part.builder().text(botResponse).build()))
+                    .build());
+
+            return botResponse;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Errore di connessione: " + e.getLocalizedMessage();
         }
     }
 }

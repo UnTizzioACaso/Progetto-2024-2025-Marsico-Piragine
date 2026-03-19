@@ -1,6 +1,11 @@
 package bankapp.progetto20242025piragine.controller;
 
 import bankapp.progetto20242025piragine.util.ChatBot;
+import com.google.genai.Client;
+import com.google.genai.types.GenerateContentConfig;
+import com.google.genai.types.GenerateContentResponse;
+import com.google.genai.types.ThinkingConfig;
+import com.google.genai.types.ThinkingLevel;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -9,7 +14,8 @@ import javafx.scene.control.TextField;
 public class ChatBotController {
 
     @FXML private TextArea chatDisplay;
-    @FXML private TextField inputField;
+    @FXML
+    private TextField inputField;
 
     // Linking the utility class you created
     private final ChatBot geminiService = new ChatBot();
@@ -35,7 +41,7 @@ public class ChatBotController {
 
         // IMPORTANT: Run the AI in a separate thread to avoid freezing the UI
         new Thread(() -> {
-            String aiResponse = geminiService.generateResponse(text);
+            String aiResponse = geminiService.Chat(text);
 
             // Switch back to the JavaFX Application Thread to update the UI
             Platform.runLater(() -> {
