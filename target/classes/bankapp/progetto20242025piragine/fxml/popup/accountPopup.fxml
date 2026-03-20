@@ -26,7 +26,10 @@
         <Separator layoutX="11.0" layoutY="118.0" prefWidth="562.1" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
 
         <!-- Theme row -->
-        <Label fx:id="themeApplicationAccountPopupLabel" layoutX="35.0" layoutY="136.0" style="-fx-font-size: 13px; -fx-text-fill: #5F6368;" text="Tema applicazione" AnchorPane.leftAnchor="35.0" />
+        <Label id="labelAccountPopup" fx:id="themeApplicationAccountPopupLabel" layoutX="34.0" layoutY="135.0" style="-fx-text-fill: #5F6368;" text="Tema applicazione" AnchorPane.leftAnchor="34.0">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
         <Label fx:id="themeColorAccountPopupLabel" layoutX="319.0" layoutY="134.0" style="-fx-text-fill: #1F1F1F; -fx-mark-color: #10A37F; -fx-padding: 2 0;" text="Chiaro" AnchorPane.rightAnchor="59.0" />
         <RadioButton fx:id="themeColorAccountPopupRadioButton" layoutX="360.0" layoutY="136.0" mnemonicParsing="false" onAction="#toggleTheme" AnchorPane.rightAnchor="37.0" />
 
@@ -42,9 +45,9 @@
             </effect>
         </Button>
 
-        <Label fx:id="nameSurnameAccountPopupLabel" layoutX="123.2" layoutY="27.4" text="Nome e Cognome" textFill="#0000008f" AnchorPane.leftAnchor="123.2" AnchorPane.topAnchor="27.4">
+        <Label id="nameAccountPopup" fx:id="nameSurnameAccountPopupLabel" layoutX="123.0" layoutY="26.0" prefHeight="27.0" prefWidth="232.0" text="Nome e Cognome" textFill="#0000008f" AnchorPane.leftAnchor="123.0" AnchorPane.topAnchor="26.0">
             <font>
-                <Font size="16.0" />
+                <Font size="18.0" />
             </font>
         </Label>
     </children>

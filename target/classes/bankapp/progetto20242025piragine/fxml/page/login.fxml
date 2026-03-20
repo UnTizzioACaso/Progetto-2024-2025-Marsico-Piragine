@@ -113,8 +113,8 @@
 
             <GridPane maxHeight="40.0" maxWidth="300.0" minHeight="-Infinity" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                 <columnConstraints>
-                    <ColumnConstraints percentWidth="47.0" />
-                    <ColumnConstraints percentWidth="53.0" />
+                    <ColumnConstraints percentWidth="50.0" />
+                    <ColumnConstraints percentWidth="50.0" />
                 </columnConstraints>
 
                 <CheckBox fx:id="rememberAccessCheckBox" onAction="#deleteEmail" text="Ricorda l'accesso" GridPane.columnIndex="0">

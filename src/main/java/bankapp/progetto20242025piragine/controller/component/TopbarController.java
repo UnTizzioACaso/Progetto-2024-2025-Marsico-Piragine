@@ -7,7 +7,6 @@ import bankapp.progetto20242025piragine.util.VisualNotificationCreator;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -40,11 +39,13 @@ public class TopbarController extends BranchController {
     @FXML
     private Button assistanceButton;
 
+    private Stage popupStage;
 
     private AnchorPane notificationAnchorPane;
     private NotificationSliderController notificationAnchorPaneController;
     private Stack<String> backwardStack = new Stack<>();
     private Stack<String> forwardStack = new Stack<>();
+
 
     @Override
     public void initializer()
@@ -179,13 +180,13 @@ public class TopbarController extends BranchController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
 
-            Stage popupStage = new Stage();
+            popupStage = new Stage();
             popupStage.initStyle(StageStyle.TRANSPARENT);
 
             // Chiude se clicchi fuori dal popup
             popupStage.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
                 if (!isNowFocused) {
-                    popupStage.close();
+                    popupStage.hide();
                 }
             });
 
@@ -206,13 +207,20 @@ public class TopbarController extends BranchController {
             popupStage.setX(x);
             popupStage.setY(y);
 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     @FXML
     public void showAssistance() {
-        showBottomRightPopup("/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml", (Stage) backArrowButton.getScene().getWindow());
-
+        if (popupStage == null)
+        {
+            showBottomRightPopup("/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml", (Stage) backArrowButton.getScene().getWindow());
+        }
+        else
+        {
+            popupStage.show();
+        }
     }
 }

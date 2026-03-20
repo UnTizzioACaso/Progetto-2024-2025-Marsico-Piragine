@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 
-<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="550.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController">
+<GridPane id="rootGridPaneBankSettingPage" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="550.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController">
 
     <padding>
         <Insets bottom="25" left="25" right="25" top="25" />
@@ -30,7 +31,7 @@
     <children>
 
         <!-- LINEA ROSSA (Separator) -->
-        <Separator prefWidth="760" style="-fx-background-color: ff0000; -fx-border-color: ff0000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <Separator id="separatorBankAccountSettingsPage" prefWidth="760" style="-fx-background-color: ff0000; -fx-border-color: ff0000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets bottom="10.0" top="10.0" />
             </GridPane.margin>
@@ -46,10 +47,21 @@
          <image>
             <Image url="@../../imgs/LogoMazeBank2.png" />
          </image>
+         <effect>
+            <ColorAdjust brightness="-0.32" contrast="1.0" saturation="1.0">
+               <input>
+                  <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </InnerShadow>
+               </input>
+            </ColorAdjust>
+         </effect>
       </ImageView>
 
                     <!-- CARD (contenuto) -->
-        <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="760" minHeight="10.0" prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: white; -fx-background-radius: 26;                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.20), 24, 0.18, 0, 8);" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <GridPane id="gridPaneBankAccountSetting" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="760" minHeight="10.0" prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: white; -fx-background-radius: 26;                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.20), 24, 0.18, 0, 8);" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
 
                         <padding>
                 <Insets left="32.0" right="32.0" />
@@ -61,14 +73,17 @@
             </columnConstraints>
 
                         <!-- INFORMAZIONI -->
-            <Label style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="INFORMAZIONI CONTO" GridPane.columnSpan="2">
+            <Label id="label1BankAccountSettingsPage" style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="INFORMAZIONI CONTO" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
             <effect>
                <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                   <color>
                      <Color opacity="0.25" />
                   </color>
                </InnerShadow>
-            </effect></Label>
+            </effect>
+            <GridPane.margin>
+               <Insets top="10.0" />
+            </GridPane.margin></Label>
 
                         <Label style="-fx-font-size: 15px;" text="IBAN:" GridPane.rowIndex="1" />
             <Label fx:id="ibanLabel" style="-fx-font-size: 15px;" text="IT96W0585611601050570111111" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -86,7 +101,7 @@
             </Separator>
 
                         <!-- GESTIONE -->
-            <Label style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="GESTIONE" GridPane.columnSpan="2" GridPane.rowIndex="5">
+            <Label id="label2BankAccountSettingsPage" style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="GESTIONE" GridPane.columnSpan="2" GridPane.rowIndex="5">
             <effect>
                <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                   <color>
@@ -98,7 +113,7 @@
                         <Label style="-fx-font-size: 15px;" text="Soglia massima per invii rapidi" GridPane.rowIndex="6" />
 
                         <HBox alignment="CENTER_RIGHT" spacing="14" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                <TextField fx:id="sendingLimitTextfield" alignment="CENTER" prefHeight="38.0" prefWidth="90" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #cfcfcf;" text="50" />
+                <TextField id="textFieldBankAccountSettingsPage" fx:id="sendingLimitTextfield" alignment="CENTER" prefHeight="38.0" prefWidth="90" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #cfcfcf;" text="50" />
                 <Button fx:id="saveLimitButton" prefHeight="32.0" prefWidth="129.0" style="-fx-background-color: ff0000; -fx-font-weight: 800; -fx-padding: 10 22; -fx-background-radius: 8; -fx-text-fill: white;" text="SALVA SOGLIA">
                <effect>
                   <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
@@ -116,7 +131,7 @@
             </Separator>
 
                         <!-- SICUREZZA -->
-            <Label style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="SICUREZZA" GridPane.columnSpan="2" GridPane.rowIndex="8">
+            <Label id="label3BankAccountSettingsPage" style="-fx-text-fill: ff0000; -fx-font-size: 18px; -fx-font-weight: 800;" text="SICUREZZA" GridPane.columnSpan="2" GridPane.rowIndex="8">
             <effect>
                <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                   <color>
@@ -135,8 +150,14 @@
             </effect></Button>
 
                         <HBox alignment="CENTER_LEFT" spacing="12" GridPane.columnSpan="2" GridPane.rowIndex="10">
-                <CheckBox fx:id="richiediSempreCheck" nodeOrientation="RIGHT_TO_LEFT" selected="true" style="-fx-font-size: 15px;" text="Richiedi sempre il codice anche per invii rapidi" />
-                <Button prefHeight="28" prefWidth="28" style="-fx-background-color: #efefef; -fx-background-radius: 999;                                -fx-font-weight: 900; -fx-text-fill: #444;" text="i" />
+                <CheckBox id="checkBoxBankAccountSettingsPage" fx:id="richiediSempreCheck" nodeOrientation="RIGHT_TO_LEFT" selected="true" style="-fx-font-size: 15px;" text="Richiedi sempre il codice anche per invii rapidi">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></CheckBox>
+                <Button id="buttonBankAccountSettingsPage" prefHeight="28" prefWidth="28" style="-fx-background-color: #efefef; -fx-background-radius: 999;                                -fx-font-weight: 900; -fx-text-fill: #444;" text="i">
+               <HBox.margin>
+                  <Insets left="-5.0" />
+               </HBox.margin></Button>
             </HBox>
 
                         <Separator GridPane.columnSpan="2" GridPane.rowIndex="11">

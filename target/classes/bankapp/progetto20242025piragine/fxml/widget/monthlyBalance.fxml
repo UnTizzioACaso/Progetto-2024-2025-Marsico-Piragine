@@ -37,7 +37,7 @@
          <children>
             <Label fx:id="incomesLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Entrate" textFill="WHITE">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
          </children>
@@ -49,7 +49,7 @@
          <children>
             <Label fx:id="expensesLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Uscite" textFill="WHITE">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
             </Label>
          </children>

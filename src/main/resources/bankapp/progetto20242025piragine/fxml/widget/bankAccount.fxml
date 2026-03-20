@@ -14,8 +14,8 @@
 
 <AnchorPane fx:id="bankAccountWidget" maxHeight="250.0" maxWidth="400.0" minHeight="40.0" minWidth="40.0" prefHeight="183.0" prefWidth="401.0" style="-fx-background-radius: 18; -fx-background-color: ff0000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.BankAccountController">
    <children>
-      <Region maxWidth="400.0" minWidth="0.0" prefHeight="176.0" prefWidth="401.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 10;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Label fx:id="labelBankAccount" alignment="CENTER" layoutX="42.0" layoutY="45.0" prefHeight="45.0" prefWidth="157.0" text="-----,-- €" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="45.0">
+      <Region id="regionBankAccount" maxWidth="400.0" minWidth="0.0" prefHeight="176.0" prefWidth="401.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 10;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label id="labelBankAccount" fx:id="labelBankAccount" alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="45.0" prefHeight="45.0" prefWidth="157.0" text="-----,-- €" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="45.0">
          <font>
             <Font size="30.0" />
          </font>
@@ -44,9 +44,9 @@
                      </color>
                   </InnerShadow>
                </effect></Button>
-            <Button fx:id="accountSettingsButton" minWidth="35.0" mnemonicParsing="false" onAction="#openAccountSettings" prefHeight="34.0" prefWidth="35.0">
+            <Button id="buttonBankAccount" fx:id="accountSettingsButton" minWidth="35.0" mnemonicParsing="false" onAction="#openAccountSettings" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="imageViewBankAccount" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../imgs/settingsicon.png" />
                      </image>
@@ -59,11 +59,4 @@
          </children>
       </HBox>
    </children>
-   <effect>
-      <InnerShadow choke="0.17" height="53.62" offsetX="-10.0" offsetY="-10.0" radius="27.049999999999997" width="56.58">
-         <color>
-            <Color opacity="0.24521072208881378" />
-         </color>
-      </InnerShadow>
-   </effect>
 </AnchorPane>

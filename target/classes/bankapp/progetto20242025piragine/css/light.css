@@ -1,40 +1,117 @@
-#root {
-    -fx-background-color: white;
-    -fx-background-radius: 12;
+/* ================= ROOT ================= */
+
+/* ==========================================================
+   SCROLLBAR UNIFICATE (TUTTI I COMPONENTI)
+   ========================================================== */
+
+.scroll-bar {
+    -fx-background-color: transparent !important;
 }
 
-.anchor-pane {
-    -fx-background-color: white;
+.scroll-bar .track {
+    -fx-background-color: #8b0000 !important;
+    -fx-background-radius: 8 !important;
+    -fx-border-color: transparent !important;
 }
 
-#root .label {
-    -fx-text-fill: black;
+.scroll-bar .thumb {
+    -fx-background-color: #ff0000 !important;
+    -fx-background-radius: 8 !important;
 }
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #ff0000 !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.25), 28, 0.17, -10, -10) !important;
+}
+
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #cc0000 !important;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button,
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: transparent !important;
+    -fx-padding: 0 !important;
+    -fx-shape: "" !important;
+    -fx-max-width: 0 !important;
+}
+
+.scroll-bar:vertical {
+    -fx-pref-width: 12 !important;
+}
+
+.scroll-bar:horizontal {
+    -fx-pref-height: 12 !important;
+    -fx-padding: 0 15 0 15 !important;
+}
+
+/* ==========================================================
+   CONFIGURAZIONE SCROLLPANE SPECIFICI
+   ========================================================== */
+
+.scroll-pane {
+    -fx-background-color:  e4e4e4 !important;
+    -fx-padding: 0 !important;
+    -fx-background-radius: 30;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent !important;
+}
+
+/* ==========================================================
+   GESTIONE COLORI E CONTRASTO (EFFETTO BORDINO)
+   ========================================================== */
+
+/* PARTE SINISTRA: Bianca */
+#scrollPaneFriends,
+#gridPaneFriends,
+#AnchorPaneFriendsPage,
+#regionFriend,
+#friendsVBox,
+#widgetsVBox {
+    -fx-background-color: white !important;
+}
+
+/* PARTE DESTRA: Grigia (Il contrasto con il bianco crea il "bordino") */
+#anchorPaneChat,
+#scrollPaneChat,
+#chatVBox,
+#notificationVBox,
+#scrollPaneAddWidget01,
+#favouritesCardScrollPane {
+    -fx-background-color: #e4e4e4 !important;
+}
+
 
 #eyeButton {
-    -fx-text-fill: black;
+    -fx-text-fill: black !important;
 }
 
-#accessTitleLabel{
-    -fx-text-fill: white;
+/* ==========================================================
+   INPUT E SEARCH BAR
+   ========================================================== */
+
+#friendsSearchBar {
+    -fx-background-color: #f2f2f2 !important;
+    -fx-text-fill: black !important;
+    -fx-prompt-text-fill: #8a8a8a !important;
+    -fx-background-radius: 10;
 }
 
-#themeApplicationAccountPopupLabel,
-#themeColorAccountPopupLabel {
-    -fx-text-fill: black;
-}
+/*#transationHistoryTextField, #spendingLimitTextField {
+    -fx-background-color: #f2f2f2 !important;
+    -fx-text-fill: black !important;
+    -fx-border-color: #d9d9d9 !important;
+}*/
 
-#registerTitleLabel1,
-#registerTitleLabel2,
-#registerTitleLabel3 {
-    -fx-text-fill: white;
-}
+/* ==========================================================
+   BUTTON E MENU
+   ========================================================== */
 
-.radio-button {
-    -fx-text-fill: #1F1F1F;
-}
-
-#root .button {
+.button {
     -fx-text-fill: white;
 }
 
@@ -43,55 +120,51 @@
     -fx-text-fill: white;
 }
 
-#gridPaneFriends,
-#AnchorPaneFriendsPage,
-#regionFriend,
-#scrollPaneFriends,
-#scrollPaneFriends .viewport,
-#scrollPaneFriends .content,
-#scrollPaneFriends .corner,
-#friendsVBox {
+.context-menu {
     -fx-background-color: white;
-}
-
-/* BLOCCO VECCHIO (LO LASCIO INALTERATO COME RICHIESTO) */
-#anchorePaneFriends2,
-#scrollPaneFriends2,
-#scrollPaneFriends2 .viewport,
-#scrollPaneFriends2 .content,
-#scrollPaneFriends2 .corner,
-#chatVBox {
-    -fx-background-color: #e4e4e4;
-}
-
-/* ========================= */
-/* 🔥 AGGIUNTA CORREZIONE 🔥 */
-/* ========================= */
-
-#anchorPaneChat,
-#scrollPaneChat,
-#scrollPaneChat .viewport,
-#scrollPaneChat .content,
-#scrollPaneChat .corner,
-#chatVBox {
-    -fx-background-color: #e4e4e4;
-}
-
-/* ========================= */
-
-.date-picker {
-    -fx-background-color: #f2f2f2;
-    -fx-background-radius: 10;
     -fx-border-color: #d9d9d9;
-    -fx-border-radius: 10;
+}
+
+.context-menu .label {
+    -fx-text-fill: black;
+}
+
+/* ==========================================================
+   DATE PICKER
+   ========================================================== */
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #ff0000;
+    -fx-effect: innershadow(
+        three-pass-box,
+        rgba(0,0,0,0.25),
+        27.63,
+        0.17,
+        -10,
+        -10
+    );
+}
+
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup .month-year-pane .button {
+    -fx-background-color: transparent;
+    -fx-mark-color: white;
+}
+
+.date-picker-popup .left-arrow,
+.date-picker-popup .right-arrow {
+    -fx-background-color: white;
 }
 
 .date-picker > .arrow-button {
     -fx-background-color: #ff0000;
-    -fx-background-radius: 8;
     -fx-effect: innershadow(
         three-pass-box,
-        rgba(0, 0, 0, 0.15),
+        rgba(0,0,0,0.15),
         27.63,
         0.17,
         -10,
@@ -102,50 +175,21 @@
 .date-picker > .arrow-button > .arrow {
     -fx-background-color: white;
 }
+/* ==========================================================
+   ROOT E VARIE
+   ========================================================== */
 
-.date-picker-popup .month-year-pane {
-    -fx-background-color: #ff0000 !important;
-    -fx-effect: innershadow(
-        three-pass-box,
-        rgba(0, 0, 0, 0.25),
-        27.63,
-        0.17,
-        -10,
-        -10
-    ) !important;
+#root {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
 }
 
-.date-picker-popup .month-year-pane .label {
-    -fx-text-fill: white !important;
-    -fx-font-weight: bold;
+.separator {
+    -fx-opacity: 1 !important;
 }
 
-.date-picker-popup .month-year-pane .button {
-    -fx-background-color: transparent !important;
-    -fx-mark-color: white !important;
-}
-
-.date-picker-popup .left-arrow,
-.date-picker-popup .right-arrow {
-    -fx-background-color: white !important;
-}
-
-.date-picker-popup .day-cell:selected {
-    -fx-background-color: #ff0000 !important;
-    -fx-text-fill: white !important;
-}
-
-.date-picker-popup .day-cell:hover {
-    -fx-background-color: rgba(255, 0, 0, 0.20) !important;
-}
-
-.date-picker-popup .day-cell:today {
-    -fx-border-color: rgba(255, 0, 0, 0.55) !important;
-    -fx-border-width: 1 !important;
-}
-
-.menu-button .arrow {
-    -fx-background-color: white !important;
+Line {
+    -fx-stroke: #595959 !important;
 }
 
 #regionChat {
@@ -154,125 +198,109 @@
     -fx-border-width: 2 !important;
 }
 
-#notificationVBox {
-    -fx-background-color: #e4e4e4 !important;
+/* ================= FAVOURITES SCROLLPANE (ORIZZONTALE) ================= */
 
-}
-
-#notificationAnchorPane {
-    -fx-border-color: black !important;
-    -fx-border-width: 0.25;
-}
-
-#vBoxNotificationSlider {
-    -fx-background-color: #ebebeb !important;
-    -fx-border-color: grey !important;
-    -fx-border-width: 0.20;
-}
-
-
-
-.scroll-pane .viewport {
-    -fx-background-color: transparent;
-}
-
-/* ScrollBar base */
-.scroll-bar {
-    -fx-background-color: transparent;
-}
-
-/* Track (la barra dietro) */
-.scroll-bar .track {
-    -fx-background-color: #8b0000;
-    -fx-background-radius: 8;
-}
-
-/* Thumb normale */
-.scroll-bar .thumb {
-    -fx-background-color: #ff0000;
-    -fx-background-radius: 8;
-}
-
-/* Hover - effetto InnerShadow rosso */
-.scroll-bar .thumb:hover {
-    -fx-background-color: #ff0000;
-    -fx-effect: innershadow(three-pass-box, #ff0000, 28, 0.17, -10, -10);
-}
-
-/* Quando viene cliccata */
-.scroll-bar .thumb:pressed {
-    -fx-background-color: #cc0000;
-    -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6);
-}
-
-/* ELIMINA FRECCE */
-.scroll-bar .increment-button,
-.scroll-bar .decrement-button {
-    -fx-padding: 0;
-    -fx-background-color: transparent;
-}
-
-.scroll-bar .increment-arrow,
-.scroll-bar .decrement-arrow {
-    -fx-shape: "";
-    -fx-padding: 0;
-}
-
-/* ScrollPane di sfondo */
-#favouritesCardScrollPane {
-    -fx-background-color: #4a4a4a;
-}
-
-/* Viewport trasparente */
-#favouritesCardScrollPane .viewport {
-    -fx-background-color: transparent;
-}
-
-/* ScrollBar orizzontale */
 #favouritesCardScrollPane .scroll-bar:horizontal {
-    -fx-padding: 0 15  0 15;
-    -fx-background-color: transparent;
+    -fx-padding: 0 15 0 15 !important;
+    -fx-background-color: transparent !important;
 }
 
-/* Track */
-#favouritesCardScrollPane .scroll-bar:horizontal .track {
-    -fx-background-color: #8b0000;
-    -fx-background-radius: 8;
+
+
+#gridPaneTransictionHistory{
+    -fx-background-color: e4e4e4 !important;
 }
 
-/* Thumb */
-#favouritesCardScrollPane .scroll-bar:horizontal .thumb {
-    -fx-background-color: #ff0000;
-    -fx-background-radius: 8;
+#scrollPaneTransictionHistory{
+     -fx-background: e4e4e4 !important;
 }
 
-#favouritesCardScrollPane .scroll-bar:horizontal .thumb:hover {
-    -fx-effect: innershadow(three-pass-box, #ff0000, 28, 0.17, -10, -10);
+/* Seleziona la freccetta all'interno di tutti i MenuButton */
+.menu-button .arrow {
+    -fx-background-color: white !important;
 }
 
-#favouritesCardScrollPane .scroll-bar:horizontal .thumb:pressed {
-    -fx-background-color: #cc0000;
-    -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6);
+/* Opzionale: se vuoi cambiare colore anche quando ci passi sopra col mouse */
+.menu-button:hover .arrow {
+    -fx-background-color: #f0f0f0 !important;
 }
 
-#favouritesCardScrollPane .scroll-bar:horizontal .increment-button,
-#favouritesCardScrollPane .scroll-bar:horizontal .decrement-button,
-#favouritesCardScrollPane .scroll-bar:horizontal .increment-arrow,
-#favouritesCardScrollPane .scroll-bar:horizontal .decrement-arrow {
-    -fx-padding: 0;
-    -fx-background-color: transparent;
-    -fx-shape: "";
+#label1BankAccountSettingsPage,
+#label2BankAccountSettingsPage,
+#label3BankAccountSettingsPage {
+
+    -fx-text-fill: linear-gradient(to bottom,
+        #ff6666 0%,
+        #ff0000 45%,
+        #e60000 100%
+    ) !important;
+
+    -fx-effect: null !important
 }
 
-#favouritesCardScrollPane{
-    -fx-background-color:  #e4e4e4 !important;
+
+#separatorBankAccountSettingsPage {
+    -fx-opacity: 1 !important;
+    -fx-background-color: transparent !important;
+    /* Forza l'altezza di tutto il componente */
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
 }
 
-#buttonNotificationSlider{
-    -fx-background-radius:  6 !important;
-    -fx-font-weight: bold !important;
+#separatorBankAccountSettingsPage .line {
+    /* Fondamentale: togliamo il padding che schiaccia la linea */
+    -fx-padding: 0 !important;
+
+    /* Gradiente e reset bordi (il tuo codice) */
+    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+    -fx-stroke-width: 0 !important; /* Rimuovi lo stroke che blocca lo spessore */
+
+    /* Forza la linea a riempire tutto lo spazio dei 10px */
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+
 }
 
-#limitLabel{
-    -fx-font-weight: bold !important;
+/* 1. TESTO DEL CHECKBOX: Lo impostiamo NERO */
+#checkBoxBankAccountSettingsPage,
+#checkBoxBankAccountSettingsPage .label,
+#checkBoxBankAccountSettingsPage .text {
+    -fx-text-fill: black !important;
+}
+
+/* 2. IL QUADRATINO (BOX) - STATO NON SELEZIONATO (Bianco con bordo) */
+#checkBoxBankAccountSettingsPage .box {
+    /* Ripristina il look standard: bianco dentro e bordino grigio */
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, white !important;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2 !important;
+    -fx-background-radius: 3px !important;
+}
+
+/* 3. IL QUADRATINO (BOX) - STATO SELEZIONATO (Rosso Maze Bank) */
+#checkBoxBankAccountSettingsPage:selected .box {
+    -fx-background-color: #ff0000 !important;
+    -fx-background-insets: 0 !important;
+    -fx-background-radius: 3px !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10) !important;
+}
+
+/* 4. LA SPUNTA (MARK) */
+#checkBoxBankAccountSettingsPage .mark {
+    /* Invisibile di default per evitare il pallino */
+    -fx-background-color: transparent !important;
+    -fx-shape: "M1.23,6.32 L3.58,8.67 L8.77,3.48 L9.71,4.42 L3.58,10.55 L0.29,7.26 Z" !important;
+    -fx-background-insets: 0 !important;
+}
+
+/* Quando CLICCATO: la V appare bianca sul quadratino rosso */
+#checkBoxBankAccountSettingsPage:selected .mark {
+    -fx-background-color: white !important;
+}
+
+/* 5. FIX FOCUS (Evita che diventi azzurro al click) */
+#checkBoxBankAccountSettingsPage:focused .box {
+    -fx-faint-focus-color: transparent !important;
+    -fx-focus-color: transparent !important;
 }
