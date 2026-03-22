@@ -7,6 +7,6 @@ import javafx.scene.control.Label;
 public class ToFriendTransactionCloudController extends BranchController
 {
     @FXML
-    public Label valueLabel;
+    public Label textLabel;
 
 }

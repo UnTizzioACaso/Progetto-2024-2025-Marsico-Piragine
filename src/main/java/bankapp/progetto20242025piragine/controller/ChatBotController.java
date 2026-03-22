@@ -1,23 +1,63 @@
 package bankapp.progetto20242025piragine.controller;
 
+import bankapp.progetto20242025piragine.controller.component.FromFriendTransactionCloudController;
+import bankapp.progetto20242025piragine.controller.component.ToFriendTransactionCloudController;
 import bankapp.progetto20242025piragine.util.ChatBot;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 public class ChatBotController {
 
-    @FXML private TextArea chatDisplay;
+    @FXML private VBox chatDisplay;
     @FXML private TextField inputField;
 
     // Linking the utility class you created
     private final ChatBot geminiService = new ChatBot();
 
+    private void addUserCloud(String text)
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/toFriendTransactionCloud.fxml"));
+        try
+        {
+            Parent cloud = loader.load();
+            ToFriendTransactionCloudController controller= loader.getController();
+            controller.textLabel.setText(text);
+            chatDisplay.getChildren().add(cloud);
+            VBox.setMargin(cloud, new Insets(0, -100 , 0, 0));
+        }
+        catch (Exception e)
+        {
+            System.err.println("error creating user's text cloud " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    private void addBotCloud(String text)
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
+        try
+        {
+            Parent cloud = loader.load();
+            FromFriendTransactionCloudController controller= loader.getController();
+            controller.textLabel.setText(text);
+            chatDisplay.getChildren().add(cloud);
+        }
+        catch (Exception e)
+        {
+            System.err.println("error creating bot's text cloud " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void initialize() {
         // Automatic welcome message on startup
-        chatDisplay.appendText("MazeBot: Benvenuto in Maze Bank, come posso aiutarti?\n\n");
+        addBotCloud("MazeBot: Benvenuto in Maze Bank, come posso aiutarti?\n");
     }
 
     @FXML
@@ -30,21 +70,13 @@ public class ChatBotController {
     }
 
     // Quick button handling (as seen in the support screenshot)
-    @FXML
-    private void onBalanceButtonClick() {
-        chatDisplay.appendText("Tu: [Richiesta Saldo]\n");
-        processMessage("Vorrei conoscere il mio saldo attuale.");
-    }
 
-    @FXML
-    private void onSecurityButtonClick() {
-        chatDisplay.appendText("Tu: [Info Sicurezza]\n");
-        processMessage("Dammi dei consigli su come proteggere il mio conto.");
-    }
+
+
 
     // Central method to handle communication with the AI
     private void processMessage(String text) {
-        chatDisplay.appendText("Tu: " + text + "\n");
+        addUserCloud("Tu: " + text + "\n");
 
         // IMPORTANT: Run the AI in a separate thread to avoid freezing the UI
         new Thread(() -> {
@@ -52,7 +84,7 @@ public class ChatBotController {
 
             // Switch back to the JavaFX Application Thread to update the UI
             Platform.runLater(() -> {
-                chatDisplay.appendText("MazeBot: " + aiResponse + "\n\n");
+                addBotCloud("MazeBot: " + aiResponse + "\n");
             });
         }).start();
     }

@@ -15,14 +15,14 @@
 <AnchorPane fx:id="bankAccountWidget" maxHeight="250.0" maxWidth="400.0" minHeight="40.0" minWidth="40.0" prefHeight="183.0" prefWidth="401.0" style="-fx-background-radius: 18; -fx-background-color: ff0000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.BankAccountController">
    <children>
       <Region id="regionBankAccount" maxWidth="400.0" minWidth="0.0" prefHeight="176.0" prefWidth="401.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 10;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Label id="labelBankAccount" fx:id="labelBankAccount" alignment="CENTER" contentDisplay="CENTER" layoutX="42.0" layoutY="45.0" prefHeight="45.0" prefWidth="157.0" text="-----,-- €" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="45.0">
+      <Label id="labelBankAccount" fx:id="labelBankAccount" alignment="CENTER" contentDisplay="CENTER" layoutX="42.4" layoutY="51.0" prefHeight="45.0" prefWidth="157.0" text="-----,-- €" AnchorPane.bottomAnchor="78.6" AnchorPane.leftAnchor="42.4" AnchorPane.rightAnchor="42.39999999999998" AnchorPane.topAnchor="51.0">
          <font>
-            <Font size="30.0" />
+            <Font size="34.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="6.0" layoutY="109.0" prefHeight="45.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0">
+      <HBox alignment="CENTER" layoutY="109.0" prefHeight="46.0" prefWidth="400.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: ff0000; -fx-font-weight: 700; -fx-text-fill: white;" text="Aggiungi credito">
+            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: ff0000;" text="Aggiungi credito" textFill="WHITE">
                <effect>
                   <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                      <color>
@@ -31,9 +31,12 @@
                   </InnerShadow>
                </effect>
                <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin></Button>
-            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: ff0000; -fx-font-weight: 700; -fx-text-fill: white;" text="Invia denaro">
+                  <Insets left="20.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: ff0000;" text="Invia denaro" textFill="WHITE">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
@@ -43,10 +46,13 @@
                         <Color opacity="0.25" />
                      </color>
                   </InnerShadow>
-               </effect></Button>
+               </effect>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
             <Button id="buttonBankAccount" fx:id="accountSettingsButton" minWidth="35.0" mnemonicParsing="false" onAction="#openAccountSettings" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <ImageView id="imageViewBankAccount" fitHeight="29.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="imageViewBankAccount" fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../imgs/settingsicon.png" />
                      </image>
@@ -59,4 +65,11 @@
          </children>
       </HBox>
    </children>
+   <effect>
+      <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+         <color>
+            <Color opacity="0.25" />
+         </color>
+      </InnerShadow>
+   </effect>
 </AnchorPane>

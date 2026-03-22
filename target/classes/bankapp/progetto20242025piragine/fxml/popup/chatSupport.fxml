@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -12,6 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
@@ -66,13 +66,9 @@
         </Pane>
 
         <ScrollPane id="scrollPaneChatSupport" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: white; -fx-border-color: transparent; -fx-border: trasparent; -fx-background-color: trasparent;" GridPane.columnSpan="2" GridPane.rowIndex="1">
-            <content>
-                <TextArea id="textAreaChatSupport" fx:id="chatDisplay" editable="false" prefHeight="403.0" prefWidth="395.0" style="-fx-background-color: trasparent; -fx-text-fill: black; -fx-background: trasparent; -fx-border-color: trasparent; -fx-border: trasparent;" wrapText="true">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </TextArea>
-            </content>
+         <content>
+            <VBox fx:id="chatDisplay" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" />
+         </content>
         </ScrollPane>
 
         <AnchorPane id="anchorPaneChatSupport" prefHeight="60.0" prefWidth="400.0" style="-fx-background-radius: 0 0 19 19; -fx-background-color: trasparent; -fx-border-color: trasparent;" GridPane.columnSpan="2" GridPane.rowIndex="2">

@@ -83,22 +83,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #regionChat {
     -fx-border-color: #595959 !important;
     -fx-background-color: #4a4a4a !important;
@@ -140,11 +124,6 @@
     -fx-prompt-text-fill: #bdbdbd !important;
 }
 
-#transationHistoryTextField {
-    -fx-background-color: #4a4a4a !important;
-    -fx-text-fill: white !important;
-    -fx-prompt-text-fill: #bdbdbd !important;
-}
 
 #spendingLimitTextField {
     -fx-background-color: #3a3a3a !important;
@@ -162,49 +141,83 @@
 
 /* ================= DATE PICKER ================= */
 
+/* ================= DATE PICKER DARK THEME ================= */
+/* ================= DATE PICKER DARK STYLE (SIMPLE) ================= */
+
+/* Campo di testo principale */
+.date-picker {
+    -fx-background-color: #3a3a3a !important;
+}
+
+.date-picker > .text-field {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: white !important;
+}
+
+/* Bottone con la freccia */
+.date-picker > .arrow-button {
+    -fx-background-color: #ff0000 !important;
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white !important;
+}
+
+/* Finestra del calendario (Popup) */
+.date-picker-popup {
+    -fx-background-color: #4a4a4a !important;
+    -fx-border-color: #5a5a5a !important;
+}
+
+/* Header (Mese/Anno) */
 .date-picker-popup .month-year-pane {
-    -fx-background-color: #ff0000;
-    -fx-effect: innershadow(
-        three-pass-box,
-        rgba(0,0,0,0.25),
-        27.63,
-        0.17,
-        -10,
-        -10
-    );
+    -fx-background-color: #ff0000 !important;
 }
 
 .date-picker-popup .month-year-pane .label {
-    -fx-text-fill: black;
-    -fx-font-weight: bold;
-}
-
-.date-picker-popup .month-year-pane .button {
-    -fx-background-color: transparent;
-    -fx-mark-color: white;
+    -fx-text-fill: white !important;
 }
 
 .date-picker-popup .left-arrow,
 .date-picker-popup .right-arrow {
-    -fx-background-color: white;
+    -fx-background-color: white !important;
 }
 
-.date-picker > .arrow-button {
-    -fx-background-color: #ff0000;
-    -fx-effect: innershadow(
-        three-pass-box,
-        rgba(0,0,0,0.15),
-        27.63,
-        0.17,
-        -10,
-        -10
-    );
+/* Griglia dei giorni */
+.date-picker-popup .calendar-grid {
+    -fx-background-color: #4a4a4a !important;
 }
 
-.date-picker > .arrow-button > .arrow {
-    -fx-background-color: white;
+.date-picker-popup .day-name-cell {
+    -fx-text-fill: #bdbdbd !important;
 }
 
+.date-picker-popup .day-cell {
+    -fx-background-color: #4a4a4a !important;
+    -fx-text-fill: white !important;
+}
+
+/* Giorno corrente */
+.date-picker-popup .today {
+    -fx-text-fill: #ff0000 !important;
+}
+
+/* Giorno selezionato */
+.date-picker-popup .selected {
+    -fx-background-color: #ff0000 !important;
+    -fx-text-fill: white !important;
+}
+
+/* Hover sui giorni */
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #5a5a5a !important;
+}
+
+/* Giorni fuori dal mese corrente */
+.date-picker-popup .previous-month,
+.date-picker-popup .next-month {
+    -fx-text-fill: #777777 !important;
+}
 
 /* ================= MENU ================= */
 
@@ -420,6 +433,7 @@ Line {
     -fx-text-fill: linear-gradient(to bottom, #FFFFFF 0%, #F0F5FF 50%, #E0E8FF 100%) !important;
 }
 
+
 #textFieldBankAccountSettingsPage,
 #valueField{
     -fx-background-color: #3a3a3a !important;
@@ -623,44 +637,88 @@ Line {
 
 
 
-/* 1. LA TEXTAREA (Sfondo e Bordo) */
-#textAreaChatSupport {
-    -fx-background-color: #595959, #4a4a4a !important; /* Il primo colore fa da bordo, il secondo da fondo */
-    -fx-background-insets: 0, 1 !important; /* Crea lo spessore del bordo di 1px */
-    -fx-background-radius: 0 !important;
+
+
+
+
+
+
+
+#vBoxLastFiveExpenses,
+#gridPaneMonthlyBalance,
+#vBoxMonthlyExpenses,
+#gridPaneQuickContact {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#labelQuickContact{
     -fx-text-fill: white !important;
 }
 
-/* 2. FORZA IL COLORE DENTRO (La parte che scrive) */
-#textAreaChatSupport .content {
-    -fx-background-color: #4a4a4a !important;
-    -fx-background-radius: 0 !important;
+#vBoxAddWidget01,
+#vBoxAddWidget02,
+#vBoxAddWidget11,
+#vBoxAddWidget12{
+    -fx-background-color: #595959 !important;
 }
 
-/* 3. LO SCROLLPANE (Rendiamo tutto trasparente per vedere la TextArea sotto) */
-#scrollPaneChatSupport {
-    -fx-background-color: transparent !important;
-    -fx-background: transparent !important;
+#gridPaneTransictionHistory {
+    -fx-background-color: #4a4a4a !important;
+    -fx-border-color: #4a4a4a !important;
+}
+
+#scrollPaneTransictionHistory{
     -fx-border-color: transparent !important;
 }
 
-#scrollPaneChatSupport .viewport,
-#scrollPaneChatSupport .content {
-    -fx-background-color: transparent !important;
+#textFieldTransactionHistory {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
 }
 
-/* 4. TEXTFIELD (Input sotto) */
-#textFieldChatSupport {
-    -fx-background-color: #f2f2f2 !important;
-    -fx-border-color: #d9d9d9 !important;
-    -fx-background-radius: 15 !important;
-    -fx-border-radius: 15 !important;
+#gridPaneAddWidget11TH,
+#gridPaneAddWidget12TH{
+    -fx-background-color: #4a4a4a !important;
 }
 
-/* 5. FOCUS (Rimuove l'alone azzurro solo su questi ID) */
-#textAreaChatSupport:focused,
-#textFieldChatSupport:focused {
-    -fx-faint-focus-color: transparent !important;
-    -fx-focus-color: transparent !important;
-    -fx-background-insets: 0, 1 !important; /* Mantiene il bordo visibile al click */
+#textFieldAddWidget11,
+#textFieldAddWidget12 {
+     -fx-background-color: #3a3a3a !important;
+     -fx-border-color: transparent !important;
+     -fx-background-radius 15 !important;
+     -fx-border-radius 15 !important;
+     -fx-text-fill: white !important;
+     -fx-prompt-text-fill: #bdbdbd !important;
+ }
+
+#gridPaneAddWidget01B,
+#gridPaneAddWidget02B{
+    -fx-background-color: #4a4a4a !important;
 }
+
+#labelAddWidget01,
+#labelAddWidget02{
+    -fx-text-fill: white !important;
+}
+
+#gridPaneAddWidget01MB,
+#gridPaneAddWidget02MB{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#textFieldFriendshipRequestPopupU,
+#textFieldFriendshipRequestPopupE,
+#textFieldFriendshipRequestPopupN {
+         -fx-background-color: #3a3a3a !important;
+         -fx-border-color: transparent !important;
+         -fx-text-fill: white !important;
+         -fx-prompt-text-fill: #bdbdbd !important;
+}
+
+
+#labelFriendshipRequestPopup {
+    -fx-text-fill: #ff0000 !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.15), 27.65, 0.17, -10.0, -10.0) !important;
+}
+

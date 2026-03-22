@@ -304,3 +304,14 @@ Line {
     -fx-faint-focus-color: transparent !important;
     -fx-focus-color: transparent !important;
 }
+
+#scrollPaneTransictionHistory{
+    -fx-border-color: transparent !important;
+}
+
+#vBoxAddWidget01,
+#vBoxAddWidget02,
+#vBoxAddWidget11,
+#vBoxAddWidget12{
+    -fx-background-color: white !important;
+}
