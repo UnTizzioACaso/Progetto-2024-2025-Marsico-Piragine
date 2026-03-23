@@ -722,6 +722,3 @@ Line {
     -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.15), 27.65, 0.17, -10.0, -10.0) !important;
 }
 
-#anchorPaneChatSupport {
-    -fx-background-color: #3a3a3a !important;
-}
