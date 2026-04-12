@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="bubbleContainer" maxWidth="-Infinity" minWidth="-Infinity" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.FromFriendTransactionCloudController">
+<AnchorPane maxWidth="1.7976931348623157E308" prefWidth="380.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.FromFriendTransactionCloudController">
    <children>
-      <Polygon fill="#e4e4e4" points="-50.0, 40.0, 50.0, 40.0, 50.800025939941406, -11.199830055236816" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="BOTTOM_LEFT">
-         <StackPane.margin>
-            <Insets left="-25.0" />
-         </StackPane.margin>
-      </Polygon>
-      <Label fx:id="textLabel" maxWidth="300.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 15; -fx-padding: 15;" text="Questo è un messaggio di prova che si allarga in base al contenuto!" wrapText="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+      <StackPane fx:id="bubbleContainer" AnchorPane.leftAnchor="22.0" >
+         <children>
+            <Polygon fill="#e4e4e4" points="0.0, 0.0, -15.0, 15.0, 0.0, 15.0" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="BOTTOM_LEFT">
+               <StackPane.margin>
+                  <Insets left="-8.0" />
+               </StackPane.margin>
+            </Polygon>
+
+            <Label fx:id="textLabel"
+                   maxWidth="250.0"
+                   minHeight="-Infinity"
+                   style="-fx-background-color: #e4e4e4; -fx-background-radius: 15 15 15 0; -fx-padding: 10;"
+                   text="Messaggio del MazeBot"
+                   textFill="BLACK"
+                   wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
    </children>
    <padding>
-      <Insets bottom="5.0" left="34.0" right="10.0" top="5.0" />
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
-</StackPane>
+</AnchorPane>
