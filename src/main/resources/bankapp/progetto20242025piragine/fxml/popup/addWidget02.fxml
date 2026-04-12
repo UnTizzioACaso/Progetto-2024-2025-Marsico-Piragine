@@ -20,9 +20,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="510.0" prefWidth="568.0" style="-fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AddWidget02Controller">
+<ScrollPane fx:id="root" fitToWidth="true" hbarPolicy="NEVER" prefHeight="510.0" prefWidth="568.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AddWidget02Controller">
    <content>
-      <VBox fx:id="widgetsVBox" alignment="CENTER" minWidth="-Infinity" prefHeight="0.0" prefWidth="40.0" spacing="80.0">
+      <VBox id="vBoxAddWidget02" fx:id="widgetsVBox" alignment="CENTER" minWidth="-Infinity" prefHeight="0.0" prefWidth="40.0" spacing="80.0">
          <children>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity" VBox.vgrow="ALWAYS">
                <children>
@@ -59,14 +59,14 @@
                   </Region>
                </children>
             </AnchorPane>
-            <Separator prefWidth="200.0" style="-fx-background-color: red;">
+            <Separator prefWidth="200.0">
                <VBox.margin>
                   <Insets left="-20.0" right="-20.0" />
                </VBox.margin>
             </Separator>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <GridPane fx:id="monthlyBalanceGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="202.0" prefWidth="200.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane id="gridPaneAddWidget02B" fx:id="monthlyBalanceGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="202.0" prefWidth="200.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="88.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="91.0" />
@@ -115,7 +115,7 @@
                            <children>
                               <Label fx:id="incomesLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Entrate" textFill="WHITE">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
                            </children>
@@ -127,7 +127,7 @@
                            <children>
                               <Label fx:id="expensesLabel" alignment="CENTER" prefHeight="34.0" prefWidth="160.0" text="Uscite" textFill="WHITE">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
                            </children>
@@ -144,7 +144,7 @@
                   </Region>
                </children>
             </AnchorPane>
-            <Separator prefWidth="200.0" style="-fx-background-color: red;">
+            <Separator prefWidth="200.0">
                <VBox.margin>
                   <Insets left="-20.0" right="-20.0" />
                </VBox.margin>
@@ -155,7 +155,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
                            <children>
-                              <Label fx:id="widgetTitleLabel2" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="177.0" text="Uscite di questo mese" textFill="WHITE">
+                              <Label fx:id="widgetTitleLabel2" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="177.0" text="Spese di questo mese" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="17.0" />
                                  </font>
@@ -189,7 +189,7 @@
                   </Region>
                </children>
             </AnchorPane>
-            <Separator prefWidth="200.0" style="-fx-background-color: red;">
+            <Separator prefWidth="200.0">
                <VBox.margin>
                   <Insets left="-20.0" right="-20.0" />
                </VBox.margin>
@@ -234,14 +234,14 @@
                   </Region>
                </children>
             </AnchorPane>
-            <Separator prefWidth="200.0" style="-fx-background-color: red;">
+            <Separator prefWidth="200.0">
                <VBox.margin>
                   <Insets left="-20.0" right="-20.0" />
                </VBox.margin>
             </Separator>
             <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <GridPane fx:id="quickContactGridPane" alignment="CENTER" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <GridPane id="gridPaneAddWidget02MB" fx:id="quickContactGridPane" alignment="CENTER" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -263,7 +263,7 @@
                               <Insets top="110.0" />
                            </GridPane.margin>
                         </ImageView>
-                        <Label fx:id="quickContactNameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="269.0" text="Ruud Gullit" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                        <Label id="labelAddWidget02" fx:id="quickContactNameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="269.0" text="Ruud Gullit" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold Italic" size="24.0" />
                            </font>
@@ -283,7 +283,7 @@
                               </InnerShadow>
                            </effect>
                            <GridPane.margin>
-                              <Insets bottom="12.0" left="30.0" top="12.0" />
+                              <Insets bottom="12.0" top="12.0" />
                            </GridPane.margin>
                         </Button>
                         <Button fx:id="sendContactButton" maxHeight="60.0" maxWidth="80.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="115.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
@@ -298,7 +298,7 @@
                               </InnerShadow>
                            </effect>
                            <GridPane.margin>
-                              <Insets bottom="12.0" right="30.0" top="12.0" />
+                              <Insets bottom="12.0" top="12.0" />
                            </GridPane.margin>
                         </Button>
                         <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">

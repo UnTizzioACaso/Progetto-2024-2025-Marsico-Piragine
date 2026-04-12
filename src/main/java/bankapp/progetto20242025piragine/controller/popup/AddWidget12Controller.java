@@ -4,6 +4,7 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -16,6 +17,9 @@ public class AddWidget12Controller extends BranchController
 
     @FXML
     private VBox widgetsVBox;
+
+    @FXML
+    private ScrollPane root;
 
     @Override
     public void initializer()
@@ -30,7 +34,7 @@ public class AddWidget12Controller extends BranchController
                 widget.setOpacity(0.5);
             }
         }
-        ThemeManager.applyTheme(widgetsVBox.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
 
     }
 

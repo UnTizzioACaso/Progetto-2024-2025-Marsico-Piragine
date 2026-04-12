@@ -44,7 +44,7 @@
       
               </ScrollPane>
       
-              <Label minWidth="0" prefHeight="74.0" prefWidth="550.0" style="-fx-font-weight: BOLD;" styleClass="title" text="LE TUE CARTE" textOverrun="ELLIPSIS" GridPane.columnIndex="1">
+              <Label id="labelCardPage" minWidth="0" prefHeight="74.0" prefWidth="550.0" style="-fx-font-weight: BOLD;" styleClass="title" text="LE TUE CARTE" textOverrun="ELLIPSIS" GridPane.columnIndex="1">
                   <font>
                       <Font size="38.0" />
                   </font>

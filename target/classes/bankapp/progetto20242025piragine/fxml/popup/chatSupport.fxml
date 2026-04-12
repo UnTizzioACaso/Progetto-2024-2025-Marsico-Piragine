@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -12,13 +11,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:controller="bankapp.progetto20242025piragine.controller.ChatBotController"
-          maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-          prefHeight="600.0" prefWidth="400.0" style="-fx-background-radius: 20; -fx-background-color: white;"
-          xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane id="gridPaneChatSupport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-radius: 20; -fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.ChatBotController">
 
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -32,9 +29,9 @@
     </rowConstraints>
 
     <children>
-        <Pane prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #ff0000; -fx-background-radius: 19 19 0 0;" GridPane.columnSpan="2">
+        <Pane id="paneChatSupport" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #ff0000; -fx-background-radius: 19 19 0 0;" GridPane.columnSpan="2">
             <children>
-                <ImageView fitHeight="43.0" fitWidth="46.0" layoutX="25.0" layoutY="18.0">
+                <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="61.0" layoutY="26.0">
                     <image>
                         <Image url="@../../imgs/mazebanksimplelogo.png" />
                     </image>
@@ -42,7 +39,7 @@
                         <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
                     </effect>
                 </ImageView>
-                <ImageView fitHeight="50.0" fitWidth="219.0" layoutX="90.0" layoutY="15.0">
+                <ImageView fitHeight="50.0" fitWidth="219.0" layoutX="108.0" layoutY="21.0">
                     <image>
                         <Image url="@../../imgs/MazeBankAI.png" />
                     </image>
@@ -50,7 +47,7 @@
                         <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
                     </effect>
                 </ImageView>
-                <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="345.0" layoutY="24.0">
+                <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="340.0" layoutY="32.0">
                     <image>
                         <Image url="@../../imgs/V.png" />
                     </image>
@@ -68,26 +65,15 @@
             </effect>
         </Pane>
 
-        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER"
-                    style="-fx-background: white; -fx-border-color: transparent;"
-                    GridPane.columnSpan="2" GridPane.rowIndex="1">
-            <content>
-                <TextArea fx:id="chatDisplay" editable="false" prefHeight="395.0" prefWidth="395.0"
-                          style="-fx-background-color: white; -fx-text-fill: black;" wrapText="true">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </TextArea>
-            </content>
+        <ScrollPane id="scrollPaneChatSupport" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: white; -fx-border-color: transparent; -fx-border: trasparent; -fx-background-color: trasparent;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+         <content>
+            <VBox fx:id="chatDisplay" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="380.0" />
+         </content>
         </ScrollPane>
 
-        <AnchorPane prefHeight="60.0" prefWidth="400.0" style="-fx-background-radius: 0 0 19 19; -fx-background-color: white;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <AnchorPane id="anchorPaneChatSupport" prefHeight="60.0" prefWidth="400.0" style="-fx-background-radius: 0 0 19 19; -fx-background-color: trasparent; -fx-border-color: trasparent;" GridPane.columnSpan="2" GridPane.rowIndex="2">
             <children>
-                <TextField fx:id="inputField" onAction="#onSendButtonClick"
-                           layoutX="16.0" layoutY="15.0" prefHeight="35.0" prefWidth="368.0"
-                           promptText=" Scrivi un messaggio..."
-                           style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 15; -fx-border-radius: 15;"
-                           AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
+                <TextField id="textFieldChatSuppor" fx:id="inputField" layoutX="16.0" layoutY="15.0" onAction="#onSendButtonClick" prefHeight="35.0" prefWidth="368.0" promptText=" Scrivi un messaggio..." style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
                     <font>
                         <Font size="14.0" />
                     </font>

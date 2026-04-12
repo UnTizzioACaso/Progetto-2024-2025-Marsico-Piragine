@@ -68,7 +68,7 @@
                 <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
             </effect>
             <GridPane.margin>
-                <Insets left="4.0" />
+                <Insets left="6.0" />
             </GridPane.margin>
         </ImageView>
 
@@ -81,7 +81,7 @@
                 <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
             </effect>
             <GridPane.margin>
-                <Insets />
+                <Insets left="4.0" />
             </GridPane.margin>
         </ImageView>
       <Button fx:id="assistanceButton" mnemonicParsing="false" onAction="#showAssistance" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: null;" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="4" GridPane.halignment="LEFT">
@@ -100,6 +100,9 @@
          <padding>
             <Insets right="-1.0" />
          </padding>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
       </Button>
 
     </children>

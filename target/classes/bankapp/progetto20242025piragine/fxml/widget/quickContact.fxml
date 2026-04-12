@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="quickContactGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.QuickContactController">
+<GridPane id="gridPaneQuickContact" fx:id="quickContactGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.QuickContactController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -37,7 +37,7 @@
             <Insets top="110.0" />
          </GridPane.margin>
       </ImageView>
-      <Label fx:id="quickContactNameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="269.0" text="Ruud Gullit" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Label id="labelQuickContact" fx:id="quickContactNameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="269.0" text="Ruud Gullit" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -45,7 +45,7 @@
             <Insets top="70.0" />
          </GridPane.margin>
       </Label>
-      <Button fx:id="requestContactButton" maxHeight="60.0" maxWidth="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.vgrow="SOMETIMES">
+      <Button fx:id="requestContactButton" maxHeight="20.0" maxWidth="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.vgrow="SOMETIMES">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -60,7 +60,7 @@
             <Insets bottom="12.0" left="30.0" top="12.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="sendContactButton" maxHeight="60.0" maxWidth="80.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="115.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="sendContactButton" maxHeight="20.0" maxWidth="80.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-background-radius: 6; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -75,7 +75,7 @@
             <Insets bottom="12.0" right="30.0" top="12.0" />
          </GridPane.margin>
       </Button>
-      <TextField fx:id="valueField" alignment="CENTER" maxHeight="35.0" maxWidth="68.0" minHeight="30.0" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <TextField fx:id="valueField" alignment="CENTER" maxHeight="32.0" maxWidth="80.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 6; -fx-border-radius: 6;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <padding>
             <Insets left="10.0" />
          </padding>
@@ -97,16 +97,36 @@
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
             </Label>
-            <Button alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="30.0" prefWidth="33.0" style="-fx-background-color: transparent;" text="❎" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+            <Button alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="0.0" mnemonicParsing="false" onAction="#showMenu" prefHeight="30.0" prefWidth="33.0" style="-fx-background-color: transparent;" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
                <font>
                   <Font name="Symbol" size="14.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../../imgs/V.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <GridPane.margin>
+                  <Insets right="5.0" top="18.0" />
+               </GridPane.margin>
             </Button>
          </children>
+         <effect>
+            <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect>
       </GridPane>
    </children>
 </GridPane>
