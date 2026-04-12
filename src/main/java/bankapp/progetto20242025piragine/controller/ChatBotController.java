@@ -1,3 +1,4 @@
+
 package bankapp.progetto20242025piragine.controller;
 
 import bankapp.progetto20242025piragine.controller.component.FromFriendTransactionCloudController;
@@ -89,4 +90,3 @@ public class ChatBotController {
         }).start();
     }
 }
-

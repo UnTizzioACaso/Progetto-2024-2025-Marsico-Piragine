@@ -13,14 +13,13 @@ module bankapp.progetto20242025piragine {
     requires jbcrypt;
 
     // AI & Gemini (LangChain4j)
-
+    requires langchain4j.google.ai.gemini; // Prova senza ".gemini" alla fine
+    requires langchain4j;
 
     // NETWORKING & JSON (Indispensabili per il ChatBot)
     requires okhttp3;
     requires com.google.gson;
     requires java.net.http;
-
-    requires com.google.genai;
 
     // Esportazioni e Aperture per JavaFX
     opens bankapp.progetto20242025piragine to javafx.fxml;
