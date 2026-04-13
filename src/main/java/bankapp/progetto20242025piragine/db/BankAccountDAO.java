@@ -101,24 +101,6 @@ public class BankAccountDAO {
         }
         return -1;
     }
-    public static boolean Moneyrequest(BankAccount account) throws SQLException
-    {
-        String sql = "SELECT money  FROM bankaccount WHERE user_id=?" ;
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
-        {
-
-            stmt.setInt(1, account.getUserId());
-            stmt.setInt(2, account.getMoney().movePointRight(2).intValueExact());
-            stmt.setString(3, account.getCurrency());
-            stmt.setString(4, account.getIban());
-            stmt.setInt(5, account.getMaxTransfer().movePointRight(2).intValueExact());
-            stmt.setBoolean(6, account.isForcePin());
-            stmt.setString(7, account.getCheckAccount());
-
-            stmt.executeUpdate();
-            return true;
-        }
-    }
 
 
     // 🔹 Inserisce un nuovo conto
