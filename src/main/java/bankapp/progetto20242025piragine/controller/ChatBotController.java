@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.controller;
 import bankapp.progetto20242025piragine.controller.component.FromFriendTransactionCloudController;
 import bankapp.progetto20242025piragine.controller.component.ToFriendTransactionCloudController;
 import bankapp.progetto20242025piragine.util.ChatBot;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,12 +11,14 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-public class ChatBotController {
+public class ChatBotController extends BranchController{
 
     @FXML private VBox chatDisplay;
     @FXML private TextField inputField;
+    @FXML private GridPane botGridPane;
 
     // Linking the utility class you created
     private final ChatBot geminiService = new ChatBot();
@@ -54,8 +57,9 @@ public class ChatBotController {
         }
     }
 
-    @FXML
-    public void initialize() {
+    @Override
+    public void initializer() {
+        ThemeManager.applyTheme(botGridPane.getScene(), rootController.user.getTheme());
         // Automatic welcome message on startup
         addBotCloud("MazeBot: Benvenuto in Maze Bank, come posso aiutarti?\n");
     }

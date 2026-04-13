@@ -179,6 +179,9 @@ public class TopbarController extends BranchController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
+            BranchController controller= loader.getController();
+            controller.setRootController(rootController);
+            controller.initializer();
 
             popupStage = new Stage();
             popupStage.initStyle(StageStyle.TRANSPARENT);
@@ -206,6 +209,7 @@ public class TopbarController extends BranchController {
 
             popupStage.setX(x);
             popupStage.setY(y);
+
 
 
         } catch (IOException e) {
