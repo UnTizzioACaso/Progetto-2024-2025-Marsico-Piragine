@@ -23,7 +23,7 @@ public class MonthlyIncomesController extends WidgetController {
     @FXML
     public void showMenu()
     {
-        removeWidget(monthlyIncomesVBox);
+        removeWidget();
     }
 
     @Override

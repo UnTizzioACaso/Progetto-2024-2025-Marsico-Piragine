@@ -8,9 +8,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 
@@ -23,22 +21,24 @@ public class WidgetController extends BranchController {
 
     public String getWidgetType(){ return "";}
 
+    public Node widget;
+
     @FXML
     public Label widgetTitleLabel;
 
     //takes the root of the widget and removes it from the home page grid pane
-    public void removeWidget(Node root)
+    public void removeWidget()
     {
         List<Node> nodes = homePageGridPane.getChildren();
         for(Node node : nodes)
         {
-            if (root.getId().equals(node.getId()))
+            if (widget.equals(node))
             {
                 homePageGridPane.getChildren().remove(node);
-                try {HomeWidgetCustomDAO.markAsRemoved(rootController.user.getUserID(),  root.getId());}
+                try {HomeWidgetCustomDAO.markAsRemoved(rootController.user.getUserID(),  widget.getId());}
                 catch (SQLException e)
                 {
-                    System.err.println("error during elimination of " + root.getId() + e);
+                    System.err.println("error during elimination of " + widget.getId() + e);
                     e.printStackTrace();
                 }
                 return;
@@ -109,7 +109,7 @@ public class WidgetController extends BranchController {
                 "        );");
 
         one.setOnAction(e -> {rootController.showPopup(title, fxml, 600, 600);});
-        two.setOnAction(e -> {removeWidget(root);});
+        two.setOnAction(e -> {removeWidget();});
         content.getChildren().addAll(one, two);
 
         popup.getContent().add(content);
@@ -137,7 +137,7 @@ public class WidgetController extends BranchController {
                 "            -10\n" +
                 "        );");
 
-        button.setOnAction(e -> {removeWidget(root);});
+        button.setOnAction(e -> {removeWidget();});
         content.getChildren().add(button);
 
         popup.getContent().add(content);

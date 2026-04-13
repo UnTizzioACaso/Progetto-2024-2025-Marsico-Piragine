@@ -90,6 +90,7 @@ public class HomePageController extends BranchController
             homePageGridPane.add(node, column, row);
             controller.homePageGridPane = homePageGridPane;
             controller.initializer();
+            controller.widget = node;
             HomeWidgetCustomDAO.updatePosition(rootController.user.getUserID(), controller.getWidgetType(), row, column, false);
         }
         catch (Exception e)

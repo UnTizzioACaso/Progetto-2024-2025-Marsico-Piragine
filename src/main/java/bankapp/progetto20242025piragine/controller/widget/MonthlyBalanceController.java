@@ -29,6 +29,8 @@ public class MonthlyBalanceController extends WidgetController {
     @FXML
     private Label balanceLabel;
 
+
+
     @Override
     public String getWidgetType()
     {
@@ -71,7 +73,7 @@ public class MonthlyBalanceController extends WidgetController {
     @FXML
     public void showMenu()
     {
-        removeWidget(monthlyBalanceGridPane);
+        removeWidget();
     }
 
 }

@@ -5,12 +5,9 @@ import bankapp.progetto20242025piragine.db.Transaction;
 import bankapp.progetto20242025piragine.db.TransactionDAO;
 import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
-import javafx.geometry.Bounds;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Popup;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -30,7 +27,7 @@ public class TransactionHistoryController extends WidgetController
     @FXML
     public void showMenu()
     {
-        removeWidget(transactionHistoryGridPane);
+        removeWidget();
     }
 
     @Override

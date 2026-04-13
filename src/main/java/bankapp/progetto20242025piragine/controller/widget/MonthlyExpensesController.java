@@ -1,6 +1,5 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Transaction;
 import bankapp.progetto20242025piragine.db.TransactionDAO;
@@ -23,7 +22,7 @@ public class MonthlyExpensesController extends WidgetController {
     @FXML
     public void showMenu()
     {
-        removeWidget(monthlyExpensesVBox);
+        removeWidget();
     }
 
     @Override
