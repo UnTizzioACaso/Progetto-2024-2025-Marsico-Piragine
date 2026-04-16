@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
