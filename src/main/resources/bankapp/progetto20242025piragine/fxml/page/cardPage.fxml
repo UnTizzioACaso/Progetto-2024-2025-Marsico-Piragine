@@ -34,7 +34,7 @@
                   <content>
                       <VBox id="cardsContainerVBox" fx:id="cardsContainerVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="780.0" spacing="10.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 30;">
                      <padding>
-                        <Insets left="15.0" right="15.0" top="10.0" />
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
                   </VBox>
                   </content>
