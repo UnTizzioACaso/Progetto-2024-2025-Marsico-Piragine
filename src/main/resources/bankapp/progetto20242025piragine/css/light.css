@@ -175,6 +175,70 @@
 .date-picker > .arrow-button > .arrow {
     -fx-background-color: white;
 }
+
+.date-picker-popup .day-name-cell {
+    -fx-text-fill: black !important;
+}
+
+/* 1. Stile per i numeri della settimana (colonna sinistra) */
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: black !important;
+}
+
+
+/* 3. Assicuriamoci che la griglia non abbia spazi strani */
+.date-picker-popup .calendar-grid {
+    -fx-background-color: white !important;
+}
+
+.date-picker-popup .today {
+    -fx-text-fill: #ff0000  !important;
+    -fx-font-weight: bold !important;
+    -fx-background-insets: 0 !important;
+}
+
+/* Giorno selezionato */
+.date-picker-popup .selected {
+    -fx-background-color: #ff0000 !important;
+    -fx-effect: innershadow(
+            three-pass-box,
+            rgba(0,0,0,0.15),
+            27.63,
+            0.17,
+            -10,
+            -10
+        );
+    -fx-text-fill: white !important;
+}
+
+
+
+
+
+/* Forza il colore base e impedisce qualsiasi cambiamento al passaggio del mouse */
+.date-picker-popup .day-cell {
+    -fx-background-color: white;
+    -fx-text-fill: blac;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: white !important;
+    -fx-text-fill: black !important;
+    -fx-background-insets: 0 !important; /* Forza la rimozione di bordi/inset che creano l'alone */
+}
+
+/* Questa riga serve a bloccare l'eventuale cambio colore interno di JavaFX */
+.date-picker-popup .day-cell:focused {
+    -fx-background-color: white !important;
+}
+
+/* GIORNI FUORI MESE (Più scuri) */
+.date-picker-popup .previous-month,
+.date-picker-popup .next-month {
+    -fx-background-color: #f2f2f2 !important; /* Grigio chiaro per i giorni non del mese */
+    -fx-text-fill: #b0b0b0 !important;        /* Testo grigio per renderli meno visibili */
+}
+
 /* ==========================================================
    ROOT E VARIE
    ========================================================== */
