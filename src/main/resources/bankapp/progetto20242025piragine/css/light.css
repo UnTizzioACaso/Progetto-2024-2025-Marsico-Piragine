@@ -379,3 +379,13 @@ Line {
 #vBoxAddWidget12{
     -fx-background-color: white !important;
 }
+
+#chatDisplay{
+ -fx-background-color: #ffffff !important;
+}
+
+#scrollPaneChatSupport
+{
+    -fx-background-color: #ffffff !important;
+    -fx-border-color: transparent !important;
+}

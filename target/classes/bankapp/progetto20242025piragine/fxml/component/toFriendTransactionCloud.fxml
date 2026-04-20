@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,13 +17,7 @@
                </StackPane.margin>
             </Polygon>
 
-            <Label fx:id="textLabel"
-                   maxWidth="250.0"
-                   minHeight="-Infinity"
-                   style="-fx-background-color: red; -fx-background-radius: 15 15 0 15; -fx-padding: 10;"
-                   text="Messaggio"
-                   textFill="WHITE"
-                   wrapText="true">
+            <Label fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" style="-fx-background-color: red; -fx-background-radius: 15 15 0 15; -fx-padding: 10;" text="Messaggio" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>

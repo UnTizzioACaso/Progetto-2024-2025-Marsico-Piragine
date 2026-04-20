@@ -60,8 +60,19 @@ public class ChatBotController extends BranchController{
     @Override
     public void initializer() {
         ThemeManager.applyTheme(botGridPane.getScene(), rootController.user.getTheme());
+
+        // Aggiunta logica CSS mantenendo tutto il resto intatto
+        if (botGridPane != null) {
+            String theme = rootController.user.getTheme();
+            String cssPath = ThemeManager.getThemePath(theme);
+            if (cssPath != null) {
+                botGridPane.getStylesheets().clear();
+                botGridPane.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
+            }
+        }
+
         // Automatic welcome message on startup
-        addBotCloud("MazeBot: Benvenuto in Maze Bank, come posso aiutarti?\n");
+        addBotCloud( "Benvenuto in Maze Bank, come posso aiutarti?\n");
     }
 
     @FXML
@@ -75,12 +86,9 @@ public class ChatBotController extends BranchController{
 
     // Quick button handling (as seen in the support screenshot)
 
-
-
-
     // Central method to handle communication with the AI
     private void processMessage(String text) {
-        addUserCloud("Tu: " + text + "\n");
+        addUserCloud(text + "\n");
 
         // IMPORTANT: Run the AI in a separate thread to avoid freezing the UI
         new Thread(() -> {
@@ -88,9 +96,8 @@ public class ChatBotController extends BranchController{
 
             // Switch back to the JavaFX Application Thread to update the UI
             Platform.runLater(() -> {
-                addBotCloud("MazeBot: " + aiResponse + "\n");
+                addBotCloud(aiResponse + "\n");
             });
         }).start();
     }
 }
-

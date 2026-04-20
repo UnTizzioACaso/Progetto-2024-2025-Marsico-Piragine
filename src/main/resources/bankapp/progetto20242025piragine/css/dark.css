@@ -742,6 +742,29 @@ Line {
     -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.15), 27.65, 0.17, -10.0, -10.0) !important;
 }
 
-#anchorPaneChatSupport {
-    -fx-background-color: yellow !important;
+#anchorPaneChatSupport,
+#chatDisplay {
+    -fx-background-color: #595959 !important;
+}
+
+#scrollPaneChatSupport {
+    -fx-background-color: #595959 !important;
+    -fx-border-color: transparent !important;
+}
+
+
+#textFieldChatSupport {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-border-color: #333333 !important;
+}
+
+
+#labelFromFriendTransactionCloud{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#polygonFromFriendTransactionCloud{
+    -fx-fill:#4a4a4a !important;
 }

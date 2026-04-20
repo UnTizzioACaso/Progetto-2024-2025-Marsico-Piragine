@@ -16,4 +16,10 @@ public class ThemeManager {
         scene.getStylesheets().add(ThemeManager.class.getResource(cssPath).toExternalForm());
     }
 
+    public static String getThemePath(String themeName) {
+        if ("dark".equals(themeName)) return "/bankapp/progetto20242025piragine/css/dark.css";
+        if ("light".equals(themeName)) return "/bankapp/progetto20242025piragine/css/light.css";
+        return null;
+    }
+
 }
