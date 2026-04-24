@@ -31,9 +31,7 @@ public class User {
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-
+    public String getLastName() { return lastName;}
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
 
@@ -43,7 +41,8 @@ public class User {
     public String getBirthPlace() { return birthPlace; }
     public void setBirthPlace(String birthPlace) { this.birthPlace = birthPlace; }
 
-    public String getGender() { return gender; }
+    public String getGender(){return gender; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
     public void setGender(String gender) { this.gender = gender; }
 
     public String getEmail() { return email; }

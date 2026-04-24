@@ -88,6 +88,7 @@ public class SendFriendshipRequestPopupController extends BranchController {
                 String val = searchByUsernameField.getText();
                 System.out.println("Ricerca per Username: " + val);
                 user2 = UserDAO.getUserByUsername(val);
+
             }
             else if (searchByEmailField.isVisible()) {
                 String val = searchByEmailField.getText();
@@ -132,24 +133,10 @@ public class SendFriendshipRequestPopupController extends BranchController {
             FriendRequestDAO.sendRequest(request);
 
             // Gestione notifiche
-            Notify n = new Notify();
-            n.setRead(false);
+            Notify n = new Notify(user2.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
+            NotifyDAO.insertNotify(n);
 
-            // Prendiamo l'ID della richiesta appena creata
-            var pending = FriendRequestDAO.getPendingRequests(user2.getUserID());
-            if (!pending.isEmpty()) {
-                n.setIdFriendRequest(pending.getFirst().getIdRequest());
-
-                // Notifica al mittente
-                n.setUserId(rootController.user.getUserID());
-                NotifyDAO.insertNotify(n);
-
-                // Notifica al destinatario
-                n.setUserId(user2.getUserID());
-                NotifyDAO.insertNotify(n);
-
-                errorLabel.setText("Richiesta inviata correttamente");
-            }
+            errorLabel.setText("Richiesta inviata correttamente");
 
         } catch (SQLException e) {
             System.err.println("Errore durante l'invio della richiesta: " + e.getMessage());

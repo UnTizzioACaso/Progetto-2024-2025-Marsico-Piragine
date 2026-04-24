@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Transaction1 (
     id_transaction INTEGER PRIMARY KEY AUTOINCREMENT,
     sender INTEGER ,
-    beneficiary INTEGER,
+    requested INTEGER,
     amount INTEGER CHECK (amount > 0),
     note TEXT,
     transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS Transaction1 (
     type TEXT CHECK(type IN ('donation','payment')),
     used_card INTEGER,
     FOREIGN KEY (sender) REFERENCES Bank_Account(id_account),
-    FOREIGN KEY (beneficiary) REFERENCES Bank_Account(id_account),
+    FOREIGN KEY (requested) REFERENCES Bank_Account(id_account),
     FOREIGN KEY (used_card) REFERENCES Card(id_card)
 );
 
 CREATE INDEX IF NOT EXISTS idx_transazione_mittente ON Transaction1(sender);
-CREATE INDEX IF NOT EXISTS idx_transazione_destinatario ON Transaction1(beneficiary);
+CREATE INDEX IF NOT EXISTS idx_transazione_destinatario ON Transaction1(requested);

@@ -122,7 +122,7 @@ public class NotificationController extends BranchController{
             FriendRequest r = FriendRequestDAO.getFriendRequestById(idFriendRequest);
             try
             {
-                return UserDAO.getUsernameByUserId(r.getBeneficiary());
+                return UserDAO.getUsernameByUserId(r.getRequested());
 
             }
             catch(SQLException e)

@@ -5,21 +5,21 @@ import java.time.LocalDateTime;
 public class FriendRequest {
     private int idRequest;
     private int requester;
-    private int beneficiary;
+    private int requested;
     private LocalDateTime dateRequest;
     private String status; // pending, declined, accepted
 
-    public FriendRequest(int idRequest, int requester, int beneficiary, LocalDateTime dateRequest, String status) {
+    public FriendRequest(int idRequest, int requester, int requested, LocalDateTime dateRequest, String status) {
         this.idRequest = idRequest;
         this.requester = requester;
-        this.beneficiary = beneficiary;
+        this.requested = requested;
         this.dateRequest = dateRequest;
         this.status = status;
     }
 
-    public FriendRequest(int requester, int beneficiary) {
+    public FriendRequest(int requester, int requested) {
         this.requester = requester;
-        this.beneficiary = beneficiary;
+        this.requested = requested;
         this.status = "pending";
         this.dateRequest = LocalDateTime.now();
     }
@@ -31,8 +31,8 @@ public class FriendRequest {
     public int getRequester() { return requester; }
     public void setRequester(int requester) { this.requester = requester; }
 
-    public int getBeneficiary() { return beneficiary; }
-    public void setBeneficiary(int beneficiary) { this.beneficiary = beneficiary; }
+    public int getRequested() { return requested; }
+    public void setRequested(int requested) { this.requested = requested; }
 
     public LocalDateTime getDateRequest() { return dateRequest; }
     public void setDateRequest(LocalDateTime dateRequest) { this.dateRequest = dateRequest; }
