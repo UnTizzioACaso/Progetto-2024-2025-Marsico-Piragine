@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,9 +14,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="0.0" prefHeight="360.0" prefWidth="500.0" style="-fx-border-color: null;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.LargeMonthlyExpensesController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="0.0" prefHeight="360.0" prefWidth="500.0" style="-fx-border-color: null;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.LargeMonthlyExpensesController">
    <children>
-      <VBox alignment="CENTER" prefHeight="47.0" prefWidth="500.0" style="-fx-background-color: ff0000;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" prefHeight="47.0" prefWidth="500.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Uscite di questo mese" textFill="WHITE">
                <font>
@@ -40,22 +41,26 @@
             </VBox>
          </content>
       </ScrollPane>
-      <TextField fx:id="searchTextField" layoutX="25.0" layoutY="56.0" maxHeight="40.0" maxWidth="450.0" minHeight="26.0" minWidth="270.0" prefHeight="27.0" prefWidth="450.0" promptText="Filtra per ricevente" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="56.0">
+      <TextField fx:id="searchTextField" layoutX="25.0" layoutY="56.0" maxHeight="40.0" maxWidth="450.0" minHeight="26.0" minWidth="270.0" prefHeight="27.0" prefWidth="450.0" promptText=" Filtra per ricevente" style="-fx-background-radius: 15;" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="56.0">
          <padding>
             <Insets left="10.0" />
          </padding>
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font>
       </TextField>
       <Button fx:id="searchButton" layoutX="452.0" layoutY="63.0" mnemonicParsing="false" onAction="#search" prefHeight="2.0" prefWidth="0.0" style="-fx-background-color: transparent;" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="63.0">
          <padding>
             <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
          </padding>
-         <graphic>
-            <ImageView fitHeight="15.0" fitWidth="13.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../imgs/lenticon.png" />
-               </image>
-            </ImageView>
-         </graphic>
       </Button>
+      <ImageView fitHeight="15.0" fitWidth="13.0" layoutX="450.0" layoutY="63.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../imgs/lenticon.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="0.34" contrast="-1.0" hue="0.02" saturation="-0.05" />
+         </effect>
+      </ImageView>
    </children>
 </AnchorPane>
