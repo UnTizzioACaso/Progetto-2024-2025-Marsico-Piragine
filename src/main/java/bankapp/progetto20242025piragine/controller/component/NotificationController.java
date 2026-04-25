@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class NotificationController extends BranchController{
 
     @FXML
-    private Label titleLabel, valueLabel, secondaryLabel;
+    private Label notifyTitleLabel, valueLabel, secondaryLabel;
 
     public Notify notify;
 
@@ -33,7 +33,7 @@ public class NotificationController extends BranchController{
         }
         try
         {
-            if(titleLabel.getText().equals("Richiesta di denaro"))
+            if(notifyTitleLabel.getText().equals("Richiesta di denaro"))
             {
                 PaymentRequestController controller = (PaymentRequestController) rootController.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
                 controller.idRequest = notify.getIdTransaction();
@@ -68,7 +68,7 @@ public class NotificationController extends BranchController{
 
     private void transactionRequestNotify()
     {
-        titleLabel.setText(getBeneficiaryUsernameT(notify.getIdTransaction()));
+        notifyTitleLabel.setText(getBeneficiaryUsernameT(notify.getIdTransaction()));
         valueLabel.setText(getTransactionRequestValue(notify.getIdTransaction()).toString());
         secondaryLabel.setText("Richiesta di denaro");
     }
@@ -80,14 +80,14 @@ public class NotificationController extends BranchController{
         {
             valueLabel.setText("");
             secondaryLabel.setText("Richiesta d'amicizia");
-            titleLabel.setText(getRequesterUsernameF(notify.getIdFriendRequest()));
+            notifyTitleLabel.setText(getRequesterUsernameF(notify.getIdFriendRequest()));
             return;
         }
 
         imTheSender = true;
         try
         {
-            titleLabel.setText(UserDAO.getUsernameByUserId(id));
+            notifyTitleLabel.setText(UserDAO.getUsernameByUserId(id));
         } catch (SQLException e) {
             System.err.println("error getting the receiver" + e.getMessage());
             e.printStackTrace();
@@ -111,6 +111,7 @@ public class NotificationController extends BranchController{
     {
         try
         {
+
             return  FriendRequestDAO.getFriendRequestById(idFriendRequest).getStatus();
         }
         catch(SQLException e)
@@ -184,10 +185,13 @@ public class NotificationController extends BranchController{
     private String getRequesterUsernameF(int idFriendRequest) {
         try {
             FriendRequest f = FriendRequestDAO.getFriendRequestById(idFriendRequest);
-            try {
-                return UserDAO.getUsernameByUserId(f.getRequester());
 
-            } catch (SQLException e) {
+            try
+            {
+                return UserDAO.getUsernameByUserId(f.getRequester());
+            }
+            catch (SQLException e) 
+            {
                 System.err.println("error getting username by user id " + e);
                 e.printStackTrace();
                 return null;
