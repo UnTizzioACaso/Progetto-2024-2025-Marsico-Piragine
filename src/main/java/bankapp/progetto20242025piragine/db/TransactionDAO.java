@@ -10,7 +10,7 @@ public class TransactionDAO {
     public static boolean insertTransaction(Transaction t) throws SQLException {
         String sql = """
             INSERT INTO Transaction1
-            (sender, beneficiary, amount, note, status, type, used_card)
+            (sender, requested, amount, note, status, type, used_card)
             VALUES (?, ?, ?, ?, ?, ?, ?)
             """;
 
@@ -61,7 +61,7 @@ public class TransactionDAO {
         SELECT *
         FROM Transaction1
         WHERE sender = ?
-           OR beneficiary = ?
+           OR requested = ?
         ORDER BY transaction_date DESC
         """;
 
@@ -78,7 +78,7 @@ public class TransactionDAO {
                     Transaction t = new Transaction();
                     t.setIdTransaction(rs.getInt("id_transaction"));
                     t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("beneficiary"));
+                    t.setBeneficiary(rs.getInt("requested"));
                     t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
                     t.setNote(rs.getString("note"));
                     t.setTransactionDate(rs.getTimestamp("transaction_date"));
@@ -104,8 +104,8 @@ public class TransactionDAO {
         String sql = """
         SELECT *
         FROM Transaction1
-        WHERE (sender = ? AND beneficiary = ?)
-           OR (sender = ? AND beneficiary = ?)
+        WHERE (sender = ? AND requested = ?)
+           OR (sender = ? AND requested = ?)
         ORDER BY transaction_date DESC
         """;
 
@@ -122,7 +122,7 @@ public class TransactionDAO {
                     Transaction t = new Transaction();
                     t.setIdTransaction(rs.getInt("id_transaction"));
                     t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("beneficiary"));
+                    t.setBeneficiary(rs.getInt("requested"));
                     t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
                     t.setNote(rs.getString("note"));
                     t.setTransactionDate(rs.getTimestamp("transaction_date"));
@@ -143,7 +143,7 @@ public class TransactionDAO {
 
     // 🔹 Transazioni ricevute da un conto
     public static List<Transaction> getTransactionsByBeneficiary(int beneficiaryId) throws SQLException {
-        String sql = "SELECT * FROM Transaction1 WHERE beneficiary = ? ORDER BY transaction_date DESC";
+        String sql = "SELECT * FROM Transaction1 WHERE requested = ? ORDER BY transaction_date DESC";
         return getTransactions(sql, beneficiaryId);
     }
 
@@ -185,7 +185,7 @@ public class TransactionDAO {
         String sql = """
         SELECT *
         FROM Transaction1
-        WHERE beneficiary = ?
+        WHERE requested = ?
           AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
         ORDER BY transaction_date DESC
         """;
@@ -202,7 +202,7 @@ public class TransactionDAO {
                     Transaction t = new Transaction();
                     t.setIdTransaction(rs.getInt("id_transaction"));
                     t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("beneficiary"));
+                    t.setBeneficiary(rs.getInt("requested"));
                     t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
                     t.setNote(rs.getString("note"));
                     t.setTransactionDate(rs.getTimestamp("transaction_date"));
@@ -239,7 +239,7 @@ public class TransactionDAO {
                     Transaction t = new Transaction();
                     t.setIdTransaction(rs.getInt("id_transaction"));
                     t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("beneficiary"));
+                    t.setBeneficiary(rs.getInt("requested"));
                     t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
                     t.setNote(rs.getString("note"));
                     t.setTransactionDate(rs.getTimestamp("transaction_date"));
@@ -260,7 +260,7 @@ public class TransactionDAO {
         Transaction t = new Transaction();
         t.setIdTransaction(rs.getInt("id_transaction"));
         t.setSender((Integer) rs.getObject("sender"));
-        t.setBeneficiary((Integer) rs.getObject("beneficiary"));
+        t.setBeneficiary((Integer) rs.getObject("requested"));
         t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
         t.setNote(rs.getString("note"));
         t.setTransactionDate(rs.getTimestamp("transaction_date"));

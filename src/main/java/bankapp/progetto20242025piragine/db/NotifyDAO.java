@@ -9,42 +9,30 @@ public class NotifyDAO {
     // 🔹 Inserisce una notifica
     public static boolean insertNotify(Notify n) throws SQLException {
         String sql = """
-            INSERT INTO Notify
-            (user_id, id_transaction, id_friend_request, message, read, data_creation)
-            VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-            """;
+        INSERT INTO Notify
+        (user_id, id_transaction, id_friend_request, message, read, data_creation)
+        VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        """;
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            if (n.getUserId() != null)
-                stmt.setInt(1, n.getUserId());
-            else
-                stmt.setNull(1, Types.INTEGER);
 
-            if (n.getIdTransaction() != null)
-                stmt.setInt(2, n.getIdTransaction());
-            else
-                stmt.setNull(2, Types.INTEGER);
+            if (n.getUserId() != null) stmt.setInt(1, n.getUserId());
+            else stmt.setNull(1, Types.INTEGER);
 
-            if (n.getIdFriendRequest() != null)
-                stmt.setInt(3, n.getIdFriendRequest());
-            else
-                stmt.setNull(3, Types.INTEGER);
+            if (n.getIdTransaction() != null) stmt.setInt(2, n.getIdTransaction());
+            else stmt.setNull(2, Types.INTEGER);
 
+            if (n.getIdFriendRequest() != null) stmt.setInt(3, n.getIdFriendRequest());
+            else stmt.setNull(3, Types.INTEGER);
 
             stmt.setString(4, n.getMessage());
             stmt.setBoolean(5, n.isRead());
 
+            // 2. Esegui e basta. Non chiamare getGeneratedKeys() se non ti serve l'ID.
             int rows = stmt.executeUpdate();
-            if (rows == 0) return false;
-
-            try (ResultSet keys = stmt.getGeneratedKeys()) {
-                if (keys.next()) {
-                    n.setIdNotify(keys.getInt(1));
-                }
-            }
-            return true;
+            return rows > 0;
         }
     }
 

@@ -75,16 +75,23 @@ public class NotificationController extends BranchController{
 
     private void friendshipRequestNotify() //if notify is a friendship request
     {
-        if(getBeneficiaryUsernameF(notify.getIdFriendRequest()).equals(rootController.user.getUsername())) //user is the beneficiary
+        int id = getBeneficiaryIdF(notify.getIdFriendRequest());
+        if( id == rootController.user.getUserID())//user is the beneficiary
         {
             valueLabel.setText("");
             secondaryLabel.setText("Richiesta d'amicizia");
-            titleLabel.setText(getRequesterUsernameT(notify.getIdFriendRequest()));
+            titleLabel.setText(getRequesterUsernameF(notify.getIdFriendRequest()));
             return;
         }
 
         imTheSender = true;
-        titleLabel.setText(getBeneficiaryUsernameF(notify.getIdFriendRequest())); //user is the sender
+        try
+        {
+            titleLabel.setText(UserDAO.getUsernameByUserId(id));
+        } catch (SQLException e) {
+            System.err.println("error getting the receiver" + e.getMessage());
+            e.printStackTrace();
+        }
         switch (checkFriendshipStatus(notify.getIdFriendRequest()))
         {
             case "accepted":
@@ -115,26 +122,16 @@ public class NotificationController extends BranchController{
     }
 
 
-    private String getBeneficiaryUsernameF(int idFriendRequest) //gets the username of friendship's beneficiary
+    private Integer getBeneficiaryIdF(int idFriendRequest) //gets the username of friendship's beneficiary
     {
         try
         {
             FriendRequest r = FriendRequestDAO.getFriendRequestById(idFriendRequest);
-            try
-            {
-                return UserDAO.getUsernameByUserId(r.getBeneficiary());
-
-            }
-            catch(SQLException e)
-            {
-                System.err.println("error getting username by user id " + e);
-                e.printStackTrace();
-                return null;
-            }
+            return r.getRequested();
         }
         catch(SQLException e)
         {
-            System.err.println("error getting friend request by id " + e);
+            System.err.println("error getting sender id " + e);
             e.printStackTrace();
             return null;
         }
@@ -171,6 +168,24 @@ public class NotificationController extends BranchController{
             Transaction t = TransactionDAO.getTransactionById(idTransaction);
             try {
                 return UserDAO.getUsernameByUserId(t.getSender());
+
+            } catch (SQLException e) {
+                System.err.println("error getting username by user id " + e);
+                e.printStackTrace();
+                return null;
+            }
+        } catch (SQLException e) {
+            System.err.println("error getting friend request by id " + e);
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private String getRequesterUsernameF(int idFriendRequest) {
+        try {
+            FriendRequest f = FriendRequestDAO.getFriendRequestById(idFriendRequest);
+            try {
+                return UserDAO.getUsernameByUserId(f.getRequester());
 
             } catch (SQLException e) {
                 System.err.println("error getting username by user id " + e);

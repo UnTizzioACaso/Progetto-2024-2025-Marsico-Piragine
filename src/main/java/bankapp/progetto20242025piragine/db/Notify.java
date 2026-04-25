@@ -14,6 +14,14 @@ public class Notify {
 
     // 🔹 Costruttore vuoto
     public Notify() {}
+    public Notify(Integer userId, Integer idTransaction, Integer idFriendRequest, String message)
+    {
+        this.userId = userId;
+        this.idTransaction = idTransaction;
+        this.idFriendRequest = idFriendRequest;
+        this.message = message;
+        read = false;
+    }
 
     // 🔹 Getter & Setter
     public int getIdNotify() {
