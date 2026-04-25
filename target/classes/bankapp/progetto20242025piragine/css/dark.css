@@ -139,12 +139,11 @@
 }
 
 
-/* ================= DATE PICKER ================= */
+/* ==========================================================
+   DATE PICKER
+   ========================================================== */
 
-/* ================= DATE PICKER DARK THEME ================= */
-/* ================= DATE PICKER DARK STYLE (SIMPLE) ================= */
-
-/* Campo di testo principale */
+/* --- PARTE 1: COMPONENTE ESTERNO (Input e Bottone) --- */
 .date-picker {
     -fx-background-color: #3a3a3a !important;
 }
@@ -154,28 +153,31 @@
     -fx-text-fill: white !important;
 }
 
-/* Bottone con la freccia */
 .date-picker > .arrow-button {
     -fx-background-color: #ff0000 !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.15), 27.63, 0.17, -10, -10);
 }
 
 .date-picker > .arrow-button > .arrow {
     -fx-background-color: white !important;
 }
 
-/* Finestra del calendario (Popup) */
+/* --- PARTE 2: POPUP (Calendario Interno) --- */
 .date-picker-popup {
-    -fx-background-color: #4a4a4a !important;
-    -fx-border-color: #5a5a5a !important;
+    -fx-background-color: #3a3a3a;
+    -fx-border-color: #555555;
+    -fx-border-width: 1px;
 }
 
-/* Header (Mese/Anno) */
+/* Header Rosso */
 .date-picker-popup .month-year-pane {
-    -fx-background-color: #ff0000 !important;
+    -fx-background-color: #ff0000;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10);
 }
 
 .date-picker-popup .month-year-pane .label {
     -fx-text-fill: white !important;
+    -fx-font-weight: bold;
 }
 
 .date-picker-popup .left-arrow,
@@ -183,42 +185,60 @@
     -fx-background-color: white !important;
 }
 
-/* Griglia dei giorni */
+/* Griglia - Rimossa la spaziatura che allargava il picker */
 .date-picker-popup .calendar-grid {
-    -fx-background-color: #4a4a4a !important;
+    -fx-background-color: #3a3a3a !important;
+    -fx-padding: 0;
 }
 
+/* Nomi dei giorni (Lun, Mar...) */
 .date-picker-popup .day-name-cell {
     -fx-text-fill: #bdbdbd !important;
+    -fx-background-color: #3a3a3a;
 }
 
+/* Celle dei giorni numerici - Creazione della griglia visibile */
 .date-picker-popup .day-cell {
-    -fx-background-color: #4a4a4a !important;
-    -fx-text-fill: white !important;
+    -fx-background-color: #4a4a4a;
+    -fx-text-fill: white;
+    -fx-border-color: #2a2a2a; /* Crea il contrasto della griglia come nel bianco */
+    -fx-border-width: 0.5px;
 }
 
-/* Giorno corrente */
+/* Rimozione blocchetti bianchi a sinistra (Settimane) */
+.date-picker-popup .week-number-cell {
+    -fx-background-color: #3a3a3a !important; /* Forza lo sfondo scuro */
+    -fx-text-fill: #bdbdbd !important;
+    -fx-border-color: #3a3a3a;
+    -fx-border-width: 0.5px;
+}
+
+/* Giorno Oggi */
 .date-picker-popup .today {
     -fx-text-fill: #ff0000 !important;
+    -fx-font-weight: bold !important;
+    -fx-background-insets: 0 !important;
 }
 
-/* Giorno selezionato */
+/* Giorno Selezionato con effetto inner shadow */
 .date-picker-popup .selected {
     -fx-background-color: #ff0000 !important;
     -fx-text-fill: white !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.15), 27.63, 0.17, -10, -10);
 }
 
-/* Hover sui giorni */
-.date-picker-popup .day-cell:hover {
-    -fx-background-color: #5a5a5a !important;
-}
-
-/* Giorni fuori dal mese corrente */
+/* Giorni fuori dal mese */
 .date-picker-popup .previous-month,
 .date-picker-popup .next-month {
-    -fx-text-fill: #777777 !important;
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #666666 !important;
 }
 
+/* Hover */
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #4a4a4a;
+    -fx-text-fill: white !important;
+}
 /* ================= MENU ================= */
 
 .menu-button .arrow {
@@ -686,8 +706,8 @@ Line {
 #textFieldAddWidget12 {
      -fx-background-color: #3a3a3a !important;
      -fx-border-color: transparent !important;
-     -fx-background-radius 15 !important;
-     -fx-border-radius 15 !important;
+     -fx-background-radius: 15 !important;
+     -fx-border-radius: 15 !important;
      -fx-text-fill: white !important;
      -fx-prompt-text-fill: #bdbdbd !important;
  }
@@ -722,3 +742,29 @@ Line {
     -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.15), 27.65, 0.17, -10.0, -10.0) !important;
 }
 
+#anchorPaneChatSupport,
+#chatDisplay {
+    -fx-background-color: #595959 !important;
+}
+
+#scrollPaneChatSupport {
+    -fx-background-color: #595959 !important;
+    -fx-border-color: transparent !important;
+}
+
+
+#textFieldChatSupport {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-border-color: #333333 !important;
+}
+
+
+#labelFromFriendTransactionCloud{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#polygonFromFriendTransactionCloud{
+    -fx-fill:#4a4a4a !important;
+}

@@ -44,9 +44,9 @@
                     <image>
                         <Image url="@../../imgs/MazeBankAI.png" />
                     </image>
-                    <effect>
-                        <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
-                    </effect>
+               <effect>
+                  <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
+               </effect>
                 </ImageView>
                 <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="340.0" layoutY="32.0">
                     <image>
@@ -66,20 +66,20 @@
             </effect>
         </Pane>
 
-        <ScrollPane id="scrollPaneChatSupport" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: white; -fx-border-color: transparent; -fx-border: trasparent; -fx-background-color: trasparent;" GridPane.columnSpan="2" GridPane.rowIndex="1">
+        <ScrollPane id="scrollPaneChatSupport" fx:id="scrollPaneChatSupport" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: white; -fx-border-color: transparent; -fx-border: trasparent; -fx-background-color: trasparent;" GridPane.columnSpan="2" GridPane.rowIndex="1">
          <content>
-            <VBox fx:id="chatDisplay" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="380.0">
+            <VBox id="chatDisplay" fx:id="chatDisplay" fillWidth="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="380.0">
                <children>
                   <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="200.0" />
                </children></VBox>
          </content>
         </ScrollPane>
 
-        <AnchorPane id="anchorPaneChatSupport" prefHeight="60.0" prefWidth="400.0" style="-fx-background-radius: 0 0 19 19; -fx-background-color: trasparent; -fx-border-color: trasparent;" GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <AnchorPane id="anchorPaneChatSupport" fx:id="anchorPaneChatSupport" prefHeight="60.0" prefWidth="400.0" style="-fx-background-radius: 0 0 19 19; -fx-background-color: trasparent; -fx-border-color: trasparent;" GridPane.columnSpan="2" GridPane.rowIndex="2">
             <children>
-                <TextField id="textFieldChatSuppor" fx:id="inputField" layoutX="16.0" layoutY="15.0" onAction="#onSendButtonClick" prefHeight="35.0" prefWidth="368.0" promptText=" Scrivi un messaggio..." style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
+                <TextField id="textFieldChatSupport" fx:id="inputField" layoutX="16.0" layoutY="15.0" onAction="#onSendButtonClick" prefHeight="35.0" prefWidth="368.0" promptText="  Scrivi un messaggio..." style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 17; -fx-border-radius: 17;" text="   " AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0">
                     <font>
-                        <Font size="14.0" />
+                        <Font name="System Italic" size="14.0" />
                     </font>
                 </TextField>
             </children>

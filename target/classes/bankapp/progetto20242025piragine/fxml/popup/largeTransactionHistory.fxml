@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="0.0" prefHeight="360.0" prefWidth="500.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.LargeTransactionHistoryController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="250.0" minWidth="0.0" prefHeight="360.0" prefWidth="500.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.LargeTransactionHistoryController">
 
     <children>
 
@@ -39,7 +40,10 @@
             </effect>
         </Pane>
 
-        <TextField fx:id="searchField" layoutX="14.0" layoutY="57.0" onAction="#filter" prefHeight="25.0" prefWidth="231.0" promptText="Filtra per emittente/beneficiario" />
+        <TextField fx:id="searchField" layoutX="14.0" layoutY="57.0" onAction="#filter" prefHeight="25.0" prefWidth="231.0" promptText=" Filtra per emittente/beneficiario" style="-fx-background-radius: 15;">
+         <font>
+            <Font name="System Italic" size="13.0" />
+         </font></TextField>
 
         <DatePicker fx:id="fromDatePicker" layoutX="275.0" layoutY="57.0" onAction="#filter" prefHeight="25.0" prefWidth="99.0" promptText="Da inizio" />
 
@@ -64,10 +68,13 @@
                 </VBox>
             </content>
         </ScrollPane>
-      <ImageView fitHeight="17.0" fitWidth="14.0" layoutX="223.0" layoutY="62.0" onMouseClicked="#filter" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="14.0" fitWidth="13.0" layoutX="223.0" layoutY="64.0" onMouseClicked="#filter" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../imgs/lenticon.png" />
          </image>
+         <effect>
+            <ColorAdjust brightness="0.34" contrast="-1.0" hue="0.02" saturation="-0.05" />
+         </effect>
       </ImageView>
       <Label fx:id="errorLabel" alignment="CENTER" layoutX="166.0" layoutY="95.0" prefHeight="17.0" prefWidth="317.0" textFill="RED" AnchorPane.leftAnchor="166.0" AnchorPane.rightAnchor="17.0" />
 
