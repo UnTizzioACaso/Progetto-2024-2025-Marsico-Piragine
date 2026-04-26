@@ -12,7 +12,7 @@ public class FriendshipNotifyController extends BranchController
     public int idRequest;
 
     @FXML
-    private Label friendshipUsernameLabel;
+    public Label friendshipUsernameLabel;
 
     @FXML
     public void declineRequest()
@@ -28,6 +28,7 @@ public class FriendshipNotifyController extends BranchController
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.username = friendshipUsernameLabel.getText();
     }
+
 
     @FXML
     public void acceptRequest()

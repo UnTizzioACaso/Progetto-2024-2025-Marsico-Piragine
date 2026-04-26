@@ -22,33 +22,25 @@ public class NotificationController extends BranchController{
     @FXML
     public void readNotify()
     {
-        if(!imTheSender)
-        {
-            try { NotifyDAO.markAsRead(notify.getIdNotify());}
-            catch (SQLException e)
-            {
-                System.err.println("error marking notify as read " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-        try
-        {
-            if(notifyTitleLabel.getText().equals("Richiesta di denaro"))
-            {
-                PaymentRequestController controller = (PaymentRequestController) rootController.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
-                controller.idRequest = notify.getIdTransaction();
-            }
-            else if(valueLabel.getText().equals("Richiesta d'amicizia"))
-            {
-                FriendshipNotifyController controller = (FriendshipNotifyController) rootController.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/frienshipNotify.fxml", 300, 200);
-                controller.idRequest = notify.getIdTransaction();
-            }
-            NotifyDAO.markAsRead(notify.getIdNotify());
-        }
+
+        try {NotifyDAO.markAsRead(notify.getIdNotify());}
         catch (SQLException e)
         {
             System.err.println("error marking notify as read " + e.getMessage());
             e.printStackTrace();
+        }
+
+
+        if(secondaryLabel.getText().equals("Richiesta di denaro"))
+        {
+            PaymentRequestController controller = (PaymentRequestController) rootController.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
+            controller.idRequest = notify.getIdTransaction();
+        }
+        else if(secondaryLabel.getText().equals("Richiesta d'amicizia"))
+        {
+            FriendshipNotifyController controller = (FriendshipNotifyController) rootController.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/frienshipNotify.fxml", 300, 200);
+            controller.idRequest = notify.getIdFriendRequest();
+            controller.friendshipUsernameLabel.setText(notifyTitleLabel.getText());
         }
     }
 
