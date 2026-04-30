@@ -120,6 +120,7 @@ public class BankAccountDAO {
             stmt.setBoolean(6, account.isForcePin());
             stmt.setString(7, account.getCheckAccount());
 
+
             stmt.executeUpdate();
             return true;
         }
