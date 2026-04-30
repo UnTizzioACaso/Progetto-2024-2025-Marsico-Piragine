@@ -5,8 +5,8 @@ import java.sql.*;
 
 public class BankAccountDAO {
 
-    // 🔹 Recupera account tramite user_id
-    public static BankAccount getAccountByUserId(int userId) throws SQLException {
+
+    public static BankAccount getAccountByUserId(int userId)  {
         String sql = "SELECT * FROM Bank_Account WHERE user_id = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -29,9 +29,13 @@ public class BankAccountDAO {
 
                 return account;
             }
+        } catch (Exception e) {
+            System.err.println("Error during get account by user id to the db: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
-    public static boolean existsByIban(String iban) throws SQLException {
+    public static boolean existsByIban(String iban)  {
         String sql = "SELECT 1 FROM Bank_Account WHERE iban = ? LIMIT 1";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -42,10 +46,14 @@ public class BankAccountDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 return rs.next();
             }
+        } catch (SQLException e) {
+            System.err.println("Error during check to exist by iban to the db: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 
-    public static int getUserIdByAccountId(int accountId) throws SQLException {
+    public static int getUserIdByAccountId(int accountId)  {
         String sql = "SELECT user_id FROM Bank_Account WHERE account_id = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql))
@@ -58,12 +66,14 @@ public class BankAccountDAO {
                     return rs.getInt("user_id");
                 }
             }
+        } catch (Exception e) {
+            System.err.println("Error during get userID by account to the db: " + e.getMessage());
+            e.printStackTrace();
         }
         return -1;
     }
 
-    // 🔹 Recupera account tramite id_account
-    public static BankAccount getAccountById(int idAccount) throws SQLException {
+    public static BankAccount getAccountById(int idAccount) {
         String sql = "SELECT * FROM Bank_Account WHERE id_account = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -86,10 +96,14 @@ public class BankAccountDAO {
 
                 return account;
             }
+        } catch (Exception e) {
+            System.err.println("Error during get recovery account by ID to the db: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
 
-    public static int getIdAccountByUserId(int userId) throws SQLException {
+    public static int getIdAccountByUserId(int userId)  {
         String sql = "SELECT id_account FROM Bank_Account WHERE user_id = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
         {
@@ -98,13 +112,15 @@ public class BankAccountDAO {
             {
                 if (rs.next()) {return rs.getInt("id_account");}
             }
+        } catch (SQLException e) {
+            System.err.println("Error during get recovery account by user ID to the db: " + e.getMessage());
+            e.printStackTrace();
         }
         return -1;
     }
 
 
-    // 🔹 Inserisce un nuovo conto
-    public static boolean insertAccount(BankAccount account) throws SQLException
+    public static boolean insertAccount(BankAccount account)
     {
         String sql = "INSERT INTO Bank_Account ( user_id, money, currency, iban, max_transfer, force_pin, check_account) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -123,10 +139,11 @@ public class BankAccountDAO {
 
             stmt.executeUpdate();
             return true;
-        }
+        } catch (Exception e) {
+            System.err.println("Error during add account to the db: " + e.getMessage());
+            e.printStackTrace();
+            return false;}
     }
-
-    // 🔹 Aggiorna il saldo
     public static boolean updateBalance(int idAccount, BigDecimal newBalance) throws SQLException {
         String sql = "UPDATE Bank_Account SET money = ? WHERE id_account = ?";
 
@@ -137,11 +154,14 @@ public class BankAccountDAO {
             stmt.setInt(2, idAccount);
 
             return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error during update balance : " + e.getMessage());
+            e.printStackTrace();
+            return false;
+
         }
     }
-
-    // 🔹 Chiude il conto
-    public static boolean closeAccount(int idAccount) throws SQLException {
+    public static boolean closeAccount(int idAccount) {
         String sql = "UPDATE Bank_Account SET check_account = 'closed' WHERE id_account = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -149,6 +169,10 @@ public class BankAccountDAO {
 
             stmt.setInt(1, idAccount);
             return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error during close account: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 }
