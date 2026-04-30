@@ -115,7 +115,6 @@ public class TopbarController extends BranchController {
                 }
             }
         }
-
     }
 
 
