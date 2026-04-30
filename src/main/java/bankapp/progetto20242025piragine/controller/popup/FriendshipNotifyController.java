@@ -17,12 +17,8 @@ public class FriendshipNotifyController extends BranchController
     @FXML
     public void declineRequest()
     {
-        try {FriendRequestDAO.declineRequest(idRequest);}
-        catch (SQLException e)
-        {
-            System.err.println("error during friendship request declining " + e.getMessage());
-            e.printStackTrace();
-        }
+        FriendRequestDAO.declineRequest(idRequest);
+
 
         BlockUserPopupController controller = (BlockUserPopupController) rootController.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
@@ -36,23 +32,15 @@ public class FriendshipNotifyController extends BranchController
         try
         {
             User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
+            FriendRequestDAO.acceptRequest(idRequest);
             try
             {
-                FriendRequestDAO.acceptRequest(idRequest);
-                try
-                {
-                    FriendshipDAO.addFriendship(rootController.user.getUserID(),  u.getUserID());
-                    rootController.topbarController.updateNotifications();
-                }
-                catch (SQLException e)
-                {
-                    System.err.println("error during adding the friendship in the db " + e.getMessage());
-                    e.printStackTrace();
-                }
+                FriendshipDAO.addFriendship(rootController.user.getUserID(),  u.getUserID());
+                rootController.topbarController.updateNotifications();
             }
             catch (SQLException e)
             {
-                System.err.println("error during accepting the friendship request " + e.getMessage());
+                System.err.println("error during adding the friendship in the db " + e.getMessage());
                 e.printStackTrace();
             }
         }
