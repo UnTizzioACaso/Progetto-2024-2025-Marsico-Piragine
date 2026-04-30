@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FriendRequestDAO {
 
-    public static void sendRequest(FriendRequest request) throws SQLException {
+    public static void sendRequest(FriendRequest request)  {
         String sql = "INSERT INTO Friend_Request (requester, requested, date, status) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection()) {
@@ -30,14 +30,39 @@ public class FriendRequestDAO {
                 }
             }
 
-            conn.commit(); // Confermiamo l'operazione
-        } catch (SQLException e) {
-            // Se qualcosa va storto, l'eccezione viene lanciata
-            throw e;
+            conn.commit();
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error during sending friendship request: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
-    public static FriendRequest getFriendRequestById(int requestId ) throws SQLException {
+    public static Boolean findRequestByUsersIds(int id1, int id2)
+    {
+        String sql = """
+        SELECT 1 FROM Friend_Request 
+        WHERE ((requester = ? AND requested = ?) OR (requester = ? AND requested = ?)) 
+        AND status = 'pending'
+        """;
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id1);
+            stmt.setInt(2, id2);
+            stmt.setInt(3, id2);
+            stmt.setInt(4, id1);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("error searching an existing non-pending request: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static FriendRequest getFriendRequestById(int requestId ) {
         String sql = "SELECT * FROM Friend_Request WHERE id_request = ?";
         FriendRequest f;
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -51,13 +76,20 @@ public class FriendRequestDAO {
                     rs.getTimestamp("date").toLocalDateTime(),
                     rs.getString("status"));
 
+            return f;
         }
-        return f;
+
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting friendship request by id: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
     }
 
 
 
-    public static List<FriendRequest> getPendingRequests(int beneficiaryId) throws SQLException {
+    public static List<FriendRequest> getPendingRequests(int beneficiaryId) {
         String sql = """
             SELECT id_request, requester, requested, date, status
             FROM Friend_Request
@@ -71,7 +103,8 @@ public class FriendRequestDAO {
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setInt(1, beneficiaryId);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+            while (rs.next())
+            {
                 requests.add(new FriendRequest(
                         rs.getInt("id_request"),
                         rs.getInt("requester"),
@@ -80,40 +113,42 @@ public class FriendRequestDAO {
                         rs.getString("status")
                 ));
             }
+            return requests;
         }
-        return requests;
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting pending friendship requests: " + e.getMessage());
+            e.printStackTrace();
+            return requests;
+        }
     }
 
 
-    public static void acceptRequest(int requestId) throws SQLException {
-
-        String sql = "SELECT requester, requested FROM Friend_Request WHERE id_request = ?";
-        int requester = 0;
-        int requested = 0;
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, requestId);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                requester = rs.getInt("requester");
-                requested = rs.getInt("requested");
-            }
-        }
-
-        if (requester == 0 || requested == 0) return;
-
-
-        sql = "UPDATE Friend_Request SET status = 'completed' WHERE id_request = ?";
+    public static void acceptRequest(int requestId)  {
+        String sql = "UPDATE Friend_Request SET status = 'completed' WHERE id_request = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, requestId);
             stmt.executeUpdate();
         }
+
+        catch (SQLException e)
+        {
+            System.err.println("Error during accepting request: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-    public static void declineRequest(int requestId) throws SQLException {
+    public static void declineRequest(int requestId) {
         String sql = "UPDATE Friend_Request SET status = 'declined' WHERE id_request = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setInt(1, requestId);
             stmt.executeUpdate();
+        }
+
+        catch (SQLException e)
+        {
+            System.err.println("Error during declining friendship request: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

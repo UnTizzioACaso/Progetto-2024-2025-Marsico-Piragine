@@ -26,12 +26,8 @@ public class BlockUserPopupController extends BranchController {
         try
         {
             int id = UserDAO.getUserByUsername(username).getUserID();
-            try {BlockDAO.blockUser(rootController.user.getUserID(), id);}
-            catch (SQLException e)
-            {
-                System.err.println("error trying to block the user " + id + " " + e);
-                e.printStackTrace();
-            }
+            BlockDAO.blockUser(rootController.user.getUserID(), id);
+
         }
         catch (SQLException e)
         {
@@ -59,12 +55,7 @@ public class BlockUserPopupController extends BranchController {
 
     private void reloadNotification()
     {
-        try {rootController.topbarController.updateNotifications();}
-        catch (SQLException e)
-        {
-            System.err.println("error trying to reload notifications" + e);
-            e.printStackTrace();
-        }
+       rootController.topbarController.updateNotifications();
     }
 
 }

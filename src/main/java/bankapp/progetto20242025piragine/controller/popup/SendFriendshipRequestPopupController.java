@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.paint.Paint;
 
 import java.sql.SQLException;
 
@@ -28,7 +29,7 @@ public class SendFriendshipRequestPopupController extends BranchController {
 
     private User user2 = null;
 
-    // Colori dinamici in base al tema dell'utente
+    // Dynamic color by user
     private String getBgInactive() {
         return rootController.user.getTheme().equalsIgnoreCase("dark") ? "#4a4a4a" : "white";
     }
@@ -40,7 +41,6 @@ public class SendFriendshipRequestPopupController extends BranchController {
     @Override
     public void initializer() {
         ThemeManager.applyTheme(errorLabel.getScene(), rootController.user.getTheme());
-        // Impostiamo lo stato iniziale (Username attivo di default)
         switchToUsername();
     }
 
@@ -64,84 +64,107 @@ public class SendFriendshipRequestPopupController extends BranchController {
         String bg = getBgInactive();
         String txt = getTextInactive();
 
-        // Visibilità TextField
+        // Visibility TextField
         searchByUsernameField.setVisible(user);
         searchByEmailField.setVisible(email);
         searchByPhoneNumberField.setVisible(phone);
 
-        // Reset errore quando l'utente cambia modalità di ricerca
+        // Reset error label
         errorLabel.setText("");
 
-        // Aggiornamento stili ToggleButtons
+        // updating ToggleButtons
         toggleUsername.setStyle("-fx-background-color: " + (user ? "red" : bg) + "; -fx-text-fill: " + (user ? "white" : txt) + "; -fx-background-radius: 8 0 0 8; -fx-border-color: transparent;");
         toggleEmail.setStyle("-fx-background-color: " + (email ? "red" : bg) + "; -fx-text-fill: " + (email ? "white" : txt) + "; -fx-background-radius: 0; -fx-border-color: gray; -fx-border-width: 0 1 0 1;");
         togglePhoneNumber.setStyle("-fx-background-color: " + (phone ? "red" : bg) + "; -fx-text-fill: " + (phone ? "white" : txt) + "; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
     }
 
     @FXML
-    public void findHypotheticalFriend() {
-        user2 = null; // Reset fondamentale: cancella l'utente trovato nella ricerca precedente
-        errorLabel.setText("");
+    public void findHypotheticalFriend() //Finds a user in the db and stores it in the controller
+    {
+        user2 = null; //resetting the user2
+        errorLabel.setText(""); //resetting error label
 
+        //Dynamic three-way query
         try {
             if (searchByUsernameField.isVisible()) {
                 String val = searchByUsernameField.getText();
-                System.out.println("Ricerca per Username: " + val);
                 user2 = UserDAO.getUserByUsername(val);
-
             }
             else if (searchByEmailField.isVisible()) {
                 String val = searchByEmailField.getText();
-                System.out.println("Ricerca per Email: " + val);
                 user2 = UserDAO.getUserByEmail(val);
             }
             else if (searchByPhoneNumberField.isVisible()) {
                 String val = searchByPhoneNumberField.getText();
-                System.out.println("Ricerca per Telefono: " + val);
                 user2 = UserDAO.getUserByCellphone(val);
             }
-        } catch (SQLException e) {
-            System.err.println("Errore Database durante la ricerca: " + e.getMessage());
-            errorLabel.setText("Errore di connessione");
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error during : " + e.getMessage());
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Errore nella ricerca");
             return;
         }
 
-        // Se dopo la ricerca user2 è ancora null, il DAO non ha trovato nulla
-        if (user2 == null) {
+        //if after the query user2 is still null
+        if (user2 == null)
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
             errorLabel.setText("Utente non trovato");
-        } else {
-            sendRequest();
+            return;
         }
+
+        //sending method, called when user2 is no more null
+        sendRequest();
+
     }
 
-    private void sendRequest() {
-        // Controllo se l'utente trovato sono io (confronto ID)
-        if (user2.getUserID() == rootController.user.getUserID()) {
-            errorLabel.setText("L'utente inserito è il tuo");
+    private void sendRequest() //sends the friendship request and notifies in the db
+    {
+        //filtering if user2 is also user
+        if (user2.getUserID() == rootController.user.getUserID())
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("L'utente inserito sei tu");
             return;
         }
 
-        try {
-            // Controllo blocchi
-            if (BlockDAO.isBlocked(user2.getUserID(), rootController.user.getUserID())) {
-                errorLabel.setText("Utente non trovato (blocco)");
+            //filtering if user2 blocked user
+            if (BlockDAO.isBlocked(user2.getUserID(), rootController.user.getUserID()))
+            {
+                errorLabel.setTextFill(Paint.valueOf("red"));
+                errorLabel.setText("Utente non trovato");
                 return;
             }
 
-            // Invio richiesta
+            //filtering if there is an existing pending request
+            if(FriendRequestDAO.findRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
+            {
+                errorLabel.setTextFill(Paint.valueOf("red"));
+                errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
+                return;
+            }
+
+            //sending friendship request
             FriendRequest request = new FriendRequest(rootController.user.getUserID(), user2.getUserID());
             FriendRequestDAO.sendRequest(request);
 
-            // Gestione notifiche
+            //sending notifies
             Notify n = new Notify(user2.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
+            Notify n2 = new Notify(rootController.user.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
             NotifyDAO.insertNotify(n);
+            NotifyDAO.insertNotify(n2);
 
+
+            errorLabel.setTextFill(Paint.valueOf("green"));
             errorLabel.setText("Richiesta inviata correttamente");
 
-        } catch (SQLException e) {
-            System.err.println("Errore durante l'invio della richiesta: " + e.getMessage());
+
+            errorLabel.setTextFill(Paint.valueOf("red"));
             errorLabel.setText("Errore nell'invio della richiesta");
-        }
     }
+
 }
+
 

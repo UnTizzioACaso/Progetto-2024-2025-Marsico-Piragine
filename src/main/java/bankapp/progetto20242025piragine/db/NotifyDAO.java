@@ -6,8 +6,8 @@ import java.util.List;
 
 public class NotifyDAO {
 
-    // 🔹 Inserisce una notifica
-    public static boolean insertNotify(Notify n) throws SQLException {
+    // 🔹 inserts notify in the db
+    public static boolean insertNotify(Notify n)  {
         String sql = """
         INSERT INTO Notify
         (user_id, id_transaction, id_friend_request, message, read, data_creation)
@@ -30,14 +30,20 @@ public class NotifyDAO {
             stmt.setString(4, n.getMessage());
             stmt.setBoolean(5, n.isRead());
 
-            // 2. Esegui e basta. Non chiamare getGeneratedKeys() se non ti serve l'ID.
             int rows = stmt.executeUpdate();
             return rows > 0;
+        }
+
+        catch (SQLException e)
+        {
+            System.err.println("Error during inserting notify in the db: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 
     // 🔹 Recupera notifiche di un utente
-    public static List<Notify> getNotifyByUserId(int userId) throws SQLException {
+    public static List<Notify> getNotifyByUserId(int userId)  {
         String sql = "SELECT * FROM Notify WHERE user_id = ? ORDER BY data_creation DESC";
         List<Notify> list = new ArrayList<>();
 
@@ -52,11 +58,16 @@ public class NotifyDAO {
                 }
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting all notifies by user id: " + e.getMessage());
+            e.printStackTrace();
+        }
         return list;
     }
 
     // 🔹 Segna notifica come letta
-    public static boolean markAsRead(int idNotify) throws SQLException {
+    public static boolean markAsRead(int idNotify)  {
         String sql = "UPDATE Notify SET read = 1 WHERE id_notify = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -65,19 +76,16 @@ public class NotifyDAO {
             stmt.setInt(1, idNotify);
             return stmt.executeUpdate() > 0;
         }
+        catch (SQLException e)
+        {
+            System.err.println("Error during marking notify as read: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 
     // 🔹 Cancella notifica
-    public static boolean deleteNotify(int idNotify) throws SQLException {
-        String sql = "DELETE FROM Notify WHERE id_notify = ?";
 
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, idNotify);
-            return stmt.executeUpdate() > 0;
-        }
-    }
 
     // 🔹 Mapping ResultSet → Notify
     private static Notify mapRow(ResultSet rs) throws SQLException {

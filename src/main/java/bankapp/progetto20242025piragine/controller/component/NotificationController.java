@@ -23,13 +23,13 @@ public class NotificationController extends BranchController{
     public void readNotify()
     {
 
-        try {NotifyDAO.markAsRead(notify.getIdNotify());}
-        catch (SQLException e)
-        {
-            System.err.println("error marking notify as read " + e.getMessage());
-            e.printStackTrace();
-        }
+        NotifyDAO.markAsRead(notify.getIdNotify());
 
+        if(imTheSender)
+        {
+            rootController.topbarController.updateNotifications();
+            return;
+        }
 
         if(secondaryLabel.getText().equals("Richiesta di denaro"))
         {
@@ -57,7 +57,6 @@ public class NotificationController extends BranchController{
             friendshipRequestNotify();
         }
     }
-
     private void transactionRequestNotify()
     {
         notifyTitleLabel.setText(getBeneficiaryUsernameT(notify.getIdTransaction()));
@@ -67,7 +66,7 @@ public class NotificationController extends BranchController{
 
     private void friendshipRequestNotify() //if notify is a friendship request
     {
-        int id = getBeneficiaryIdF(notify.getIdFriendRequest());
+        int id = FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest()).getRequester();
         if( id == rootController.user.getUserID())//user is the beneficiary
         {
             valueLabel.setText("");
@@ -84,51 +83,21 @@ public class NotificationController extends BranchController{
             System.err.println("error getting the receiver" + e.getMessage());
             e.printStackTrace();
         }
-        switch (checkFriendshipStatus(notify.getIdFriendRequest()))
+        switch (FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest()).getStatus())
         {
             case "accepted":
-                valueLabel.setText("Richiesta accettata");
+                valueLabel.setText("accettata");
                 break;
             case "declined":
-                valueLabel.setText("Richiesta rifiutata");
+                valueLabel.setText("rifiutata");
                 break;
             case "pending":
-                valueLabel.setText("Richiesta in attesa");
+                valueLabel.setText("in attesa");
         }
         secondaryLabel.setText("Richiesta d'amicizia");
     }
 
 
-    private String checkFriendshipStatus(int idFriendRequest) //Checks the friendship notify status
-    {
-        try
-        {
-
-            return  FriendRequestDAO.getFriendRequestById(idFriendRequest).getStatus();
-        }
-        catch(SQLException e)
-        {
-            System.err.println("error getting friend request by id " + e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-
-    private Integer getBeneficiaryIdF(int idFriendRequest) //gets the username of friendship's beneficiary
-    {
-        try
-        {
-            FriendRequest r = FriendRequestDAO.getFriendRequestById(idFriendRequest);
-            return r.getRequested();
-        }
-        catch(SQLException e)
-        {
-            System.err.println("error getting sender id " + e);
-            e.printStackTrace();
-            return null;
-        }
-    }
 
 
     private String getBeneficiaryUsernameT(int idTransaction)
@@ -175,7 +144,7 @@ public class NotificationController extends BranchController{
     }
 
     private String getRequesterUsernameF(int idFriendRequest) {
-        try {
+
             FriendRequest f = FriendRequestDAO.getFriendRequestById(idFriendRequest);
 
             try
@@ -188,11 +157,7 @@ public class NotificationController extends BranchController{
                 e.printStackTrace();
                 return null;
             }
-        } catch (SQLException e) {
-            System.err.println("error getting friend request by id " + e);
-            e.printStackTrace();
-            return null;
-        }
+
     }
 
     private BigDecimal getTransactionRequestValue(int idTransaction)

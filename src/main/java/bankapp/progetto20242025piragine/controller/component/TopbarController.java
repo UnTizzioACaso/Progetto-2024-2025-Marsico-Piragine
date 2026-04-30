@@ -73,36 +73,29 @@ public class TopbarController extends BranchController {
     @FXML
     public void showPopup()
     {
-        try {
-            if (rootController.rootWindow.getRight() == null)
-            {
-                updateNotifications();
-                rootController.rootWindow.setRight(notificationAnchorPane);
-                notificationAnchorPane.setTranslateX(190);
-                TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), notificationAnchorPane);
-                slideIn.setFromX(190);
-                slideIn.setToX(0);
-                slideIn.play();
-            }
-            else
-            {
-                TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), notificationAnchorPane);
-                slideOut.setFromX(0);
-                slideOut.setToX(190);
-                slideOut.setOnFinished(e -> {rootController.rootWindow.setRight(null);});
-                slideOut.play();
-            }
-        }
-        catch (SQLException ex)
+        if (rootController.rootWindow.getRight() == null)
         {
-            ex.printStackTrace();
+            updateNotifications();
+            rootController.rootWindow.setRight(notificationAnchorPane);
+            notificationAnchorPane.setTranslateX(190);
+            TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), notificationAnchorPane);
+            slideIn.setFromX(190);
+            slideIn.setToX(0);
+            slideIn.play();
+        }
+        else
+        {
+            TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), notificationAnchorPane);
+            slideOut.setFromX(0);
+            slideOut.setToX(190);
+            slideOut.setOnFinished(e -> {rootController.rootWindow.setRight(null);});
+            slideOut.play();
         }
     }
 
-    public void updateNotifications() throws SQLException {
+    public void updateNotifications()
+    {
         notificationAnchorPaneController.notificationVBox.getChildren().clear();
-
-
         List<Notify> notifies = NotifyDAO.getNotifyByUserId(rootController.user.getUserID());
 
         if (notifies.isEmpty())
@@ -115,13 +108,14 @@ public class TopbarController extends BranchController {
         {
             for (Notify n : notifies)
             {
-                if(!n.isRead())
+                if (!n.isRead())
                 {
                     Node notification = VisualNotificationCreator.createVisualTransaction(rootController, n);
                     notificationAnchorPaneController.notificationVBox.getChildren().add(notification);
                 }
             }
         }
+
     }
 
 
