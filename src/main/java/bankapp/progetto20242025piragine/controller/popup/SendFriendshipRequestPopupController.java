@@ -160,9 +160,6 @@ public class SendFriendshipRequestPopupController extends BranchController {
             errorLabel.setTextFill(Paint.valueOf("green"));
             errorLabel.setText("Richiesta inviata correttamente");
 
-
-            errorLabel.setTextFill(Paint.valueOf("red"));
-            errorLabel.setText("Errore nell'invio della richiesta");
     }
 
 }

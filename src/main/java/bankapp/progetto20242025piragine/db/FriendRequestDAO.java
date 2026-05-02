@@ -125,7 +125,7 @@ public class FriendRequestDAO {
 
 
     public static void acceptRequest(int requestId)  {
-        String sql = "UPDATE Friend_Request SET status = 'completed' WHERE id_request = ?";
+        String sql = "UPDATE Friend_Request SET status = 'accepted' WHERE id_request = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, requestId);
             stmt.executeUpdate();

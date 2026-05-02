@@ -66,7 +66,7 @@ public class NotificationController extends BranchController{
 
     private void friendshipRequestNotify() //if notify is a friendship request
     {
-        int id = FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest()).getRequester();
+        int id = FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest()).getRequested();
         if( id == rootController.user.getUserID())//user is the beneficiary
         {
             valueLabel.setText("");

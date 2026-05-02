@@ -100,8 +100,9 @@ public class UserDAO
 
     }
 
-    public static User getUserByEmail(String email) throws SQLException {
+    public static User getUserByEmail(String email)  {
         String sql = "SELECT * FROM User WHERE email = ?";
+        User user = new User();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -109,7 +110,7 @@ public class UserDAO
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
 
-                User user = new User();
+
                 user.setUserID(rs.getInt("user_id"));
                 user.setUsername(rs.getString("username"));
                 user.setFirstName(rs.getString("first_name"));
@@ -134,10 +135,17 @@ public class UserDAO
                 return user;
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting user by email: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return user;
     }
 
-    public static User getUserByUsername(String username) throws SQLException {
+    public static User getUserByUsername(String username)  {
         String sql = "SELECT * FROM User WHERE username = ?";
+        User user = new User();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -145,7 +153,7 @@ public class UserDAO
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
 
-                User user = new User();
+
                 user.setUserID(rs.getInt("user_id"));
                 user.setUsername(rs.getString("username"));
                 user.setFirstName(rs.getString("first_name"));
@@ -170,6 +178,12 @@ public class UserDAO
                 return user;
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting user by username: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return user;
     }
 
     public static User getUserByUserID(int userid) throws SQLException {
