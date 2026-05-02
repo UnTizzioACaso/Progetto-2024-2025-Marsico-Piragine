@@ -1,14 +1,8 @@
 /* ================= ROOT ================= */
 
-#root{
+#root {
     -fx-background-color: #4a4a4a !important;
 }
-
-
-#addWidgetScrollPane {
-    -fx-background-color: #4a4a4a !important;
-}
-
 
 #accountPopupRoot{
     -fx-background-color: #4a4a4a !important;

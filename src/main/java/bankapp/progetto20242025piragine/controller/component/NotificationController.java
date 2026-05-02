@@ -23,7 +23,7 @@ public class NotificationController extends BranchController{
     public void readNotify()
     {
 
-        //NotifyDAO.markAsRead(notify.getIdNotify());
+        // NotifyDAO.markAsRead(notify.getIdNotify());
 
         if(imTheSender)
         {
@@ -38,7 +38,7 @@ public class NotificationController extends BranchController{
         }
         else if(secondaryLabel.getText().equals("Richiesta d'amicizia"))
         {
-            FriendshipNotifyController controller = (FriendshipNotifyController) rootController.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/friendshipNotify.fxml", 200, 150);
+            FriendshipNotifyController controller = (FriendshipNotifyController) rootController.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/frienshipNotify.fxml", 300, 200);
             controller.idRequest = notify.getIdFriendRequest();
             controller.friendshipUsernameLabel.setText(notifyTitleLabel.getText());
         }
@@ -66,7 +66,7 @@ public class NotificationController extends BranchController{
 
     private void friendshipRequestNotify() //if notify is a friendship request
     {
-        int id = FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest()).getRequested();
+        int id = FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest()).getRequester();
         if( id == rootController.user.getUserID())//user is the beneficiary
         {
             valueLabel.setText("");

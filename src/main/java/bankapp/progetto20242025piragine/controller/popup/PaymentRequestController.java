@@ -35,14 +35,26 @@ public class PaymentRequestController extends BranchController {
     public void acceptRequest()
     {
 
-        User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
-
-        FriendshipDAO.addFriendship(rootController.user.getUserID(), u.getUserID());
-        rootController.topbarController.updateNotifications();
-
-        FriendRequestDAO.acceptRequest(idRequest);
-
-
+        try
+        {
+            User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
+                try
+                {
+                    FriendshipDAO.addFriendship(rootController.user.getUserID(),  u.getUserID());
+                    rootController.topbarController.updateNotifications();
+                }
+                catch (SQLException e)
+                {
+                    System.err.println("error during adding the friendship in the db " + e.getMessage());
+                    e.printStackTrace();
+                }
+                FriendRequestDAO.acceptRequest(idRequest);
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during getting user from the db " + e.getMessage());
+            e.printStackTrace();
+        }
 
     }
 

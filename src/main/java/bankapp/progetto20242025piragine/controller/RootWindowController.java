@@ -85,6 +85,7 @@ public  class RootWindowController extends BranchController {
             popupStage.setScene(scene);
             controller.initializer();
             popupStage.show();
+
             return controller;
         }
         catch (IOException e)

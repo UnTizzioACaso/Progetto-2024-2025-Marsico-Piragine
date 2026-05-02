@@ -30,10 +30,10 @@ public class FriendshipNotifyController extends BranchController
     @FXML
     public void acceptRequest()
     {
-        User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
+        //User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
         FriendRequestDAO.acceptRequest(idRequest);
 
-        FriendshipDAO.addFriendship(rootController.user.getUserID(), u.getUserID());
+        //FriendshipDAO.addFriendship(rootController.user.getUserID(),  u.getUserID());
         rootController.topbarController.updateNotifications();
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
