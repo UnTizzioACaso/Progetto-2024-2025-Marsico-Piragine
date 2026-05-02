@@ -23,7 +23,7 @@ public class NotificationController extends BranchController{
     public void readNotify()
     {
 
-        NotifyDAO.markAsRead(notify.getIdNotify());
+        // NotifyDAO.markAsRead(notify.getIdNotify());
 
         if(imTheSender)
         {

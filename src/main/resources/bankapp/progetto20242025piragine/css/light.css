@@ -396,3 +396,7 @@ Line {
     -fx-background-color: #ffffff !important;
     -fx-border-color: transparent !important;
 }
+
+#closeAccountPopup{
+    -fx-text-fill: #696969 !important;
+}
