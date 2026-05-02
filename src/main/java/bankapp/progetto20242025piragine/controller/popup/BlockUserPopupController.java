@@ -18,6 +18,7 @@ public class BlockUserPopupController extends BranchController {
 
     private Stage stage;
 
+
     public String username;
 
     @FXML
