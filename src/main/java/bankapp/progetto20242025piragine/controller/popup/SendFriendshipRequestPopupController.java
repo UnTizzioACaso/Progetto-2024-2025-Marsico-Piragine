@@ -150,19 +150,20 @@ public class SendFriendshipRequestPopupController extends BranchController {
             FriendRequest request = new FriendRequest(rootController.user.getUserID(), user2.getUserID());
             FriendRequestDAO.sendRequest(request);
 
+            if(request.getIdRequest() == 0) //if the request has been sent correctly, it's id would be != 0
+            {
+                errorLabel.setText("Errore durante l'invio della richiesta");
+                return;
+            }
+
             //sending notifies
             Notify n = new Notify(user2.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
             Notify n2 = new Notify(rootController.user.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
             NotifyDAO.insertNotify(n);
             NotifyDAO.insertNotify(n2);
 
-
             errorLabel.setTextFill(Paint.valueOf("green"));
             errorLabel.setText("Richiesta inviata correttamente");
-
-
-            errorLabel.setTextFill(Paint.valueOf("red"));
-            errorLabel.setText("Errore nell'invio della richiesta");
     }
 
 }

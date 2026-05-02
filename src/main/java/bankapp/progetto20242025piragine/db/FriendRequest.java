@@ -18,6 +18,7 @@ public class FriendRequest {
     }
 
     public FriendRequest(int requester, int requested) {
+        this.idRequest = 0;
         this.requester = requester;
         this.requested = requested;
         this.status = "pending";

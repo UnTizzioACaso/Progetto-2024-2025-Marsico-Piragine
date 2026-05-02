@@ -16,24 +16,16 @@ public class BlockUserPopupController extends BranchController {
     @FXML
     public Label wouldYouLikeToBlockLabel;
 
-    private Stage stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
+    private Stage stage;
 
     public String username;
 
     @FXML
     public void acceptBlock()
     {
-        try
-        {
-            int id = UserDAO.getUserByUsername(username).getUserID();
-            BlockDAO.blockUser(rootController.user.getUserID(), id);
+        int id = UserDAO.getUserByUsername(username).getUserID();
+        BlockDAO.blockUser(rootController.user.getUserID(), id);
 
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error trying to find the user by username" + e.getMessage());
-            e.printStackTrace();
-        }
         reloadNotification();
         stage.close();
     }
@@ -41,6 +33,7 @@ public class BlockUserPopupController extends BranchController {
     @Override
     public void initializer()
     {
+        stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
         stage.setOnCloseRequest(event -> declineBlock());
         ThemeManager.applyTheme(wouldYouLikeToBlockLabel.getScene(), rootController.user.getTheme());
     }

@@ -37,12 +37,15 @@ public class FriendshipDAO
     }
 
 
-    public static void addFriendship(int user1, int user2) throws SQLException {
+    public static void addFriendship(int user1, int user2)  {
         String sql = "INSERT INTO Friendship(user1, user2) VALUES (?, ?)";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, user1);
             stmt.setInt(2, user2);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error during adding a new friendship in the db" + e.getMessage());
+            e.printStackTrace();
         }
     }
 

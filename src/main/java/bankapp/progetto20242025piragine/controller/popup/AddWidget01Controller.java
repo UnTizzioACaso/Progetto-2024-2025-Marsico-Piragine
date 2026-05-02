@@ -5,6 +5,7 @@ import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -18,7 +19,7 @@ public class AddWidget01Controller extends BranchController {
     private VBox widgetsVBox;
 
     @FXML
-    private ScrollPane root;
+    private AnchorPane root;
 
     @Override
     public void initializer()
@@ -36,6 +37,10 @@ public class AddWidget01Controller extends BranchController {
         ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
 
     }
+
+    @FXML
+    public void close()
+    {((Stage) root.getScene().getWindow()).close();}
 
     @FXML
     public void addQuickContactWidget() {
