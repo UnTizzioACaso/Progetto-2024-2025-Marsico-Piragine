@@ -15,8 +15,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -71,13 +73,16 @@ public  class RootWindowController extends BranchController {
             controller.setRootController(this);
             Stage popupStage = new Stage(); //creating a new stage for the popup
             popupStage.setTitle(title); //setting the title
+            popupStage.initStyle(StageStyle.TRANSPARENT);
             popupStage.setMinWidth(width); //setting popup's minimum width
             popupStage.setMaxWidth(width);
             popupStage.setMinHeight(height); //setting popup's minimum height
             popupStage.setMaxHeight(height);
             popupStage.setResizable(false);
             popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            popupStage.setScene(new Scene(root));
+            Scene scene =new Scene(root);
+            scene.setFill(Color.TRANSPARENT);
+            popupStage.setScene(scene);
             controller.initializer();
             popupStage.show();
             return controller;

@@ -61,7 +61,7 @@ public class TransactionDAO {
         SELECT *
         FROM Transaction1
         WHERE sender = ?
-           OR requested = ?
+           OR beneficiary = ?
         ORDER BY transaction_date DESC
         """;
 
@@ -78,7 +78,7 @@ public class TransactionDAO {
                     Transaction t = new Transaction();
                     t.setIdTransaction(rs.getInt("id_transaction"));
                     t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("requested"));
+                    t.setBeneficiary(rs.getInt("beneficiary"));
                     t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
                     t.setNote(rs.getString("note"));
                     t.setTransactionDate(rs.getTimestamp("transaction_date"));

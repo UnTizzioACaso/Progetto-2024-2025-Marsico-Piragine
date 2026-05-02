@@ -23,7 +23,7 @@ public class AccountPopupController extends BranchController {
 
     // Root pane of the popup, used to apply theme changes
     @FXML
-    private AnchorPane root;
+    private AnchorPane accountPopupRoot;
 
     // Fills the popup with the correct user data and current theme
     @Override
@@ -45,7 +45,8 @@ public class AccountPopupController extends BranchController {
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
 
         // Apply the selected theme to the popup scene
-        ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(accountPopupRoot.getScene(), rootController.user.getTheme());
+
     }
 
 
@@ -53,8 +54,7 @@ public class AccountPopupController extends BranchController {
     private void loadAccountSettingsPage()
     {
         rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
-        Stage stage = (Stage)root.getScene().getWindow();
-        stage.close();
+        ((Stage) accountPopupRoot.getScene().getWindow()).close();
     }
 
 
@@ -79,9 +79,15 @@ public class AccountPopupController extends BranchController {
         }
 
         // Apply the selected theme to the popup window
-        ThemeManager.applyTheme(root.getScene(), themeColor);
+        ThemeManager.applyTheme(accountPopupRoot.getScene(), themeColor);
 
         // Apply the selected theme to the main application window
         ThemeManager.applyTheme(rootController.rootWindow.getScene(), themeColor);
+    }
+
+    @FXML
+    public void closePopup()
+    {
+        ((Stage) accountPopupRoot.getScene().getWindow()).close();
     }
 }

@@ -4,6 +4,7 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
@@ -29,26 +30,12 @@ public class FriendshipNotifyController extends BranchController
     @FXML
     public void acceptRequest()
     {
-        try
-        {
-            User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
-            FriendRequestDAO.acceptRequest(idRequest);
-            try
-            {
-                FriendshipDAO.addFriendship(rootController.user.getUserID(),  u.getUserID());
-                rootController.topbarController.updateNotifications();
-            }
-            catch (SQLException e)
-            {
-                System.err.println("error during adding the friendship in the db " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting user from the db " + e.getMessage());
-            e.printStackTrace();
-        }
+        //User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
+        FriendRequestDAO.acceptRequest(idRequest);
+
+        //FriendshipDAO.addFriendship(rootController.user.getUserID(),  u.getUserID());
+        rootController.topbarController.updateNotifications();
+        ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
 }

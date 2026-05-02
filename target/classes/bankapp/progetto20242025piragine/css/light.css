@@ -240,12 +240,19 @@
 }
 
 /* ==========================================================
-   ROOT E VARIE
+   ROOT E VARIEF
    ========================================================== */
 
 #root {
     -fx-background-color: white;
     -fx-background-radius: 12;
+}
+
+#accountPopupRoot
+{
+    -fx-background-color: white !important;
+    -fx-background-radius: 20 !important;
+    -fx-border-radius: 20 !important;
 }
 
 .separator {
