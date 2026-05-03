@@ -23,10 +23,13 @@ public class HomeWidgetCustomDAO {
 
             stmt.executeUpdate();
             return true;
+        } catch (Exception e) {
+            System.err.println("Error during insert widget: " + e.getMessage());
+            e.printStackTrace();
+        return false;
         }
     }
 
-    // 🔹 WidgetController di un utente
     public static List<HomeWidgetCustom> getWidgetsByUserId(int userId) throws SQLException {
         String sql = "SELECT * FROM Home_Widget_Custom WHERE user_id = ? ORDER BY y,x";
         List<HomeWidgetCustom> list = new ArrayList<>();
@@ -41,11 +44,13 @@ public class HomeWidgetCustomDAO {
                     list.add(mapRow(rs));
                 }
             }
+        } catch (Exception e) {
+            System.err.println("Error get widget by userid: " + e.getMessage());
+            e.printStackTrace();
         }
         return list;
     }
 
-    // 🔹 Aggiorna posizione widget
     public static boolean updatePosition(int userId, String widgetType, int newRow, int newColumn, Boolean remove) throws SQLException {
         String sql = "UPDATE Home_Widget_Custom SET y = ?, x = ?, remove = ? WHERE type_widget = ? AND user_id = ?;";
 
@@ -58,10 +63,13 @@ public class HomeWidgetCustomDAO {
             stmt.setString(4, widgetType);
             stmt.setInt(5, userId);
             return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            System.err.println("Error during widget upadate positizion : " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 
-    // 🔹 Rimuove (soft delete)
     public static boolean markAsRemoved(int userid, String widgetType) throws SQLException {
         String sql = "UPDATE Home_Widget_Custom SET remove = true WHERE user_id = ? AND type_widget = ?;";
 
@@ -71,6 +79,10 @@ public class HomeWidgetCustomDAO {
             stmt.setInt(1, userid);
             stmt.setString(2, widgetType);
             return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error during remove widget: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 

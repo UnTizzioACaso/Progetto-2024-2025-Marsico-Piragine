@@ -27,15 +27,16 @@ public class FriendshipDAO
                     int user1 = rs.getInt("user1");
                     int user2 = rs.getInt("user2");
 
-                    // restituisce SEMPRE l'altro utente
                     friends.add(user1 == userId ? user2 : user1);
                 }
             }
+        } catch (Exception e) {
+            System.err.println("Error get friendship by userid: " + e.getMessage());
+            e.printStackTrace();
+            return friends;
         }
-
         return friends;
     }
-
 
     public static void addFriendship(int user1, int user2) throws SQLException {
         String sql = "INSERT INTO Friendship(user1, user2) VALUES (?, ?)";
@@ -43,7 +44,9 @@ public class FriendshipDAO
             stmt.setInt(1, user1);
             stmt.setInt(2, user2);
             stmt.executeUpdate();
-        }
+        } catch (SQLException e) {
+            System.err.println("Error during add friendship: " + e.getMessage());
+            e.printStackTrace();        }
     }
 
 
