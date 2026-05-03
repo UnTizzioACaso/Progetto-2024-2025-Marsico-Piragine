@@ -5,8 +5,8 @@ import java.util.List;
 
 public class AuditLogDAO {
 
-    // 🔹 Inserisce log
-    public static boolean insertLog(AuditLog log) throws SQLException {
+
+    public static boolean insertLog(AuditLog log){
         String sql = """
             INSERT INTO Audit_Log
             (user_id, action, Details, Result)
@@ -34,11 +34,13 @@ public class AuditLogDAO {
                 }
             }
             return true;
-        }
+        } catch (Exception e) {
+            System.err.println("Error during insert log to the db: " + e.getMessage());
+            e.printStackTrace();
+            return false;        }
     }
 
-    // 🔹 Log di un utente
-    public static List<AuditLog> getLogsByUserId(int userId) throws SQLException {
+    public static List<AuditLog> getLogsByUserId(int userId)  {
         String sql = "SELECT * FROM Audit_Log WHERE user_id = ? ORDER BY timestamp DESC";
         List<AuditLog> list = new ArrayList<>();
 
@@ -52,12 +54,15 @@ public class AuditLogDAO {
                     list.add(mapRow(rs));
                 }
             }
+        } catch (Exception e) {
+            System.err.println("Error during getLogsByUserId to the db: " + e.getMessage());
+            e.printStackTrace();
         }
         return list;
     }
 
-    // 🔹 Tutti i log (admin)
-    public static List<AuditLog> getAllLogs() throws SQLException {
+
+    public static List<AuditLog> getAllLogs() {
         String sql = "SELECT * FROM Audit_Log ORDER BY timestamp DESC";
         List<AuditLog> list = new ArrayList<>();
 
@@ -68,12 +73,14 @@ public class AuditLogDAO {
             while (rs.next()) {
                 list.add(mapRow(rs));
             }
+        } catch (SQLException e) {
+            System.err.println("Error during getAllLogs to the db: " + e.getMessage());
+            e.printStackTrace();
         }
         return list;
     }
 
-    // 🔹 Cancella log vecchi (manutenzione)
-    public static boolean deleteOlderThan(Timestamp limit) throws SQLException {
+    public static boolean deleteOlderThan(Timestamp limit)  {
         String sql = "DELETE FROM Audit_Log WHERE timestamp < ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -81,10 +88,13 @@ public class AuditLogDAO {
 
             stmt.setTimestamp(1, limit);
             return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("Error during deleteOlderThan to the db: " + e.getMessage());
+            e.printStackTrace();
         }
+        return false;
     }
 
-    // 🔹 Mapping ResultSet → AuditLog
     private static AuditLog mapRow(ResultSet rs) throws SQLException {
         AuditLog log = new AuditLog();
         log.setIdLog(rs.getInt("id_log"));
