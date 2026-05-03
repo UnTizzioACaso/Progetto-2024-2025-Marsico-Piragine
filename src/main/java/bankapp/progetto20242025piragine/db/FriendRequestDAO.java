@@ -39,12 +39,35 @@ public class FriendRequestDAO {
         }
     }
 
-    public static Boolean findRequestByUsersIds(int id1, int id2)
+    public static Boolean findPendingRequestByUsersIds(int id1, int id2)
     {
         String sql = """
         SELECT 1 FROM Friend_Request 
         WHERE ((requester = ? AND requested = ?) OR (requester = ? AND requested = ?)) 
         AND status = 'pending'
+        """;
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id1);
+            stmt.setInt(2, id2);
+            stmt.setInt(3, id2);
+            stmt.setInt(4, id1);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        }
+        catch (SQLException e)
+        {
+            System.out.println("error searching an existing non-pending request: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static Boolean findAcceptedRequestByUsersIds(int id1, int id2)
+    {
+        String sql = """
+        SELECT 1 FROM Friend_Request 
+        WHERE ((requester = ? AND requested = ?) OR (requester = ? AND requested = ?)) 
+        AND status = 'accepted'
         """;
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id1);

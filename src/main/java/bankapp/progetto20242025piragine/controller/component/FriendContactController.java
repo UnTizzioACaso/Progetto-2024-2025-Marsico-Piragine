@@ -1,9 +1,12 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
 import bankapp.progetto20242025piragine.db.BankAccountDAO;
 import bankapp.progetto20242025piragine.db.Transaction;
 import bankapp.progetto20242025piragine.db.TransactionDAO;
+import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -17,14 +20,18 @@ import java.util.List;
 
 public class FriendContactController extends BranchController
 {
-    public VBox chatVBox;
+
+    public FriendsPageController friendsPageController;
 
     @FXML
     public Label friendUsernameLabel;
 
-    public void showChat(int friendId)
+    @FXML
+    public void showChat()
     {
-        chatVBox.getChildren().clear();
+        if(friendsPageController.currentFriendController == null) {friendsPageController.currentFriendController = this;}
+        int friendId = UserDAO.getUserByUsername(friendUsernameLabel.getText()).getUserID();
+        friendsPageController.chatVBox.getChildren().clear();
         List<Transaction> transactions = new ArrayList<>();
         int userAccount = 0;
         int friendAccount = 0;
@@ -85,6 +92,12 @@ public class FriendContactController extends BranchController
             }
 
         }
+    }
+
+    @Override
+    public void initializer()
+    {
+        ThemeManager.applyTheme(friendsPageController.chatVBox.getScene(), rootController.user.getTheme());
     }
 
 }

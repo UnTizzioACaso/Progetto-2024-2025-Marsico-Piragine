@@ -22,17 +22,9 @@ public class BankAccountSettingsPageController extends BranchController
     public void initializer()
     {
 
+        BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
+        ibanLabel.setText(bankAccount.getIban());
 
-        try
-        {
-            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
-            ibanLabel.setText(bankAccount.getIban());
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error loading iban correct value " + e.getMessage());
-            e.printStackTrace();
-        }
     }
 
 }

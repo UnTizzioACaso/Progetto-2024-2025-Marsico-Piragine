@@ -130,36 +130,50 @@ public class SendFriendshipRequestPopupController extends BranchController {
             return;
         }
 
-            //filtering if user2 blocked user
-            if (BlockDAO.isBlocked(user2.getUserID(), rootController.user.getUserID()))
-            {
-                errorLabel.setTextFill(Paint.valueOf("red"));
-                errorLabel.setText("Utente non trovato");
-                return;
-            }
+        //filtering if user2 blocked user
+        if (BlockDAO.isBlocked(user2.getUserID(), rootController.user.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Utente non trovato");
+            return;
+        }
 
-            //filtering if there is an existing pending request
-            if(FriendRequestDAO.findRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
-            {
-                errorLabel.setTextFill(Paint.valueOf("red"));
-                errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
-                return;
-            }
+        //filtering if there is an existing pending request
+        if(FriendRequestDAO.findPendingRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
+            return;
+        }
 
-            //sending friendship request
-            FriendRequest request = new FriendRequest(rootController.user.getUserID(), user2.getUserID());
-            FriendRequestDAO.sendRequest(request);
+        //filtering if there is an existing pending request
+        if(FriendRequestDAO.findPendingRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
+            return;
+        }
 
-            //sending notifies
-            Notify n = new Notify(user2.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
-            Notify n2 = new Notify(rootController.user.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
-            NotifyDAO.insertNotify(n);
-            NotifyDAO.insertNotify(n2);
+        //filtering if there is an accepted request
+        if(FriendRequestDAO.findAcceptedRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Sei gia amico con questo utente");
+            return;
+        }
 
+        //sending friendship request
+        FriendRequest request = new FriendRequest(rootController.user.getUserID(), user2.getUserID());
+        FriendRequestDAO.sendRequest(request);
 
-            errorLabel.setTextFill(Paint.valueOf("green"));
-            errorLabel.setText("Richiesta inviata correttamente");
+        //sending notifies
+        Notify n = new Notify(user2.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
+        Notify n2 = new Notify(rootController.user.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
+        NotifyDAO.insertNotify(n);
+        NotifyDAO.insertNotify(n2);
 
+        errorLabel.setTextFill(Paint.valueOf("green"));
+        errorLabel.setText("Richiesta inviata correttamente");
     }
 
 }
