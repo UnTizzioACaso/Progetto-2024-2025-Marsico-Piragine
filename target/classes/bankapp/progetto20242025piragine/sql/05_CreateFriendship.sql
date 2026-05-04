@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS Friendship (
     FOREIGN KEY (user1) REFERENCES User(user_id) ON DELETE CASCADE,
     FOREIGN KEY (user2) REFERENCES User(user_id) ON DELETE CASCADE,
     UNIQUE (user1, user2),
-    CHECK (user1 < user2)
+    CHECK (user1 != user2)
 );
