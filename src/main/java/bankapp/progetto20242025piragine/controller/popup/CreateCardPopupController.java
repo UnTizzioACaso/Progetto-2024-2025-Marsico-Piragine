@@ -53,7 +53,7 @@ public class CreateCardPopupController extends BranchController
     public void createCard() throws Exception {
         String spendingLimitText;
 
-        // Validazione formato
+        // format validation
         if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {
             spendingLimitText = spendingLimitTextField.getText().replace(",", ".");
         } else if (spendingLimitTextField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {
@@ -66,7 +66,7 @@ public class CreateCardPopupController extends BranchController
         BigDecimal limit = new BigDecimal(spendingLimitText);
         BigDecimal maxLimit = new BigDecimal("1000000000.00");
 
-        // Validazione valore numerico
+        // numeric value validation
         if (limit.compareTo(maxLimit) > 0) {
             errorLabel.setText("Il limite massimo è 1.000.000.000");
             return;

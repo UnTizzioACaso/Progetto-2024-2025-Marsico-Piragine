@@ -6,9 +6,9 @@ import java.sql.*;
 public class BankAccountDAO {
 
     // 🔹 Recupera account tramite user_id
-    public static BankAccount getAccountByUserId(int userId) throws SQLException {
+    public static BankAccount getAccountByUserId(int userId) {
         String sql = "SELECT * FROM Bank_Account WHERE user_id = ?";
-
+        BankAccount account = new BankAccount();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -17,7 +17,7 @@ public class BankAccountDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
 
-                BankAccount account = new BankAccount();
+
                 account.setIdAccount(rs.getInt("id_account"));
                 account.setUserId(rs.getInt("user_id"));
                 account.setMoney(BigDecimal.valueOf(rs.getInt("money"), 2));
@@ -29,6 +29,12 @@ public class BankAccountDAO {
 
                 return account;
             }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting bank account by user's id" + e.getMessage());
+            e.printStackTrace();
+            return account;
         }
     }
     public static boolean existsByIban(String iban) throws SQLException {
@@ -63,9 +69,9 @@ public class BankAccountDAO {
     }
 
     // 🔹 Recupera account tramite id_account
-    public static BankAccount getAccountById(int idAccount) throws SQLException {
+    public static BankAccount getAccountById(int idAccount)  {
         String sql = "SELECT * FROM Bank_Account WHERE id_account = ?";
-
+        BankAccount account = new BankAccount();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -74,7 +80,7 @@ public class BankAccountDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
 
-                BankAccount account = new BankAccount();
+
                 account.setIdAccount(rs.getInt("id_account"));
                 account.setUserId(rs.getInt("user_id"));
                 account.setMoney(BigDecimal.valueOf(rs.getInt("money"), 2));
@@ -87,9 +93,15 @@ public class BankAccountDAO {
                 return account;
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during getting account by user's id");
+            e.printStackTrace();
+        }
+        return account;
     }
 
-    public static int getIdAccountByUserId(int userId) throws SQLException {
+    public static int getIdAccountByUserId(int userId) {
         String sql = "SELECT id_account FROM Bank_Account WHERE user_id = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql))
         {
@@ -98,6 +110,11 @@ public class BankAccountDAO {
             {
                 if (rs.next()) {return rs.getInt("id_account");}
             }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during getting account's id by user's id");
+            e.printStackTrace();
         }
         return -1;
     }

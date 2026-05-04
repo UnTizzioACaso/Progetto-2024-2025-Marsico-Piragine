@@ -48,22 +48,16 @@ public class FavouritesCardController extends WidgetController{
     @FXML
     public void initializer()
     {
-        try
+
+        for (Card c : CardDAO.getCardsByUserId(rootController.user.getUserID()))
         {
-            for (Card c : CardDAO.getCardsByUserId(rootController.user.getUserID()))
+            if (c.isFavourite())
             {
-                if (c.isFavourite())
-                {
-                    Node card = VisualCardCreator.cardCorrectValues(rootController, c);
-                    addFavouriteCard(card);
-                }
+                Node card = VisualCardCreator.cardCorrectValues(rootController, c);
+                addFavouriteCard(card);
             }
         }
-        catch (SQLException e)
-        {
-            System.err.println("error finding all user's cards: " + e.getMessage());
-            e.printStackTrace();
-        }
+
     }
 }
 

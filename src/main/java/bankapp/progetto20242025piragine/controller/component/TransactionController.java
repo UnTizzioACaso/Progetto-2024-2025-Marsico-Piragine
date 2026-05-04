@@ -20,13 +20,8 @@ public class TransactionController extends BranchController
     public void setCorrectValues(Transaction transaction)
     {
         int id = 0;
-        try {id = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());}
-        catch (SQLException e)
-        {
-            System.err.println("error finding id account by user id " + e.getMessage());
-            e.printStackTrace();
-            return;
-        }
+        id = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());
+
         if (transaction.getBeneficiary() == id) //positive transactions
         {
             try

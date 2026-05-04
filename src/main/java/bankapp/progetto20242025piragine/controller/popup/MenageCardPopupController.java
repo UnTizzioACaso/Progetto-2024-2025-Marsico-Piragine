@@ -53,17 +53,12 @@ public class MenageCardPopupController extends BranchController {
         if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {spendingLimitText = spendingLimitTextField.getText().replace(",", ".");}
         else if (spendingLimitTextField.getText().matches("^\\d+(.\\d{1,2})?$")) {spendingLimitText =spendingLimitTextField.getText();}
         else {errorLabel.setText("il limite è in formato non valido"); return;}
-        try
-            {
-                card.setSpendingLimit(CardDAO.updateCardSpendingLimit(card.getIdCard(), new BigDecimal(spendingLimitText)));
-                spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
-                rootController.topbarController.reloadPage();
-            }
-            catch (SQLException e)
-            {
-                System.out.println("error during updatig card spending limit " + e.getMessage());
-                e.printStackTrace();
-            }
+
+        card.setSpendingLimit(CardDAO.updateCardSpendingLimit(card.getIdCard(), new BigDecimal(spendingLimitText)));
+        spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
+        rootController.topbarController.reloadPage();
+
+
         }
 
 

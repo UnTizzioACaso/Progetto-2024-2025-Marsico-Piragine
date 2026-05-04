@@ -4,14 +4,10 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.*;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.paint.Paint;
-import javafx.scene.effect.InnerShadow;
-import javafx.scene.effect.BlurType;
-import javafx.scene.paint.Color;
 
 import java.sql.SQLException;
 
@@ -30,11 +26,10 @@ public class SendFriendshipRequestPopupController extends BranchController {
     private ToggleButton toggleEmail;
     @FXML
     private ToggleButton togglePhoneNumber;
-    @FXML
-    public Button closeFriendshipRequestPopup;
 
     private User user2 = null;
 
+    // Dynamic color by user
     private String getBgInactive() {
         return rootController.user.getTheme().equalsIgnoreCase("dark") ? "#4a4a4a" : "white";
     }
@@ -64,42 +59,32 @@ public class SendFriendshipRequestPopupController extends BranchController {
         updateUI(false, false, true);
     }
 
+    // Metodo centralizzato per gestire visibilità, stili e reset errori
     private void updateUI(boolean user, boolean email, boolean phone) {
         String bg = getBgInactive();
         String txt = getTextInactive();
 
-        InnerShadow effect = new InnerShadow();
-        effect.setBlurType(BlurType.THREE_PASS_BOX);
-        effect.setChoke(0.0);
-        effect.setWidth(0.0);
-        effect.setHeight(10.5);
-        effect.setRadius(2.13);
-        effect.setOffsetX(0.0);
-        effect.setOffsetY(-10.0);
-        effect.setColor(new Color(0, 0, 0, 0.15));
-
+        // Visibility TextField
         searchByUsernameField.setVisible(user);
         searchByEmailField.setVisible(email);
         searchByPhoneNumberField.setVisible(phone);
 
+        // Reset error label
         errorLabel.setText("");
 
+        // updating ToggleButtons
         toggleUsername.setStyle("-fx-background-color: " + (user ? "red" : bg) + "; -fx-text-fill: " + (user ? "white" : txt) + "; -fx-background-radius: 8 0 0 8; -fx-border-color: transparent;");
-        toggleUsername.setEffect(user ? effect : null);
-
         toggleEmail.setStyle("-fx-background-color: " + (email ? "red" : bg) + "; -fx-text-fill: " + (email ? "white" : txt) + "; -fx-background-radius: 0; -fx-border-color: gray; -fx-border-width: 0 1 0 1;");
-        toggleEmail.setEffect(email ? effect : null);
-
         togglePhoneNumber.setStyle("-fx-background-color: " + (phone ? "red" : bg) + "; -fx-text-fill: " + (phone ? "white" : txt) + "; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;");
-        togglePhoneNumber.setEffect(phone ? effect : null);
     }
 
     @FXML
-    public void findHypotheticalFriend()
+    public void findHypotheticalFriend() //Finds a user in the db and stores it in the controller
     {
-        user2 = null;
-        errorLabel.setText("");
+        user2 = null; //resetting the user2
+        errorLabel.setText(""); //resetting error label
 
+        //Dynamic three-way query
         try {
             if (searchByUsernameField.isVisible()) {
                 String val = searchByUsernameField.getText();
@@ -122,6 +107,7 @@ public class SendFriendshipRequestPopupController extends BranchController {
             return;
         }
 
+        //if after the query user2 is still null
         if (user2 == null)
         {
             errorLabel.setTextFill(Paint.valueOf("red"));
@@ -129,11 +115,14 @@ public class SendFriendshipRequestPopupController extends BranchController {
             return;
         }
 
+        //sending method, called when user2 is no more null
         sendRequest();
+
     }
 
-    private void sendRequest()
+    private void sendRequest() //sends the friendship request and notifies in the db
     {
+        //filtering if user2 is also user
         if (user2.getUserID() == rootController.user.getUserID())
         {
             errorLabel.setTextFill(Paint.valueOf("red"));
@@ -141,6 +130,7 @@ public class SendFriendshipRequestPopupController extends BranchController {
             return;
         }
 
+        //filtering if user2 blocked user
         if (BlockDAO.isBlocked(user2.getUserID(), rootController.user.getUserID()))
         {
             errorLabel.setTextFill(Paint.valueOf("red"));
@@ -148,16 +138,35 @@ public class SendFriendshipRequestPopupController extends BranchController {
             return;
         }
 
-        if(FriendRequestDAO.findRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
+        //filtering if there is an existing pending request
+        if(FriendRequestDAO.findPendingRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
         {
             errorLabel.setTextFill(Paint.valueOf("red"));
             errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
             return;
         }
 
+        //filtering if there is an existing pending request
+        if(FriendRequestDAO.findPendingRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
+            return;
+        }
+
+        //filtering if there is an accepted request
+        if(FriendRequestDAO.findAcceptedRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Sei gia amico con questo utente");
+            return;
+        }
+
+        //sending friendship request
         FriendRequest request = new FriendRequest(rootController.user.getUserID(), user2.getUserID());
         FriendRequestDAO.sendRequest(request);
 
+        //sending notifies
         Notify n = new Notify(user2.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
         Notify n2 = new Notify(rootController.user.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
         NotifyDAO.insertNotify(n);
@@ -167,9 +176,6 @@ public class SendFriendshipRequestPopupController extends BranchController {
         errorLabel.setText("Richiesta inviata correttamente");
     }
 
-    @FXML
-    public void closePopup()
-    {
-        closeFriendshipRequestPopup.getScene().getWindow().hide();
-    }
 }
+
+

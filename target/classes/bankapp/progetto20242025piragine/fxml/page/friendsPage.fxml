@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
@@ -75,13 +76,18 @@
                   <VBox id="chatVBox" fx:id="chatVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" />
                </content>
             </ScrollPane>
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" textFill="RED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
          </children>
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </AnchorPane>
       <Region id="regionChat" fx:id="regionChat" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Button fx:id="sendButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="80.0" style="-fx-background-radius: 10; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendTransaction" prefHeight="41.0" prefWidth="80.0" style="-fx-background-radius: 10; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -96,7 +102,7 @@
             <Insets left="190.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="requestButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="80.0" style="-fx-background-radius: 10; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="requestButton" mnemonicParsing="false" onAction="#requestTransaction" prefHeight="41.0" prefWidth="80.0" style="-fx-background-radius: 10; -fx-background-color: ff0000;" text="RICHIEDI" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

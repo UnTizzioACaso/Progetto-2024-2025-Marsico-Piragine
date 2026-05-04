@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardDAO {
-    public static List<Card> getCardsByUserId(int userId) throws SQLException {
+    public static List<Card> getCardsByUserId(int userId)  {
         String sql = "SELECT * FROM Card WHERE user_id = ?";
         List<Card> cards = new ArrayList<>();
 
@@ -34,11 +34,14 @@ public class CardDAO {
                     cards.add(card);
                 }
             }
+        } catch (Exception e) {
+            System.err.println("Error during get card by user id: " + e.getMessage());
+            e.printStackTrace();
         }
         return cards;
     }
 
-    public static BigDecimal updateCardSpendingLimit(int cardId, BigDecimal spendingLimit) throws SQLException {
+    public static BigDecimal updateCardSpendingLimit(int cardId, BigDecimal spendingLimit)  {
         String sql = "UPDATE Card SET spending_limit = ? WHERE id_card = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -46,6 +49,10 @@ public class CardDAO {
             stmt.setLong(1, spendingLimit.movePointRight(2).longValueExact());
             stmt.setInt(2, cardId);
             stmt.executeUpdate();
+            return spendingLimit;
+        } catch (SQLException e) {
+            System.err.println("Error during update card limit: " + e.getMessage());
+            e.printStackTrace();
             return spendingLimit;
         }
     }
@@ -59,6 +66,10 @@ public class CardDAO {
             stmt.setInt(2, cardId);
             stmt.executeUpdate();
             return favourite;
+        } catch (SQLException e) {
+            System.err.println("Error during update card favourite: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -71,6 +82,10 @@ public class CardDAO {
             stmt.setInt(2, cardId);
             stmt.executeUpdate();
             return status;
+        } catch (SQLException e) {
+            System.err.println("Error during update card status: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 
@@ -100,6 +115,10 @@ public class CardDAO {
 
                 return card;
             }
+        } catch (Exception e) {
+            System.err.println("Error during get card by id: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -111,10 +130,11 @@ public class CardDAO {
 
             stmt.setInt(1, cardId);
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error during delete card: " + e.getMessage());
+            e.printStackTrace();
         }
     }
-
-    // 🔹 Inserire una nuova carta
     public static boolean insertCard(Card card) throws SQLException {
         String sql = "INSERT INTO Card (user_id, id_account, pan_last4, expired, nickname, color, favourite, spending_limit, status) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -137,6 +157,10 @@ public class CardDAO {
             if (affectedRows == 0) return false;
 
             return true;
+        } catch (Exception e) {
+            System.err.println("Error during insert card by id: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 }

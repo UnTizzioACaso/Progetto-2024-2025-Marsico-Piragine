@@ -35,43 +35,35 @@ public class CardPageController extends BranchController
     @Override
     public void initializer()
     {
-        try
+
+        // Retrieve all cards associated with the logged-in user
+        List<Card> cards = CardDAO.getCardsByUserId(rootController.user.getUserID());
+
+        // Create a UI component for each card
+        for (int i = 0; i < cards.size(); i++)
         {
-            // Retrieve all cards associated with the logged-in user
-            List<Card> cards = CardDAO.getCardsByUserId(rootController.user.getUserID());
-
-            // Create a UI component for each card
-            for (int i = 0; i < cards.size(); i++)
+            try
             {
-                try
-                {
-                    // Load the credit card rectangle component
-                    FXMLLoader cardRectangleLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/creditCardRectangle.fxml"));
+                // Load the credit card rectangle component
+                FXMLLoader cardRectangleLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/creditCardRectangle.fxml"));
+                // Create the node from the FXML
+                Node cardRectangle = cardRectangleLoader.load();
+                // Get the controller for the card component
+                CreditCardRectangleController controller = cardRectangleLoader.getController();
+                controller.setRootController(rootController);
+                // Fill the card component with data
+                controller.fill(cards.get(i));
 
-                    // Create the node from the FXML
-                    Node cardRectangle = cardRectangleLoader.load();
-
-                    // Get the controller for the card component
-                    CreditCardRectangleController controller = cardRectangleLoader.getController();
-                    controller.setRootController(rootController);
-                    // Fill the card component with data
-                    controller.fill(cards.get(i));
-
-                    // Add the card component to the VBox
-                    cardsContainerVBox.getChildren().add(cardRectangle);
-                }
-                catch (IOException e)
-                {
-                    // Handle errors while loading card components
-                    System.err.println("error loading the credit card rectangle: " + e.getMessage());
-                    e.printStackTrace();
-                }
+                // Add the card component to the VBox
+                cardsContainerVBox.getChildren().add(cardRectangle);
+            }
+            catch (IOException e)
+            {
+                // Handle errors while loading card components
+                System.err.println("error loading the credit card rectangle: " + e.getMessage());
+                e.printStackTrace();
             }
         }
-        catch (SQLException e)
-        {
-            // Handle database errors
-            throw new RuntimeException(e);
-        }
+
     }
 }
