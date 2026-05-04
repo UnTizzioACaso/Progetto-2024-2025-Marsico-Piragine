@@ -8,6 +8,8 @@ public class Friendship {
     private int requested;
     private LocalDateTime dateFriendship;
 
+    public Friendship() {}
+
     public Friendship(int idFriendship, int requester, int requested, LocalDateTime dateFriendship) {
         this.idFriendship = idFriendship;
         this.requester = requester;

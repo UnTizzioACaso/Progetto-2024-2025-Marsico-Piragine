@@ -2,15 +2,14 @@ package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.TransactionDAO;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.db.*;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -29,24 +28,84 @@ public class FriendContactController extends BranchController
     @FXML
     public void showChat()
     {
-
+        friendsPageController.chatVBox.setAlignment(Pos.TOP_CENTER);
         if(friendsPageController.currentFriendController == null) {friendsPageController.currentFriendController = this;}
         int friendId = UserDAO.getUserByUsername(friendUsernameLabel.getText()).getUserID();
         friendsPageController.chatVBox.getChildren().clear();
-        List<Transaction> transactions = new ArrayList<>();
-        int userAccount = 0;
-        int friendAccount = 0;
-        try
+
+        List<Transaction> transactions;
+        int userAccount;
+        int friendAccount;
+
+        userAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getIdAccount();
+        friendAccount = BankAccountDAO.getAccountByUserId(friendId).getIdAccount();
+        transactions = TransactionDAO.getTransactionsBetweenUserAndUser2(userAccount, friendAccount);
+        Friendship f = FriendshipDAO.getFriendship(friendId, rootController.user.getUserID());
+
+        if(f.getRequester() == rootController.user.getUserID()) //if the user sent first the friendship and the friend accepted it
         {
-            userAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getIdAccount();
-            friendAccount = BankAccountDAO.getAccountByUserId(friendId).getIdAccount();
-            transactions = TransactionDAO.getTransactionsBetweenUserAndUser2(userAccount, friendAccount);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/toFriendTransactionCloud.fxml"));
+            try {
+                Parent cloud = loader.load();
+                ToFriendTransactionCloudController controller = loader.getController();
+                controller.textLabel.setText("Ciao, vuoi essere mio amico?");
+                friendsPageController.chatVBox.getChildren().add(cloud);
+            }
+            catch (Exception e)
+            {
+                System.err.println("error creating user's text cloud " + e.getMessage());
+                e.printStackTrace();
+            }
+
+            loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
+            try
+            {
+                Parent cloud = loader.load();
+                FromFriendTransactionCloudController controller= loader.getController();
+                controller.textLabel.setText("Certo!");
+                friendsPageController.chatVBox.getChildren().add(cloud);
+            }
+            catch (Exception e)
+            {
+                System.err.println("error creating bot's text cloud " + e.getMessage());
+                e.printStackTrace();
+            }
         }
-        catch(SQLException e)
+        else
         {
-            System.err.println("error during loading chat with friend" + e.getMessage());
-            e.printStackTrace();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
+            try
+            {
+                Parent cloud = loader.load();
+                FromFriendTransactionCloudController controller= loader.getController();
+                controller.textLabel.setText("Ciao, vuoi essere mio amico?");
+                friendsPageController.chatVBox.getChildren().add(cloud);
+            }
+            catch (Exception e)
+            {
+                System.err.println("error creating bot's text cloud " + e.getMessage());
+                e.printStackTrace();
+            }
+
+
+            loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/toFriendTransactionCloud.fxml"));
+            try
+            {
+                Parent cloud = loader.load();
+                ToFriendTransactionCloudController controller= loader.getController();
+                controller.textLabel.setText("Certo!");
+                friendsPageController.chatVBox.getChildren().add(cloud);
+            }
+            catch (Exception e)
+            {
+                System.err.println("error creating user's text cloud " + e.getMessage());
+                e.printStackTrace();
+            }
         }
+
+
+
+
         for (Transaction transaction : transactions)
         {
             if(transaction.getSender().equals(userAccount))
@@ -100,5 +159,7 @@ public class FriendContactController extends BranchController
     {
         ThemeManager.applyTheme(friendsPageController.chatVBox.getScene(), rootController.user.getTheme());
     }
+
+
 
 }

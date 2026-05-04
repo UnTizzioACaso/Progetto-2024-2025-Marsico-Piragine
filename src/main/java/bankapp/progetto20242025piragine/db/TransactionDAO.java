@@ -98,10 +98,7 @@ public class TransactionDAO {
     }
 
 
-    public static List<Transaction> getTransactionsBetweenUserAndUser2(
-            int userAccountId,
-            int friendAccountId
-    ) throws SQLException {
+    public static List<Transaction> getTransactionsBetweenUserAndUser2(int userAccountId, int friendAccountId)   {
 
         List<Transaction> transactions = new ArrayList<>();
 
@@ -112,7 +109,7 @@ public class TransactionDAO {
            OR (sender = ? AND beneficiary = ?)
         ORDER BY transaction_date DESC
         """;
-
+        Transaction t = new Transaction();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -123,7 +120,7 @@ public class TransactionDAO {
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    Transaction t = new Transaction();
+
                     t.setIdTransaction(rs.getInt("id_transaction"));
                     t.setSender(rs.getInt("sender"));
                     t.setBeneficiary(rs.getInt("beneficiary"));
@@ -140,6 +137,11 @@ public class TransactionDAO {
             }
         }
 
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting transaction between accounts: " + e.getMessage());
+            e.printStackTrace();
+        }
         return transactions;
     }
 
