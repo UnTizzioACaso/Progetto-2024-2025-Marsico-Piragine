@@ -77,4 +77,10 @@ public class AddWidget02Controller extends BranchController
         Stage stage = (Stage) widgetsVBox.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    public void closePopup()
+    {
+
+    }
 }
