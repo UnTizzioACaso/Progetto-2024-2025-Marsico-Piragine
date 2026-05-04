@@ -31,7 +31,8 @@ public class FriendshipNotifyController extends BranchController
     {
         User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
         FriendRequestDAO.acceptRequest(idRequest);
-        FriendshipDAO.addFriendship(rootController.user.getUserID(), u.getUserID());
+        FriendRequest r = FriendRequestDAO.getFriendRequestById(idRequest);
+        FriendshipDAO.addFriendship(r.getRequester(), r.getRequested());
         rootController.topbarController.updateNotifications();
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }

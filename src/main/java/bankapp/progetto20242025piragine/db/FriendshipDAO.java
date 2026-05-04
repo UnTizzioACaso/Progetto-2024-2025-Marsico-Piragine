@@ -11,9 +11,9 @@ public class FriendshipDAO
         List<Integer> friends = new ArrayList<>();
 
         String sql = """
-        SELECT user1, user2
+        SELECT requester, requested
         FROM Friendship
-        WHERE user1 = ? OR user2 = ?
+        WHERE requester = ? OR requested = ?
         """;
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -37,11 +37,11 @@ public class FriendshipDAO
     }
 
 
-    public static void addFriendship(int user1, int user2)  {
-        String sql = "INSERT INTO Friendship(user1, user2) VALUES (?, ?)";
+    public static void addFriendship(int requester, int requested)  {
+        String sql = "INSERT INTO Friendship(requester, requested) VALUES (?, ?)";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, user1);
-            stmt.setInt(2, user2);
+            stmt.setInt(1, requester);
+            stmt.setInt(2, requested);
             stmt.executeUpdate();
         }
         catch (SQLException e)

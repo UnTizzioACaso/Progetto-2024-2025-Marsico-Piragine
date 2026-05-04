@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
@@ -118,6 +119,12 @@ public class SendFriendshipRequestPopupController extends BranchController {
         //sending method, called when user2 is no more null
         sendRequest();
 
+    }
+
+    @FXML
+    public void closePopup()
+    {
+        ((Stage) errorLabel.getScene().getWindow()).close();
     }
 
     private void sendRequest() //sends the friendship request and notifies in the db

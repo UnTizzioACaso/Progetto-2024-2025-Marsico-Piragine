@@ -29,6 +29,7 @@ public class FriendContactController extends BranchController
     @FXML
     public void showChat()
     {
+
         if(friendsPageController.currentFriendController == null) {friendsPageController.currentFriendController = this;}
         int friendId = UserDAO.getUserByUsername(friendUsernameLabel.getText()).getUserID();
         friendsPageController.chatVBox.getChildren().clear();
