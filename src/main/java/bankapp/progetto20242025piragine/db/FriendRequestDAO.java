@@ -7,7 +7,7 @@ import java.util.List;
 public class FriendRequestDAO {
 
     public static void sendRequest(FriendRequest request)  {
-        String sql = "INSERT INTO Friend_Request (requester, requested, date, status) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Friend_Request (requester, requested, date, status) VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection()) {
             // Disabilitiamo l'auto-commit per sicurezza (opzionale)
@@ -16,8 +16,7 @@ public class FriendRequestDAO {
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, request.getRequester());
                 stmt.setInt(2, request.getRequested());
-                stmt.setTimestamp(3, Timestamp.valueOf(request.getDateRequest()));
-                stmt.setString(4, request.getStatus());
+                stmt.setString(3, request.getStatus());
                 stmt.executeUpdate();
             }
 
