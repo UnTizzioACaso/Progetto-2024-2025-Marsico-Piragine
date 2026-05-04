@@ -28,7 +28,7 @@ public class CardPageController extends BranchController
     @FXML
     public void openCreateCard()
     {
-        BranchController controller = rootController.showPopup("Crea e personalizza la carta","/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml", 500, 400);
+        BranchController controller = rootController.showPopup("Crea e personalizza la carta","/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml", 500, 447);
     }
 
     // Called automatically when the page is initialized

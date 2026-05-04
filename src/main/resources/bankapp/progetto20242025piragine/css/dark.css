@@ -46,6 +46,7 @@
 }
 
 #favouritesCardScrollPane {
+    -fx-padding: 0 15 0 15 !important;
     -fx-background-color: #e4e4e4 !important;
 }
 
@@ -276,12 +277,11 @@
     -fx-background-color: #4a4a4a;
     -fx-padding: 0 !important; /* Correzione bordino */
     -fx-background-insets: 0 !important; /* Correzione bordino */
+    -fx-background-radius: 15;
 }
 
 .scroll-pane > .viewport {
-    -fx-background-color: #4a4a4a;
-    -fx-background-radius: 15;
-    -fx-padding: 0 !important;
+    -fx-background-color: transparent !important;
 }
 
 #scrollPaneFriends,
@@ -354,8 +354,7 @@
 
 #scrollPaneFavouritesCard {
     -fx-background-color: #595959 !important;
-    -fx-padding: 0 !important;
-    -fx-background-insets: 0 !important;
+    -fx-background-radius: 15 !important;
 }
 
 #scrollPaneFavouritesCard .viewport {
@@ -447,6 +446,8 @@ Line {
 
 #hboxFavouritesCard{
     -fx-background-color: #595959 !important;
+    -fx-background-radius: 15;
+    -fx-background-insets: 0;
 }
 
 #textCreditCardRectangle{
@@ -773,4 +774,58 @@ Line {
 
 #polygonFromFriendTransactionCloud{
     -fx-fill:#4a4a4a !important;
+}
+
+
+#anchorPaneFriendshipNotify {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#friendshipUsernameLabel{
+    -fx-text-fill: white !important;
+}
+
+#friendAnchorPane{
+    -fx-border-color: white !important;
+}
+
+#notificationAnchorPane{
+    -fx-background-color: #3c3c3c !important;
+}
+
+
+
+
+/* --- CHECK BOX --- */
+/* Stato normale: definiamo il bordo */
+.check-box > .box {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important; /* Grigio standard */
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 2px !important;
+}
+
+/* Stato premuto: manteniamo lo stesso bordo */
+.check-box:focused > .box {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
+}
+
+/* --- RADIO BUTTON --- */
+/* Stato normale */
+.radio-button > .radio {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 10px !important; /* Lo rende tondo */
+}
+
+/* Stato premuto */
+.radio-button:focused > .radio {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="246.0" prefWidth="413.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.SendFriendshipRequestPopupController">
+<AnchorPane fx:id="root" prefHeight="250.0" prefWidth="420.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.SendFriendshipRequestPopupController">
 
     <children>
         <Label layoutX="23.0" layoutY="22.0" prefHeight="30.0" prefWidth="358.0" style="-fx-font-size: 20px; -fx-font-weight: 700;" text="Invia richiesta d'amicizia" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="32.0">
@@ -25,7 +25,7 @@
 
         <Separator layoutX="10.4" layoutY="203.4" prefWidth="560.0" style="-fx-opacity: 1;" AnchorPane.bottomAnchor="39.400000000000006" AnchorPane.leftAnchor="10.4" AnchorPane.rightAnchor="10.399999999999977" />
 
-        <TextField id="textFieldFriendshipRequestPopupU" fx:id="searchByUsernameField" layoutX="19.2" layoutY="82.4" prefHeight="31.0" prefWidth="376.0" promptText=" Username amico" style="-fx-background-radius: 12; -fx-border-radius: 12;" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="84.0" />
+        <TextField id="textFieldFriendshipRequestPopupU" fx:id="searchByUsernameField" layoutX="19.2" layoutY="82.4" prefHeight="30.0" prefWidth="376.0" promptText=" Username amico" style="-fx-background-radius: 12; -fx-border-radius: 12;" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="84.0" />
 
         <HBox alignment="CENTER" layoutY="130.0" prefHeight="30.0" spacing="0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0">
             <children>
@@ -69,10 +69,10 @@
             </InnerShadow>
          </effect>
         </HBox>
-      <TextField id="textFieldFriendshipRequestPopupE" fx:id="searchByEmailField" layoutX="19.0" layoutY="83.0" prefHeight="30.0" prefWidth="376.0" promptText=" Email amico" style="-fx-background-radius: 12; -fx-border-radius: 12;" visible="false" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="82.0" />
-      <TextField id="textFieldFriendshipRequestPopupN" fx:id="searchByPhoneNumberField" layoutX="19.0" layoutY="83.0" prefHeight="30.0" prefWidth="376.0" promptText=" Numero di telefono amico" style="-fx-background-radius: 12; -fx-border-radius: 12;" visible="false" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="82.0" />
+      <TextField id="textFieldFriendshipRequestPopupE" fx:id="searchByEmailField" layoutX="19.0" layoutY="83.0" prefHeight="30.0" prefWidth="376.0" promptText=" Email amico" style="-fx-background-radius: 12; -fx-border-radius: 12;" visible="false" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="84.0" />
+      <TextField id="textFieldFriendshipRequestPopupN" fx:id="searchByPhoneNumberField" layoutX="19.0" layoutY="83.0" prefHeight="30.0" prefWidth="376.0" promptText=" Numero di telefono amico" style="-fx-background-radius: 12; -fx-border-radius: 12;" visible="false" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="84.0" />
 
-        <Button fx:id="sendButton" layoutX="325.8" layoutY="84.2" mnemonicParsing="false" onAction="#findHypotheticalFriend" prefHeight="29.0" prefWidth="67.0" style="-fx-background-radius: 0 12 12 0; -fx-border-radius: 0 12 12 0; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="84.0">
+        <Button fx:id="sendButton" layoutX="332.8" layoutY="84.0" mnemonicParsing="false" onAction="#findHypotheticalFriend" prefHeight="29.0" prefWidth="67.0" style="-fx-background-radius: 0 12 12 0; -fx-border-radius: 0 12 12 0; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="84.2">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -100,6 +100,21 @@
          <padding>
             <Insets top="8.0" />
          </padding></Label>
+      <Button fx:id="closeFriendshipRequestPopup" layoutX="383.0" layoutY="11.0" mnemonicParsing="false" onAction="#closePopup" prefHeight="21.0" prefWidth="22.0" style="-fx-background-color: transparent;" text="✕" textFill="DIMGRAY">
+         <padding>
+            <Insets bottom="-6.0" top="-6.0" />
+         </padding>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
 
     </children>
+   <effect>
+      <InnerShadow>
+         <color>
+            <Color opacity="0.30000001192092896" />
+         </color>
+      </InnerShadow>
+   </effect>
 </AnchorPane>

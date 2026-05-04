@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 
+
 public class CreateCardPopupController extends BranchController
 {
     // VBox container to hold the card preview component
@@ -154,5 +155,13 @@ public class CreateCardPopupController extends BranchController
         colorMenu.setText("Bianco");
         color = "e4e4e4";
         cardSlotVbox.getChildren().getFirst().setStyle(" -fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: e4e4e4;");
+    }
+
+    @FXML
+    public void closePopup() {
+        if (colorMenu != null && colorMenu.getScene() != null) {
+            Stage stage = (Stage) colorMenu.getScene().getWindow();
+            stage.close();
+        }
     }
 }

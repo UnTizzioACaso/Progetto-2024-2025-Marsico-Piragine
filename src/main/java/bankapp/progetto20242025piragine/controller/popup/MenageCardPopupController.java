@@ -16,6 +16,8 @@ import java.sql.SQLException;
 public class MenageCardPopupController extends BranchController {
 
     @FXML
+    public Button closeMenageCardPopup;
+    @FXML
     public Button addFavouritesButton;
 
     @FXML
@@ -147,6 +149,12 @@ public class MenageCardPopupController extends BranchController {
             System.out.println("error during updating card status state to true" + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void closePopup()
+    {
+        s.close();
     }
 
 }

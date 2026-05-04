@@ -251,8 +251,8 @@
 #accountPopupRoot
 {
     -fx-background-color: white !important;
-    -fx-background-radius: 20 !important;
-    -fx-border-radius: 20 !important;
+    -fx-background-radius: 15 !important;
+    -fx-border-radius: 15 !important;
 }
 
 .separator {
@@ -399,4 +399,64 @@ Line {
 
 #closeAccountPopup{
     -fx-text-fill: #696969 !important;
+}
+
+#notificationAnchorPane {
+    -fx-border-color: #595959 !important;
+}
+
+#notificationVBox{
+    -fx-background-color: #f9f9f9 !important;
+}
+
+#closeCreateCardPopup{
+    -fx-text-fill: #696969 !important;
+}
+
+.text-field:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: derive(-fx-control-inner-background, -20%);
+}
+
+#closeFriendshipRequestPopup{
+    -fx-text-fill: #696969 !important;
+}
+
+
+
+
+
+/* --- CHECK BOX --- */
+/* Stato normale: definiamo il bordo */
+.check-box > .box {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important; /* Grigio standard */
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 2px !important;
+}
+
+/* Stato premuto: manteniamo lo stesso bordo */
+.check-box:focused > .box {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
+}
+
+/* --- RADIO BUTTON --- */
+/* Stato normale */
+.radio-button > .radio {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 10px !important; /* Lo rende tondo */
+}
+
+/* Stato premuto */
+.radio-button:focused > .radio {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
 }

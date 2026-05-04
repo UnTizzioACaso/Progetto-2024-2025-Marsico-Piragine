@@ -11,22 +11,22 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="80.0" maxWidth="190.0" minHeight="80.0" minWidth="0.0" prefHeight="80.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.FriendshipNotifyController">
+<AnchorPane id="anchorPaneFriendshipNotify" fx:id="anchorPaneFriendshipNotify" maxHeight="200.0" maxWidth="300.0" minHeight="200.0" minWidth="300.0" prefHeight="200.0" prefWidth="300.0" style="-fx-border-width: 0 0 1 0;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.FriendshipNotifyController">
    <children>
-      <Label fx:id="friendshipUsernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="55.0" prefHeight="17.0" prefWidth="230.0" text="Benny Musso" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label id="friendshipUsernameLabel" fx:id="friendshipUsernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="4.8" layoutY="98.19999999999999" prefHeight="52.0" prefWidth="300.0" text="Benny MussO" textAlignment="CENTER" AnchorPane.bottomAnchor="49.80000000000001" AnchorPane.leftAnchor="4.8" AnchorPane.rightAnchor="4.8">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="79.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="79.0">
+      <ImageView fitHeight="70.0" fitWidth="55.0" layoutX="122.6" layoutY="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="122.6" AnchorPane.rightAnchor="122.4">
          <image>
             <Image url="@../../imgs/quickContact.png" />
          </image>
          <effect>
-            <ColorAdjust brightness="-0.25" contrast="1.0" hue="-0.84" />
+            <ColorAdjust brightness="0.32" contrast="1.0" hue="-0.8" />
          </effect>
       </ImageView>
-      <Button layoutX="8.0" layoutY="39.0" mnemonicParsing="false" onAction="#declineRequest" prefHeight="19.0" prefWidth="51.0" style="-fx-background-color: ff0000; -fx-background-radius: 14;" text="✔" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="8.0">
+      <Button layoutX="28.8" layoutY="148.20000000000002" mnemonicParsing="false" onAction="#declineRequest" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="✔" textFill="WHITE" AnchorPane.bottomAnchor="20.599999999999994" AnchorPane.leftAnchor="28.8">
          <effect>
             <InnerShadow offsetX="-10.0" offsetY="-10.0">
                <color>
@@ -34,8 +34,11 @@
                </color>
             </InnerShadow>
          </effect>
+         <font>
+            <Font size="15.0" />
+         </font>
       </Button>
-      <Button layoutX="122.0" layoutY="38.0" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="25.0" prefWidth="51.0" style="-fx-background-color: ff0000; -fx-background-radius: 14;" text="✖" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="8.0">
+      <Button layoutX="181.6" layoutY="148.20000000000002" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="✖" textFill="WHITE" AnchorPane.bottomAnchor="20.599999999999994" AnchorPane.rightAnchor="28.8">
          <effect>
             <InnerShadow offsetX="-10.0" offsetY="-10.0">
                <color>
@@ -43,8 +46,11 @@
                </color>
             </InnerShadow>
          </effect>
+         <font>
+            <Font size="15.0" />
+         </font>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-7.0" prefHeight="26.0" prefWidth="230.0" style="-fx-background-color: ff0000;" text="Richiesta d'amicizia" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-6.0" prefHeight="45.0" prefWidth="300.0" style="-fx-background-color: ff0000;" text="Richiesta d'amicizia" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -59,7 +65,7 @@
             </InnerShadow>
          </effect>
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </children>

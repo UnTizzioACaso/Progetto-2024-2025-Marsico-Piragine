@@ -18,7 +18,7 @@ public class SidebarController extends BranchController {
     @FXML
     void openAccountPopup() //opening the account popup
     {
-        rootController.showPopup("Account", "/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml", 420, 246);
+        rootController.showPopup("Account", "/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml", 420, 240);
     }
 
     @FXML

@@ -65,7 +65,7 @@
             </InnerShadow>
          </effect>
       </GridPane>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" VBox.vgrow="ALWAYS">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" VBox.vgrow="ALWAYS">
          <content>
             <VBox />
          </content>

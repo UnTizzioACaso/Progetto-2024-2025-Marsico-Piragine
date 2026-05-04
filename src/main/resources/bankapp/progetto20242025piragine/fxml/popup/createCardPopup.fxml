@@ -12,9 +12,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorePaneCardPopup" prefHeight="318.0" prefWidth="413.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0, 0, 8);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController">
+<AnchorPane fx:id="anchorePaneCardPopup" prefHeight="447.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController">
    <children>
-      <Button fx:id="createCardButton" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="183.0" mnemonicParsing="false" onAction="#createCard" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="Crea carta" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="112.0">
+      <Button fx:id="createCardButton" alignment="CENTER" contentDisplay="CENTER" layoutX="112.8" layoutY="339.6" mnemonicParsing="false" onAction="#createCard" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="Crea carta" textFill="WHITE" AnchorPane.bottomAnchor="59.39999999999998" AnchorPane.leftAnchor="112.8" AnchorPane.rightAnchor="112.0">
          <effect>
             <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
@@ -26,18 +26,18 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Button>
-      <VBox fx:id="cardSlotVbox" alignment="CENTER" layoutX="46.0" layoutY="78.0" prefHeight="200.0" prefWidth="322.0" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="78.0" />
-      <TextField fx:id="nicknameTextField" layoutX="208.0" layoutY="115.0" maxHeight="40.0" maxWidth="300.0" minWidth="76.0" prefHeight="25.0" prefWidth="76.0" promptText="Nickname" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.bottomAnchor="229.0" AnchorPane.rightAnchor="136.0">
+      <VBox fx:id="cardSlotVbox" alignment="CENTER" layoutX="46.4" layoutY="77.4" prefHeight="200.0" prefWidth="322.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="46.4" AnchorPane.rightAnchor="46.39999999999998" AnchorPane.topAnchor="77.4" />
+      <TextField fx:id="nicknameTextField" layoutX="277.4" layoutY="159.00000000000003" maxHeight="40.0" maxWidth="300.0" minWidth="76.0" prefHeight="25.0" prefWidth="76.0" promptText="Nickname" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.bottomAnchor="262.4" AnchorPane.rightAnchor="146.60000000000002">
          <padding>
             <Insets left="10.0" />
          </padding>
       </TextField>
-      <TextField fx:id="spendingLimitTextField" layoutX="301.0" layoutY="18.0" maxHeight="40.0" maxWidth="300.0" minWidth="58.0" prefHeight="25.0" prefWidth="92.0" promptText="Limite spesa" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="18.0">
+      <TextField fx:id="spendingLimitTextField" layoutX="353.6" layoutY="61.4" maxHeight="40.0" maxWidth="300.0" minWidth="58.0" prefHeight="25.0" prefWidth="92.0" promptText="Limite spesa" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.rightAnchor="54.39999999999998" AnchorPane.topAnchor="61.4">
          <padding>
             <Insets left="10.0" />
          </padding>
       </TextField>
-      <MenuButton id="menuButtonCreateCardPopup" fx:id="colorMenu" layoutX="14.0" layoutY="18.0" style="-fx-background-color: ff0000; -fx-background-radius: 6;" text="Scegli colore" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="18.0">
+      <MenuButton id="menuButtonCreateCardPopup" fx:id="colorMenu" layoutX="46.4" layoutY="61.4" style="-fx-background-color: ff0000; -fx-background-radius: 6;" text="Scegli colore" textFill="WHITE" AnchorPane.leftAnchor="46.4" AnchorPane.topAnchor="61.4">
          <items>
             <MenuItem onAction="#selectRed" text="Rosso" />
             <MenuItem onAction="#selectGreen" text="Verde" />
@@ -57,5 +57,20 @@
          </effect>
       </MenuButton>
       <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="232.0" textFill="RED" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="closeCreateCardPopup" layoutX="453.0" layoutY="19.0" mnemonicParsing="false" onAction="#closePopup" prefHeight="21.0" prefWidth="22.0" style="-fx-background-color: transparent;" text="✕" textFill="DIMGRAY">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <padding>
+            <Insets bottom="-6.0" top="-6.0" />
+         </padding>
+      </Button>
    </children>
+   <effect>
+      <InnerShadow>
+         <color>
+            <Color opacity="0.30000001192092896" />
+         </color>
+      </InnerShadow>
+   </effect>
 </AnchorPane>
