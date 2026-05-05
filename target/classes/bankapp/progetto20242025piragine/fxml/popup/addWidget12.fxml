@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -20,233 +21,280 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="root" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="3000.0" minHeight="600.0" prefHeight="677.0" prefWidth="705.0" styleClass="scroll-pane maze-scroll" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AddWidget12Controller">
-   <content>
-      <VBox id="vBoxAddWidget12" fx:id="widgetsVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="500.0" prefWidth="553.0" spacing="80.0">
-         <children>
-            <AnchorPane>
+<GridPane fx:id="gridPaneAddWidget12" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 18;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AddWidget12Controller">
+   <children>
+      <ScrollPane fx:id="root" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="510.0" prefWidth="568.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+         <content>
+            <VBox id="vBoxAddWidget12" fx:id="widgetsVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="500.0" prefWidth="553.0" spacing="80.0">
                <children>
-                  <GridPane fx:id="transactionHistoryGridPane" minHeight="180.0" prefHeight="222.0" prefWidth="437.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
+                  <AnchorPane>
                      <children>
-                        <VBox alignment="CENTER" minHeight="32.0" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="205.0" text="Storico transazioni" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                           <effect>
-                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                                 <color>
-                                    <Color opacity="0.25" />
-                                 </color>
-                              </InnerShadow>
-                           </effect>
-                        </VBox>
-                        <GridPane id="gridPaneAddWidget12TH" prefHeight="61.0" prefWidth="556.0" style="-fx-background-color: e4e4e4;" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+                        <GridPane fx:id="transactionHistoryGridPane" minHeight="180.0" prefHeight="222.0" prefWidth="437.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <TextField id="textFieldAddWidget12" fx:id="transationHistoryTextField" maxHeight="26.0" maxWidth="450.0" minHeight="26.0" prefHeight="27.0" prefWidth="168.0" promptText=" Parola chiave" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 15; -fx-border-radius: 15;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
-                                 <padding>
-                                    <Insets left="10.0" />
-                                 </padding>
-                                 <GridPane.margin>
-                                    <Insets left="10.0" right="10.0" />
-                                 </GridPane.margin>
-                                 <font>
-                                    <Font name="System Italic" size="13.0" />
-                                 </font>
-                              </TextField>
-                              <DatePicker fx:id="toDatePicker" prefHeight="25.0" prefWidth="77.0" promptText="Fino" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
-                                 <GridPane.margin>
-                                    <Insets right="15.0" />
-                                 </GridPane.margin></DatePicker>
-                              <DatePicker fx:id="fromDatePicker" prefHeight="25.0" prefWidth="77.0" promptText="Da" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
-                                 <GridPane.margin>
-                                    <Insets right="105.0" />
-                                 </GridPane.margin></DatePicker>
-                              <ImageView fitHeight="15.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT">
-                                 <image>
-                                    <Image url="@../../imgs/lenticon.png" />
-                                 </image>
-                                 <GridPane.margin>
-                                    <Insets right="21.0" />
-                                 </GridPane.margin>
+                              <VBox alignment="CENTER" minHeight="32.0" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="205.0" text="Storico transazioni" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
+                                 </children>
                                  <effect>
-                                    <ColorAdjust brightness="0.34" contrast="-1.0" hue="0.02" saturation="-0.05" />
+                                    <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                       <color>
+                                          <Color opacity="0.25" />
+                                       </color>
+                                    </InnerShadow>
                                  </effect>
-                              </ImageView>
+                              </VBox>
+                              <GridPane id="gridPaneAddWidget12TH" prefHeight="61.0" prefWidth="556.0" style="-fx-background-color: e4e4e4;" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <TextField id="textFieldAddWidget12" fx:id="transationHistoryTextField" maxHeight="26.0" maxWidth="450.0" minHeight="26.0" prefHeight="27.0" prefWidth="168.0" promptText="Parola chiave" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 15; -fx-border-radius: 15;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                       <GridPane.margin>
+                                          <Insets left="10.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="System Italic" size="13.0" />
+                                       </font>
+                                    </TextField>
+                                    <DatePicker fx:id="toDatePicker" prefHeight="25.0" prefWidth="77.0" promptText="Fino" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                                       <GridPane.margin>
+                                          <Insets right="15.0" />
+                                       </GridPane.margin></DatePicker>
+                                    <ImageView fitHeight="15.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT">
+                                       <image>
+                                          <Image url="@../../imgs/lenticon.png" />
+                                       </image>
+                                       <GridPane.margin>
+                                          <Insets right="10.0" />
+                                       </GridPane.margin>
+                                       <effect>
+                                          <ColorAdjust brightness="0.34" contrast="-1.0" hue="0.02" saturation="-0.05" />
+                                       </effect>
+                                    </ImageView>
+                                    <DatePicker fx:id="fromDatePicker" prefHeight="25.0" prefWidth="77.0" promptText="Da" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+                                       <GridPane.margin>
+                                          <Insets right="105.0" />
+                                       </GridPane.margin></DatePicker>
+                                 </children>
+                              </GridPane>
+                              <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="76.0" prefWidth="437.0" style="-fx-background: e4e4e4; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+                                 <content>
+                                    <VBox fx:id="transationHistoryVBox" />
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </GridPane>
-                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="76.0" prefWidth="437.0" style="-fx-background: e4e4e4; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
-                           <content>
-                              <VBox fx:id="transationHistoryVBox" />
-                           </content>
-                        </ScrollPane>
+                        <Region onMouseClicked="#addTransactionHistoryWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Region>
                      </children>
-                  </GridPane>
-                  <Region onMouseClicked="#addTransactionHistoryWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Region>
-               </children>
-            </AnchorPane>
-
-            <Separator prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="-20.0" right="-20.0" />
-               </VBox.margin>
-            </Separator>
-
-            <AnchorPane>
-               <children>
-                  <VBox fx:id="monthlyExpensesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  </AnchorPane>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="-20.0" right="-20.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <AnchorPane>
                      <children>
-                        <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                        <VBox fx:id="monthlyExpensesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="205.0" text="Spese di questo mese" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                           <effect>
-                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                                 <color>
-                                    <Color opacity="0.25" />
-                                 </color>
-                              </InnerShadow>
-                           </effect>
-                        </VBox>
-                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
-                           <content>
-                              <VBox />
-                           </content>
-                        </ScrollPane>
-                     </children>
-                  </VBox>
-                  <Region onMouseClicked="#addMonthlyExpensesWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Region>
-               </children>
-            </AnchorPane>
-
-            <Separator prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="-20.0" right="-20.0" />
-               </VBox.margin>
-            </Separator>
-
-            <AnchorPane>
-               <children>
-                  <VBox fx:id="lastFiveExpensesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
-                           <effect>
-                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                                 <color>
-                                    <Color opacity="0.25" />
-                                 </color>
-                              </InnerShadow>
-                           </effect>
-                           <children>
-                              <Label fx:id="lastFiveExpensesTitleLabel1" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="205.0" text="Ultime cinque uscite" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets top="1.0" />
-                                 </VBox.margin>
-                                 <cursor>
-                                    <Cursor fx:constant="DEFAULT" />
-                                 </cursor>
-                              </Label>
+                              <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="205.0" text="Spese di questo mese" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Label>
+                                 </children>
+                                 <effect>
+                                    <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                       <color>
+                                          <Color opacity="0.25" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </VBox>
+                              <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                                 <content>
+                                    <VBox />
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </VBox>
+                        <Region onMouseClicked="#addMonthlyExpensesWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Region>
                      </children>
-                  </VBox>
-                  <Region onMouseClicked="#addLastFiveExpensesWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Region>
-               </children>
-            </AnchorPane>
-
-            <Separator prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="-20.0" right="-20.0" />
-               </VBox.margin>
-            </Separator>
-
-            <AnchorPane>
-               <children>
-                  <VBox fx:id="monthlyIncomesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  </AnchorPane>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="-20.0" right="-20.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <AnchorPane>
                      <children>
-                        <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                        <VBox fx:id="lastFiveExpensesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="205.0" text="Entrate di questo mese" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="17.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </Label>
+                              <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                                 <effect>
+                                    <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                       <color>
+                                          <Color opacity="0.25" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                                 <children>
+                                    <Label fx:id="lastFiveExpensesTitleLabel1" alignment="CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="205.0" text="Ultime cinque uscite" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="1.0" />
+                                       </VBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </Label>
+                                 </children>
+                              </VBox>
                            </children>
-                           <effect>
-                              <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
-                                 <color>
-                                    <Color opacity="0.25" />
-                                 </color>
-                              </InnerShadow>
-                           </effect>
                         </VBox>
-                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
-                           <content>
-                              <VBox />
-                           </content>
-                        </ScrollPane>
+                        <Region onMouseClicked="#addLastFiveExpensesWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Region>
                      </children>
-                  </VBox>
-                  <Region onMouseClicked="#addMonthlyIncomeWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Region>
+                  </AnchorPane>
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="-20.0" right="-20.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <AnchorPane>
+                     <children>
+                        <VBox fx:id="monthlyIncomesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="205.0" text="Entrate di questo mese" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="17.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                                 <effect>
+                                    <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+                                       <color>
+                                          <Color opacity="0.25" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect>
+                              </VBox>
+                              <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                                 <content>
+                                    <VBox />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                        <Region onMouseClicked="#addMonthlyIncomeWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Region>
+                     </children>
+                  </AnchorPane>
                </children>
-            </AnchorPane>
+               <padding>
+                  <Insets bottom="40.0" left="40.0" right="40.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff0000; -fx-background-radius: 18 18 0 0;">
+         <effect>
+            <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect>
+         <children>
+            <Label layoutX="182.0" layoutY="15.0" text="Aggiungi widget" textFill="WHITE" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="closeAddWidget12" layoutX="546.0" layoutY="20.0" mnemonicParsing="false" onAction="#closeWidget" style="-fx-background-color: transparent;" text="✕" textFill="WHITE" AnchorPane.rightAnchor="22.799999999999955">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <padding>
+                  <Insets bottom="-6.0" top="-6.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+               </opaqueInsets>
+            </Button>
          </children>
-         <padding>
-            <Insets bottom="40.0" left="40.0" right="40.0" top="20.0" />
-         </padding>
-      </VBox>
-   </content>
-</ScrollPane>
+      </AnchorPane>
+   </children>
+   <padding>
+      <Insets />
+   </padding>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="75.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="1.7976931348623157E308" />
+      <RowConstraints minHeight="5.0" prefHeight="15.0" />
+   </rowConstraints>
+   <effect>
+      <InnerShadow>
+         <color>
+            <Color opacity="0.30000001192092896" />
+         </color>
+      </InnerShadow>
+   </effect>
+</GridPane>

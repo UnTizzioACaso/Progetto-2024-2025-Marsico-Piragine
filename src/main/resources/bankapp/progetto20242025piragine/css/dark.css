@@ -683,8 +683,12 @@ Line {
 }
 
 #vBoxAddWidget01,
+#gridPaneAddWidget01,
 #vBoxAddWidget02,
+#gridPaneAddWidget02,
 #vBoxAddWidget11,
+#gridPaneAddWidget11,
+#gridPaneAddWidget12,
 #vBoxAddWidget12{
     -fx-background-color: #595959 !important;
 }
@@ -828,4 +832,17 @@ Line {
     -fx-faint-focus-color: transparent !important;
     -fx-background-insets: 0 !important;
     -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
+}
+
+#scrollPaneChatSupport{
+    -fx-background-color: #595959 !important;
+    -fx-border-color: #595959 !important;
+}
+
+#notificationVBox{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#errorLabelMenageCardPopup{
+    -fx-text-fill: #ff0000 !important;
 }

@@ -137,29 +137,7 @@ public class Register3Controller extends BranchController {
         rootController.user.setPhoneNumber(phone);
         rootController.user.setPasswordHash(PasswordUtil.hashPassword(passwordPasswordField.getText()));
 
-        try
-        {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/createPinPopup.fxml"));
-            Parent root = loader.load();
-
-            CreatePinPopupController controller = loader.getController();
-            controller.setRootController(rootController);
-
-            Stage popupStage = new Stage();
-            popupStage.setTitle("Crea un pin");
-            popupStage.setMinWidth(315);
-            popupStage.setMinHeight(280);
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            popupStage.setScene(new Scene(root));
-            popupStage.showAndWait();
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the create pin popup" + e.getMessage());
-            e.printStackTrace();
-        }
+        rootController.showPopup("Crea un pin", "/bankapp/progetto20242025piragine/fxml/popup/createPinPopup.fxml", 314, 240);
     }
 
     @FXML

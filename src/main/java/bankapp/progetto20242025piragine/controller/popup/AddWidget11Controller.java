@@ -12,8 +12,11 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class AddWidget11Controller extends BranchController
-{
+public class AddWidget11Controller extends BranchController {
+
+    @FXML
+    private Node closeAddWidget11;
+
     @FXML
     private VBox widgetsVBox;
 
@@ -68,5 +71,12 @@ public class AddWidget11Controller extends BranchController
         stage.close();
     }
 
+    @FXML
+    public void closeWidget() {
+        if (closeAddWidget11 != null && closeAddWidget11.getScene() != null) {
+            Stage stage = (Stage) closeAddWidget11.getScene().getWindow();
+            stage.close();
+        }
+    }
 
 }

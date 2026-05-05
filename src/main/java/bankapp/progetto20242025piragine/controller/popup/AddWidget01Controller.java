@@ -15,6 +15,9 @@ import java.util.stream.Collectors;
 public class AddWidget01Controller extends BranchController {
 
     @FXML
+    private Node closeAddWidget01;
+
+    @FXML
     private VBox widgetsVBox;
 
     @FXML
@@ -34,6 +37,9 @@ public class AddWidget01Controller extends BranchController {
             }
         }
         ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
+
+        root.requestFocus();
+        root.setVvalue(0.0);
 
     }
 
@@ -76,8 +82,10 @@ public class AddWidget01Controller extends BranchController {
     }
 
     @FXML
-    public void closePopup()
-    {
-
+    public void closeWidget() {
+        if (closeAddWidget01 != null && closeAddWidget01.getScene() != null) {
+            Stage stage = (Stage) closeAddWidget01.getScene().getWindow();
+            stage.close();
+        }
     }
 }

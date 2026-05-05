@@ -101,11 +101,6 @@
     -fx-background-radius: 10;
 }
 
-/*#transationHistoryTextField, #spendingLimitTextField {
-    -fx-background-color: #f2f2f2 !important;
-    -fx-text-fill: black !important;
-    -fx-border-color: #d9d9d9 !important;
-}*/
 
 /* ==========================================================
    BUTTON E MENU
@@ -218,7 +213,7 @@
 /* Forza il colore base e impedisce qualsiasi cambiamento al passaggio del mouse */
 .date-picker-popup .day-cell {
     -fx-background-color: white;
-    -fx-text-fill: blac;
+    -fx-text-fill: black;
 }
 
 .date-picker-popup .day-cell:hover {
@@ -401,10 +396,6 @@ Line {
     -fx-text-fill: #696969 !important;
 }
 
-#notificationAnchorPane {
-    -fx-border-color: #595959 !important;
-}
-
 #notificationVBox{
     -fx-background-color: #f9f9f9 !important;
 }
@@ -458,5 +449,6 @@ Line {
     -fx-focus-color: transparent !important;
     -fx-faint-focus-color: transparent !important;
     -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
+    -fx-border-color: #bababa !important;
 }
+
