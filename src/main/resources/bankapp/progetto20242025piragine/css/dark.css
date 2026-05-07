@@ -46,7 +46,7 @@
 }
 
 #favouritesCardScrollPane {
-    -fx-padding: 0 15 0 15 !important;
+
     -fx-background-color: #e4e4e4 !important;
 }
 
@@ -352,43 +352,43 @@
 
 /* ================= FAVOURITES SCROLLPANE ================= */
 
-#scrollPaneFavouritesCard {
+#favouritesCardScrollPane {
     -fx-background-color: #595959 !important;
     -fx-background-radius: 15 !important;
 }
 
-#scrollPaneFavouritesCard .viewport {
+#favouritesCardScrollPane .viewport {
     -fx-background-color: transparent !important;
 }
 
-#scrollPaneFavouritesCard .scroll-bar:horizontal {
+#favouritesCardScrollPane .scroll-bar:horizontal {
     -fx-padding: 0 15 0 15 !important;
     -fx-background-color: transparent !important;
 }
 
-#scrollPaneFavouritesCard .scroll-bar:horizontal .track {
+#favouritesCardScrollPane .scroll-bar:horizontal .track {
     -fx-background-color: #8b0000 !important;
     -fx-background-radius: 8 !important;
 }
 
-#scrollPaneFavouritesCard .scroll-bar:horizontal .thumb {
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb {
     -fx-background-color: #ff0000 !important;
     -fx-background-radius: 8 !important;
 }
 
-#scrollPaneFavouritesCard .scroll-bar:horizontal .thumb:hover {
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb:hover {
     -fx-effect: innershadow(three-pass-box, #ff0000, 28, 0.17, -10, -10) !important;
 }
 
-#scrollPaneFavouritesCard .scroll-bar:horizontal .thumb:pressed {
+#favouritesCardScrollPane .scroll-bar:horizontal .thumb:pressed {
     -fx-background-color: #cc0000 !important;
     -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6) !important;
 }
 
-#scrollPaneFavouritesCard .scroll-bar:horizontal .increment-button,
-#scrollPaneFavouritesCard .scroll-bar:horizontal .decrement-button,
-#scrollPaneFavouritesCard .scroll-bar:horizontal .increment-arrow,
-#scrollPaneFavouritesCard .scroll-bar:horizontal .decrement-arrow {
+#favouritesCardScrollPane .scroll-bar:horizontal .increment-button,
+#favouritesCardScrollPane .scroll-bar:horizontal .decrement-button,
+#favouritesCardScrollPane .scroll-bar:horizontal .increment-arrow,
+#favouritesCardScrollPane .scroll-bar:horizontal .decrement-arrow {
     -fx-padding: 0 !important;
     -fx-background-color: transparent !important;
     -fx-shape: "" !important;
@@ -444,11 +444,7 @@ Line {
     -fx-text-fill: white !important;
 }
 
-#hboxFavouritesCard{
-    -fx-background-color: #595959 !important;
-    -fx-background-radius: 15;
-    -fx-background-insets: 0;
-}
+
 
 #textCreditCardRectangle{
     -fx-fill: white !important;
