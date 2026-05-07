@@ -285,7 +285,7 @@
 }
 
 #scrollPaneFriends,
-#scrollPaneChat {
+#chatScrollPane {
     -fx-background-insets: 0 !important;
     -fx-padding: 0 !important;
     -fx-border-color: transparent !important;
@@ -298,16 +298,16 @@
     -fx-background-color: #4a4a4a !important;
 }
 
-#scrollPaneChat {
+#chatScrollPane {
     -fx-background-color: #595959 !important;
 }
 
 #scrollPaneFriends .viewport,
 #scrollPaneFriends .content,
 #scrollPaneFriends .corner,
-#scrollPaneChat .viewport,
-#scrollPaneChat .content,
-#scrollPaneChat .corner {
+#chatScrollPane .viewport,
+#chatScrollPane .content,
+#chatScrollPane .corner {
     -fx-background-color: transparent !important;
 }
 

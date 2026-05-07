@@ -1,7 +1,7 @@
 package bankapp.progetto20242025piragine.controller;
 
-import bankapp.progetto20242025piragine.controller.component.FromFriendTransactionCloudController;
-import bankapp.progetto20242025piragine.controller.component.ToFriendTransactionCloudController;
+import bankapp.progetto20242025piragine.controller.component.ToUserTextCloudController;
+import bankapp.progetto20242025piragine.controller.component.FromUserTextCloudController;
 import bankapp.progetto20242025piragine.util.ChatBot;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.application.Platform;
@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -25,11 +24,11 @@ public class ChatBotController extends BranchController{
 
     private void addUserCloud(String text)
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/toFriendTransactionCloud.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromUserTextCloud.fxml"));
         try
         {
             Parent cloud = loader.load();
-            ToFriendTransactionCloudController controller= loader.getController();
+            FromUserTextCloudController controller= loader.getController();
             controller.textLabel.setText(text);
             chatDisplay.getChildren().add(cloud);
             VBox.setMargin(cloud, new Insets(0, -100 , 0, 0));
@@ -42,11 +41,11 @@ public class ChatBotController extends BranchController{
     }
     private void addBotCloud(String text)
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml"));
         try
         {
             Parent cloud = loader.load();
-            FromFriendTransactionCloudController controller= loader.getController();
+            ToUserTextCloudController controller= loader.getController();
             controller.textLabel.setText(text);
             chatDisplay.getChildren().add(cloud);
         }

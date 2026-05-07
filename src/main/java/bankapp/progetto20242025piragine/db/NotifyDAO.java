@@ -42,6 +42,43 @@ public class NotifyDAO {
         }
     }
 
+
+    public static List<Notify> getTransactionNotifiesBetweenUserAndUser2(int userId, int userId2) {
+
+        String sql = """
+        
+                SELECT *
+        FROM Notify
+        WHERE (sender = ? AND beneficiary = ?)
+           OR (sender = ? AND beneficiary = ?)
+        ORDER BY data_creation ASC 
+        """;
+        List<Notify> list = new ArrayList<>();
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+
+
+            stmt.setInt(1, userId);
+            stmt.setInt(2, userId2);
+            stmt.setInt(3, userId2);
+            stmt.setInt(4, userId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    list.add(mapRow(rs));
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting all notifies by user id: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
     // 🔹 Recupera notifiche di un utente
     public static List<Notify> getNotifyByUserId(int userId)  {
         String sql = "SELECT * FROM Notify WHERE user_id = ? ORDER BY data_creation DESC";

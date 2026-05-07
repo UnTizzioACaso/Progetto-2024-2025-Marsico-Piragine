@@ -53,7 +53,7 @@ public class LargeTransactionHistoryController extends BranchController {
         fixDate();
         if(incomesRadioButton.isSelected()) //positive transactions
         {
-            List<Transaction> transactions = getPositiveTransaction();
+            List<Transaction> transactions = TransactionDAO.getTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
             for (Transaction t : transactions)
             {
                 if(filterBySearchField(t, "expense"))
@@ -68,7 +68,7 @@ public class LargeTransactionHistoryController extends BranchController {
         }
         else if (expensesRadioButton.isSelected()) //negative transactions
         {
-            List<Transaction> transactions = getNegativeTransactions();
+            List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
             for (Transaction t : transactions)
             {
                 if(filterBySearchField(t, "expense"))
@@ -83,7 +83,7 @@ public class LargeTransactionHistoryController extends BranchController {
         }
         else //all transactions
         {
-            List<Transaction> transactions = getAllTransactions();
+            List<Transaction> transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
             for (Transaction t : transactions)
             {
                 if(filterBySearchField(t, ""))
@@ -98,53 +98,8 @@ public class LargeTransactionHistoryController extends BranchController {
         }
     }
 
-    private List<Transaction> getAllTransactions()
-    {
-        List<Transaction> transactions = new ArrayList<>();
-        try
-        {
-            transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            return  transactions;
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting all transaction " + e.getMessage());
-            e.printStackTrace();
-            return transactions;
-        }
-    }
 
-    private List<Transaction> getNegativeTransactions()
-    {
-        List<Transaction> transactions = new ArrayList<>();
-        try
-        {
-            transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            return  transactions;
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting all transaction " + e.getMessage());
-            e.printStackTrace();
-            return transactions;
-        }
-    }
 
-    private List<Transaction> getPositiveTransaction()
-    {
-        List<Transaction> transactions = new ArrayList<>();
-        try
-        {
-            transactions = TransactionDAO.getTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            return  transactions;
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting all positive transaction " + e.getMessage());
-            e.printStackTrace();
-            return transactions;
-        }
-    }
 
     @FXML
     public void switchIncomes()
