@@ -90,17 +90,6 @@
     -fx-text-fill: black !important;
 }
 
-/* ==========================================================
-   INPUT E SEARCH BAR
-   ========================================================== */
-
-#friendsSearchBar {
-    -fx-background-color: #f2f2f2 !important;
-    -fx-text-fill: black !important;
-    -fx-prompt-text-fill: #8a8a8a !important;
-    -fx-background-radius: 10;
-}
-
 
 /* ==========================================================
    BUTTON E MENU
@@ -451,4 +440,9 @@ Line {
     -fx-background-insets: 0 !important;
     -fx-border-color: #bababa !important;
 }
+
+#textFieldChatSupport{
+    -fx-prompt-text-fill: #8a8a8a !important;
+}
+
 
