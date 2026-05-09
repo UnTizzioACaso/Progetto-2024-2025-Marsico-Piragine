@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 
-<GridPane id="rootGridPaneBankSettingPage" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="550.0" style="-fx-background-color: #efefef;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController">
+<GridPane id="rootGridPaneBankSettingPage" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="550.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController">
 
     <padding>
         <Insets bottom="25" left="25" right="25" top="25" />
@@ -61,7 +61,7 @@
       </ImageView>
 
                     <!-- CARD (contenuto) -->
-        <GridPane id="gridPaneBankAccountSetting" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="760" minHeight="10.0" prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: white; -fx-background-radius: 26;                          -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.20), 24, 0.18, 0, 8);" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <GridPane id="gridPaneBankAccountSetting" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="760" minHeight="10.0" prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: white; -fx-background-radius: 26;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
 
                         <padding>
                 <Insets left="32.0" right="32.0" />
@@ -194,6 +194,13 @@
                 <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
                 <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
             </rowConstraints>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color opacity="0.30000001192092896" />
+               </color>
+            </InnerShadow>
+         </effect>
         </GridPane>
 
     </children>

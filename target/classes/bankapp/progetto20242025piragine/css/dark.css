@@ -1,8 +1,5 @@
 /* ================= ROOT ================= */
 
-#root {
-    -fx-background-color: #4a4a4a !important;
-}
 
 #accountPopupRoot{
     -fx-background-color: #4a4a4a !important;
@@ -60,7 +57,6 @@
 #lastFiveExpensesVBox,
 #sidebarGridPane,
 #transactionHistoryAnchorPane,
-#anchorPaneCardPage,
 #anchorePaneCardPopup,
 #anchorePaneMenageCardPopup {
     -fx-background-color: #4a4a4a !important;
@@ -97,14 +93,11 @@
 }
 
 #vBoxNotificationSlider {
-    -fx-background-color: #595959 !important;
-    -fx-border-color: grey !important;
-    -fx-border-width: 0.15;
+    -fx-background-color: #4a4a4a !important;
 }
 
 #notificationAnchorPane {
-    -fx-border-color: black !important;
-    -fx-border-width: 0.50;
+    -fx-border-color: white !important;
 }
 
 
@@ -124,13 +117,6 @@
 
 
 /* ================= INPUT ================= */
-
-#friendsSearchBar {
-    -fx-background-color: #3a3a3a !important;
-    -fx-text-fill: white !important;
-    -fx-prompt-text-fill: #bdbdbd !important;
-}
-
 
 #spendingLimitTextField {
     -fx-background-color: #3a3a3a !important;
@@ -475,12 +461,6 @@ Line {
     -fx-background-color: #595959 !important;
 }
 
-#rootGridPaneBankSettingPage{
-    -fx-background-color: #4a4a4a !important;
-}
-
-
-
 
 /* 1. TESTO BIANCO */
 #checkBoxBankAccountSettingsPage,
@@ -679,8 +659,12 @@ Line {
 }
 
 #vBoxAddWidget01,
+#gridPaneAddWidget01,
 #vBoxAddWidget02,
+#gridPaneAddWidget02,
 #vBoxAddWidget11,
+#gridPaneAddWidget11,
+#gridPaneAddWidget12,
 #vBoxAddWidget12{
     -fx-background-color: #595959 !important;
 }
@@ -763,6 +747,15 @@ Line {
     -fx-border-color: #333333 !important;
 }
 
+#friendsSearchBar {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-border-color: #333333 !important;
+    -fx-border-radius: 15 !important;
+    -fx-background-radius: 15 !important;
+    -fx-pref-height: 8 !important;
+}
 
 #labelFromFriendTransactionCloud{
     -fx-background-color: #4a4a4a !important;
@@ -781,15 +774,10 @@ Line {
     -fx-text-fill: white !important;
 }
 
+
 #friendAnchorPane{
     -fx-border-color: white !important;
 }
-
-#notificationAnchorPane{
-    -fx-background-color: #3c3c3c !important;
-}
-
-
 
 
 /* --- CHECK BOX --- */
@@ -825,3 +813,27 @@ Line {
     -fx-background-insets: 0 !important;
     -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
 }
+
+#scrollPaneChatSupport{
+    -fx-background-color: #595959 !important;
+    -fx-border-color: #595959 !important;
+}
+
+#notificationVBox{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#errorLabelMenageCardPopup{
+    -fx-text-fill: #ff0000 !important;
+}
+
+#notificationSliderAnchorPane{
+    -fx-border-color: #4a4a4a !important;
+    -fx-border-width: 0 0 0 2 !important;
+}
+
+#anchorPaneCardPage,
+#rootGridPaneBankSettingPage {
+    -fx-background-color: #3c3c3c !important;
+}
+

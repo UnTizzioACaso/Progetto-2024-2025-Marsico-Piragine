@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="friendAnchorPane" prefHeight="43.0" prefWidth="260.0" style="-fx-background-color: gray; -fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.FriendContactController">
+<AnchorPane fx:id="friendAnchorPane" prefHeight="43.0" prefWidth="260.0" style="-fx-background-color: #ff0000; -fx-border-width: 0 0 1 0; -fx-border-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.FriendContactController">
    <children>
-      <Label fx:id="friendUsernameLabel" layoutX="61.0" layoutY="10.0" prefHeight="30.0" prefWidth="190.0" text="Franco" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="10.0">
+      <Label fx:id="friendUsernameLabel" layoutX="61.0" layoutY="10.0" prefHeight="30.0" prefWidth="190.0" text="Franco" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="63.0" AnchorPane.topAnchor="10.0">
          <font>
-            <Font size="14.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="6.0">
-         <image>
-            <Image url="@../../imgs/quickContact.png" />
-         </image>
-         <effect>
-            <ColorAdjust contrast="0.64" hue="-0.86" />
-         </effect>
-      </ImageView>
       <Region fx:id="friendContactRegion" layoutX="56.0" layoutY="-69.0" onMouseClicked="#showChat" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="18.4" layoutY="5.8" AnchorPane.bottomAnchor="9.399999999999999" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="5.8">
+         <image>
+            <Image url="@../../imgs/userIcon2.png" />
+         </image>
+      </ImageView>
    </children>
+   <effect>
+      <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+         <color>
+            <Color opacity="0.25" />
+         </color>
+      </InnerShadow>
+   </effect>
 </AnchorPane>

@@ -137,8 +137,7 @@ public class Register3Controller extends BranchController {
         rootController.user.setPhoneNumber(phone);
         rootController.user.setPasswordHash(PasswordUtil.hashPassword(passwordPasswordField.getText()));
 
-
-        rootController.showPopup("Crea un pin", "/bankapp/progetto20242025piragine/fxml/popup/createPinPopup.fxml", 315, 280);
+        rootController.showPopup("Crea un pin", "/bankapp/progetto20242025piragine/fxml/popup/createPinPopup.fxml", 314, 240);
     }
 
     @FXML

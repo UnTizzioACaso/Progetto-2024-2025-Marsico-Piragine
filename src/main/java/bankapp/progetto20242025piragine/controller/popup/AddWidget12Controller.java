@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 
 public class AddWidget12Controller extends BranchController
 {
+    @FXML
+    private Node closeAddWidget12;
 
     @FXML
     private VBox widgetsVBox;
@@ -68,5 +70,12 @@ public class AddWidget12Controller extends BranchController
         rootController.homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", 1, 2);
         Stage stage = (Stage) widgetsVBox.getScene().getWindow();
         stage.close();
+    }
+    @FXML
+    public void closeWidget() {
+        if (closeAddWidget12 != null && closeAddWidget12.getScene() != null) {
+            Stage stage = (Stage) closeAddWidget12.getScene().getWindow();
+            stage.close();
+        }
     }
 }

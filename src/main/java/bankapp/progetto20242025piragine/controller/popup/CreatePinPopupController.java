@@ -14,6 +14,7 @@ import java.sql.SQLException;
 public class CreatePinPopupController extends BranchController
 {
     // Password field where the user inserts the PIN
+
     @FXML
     public PasswordField insertPinPasswordField, confirmPinPasswordField;
 
@@ -181,4 +182,5 @@ public class CreatePinPopupController extends BranchController
         Stage stage = (Stage) rootPane.getScene().getWindow();
         stage.close();
     }
+
 }

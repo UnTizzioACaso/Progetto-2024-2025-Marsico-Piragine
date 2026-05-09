@@ -20,10 +20,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AddWidget02Controller">
+<GridPane fx:id="gridPaneAddWidget02" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-radius: 18;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AddWidget02Controller">
    <children>
-      <ScrollPane fx:id="root" fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="10.0" prefHeight="510.0" prefWidth="568.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+      <ScrollPane fx:id="root" fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="10.0" prefHeight="510.0" prefWidth="568.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
          <content>
             <VBox id="vBoxAddWidget02" fx:id="widgetsVBox" alignment="CENTER" minWidth="-Infinity" prefHeight="0.0" prefWidth="40.0" spacing="80.0">
                <children>
@@ -347,14 +346,47 @@
             </VBox>
          </content>
       </ScrollPane>
-      <Button fx:id="abortButton" layoutX="250.0" layoutY="14.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#closePopup" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: ff0000; fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 14;" text="ANNULLA" textFill="WHITE" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="10.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff0000; -fx-background-radius: 18 18 0 0;">
          <effect>
-            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+            <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                <color>
                   <Color opacity="0.25" />
                </color>
             </InnerShadow>
          </effect>
-      </Button>
+         <children>
+            <Label alignment="CENTER" layoutX="178.0" layoutY="15.0" text="Aggiungi widget" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="closeAddWidget02" layoutX="546.0" layoutY="20.0" mnemonicParsing="false" onAction="#closeWidget" prefHeight="0.0" prefWidth="31.0" style="-fx-background-color: transparent;" text="✕" textFill="WHITE" AnchorPane.rightAnchor="22.799999999999955">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <padding>
+                  <Insets bottom="-6.0" top="-6.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="-1.0" left="-1.0" right="-1.0" top="-1.0" />
+               </opaqueInsets>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="75.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="1.7976931348623157E308" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="5.0" prefHeight="15.0" />
+   </rowConstraints>
+   <effect>
+      <InnerShadow>
+         <color>
+            <Color opacity="0.30000001192092896" />
+         </color>
+      </InnerShadow>
+   </effect>
+</GridPane>

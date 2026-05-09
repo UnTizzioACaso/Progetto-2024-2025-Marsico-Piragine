@@ -2,14 +2,18 @@ package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
 public class FriendshipNotifyController extends BranchController
 {
+    @FXML private AnchorPane anchorPaneFriendshipNotify;
     public int idRequest;
 
     @FXML
@@ -37,4 +41,8 @@ public class FriendshipNotifyController extends BranchController
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
+    @Override
+    public void initializer() {
+        ThemeManager.applyTheme(anchorPaneFriendshipNotify.getScene(), rootController.user.getTheme());
+    }
 }

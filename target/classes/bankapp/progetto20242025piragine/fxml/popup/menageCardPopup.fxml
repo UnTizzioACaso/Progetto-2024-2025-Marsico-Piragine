@@ -61,7 +61,7 @@
 
         <TextField fx:id="spendingLimitTextField" layoutX="197.6" layoutY="131.8" prefHeight="38.0" prefWidth="77.0" style="-fx-background-radius: 6; -fx-border-radius: 6;" AnchorPane.leftAnchor="197.6" AnchorPane.rightAnchor="132.80000000000007" AnchorPane.topAnchor="131.8" />
 
-        <Button layoutX="380.0" layoutY="131.0" mnemonicParsing="false" onAction="#updateSpendingLimit" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="AGGIORNA" textFill="WHITE" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="30.399999999999977" AnchorPane.topAnchor="131.0">
+        <Button fx:id="updateMenageCardPopup" layoutX="380.0" layoutY="131.0" mnemonicParsing="false" onAction="#updateSpendingLimit" prefHeight="38.0" prefWidth="86.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="AGGIORNA" textFill="WHITE" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="30.399999999999977" AnchorPane.topAnchor="131.0">
             <effect>
                 <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
                     <color>
@@ -103,7 +103,10 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="180.0" textFill="RED" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <Label fx:id="errorLabelMenageCardPopup" alignment="CENTER" contentDisplay="CENTER" layoutY="183.0" prefHeight="27.0" prefWidth="500.0" textFill="RED" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <Button fx:id="closeMenageCardPopup" layoutX="462.0" layoutY="12.0" mnemonicParsing="false" onAction="#closePopup" prefHeight="21.0" prefWidth="22.0" style="-fx-background-color: transparent;" text="✕" textFill="DIMGRAY">
          <font>
             <Font size="20.0" />
