@@ -27,7 +27,7 @@ public class Application extends javafx.application.Application {
         // Applica il tema globale (chiaro/scuro) all'apertura
         ThemeManager.applyTheme(scene, "light");
 
-        // Imposta le proprietà della finestra principale
+        // Imposta le proprietà della finestra principaleuserIcon.png
         stage.setTitle("Maze Bank");
         stage.setMinWidth(850);
         stage.setMinHeight(650);

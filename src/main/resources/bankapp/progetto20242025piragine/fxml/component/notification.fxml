@@ -1,27 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="notificationAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: white; -fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.NotificationController">
+<AnchorPane fx:id="notificationAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #595959; -fx-background-color: #ff0000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.NotificationController">
     <children>
-        <Label fx:id="notifyTitleLabel" layoutX="14.0" layoutY="7.2" prefHeight="3.0" prefWidth="199.0" text="Title" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0">
+        <Label fx:id="notifyTitleLabel" layoutX="14.0" layoutY="7.2" prefHeight="3.0" prefWidth="199.0" text="Title" textFill="WHITE" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0">
             <font>
-                <Font name="System Bold" size="11.0" />
+                <Font name="System Bold" size="12.0" />
             </font>
         </Label>
-        <Label fx:id="secondaryLabel" layoutX="15.0" layoutY="20.0" prefHeight="0.0" prefWidth="199.0" text="Secondary" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0">
+        <Label fx:id="secondaryLabel" layoutX="15.0" layoutY="20.0" prefHeight="0.0" prefWidth="199.0" text="Secondary" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0">
             <font>
                 <Font size="11.0" />
             </font>
         </Label>
-        <Label fx:id="valueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="14.0" prefHeight="20.0" prefWidth="78.0" text="Value" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="1.0">
+        <Label fx:id="valueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="14.0" prefHeight="20.0" prefWidth="78.0" text="Value" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="1.0">
             <font>
                 <Font size="11.0" />
             </font>
         </Label>
         <Region fx:id="transparentRegion" layoutY="-1.6" onMouseClicked="#readNotify" prefHeight="10.0" prefWidth="260.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     </children>
+   <effect>
+      <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+         <color>
+            <Color opacity="0.25" />
+         </color>
+      </InnerShadow>
+   </effect>
 </AnchorPane>

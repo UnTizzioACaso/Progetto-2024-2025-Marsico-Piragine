@@ -81,6 +81,13 @@
                     <font>
                         <Font name="System Italic" size="14.0" />
                     </font>
+               <effect>
+                  <InnerShadow>
+                     <color>
+                        <Color opacity="0.10000000149011612" />
+                     </color>
+                  </InnerShadow>
+               </effect>
                 </TextField>
             </children>
         </AnchorPane>

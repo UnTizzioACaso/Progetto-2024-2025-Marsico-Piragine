@@ -1,5 +1,9 @@
 /* ================= ROOT ================= */
 
+.root {
+    -fx-background-color: white !important;
+}
+
 /* ==========================================================
    SCROLLBAR UNIFICATE (TUTTI I COMPONENTI)
    ========================================================== */
@@ -79,7 +83,6 @@
 #anchorPaneChat,
 #scrollPaneChat,
 #chatVBox,
-#notificationVBox,
 #scrollPaneAddWidget01,
 #favouritesCardScrollPane {
     -fx-background-color: #e4e4e4 !important;
@@ -385,10 +388,6 @@ Line {
     -fx-text-fill: #696969 !important;
 }
 
-#notificationVBox{
-    -fx-background-color: #f9f9f9 !important;
-}
-
 #closeCreateCardPopup{
     -fx-text-fill: #696969 !important;
 }
@@ -446,3 +445,12 @@ Line {
 }
 
 
+#notificationVBox,
+#vBoxNotificationSlider{
+    -fx-background-color: white !important;
+}
+
+#notificationSliderAnchorPane{
+    -fx-border-color: #e4e4e4 !important;
+    -fx-border-width: 0 0 0 2 !important;
+}
