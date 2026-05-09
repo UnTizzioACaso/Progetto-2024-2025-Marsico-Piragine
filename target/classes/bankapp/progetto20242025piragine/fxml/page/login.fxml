@@ -83,7 +83,7 @@
                     </InnerShadow>
                 </effect>
             </Button>
-            <PasswordField fx:id="passwordLoginPasswordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-border-color: #d9d9d9; -fx-background-color: #f2f2f2; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <PasswordField fx:id="passwordLoginPasswordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#loadHomePage" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-border-color: #d9d9d9; -fx-background-color: #f2f2f2; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                 <padding>
                     <Insets left="10.0" />
                 </padding>
@@ -136,7 +136,7 @@
                     <Insets left="2.0" right="2.0" top="4.0" />
                 </GridPane.margin>
             </GridPane>
-            <TextField fx:id="emailLoginTextField" maxHeight="40.0" maxWidth="300.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <TextField fx:id="emailLoginTextField" maxHeight="40.0" maxWidth="300.0" minWidth="270.0" onAction="#loadHomePage" prefHeight="40.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                 <padding>
                     <Insets left="10.0" />
                 </padding>

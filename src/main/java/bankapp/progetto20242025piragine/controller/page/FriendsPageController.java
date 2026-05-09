@@ -103,7 +103,7 @@ public class FriendsPageController extends BranchController
         // creating the transaction java object
         int senderAccount = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());
         int beneficiaryAccount = BankAccountDAO.getIdAccountByUserId(friend.getUserID());
-        Transaction t = new Transaction(senderAccount, beneficiaryAccount, v, noteTextFiled.getText(), "donation", 0);
+        Transaction t = new Transaction(senderAccount, beneficiaryAccount, v, noteTextFiled.getText(), "donation", -1);
 
         //tring to insert the transaction in the db
         if(!(TransactionDAO.insertTransaction(t)))

@@ -754,7 +754,6 @@ Line {
     -fx-border-color: #333333 !important;
     -fx-border-radius: 15 !important;
     -fx-background-radius: 15 !important;
-    -fx-pref-height: 8 !important;
 }
 
 #labelFromFriendTransactionCloud{
