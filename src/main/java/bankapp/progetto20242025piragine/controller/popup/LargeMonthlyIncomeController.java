@@ -25,53 +25,31 @@ public class LargeMonthlyIncomeController extends BranchController {
     @Override
     public void initializer()
     {
-        try
+        List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+        for(Transaction transaction : transactions)
         {
-            List<Transaction> transactions = TransactionDAO.getCurrentMonthTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            for(Transaction transaction : transactions)
-            {
-                Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
-                monthlyIncomesVBox.getChildren().add(visualTransaction);
-            }
-            ThemeManager.applyTheme(monthlyIncomesVBox.getScene(), rootController.user.getTheme());
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
+            monthlyIncomesVBox.getChildren().add(visualTransaction);
         }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting all positive transaction of this month " + e.getMessage());
-            e.printStackTrace();
-        }
+        ThemeManager.applyTheme(monthlyIncomesVBox.getScene(), rootController.user.getTheme());
     }
 
     @FXML
     public void search()
     {
-
-        try
-        {
-            List<Transaction> transactions = TransactionDAO.getCurrentMonthTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            for(Transaction transaction : transactions)
-            {
-                try
-                {
-                    String username = UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getSender()));
-                    if(username.contains(searchTextField.getText()))
-                    {
-                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
-                        monthlyIncomesVBox.getChildren().clear();
-                        monthlyIncomesVBox.getChildren().add(visualTransaction);
-                    }
+        List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+        for (Transaction transaction : transactions) {
+            try {
+                String username = UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getSender()));
+                if (username.contains(searchTextField.getText())) {
+                    Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
+                    monthlyIncomesVBox.getChildren().clear();
+                    monthlyIncomesVBox.getChildren().add(visualTransaction);
                 }
-                catch (SQLException e)
-                {
-                    System.err.println("error finding id username by user id got by account id " + e.getMessage());
-                    e.printStackTrace();
-                }
+            } catch (SQLException e) {
+                System.err.println("error finding id username by user id got by account id " + e.getMessage());
+                e.printStackTrace();
             }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting all positive transaction of this month " + e.getMessage());
-            e.printStackTrace();
         }
     }
 }

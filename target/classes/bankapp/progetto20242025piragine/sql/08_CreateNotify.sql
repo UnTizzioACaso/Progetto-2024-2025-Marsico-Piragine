@@ -7,6 +7,6 @@
     read BOOLEAN,
     data_creation DATETIME,
     FOREIGN KEY (user_id) REFERENCES User(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (id_transaction) REFERENCES Transaction1(id_transaction) ON DELETE CASCADE,
-    FOREIGN KEY (id_friend_request) REFERENCES Friendship(id_friendship) ON DELETE CASCADE
+    FOREIGN KEY (id_transaction) REFERENCES Bank_Transaction(id_transaction) ON DELETE CASCADE,
+    FOREIGN KEY (id_friend_request) REFERENCES Friend_Request(id_request) ON DELETE CASCADE
 );

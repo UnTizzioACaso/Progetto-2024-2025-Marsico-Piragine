@@ -39,10 +39,8 @@ public class MonthlyBalanceController extends WidgetController {
     @Override
     public void initializer()
     {
-        try
-        {
-            List<Transaction> positiveTransaction = TransactionDAO.getCurrentMonthTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            List<Transaction> negativeTransaction = TransactionDAO.getCurrentMonthTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            List<Transaction> positiveTransaction = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            List<Transaction> negativeTransaction = TransactionDAO.getCurrentMonthOutcome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
             BigDecimal positiveAmount = BigDecimal.ZERO;
             BigDecimal negativeAmount = BigDecimal.ZERO;
             for(Transaction transaction : positiveTransaction)
@@ -62,11 +60,7 @@ public class MonthlyBalanceController extends WidgetController {
             else if (balance.compareTo(BigDecimal.ZERO) > 0) {balanceVBox.setStyle(balanceVBox.getStyle() + "-fx-background-color: green;");}
             else {balanceVBox.setStyle(balanceVBox.getStyle() + "-fx-background-color: #bfb600;");}
 
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting all transaction of this month " + e.getMessage());
-        }
+
     }
 
     @FXML

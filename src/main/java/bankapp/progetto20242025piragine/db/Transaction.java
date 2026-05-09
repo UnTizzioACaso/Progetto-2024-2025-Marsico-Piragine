@@ -11,7 +11,7 @@ public class Transaction {
     private BigDecimal amount;
     private String note;
     private Timestamp transactionDate;
-
+    private String status;
     private String type;
     private int usedCard;
 
@@ -27,6 +27,7 @@ public class Transaction {
         this.note = note;
         this.type = type;
         this.usedCard = usedCard;
+        this.status = status;
     }
 
     // 🔹 Getter & Setter
@@ -95,4 +96,8 @@ public class Transaction {
     public void setUsedCard(Integer usedCard) {
         this.usedCard = usedCard;
     }
+
+    public String getStatus() {return status;}
+
+    public void setStatus(String status) {this.status = status;}
 }

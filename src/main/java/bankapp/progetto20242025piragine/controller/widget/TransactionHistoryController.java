@@ -33,19 +33,11 @@ public class TransactionHistoryController extends WidgetController
     @Override
     public void initializer()
     {
-        try
+        List<Transaction> transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+        for (Transaction transaction : transactions)
         {
-            List<Transaction> transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            for(Transaction transaction : transactions)
-            {
-                Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
-                transactionHistoryVBox.getChildren().add(visualTransaction);
-            }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting all transaction " + e.getMessage());
-            e.printStackTrace();
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
+            transactionHistoryVBox.getChildren().add(visualTransaction);
         }
     }
 

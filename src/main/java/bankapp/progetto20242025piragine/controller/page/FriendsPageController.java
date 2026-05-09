@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollToEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -25,7 +27,9 @@ public class FriendsPageController extends BranchController
     @FXML
     public VBox friendsVBox;
 
-    public String note;
+    @FXML
+    public TextField noteTextFiled;
+
     @FXML
     public Label errorLabel;
 
@@ -34,6 +38,9 @@ public class FriendsPageController extends BranchController
 
     @FXML
     private TextField valueField;
+
+    @FXML
+    public ScrollPane chatScrollPane;
 
     @FXML
     public void loadFriendshipRequestPopup()
@@ -96,8 +103,7 @@ public class FriendsPageController extends BranchController
         // creating the transaction java object
         int senderAccount = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());
         int beneficiaryAccount = BankAccountDAO.getIdAccountByUserId(friend.getUserID());
-        Transaction t = new Transaction(senderAccount, beneficiaryAccount, v, note, "donation", 0);
-
+        Transaction t = new Transaction(senderAccount, beneficiaryAccount, v, noteTextFiled.getText(), "donation", 0);
 
         //tring to insert the transaction in the db
         if(!(TransactionDAO.insertTransaction(t)))
@@ -108,8 +114,8 @@ public class FriendsPageController extends BranchController
         }
 
         //creating and sending the notifies to each user
-        Notify n = new Notify(friend.getUserID(), t.getIdTransaction(), null, note);
-        Notify n2 = new Notify(rootController.user.getUserID(), t.getIdTransaction(), null, note);
+        Notify n = new Notify(friend.getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
+        Notify n2 = new Notify(rootController.user.getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
         NotifyDAO.insertNotify(n);
         NotifyDAO.insertNotify(n2);
 
@@ -142,12 +148,8 @@ public class FriendsPageController extends BranchController
                 FriendContactController controller = loader.getController();
                 controller.setRootController(rootController);
                 controller.friendsPageController = this;
-                try {controller.friendUsernameLabel.setText(UserDAO.getUserByUserID(id).getUsername());}
-                catch (SQLException e)
-                {
-                    System.err.println("error during loading a friend name from db" + e.getMessage());
-                    e.printStackTrace();
-                }
+                controller.friendUsernameLabel.setText(UserDAO.getUserByUserID(id).getUsername());
+
                 friendsVBox.getChildren().add(friendContact);
             }
             catch(Exception e)

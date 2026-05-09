@@ -60,7 +60,7 @@ public class NotificationController extends BranchController{
     private void transactionRequestNotify()
     {
         notifyTitleLabel.setText(getBeneficiaryUsernameT(notify.getIdTransaction()));
-        valueLabel.setText(getTransactionRequestValue(notify.getIdTransaction()).toString());
+        valueLabel.setText(TransactionDAO.getTransactionById(notify.getIdTransaction()).getAmount().toString());
         secondaryLabel.setText("Richiesta di denaro");
     }
 
@@ -102,8 +102,7 @@ public class NotificationController extends BranchController{
 
     private String getBeneficiaryUsernameT(int idTransaction)
     {
-        try
-        {
+
             Transaction t = TransactionDAO.getTransactionById(idTransaction);
             try
             {
@@ -116,31 +115,19 @@ public class NotificationController extends BranchController{
                 e.printStackTrace();
                 return null;
             }
-        }
-        catch(SQLException e)
-        {
-            System.err.println("error getting friend request by id " + e);
-            e.printStackTrace();
-            return null;
-        }
     }
 
     private String getRequesterUsernameT(int idTransaction) {
-        try {
-            Transaction t = TransactionDAO.getTransactionById(idTransaction);
+
             try {
-                return UserDAO.getUsernameByUserId(t.getSender());
+                return UserDAO.getUsernameByUserId(TransactionDAO.getTransactionById(idTransaction).getBeneficiary());
 
             } catch (SQLException e) {
                 System.err.println("error getting username by user id " + e);
                 e.printStackTrace();
                 return null;
             }
-        } catch (SQLException e) {
-            System.err.println("error getting friend request by id " + e);
-            e.printStackTrace();
-            return null;
-        }
+
     }
 
     private String getRequesterUsernameF(int idFriendRequest) {
@@ -159,22 +146,4 @@ public class NotificationController extends BranchController{
             }
 
     }
-
-    private BigDecimal getTransactionRequestValue(int idTransaction)
-    {
-        try
-        {
-            return TransactionDAO.getTransactionById(idTransaction).getAmount();
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error getting friend request by id " + e);
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-
-
-
 }

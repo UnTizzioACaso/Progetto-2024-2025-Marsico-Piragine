@@ -25,20 +25,15 @@ public class LastFiveExpensesController extends WidgetController
     @Override
     public void initializer()
     {
-        try
+        List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+        for (int i = 0; i < 5; i++)
         {
-            List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            for(int i = 0; i < 5; i++)
+            if (i >= transactions.size())
             {
-                if(i>=transactions.size()){return;}
-                Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transactions.get(i));
-                lastFiveExpensesVBox.getChildren().add(visualTransaction);
+                return;
             }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting last 5 negative transaction " + e.getMessage());
-            e.printStackTrace();
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transactions.get(i));
+            lastFiveExpensesVBox.getChildren().add(visualTransaction);
         }
     }
 

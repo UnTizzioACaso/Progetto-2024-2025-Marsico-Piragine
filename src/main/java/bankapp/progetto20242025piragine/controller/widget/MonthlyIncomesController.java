@@ -29,21 +29,12 @@ public class MonthlyIncomesController extends WidgetController {
     @Override
     public void initializer()
     {
-        try
+        List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+        for(Transaction transaction : transactions)
         {
-            List<Transaction> transactions = TransactionDAO.getCurrentMonthTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            for(Transaction transaction : transactions)
-            {
-                Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
-                monthlyIncomesVBox.getChildren().add(visualTransaction);
-            }
-        }
-        catch (SQLException e)
-        {
-           System.err.println("error during getting all positive transaction of this month " + e.getMessage());
-           e.printStackTrace();
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
+            monthlyIncomesVBox.getChildren().add(visualTransaction);
         }
     }
-
 
 }

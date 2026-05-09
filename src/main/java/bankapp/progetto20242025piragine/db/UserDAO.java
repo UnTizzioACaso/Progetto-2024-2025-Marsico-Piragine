@@ -186,8 +186,9 @@ public class UserDAO
         return user;
     }
 
-    public static User getUserByUserID(int userid) throws SQLException {
+    public static User getUserByUserID(int userid){
         String sql = "SELECT * FROM User WHERE user_id = ?";
+        User user = new User();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -195,7 +196,7 @@ public class UserDAO
             try (ResultSet rs = stmt.executeQuery()) {
                 if (!rs.next()) return null;
 
-                User user = new User();
+
                 user.setUsername(rs.getString("username"));
                 user.setFirstName(rs.getString("first_name"));
                 user.setLastName(rs.getString("last_name"));
@@ -206,9 +207,15 @@ public class UserDAO
                 user.setBirthDate(rs.getString("birth_day"));
                 user.setBirthPlace(rs.getString("birth_place"));
                 user.setCap(rs.getString("cap"));
-                return user;
+
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("Error getting user by id :" + e.getMessage());
+            e.printStackTrace();
+        }
+        return user;
     }
 
     public static boolean existUserByUsername(String username) throws SQLException

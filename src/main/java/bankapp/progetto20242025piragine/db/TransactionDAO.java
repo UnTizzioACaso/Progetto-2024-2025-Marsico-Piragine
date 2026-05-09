@@ -1,4 +1,5 @@
 package bankapp.progetto20242025piragine.db;
+
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -6,269 +7,271 @@ import java.util.List;
 
 public class TransactionDAO {
 
-    // 🔹 Inserisce una nuova transazione
-    public static boolean insertTransaction(Transaction t)  {
+    // 🔹 Inserisce una nuova transazione (Fix per SQLite "not implemented")
+    public static boolean insertTransaction(Transaction t) {
         String sql = """
             INSERT INTO Bank_Transaction
-            (sender, requested, amount, note, type, used_card)
-            VALUES (?, ?, ?, ?, ?, ?)
+            (sender, beneficiary, amount, note, type, status, used_card)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             """;
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            if (t.getSender() != null)
-                stmt.setInt(1, t.getSender());
-            else
-                stmt.setNull(1, Types.INTEGER);
+            // Gestione Sender (Null se è un deposito/ricarica)
+            if (t.getSender() != null && t.getSender() != 0) stmt.setInt(1, t.getSender());
+            else stmt.setNull(1, Types.INTEGER);
 
-            if (t.getBeneficiary() != null)
-                stmt.setInt(2, t.getBeneficiary());
-            else
-                stmt.setNull(2, Types.INTEGER);
+            // Gestione Beneficiary (Null se è un prelievo)
+            if (t.getBeneficiary() != null && t.getBeneficiary() != 0) stmt.setInt(2, t.getBeneficiary());
+            else stmt.setNull(2, Types.INTEGER);
 
+            // Importo in centesimi per precisione
             stmt.setInt(3, t.getAmount().multiply(BigDecimal.valueOf(100)).intValue());
             stmt.setString(4, t.getNote());
             stmt.setString(5, t.getType());
+            stmt.setString(6, t.getStatus());
 
-            if (t.getUsedCard() != null)
-                stmt.setInt(6, t.getUsedCard());
-            else
-                stmt.setNull(6, Types.INTEGER);
+            // Gestione Carta usata
+            if (t.getUsedCard() != null && t.getUsedCard() != 0) stmt.setInt(7, t.getUsedCard());
+            else stmt.setNull(7, Types.INTEGER);
 
             int rows = stmt.executeUpdate();
             if (rows == 0) return false;
 
-            try (ResultSet keys = stmt.getGeneratedKeys()) {
-                if (keys.next()) {
-                    t.setIdTransaction(keys.getInt(1));
+            // Recupero manuale dell'ID generato (Standard SQLite)
+            try (Statement idStmt = conn.createStatement();
+                 ResultSet rs = idStmt.executeQuery("SELECT last_insert_rowid()")) {
+                if (rs.next()) {
+                    t.setIdTransaction(rs.getInt(1));
                 }
             }
             return true;
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.err.println("Error during inserting a transaction in the db: " + e.getMessage());
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
-    // 🔹 Transazioni inviate da un conto
-    public static List<Transaction> getTransactionsBySender(int senderId) throws SQLException {
-        String sql = "SELECT * FROM Transaction1 WHERE sender = ? ORDER BY transaction_date DESC";
-
-        return getTransactions(sql, senderId);
-    }
-
-    public static List<Transaction> getAllTransactionsByAccount(int accountId) throws SQLException {
+    // 🔹 Tutte le transazioni di un conto (Sia inviate che ricevute)
+    public static List<Transaction> getAllTransactionsByAccount(int accountId) {
         String sql = """
-        SELECT *
-        FROM Bank_Transaction
-        WHERE sender = ?
-           OR beneficiary = ?
-        ORDER BY transaction_date DESC
-        """;
-
+            SELECT * FROM Bank_Transaction
+            WHERE sender = ? OR beneficiary = ?
+            ORDER BY transaction_date DESC
+            """;
         List<Transaction> transactions = new ArrayList<>();
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setInt(1, accountId);
             stmt.setInt(2, accountId);
-
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    Transaction t = new Transaction();
-                    t.setIdTransaction(rs.getInt("id_transaction"));
-                    t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("beneficiary"));
-                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
-                    t.setNote(rs.getString("note"));
-                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
-                    t.setType(rs.getString("type"));
-                    t.setUsedCard(rs.getInt("used_card"));
-                    transactions.add(t);
+                    transactions.add(mapRow(rs));
                 }
             }
-        }
-
-        return transactions;
-    }
-
-
-    public static List<Transaction> getTransactionsBetweenUserAndUser2(int userAccountId, int friendAccountId)   {
-
-        List<Transaction> transactions = new ArrayList<>();
-
-        String sql = """
-        SELECT *
-        FROM Bank_Transaction
-        WHERE (sender = ? AND beneficiary = ?)
-           OR (sender = ? AND beneficiary = ?)
-        ORDER BY transaction_date DESC
-        """;
-        Transaction t = new Transaction();
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-            stmt.setInt(1, userAccountId);
-            stmt.setInt(2, friendAccountId);
-            stmt.setInt(3, friendAccountId);
-            stmt.setInt(4, userAccountId);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-
-                    t.setIdTransaction(rs.getInt("id_transaction"));
-                    t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("beneficiary"));
-                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
-                    t.setNote(rs.getString("note"));
-                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
-                    t.setType(rs.getString("type"));
-                    t.setUsedCard(rs.getInt("used_card"));
-                    transactions.add(t);
-
-
-                    transactions.add(t);
-                }
-            }
-        }
-
-        catch (SQLException e)
-        {
-            System.err.println("Error during getting transaction between accounts: " + e.getMessage());
+        } catch (SQLException e) {
+            System.err.println("Error getting all account's transactions the db: " + e.getMessage());
             e.printStackTrace();
         }
         return transactions;
     }
 
-
-    // 🔹 Transazioni ricevute da un conto
-    public static List<Transaction> getTransactionsByBeneficiary(int beneficiaryId) throws SQLException {
-        String sql = "SELECT * FROM Bank_Transaction WHERE requested = ? ORDER BY transaction_date DESC";
-        return getTransactions(sql, beneficiaryId);
-    }
-
-    // 🔹 Recupera una transazione per ID
-    public static Transaction getTransactionById(int idTransaction) throws SQLException {
-        String sql = "SELECT * FROM Bank_Transaction WHERE id_transaction = ?";
-
+    // 🔹 Transazioni tra due utenti specifici (Chat o Cronologia Amici)
+    public static List<Transaction> getTransactionsBetweenAccounts(int user1, int user2) {
+        String sql = """
+            SELECT * FROM Bank_Transaction
+            WHERE (sender = ? AND beneficiary = ?)
+               OR (sender = ? AND beneficiary = ?)
+            ORDER BY transaction_date DESC
+            """;
+        List<Transaction> transactions = new ArrayList<>();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, idTransaction);
-
+            stmt.setInt(1, user1);
+            stmt.setInt(2, user2);
+            stmt.setInt(3, user2);
+            stmt.setInt(4, user1);
             try (ResultSet rs = stmt.executeQuery()) {
-                if (!rs.next()) return null;
-                return mapRow(rs);
+                while (rs.next()) {
+                    transactions.add(mapRow(rs));
+                }
             }
+        } catch (SQLException e) {
+            System.err.println("Error getting all transaction between accounts: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
+    // 🔹 Transazioni del mese corrente (Entrate)
+    public static List<Transaction> getCurrentMonthIncome(int accountId) {
+        String sql = """
+            SELECT * FROM Bank_Transaction
+            WHERE beneficiary = ?
+              AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
+            ORDER BY transaction_date DESC
+            """;
+        try {
+            return fetchList(sql, accountId);
+        }
+        catch (SQLException e) {
+            System.err.println("Error getting current month income from the db" + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // 🔹 Transazioni del mese corrente (Uscite)
+    public static List<Transaction> getCurrentMonthOutcome(int accountId) {
+        String sql = """
+            SELECT * FROM Bank_Transaction
+            WHERE sender = ?
+              AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
+            ORDER BY transaction_date DESC
+            """;
+        try {
+            return fetchList(sql, accountId);
+        }
+        catch (SQLException e) {
+            System.err.println("Error getting current month outcome from the db" + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    // 🔹 Helper
+    private static List<Transaction> fetchList(String sql, int id) throws SQLException{
+        List<Transaction> list = new ArrayList<>();
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    list.add(mapRow(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting a transaction from the db");
+        }
+        return list;
+    }
+
+    // 🔹 Mapping ResultSet → Transaction
+    private static Transaction mapRow(ResultSet rs) throws SQLException {
+        Transaction t = new Transaction();
+        t.setIdTransaction(rs.getInt("id_transaction"));
+        // Uso getObject per gestire correttamente i potenziali NULL degli INTEGER
+        t.setSender((Integer) rs.getObject("sender"));
+        t.setBeneficiary((Integer) rs.getObject("beneficiary"));
+        // Riconverto i centesimi in BigDecimal (es: 1050 -> 10.50)
+        t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
+        t.setNote(rs.getString("note"));
+        t.setTransactionDate(rs.getTimestamp("transaction_date"));
+        t.setType(rs.getString("type"));
+        t.setStatus(rs.getString("status"));
+        t.setUsedCard((Integer) rs.getObject("used_card"));
+        return t;
+    }
+
+    public static List<Transaction> getTransactionsByBeneficiary(int idAccount) {
+        String sql = """
+            SELECT * FROM Bank_Transaction
+            WHERE  beneficiary = ?
+            ORDER BY transaction_date DESC
+            """;
+
+        List<Transaction> transactions = new ArrayList<>();
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idAccount);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    transactions.add(mapRow(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting all account's transactions the db: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
+    public static List<Transaction> getTransactionsBySender(int idAccount) {
+        String sql = """
+            SELECT * FROM Bank_Transaction
+            WHERE  sender = ?
+            ORDER BY transaction_date DESC
+            """;
+
+        List<Transaction> transactions = new ArrayList<>();
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idAccount);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    transactions.add(mapRow(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting all account's transactions the db: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
+    public static Transaction getTransactionById(int idTransaction)
+    {
+        String sql = """
+            SELECT * FROM Bank_Transaction
+            WHERE  id_transaction = ?
+            ORDER BY transaction_date DESC
+            """;
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+            stmt.setInt(1, idTransaction);
+            try (ResultSet rs = stmt.executeQuery())
+            {
+                if (!rs.next()) return null;
+
+                return mapRow(rs);
+
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error getting transaction by id: " + e.getMessage());
+            e.printStackTrace();
+            return null;
         }
     }
 
-    // 🔹 Metodo comune per liste
-    private static List<Transaction> getTransactions(String sql, int accountId) throws SQLException {
+    public static List<Transaction> getCurrentMonthTransactions(int idAccountByUserId)
+    {
+        String sql = """
+            SELECT * FROM Bank_Transaction
+            WHERE sender = ? OR beneficiary = ?
+              AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
+            ORDER BY transaction_date DESC
+            """;
         List<Transaction> list = new ArrayList<>();
-
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, accountId);
-
+            stmt.setInt(1, idAccountByUserId);
+            stmt.setInt(2, idAccountByUserId);
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     list.add(mapRow(rs));
                 }
             }
         }
+        catch (SQLException e) {
+            System.err.println("Error getting current month transaction from the db: " + e.getMessage());
+            e.printStackTrace();
+        }
         return list;
-    }
-
-    public static List<Transaction> getCurrentMonthTransactionsByBeneficiary(int accountId) throws SQLException {
-        String sql = """
-        SELECT *
-        FROM Bank_Transaction
-        WHERE requested = ?
-          AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
-        ORDER BY transaction_date DESC
-        """;
-
-        List<Transaction> transactions = new ArrayList<>();
-
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, accountId);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    Transaction t = new Transaction();
-                    t.setIdTransaction(rs.getInt("id_transaction"));
-                    t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("requested"));
-                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
-                    t.setNote(rs.getString("note"));
-                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
-                    t.setType(rs.getString("type"));
-                    t.setUsedCard(rs.getInt("used_card"));
-                    transactions.add(t);
-                }
-            }
-        }
-
-        return transactions;
-    }
-
-
-    public static List<Transaction> getCurrentMonthTransactionsBySender(int accountId) throws SQLException {
-        String sql = """
-        SELECT *
-        FROM Bank_Transaction
-        WHERE sender = ?
-          AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
-        ORDER BY transaction_date DESC
-        """;
-
-        List<Transaction> transactions = new ArrayList<>();
-
-        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, accountId);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    Transaction t = new Transaction();
-                    t.setIdTransaction(rs.getInt("id_transaction"));
-                    t.setSender(rs.getInt("sender"));
-                    t.setBeneficiary(rs.getInt("requested"));
-                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
-                    t.setNote(rs.getString("note"));
-                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
-                    t.setType(rs.getString("type"));
-                    t.setUsedCard(rs.getInt("used_card"));
-                    transactions.add(t);
-                }
-            }
-        }
-
-        return transactions;
-    }
-
-
-    // 🔹 Mapping ResultSet → Transaction
-    private static Transaction mapRow(ResultSet rs) throws SQLException {
-        Transaction t = new Transaction();
-        t.setIdTransaction(rs.getInt("id_transaction"));
-        t.setSender((Integer) rs.getObject("sender"));
-        t.setBeneficiary((Integer) rs.getObject("requested"));
-        t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
-        t.setNote(rs.getString("note"));
-        t.setTransactionDate(rs.getTimestamp("transaction_date"));
-        t.setType(rs.getString("type"));
-        t.setUsedCard((Integer) rs.getObject("used_card"));
-        return t;
     }
 }
