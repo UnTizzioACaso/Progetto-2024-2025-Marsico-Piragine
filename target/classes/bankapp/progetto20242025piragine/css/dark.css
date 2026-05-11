@@ -58,7 +58,8 @@
 #sidebarGridPane,
 #transactionHistoryAnchorPane,
 #anchorePaneCardPopup,
-#anchorePaneMenageCardPopup {
+#anchorePaneMenageCardPopup,
+#anchorPaneFriendshipRequestPopup {
     -fx-background-color: #4a4a4a !important;
 }
 
@@ -126,8 +127,6 @@
     -fx-border-radius: 6 !important;
     -fx-border-color: #5a5a5a !important;
     -fx-border-width: 1 !important;
-    -fx-highlight-fill: #ff0000 !important;
-    -fx-highlight-text-fill: white !important;
     -fx-caret-color: white !important;
 }
 
@@ -452,8 +451,6 @@ Line {
     -fx-border-radius: 6 !important;
     -fx-border-color: #5a5a5a !important;
     -fx-border-width: 1 !important;
-    -fx-highlight-fill: #ff0000 !important;
-    -fx-highlight-text-fill: white !important;
     -fx-caret-color: white !important;
 }
 
@@ -471,46 +468,35 @@ Line {
 
 /* 2. IL QUADRATINO (BOX) */
 #checkBoxBankAccountSettingsPage .box {
-    -fx-background-color: #333333 !important; /* Grigio quando spento */
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, #333333 !important; /* Grigio quando spento */
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2 !important;
     -fx-background-radius: 3px !important;
-    -fx-padding: 3px !important; /* Spazio interno per la V */
 }
 
 #checkBoxBankAccountSettingsPage:selected .box {
     -fx-background-color: #ff0000 !important;
     -fx-background-insets: 0 !important;
     -fx-background-radius: 3px !important;
-    /* Effetto InnerShadow */
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10) !important;
 }
 
-/* 3. LA SPUNTA (MARK) - Fix allineamento e forma */
 #checkBoxBankAccountSettingsPage .mark {
-    /* Reset e forma */
+    /* Invisibile di default per evitare il pallino */
     -fx-background-color: transparent !important;
     -fx-shape: "M1.23,6.32 L3.58,8.67 L8.77,3.48 L9.71,4.42 L3.58,10.55 L0.29,7.26 Z" !important;
-
-    /* FIX CENTRATURA: Sposta la V leggermente verso l'alto (-1) */
-    /* I valori sono: sopra, destra, sotto, sinistra */
-    -fx-background-insets: -1 0 1 0 !important;
+    -fx-background-insets: 0 !important;
 }
 
-/* Quando CLICCATO: la V diventa bianca */
+/* Quando CLICCATO: la V appare bianca sul quadratino rosso */
 #checkBoxBankAccountSettingsPage:selected .mark {
     -fx-background-color: white !important;
 }
 
 /* 4. RIMUOVI ALONE FOCUS */
 #checkBoxBankAccountSettingsPage:focused .box {
-    -fx-background-insets: 0 !important;
     -fx-faint-focus-color: transparent !important;
     -fx-focus-color: transparent !important;
 }
-
-
-
-
-
 
 #label1BankAccountSettingsPage,
 #label2BankAccountSettingsPage,
@@ -747,14 +733,12 @@ Line {
     -fx-border-color: #333333 !important;
 }
 
-#friendsSearchBar {
+#friendsSearchBar,
+#noteTextFiled {
     -fx-background-color: #3a3a3a !important;
     -fx-text-fill: white !important;
     -fx-prompt-text-fill: #bdbdbd !important;
     -fx-border-color: #333333 !important;
-    -fx-border-radius: 15 !important;
-    -fx-background-radius: 15 !important;
-    -fx-pref-height: 8 !important;
 }
 
 #labelFromFriendTransactionCloud{
@@ -823,17 +807,20 @@ Line {
     -fx-background-color: #4a4a4a !important;
 }
 
-#errorLabelMenageCardPopup{
+#errorLabelMenageCardPopup,
+#errorLabel{
     -fx-text-fill: #ff0000 !important;
-}
-
-#notificationSliderAnchorPane{
-    -fx-border-color: #4a4a4a !important;
-    -fx-border-width: 0 0 0 2 !important;
 }
 
 #anchorPaneCardPage,
 #rootGridPaneBankSettingPage {
     -fx-background-color: #3c3c3c !important;
 }
+
+.text-input {
+    -fx-highlight-fill: red;
+    -fx-highlight-text-fill: white;
+}
+
+
 

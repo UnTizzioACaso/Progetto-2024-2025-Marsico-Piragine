@@ -56,7 +56,11 @@
             </InnerShadow>
          </effect>
       </MenuButton>
-      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="232.0" textFill="RED" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="304.79999999999995" textFill="RED" AnchorPane.bottomAnchor="120.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
       <Button fx:id="closeCreateCardPopup" layoutX="453.0" layoutY="19.0" mnemonicParsing="false" onAction="#closePopup" prefHeight="21.0" prefWidth="22.0" style="-fx-background-color: transparent;" text="✕" textFill="DIMGRAY">
          <font>
             <Font size="20.0" />

@@ -1,7 +1,7 @@
 package bankapp.progetto20242025piragine.controller;
 
-import bankapp.progetto20242025piragine.controller.component.FromFriendTransactionCloudController;
-import bankapp.progetto20242025piragine.controller.component.ToFriendTransactionCloudController;
+import bankapp.progetto20242025piragine.controller.component.FromUserTextCloudController;
+import bankapp.progetto20242025piragine.controller.component.ToUserTextCloudController;
 import bankapp.progetto20242025piragine.util.ChatBot;
 import bankapp.progetto20242025piragine.util.ChatSessionSaver;
 import bankapp.progetto20242025piragine.util.ThemeManager;
@@ -63,7 +63,7 @@ public class ChatBotController extends BranchController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
             Parent cloud = loader.load();
-            FromFriendTransactionCloudController controller = loader.getController();
+            FromUserTextCloudController controller = loader.getController();
             controller.textLabel.setText(text);
             chatDisplay.getChildren().add(cloud);
 
@@ -119,7 +119,7 @@ public class ChatBotController extends BranchController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
             Parent cloud = loader.load();
-            FromFriendTransactionCloudController controller = loader.getController();
+            FromUserTextCloudController controller = loader.getController();
             controller.textLabel.setText(text);
             chatDisplay.getChildren().add(cloud);
         } catch (Exception e) { e.printStackTrace(); }
@@ -129,7 +129,7 @@ public class ChatBotController extends BranchController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/toFriendTransactionCloud.fxml"));
             Parent cloud = loader.load();
-            ToFriendTransactionCloudController controller = loader.getController();
+            ToUserTextCloudController controller = loader.getController();
             controller.textLabel.setText(text);
             chatDisplay.getChildren().add(cloud);
             VBox.setMargin(cloud, new Insets(0, -100, 0, 0));

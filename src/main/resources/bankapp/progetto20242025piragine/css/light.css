@@ -392,10 +392,27 @@ Line {
     -fx-text-fill: #696969 !important;
 }
 
+.text-field {
+    -fx-background-color: white !important;
+    -fx-text-fill: black !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #c0c0c0 !important;
+    -fx-border-width: 1 !important;
+}
+
+/* Quando clicchi dentro */
 .text-field:focused {
-    -fx-focus-color: transparent;
-    -fx-faint-focus-color: transparent;
-    -fx-border-color: derive(-fx-control-inner-background, -20%);
+
+    -fx-background-color: white !important;
+    -fx-text-fill: black !important;
+
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+
+    /*-fx-border-color: #ff0000 !important;*/
+    -fx-border-width: 1 !important;
+
+    -fx-background-insets: 0 !important;
 }
 
 #closeFriendshipRequestPopup{
@@ -445,7 +462,9 @@ Line {
 }
 
 
-#notificationVBox,
+#notificationVBox{
+    -fx-background-color: white !important;
+}
 #vBoxNotificationSlider{
     -fx-background-color: white !important;
 }
@@ -454,3 +473,23 @@ Line {
     -fx-border-color: #e4e4e4 !important;
     -fx-border-width: 0 0 0 2 !important;
 }
+
+#closeMenageCardPopup{
+    -fx-text-fill: #696969 !important;
+}
+
+.text-input {
+    -fx-highlight-fill: red;
+    -fx-highlight-text-fill: white;
+}
+
+#scrollPaneFriends,
+#chatScrollPane {
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+}
+

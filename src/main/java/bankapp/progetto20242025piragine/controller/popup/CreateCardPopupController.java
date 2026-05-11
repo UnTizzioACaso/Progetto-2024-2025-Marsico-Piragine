@@ -51,31 +51,42 @@ public class CreateCardPopupController extends BranchController
     // Creates the card using last4DigitsPan and user's bank account data
     @FXML
     public void createCard() throws Exception {
+        String input = spendingLimitTextField.getText().trim();
+
+        // 1. Controllo se è vuoto
+        if (input.isEmpty()) {
+            errorLabel.setText("Inserire un importo");
+            return;
+        }
+
         String spendingLimitText;
 
-        // format validation
-        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {
-            spendingLimitText = spendingLimitTextField.getText().replace(",", ".");
-        } else if (spendingLimitTextField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {
-            spendingLimitText = spendingLimitTextField.getText();
+        // 2. Validazione Formato (Aggiunto il supporto opzionale al segno meno con -?)
+        if (input.matches("^-?\\d+(,\\d{1,2})?$")) {
+            spendingLimitText = input.replace(",", ".");
+        } else if (input.matches("^-?\\d+(\\.\\d{1,2})?$")) {
+            spendingLimitText = input;
         } else {
             errorLabel.setText("Formato non valido (es: 10,10 o 10.10)");
             return;
         }
 
+        // 3. Conversione in BigDecimal
         BigDecimal limit = new BigDecimal(spendingLimitText);
         BigDecimal maxLimit = new BigDecimal("1000000000.00");
 
-        // numeric value validation
+        // 4. Validazione Valore Numerico (Ora funzionerà!)
+        if (limit.compareTo(BigDecimal.ZERO) <= 0) {
+            errorLabel.setText("Il limite non può essere negativo o zero");
+            return;
+        }
+
         if (limit.compareTo(maxLimit) > 0) {
             errorLabel.setText("Il limite massimo è 1.000.000.000");
             return;
         }
-        if (limit.compareTo(BigDecimal.ZERO) < 0) {
-            errorLabel.setText("Il limite non può essere negativo");
-            return;
-        }
 
+        // --- Inizio logica database ---
         try {
             BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
 
@@ -94,7 +105,7 @@ public class CreateCardPopupController extends BranchController
             );
 
             if (CardDAO.insertCard(card)) {
-                s.close(); // Assumendo che 's' sia lo Stage/Finestra
+                s.close();
                 rootController.topbarController.reloadPage();
             } else {
                 errorLabel.setText("Errore durante il salvataggio della carta");
@@ -153,8 +164,8 @@ public class CreateCardPopupController extends BranchController
     public void selectWhite()
     {
         colorMenu.setText("Bianco");
-        color = "e4e4e4";
-        cardSlotVbox.getChildren().getFirst().setStyle(" -fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: e4e4e4;");
+        color = "#e4e4e4";
+        cardSlotVbox.getChildren().getFirst().setStyle(" -fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: #e4e4e4;");
     }
 
     @FXML

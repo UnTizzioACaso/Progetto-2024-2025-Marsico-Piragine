@@ -9,15 +9,15 @@
 
 <AnchorPane maxWidth="1.7976931348623157E308" prefWidth="380.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.ToUserTextCloudController">
    <children>
-      <StackPane id="stackPaneFromFriendTransactionCloud" fx:id="bubbleContainer" AnchorPane.leftAnchor="22.0">
+      <StackPane id="stackPaneFromFriendTransactionCloud" fx:id="bubbleContainer" style="-fx-color: #0078ff;" AnchorPane.leftAnchor="22.0">
          <children>
-            <Polygon id="polygonFromFriendTransactionCloud" fill="#e4e4e4" points="0.0, 0.0, -15.0, 15.0, 0.0, 15.0" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="BOTTOM_LEFT">
+            <Polygon id="polygonFromFriendTransactionCloud" fill="#0078ff" points="0.0, 0.0, -15.0, 15.0, 0.0, 15.0" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
                   <Insets left="-8.0" />
                </StackPane.margin>
             </Polygon>
 
-            <Label id="labelFromFriendTransactionCloud" fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" style="-fx-background-color: #e4e4e4; -fx-background-radius: 15 15 15 0; -fx-padding: 10;" text="Messaggio del MazeBot" textFill="BLACK" wrapText="true">
+            <Label id="labelFromFriendTransactionCloud" fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" style="-fx-background-color: #0078ff; -fx-background-radius: 15 15 15 0; -fx-padding: 10;" text="Messaggio del MazeBot" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>

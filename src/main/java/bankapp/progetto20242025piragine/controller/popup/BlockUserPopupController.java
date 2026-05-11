@@ -7,12 +7,14 @@ import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
 public class BlockUserPopupController extends BranchController {
 
+    @FXML public AnchorPane anchorPaneBlockUserPopup;
     @FXML
     public Label wouldYouLikeToBlockLabel;
 
@@ -38,6 +40,7 @@ public class BlockUserPopupController extends BranchController {
         stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
         stage.setOnCloseRequest(event -> declineBlock());
         ThemeManager.applyTheme(wouldYouLikeToBlockLabel.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(anchorPaneBlockUserPopup.getScene(), rootController.user.getTheme());
     }
 
     @FXML
