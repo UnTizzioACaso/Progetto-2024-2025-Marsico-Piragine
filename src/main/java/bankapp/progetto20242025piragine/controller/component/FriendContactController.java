@@ -56,14 +56,27 @@ public class FriendContactController extends BranchController
 
         for (Transaction transaction : transactions)
         {
-            if(transaction.getSender().equals(userAccount))
+            if(transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("request"))
+            {
+                FromUserTextCloudController controller = sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+                controller.request = transaction;
+                controller.friendUsername = friendUsernameLabel.getText();
+            }
+            else if (transaction.getSender().equals(userAccount))
             {
                 sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+            }
+            else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("request"))
+            {
+                ToUserTextCloudController controller = receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+                controller.request = transaction;
+                controller.friendUsername = friendUsernameLabel.getText();
             }
             else
             {
                 receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
             }
+
         }
     }
 
@@ -73,20 +86,23 @@ public class FriendContactController extends BranchController
         ThemeManager.applyTheme(friendsPageController.chatVBox.getScene(), rootController.user.getTheme());
     }
 
-    private void sendCloud(String text)
+    private FromUserTextCloudController sendCloud(String text)
     {
         Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/fromUserTextCloud.fxml");
         FromUserTextCloudController controller = (FromUserTextCloudController) p.getKey();
         controller.textLabel.setText(text);
+        controller.setRootController(rootController);
         friendsPageController.chatVBox.getChildren().add(p.getValue());
+        return controller;
     }
 
-    private void receiveCloud(String text)
+    private ToUserTextCloudController receiveCloud(String text)
     {
         Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml");
         ToUserTextCloudController controller = (ToUserTextCloudController) p.getKey();
         controller.textLabel.setText(text);
         friendsPageController.chatVBox.getChildren().add(p.getValue());
+        return controller;
     }
 
 }

@@ -64,11 +64,11 @@ public class CreateCardPopupController extends BranchController
         }
 
         BigDecimal limit = new BigDecimal(spendingLimitText);
-        BigDecimal maxLimit = new BigDecimal("1000000000.00");
+        BigDecimal maxLimit = new BigDecimal("1000000.00");
 
         // numeric value validation
         if (limit.compareTo(maxLimit) > 0) {
-            errorLabel.setText("Il limite massimo è 1.000.000.000");
+            errorLabel.setText("Il limite massimo è 1.000.000");
             return;
         }
         if (limit.compareTo(BigDecimal.ZERO) < 0) {

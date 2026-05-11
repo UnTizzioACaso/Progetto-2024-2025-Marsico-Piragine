@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Bank_Transaction (
     amount INTEGER CHECK (amount > 0),
     note TEXT,
     transaction_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    type TEXT CHECK(type IN ('donation','payment')),
+    type TEXT CHECK(type IN ('donation','payment', 'request')),
     status TEXT CHECK (status IN ('pending', 'accepted', 'declined')),
     used_card INTEGER,
     FOREIGN KEY (sender) REFERENCES Bank_Account(id_account),

@@ -27,6 +27,17 @@ public class Transaction {
         this.note = note;
         this.type = type;
         this.usedCard = usedCard;
+    }
+
+    public Transaction( int sender, int beneficiary, BigDecimal amount, String note,  String type, int usedCard, String status)
+    {
+        this.idTransaction = idTransaction;
+        this.sender = sender;
+        this.beneficiary = beneficiary;
+        this.amount = amount;
+        this.note = note;
+        this.type = type;
+        this.usedCard = usedCard;
         this.status = status;
     }
 

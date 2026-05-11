@@ -3,12 +3,12 @@ package bankapp.progetto20242025piragine.controller.page;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.component.FriendContactController;
 import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.util.ValueValidator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollToEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -51,7 +51,61 @@ public class FriendsPageController extends BranchController
     @FXML
     public void requestTransaction()
     {
+        if (currentFriendController == null)
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Devi selezionare un amico per richiedere denaro");
+            return;
+        }
 
+        // string validation
+        String v = ValueValidator.validateFormat(valueField);
+        if (v == null)
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Il valore inserito è in formato non valido");
+            return;
+        }
+
+        BigDecimal maxLimit = new BigDecimal("1000.00");
+        BigDecimal value = new BigDecimal(v);
+        BigDecimal userLimit = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getMaxTransfer();
+
+        // numeric value validation
+        if (value.compareTo(maxLimit) > 0)
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Il limite massimo di richiesta è 10.000");
+            return;
+        }
+        if (value.compareTo(BigDecimal.ZERO) < 0)
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("la richiesta non può essere negativa");
+            return;
+        }
+
+        int requesterAccount = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());
+        int requestedAccount = BankAccountDAO.getIdAccountByUserId(friend.getUserID());
+        Transaction t = new Transaction(requesterAccount, requestedAccount,value, noteTextFiled.getText(), "request", -1, "pending");
+
+        if (!(TransactionDAO.insertTransaction(t)))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("errore durante l'invio della richiesta");
+            return;
+        }
+
+        //creating and sending the notifies to each user
+        Notify n = new Notify(friend.getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
+        Notify n2 = new Notify(rootController.user.getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
+        NotifyDAO.insertNotify(n);
+        NotifyDAO.insertNotify(n2);
+
+        errorLabel.setTextFill(Paint.valueOf("green"));
+        errorLabel.setText("Richiesta effettuata con successo");
+
+        currentFriendController.showChat();
     }
 
     @FXML
@@ -64,46 +118,45 @@ public class FriendsPageController extends BranchController
             return;
         }
 
-        String value;
+
         // string validation
-        if (valueField.getText().matches("^\\d+(,\\d{1,2})?$")) {
-            value = valueField.getText().replace(",", ".");
-        } else if (valueField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {
-            value = valueField.getText();
-        }
-        else
+        String v = ValueValidator.validateFormat(valueField);
+        if (v == null)
         {
             errorLabel.setTextFill(Paint.valueOf("red"));
             errorLabel.setText("Il valore inserito è in formato non valido");
             return;
         }
 
-
-        BigDecimal v = new BigDecimal(value);
-        BigDecimal maxLimit = new BigDecimal("10000.00");
+        BigDecimal maxLimit = new BigDecimal("1000.00");
+        BigDecimal value = new BigDecimal(v);
+        BigDecimal userLimit = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getMaxTransfer();
 
         // numeric value validation
-        if (v.compareTo(maxLimit) > 0) {
+        if (value.compareTo(maxLimit) > 0)
+        {
             errorLabel.setTextFill(Paint.valueOf("red"));
             errorLabel.setText("Il limite massimo di invio è 10.000");
             return;
         }
-        if (v.compareTo(BigDecimal.ZERO) < 0) {
+        if (value.compareTo(BigDecimal.ZERO) < 0)
+        {
             errorLabel.setTextFill(Paint.valueOf("red"));
             errorLabel.setText("Il limite non può essere negativo");
             return;
         }
-        BigDecimal limit = BankAccountDAO.getAccountById(rootController.user.getUserID()).getMaxTransfer();
-        if(v.compareTo(limit) > 0)
+        if(value.compareTo(userLimit) > 0)
         {
             errorLabel.setTextFill(Paint.valueOf("red"));
-            errorLabel.setText("Il limite d'invio prestabilito dall'utente è: " + limit);
+            errorLabel.setText("Il limite d'invio prestabilito dall'utente è: " + userLimit);
+            return;
         }
+
 
         // creating the transaction java object
         int senderAccount = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());
         int beneficiaryAccount = BankAccountDAO.getIdAccountByUserId(friend.getUserID());
-        Transaction t = new Transaction(senderAccount, beneficiaryAccount, v, noteTextFiled.getText(), "donation", -1);
+        Transaction t = new Transaction(senderAccount, beneficiaryAccount, value, noteTextFiled.getText(), "donation", -1);
 
         //tring to insert the transaction in the db
         if(!(TransactionDAO.insertTransaction(t)))

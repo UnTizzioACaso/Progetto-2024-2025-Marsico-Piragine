@@ -17,7 +17,7 @@
                </StackPane.margin>
             </Polygon>
 
-            <Label id="labelFromFriendTransactionCloud" fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" style="-fx-background-color: #e4e4e4; -fx-background-radius: 15 15 15 0; -fx-padding: 10;" text="Messaggio del MazeBot" textFill="BLACK" wrapText="true">
+            <Label id="labelFromFriendTransactionCloud" fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" onMouseClicked="#showRequest" style="-fx-background-color: #e4e4e4; -fx-background-radius: 15 15 15 0; -fx-padding: 10;" text="Messaggio del MazeBot" textFill="BLACK" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
