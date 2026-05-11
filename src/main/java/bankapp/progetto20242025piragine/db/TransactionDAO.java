@@ -7,6 +7,53 @@ import java.util.List;
 
 public class TransactionDAO {
 
+
+    public static boolean declineTransacion(int idTransaction)
+    {
+        String sql = """
+            UPDATE Bank_Transaction 
+            SET status = 'declined' WHERE id_transaction = ?
+            """;
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+            stmt.setInt(1, idTransaction);
+            int rows = stmt.executeUpdate();
+            if (rows == 0) return false;
+            return true;
+        }
+        catch (SQLException e) {
+            System.err.println("Error during declining a transaction: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public static boolean acceptTransacion(int idTransaction)
+    {
+        String sql = """
+            UPDATE Bank_Transaction 
+            SET status = 'accepted' WHERE id_transaction = ?
+            """;
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql))
+        {
+            stmt.setInt(1, idTransaction);
+            int rows = stmt.executeUpdate();
+            if (rows == 0) return false;
+            return true;
+        }
+        catch (SQLException e) {
+            System.err.println("Error during declining a transaction: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
     // 🔹 Inserisce una nuova transazione (Fix per SQLite "not implemented")
     public static boolean insertTransaction(Transaction t) {
         String sql = """
@@ -26,15 +73,13 @@ public class TransactionDAO {
             if (t.getBeneficiary() != null && t.getBeneficiary() != 0) stmt.setInt(2, t.getBeneficiary());
             else stmt.setNull(2, Types.INTEGER);
 
-            // Importo in centesimi per precisione
+
             stmt.setInt(3, t.getAmount().multiply(BigDecimal.valueOf(100)).intValue());
             stmt.setString(4, t.getNote());
             stmt.setString(5, t.getType());
             stmt.setString(6, t.getStatus());
+            stmt.setInt(7, t.getUsedCard());
 
-            // Gestione Carta usata
-            if (t.getUsedCard() != null && t.getUsedCard() != 0) stmt.setInt(7, t.getUsedCard());
-            else stmt.setNull(7, Types.INTEGER);
 
             int rows = stmt.executeUpdate();
             if (rows == 0) return false;
@@ -59,7 +104,7 @@ public class TransactionDAO {
         String sql = """
             SELECT * FROM Bank_Transaction
             WHERE sender = ? OR beneficiary = ?
-            ORDER BY transaction_date DESC
+            ORDER BY transaction_date ASC
             """;
         List<Transaction> transactions = new ArrayList<>();
 
@@ -85,7 +130,7 @@ public class TransactionDAO {
             SELECT * FROM Bank_Transaction
             WHERE (sender = ? AND beneficiary = ?)
                OR (sender = ? AND beneficiary = ?)
-            ORDER BY transaction_date DESC
+            ORDER BY transaction_date ASC
             """;
         List<Transaction> transactions = new ArrayList<>();
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -163,16 +208,14 @@ public class TransactionDAO {
     private static Transaction mapRow(ResultSet rs) throws SQLException {
         Transaction t = new Transaction();
         t.setIdTransaction(rs.getInt("id_transaction"));
-        // Uso getObject per gestire correttamente i potenziali NULL degli INTEGER
-        t.setSender((Integer) rs.getObject("sender"));
-        t.setBeneficiary((Integer) rs.getObject("beneficiary"));
-        // Riconverto i centesimi in BigDecimal (es: 1050 -> 10.50)
+        t.setSender(rs.getInt("sender"));
+        t.setBeneficiary(rs.getInt("beneficiary"));
         t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
         t.setNote(rs.getString("note"));
         t.setTransactionDate(rs.getTimestamp("transaction_date"));
         t.setType(rs.getString("type"));
         t.setStatus(rs.getString("status"));
-        t.setUsedCard((Integer) rs.getObject("used_card"));
+        t.setUsedCard(rs.getInt("used_card"));
         return t;
     }
 
@@ -180,7 +223,7 @@ public class TransactionDAO {
         String sql = """
             SELECT * FROM Bank_Transaction
             WHERE  beneficiary = ?
-            ORDER BY transaction_date DESC
+            ORDER BY transaction_date ASC
             """;
 
         List<Transaction> transactions = new ArrayList<>();

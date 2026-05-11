@@ -39,12 +39,12 @@
                </content>
             </ScrollPane>
             <Region id="regionFriend" fx:id="regionFriend" prefHeight="58.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <TextField fx:id="friendsSearchBar" layoutX="52.0" layoutY="16.0" prefHeight="26.0" prefWidth="183.0" promptText=" Cerca amico" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: transparent;" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="16.0">
+            <TextField fx:id="friendsSearchBar" layoutX="52.0" layoutY="16.0" prefHeight="26.0" prefWidth="183.0" promptText=" Cerca amico" style="-fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font name="System Italic" size="13.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="13.0" fitWidth="14.0" layoutX="207.2" layoutY="23.8" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.08754329681398" AnchorPane.topAnchor="23.8">
+            <ImageView fitHeight="13.0" fitWidth="14.0" layoutX="207.2" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.08754329681398" AnchorPane.topAnchor="23.0">
                <image>
                   <Image url="@../../imgs/lenticon.png" />
                </image>
@@ -128,7 +128,7 @@
             <Insets left="105.0" right="105.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="noteTextFiled" prefHeight="27.0" prefWidth="271.0" promptText="Scrivi la nota" style="-fx-background-radius: 15; -fx-border-radius: 15;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="noteTextFiled" prefHeight="27.0" prefWidth="271.0" promptText="Scrivi la nota" style="-fx-background-radius: 15;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font name="System Italic" size="13.0" />
          </font>

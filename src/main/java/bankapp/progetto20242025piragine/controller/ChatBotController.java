@@ -4,16 +4,19 @@ import bankapp.progetto20242025piragine.controller.component.FromUserTextCloudCo
 import bankapp.progetto20242025piragine.controller.component.ToUserTextCloudController;
 import bankapp.progetto20242025piragine.util.ChatBot;
 import bankapp.progetto20242025piragine.util.ChatSessionSaver;
+import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 public class ChatBotController extends BranchController {
 
@@ -32,7 +35,7 @@ public class ChatBotController extends BranchController {
 
         // 1. MESSAGGIO DI BENVENUTO AUTOMATICO (Solo se la chat è vuota)
         if (chatDisplay.getChildren().isEmpty()) {
-            renderFirstBotCloud("Benvenuto in Maze Bank, come posso aiutarti?\n");
+            renderBotCloud("Benvenuto in Maze Bank, come posso aiutarti?\n");
         }
 
         Thread themeWatcher = new Thread(() -> {
@@ -58,19 +61,7 @@ public class ChatBotController extends BranchController {
         });
     }
 
-    // NUOVO METODO: Usato SOLO per il primo messaggio all'avvio
-    private void renderFirstBotCloud(String text) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
-            Parent cloud = loader.load();
-            FromUserTextCloudController controller = loader.getController();
-            controller.textLabel.setText(text);
-            chatDisplay.getChildren().add(cloud);
-
-            // Applica il margine di 20px SOLO a questo messaggio
-            VBox.setMargin(cloud, new Insets(20, 0, 0, 0));
-        } catch (Exception e) { e.printStackTrace(); }
-    }
+    
 
     private void updateTheme() {
         if (botGridPane != null && rootController.user != null) {
@@ -115,26 +106,23 @@ public class ChatBotController extends BranchController {
     }
 
     // Metodo standard per il bot (Senza margini extra)
-    private void renderBotCloud(String text) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
-            Parent cloud = loader.load();
-            FromUserTextCloudController controller = loader.getController();
-            controller.textLabel.setText(text);
-            chatDisplay.getChildren().add(cloud);
-        } catch (Exception e) { e.printStackTrace(); }
+    private void renderBotCloud(String text)
+    {
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml");
+        Node cloud = p.getValue();
+        ToUserTextCloudController controller = (ToUserTextCloudController) p.getKey();
+        controller.textLabel.setText(text);
+        chatDisplay.getChildren().add(cloud);
     }
 
     private void renderUserCloud(String text) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/toFriendTransactionCloud.fxml"));
-            Parent cloud = loader.load();
-            ToUserTextCloudController controller = loader.getController();
-            controller.textLabel.setText(text);
-            chatDisplay.getChildren().add(cloud);
-            VBox.setMargin(cloud, new Insets(0, -100, 0, 0));
-        } catch (Exception e) { e.printStackTrace(); }
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/FromUserTextCloud.fxml");
+        Node cloud = p.getValue();
+        FromUserTextCloudController controller = (FromUserTextCloudController) p.getKey();
+        controller.textLabel.setText(text);
+        chatDisplay.getChildren().add(cloud);
+        VBox.setMargin(cloud, new Insets(0, -100, 0, 0));
+
     }
 
-    private void addBotCloud(String text) { renderBotCloud(text); }
 }
