@@ -1,7 +1,11 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.Notify;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -21,7 +25,7 @@ public class PaymentRequestController extends BranchController {
     @FXML
     public void declineRequest()
     {
-        BlockUserPopupController controller = (BlockUserPopupController) rootController.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
+        BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.username = friendshipUsernameLabel.getText();
         if(n != null)
@@ -33,7 +37,7 @@ public class PaymentRequestController extends BranchController {
                 return;
             }
         }
-        rootController.friendsPageController.currentFriendController.showChat();
+        CurrentSession.getFriendsPageController().currentFriendController.showChat();
         TransactionDAO.declineTransacion(request.getIdTransaction());
     }
 
@@ -45,11 +49,11 @@ public class PaymentRequestController extends BranchController {
             if (TransactionDAO.acceptTransacion(n.getIdTransaction()))
             {
                 NotifyDAO.markAsRead(n.getIdNotify());
-                rootController.topbarController.updateNotifications();
+                CurrentSession.getRootController().topbarController.updateNotifications();
             }
             return;
         }
-        rootController.friendsPageController.currentFriendController.showChat();
+        CurrentSession.getFriendsPageController().currentFriendController.showChat();
         TransactionDAO.acceptTransacion(request.getIdTransaction());
     }
 

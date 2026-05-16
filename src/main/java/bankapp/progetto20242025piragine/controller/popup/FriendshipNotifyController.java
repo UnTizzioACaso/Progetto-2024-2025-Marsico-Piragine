@@ -1,15 +1,16 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.FriendRequest;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-import java.sql.SQLException;
 
 public class FriendshipNotifyController extends BranchController
 {
@@ -23,7 +24,7 @@ public class FriendshipNotifyController extends BranchController
     public void declineRequest()
     {
         FriendRequestDAO.declineRequest(idRequest);
-        BlockUserPopupController controller = (BlockUserPopupController) rootController.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
+        BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.username = friendshipUsernameLabel.getText();
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
@@ -37,12 +38,12 @@ public class FriendshipNotifyController extends BranchController
         FriendRequestDAO.acceptRequest(idRequest);
         FriendRequest r = FriendRequestDAO.getFriendRequestById(idRequest);
         FriendshipDAO.addFriendship(r.getRequester(), r.getRequested());
-        rootController.topbarController.updateNotifications();
+        CurrentSession.getRootController().topbarController.updateNotifications();
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
     @Override
     public void initializer() {
-        ThemeManager.applyTheme(anchorPaneFriendshipNotify.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(anchorPaneFriendshipNotify.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 }

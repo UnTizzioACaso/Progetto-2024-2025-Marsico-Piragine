@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -21,7 +22,8 @@ public class NotificationSliderController extends BranchController
         TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), notificationAnchorPane);
         slideOut.setFromX(0);
         slideOut.setToX(190);
-        slideOut.setOnFinished(e -> {rootController.rootWindow.setRight(null);});
+        slideOut.setOnFinished(e -> {
+            CurrentSession.getRootController().rootWindow.setRight(null);});
         slideOut.play();
     }
 

@@ -6,9 +6,8 @@ import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageC
 import bankapp.progetto20242025piragine.controller.page.CardPageController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
 import bankapp.progetto20242025piragine.controller.page.HomePageController;
-import bankapp.progetto20242025piragine.controller.widget.BankAccountController;
-import bankapp.progetto20242025piragine.db.User;
-import bankapp.progetto20242025piragine.util.ThemeManager;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,15 +29,12 @@ public  class RootWindowController extends BranchController {
 
     private String currentPage = "";
 
-    public User user = new User();
-
     public GridPane homePageGridPane;
 
     public BankAccountSettingsPageController  bankAccountSettingsPageController;
 
     public HomePageController homePageController;
 
-    public FriendsPageController friendsPageController;
 
     public CardPageController cardPageController;
 
@@ -52,7 +48,6 @@ public  class RootWindowController extends BranchController {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
                 Parent node = fxmlLoader.load(); //creating the node from the loader
                 BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-                controller.setRootController(this); //giving to the new page's controller the current RootController instance
                 rootWindow.setCenter(node); //setting the page to the center
                 controller.initializer();
             }
@@ -64,37 +59,6 @@ public  class RootWindowController extends BranchController {
         }
     }
 
-    public BranchController showPopup(String title, String fxml, int width, int height)
-    {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            BranchController controller = loader.getController(); //getting the controller from the loader
-            controller.setRootController(this);
-            Stage popupStage = new Stage(); //creating a new stage for the popup
-            popupStage.setTitle(title); //setting the title
-            popupStage.initStyle(StageStyle.TRANSPARENT);
-            popupStage.setMinWidth(width); //setting popup's minimum width
-            popupStage.setMaxWidth(width);
-            popupStage.setMinHeight(height); //setting popup's minimum height
-            popupStage.setMaxHeight(height);
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            Scene scene =new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-            popupStage.setScene(scene);
-            controller.initializer();
-            popupStage.show();
-
-            return controller;
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the " + fxml + " popup " + e.getMessage());
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     @FXML
     public void loadPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
@@ -112,7 +76,7 @@ public  class RootWindowController extends BranchController {
                 }
                 else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml"))
                 {
-                    friendsPageController = fxmlLoader.getController();
+                    CurrentSession.setFriendsPageController(fxmlLoader.getController());
                 }
                 else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml"))
                 {
@@ -123,7 +87,6 @@ public  class RootWindowController extends BranchController {
                     bankAccountSettingsPageController = fxmlLoader.getController();
                 }
                 BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-                controller.setRootController(this);//giving to the new page's controller the current RootController instance
                 controller.initializer();
                 rootWindow.setCenter(node); //setting the page to the center
                 if (topbarController != null) //if topbarController's controller is already initialized
@@ -153,7 +116,6 @@ public  class RootWindowController extends BranchController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
             Parent node = fxmlLoader.load(); //creating the node from the loader
             BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-            controller.setRootController(this);
             rootWindow.setLeft(node); //setting the node to the left
             controller.initializer();
         }
@@ -171,7 +133,6 @@ public  class RootWindowController extends BranchController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
             Parent node = fxmlLoader.load(); //creating the node from the loader
             topbarController = fxmlLoader.getController(); //getting the controller from the loader
-            topbarController.setRootController(this); //giving to the new page's controller the current RootController instance
             rootWindow.setTop(node); //setting the node to the top
             topbarController.initializer();
         }

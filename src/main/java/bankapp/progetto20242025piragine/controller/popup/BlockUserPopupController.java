@@ -1,15 +1,13 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.BlockDAO;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.BlockDAO;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
-import java.sql.SQLException;
 
 public class BlockUserPopupController extends BranchController {
 
@@ -26,7 +24,7 @@ public class BlockUserPopupController extends BranchController {
     {
 
         int id = UserDAO.getUserByUsername(username).getUserID();
-        BlockDAO.blockUser(rootController.user.getUserID(), id);
+        BlockDAO.blockUser(CurrentSession.getLoggedUser().getUserID(), id);
 
         reloadNotification();
         stage.close();
@@ -37,7 +35,7 @@ public class BlockUserPopupController extends BranchController {
     {
         stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
         stage.setOnCloseRequest(event -> declineBlock());
-        ThemeManager.applyTheme(wouldYouLikeToBlockLabel.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(wouldYouLikeToBlockLabel.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
     @FXML
@@ -50,7 +48,7 @@ public class BlockUserPopupController extends BranchController {
 
     private void reloadNotification()
     {
-       rootController.topbarController.updateNotifications();
+        CurrentSession.getRootController().topbarController.updateNotifications();
     }
 
 }

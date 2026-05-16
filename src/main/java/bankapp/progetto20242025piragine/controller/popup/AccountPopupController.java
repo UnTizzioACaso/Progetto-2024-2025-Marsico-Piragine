@@ -1,7 +1,8 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -29,15 +30,15 @@ public class AccountPopupController extends BranchController {
     @Override
     public void initializer() {
         // Display user's email
-        emailPopupAccountLabel.setText(rootController.user.getEmail());
+        emailPopupAccountLabel.setText(CurrentSession.getLoggedUser().getEmail());
 
         // Display user's full name
-        nameSurnameAccountPopupLabel.setText(rootController.user.getFirstName() + " " + rootController.user.getLastName());
+        nameSurnameAccountPopupLabel.setText(CurrentSession.getLoggedUser().getFirstName() + " " + CurrentSession.getLoggedUser().getLastName());
 
         // Update radio button and theme label based on user's theme
-        if (rootController.user.getTheme().equals("light")) {
+        if (CurrentSession.getLoggedUser().getTheme().equals("light")) {
             themeColorAccountPopupRadioButton.setSelected(false);
-        } else if (rootController.user.getTheme().equals("dark")) {
+        } else if (CurrentSession.getLoggedUser().getTheme().equals("dark")) {
             themeColorAccountPopupRadioButton.setSelected(true);
         }
 
@@ -45,7 +46,7 @@ public class AccountPopupController extends BranchController {
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
 
         // Apply the selected theme to the popup scene
-        ThemeManager.applyTheme(accountPopupRoot.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(accountPopupRoot.getScene(), CurrentSession.getLoggedUser().getTheme());
 
     }
 
@@ -53,7 +54,7 @@ public class AccountPopupController extends BranchController {
     @FXML
     private void loadAccountSettingsPage()
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
         ((Stage) accountPopupRoot.getScene().getWindow()).close();
     }
 
@@ -65,11 +66,11 @@ public class AccountPopupController extends BranchController {
         // Update the theme label text based on the selected theme
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
         String themeColor = themeColorAccountPopupRadioButton.isSelected() ? "dark" : "light";
-        rootController.user.setTheme(themeColor);
+        CurrentSession.getLoggedUser().setTheme(themeColor);
 
         try
         {
-            UserDAO.updateUserTheme(rootController.user.getUserID(), themeColor);
+            UserDAO.updateUserTheme(CurrentSession.getLoggedUser().getUserID(), themeColor);
         }
         catch (SQLException e)
         {
@@ -82,7 +83,7 @@ public class AccountPopupController extends BranchController {
         ThemeManager.applyTheme(accountPopupRoot.getScene(), themeColor);
 
         // Apply the selected theme to the main application window
-        ThemeManager.applyTheme(rootController.rootWindow.getScene(), themeColor);
+        ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), themeColor);
     }
 
     @FXML

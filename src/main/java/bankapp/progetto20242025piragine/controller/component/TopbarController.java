@@ -1,8 +1,9 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.Notify;
-import bankapp.progetto20242025piragine.db.NotifyDAO;
+import bankapp.progetto20242025piragine.model.Notify;
+import bankapp.progetto20242025piragine.dao.NotifyDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.VisualNotificationCreator;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -15,14 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import javax.management.Notification;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Stack;
 
@@ -55,7 +53,6 @@ public class TopbarController extends BranchController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/notificationSlider.fxml"));
             notificationAnchorPane =  loader.load();
             notificationAnchorPaneController = loader.getController();
-            notificationAnchorPaneController.setRootController(rootController);
             notificationAnchorPaneController.initializer();
         }
         catch (Exception e)
@@ -69,10 +66,10 @@ public class TopbarController extends BranchController {
     @FXML
     public void showPopup()
     {
-        if (rootController.rootWindow.getRight() == null)
+        if (CurrentSession.getRootController().rootWindow.getRight() == null)
         {
             updateNotifications();
-            rootController.rootWindow.setRight(notificationAnchorPane);
+            CurrentSession.getRootController().rootWindow.setRight(notificationAnchorPane);
             notificationAnchorPane.setTranslateX(190);
             TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), notificationAnchorPane);
             slideIn.setFromX(190);
@@ -84,7 +81,7 @@ public class TopbarController extends BranchController {
             TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), notificationAnchorPane);
             slideOut.setFromX(0);
             slideOut.setToX(190);
-            slideOut.setOnFinished(e -> {rootController.rootWindow.setRight(null);});
+            slideOut.setOnFinished(e -> {CurrentSession.getRootController().rootWindow.setRight(null);});
             slideOut.play();
         }
     }
@@ -92,7 +89,7 @@ public class TopbarController extends BranchController {
     public void updateNotifications()
     {
         notificationAnchorPaneController.notificationVBox.getChildren().clear();
-        List<Notify> notifies = NotifyDAO.getNotifyByUserId(rootController.user.getUserID());
+        List<Notify> notifies = NotifyDAO.getNotifyByUserId(CurrentSession.getLoggedUser().getUserID());
 
         if (notifies.isEmpty())
         {
@@ -106,7 +103,7 @@ public class TopbarController extends BranchController {
             {
                 if (!n.isRead())
                 {
-                    Node notification = VisualNotificationCreator.createVisualTransaction(rootController, n);
+                    Node notification = VisualNotificationCreator.createVisualTransaction(CurrentSession.getRootController(), n);
                     notificationAnchorPaneController.notificationVBox.getChildren().add(notification);
                 }
             }
@@ -128,7 +125,7 @@ public class TopbarController extends BranchController {
         {
             String current = backwardStack.pop();
             forwardStack.push(current);
-            rootController.switchPage(backwardStack.peek());
+            CurrentSession.getRootController().switchPage(backwardStack.peek());
         }
     }
 
@@ -139,7 +136,7 @@ public class TopbarController extends BranchController {
         {
             String page = forwardStack.pop();
             backwardStack.push(page);
-            rootController.switchPage(page);
+            CurrentSession.getRootController().switchPage(page);
         }
     }
 
@@ -151,10 +148,8 @@ public class TopbarController extends BranchController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek()));
             Parent node = fxmlLoader.load();
             BranchController controller = fxmlLoader.getController();
-            controller.setRootController(rootController);
             controller.initializer();
-            rootController.rootWindow.setCenter(node);
-            controller.setRootController(rootController);
+            CurrentSession.getRootController().rootWindow.setCenter(node);
         }
         catch (IOException e)
         {
@@ -169,7 +164,6 @@ public class TopbarController extends BranchController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
             BranchController controller= loader.getController();
-            controller.setRootController(rootController);
             controller.initializer();
 
             popupStage = new Stage();
@@ -178,7 +172,7 @@ public class TopbarController extends BranchController {
             // Chiude se clicchi fuori dal popup
             popupStage.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
                 if (!isNowFocused) {
-                    popupStage.hide();
+                    popupStage.close();
                 }
             });
 
@@ -207,13 +201,9 @@ public class TopbarController extends BranchController {
     }
     @FXML
     public void showAssistance() {
-        if (popupStage == null)
-        {
+
             showBottomRightPopup("/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml", (Stage) backArrowButton.getScene().getWindow());
-        }
-        else
-        {
-            popupStage.show();
-        }
+
+
     }
 }

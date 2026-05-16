@@ -1,8 +1,8 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.User;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.RememberMeUtil;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
@@ -19,9 +19,6 @@ public class LoginController extends BranchController {
     // TextField for the user's email input
     @FXML
     private TextField emailLoginTextField;
-
-    @FXML
-    private GridPane loginRootGridPane;
 
     @FXML
     private CheckBox rememberAccessCheckBox;
@@ -42,7 +39,7 @@ public class LoginController extends BranchController {
     @FXML
     public void loadRegisterPage() // switching to the register section
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register1.fxml"); // loading first register page
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/register1.fxml"); // loading first register page
     }
 
     // Attempts to log the user in and load the home page
@@ -56,13 +53,13 @@ public class LoginController extends BranchController {
             if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginTextField.getText()))
             {
                 // Retrieve the logged-in user from the database
-                rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
+                CurrentSession.setLoggedUser(UserDAO.getUserByEmail(emailLoginTextField.getText()));
 
                 // Load application UI components after successful login
-                rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
-                rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
-                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
-                ThemeManager.applyTheme(rootController.rootWindow.getScene(), rootController.user.getTheme());
+                CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
+                CurrentSession.getRootController().loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
+                CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
+                ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme());
                 if (rememberAccessCheckBox.isSelected())
                 {
                     try {RememberMeUtil.saveEmail(emailLoginTextField.getText());}
@@ -81,14 +78,14 @@ public class LoginController extends BranchController {
             if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginPasswordField.getText()))
             {
                 // Retrieve the logged-in user from the database
-                rootController.user = UserDAO.getUserByEmail(emailLoginTextField.getText());
+               CurrentSession.setLoggedUser( UserDAO.getUserByEmail(emailLoginTextField.getText()));
 
 
                 // Load application UI components after successful login
-                rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
-                rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
-                rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
-                ThemeManager.applyTheme(rootController.rootWindow.getScene(), rootController.user.getTheme());
+                CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
+                CurrentSession.getRootController().loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
+                CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
+                ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme());
 
                 if (rememberAccessCheckBox.isSelected())
                     {

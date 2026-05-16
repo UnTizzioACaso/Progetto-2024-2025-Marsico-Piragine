@@ -1,7 +1,8 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-import bankapp.progetto20242025piragine.db.Card;
-import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.model.Card;
+import bankapp.progetto20242025piragine.dao.CardDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.VisualCardCreator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +12,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class FavouritesCardController extends WidgetController{
 
@@ -49,11 +49,11 @@ public class FavouritesCardController extends WidgetController{
     public void initializer()
     {
 
-        for (Card c : CardDAO.getCardsByUserId(rootController.user.getUserID()))
+        for (Card c : CardDAO.getCardsByUserId(CurrentSession.getLoggedUser().getUserID()))
         {
             if (c.isFavourite())
             {
-                Node card = VisualCardCreator.cardCorrectValues(rootController, c);
+                Node card = VisualCardCreator.cardCorrectValues(CurrentSession.getRootController(), c);
                 addFavouriteCard(card);
             }
         }

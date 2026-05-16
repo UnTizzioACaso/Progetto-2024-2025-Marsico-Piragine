@@ -1,10 +1,11 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.TransactionDAO;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.dao.TransactionDAO;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,7 +18,6 @@ import javafx.scene.layout.VBox;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LargeTransactionHistoryController extends BranchController {
@@ -53,14 +53,14 @@ public class LargeTransactionHistoryController extends BranchController {
         fixDate();
         if(incomesRadioButton.isSelected()) //positive transactions
         {
-            List<Transaction> transactions = TransactionDAO.getTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            List<Transaction> transactions = TransactionDAO.getTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
             for (Transaction t : transactions)
             {
                 if(filterBySearchField(t, "expense"))
                 {
                     if(t.getTransactionDate().getTime() < toDate.getTime() && fromDate.getTime() < t.getTransactionDate().getTime())
                     {
-                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, t);
+                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), t);
                         transactionHistoryVBox.getChildren().add(visualTransaction);
                     }
                 }
@@ -68,14 +68,14 @@ public class LargeTransactionHistoryController extends BranchController {
         }
         else if (expensesRadioButton.isSelected()) //negative transactions
         {
-            List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
             for (Transaction t : transactions)
             {
                 if(filterBySearchField(t, "expense"))
                 {
                     if(t.getTransactionDate().getTime() < toDate.getTime() && fromDate.getTime() < t.getTransactionDate().getTime())
                     {
-                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, t);
+                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), t);
                         transactionHistoryVBox.getChildren().add(visualTransaction);
                     }
                 }
@@ -83,14 +83,14 @@ public class LargeTransactionHistoryController extends BranchController {
         }
         else //all transactions
         {
-            List<Transaction> transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            List<Transaction> transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
             for (Transaction t : transactions)
             {
                 if(filterBySearchField(t, ""))
                 {
                     if(t.getTransactionDate().getTime() < toDate.getTime() && fromDate.getTime() < t.getTransactionDate().getTime())
                     {
-                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, t);
+                        Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), t);
                         transactionHistoryVBox.getChildren().add(visualTransaction);
                     }
                 }

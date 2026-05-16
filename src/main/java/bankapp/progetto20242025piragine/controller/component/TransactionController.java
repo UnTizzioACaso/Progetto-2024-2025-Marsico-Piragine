@@ -1,9 +1,10 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Paint;
@@ -20,7 +21,7 @@ public class TransactionController extends BranchController
     public void setCorrectValues(Transaction transaction)
     {
         int id = 0;
-        id = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());
+        id = BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID());
 
         if (transaction.getBeneficiary() == id) //positive transactions
         {

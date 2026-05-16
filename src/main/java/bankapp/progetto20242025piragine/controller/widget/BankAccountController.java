@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -15,6 +16,6 @@ public class BankAccountController extends WidgetController
     @FXML
     private void openAccountSettings()
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");//loads the bank account settings page
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");//loads the bank account settings page
     }
 }
