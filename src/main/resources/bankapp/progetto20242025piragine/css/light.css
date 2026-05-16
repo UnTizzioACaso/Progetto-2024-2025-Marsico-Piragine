@@ -493,3 +493,10 @@ Line {
     -fx-faint-focus-color: transparent !important;
 }
 
+#textLabel {
+    -fx-text-fill: white !important;
+}
+
+#labelFromFriendTransactionCloud{
+    -fx-text-fill: white !important;
+}
