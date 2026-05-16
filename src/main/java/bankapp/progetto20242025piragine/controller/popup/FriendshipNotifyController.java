@@ -42,8 +42,4 @@ public class FriendshipNotifyController extends BranchController
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
-    @Override
-    public void initializer() {
-        ThemeManager.applyTheme(anchorPaneFriendshipNotify.getScene(), CurrentSession.getLoggedUser().getTheme());
-    }
 }

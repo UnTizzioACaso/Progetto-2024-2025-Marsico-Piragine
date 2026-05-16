@@ -45,15 +45,14 @@ public class TopbarController extends BranchController {
     private Stack<String> forwardStack = new Stack<>();
 
 
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
         try
         {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/notificationSlider.fxml"));
             notificationAnchorPane =  loader.load();
             notificationAnchorPaneController = loader.getController();
-            notificationAnchorPaneController.initializer();
         }
         catch (Exception e)
         {
@@ -148,7 +147,6 @@ public class TopbarController extends BranchController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek()));
             Parent node = fxmlLoader.load();
             BranchController controller = fxmlLoader.getController();
-            controller.initializer();
             CurrentSession.getRootController().rootWindow.setCenter(node);
         }
         catch (IOException e)
@@ -164,7 +162,6 @@ public class TopbarController extends BranchController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
             BranchController controller= loader.getController();
-            controller.initializer();
 
             popupStage = new Stage();
             popupStage.initStyle(StageStyle.TRANSPARENT);

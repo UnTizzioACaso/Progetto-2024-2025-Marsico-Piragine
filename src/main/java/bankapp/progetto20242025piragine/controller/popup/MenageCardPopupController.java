@@ -40,10 +40,9 @@ public class MenageCardPopupController extends BranchController {
 
     public Card card;
 
-    @Override
-    public void initializer() {
+    @FXML
+    public void initialize() {
         s = (Stage) errorLabelMenageCardPopup.getScene().getWindow();
-        ThemeManager.applyTheme(s.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
     @FXML

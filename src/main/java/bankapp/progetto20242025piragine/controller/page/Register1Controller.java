@@ -100,8 +100,8 @@ public class Register1Controller extends BranchController {
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
         CurrentSession.setLoggedUser(new User());
         sexChoiceBox.setValue("- Sesso -");

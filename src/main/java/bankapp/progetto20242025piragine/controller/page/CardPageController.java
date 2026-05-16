@@ -28,9 +28,10 @@ public class CardPageController extends BranchController
     }
 
     // Called automatically when the page is initialized
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
+        if(CurrentSession.getCardPageController() == null) {CurrentSession.setCardPageController(this);}
 
         // Retrieve all cards associated with the logged-in user
         List<Card> cards = CardDAO.getCardsByUserId(CurrentSession.getLoggedUser().getUserID());

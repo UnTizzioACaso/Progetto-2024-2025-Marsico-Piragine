@@ -84,10 +84,10 @@ public class FriendContactController extends BranchController
         }
     }
 
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
-        ThemeManager.applyTheme(friendsPageController.chatVBox.getScene(), CurrentSession.getLoggedUser().getTheme());
+        ThemeManager.applyTheme(CurrentSession.getFriendsPageController().chatVBox.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
     private FromUserTextCloudController sendCloud(String text)

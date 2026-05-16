@@ -2,7 +2,10 @@ package bankapp.progetto20242025piragine.util;
 
 import bankapp.progetto20242025piragine.controller.RootWindowController;
 import bankapp.progetto20242025piragine.controller.component.TopbarController;
+import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
+import bankapp.progetto20242025piragine.controller.page.CardPageController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
+import bankapp.progetto20242025piragine.controller.page.HomePageController;
 import bankapp.progetto20242025piragine.model.User;
 
 
@@ -13,6 +16,9 @@ public class CurrentSession {
     private static RootWindowController rootController;
     private static TopbarController topbarController;
     private static FriendsPageController friendsPageController;
+    private static HomePageController homePageController;
+    private static CardPageController cardPageController;
+    private static BankAccountSettingsPageController bankAccountSettingsPageController;
 
     public static User getLoggedUser() {
         return loggedUser;
@@ -62,4 +68,17 @@ public class CurrentSession {
     }
 
 
+    public static void setHomePageController(HomePageController controller) {homePageController = controller;}
+
+    public static HomePageController getHomePageController() {return homePageController;}
+
+
+    public static CardPageController getCardPageController() {return cardPageController;}
+
+    public static void setCardPageController(CardPageController cardPageController) {CurrentSession.cardPageController = cardPageController;}
+
+
+    public static BankAccountSettingsPageController getBankAccountSettingsPageController() {return bankAccountSettingsPageController;}
+
+    public static void setBankAccountSettingsPageController(BankAccountSettingsPageController bankAccountSettingsPageController) {CurrentSession.bankAccountSettingsPageController = bankAccountSettingsPageController;}
 }

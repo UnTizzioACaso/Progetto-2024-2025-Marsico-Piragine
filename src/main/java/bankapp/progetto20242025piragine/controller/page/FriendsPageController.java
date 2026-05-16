@@ -194,10 +194,10 @@ public class FriendsPageController extends BranchController
         errorLabel.setText(message);
     }
 
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
-
+        if(CurrentSession.getFriendsPageController() == null) {CurrentSession.setFriendsPageController(this);}
         errorLabel.setText("");
         List<Integer> friends = new ArrayList<>();
         try {friends = FriendshipDAO.getFriendshipsByUserId(CurrentSession.getLoggedUser().getUserID());}

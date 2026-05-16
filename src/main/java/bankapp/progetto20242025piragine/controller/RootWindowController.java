@@ -29,14 +29,8 @@ public  class RootWindowController extends BranchController {
 
     private String currentPage = "";
 
-    public GridPane homePageGridPane;
+    public BankAccountSettingsPageController bankAccountSettingsPageController;
 
-    public BankAccountSettingsPageController  bankAccountSettingsPageController;
-
-    public HomePageController homePageController;
-
-
-    public CardPageController cardPageController;
 
 
     @FXML
@@ -49,7 +43,6 @@ public  class RootWindowController extends BranchController {
                 Parent node = fxmlLoader.load(); //creating the node from the loader
                 BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
                 rootWindow.setCenter(node); //setting the page to the center
-                controller.initializer();
             }
             catch (IOException e)
             {
@@ -69,25 +62,6 @@ public  class RootWindowController extends BranchController {
                 currentPage = fxml;
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
                 Parent node = fxmlLoader.load(); //creating the node from the loader
-                if(fxml.equals("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"))
-                {
-                    homePageController = fxmlLoader.getController();
-                    homePageGridPane = (GridPane) node;
-                }
-                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml"))
-                {
-                    CurrentSession.setFriendsPageController(fxmlLoader.getController());
-                }
-                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml"))
-                {
-                    cardPageController = fxmlLoader.getController();
-                }
-                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
-                {
-                    bankAccountSettingsPageController = fxmlLoader.getController();
-                }
-                BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-                controller.initializer();
                 rootWindow.setCenter(node); //setting the page to the center
                 if (topbarController != null) //if topbarController's controller is already initialized
                 {
@@ -117,7 +91,7 @@ public  class RootWindowController extends BranchController {
             Parent node = fxmlLoader.load(); //creating the node from the loader
             BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
             rootWindow.setLeft(node); //setting the node to the left
-            controller.initializer();
+
         }
         catch (IOException e)
         {
@@ -134,7 +108,6 @@ public  class RootWindowController extends BranchController {
             Parent node = fxmlLoader.load(); //creating the node from the loader
             topbarController = fxmlLoader.getController(); //getting the controller from the loader
             rootWindow.setTop(node); //setting the node to the top
-            topbarController.initializer();
         }
         catch (IOException e)
         {

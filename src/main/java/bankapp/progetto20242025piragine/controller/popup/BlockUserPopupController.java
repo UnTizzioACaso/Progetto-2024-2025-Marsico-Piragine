@@ -30,12 +30,11 @@ public class BlockUserPopupController extends BranchController {
         stage.close();
     }
 
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
         stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
         stage.setOnCloseRequest(event -> declineBlock());
-        ThemeManager.applyTheme(wouldYouLikeToBlockLabel.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
     @FXML

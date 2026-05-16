@@ -25,8 +25,8 @@ public class ChatBotController extends BranchController {
     private final ChatBot geminiService = new ChatBot();
     private final ChatSessionSaver sessionSaver = ChatSessionSaver.getInstance();
 
-    @Override
-    public void initializer() {
+    @FXML
+    public void initialize() {
         updateTheme();
         loadMessages();
 

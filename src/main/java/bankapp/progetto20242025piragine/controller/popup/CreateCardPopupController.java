@@ -109,12 +109,11 @@ public class CreateCardPopupController extends BranchController
 
     // Initializes the popup by loading the card preview component
     @FXML
-    public void initializer()
+    public void initialize()
     {
         s = (Stage) colorMenu.getScene().getWindow();
         cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(CurrentSession.getRootController())); //add the card component to the VBox
         colorMenu.setText("Bianco"); //set default color menu text
-        ThemeManager.applyTheme(colorMenu.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
     // Following methods handle color selection and update the card preview accordingly

@@ -43,9 +43,8 @@ public class SendFriendshipRequestPopupController extends BranchController {
         return CurrentSession.getLoggedUser().getTheme().equalsIgnoreCase("dark") ? "white" : "#2b2b2b";
     }
 
-    @Override
-    public void initializer() {
-        ThemeManager.applyTheme(errorLabel.getScene(), CurrentSession.getLoggedUser().getTheme());
+    @FXML
+    public void initialize() {
         switchToUsername();
     }
 

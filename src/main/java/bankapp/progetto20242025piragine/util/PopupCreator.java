@@ -31,8 +31,9 @@ public class PopupCreator
             Scene scene =new Scene(root);
             scene.setFill(Color.TRANSPARENT);
             popupStage.setScene(scene);
-            controller.initializer();
             popupStage.show();
+            controller.initializer();
+            ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
 
             return controller;
         }

@@ -49,7 +49,7 @@ public class HomeWidgetCustomDAO {
     }
 
     // 🔹 Aggiorna posizione widget
-    public static boolean updatePosition(int userId, String widgetType, int newRow, int newColumn, Boolean remove) throws SQLException {
+    public static boolean updatePosition(int userId, String widgetType, int newRow, int newColumn, Boolean remove)   {
         String sql = "UPDATE Home_Widget_Custom SET y = ?, x = ?, remove = ? WHERE type_widget = ? AND user_id = ?;";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -61,6 +61,10 @@ public class HomeWidgetCustomDAO {
             stmt.setString(4, widgetType);
             stmt.setInt(5, userId);
             return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.err.println("error during update position of " + widgetType + ": " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 
