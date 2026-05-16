@@ -84,9 +84,6 @@
 }
 
 
-
-
-
 #regionChat {
     -fx-border-color: #595959 !important;
     -fx-background-color: #4a4a4a !important;
@@ -720,12 +717,6 @@ Line {
     -fx-background-color: #595959 !important;
 }
 
-#scrollPaneChatSupport {
-    -fx-background-color: #595959 !important;
-    -fx-border-color: transparent !important;
-}
-
-
 #textFieldChatSupport {
     -fx-background-color: #3a3a3a !important;
     -fx-text-fill: white !important;
@@ -801,6 +792,12 @@ Line {
 #scrollPaneChatSupport{
     -fx-background-color: #595959 !important;
     -fx-border-color: #595959 !important;
+    -fx-background: #595959 !important;
+    -fx-border: #595959 !important;
+}
+
+#gridPaneChatSupport{
+    -fx-background-color: #595959 !important;
 }
 
 #notificationVBox{
@@ -822,5 +819,9 @@ Line {
     -fx-highlight-text-fill: white;
 }
 
+#notificationSliderAnchorPane{
+    -fx-border-color: #595959 !important;
+    -fx-border-width: 0 0 0 1 !important;
+}
 
 

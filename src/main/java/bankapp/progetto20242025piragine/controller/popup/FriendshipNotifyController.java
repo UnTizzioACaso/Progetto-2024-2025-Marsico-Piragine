@@ -24,7 +24,7 @@ public class FriendshipNotifyController extends BranchController
     public void declineRequest()
     {
         FriendRequestDAO.declineRequest(idRequest);
-        BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
+        BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 368, 224);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.username = friendshipUsernameLabel.getText();
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();

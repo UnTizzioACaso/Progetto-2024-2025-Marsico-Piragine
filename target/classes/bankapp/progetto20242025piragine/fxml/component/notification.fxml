@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,13 +25,16 @@
                 <Font size="11.0" />
             </font>
         </Label>
-        <Region fx:id="transparentRegion" layoutY="-1.6" onMouseClicked="#readNotify" prefHeight="10.0" prefWidth="260.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Region fx:id="transparentRegion" layoutY="-1.6" onMouseClicked="#readNotify" prefHeight="10.0" prefWidth="207.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     </children>
    <effect>
-      <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+      <InnerShadow choke="0.17" height="56.25" offsetX="-10.0" offsetY="-10.0" radius="27.6475" width="56.34">
          <color>
             <Color opacity="0.25" />
          </color>
       </InnerShadow>
    </effect>
+   <padding>
+      <Insets left="1.0" right="1.0" />
+   </padding>
 </AnchorPane>

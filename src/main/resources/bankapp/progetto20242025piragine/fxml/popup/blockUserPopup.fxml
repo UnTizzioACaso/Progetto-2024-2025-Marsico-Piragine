@@ -33,7 +33,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Label fx:id="wouldYouLikeToBlockLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="77.0" prefHeight="30.0" prefWidth="362.0" text="Vorresti bloccare" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label fx:id="wouldYouLikeToBlockLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="71.0" prefHeight="30.0" prefWidth="362.0" text="Vorresti bloccare" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
