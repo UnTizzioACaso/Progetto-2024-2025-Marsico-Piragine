@@ -1,14 +1,14 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.TransactionDAO;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.dao.TransactionDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.List;
 
 public class MonthlyBalanceController extends WidgetController {
@@ -39,8 +39,8 @@ public class MonthlyBalanceController extends WidgetController {
     @Override
     public void initializer()
     {
-            List<Transaction> positiveTransaction = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            List<Transaction> negativeTransaction = TransactionDAO.getCurrentMonthOutcome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+            List<Transaction> positiveTransaction = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
+            List<Transaction> negativeTransaction = TransactionDAO.getCurrentMonthOutcome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
             BigDecimal positiveAmount = BigDecimal.ZERO;
             BigDecimal negativeAmount = BigDecimal.ZERO;
             for(Transaction transaction : positiveTransaction)

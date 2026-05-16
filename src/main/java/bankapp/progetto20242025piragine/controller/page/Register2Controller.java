@@ -1,7 +1,8 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.User;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -153,21 +154,21 @@ public class Register2Controller extends BranchController {
             return;
         }
 
-        rootController.user.setAddress(street);
-        rootController.user.setCap(cap);
-        rootController.user.setState(state);
-        rootController.user.setProvince(province);
-        rootController.user.setCity(city);
-        rootController.user.setStreetNumber(houseNumber);
+        CurrentSession.getLoggedUser().setAddress(street);
+        CurrentSession.getLoggedUser().setCap(cap);
+        CurrentSession.getLoggedUser().setState(state);
+        CurrentSession.getLoggedUser().setProvince(province);
+        CurrentSession.getLoggedUser().setCity(city);
+        CurrentSession.getLoggedUser().setStreetNumber(houseNumber);
 
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register3.fxml");
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/register3.fxml");
     }
 
     @FXML
     public void loadLogin()
     {
-        rootController.user = new User();
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
+        CurrentSession.setLoggedUser(new User());
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 
     private boolean isLengthBetween(String value, int min, int max)

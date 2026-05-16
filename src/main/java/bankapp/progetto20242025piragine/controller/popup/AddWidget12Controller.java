@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -26,7 +27,7 @@ public class AddWidget12Controller extends BranchController
     @Override
     public void initializer()
     {
-        Set<String> usedIds = rootController.homePageGridPane.getChildren().stream().map(Node::getId).filter(Objects::nonNull).collect(Collectors.toSet());
+        Set<String> usedIds = CurrentSession.getRootController().homePageGridPane.getChildren().stream().map(Node::getId).filter(Objects::nonNull).collect(Collectors.toSet());
 
         for (Node widget : widgetsVBox.getChildren())
         {
@@ -36,14 +37,14 @@ public class AddWidget12Controller extends BranchController
                 widget.setOpacity(0.5);
             }
         }
-        ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(root.getScene(), CurrentSession.getLoggedUser().getTheme());
 
     }
 
     @FXML
     public void addTransactionHistoryWidget()
     {
-        rootController.homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", 1, 2);
+        CurrentSession.getRootController().homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", 1, 2);
         Stage stage = (Stage) widgetsVBox.getScene().getWindow();
         stage.close();
     }
@@ -51,7 +52,7 @@ public class AddWidget12Controller extends BranchController
     @FXML
     public void addMonthlyIncomeWidget()
     {
-        rootController.homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", 1, 2);
+        CurrentSession.getRootController().homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", 1, 2);
         Stage stage = (Stage) widgetsVBox.getScene().getWindow();
         stage.close();
     }
@@ -59,7 +60,7 @@ public class AddWidget12Controller extends BranchController
     @FXML
     public void addMonthlyExpensesWidget()
     {
-        rootController.homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", 1, 2);
+        CurrentSession.getRootController().homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", 1, 2);
         Stage stage = (Stage) widgetsVBox.getScene().getWindow();
         stage.close();
     }
@@ -67,7 +68,7 @@ public class AddWidget12Controller extends BranchController
     @FXML
     public void addLastFiveExpensesWidget()
     {
-        rootController.homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", 1, 2);
+        CurrentSession.getRootController().homePageController.addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", 1, 2);
         Stage stage = (Stage) widgetsVBox.getScene().getWindow();
         stage.close();
     }

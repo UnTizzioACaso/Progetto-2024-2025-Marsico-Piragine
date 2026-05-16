@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine;
 
 import bankapp.progetto20242025piragine.db.DBInitializer;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,6 +24,10 @@ public class Application extends javafx.application.Application {
         );
 
         Scene scene = new Scene(fxmlLoader.load());
+
+
+        CurrentSession.setRootController(fxmlLoader.getController());
+
 
         // Applica il tema globale (chiaro/scuro) all'apertura
         ThemeManager.applyTheme(scene, "light");

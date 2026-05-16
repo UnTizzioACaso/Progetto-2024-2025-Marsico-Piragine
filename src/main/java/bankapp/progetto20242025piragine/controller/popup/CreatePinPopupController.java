@@ -1,7 +1,10 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.BankAccount;
+import bankapp.progetto20242025piragine.model.HomeWidgetCustom;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.PasswordUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -53,12 +56,12 @@ public class CreatePinPopupController extends BranchController
         }
 
         // Hash and set the user's PIN
-        rootController.user.setPinHash(PasswordUtil.hashPassword(insertPinPasswordField.getText()));
+        CurrentSession.getLoggedUser().setPinHash(PasswordUtil.hashPassword(insertPinPasswordField.getText()));
 
         // Try to register the user in the database
         try
         {
-            boolean result = UserDAO.registerUser(rootController.user);// Insert user into DB
+            boolean result = UserDAO.registerUser(CurrentSession.getLoggedUser());// Insert user into DB
             if (!result) // Registration failed
             {
                 errorMessageLabel.setText("Errore durante la registrazione.");
@@ -78,9 +81,9 @@ public class CreatePinPopupController extends BranchController
 
 
             // Reload user from database to retrieve generated ID
-            String userEmail = rootController.user.getEmail();
-            rootController.user = UserDAO.getUserByEmail(userEmail);
-            int id = rootController.user.getUserID();
+            String userEmail = CurrentSession.getLoggedUser().getEmail();
+            CurrentSession.setLoggedUser(UserDAO.getUserByEmail(userEmail));
+            int id = CurrentSession.getLoggedUser().getUserID();
 
             // Create a new bank account linked to the user
             BankAccount bankAccount = new BankAccount(id);
@@ -93,7 +96,7 @@ public class CreatePinPopupController extends BranchController
             if (!accountCreated)
             {
                 errorMessageLabel.setText("Errore durante la creazione del conto bancario.");
-                UserDAO.deleteUserById(rootController.user.getUserID());
+                UserDAO.deleteUserById(CurrentSession.getLoggedUser().getUserID());
                 return;
             }
 
@@ -109,62 +112,62 @@ public class CreatePinPopupController extends BranchController
         accountCreated = false;
         try
         {
-            HomeWidgetCustom widgetCustom = new HomeWidgetCustom(rootController.user.getUserID(), "lastFiveExpensesVBox");
+            HomeWidgetCustom widgetCustom = new HomeWidgetCustom(CurrentSession.getLoggedUser().getUserID(), "lastFiveExpensesVBox");
             accountCreated = HomeWidgetCustomDAO.insertWidget(widgetCustom);
             if (!accountCreated)
             {
                 errorMessageLabel.setText("Errore durante la creazione del conto bancario.");
-                UserDAO.deleteUserById(rootController.user.getUserID());
+                UserDAO.deleteUserById(CurrentSession.getLoggedUser().getUserID());
                 return;
             }
             System.out.println("widget aggiunto");
             accountCreated = false;
-            widgetCustom = new HomeWidgetCustom(rootController.user.getUserID(), "monthlyBalanceGridPane");
+            widgetCustom = new HomeWidgetCustom(CurrentSession.getLoggedUser().getUserID(), "monthlyBalanceGridPane");
             accountCreated = HomeWidgetCustomDAO.insertWidget(widgetCustom);
             if (!accountCreated)
             {
                 errorMessageLabel.setText("Errore durante la creazione del conto bancario.");
-                UserDAO.deleteUserById(rootController.user.getUserID());
+                UserDAO.deleteUserById(CurrentSession.getLoggedUser().getUserID());
                 return;
             }
             System.out.println("widget aggiunto");
             accountCreated = false;
-            widgetCustom = new HomeWidgetCustom(rootController.user.getUserID(), "monthlyExpensesVBox");
+            widgetCustom = new HomeWidgetCustom(CurrentSession.getLoggedUser().getUserID(), "monthlyExpensesVBox");
             accountCreated = HomeWidgetCustomDAO.insertWidget(widgetCustom);
             if (!accountCreated)
             {
                 errorMessageLabel.setText("Errore durante la creazione del conto bancario.");
-                UserDAO.deleteUserById(rootController.user.getUserID());
+                UserDAO.deleteUserById(CurrentSession.getLoggedUser().getUserID());
                 return;
             }
             System.out.println("widget aggiunto");
             accountCreated = false;
-            widgetCustom = new HomeWidgetCustom(rootController.user.getUserID(), "monthlyIncomesVBox");
+            widgetCustom = new HomeWidgetCustom(CurrentSession.getLoggedUser().getUserID(), "monthlyIncomesVBox");
             accountCreated = HomeWidgetCustomDAO.insertWidget(widgetCustom);
             if (!accountCreated)
             {
                 errorMessageLabel.setText("Errore durante la creazione del conto bancario.");
-                UserDAO.deleteUserById(rootController.user.getUserID());
+                UserDAO.deleteUserById(CurrentSession.getLoggedUser().getUserID());
                 return;
             }
             System.out.println("widget aggiunto");
             accountCreated = false;
-            widgetCustom = new HomeWidgetCustom(rootController.user.getUserID(), "quickContactGridPane");
+            widgetCustom = new HomeWidgetCustom(CurrentSession.getLoggedUser().getUserID(), "quickContactGridPane");
             accountCreated = HomeWidgetCustomDAO.insertWidget(widgetCustom);
             if (!accountCreated)
             {
                 errorMessageLabel.setText("Errore durante la creazione del conto bancario.");
-                UserDAO.deleteUserById(rootController.user.getUserID());
+                UserDAO.deleteUserById(CurrentSession.getLoggedUser().getUserID());
                 return;
             }
             System.out.println("widget aggiunto");
             accountCreated = false;
-            widgetCustom = new HomeWidgetCustom(rootController.user.getUserID(), "transactionHistoryGridPane");
+            widgetCustom = new HomeWidgetCustom(CurrentSession.getLoggedUser().getUserID(), "transactionHistoryGridPane");
             accountCreated = HomeWidgetCustomDAO.insertWidget(widgetCustom);
             if (!accountCreated)
             {
                 errorMessageLabel.setText("Errore durante la creazione del conto bancario.");
-                UserDAO.deleteUserById(rootController.user.getUserID());
+                UserDAO.deleteUserById(CurrentSession.getLoggedUser().getUserID());
                 return;
             }
             System.out.println("widget aggiunto");
@@ -174,9 +177,9 @@ public class CreatePinPopupController extends BranchController
             System.err.println("error adding widgets to the account: " + e.getMessage());
         }
         // Load the main application pages after successful registration
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
-        rootController.loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml");
-        rootController.loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml");
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
+        CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml");
+        CurrentSession.getRootController().loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml");
 
         // Close the PIN creation popup
         Stage stage = (Stage) rootPane.getScene().getWindow();

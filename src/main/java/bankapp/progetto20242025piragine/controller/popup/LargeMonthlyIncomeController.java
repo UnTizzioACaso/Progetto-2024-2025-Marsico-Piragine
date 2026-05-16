@@ -1,10 +1,11 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.TransactionDAO;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.dao.TransactionDAO;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
@@ -25,24 +26,24 @@ public class LargeMonthlyIncomeController extends BranchController {
     @Override
     public void initializer()
     {
-        List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+        List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for(Transaction transaction : transactions)
         {
-            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
             monthlyIncomesVBox.getChildren().add(visualTransaction);
         }
-        ThemeManager.applyTheme(monthlyIncomesVBox.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(monthlyIncomesVBox.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
     @FXML
     public void search()
     {
-        List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+        List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for (Transaction transaction : transactions) {
             try {
                 String username = UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getSender()));
                 if (username.contains(searchTextField.getText())) {
-                    Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
+                    Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
                     monthlyIncomesVBox.getChildren().clear();
                     monthlyIncomesVBox.getChildren().add(visualTransaction);
                 }

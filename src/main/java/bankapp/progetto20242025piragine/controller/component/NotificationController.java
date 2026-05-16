@@ -3,11 +3,15 @@ package bankapp.progetto20242025piragine.controller.component;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.popup.FriendshipNotifyController;
 import bankapp.progetto20242025piragine.controller.popup.PaymentRequestController;
-import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.FriendRequest;
+import bankapp.progetto20242025piragine.model.Notify;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-import java.math.BigDecimal;
 import java.sql.SQLException;
 
 public class NotificationController extends BranchController{
@@ -25,7 +29,7 @@ public class NotificationController extends BranchController{
         if (imTheSender )
         {
             //NotifyDAO.markAsRead(notify.getIdNotify());
-            rootController.topbarController.updateNotifications();
+            CurrentSession.getRootController().topbarController.updateNotifications();
             return;
         }
 
@@ -34,16 +38,16 @@ public class NotificationController extends BranchController{
             if(TransactionDAO.getTransactionById(notify.getIdTransaction()).getType().equals("payment"))
             {
                 //NotifyDAO.markAsRead(notify.getIdNotify());
-                rootController.topbarController.updateNotifications();
+                CurrentSession.getRootController().topbarController.updateNotifications();
                 return;
             }
-            PaymentRequestController controller = (PaymentRequestController) rootController.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
+            PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
             controller.n = notify;
         }
 
         else if(secondaryLabel.getText().equals("Richiesta d'amicizia"))
         {
-            FriendshipNotifyController controller = (FriendshipNotifyController) rootController.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/frienshipNotify.fxml", 300, 200);
+            FriendshipNotifyController controller = (FriendshipNotifyController) PopupCreator.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/frienshipNotify.fxml", 300, 200);
             controller.idRequest = notify.getIdFriendRequest();
             controller.friendshipUsernameLabel.setText(notifyTitleLabel.getText());
         }
@@ -65,7 +69,7 @@ public class NotificationController extends BranchController{
     private void transactionRequestNotify()
     {
         Transaction t = TransactionDAO.getTransactionById(notify.getIdTransaction());
-        if (t.getBeneficiary() == BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getIdAccount())
+        if (t.getBeneficiary() == BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()).getIdAccount())
         {
             notifyTitleLabel.setText(getBeneficiaryUsernameT(notify.getIdTransaction()));
             valueLabel.setText(TransactionDAO.getTransactionById(notify.getIdTransaction()).getAmount().toString());
@@ -77,7 +81,7 @@ public class NotificationController extends BranchController{
     private void friendshipRequestNotify() //if notify is a friendship request
     {
         int id = FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest()).getRequested();
-        if( id == rootController.user.getUserID())//user is the beneficiary
+        if( id == CurrentSession.getLoggedUser().getUserID())//user is the beneficiary
         {
             valueLabel.setText("");
             secondaryLabel.setText("Richiesta d'amicizia");

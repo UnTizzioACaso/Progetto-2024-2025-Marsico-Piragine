@@ -2,10 +2,7 @@ package bankapp.progetto20242025piragine.controller;
 
 import bankapp.progetto20242025piragine.controller.component.FromUserTextCloudController;
 import bankapp.progetto20242025piragine.controller.component.ToUserTextCloudController;
-import bankapp.progetto20242025piragine.util.ChatBot;
-import bankapp.progetto20242025piragine.util.ChatSessionSaver;
-import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
-import bankapp.progetto20242025piragine.util.ThemeManager;
+import bankapp.progetto20242025piragine.util.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,12 +36,12 @@ public class ChatBotController extends BranchController {
         }
 
         Thread themeWatcher = new Thread(() -> {
-            String lastTheme = rootController.user.getTheme();
+            String lastTheme = CurrentSession.getLoggedUser().getTheme();
             while (true) {
                 try {
                     Thread.sleep(500);
-                    if (rootController.user != null) {
-                        String currentTheme = rootController.user.getTheme();
+                    if (CurrentSession.getLoggedUser() != null) {
+                        String currentTheme = CurrentSession.getLoggedUser().getTheme();
                         if (!currentTheme.equals(lastTheme)) {
                             lastTheme = currentTheme;
                             Platform.runLater(this::updateTheme);
@@ -64,8 +61,8 @@ public class ChatBotController extends BranchController {
     
 
     private void updateTheme() {
-        if (botGridPane != null && rootController.user != null) {
-            String theme = rootController.user.getTheme();
+        if (botGridPane != null && CurrentSession.getLoggedUser() != null) {
+            String theme = CurrentSession.getLoggedUser().getTheme();
             String cssPath = ThemeManager.getThemePath(theme);
             if (cssPath != null) {
                 botGridPane.getStylesheets().clear();

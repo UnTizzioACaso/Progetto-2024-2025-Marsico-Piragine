@@ -1,17 +1,14 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.controller.component.TransactionController;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.TransactionDAO;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.dao.TransactionDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class LastFiveExpensesController extends WidgetController
@@ -25,14 +22,14 @@ public class LastFiveExpensesController extends WidgetController
     @Override
     public void initializer()
     {
-        List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
+        List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for (int i = 0; i < 5; i++)
         {
             if (i >= transactions.size())
             {
                 return;
             }
-            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transactions.get(i));
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transactions.get(i));
             lastFiveExpensesVBox.getChildren().add(visualTransaction);
         }
     }

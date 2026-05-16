@@ -79,7 +79,7 @@
                      </padding></VBox>
                </content>
             </ScrollPane>
-            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" textFill="RED" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" textFill="RED" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>

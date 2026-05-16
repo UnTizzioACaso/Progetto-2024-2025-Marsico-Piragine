@@ -2,15 +2,17 @@ package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
-import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.Friendship;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 
 import java.util.List;
@@ -35,14 +37,14 @@ public class FriendContactController extends BranchController
         int userAccount;
         int friendAccount;
         friendsPageController.friend = friend;
-        userAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getIdAccount();
+        userAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()).getIdAccount();
         friendAccount = BankAccountDAO.getAccountByUserId(friend.getUserID()).getIdAccount();
         transactions = TransactionDAO.getTransactionsBetweenAccounts(userAccount, friendAccount);
-        Friendship f = FriendshipDAO.getFriendship(friend.getUserID(), rootController.user.getUserID());
+        Friendship f = FriendshipDAO.getFriendship(friend.getUserID(), CurrentSession.getLoggedUser().getUserID());
 
         friendsPageController.chatVBox.getChildren().clear();
 
-        if(f.getRequester() == rootController.user.getUserID()) //if the user sent first the friendship and the friend accepted it
+        if(f.getRequester() == CurrentSession.getLoggedUser().getUserID()) //if the user sent first the friendship and the friend accepted it
         {
             sendCloud("Ciao, vuoi essere mio amico?");
             receiveCloud("Certo!");
@@ -56,37 +58,54 @@ public class FriendContactController extends BranchController
 
         for (Transaction transaction : transactions)
         {
-            if(transaction.getSender().equals(userAccount))
+            if(transaction.getStatus() == null) transaction.setStatus("");
+            if(transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("request"))
             {
-                sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+
+                FromUserTextCloudController controller = sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+                controller.request = transaction;
+                controller.friendUsername = friendUsernameLabel.getText();
             }
-            else
+            else if (transaction.getBeneficiary().equals(userAccount))
             {
                 receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
             }
+            else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("request"))
+            {
+                ToUserTextCloudController controller = receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+                controller.request = transaction;
+                controller.friendUsername = friendUsernameLabel.getText();
+            }
+            else
+            {
+                sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+            }
+
         }
     }
 
     @Override
     public void initializer()
     {
-        ThemeManager.applyTheme(friendsPageController.chatVBox.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(friendsPageController.chatVBox.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
-    private void sendCloud(String text)
+    private FromUserTextCloudController sendCloud(String text)
     {
         Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/fromUserTextCloud.fxml");
         FromUserTextCloudController controller = (FromUserTextCloudController) p.getKey();
         controller.textLabel.setText(text);
         friendsPageController.chatVBox.getChildren().add(p.getValue());
+        return controller;
     }
 
-    private void receiveCloud(String text)
+    private ToUserTextCloudController receiveCloud(String text)
     {
         Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml");
         ToUserTextCloudController controller = (ToUserTextCloudController) p.getKey();
         controller.textLabel.setText(text);
         friendsPageController.chatVBox.getChildren().add(p.getValue());
+        return controller;
     }
 
 }

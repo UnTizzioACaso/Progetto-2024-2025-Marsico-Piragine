@@ -1,6 +1,8 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -18,24 +20,24 @@ public class SidebarController extends BranchController {
     @FXML
     void openAccountPopup() //opening the account popup
     {
-        rootController.showPopup("Account", "/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml", 420, 240);
+        PopupCreator.showPopup("Account", "/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml", 420, 240);
     }
 
     @FXML
     public void loadHomePage() {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
     }
 
     @FXML
     public void loadCardsPage() {
 
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml");
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml");
     }
 
     @FXML
     public void loadFriendsPage()
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml");
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml");
     }
 
 }

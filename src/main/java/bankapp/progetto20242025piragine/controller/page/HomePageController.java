@@ -2,10 +2,11 @@ package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 
-import bankapp.progetto20242025piragine.controller.widget.FavouritesCardController;
 import bankapp.progetto20242025piragine.controller.widget.WidgetController;
-import bankapp.progetto20242025piragine.db.HomeWidgetCustom;
-import bankapp.progetto20242025piragine.db.HomeWidgetCustomDAO;
+import bankapp.progetto20242025piragine.model.HomeWidgetCustom;
+import bankapp.progetto20242025piragine.dao.HomeWidgetCustomDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -25,7 +26,7 @@ public class HomePageController extends BranchController
         {
             addWidget("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml", 1, 0); //getting favouritesCard widget's fxml
             addWidget("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml", 0, 0); //getting favouritesCard widget's fxml
-            List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getWidgetsByUserId(rootController.user.getUserID());
+            List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getWidgetsByUserId(CurrentSession.getLoggedUser().getUserID());
             for(HomeWidgetCustom widget : widgets)
             {
                 if (!widget.isRemove())
@@ -57,25 +58,25 @@ public class HomePageController extends BranchController
     @FXML
     public void loadAddWidget12()
     {
-        rootController.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml", 600, 600);
+        PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget01()
     {
-        rootController.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml", 600, 600);
+        PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget11()
     {
-        rootController.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml", 600, 600);
+        PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml", 600, 600);
     }
 
     @FXML
     public void loadAddWidget02()
     {
-        rootController.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml", 600, 600);
+        PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml", 600, 600);
     }
 
     public void addWidget(String fxml, int column, int row)
@@ -86,12 +87,11 @@ public class HomePageController extends BranchController
             Node node = loader.load();
             if (column == 0) {node.setStyle(node.getStyle() + "-fx-max-width: 400");}
             WidgetController controller = loader.getController();
-            controller.setRootController(rootController);
             homePageGridPane.add(node, column, row);
             controller.homePageGridPane = homePageGridPane;
             controller.initializer();
             controller.widget = node;
-            HomeWidgetCustomDAO.updatePosition(rootController.user.getUserID(), controller.getWidgetType(), row, column, false);
+            HomeWidgetCustomDAO.updatePosition(CurrentSession.getLoggedUser().getUserID(), controller.getWidgetType(), row, column, false);
         }
         catch (Exception e)
         {

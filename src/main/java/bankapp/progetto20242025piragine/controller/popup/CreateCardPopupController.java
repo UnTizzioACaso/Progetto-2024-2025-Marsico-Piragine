@@ -2,10 +2,11 @@ package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.component.CardController;
-import bankapp.progetto20242025piragine.db.BankAccount;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Card;
-import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.model.BankAccount;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Card;
+import bankapp.progetto20242025piragine.dao.CardDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import bankapp.progetto20242025piragine.util.VisualCardCreator;
 import bankapp.progetto20242025piragine.util.last4DigitsPan;
@@ -51,44 +52,33 @@ public class CreateCardPopupController extends BranchController
     // Creates the card using last4DigitsPan and user's bank account data
     @FXML
     public void createCard() throws Exception {
-        String input = spendingLimitTextField.getText().trim();
-
-        // 1. Controllo se è vuoto
-        if (input.isEmpty()) {
-            errorLabel.setText("Inserire un importo");
-            return;
-        }
-
         String spendingLimitText;
 
-        // 2. Validazione Formato (Aggiunto il supporto opzionale al segno meno con -?)
-        if (input.matches("^-?\\d+(,\\d{1,2})?$")) {
-            spendingLimitText = input.replace(",", ".");
-        } else if (input.matches("^-?\\d+(\\.\\d{1,2})?$")) {
-            spendingLimitText = input;
+        // format validation
+        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {
+            spendingLimitText = spendingLimitTextField.getText().replace(",", ".");
+        } else if (spendingLimitTextField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {
+            spendingLimitText = spendingLimitTextField.getText();
         } else {
             errorLabel.setText("Formato non valido (es: 10,10 o 10.10)");
             return;
         }
 
-        // 3. Conversione in BigDecimal
         BigDecimal limit = new BigDecimal(spendingLimitText);
-        BigDecimal maxLimit = new BigDecimal("1000000000.00");
+        BigDecimal maxLimit = new BigDecimal("1000000.00");
 
-        // 4. Validazione Valore Numerico (Ora funzionerà!)
-        if (limit.compareTo(BigDecimal.ZERO) <= 0) {
-            errorLabel.setText("Il limite non può essere negativo o zero");
-            return;
-        }
-
+        // numeric value validation
         if (limit.compareTo(maxLimit) > 0) {
-            errorLabel.setText("Il limite massimo è 1.000.000.000");
+            errorLabel.setText("Il limite massimo è 1.000.000");
+            return;
+        }
+        if (limit.compareTo(BigDecimal.ZERO) < 0) {
+            errorLabel.setText("Il limite non può essere negativo");
             return;
         }
 
-        // --- Inizio logica database ---
         try {
-            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
+            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());
 
             if (bankAccount == null) {
                 errorLabel.setText("Conto corrente non trovato");
@@ -96,7 +86,7 @@ public class CreateCardPopupController extends BranchController
             }
 
             Card card = new Card(
-                    rootController.user.getUserID(),
+                    CurrentSession.getLoggedUser().getUserID(),
                     bankAccount.getIdAccount(),
                     last4DigitsPan.generateLastFourDigits(),
                     nicknameTextField.getText(),
@@ -105,8 +95,8 @@ public class CreateCardPopupController extends BranchController
             );
 
             if (CardDAO.insertCard(card)) {
-                s.close();
-                rootController.topbarController.reloadPage();
+                s.close(); // Assumendo che 's' sia lo Stage/Finestra
+                CurrentSession.getRootController().topbarController.reloadPage();
             } else {
                 errorLabel.setText("Errore durante il salvataggio della carta");
             }
@@ -122,9 +112,9 @@ public class CreateCardPopupController extends BranchController
     public void initializer()
     {
         s = (Stage) colorMenu.getScene().getWindow();
-        cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(rootController)); //add the card component to the VBox
+        cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(CurrentSession.getRootController())); //add the card component to the VBox
         colorMenu.setText("Bianco"); //set default color menu text
-        ThemeManager.applyTheme(colorMenu.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(colorMenu.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
     // Following methods handle color selection and update the card preview accordingly
@@ -164,8 +154,8 @@ public class CreateCardPopupController extends BranchController
     public void selectWhite()
     {
         colorMenu.setText("Bianco");
-        color = "#e4e4e4";
-        cardSlotVbox.getChildren().getFirst().setStyle(" -fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: #e4e4e4;");
+        color = "e4e4e4";
+        cardSlotVbox.getChildren().getFirst().setStyle(" -fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: e4e4e4;");
     }
 
     @FXML

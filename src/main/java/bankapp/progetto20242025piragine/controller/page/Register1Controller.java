@@ -1,7 +1,8 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.User;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -68,10 +69,7 @@ public class Register1Controller extends BranchController {
         if (name.length() < NAME_MIN_LENGTH || name.length() > NAME_MAX_LENGTH ||
                 surname.length() < NAME_MIN_LENGTH || surname.length() > NAME_MAX_LENGTH)
         {
-            errorMessageLabel.setText(
-                    "Nome e cognome devono contenere tra "
-                            + NAME_MIN_LENGTH + " e " + NAME_MAX_LENGTH + " caratteri!"
-            );
+            errorMessageLabel.setText("Nome e cognome devono contenere tra " + NAME_MIN_LENGTH + " e " + NAME_MAX_LENGTH + " caratteri!");
             return;
         }
 
@@ -83,31 +81,29 @@ public class Register1Controller extends BranchController {
 
         if (!name.matches(NAME_REGEX) || !surname.matches(NAME_REGEX) || !birthPlace.matches(NAME_REGEX))
         {
-            errorMessageLabel.setText(
-                    "Nome, cognome e luogo di nascita non possono contenere numeri o caratteri speciali!"
-            );
+            errorMessageLabel.setText("Nome, cognome e luogo di nascita non possono contenere numeri o caratteri speciali!");
             return;
         }
 
-        rootController.user.setFirstName(name);
-        rootController.user.setLastName(surname);
-        rootController.user.setBirthPlace(birthPlace);
-        rootController.user.setBirthDate(birthDate.toString());
-        rootController.user.setGender(gender);
+        CurrentSession.getLoggedUser().setFirstName(name);
+        CurrentSession.getLoggedUser().setLastName(surname);
+        CurrentSession.getLoggedUser().setBirthPlace(birthPlace);
+        CurrentSession.getLoggedUser().setBirthDate(birthDate.toString());
+        CurrentSession.getLoggedUser().setGender(gender);
 
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml");
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/register2.fxml");
     }
 
     @FXML
     public void loadLogin()
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 
     @Override
     public void initializer()
     {
-        rootController.user = new User();
+        CurrentSession.setLoggedUser(new User());
         sexChoiceBox.setValue("- Sesso -");
     }
 }

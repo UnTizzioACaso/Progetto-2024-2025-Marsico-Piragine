@@ -1,12 +1,10 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.BankAccount;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Card;
-import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.model.Card;
+import bankapp.progetto20242025piragine.dao.CardDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
-import bankapp.progetto20242025piragine.util.last4DigitsPan;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -45,7 +43,7 @@ public class MenageCardPopupController extends BranchController {
     @Override
     public void initializer() {
         s = (Stage) errorLabelMenageCardPopup.getScene().getWindow();
-        ThemeManager.applyTheme(s.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(s.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
     @FXML
@@ -83,8 +81,8 @@ public class MenageCardPopupController extends BranchController {
             spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
             errorLabelMenageCardPopup.setText("");
 
-            if (rootController.topbarController != null) {
-                rootController.topbarController.reloadPage();
+            if (CurrentSession.getRootController().topbarController != null) {
+                CurrentSession.getRootController().topbarController.reloadPage();
             }
 
         } catch (NumberFormatException e) {
@@ -101,7 +99,7 @@ public class MenageCardPopupController extends BranchController {
             card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), true));
             addFavouritesButton.setVisible(false);
             removeFavouritesButton.setVisible(true);
-            rootController.topbarController.reloadPage();
+            CurrentSession.getRootController().topbarController.reloadPage();
         } catch (SQLException e) {
             System.out.println("error during updating card favourite state to true" + e.getMessage());
             e.printStackTrace();
@@ -114,7 +112,7 @@ public class MenageCardPopupController extends BranchController {
             card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), false));
             addFavouritesButton.setVisible(true);
             removeFavouritesButton.setVisible(false);
-            rootController.topbarController.reloadPage();
+            CurrentSession.getRootController().topbarController.reloadPage();
         } catch (SQLException e) {
             System.out.println("error during updating card favourite state to false" + e.getMessage());
             e.printStackTrace();
@@ -126,7 +124,7 @@ public class MenageCardPopupController extends BranchController {
         try {
             CardDAO.deleteCard(card.getIdCard());
             s.close();
-            rootController.topbarController.reloadPage();
+            CurrentSession.getRootController().topbarController.reloadPage();
         } catch (SQLException e) {
             System.out.println("error during deleting card" + e.getMessage());
             e.printStackTrace();
@@ -138,7 +136,7 @@ public class MenageCardPopupController extends BranchController {
         try {
             CardDAO.updateCardStatus(card.getIdCard(), false);
             s.close();
-            rootController.topbarController.reloadPage();
+            CurrentSession.getRootController().topbarController.reloadPage();
         } catch (SQLException e) {
             System.out.println("error during blocking card" + e.getMessage());
             e.printStackTrace();
@@ -150,7 +148,7 @@ public class MenageCardPopupController extends BranchController {
         try {
             CardDAO.updateCardStatus(card.getIdCard(), true);
             s.close();
-            rootController.topbarController.reloadPage();
+            CurrentSession.getRootController().topbarController.reloadPage();
         } catch (SQLException e) {
             System.out.println("error during updating card status state to true" + e.getMessage());
             e.printStackTrace();
