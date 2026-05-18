@@ -27,12 +27,12 @@
          </font>
       </Button>
       <VBox fx:id="cardSlotVbox" alignment="CENTER" layoutX="46.4" layoutY="77.4" prefHeight="200.0" prefWidth="322.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="46.4" AnchorPane.rightAnchor="46.39999999999998" AnchorPane.topAnchor="77.4" />
-      <TextField fx:id="nicknameTextField" layoutX="277.4" layoutY="159.00000000000003" maxHeight="40.0" maxWidth="300.0" minWidth="76.0" prefHeight="25.0" prefWidth="76.0" promptText="Nickname" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.bottomAnchor="262.4" AnchorPane.rightAnchor="146.60000000000002">
+      <TextField fx:id="nicknameTextField" layoutX="277.4" layoutY="159.00000000000003" maxHeight="40.0" maxWidth="300.0" minWidth="76.0" onAction="#createCard" prefHeight="25.0" prefWidth="76.0" promptText="Nickname" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.bottomAnchor="262.4" AnchorPane.rightAnchor="146.60000000000002">
          <padding>
             <Insets left="10.0" />
          </padding>
       </TextField>
-      <TextField fx:id="spendingLimitTextField" layoutX="353.6" layoutY="61.4" maxHeight="40.0" maxWidth="300.0" minWidth="58.0" prefHeight="25.0" prefWidth="92.0" promptText="Limite spesa" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.rightAnchor="54.39999999999998" AnchorPane.topAnchor="61.4">
+      <TextField fx:id="spendingLimitTextField" layoutX="353.6" layoutY="61.4" maxHeight="40.0" maxWidth="300.0" minWidth="58.0" onAction="#createCard" prefHeight="25.0" prefWidth="92.0" promptText="Limite spesa" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.rightAnchor="54.39999999999998" AnchorPane.topAnchor="61.4">
          <padding>
             <Insets left="10.0" />
          </padding>
@@ -56,7 +56,11 @@
             </InnerShadow>
          </effect>
       </MenuButton>
-      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="232.0" textFill="RED" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="304.79999999999995" textFill="RED" AnchorPane.bottomAnchor="120.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
       <Button fx:id="closeCreateCardPopup" layoutX="453.0" layoutY="19.0" mnemonicParsing="false" onAction="#closePopup" prefHeight="21.0" prefWidth="22.0" style="-fx-background-color: transparent;" text="✕" textFill="DIMGRAY">
          <font>
             <Font size="20.0" />

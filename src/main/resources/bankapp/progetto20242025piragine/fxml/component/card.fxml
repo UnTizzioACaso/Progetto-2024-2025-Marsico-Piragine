@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="cardBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="150.0" minWidth="250.0" prefHeight="150.0" prefWidth="250.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CardController">
+<AnchorPane fx:id="cardBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="150.0" minWidth="250.0" prefHeight="150.0" prefWidth="250.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4; -fx-border-radius: 15;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CardController">
    <children>
       <Button fx:id="cardBlockButton" layoutX="85.0" layoutY="114.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="53.0" style="-fx-background-color: ff0000; -fx-font-weight: 700; -fx-text-fill: white;" text="Blocca" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="112.0">
          <effect>
@@ -74,10 +73,10 @@
       </GridPane>
    </children>
    <effect>
-      <DropShadow height="62.51" offsetX="10.0" offsetY="10.0" radius="27.792499999999997" width="50.66">
+      <InnerShadow>
          <color>
-            <Color opacity="0.24521072208881378" />
+            <Color opacity="0.25" />
          </color>
-      </DropShadow>
+      </InnerShadow>
    </effect>
 </AnchorPane>
