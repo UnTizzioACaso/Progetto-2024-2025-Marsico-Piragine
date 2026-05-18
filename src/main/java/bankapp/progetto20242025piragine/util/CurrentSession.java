@@ -6,6 +6,7 @@ import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageC
 import bankapp.progetto20242025piragine.controller.page.CardPageController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
 import bankapp.progetto20242025piragine.controller.page.HomePageController;
+import bankapp.progetto20242025piragine.model.BankAccount;
 import bankapp.progetto20242025piragine.model.User;
 
 
@@ -19,6 +20,7 @@ public class CurrentSession {
     private static HomePageController homePageController;
     private static CardPageController cardPageController;
     private static BankAccountSettingsPageController bankAccountSettingsPageController;
+    private static BankAccount loggetAccount;
 
     public static User getLoggedUser() {
         return loggedUser;
@@ -81,4 +83,9 @@ public class CurrentSession {
     public static BankAccountSettingsPageController getBankAccountSettingsPageController() {return bankAccountSettingsPageController;}
 
     public static void setBankAccountSettingsPageController(BankAccountSettingsPageController bankAccountSettingsPageController) {CurrentSession.bankAccountSettingsPageController = bankAccountSettingsPageController;}
+
+
+    public static BankAccount getLoggetAccount() {return loggetAccount;}
+
+    public static void setLoggetAccount(BankAccount loggetAccount) {CurrentSession.loggetAccount = loggetAccount;}
 }

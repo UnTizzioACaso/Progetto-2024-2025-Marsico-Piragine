@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
 import bankapp.progetto20242025piragine.dao.UserDAO;
 import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.RememberMeUtil;
@@ -78,8 +79,8 @@ public class LoginController extends BranchController {
             if (UserDAO.loginCheck(emailLoginTextField.getText(), passwordLoginPasswordField.getText()))
             {
                 // Retrieve the logged-in user from the database
-               CurrentSession.setLoggedUser( UserDAO.getUserByEmail(emailLoginTextField.getText()));
-
+                CurrentSession.setLoggedUser( UserDAO.getUserByEmail(emailLoginTextField.getText()));
+                CurrentSession.setLoggetAccount(BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
 
                 // Load application UI components after successful login
                 CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
