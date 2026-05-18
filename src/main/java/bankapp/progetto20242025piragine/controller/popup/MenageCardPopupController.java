@@ -36,14 +36,9 @@ public class MenageCardPopupController extends BranchController {
     @FXML
     private Label errorLabelMenageCardPopup;
 
-    private Stage s;
 
     public Card card;
 
-    @FXML
-    public void initialize() {
-        s = (Stage) errorLabelMenageCardPopup.getScene().getWindow();
-    }
 
     @FXML
     public void updateSpendingLimit() {
@@ -122,7 +117,7 @@ public class MenageCardPopupController extends BranchController {
     public void deleteCard() {
         try {
             CardDAO.deleteCard(card.getIdCard());
-            s.close();
+            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
             CurrentSession.getRootController().topbarController.reloadPage();
         } catch (SQLException e) {
             System.out.println("error during deleting card" + e.getMessage());
@@ -132,11 +127,14 @@ public class MenageCardPopupController extends BranchController {
 
     @FXML
     public void blockCard() {
-        try {
+        try
+        {
             CardDAO.updateCardStatus(card.getIdCard(), false);
-            s.close();
+            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
             CurrentSession.getRootController().topbarController.reloadPage();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             System.out.println("error during blocking card" + e.getMessage());
             e.printStackTrace();
         }
@@ -144,11 +142,14 @@ public class MenageCardPopupController extends BranchController {
 
     @FXML
     public void unblockCard() {
-        try {
+        try
+        {
             CardDAO.updateCardStatus(card.getIdCard(), true);
-            s.close();
+            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
             CurrentSession.getRootController().topbarController.reloadPage();
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             System.out.println("error during updating card status state to true" + e.getMessage());
             e.printStackTrace();
         }
@@ -156,6 +157,6 @@ public class MenageCardPopupController extends BranchController {
 
     @FXML
     public void closePopup() {
-        s.close();
+        ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
     }
 }

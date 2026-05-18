@@ -20,7 +20,7 @@ import java.util.List;
 public class FriendContactController extends BranchController
 {
 
-    public FriendsPageController friendsPageController;
+    public FriendsPageController friendsPageController = CurrentSession.getFriendsPageController();
 
     @FXML
     public Label friendUsernameLabel;

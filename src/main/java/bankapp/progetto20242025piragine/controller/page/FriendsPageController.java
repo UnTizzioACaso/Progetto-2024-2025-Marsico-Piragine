@@ -8,6 +8,7 @@ import bankapp.progetto20242025piragine.model.Notify;
 import bankapp.progetto20242025piragine.model.Transaction;
 import bankapp.progetto20242025piragine.model.User;
 import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ValueValidator;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.util.Pair;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -200,30 +202,17 @@ public class FriendsPageController extends BranchController
         if(CurrentSession.getFriendsPageController() == null) {CurrentSession.setFriendsPageController(this);}
         errorLabel.setText("");
         List<Integer> friends = new ArrayList<>();
-        try {friends = FriendshipDAO.getFriendshipsByUserId(CurrentSession.getLoggedUser().getUserID());}
-        catch (SQLException e)
-        {
-            System.err.println("error during loading all friends list" + e.getMessage());
-            e.printStackTrace();
-        }
+        friends = FriendshipDAO.getFriendshipsByUserId(CurrentSession.getLoggedUser().getUserID());
 
         for(Integer id: friends)
         {
-            try
-            {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/friendContact.fxml"));
-                Node friendContact= loader.load();
-                FriendContactController controller = loader.getController();
-                controller.friendsPageController = this;
-                controller.friendUsernameLabel.setText(UserDAO.getUserByUserID(id).getUsername());
-
-                friendsVBox.getChildren().add(friendContact);
-            }
-            catch(Exception e)
-            {
-                System.err.println("error during loading a friend" + e.getMessage());
-                e.printStackTrace();
-            }
+            Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/friendContact.fxml");
+            Node friendContact = p.getValue();
+            FriendContactController controller = (FriendContactController) p.getKey();
+            controller.friendsPageController = this;
+            controller.friendUsernameLabel.setText(UserDAO.getUserByUserID(id).getUsername());
+            friendsVBox.getChildren().add(friendContact);
         }
+
     }
 }

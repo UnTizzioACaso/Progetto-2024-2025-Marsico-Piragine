@@ -31,10 +31,8 @@ public class AccountPopupController extends BranchController {
     public void initialize() {
         // Display user's email
         emailPopupAccountLabel.setText(CurrentSession.getLoggedUser().getEmail());
-
         // Display user's full name
         nameSurnameAccountPopupLabel.setText(CurrentSession.getLoggedUser().getFirstName() + " " + CurrentSession.getLoggedUser().getLastName());
-
         // Update radio button and theme label based on user's theme
         if (CurrentSession.getLoggedUser().getTheme().equals("light")) {
             themeColorAccountPopupRadioButton.setSelected(false);

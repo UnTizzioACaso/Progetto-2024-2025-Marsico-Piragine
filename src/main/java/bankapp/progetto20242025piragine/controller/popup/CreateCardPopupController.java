@@ -47,8 +47,6 @@ public class CreateCardPopupController extends BranchController
 
     private String color = "e4e4e4";
 
-    public Stage s;
-
     // Creates the card using last4DigitsPan and user's bank account data
     @FXML
     public void createCard() throws Exception {
@@ -95,7 +93,7 @@ public class CreateCardPopupController extends BranchController
             );
 
             if (CardDAO.insertCard(card)) {
-                s.close(); // Assumendo che 's' sia lo Stage/Finestra
+                ((Stage) colorMenu.getScene().getWindow()).close(); // Assumendo che 's' sia lo Stage/Finestra
                 CurrentSession.getRootController().topbarController.reloadPage();
             } else {
                 errorLabel.setText("Errore durante il salvataggio della carta");
@@ -111,7 +109,6 @@ public class CreateCardPopupController extends BranchController
     @FXML
     public void initialize()
     {
-        s = (Stage) colorMenu.getScene().getWindow();
         cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(CurrentSession.getRootController())); //add the card component to the VBox
         colorMenu.setText("Bianco"); //set default color menu text
     }

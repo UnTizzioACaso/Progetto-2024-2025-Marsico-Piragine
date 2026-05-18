@@ -9,7 +9,7 @@ import java.util.List;
 public class FriendshipDAO
 {
 
-    public static List<Integer> getFriendshipsByUserId(int userId) throws SQLException {
+    public static List<Integer> getFriendshipsByUserId(int userId)   {
 
         List<Integer> friends = new ArrayList<>();
 
@@ -34,6 +34,11 @@ public class FriendshipDAO
                     friends.add(user1 == userId ? user2 : user1);
                 }
             }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error during getting user's friendships: " + e.getMessage());
+            e.printStackTrace();
         }
 
         return friends;

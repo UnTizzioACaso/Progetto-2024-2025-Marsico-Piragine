@@ -143,8 +143,7 @@ public class LoginController extends BranchController {
     public void initialize()
     {
         emailLoginTextField.setText(RememberMeUtil.loadSavedEmail());
-        if(emailLoginTextField.getText()==(null)) {rememberAccessCheckBox.setSelected(false);}
-        else{rememberAccessCheckBox.setSelected(true);}
+        rememberAccessCheckBox.setSelected(emailLoginTextField.getText() != (null));
     }
 
 }

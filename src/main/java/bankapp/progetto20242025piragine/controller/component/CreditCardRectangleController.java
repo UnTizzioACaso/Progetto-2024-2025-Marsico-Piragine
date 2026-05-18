@@ -36,7 +36,6 @@ public class CreditCardRectangleController extends BranchController
     private void menageCard()
     {
         MenageCardPopupController controller = (MenageCardPopupController) PopupCreator.showPopup("Gestisci la carta", "/bankapp/progetto20242025piragine/fxml/popup/menageCardPopup.fxml", 500, 300);
-        if(controller != null) {System.out.println("controller");}
         controller.card = card;
         controller.removeFavouritesButton.setVisible(card.isFavourite());
         controller.addFavouritesButton.setVisible(!card.isFavourite());
