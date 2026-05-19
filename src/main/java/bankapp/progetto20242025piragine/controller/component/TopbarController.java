@@ -4,6 +4,8 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.model.Notify;
 import bankapp.progetto20242025piragine.dao.NotifyDAO;
 import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import bankapp.progetto20242025piragine.util.VisualNotificationCreator;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
@@ -19,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.util.List;
@@ -61,6 +64,35 @@ public class TopbarController extends BranchController {
         }
     }
 
+    public void showBottomRightPopup(String fxmlPath, Stage primaryStage)
+    {
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxmlPath);
+        Parent root = (Parent) p.getValue();
+        popupStage = new Stage();
+        popupStage.initStyle(StageStyle.TRANSPARENT);
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
+        popupStage.setScene(scene);
+
+        // Importante: mostrare prima di calcolare le dimensioni
+        popupStage.show();
+
+        // CALCOLO POSIZIONE RISPETTO ALLA FINESTRA PRINCIPALE
+        // Coordinata X: Inizio finestra + Larghezza finestra - Larghezza popup - Margine
+        double x = primaryStage.getX() + primaryStage.getWidth() - popupStage.getWidth() - 20;
+        // Coordinata Y: Inizio finestra + Altezza finestra - Altezza popup - Margine
+        double y = primaryStage.getY() + primaryStage.getHeight() - popupStage.getHeight() - 20;
+        // Chiude se clicchi fuori dal popup
+
+        popupStage.setX(x);
+        popupStage.setY(y);
+
+        TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), root);
+        slideIn.setFromY(y+400);
+        slideIn.setToY(0);
+        slideIn.play();
+    }
 
     @FXML
     public void showPopup()
@@ -157,45 +189,8 @@ public class TopbarController extends BranchController {
     }
 
 
-    public void showBottomRightPopup(String fxmlPath, Stage primaryStage) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent root = loader.load();
-            BranchController controller= loader.getController();
-
-            popupStage = new Stage();
-            popupStage.initStyle(StageStyle.TRANSPARENT);
-
-            // Chiude se clicchi fuori dal popup
-            popupStage.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
-                if (!isNowFocused) {
-                    popupStage.close();
-                }
-            });
-
-            Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-            popupStage.setScene(scene);
-
-            // Importante: mostrare prima di calcolare le dimensioni
-            popupStage.show();
-
-            // CALCOLO POSIZIONE RISPETTO ALLA FINESTRA PRINCIPALE
-            // Coordinata X: Inizio finestra + Larghezza finestra - Larghezza popup - Margine
-            double x = primaryStage.getX() + primaryStage.getWidth() - popupStage.getWidth() - 20;
-
-            // Coordinata Y: Inizio finestra + Altezza finestra - Altezza popup - Margine
-            double y = primaryStage.getY() + primaryStage.getHeight() - popupStage.getHeight() - 20;
-
-            popupStage.setX(x);
-            popupStage.setY(y);
 
 
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     @FXML
     public void showAssistance() {
 

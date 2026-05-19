@@ -22,7 +22,7 @@ public class LastFiveExpensesController extends WidgetController
     @FXML
     public void initialize()
     {
-        List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
+        List<Transaction> transactions = TransactionDAO.getCompletedTransactionsBySender(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for (int i = 0; i < 5; i++)
         {
             if (i >= transactions.size())

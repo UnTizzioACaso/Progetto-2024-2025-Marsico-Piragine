@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.controller;
 import bankapp.progetto20242025piragine.controller.component.FromUserTextCloudController;
 import bankapp.progetto20242025piragine.controller.component.ToUserTextCloudController;
 import bankapp.progetto20242025piragine.util.*;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -11,6 +12,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.util.Pair;
 
 public class ChatBotController extends BranchController {
@@ -23,69 +26,30 @@ public class ChatBotController extends BranchController {
     private final ChatBot geminiService = new ChatBot();
     private final ChatSessionSaver sessionSaver = ChatSessionSaver.getInstance();
 
-    @Override
-    public void initializer() {
-
-        updateTheme();
+    @FXML
+    public void initialize()
+    {
         loadMessages();
-
         if (sessionSaver.getHistory().isEmpty()) {
             String welcome = "Benvenuto in Maze Bank, come posso aiutarti?\n";
             sessionSaver.addMessage(welcome, false);
             renderBotCloud(welcome);
         }
-
-        Thread themeWatcher = new Thread(() -> {
-            String lastTheme = CurrentSession.getLoggedUser().getTheme();
-
-            while (true) {
-                try {
-                    Thread.sleep(500);
-
-                    if (CurrentSession.getLoggedUser() != null) {
-
-                        String currentTheme = CurrentSession.getLoggedUser().getTheme();
-
-                        if (!currentTheme.equals(lastTheme)) {
-                            lastTheme = currentTheme;
-                            Platform.runLater(this::updateTheme);
-                        }
-                    }
-
-                } catch (InterruptedException e) {
-                    break;
-                }
-            }
-        });
-
-        themeWatcher.setDaemon(true);
-        themeWatcher.start();
-
-        Platform.runLater(() -> {
-            if (scrollPaneChatSupport != null) {
-                scrollPaneChatSupport.setVvalue(1.0);
-            }
-        });
     }
 
-    private void updateTheme() {
-
-        if (botGridPane != null && CurrentSession.getLoggedUser() != null) {
-
-            String theme = CurrentSession.getLoggedUser().getTheme();
-            String cssPath = ThemeManager.getThemePath(theme);
-
-            if (cssPath != null) {
-                botGridPane.getStylesheets().clear();
-                botGridPane.getStylesheets().add(
-                        getClass().getResource(cssPath).toExternalForm()
-                );
-
-                botGridPane.applyCss();
-                botGridPane.layout();
-            }
-        }
+    @FXML
+    public void close()
+    {
+        Stage primaryStage = (Stage) CurrentSession.getRootController().rootWindow.getScene().getWindow();
+        Stage popupStage = (Stage) botGridPane.getScene().getWindow();
+        double y = primaryStage.getY() + primaryStage.getHeight() - popupStage.getHeight() - 20;
+        TranslateTransition slideOut = new TranslateTransition(Duration.millis(400), botGridPane);
+        slideOut.setFromY(0);
+        slideOut.setToY(y+400);
+        slideOut.setOnFinished(e -> {popupStage.close();});
+        slideOut.play();
     }
+
 
     private void loadMessages() {
 
@@ -111,9 +75,7 @@ public class ChatBotController extends BranchController {
         }
 
         sessionSaver.addMessage(userMessage, true);
-
         processMessage(userMessage);
-
         inputField.clear();
     }
 
@@ -122,16 +84,12 @@ public class ChatBotController extends BranchController {
         renderUserCloud(text + "\n");
 
         new Thread(() -> {
-
             String aiResponse = geminiService.generateResponse(text);
-
             Platform.runLater(() -> {
-
                 sessionSaver.addMessage(aiResponse, false);
-
                 renderBotCloud(aiResponse + "\n");
-
-                if (scrollPaneChatSupport != null) {
+                if (scrollPaneChatSupport != null)
+                {
                     scrollPaneChatSupport.setVvalue(1.0);
                 }
             });
@@ -139,39 +97,23 @@ public class ChatBotController extends BranchController {
         }).start();
     }
 
-    private void renderBotCloud(String text) {
+    private void renderBotCloud(String text)
+    {
 
-        Pair<BranchController, Node> p =
-                EasyFxmlLoader.loader(
-                        "/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml"
-                );
-
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml");
         Node cloud = p.getValue();
-
-        ToUserTextCloudController controller =
-                (ToUserTextCloudController) p.getKey();
-
+        ToUserTextCloudController controller = (ToUserTextCloudController) p.getKey();
         controller.textLabel.setText(text);
-
         chatDisplay.getChildren().add(cloud);
     }
 
     private void renderUserCloud(String text) {
 
-        Pair<BranchController, Node> p =
-                EasyFxmlLoader.loader(
-                        "/bankapp/progetto20242025piragine/fxml/component/FromUserTextCloud.fxml"
-                );
-
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/FromUserTextCloud.fxml");
         Node cloud = p.getValue();
-
-        FromUserTextCloudController controller =
-                (FromUserTextCloudController) p.getKey();
-
+        FromUserTextCloudController controller = (FromUserTextCloudController) p.getKey();
         controller.textLabel.setText(text);
-
         chatDisplay.getChildren().add(cloud);
-
         VBox.setMargin(cloud, new Insets(0, -100, 0, 0));
     }
 }
