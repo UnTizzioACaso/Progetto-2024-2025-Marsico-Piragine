@@ -171,6 +171,7 @@ public class TopbarController extends BranchController {
         }
     }
 
+
     @FXML
     public void reloadPage()
     {
