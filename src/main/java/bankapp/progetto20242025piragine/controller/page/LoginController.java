@@ -11,7 +11,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 
 import java.sql.SQLException;
 
@@ -80,7 +79,7 @@ public class LoginController extends BranchController {
             {
                 // Retrieve the logged-in user from the database
                 CurrentSession.setLoggedUser( UserDAO.getUserByEmail(emailLoginTextField.getText()));
-                CurrentSession.setLoggetAccount(BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
+                CurrentSession.setLoggedAccount(BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
 
                 // Load application UI components after successful login
                 CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar

@@ -1,11 +1,16 @@
 package bankapp.progetto20242025piragine.util;
 
+import bankapp.progetto20242025piragine.controller.ChatBotController;
 import bankapp.progetto20242025piragine.controller.RootWindowController;
+import bankapp.progetto20242025piragine.controller.component.NotificationSliderController;
 import bankapp.progetto20242025piragine.controller.component.TopbarController;
 import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
 import bankapp.progetto20242025piragine.controller.page.CardPageController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
 import bankapp.progetto20242025piragine.controller.page.HomePageController;
+import bankapp.progetto20242025piragine.controller.popup.AccountPopupController;
+import bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController;
+import bankapp.progetto20242025piragine.controller.popup.MenageCardPopupController;
 import bankapp.progetto20242025piragine.model.BankAccount;
 import bankapp.progetto20242025piragine.model.User;
 
@@ -20,7 +25,12 @@ public class CurrentSession {
     private static HomePageController homePageController;
     private static CardPageController cardPageController;
     private static BankAccountSettingsPageController bankAccountSettingsPageController;
-    private static BankAccount loggetAccount;
+    private static BankAccount loggedAccount;
+    private static NotificationSliderController notificationSliderController;
+    private static ChatBotController chatBotController;
+    private static CreateCardPopupController createCardPopupController;
+    private static MenageCardPopupController menageCardPopupController;
+    private static AccountPopupController accountPopupController;
 
     public static User getLoggedUser() {
         return loggedUser;
@@ -85,7 +95,7 @@ public class CurrentSession {
     public static void setBankAccountSettingsPageController(BankAccountSettingsPageController bankAccountSettingsPageController) {CurrentSession.bankAccountSettingsPageController = bankAccountSettingsPageController;}
 
 
-    public static BankAccount getLoggetAccount() {return loggetAccount;}
+    public static BankAccount getLoggedAccount() {return loggedAccount;}
 
-    public static void setLoggetAccount(BankAccount loggetAccount) {CurrentSession.loggetAccount = loggetAccount;}
+    public static void setLoggedAccount(BankAccount loggedAccount) {CurrentSession.loggedAccount = loggedAccount;}
 }

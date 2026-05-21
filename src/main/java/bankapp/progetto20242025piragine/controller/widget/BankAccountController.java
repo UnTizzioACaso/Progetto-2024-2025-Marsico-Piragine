@@ -1,6 +1,5 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -26,6 +25,6 @@ public class BankAccountController extends WidgetController
     @FXML
     public void initialize()
     {
-        labelBankAccount.setText(CurrentSession.getLoggetAccount().getMoney().toString() + " €");
+        labelBankAccount.setText(CurrentSession.getLoggedAccount().getMoney().toString() + " €");
     }
 }

@@ -72,10 +72,9 @@ public class TopbarController extends BranchController {
         popupStage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
+        popupStage.initOwner(primaryStage);
         ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
         popupStage.setScene(scene);
-
-        // Importante: mostrare prima di calcolare le dimensioni
         popupStage.show();
 
         // CALCOLO POSIZIONE RISPETTO ALLA FINESTRA PRINCIPALE
