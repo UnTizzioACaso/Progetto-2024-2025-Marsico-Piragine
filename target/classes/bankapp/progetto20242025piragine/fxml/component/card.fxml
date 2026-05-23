@@ -22,7 +22,7 @@
                </color>
             </InnerShadow>
          </effect></Button>
-      <Button fx:id="cardSettingsButton" layoutX="146.0" layoutY="114.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: ff0000; -fx-font-weight: 700; -fx-text-fill: white;" text="Impostazioni" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0">
+      <Button fx:id="cardSettingsButton" layoutX="146.0" layoutY="114.0" mnemonicParsing="false" onAction="#loadSettings" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: ff0000; -fx-font-weight: 700; -fx-text-fill: white;" text="Impostazioni" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0">
          <effect>
             <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>

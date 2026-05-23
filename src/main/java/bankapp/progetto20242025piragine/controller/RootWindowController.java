@@ -19,10 +19,6 @@ public  class RootWindowController extends BranchController {
     @FXML
     public AnchorPane centerAnchorPane;
 
-    public Node topbar;
-
-    public Node sidebar;
-
     private String currentPage = "";
 
     public BankAccountSettingsPageController bankAccountSettingsPageController;
@@ -72,7 +68,6 @@ public  class RootWindowController extends BranchController {
         Node node = p.getValue(); //creating the node from the loader
         bankapp.progetto20242025piragine.util.CurrentSession.setSidebarController((SidebarController) p.getKey()); //getting the controller from the loader
         rootWindow.setLeft(node); //setting the node to the left
-        sidebar = node;
     }
 
     public void loadTopBar() //this method loads a node on the top side of root's BorderPane and gives back his controller
