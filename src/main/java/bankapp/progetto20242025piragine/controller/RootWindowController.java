@@ -19,7 +19,9 @@ public  class RootWindowController extends BranchController {
     @FXML
     public AnchorPane centerAnchorPane;
 
-    public TopbarController topbarController = null;
+    public Node topbar;
+
+    public Node sidebar;
 
     private String currentPage = "";
 
@@ -45,7 +47,7 @@ public  class RootWindowController extends BranchController {
             currentPage = fxml;
             Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
             Node node = p.getValue(); //creating the node from the pair
-            if (CurrentSession.getTopbarController() != null) //if topbarController's controller is already initialized
+            if (rootWindow.getTop() != null) //if topbar is already initialized
             {
                 if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
                 CurrentSession.getTopbarController().visitPage(fxml); //adds the loaded page to the backwardStack
@@ -57,21 +59,25 @@ public  class RootWindowController extends BranchController {
     @FXML
     public void initialize() //initializing the first page to load
     {
+        currentPage = "";
+        rootWindow.setLeft(null); //setting left to null because the first page is login and it doesn't need the sidebar
+        rootWindow.setTop(null); //setting top to null because the first page is login and it doesn't need the topbar
         loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml"); //loading login.fxml
     }
 
 
-    public void loadSideBar(String fxml) //this method loads a node on the left side of root's BorderPane
+    public void loadSideBar() //this method loads a node on the left side of root's BorderPane
     {
-        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml");
         Node node = p.getValue(); //creating the node from the loader
-        SidebarController controller = (SidebarController) p.getKey(); //getting the controller from the loader
+        bankapp.progetto20242025piragine.util.CurrentSession.setSidebarController((SidebarController) p.getKey()); //getting the controller from the loader
         rootWindow.setLeft(node); //setting the node to the left
+        sidebar = node;
     }
 
-    public void loadTopBar(String fxml) //this method loads a node on the top side of root's BorderPane and gives back his controller
+    public void loadTopBar() //this method loads a node on the top side of root's BorderPane and gives back his controller
     {
-        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml");
         Node node = p.getValue(); //creating the node from the loader
         TopbarController controller = (TopbarController) p.getKey(); //getting the controller from the loader
         rootWindow.setTop(node); //setting the node to the left

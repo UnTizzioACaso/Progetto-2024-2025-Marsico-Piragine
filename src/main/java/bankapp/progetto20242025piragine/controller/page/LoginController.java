@@ -57,8 +57,8 @@ public class LoginController extends BranchController {
                 CurrentSession.setLoggedAccount(BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
                 
                 // Load application UI components after successful login
-                CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
-                CurrentSession.getRootController().loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
+                CurrentSession.getRootController().loadSideBar(); // loading the sidebar
+                CurrentSession.getRootController().loadTopBar(); // loading the topbar
                 CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
                 ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme());
                 if (rememberAccessCheckBox.isSelected())
@@ -82,8 +82,8 @@ public class LoginController extends BranchController {
                 CurrentSession.setLoggedUser( UserDAO.getUserByEmail(emailLoginTextField.getText()));
                 CurrentSession.setLoggedAccount(BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
                 // Load application UI components after successful login
-                CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
-                CurrentSession.getRootController().loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
+                CurrentSession.getRootController().loadSideBar(); // loading the sidebar
+                CurrentSession.getRootController().loadTopBar(); // loading the topbar
                 CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
                 ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme());
 

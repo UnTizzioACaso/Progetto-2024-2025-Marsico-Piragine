@@ -83,6 +83,17 @@ public class AccountPopupController extends BranchController {
     }
 
     @FXML
+    public void logout()
+    {
+        CurrentSession.getTopbarController().backwardStack.clear();
+        CurrentSession.getTopbarController().forwardStack.clear();
+        CurrentSession.reset();
+        ((Stage) accountPopupRoot.getScene().getWindow()).close();
+        CurrentSession.getRootController().initialize();
+    }
+
+
+    @FXML
     public void closePopup()
     {
         ((Stage) accountPopupRoot.getScene().getWindow()).close();

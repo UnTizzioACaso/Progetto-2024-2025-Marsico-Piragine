@@ -49,7 +49,7 @@ public class PaymentRequestController extends BranchController {
             if (TransactionDAO.acceptTransacion(n.getIdTransaction()))
             {
                 NotifyDAO.markAsRead(n.getIdNotify());
-                CurrentSession.getRootController().topbarController.updateNotifications();
+                CurrentSession.getTopbarController().updateNotifications();
             }
             return;
         }

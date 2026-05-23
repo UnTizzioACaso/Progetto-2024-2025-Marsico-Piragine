@@ -29,7 +29,7 @@ public class NotificationController extends BranchController{
         if (imTheSender )
         {
             //NotifyDAO.markAsRead(notify.getIdNotify());
-            CurrentSession.getRootController().topbarController.updateNotifications();
+            CurrentSession.getTopbarController().updateNotifications();
             return;
         }
 
@@ -38,7 +38,7 @@ public class NotificationController extends BranchController{
             if(TransactionDAO.getTransactionById(notify.getIdTransaction()).getType().equals("payment"))
             {
                 //NotifyDAO.markAsRead(notify.getIdNotify());
-                CurrentSession.getRootController().topbarController.updateNotifications();
+                CurrentSession.getTopbarController().updateNotifications();
                 return;
             }
             PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);

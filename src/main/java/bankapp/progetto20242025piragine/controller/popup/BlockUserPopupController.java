@@ -47,7 +47,7 @@ public class BlockUserPopupController extends BranchController {
 
     private void reloadNotification()
     {
-        CurrentSession.getRootController().topbarController.updateNotifications();
+        CurrentSession.getTopbarController().updateNotifications();
     }
 
 }

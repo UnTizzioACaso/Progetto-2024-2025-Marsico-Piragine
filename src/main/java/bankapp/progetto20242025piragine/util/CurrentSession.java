@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine.util;
 
 import bankapp.progetto20242025piragine.controller.RootWindowController;
+import bankapp.progetto20242025piragine.controller.component.SidebarController;
 import bankapp.progetto20242025piragine.controller.component.TopbarController;
 import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
 import bankapp.progetto20242025piragine.controller.page.CardPageController;
@@ -18,6 +19,7 @@ public class CurrentSession {
     private static User secondaryUser;
     private static RootWindowController rootController;
     private static TopbarController topbarController;
+    private static SidebarController sidebarController;
     private static FriendsPageController friendsPageController;
     private static HomePageController homePageController;
     private static CardPageController cardPageController;
@@ -67,11 +69,20 @@ public class CurrentSession {
 
     public static FriendsPageController getFriendsPageController() {return friendsPageController;}
 
-    public static void reset() {
+
+    public static void reset()
+    {
         loggedUser = null;
         secondaryUser = null;
-        rootController = null;
         topbarController = null;
+        sidebarController = null;
+        friendsPageController = null;
+        homePageController = null;
+        cardPageController = null;
+        bankAccountSettingsPageController = null;
+        loggedAccount = null;
+        popupStage = null;
+        primaryStage = null;
     }
 
 
@@ -104,7 +115,12 @@ public class CurrentSession {
 
     public static void setPrimaryStage(Stage primaryStage) {CurrentSession.primaryStage = primaryStage;}
 
+
     public static Node getCurrentPage() {return currentPage;}
 
     public static void setCurrentPage(Node currentPage) {CurrentSession.currentPage = currentPage;}
+
+    public static SidebarController getSidebarController() {return sidebarController;}
+
+    public static void setSidebarController(SidebarController sidebarController) {CurrentSession.sidebarController = sidebarController;}
 }

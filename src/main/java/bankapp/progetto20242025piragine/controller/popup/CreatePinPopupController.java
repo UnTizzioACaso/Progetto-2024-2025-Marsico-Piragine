@@ -178,8 +178,8 @@ public class CreatePinPopupController extends BranchController
         }
         // Load the main application pages after successful registration
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
-        CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml");
-        CurrentSession.getRootController().loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml");
+        CurrentSession.getRootController().loadSideBar();
+        CurrentSession.getRootController().loadTopBar();
 
         // Close the PIN creation popup
         Stage stage = (Stage) rootPane.getScene().getWindow();

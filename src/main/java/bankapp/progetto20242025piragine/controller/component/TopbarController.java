@@ -38,8 +38,8 @@ public class TopbarController extends BranchController {
     private Node notificationSlider;
 
     public boolean sliderIsActive = false;
-    private Stack<String> backwardStack = new Stack<>();
-    private Stack<String> forwardStack = new Stack<>();
+    public Stack<String> backwardStack = new Stack<>();
+    public Stack<String> forwardStack = new Stack<>();
 
 
     @FXML

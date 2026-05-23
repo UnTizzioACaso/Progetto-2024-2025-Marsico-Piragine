@@ -94,7 +94,7 @@ public class CreateCardPopupController extends BranchController
 
             if (CardDAO.insertCard(card)) {
                 ((Stage) colorMenu.getScene().getWindow()).close(); // Assumendo che 's' sia lo Stage/Finestra
-                CurrentSession.getRootController().topbarController.reloadPage();
+                CurrentSession.getTopbarController().reloadPage();
             } else {
                 errorLabel.setText("Errore durante il salvataggio della carta");
             }

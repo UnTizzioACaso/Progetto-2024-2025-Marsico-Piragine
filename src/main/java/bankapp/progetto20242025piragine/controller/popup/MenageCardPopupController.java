@@ -75,8 +75,8 @@ public class MenageCardPopupController extends BranchController {
             spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
             errorLabelMenageCardPopup.setText("");
 
-            if (CurrentSession.getRootController().topbarController != null) {
-                CurrentSession.getRootController().topbarController.reloadPage();
+            if (CurrentSession.getTopbarController() != null) {
+                CurrentSession.getTopbarController().reloadPage();
             }
 
         } catch (NumberFormatException e) {
@@ -93,7 +93,7 @@ public class MenageCardPopupController extends BranchController {
             card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), true));
             addFavouritesButton.setVisible(false);
             removeFavouritesButton.setVisible(true);
-            CurrentSession.getRootController().topbarController.reloadPage();
+            CurrentSession.getTopbarController().reloadPage();
         } catch (SQLException e) {
             System.out.println("error during updating card favourite state to true" + e.getMessage());
             e.printStackTrace();
@@ -106,7 +106,7 @@ public class MenageCardPopupController extends BranchController {
             card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), false));
             addFavouritesButton.setVisible(true);
             removeFavouritesButton.setVisible(false);
-            CurrentSession.getRootController().topbarController.reloadPage();
+            CurrentSession.getTopbarController().reloadPage();
         } catch (SQLException e) {
             System.out.println("error during updating card favourite state to false" + e.getMessage());
             e.printStackTrace();
@@ -118,7 +118,7 @@ public class MenageCardPopupController extends BranchController {
         try {
             CardDAO.deleteCard(card.getIdCard());
             ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
-            CurrentSession.getRootController().topbarController.reloadPage();
+            CurrentSession.getTopbarController().reloadPage();
         } catch (SQLException e) {
             System.out.println("error during deleting card" + e.getMessage());
             e.printStackTrace();
@@ -131,7 +131,7 @@ public class MenageCardPopupController extends BranchController {
         {
             CardDAO.updateCardStatus(card.getIdCard(), false);
             ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
-            CurrentSession.getRootController().topbarController.reloadPage();
+            CurrentSession.getTopbarController().reloadPage();
         }
         catch (SQLException e)
         {
@@ -146,7 +146,7 @@ public class MenageCardPopupController extends BranchController {
         {
             CardDAO.updateCardStatus(card.getIdCard(), true);
             ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
-            CurrentSession.getRootController().topbarController.reloadPage();
+            CurrentSession.getTopbarController().reloadPage();
         }
         catch (SQLException e)
         {
