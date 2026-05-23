@@ -10,12 +10,18 @@ public class RememberMeUtil {
     private static final Path FILE_PATH = Paths.get(
             System.getProperty("user.home"), ".bankapp", "remember_me.txt");
 
-    public static void saveEmail(String email) throws IOException
-    {
-        Files.createDirectories(FILE_PATH.getParent()); // create .bankapp
-        Files.writeString(FILE_PATH, email);
+    public static void saveEmail(String email) {
+        try
+        {
+            Files.createDirectories(FILE_PATH.getParent()); // create .bankapp
+            Files.writeString(FILE_PATH, email);
+        }
+        catch (IOException e)
+        {
+            System.out.println("error during email storing "+ e.getMessage());
+            e.printStackTrace();
+        }
     }
-
     public static String loadSavedEmail()
     {
         try

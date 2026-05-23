@@ -54,7 +54,8 @@ public class LoginController extends BranchController {
             {
                 // Retrieve the logged-in user from the database
                 CurrentSession.setLoggedUser(UserDAO.getUserByEmail(emailLoginTextField.getText()));
-
+                CurrentSession.setLoggedAccount(BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
+                
                 // Load application UI components after successful login
                 CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
                 CurrentSession.getRootController().loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
@@ -80,7 +81,6 @@ public class LoginController extends BranchController {
                 // Retrieve the logged-in user from the database
                 CurrentSession.setLoggedUser( UserDAO.getUserByEmail(emailLoginTextField.getText()));
                 CurrentSession.setLoggedAccount(BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
-
                 // Load application UI components after successful login
                 CurrentSession.getRootController().loadSideBar("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml"); // loading the sidebar
                 CurrentSession.getRootController().loadTopBar("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml"); // loading the topbar
@@ -89,8 +89,7 @@ public class LoginController extends BranchController {
 
                 if (rememberAccessCheckBox.isSelected())
                     {
-                        try {RememberMeUtil.saveEmail(emailLoginTextField.getText());}
-                        catch (Exception e) {System.out.println("error during email storing "+ e); e.printStackTrace();}
+                        RememberMeUtil.saveEmail(emailLoginTextField.getText());
                         return;
                     }
                 RememberMeUtil.deleteSavedEmail();

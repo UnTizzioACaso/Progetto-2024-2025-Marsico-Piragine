@@ -7,8 +7,6 @@ import javafx.util.Pair;
 
 public class EasyFxmlLoader {
 
-
-
     public static Pair<BranchController, Node> loader(String fxmlPath) {
         Pair<BranchController, Node> p = new Pair<>(null, null);
         FXMLLoader loader = new FXMLLoader(EasyFxmlLoader.class.getResource(fxmlPath));

@@ -26,7 +26,6 @@ public class AddWidget02Controller extends BranchController {
 
     @Override
     public void initializer()
-
     {
         Set<String> usedIds = CurrentSession.getHomePageController().homePageGridPane.getChildren().stream().map(Node::getId).filter(Objects::nonNull).collect(Collectors.toSet());
 

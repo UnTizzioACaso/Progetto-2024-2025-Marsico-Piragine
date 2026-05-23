@@ -1,18 +1,15 @@
 package bankapp.progetto20242025piragine.util;
 
-import bankapp.progetto20242025piragine.controller.ChatBotController;
 import bankapp.progetto20242025piragine.controller.RootWindowController;
-import bankapp.progetto20242025piragine.controller.component.NotificationSliderController;
 import bankapp.progetto20242025piragine.controller.component.TopbarController;
 import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
 import bankapp.progetto20242025piragine.controller.page.CardPageController;
 import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
 import bankapp.progetto20242025piragine.controller.page.HomePageController;
-import bankapp.progetto20242025piragine.controller.popup.AccountPopupController;
-import bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController;
-import bankapp.progetto20242025piragine.controller.popup.MenageCardPopupController;
 import bankapp.progetto20242025piragine.model.BankAccount;
 import bankapp.progetto20242025piragine.model.User;
+import javafx.scene.Node;
+import javafx.stage.Stage;
 
 
 public class CurrentSession {
@@ -26,11 +23,9 @@ public class CurrentSession {
     private static CardPageController cardPageController;
     private static BankAccountSettingsPageController bankAccountSettingsPageController;
     private static BankAccount loggedAccount;
-    private static NotificationSliderController notificationSliderController;
-    private static ChatBotController chatBotController;
-    private static CreateCardPopupController createCardPopupController;
-    private static MenageCardPopupController menageCardPopupController;
-    private static AccountPopupController accountPopupController;
+    private static Stage popupStage;
+    private static Stage primaryStage;
+    private static Node currentPage;
 
     public static User getLoggedUser() {
         return loggedUser;
@@ -98,4 +93,18 @@ public class CurrentSession {
     public static BankAccount getLoggedAccount() {return loggedAccount;}
 
     public static void setLoggedAccount(BankAccount loggedAccount) {CurrentSession.loggedAccount = loggedAccount;}
+
+
+    public static Stage getPopupStage() {return popupStage;}
+
+    public static void setPopupStage(Stage popupStage) {CurrentSession.popupStage = popupStage;}
+
+
+    public static Stage getPrimaryStage() {return primaryStage;}
+
+    public static void setPrimaryStage(Stage primaryStage) {CurrentSession.primaryStage = primaryStage;}
+
+    public static Node getCurrentPage() {return currentPage;}
+
+    public static void setCurrentPage(Node currentPage) {CurrentSession.currentPage = currentPage;}
 }

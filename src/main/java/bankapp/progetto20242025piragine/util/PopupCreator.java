@@ -1,7 +1,6 @@
 package bankapp.progetto20242025piragine.util;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,16 +10,16 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Pair;
 
-import java.io.IOException;
-
 public class PopupCreator
 {
-    public static BranchController showPopup(String title, String fxml, int width, int height)
+    public static BranchController showPopup(String title, String fxml, double width, double height)
     {
+        if(!(CurrentSession.getPopupStage() == null)){CurrentSession.getPopupStage().close();}
         Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
         Parent root = (Parent) p.getValue();
-        BranchController controller = p.getKey(); //getting the controller from the loader
+        BranchController controller =  p.getKey(); //getting the controller from the loader
         Stage popupStage = new Stage(); //creating a new stage for the popup
+        CurrentSession.setPopupStage(popupStage);
         popupStage.initStyle(StageStyle.TRANSPARENT);
         popupStage.setWidth(width); //setting popup's minimum width
         popupStage.setHeight(height);
@@ -35,4 +34,6 @@ public class PopupCreator
         ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
         return controller;
     }
+
+
 }

@@ -1,29 +1,23 @@
 package bankapp.progetto20242025piragine.controller;
 
 
+import bankapp.progetto20242025piragine.controller.component.SidebarController;
 import bankapp.progetto20242025piragine.controller.component.TopbarController;
 import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
-import bankapp.progetto20242025piragine.controller.page.CardPageController;
-import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
-import bankapp.progetto20242025piragine.controller.page.HomePageController;
-import bankapp.progetto20242025piragine.model.User;
 import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.io.IOException;
+import javafx.util.Pair;
 
 public  class RootWindowController extends BranchController {
     @FXML
     public BorderPane rootWindow;
+
+    @FXML
+    public AnchorPane centerAnchorPane;
 
     public TopbarController topbarController = null;
 
@@ -33,46 +27,30 @@ public  class RootWindowController extends BranchController {
 
 
 
-    @FXML
     public void switchPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {   if (!(fxml.equals(currentPage)))
         {
-            try {
-                currentPage = fxml;
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-                Parent node = fxmlLoader.load(); //creating the node from the loader
-                BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-                rootWindow.setCenter(node); //setting the page to the center
-            }
-            catch (IOException e)
-            {
-                System.err.println("error loading " + fxml + e.getMessage());
-                e.printStackTrace();
-            }
+            currentPage = fxml;
+            Node node = EasyFxmlLoader.loader(fxml).getValue(); //creating the node from the loader
+            if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
+            setCenter(node);
         }
     }
 
 
-    @FXML
     public void loadPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {
         if (!(fxml.equals(currentPage)))
         {
-            try {
-                currentPage = fxml;
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-                Parent node = fxmlLoader.load(); //creating the node from the loader
-                rootWindow.setCenter(node); //setting the page to the center
-                if (topbarController != null) //if topbarController's controller is already initialized
-                {
-                    topbarController.visitPage(fxml); //adds the loaded page to the backwardStack
-                }
-            }
-            catch (IOException e)
+            currentPage = fxml;
+            Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+            Node node = p.getValue(); //creating the node from the pair
+            if (CurrentSession.getTopbarController() != null) //if topbarController's controller is already initialized
             {
-                System.err.println("error loading " + fxml + e.getMessage());
-                e.printStackTrace();
+                if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
+                CurrentSession.getTopbarController().visitPage(fxml); //adds the loaded page to the backwardStack
             }
+            setCenter(node);
         }
     }
 
@@ -85,35 +63,29 @@ public  class RootWindowController extends BranchController {
 
     public void loadSideBar(String fxml) //this method loads a node on the left side of root's BorderPane
     {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-            Parent node = fxmlLoader.load(); //creating the node from the loader
-            BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-            rootWindow.setLeft(node); //setting the node to the left
-
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading on the left " + fxml + e.getMessage());
-            e.printStackTrace();
-        }
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+        Node node = p.getValue(); //creating the node from the loader
+        SidebarController controller = (SidebarController) p.getKey(); //getting the controller from the loader
+        rootWindow.setLeft(node); //setting the node to the left
     }
 
     public void loadTopBar(String fxml) //this method loads a node on the top side of root's BorderPane and gives back his controller
     {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-            Parent node = fxmlLoader.load(); //creating the node from the loader
-            topbarController = fxmlLoader.getController(); //getting the controller from the loader
-            rootWindow.setTop(node); //setting the node to the top
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading on top " + fxml + e.getMessage());
-            e.printStackTrace();
-        }
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+        Node node = p.getValue(); //creating the node from the loader
+        TopbarController controller = (TopbarController) p.getKey(); //getting the controller from the loader
+        rootWindow.setTop(node); //setting the node to the left
+        CurrentSession.setTopbarController(controller);
+    }
+
+    private void setCenter(Node node)
+    {
+        centerAnchorPane.getChildren().add(node);
+        double d = 0;
+        AnchorPane.setBottomAnchor(node, d);
+        AnchorPane.setLeftAnchor(node, d);
+        AnchorPane.setTopAnchor(node, d);
+        AnchorPane.setRightAnchor(node, d);
     }
 
 }
