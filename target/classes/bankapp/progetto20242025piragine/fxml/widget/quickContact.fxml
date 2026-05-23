@@ -80,7 +80,7 @@
             <Insets left="10.0" />
          </padding>
       </TextField>
-      <GridPane prefHeight="33.0" prefWidth="339.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0;" GridPane.columnSpan="2147483647">
+      <GridPane fx:id="quickContactGridPane" prefHeight="33.0" prefWidth="339.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-width: 0 0 1 0; -fx-border-color: black;" GridPane.columnSpan="2147483647">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

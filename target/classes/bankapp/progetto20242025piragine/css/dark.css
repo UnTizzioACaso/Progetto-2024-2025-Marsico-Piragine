@@ -135,6 +135,11 @@
 /* --- PARTE 1: COMPONENTE ESTERNO (Input e Bottone) --- */
 .date-picker {
     -fx-background-color: #3a3a3a !important;
+    -fx-background-radius: 6 !important;
+    -fx-border-color: #595959 !important;
+    -fx-border-radius: 6 !important;
+    -fx-background-insets: 0 !important;
+
 }
 
 .date-picker > .text-field {
@@ -145,6 +150,10 @@
 .date-picker > .arrow-button {
     -fx-background-color: #ff0000 !important;
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.15), 27.63, 0.17, -10, -10);
+    -fx-background-insets: 0 -1 0 0 !important;
+    -fx-background-radius: 0 5 5 0 !important;
+    -fx-max-height: infinity !important;
+    -fx-padding: 0 8 0 8 !important;
 }
 
 .date-picker > .arrow-button > .arrow {
@@ -209,12 +218,6 @@
     -fx-background-insets: 0 !important;
 }
 
-/* Giorno Selezionato con effetto inner shadow */
-.date-picker-popup .selected {
-    -fx-background-color: #ff0000 !important;
-    -fx-text-fill: white !important;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.15), 27.63, 0.17, -10, -10);
-}
 
 /* Giorni fuori dal mese */
 .date-picker-popup .previous-month,
@@ -228,6 +231,34 @@
     -fx-background-color: #4a4a4a;
     -fx-text-fill: white !important;
 }
+
+.date-picker-popup .month-year-pane .button,
+.date-picker-popup .month-year-pane .button:focused,
+.date-picker-popup .month-year-pane .button:hover,
+.date-picker-popup .month-year-pane .button:armed {
+    -fx-background-color: transparent !important; /* Rende il corpo del bottone invisibile */
+    -fx-background-insets: 0 !important;
+    -fx-background-radius: 0 !important;
+}
+
+.date-picker-popup .day-cell,
+.date-picker-popup .week-number-cell,
+.date-picker-popup .day-name-cell {
+    -fx-pref-width: 30px !important;  /* Larghezza perfetta per non stringere i numeri */
+    -fx-pref-height: 34px !important; /* Altezza standard nativa */
+    -fx-max-width: 30px !important;
+    -fx-max-height: 34px !important;
+    -fx-min-width: 30px !important;
+    -fx-min-height: 24px !important;
+}
+
+/* 2. Blocca l'altezza totale della griglia (7 righe totali da 24px ciascuna) */
+.date-picker-popup .calendar-grid {
+    -fx-pref-height: 180px !important;
+    -fx-max-height: 180px !important;
+    -fx-min-height: 180px !important;
+}
+
 /* ================= MENU ================= */
 
 .menu-button .arrow {
@@ -465,9 +496,10 @@ Line {
 
 /* 2. IL QUADRATINO (BOX) */
 #checkBoxBankAccountSettingsPage .box {
-    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, #333333 !important; /* Grigio quando spento */
-    -fx-background-insets: 0 0 -1 0, 0, 1, 2 !important;
-    -fx-background-radius: 3px !important;
+    -fx-border-width: 1 !important;
+    -fx-border-color: #5a5a5a !important;
+    -fx-background-color: #333333 !important; /* Grigio quando spento */
+    -fx-background-radius: 3 !important;
 }
 
 #checkBoxBankAccountSettingsPage:selected .box {
@@ -665,6 +697,7 @@ Line {
     -fx-background-color: #3a3a3a !important;
     -fx-text-fill: white !important;
     -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-border-color: transparent !important;
 }
 
 #gridPaneAddWidget11TH,
@@ -824,4 +857,77 @@ Line {
     -fx-border-width: 0 0 0 1 !important;
 }
 
+#transactionGridPane{
+    -fx-border-color: white !important;
+}
 
+
+
+
+
+
+
+
+
+
+
+
+#textFieldChatSupport{
+    -fx-prompt-text-fill: #8a8a8a !important;
+}
+
+
+#notificationVBox{
+    -fx-background-color: white !important;
+}
+#vBoxNotificationSlider{
+    -fx-background-color: white !important;
+}
+
+#notificationSliderAnchorPane{
+    -fx-border-color: #e4e4e4 !important;
+    -fx-border-width: 0 0 0 1 !important;
+}
+
+
+#closeMenageCardPopup{
+    -fx-text-fill: white !important;
+}
+
+.text-input {
+    -fx-highlight-fill: red;
+    -fx-highlight-text-fill: white;
+}
+
+#scrollPaneFriends,
+#chatScrollPane {
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+}
+
+#textLabel {
+    -fx-text-fill: white !important;
+}
+
+#labelFromFriendTransactionCloud{
+    -fx-text-fill: white !important;
+}
+
+#notificationAnchorPane {
+    -fx-border-color: #595959 !important;
+}
+
+#textFieldFriendshipRequestPopupU,
+#textFieldFriendshipRequestPopupE,
+#textFieldFriendshipRequestPopupN{
+    -fx-border-color: #333333 !important;
+}
+
+#monthlyBalanceGridPane,
+#quickContactGridPane {
+    -fx-border-color: white !important;
+}
