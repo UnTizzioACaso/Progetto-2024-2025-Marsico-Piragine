@@ -12,7 +12,6 @@ import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ValueValidator;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -22,7 +21,6 @@ import javafx.scene.paint.Paint;
 import javafx.util.Pair;
 
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,9 +85,9 @@ public class FriendsPageController extends BranchController
             return;
         }
 
-        int requesterAccount = BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID());
-        int requestedAccount = BankAccountDAO.getIdAccountByUserId(friend.getUserID());
-        Transaction t = new Transaction(requesterAccount, requestedAccount,value, noteTextFiled.getText(), "request", -1, "pending");
+        int beneficiaryAccount = BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID());
+        int senderAccount = BankAccountDAO.getIdAccountByUserId(friend.getUserID());
+        Transaction t = new Transaction(beneficiaryAccount, senderAccount,value, noteTextFiled.getText(), "request", -1, "pending");
 
         if (!(TransactionDAO.insertTransaction(t)))
         {

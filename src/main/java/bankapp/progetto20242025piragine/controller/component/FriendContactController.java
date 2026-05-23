@@ -59,18 +59,15 @@ public class FriendContactController extends BranchController
         for (Transaction transaction : transactions)
         {
             if(transaction.getStatus() == null) transaction.setStatus("");
-            if(transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("request"))
+            if(transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("request")) //if user is beneficiary of a request
             {
-
-                FromUserTextCloudController controller = sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
-                controller.request = transaction;
-                controller.friendUsername = friendUsernameLabel.getText();
+                sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
             }
-            else if (transaction.getBeneficiary().equals(userAccount))
+            else if (transaction.getBeneficiary().equals(userAccount)) //if user is beneficiary of a donation
             {
                 receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
             }
-            else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("request"))
+            else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("request")) //if friend is beneficiary of a request
             {
                 ToUserTextCloudController controller = receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
                 controller.request = transaction;
@@ -78,9 +75,8 @@ public class FriendContactController extends BranchController
             }
             else
             {
-                sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+               sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
             }
-
         }
     }
 
@@ -90,13 +86,12 @@ public class FriendContactController extends BranchController
         ThemeManager.applyTheme(CurrentSession.getFriendsPageController().chatVBox.getScene(), CurrentSession.getLoggedUser().getTheme());
     }
 
-    private FromUserTextCloudController sendCloud(String text)
+    private void sendCloud(String text)
     {
         Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/fromUserTextCloud.fxml");
         FromUserTextCloudController controller = (FromUserTextCloudController) p.getKey();
         controller.textLabel.setText(text);
         friendsPageController.chatVBox.getChildren().add(p.getValue());
-        return controller;
     }
 
     private ToUserTextCloudController receiveCloud(String text)

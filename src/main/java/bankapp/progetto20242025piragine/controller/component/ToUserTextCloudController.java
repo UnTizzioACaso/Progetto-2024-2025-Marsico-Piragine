@@ -9,7 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
-public class ToUserTextCloudController extends BranchController {
+public class ToUserTextCloudController extends BranchController
+{
     @FXML
     public Label textLabel;
 

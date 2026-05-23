@@ -13,11 +13,11 @@
          <children>
             <Polygon id="polygonFromFriendTransactionCloud" fill="#4a4a4a" points="0.0, 0.0, -15.0, 15.0, 0.0, 15.0" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
-                  <Insets bottom="1.0" left="-8.0" />
+                  <Insets left="-8.0" />
                </StackPane.margin>
             </Polygon>
 
-            <Label id="labelFromFriendTransactionCloud" fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" style="-fx-background-color: #4a4a4a; -fx-background-radius: 15 15 15 0; -fx-padding: 10;" text="Messaggio del MazeBot" textFill="WHITE" wrapText="true">
+            <Label id="labelFromFriendTransactionCloud" fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" onMouseClicked="#showRequest" style="-fx-background-color: #4a4a4a; -fx-background-radius: 15 15 15 0; -fx-padding: 10;" text="Messaggio del MazeBot" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>

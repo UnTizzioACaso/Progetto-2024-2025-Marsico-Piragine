@@ -6,6 +6,7 @@ import bankapp.progetto20242025piragine.controller.component.TopbarController;
 import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
 import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
@@ -26,7 +27,8 @@ public  class RootWindowController extends BranchController {
 
 
     public void switchPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
-    {   if (!(fxml.equals(currentPage)))
+    {
+        if (!(fxml.equals(currentPage)))
         {
             currentPage = fxml;
             Node node = EasyFxmlLoader.loader(fxml).getValue(); //creating the node from the loader
@@ -55,9 +57,10 @@ public  class RootWindowController extends BranchController {
     @FXML
     public void initialize() //initializing the first page to load
     {
+        ThemeManager.applyTheme(rootWindow.getScene(), "light");
         currentPage = "";
-        rootWindow.setLeft(null); //setting left to null because the first page is login and it doesn't need the sidebar
-        rootWindow.setTop(null); //setting top to null because the first page is login and it doesn't need the topbar
+        rootWindow.setLeft(null); //setting left to null because the first page is login, and it doesn't need the sidebar
+        rootWindow.setTop(null); //setting top to null because the first page is login, and it doesn't need the topbar
         loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml"); //loading login.fxml
     }
 

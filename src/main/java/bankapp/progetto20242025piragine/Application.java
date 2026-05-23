@@ -26,8 +26,6 @@ public class Application extends javafx.application.Application {
         CurrentSession.setRootController(fxmlLoader.getController());
         CurrentSession.setPrimaryStage(stage);
 
-        // Applica il tema globale (chiaro/scuro) all'apertura
-        ThemeManager.applyTheme(scene, "light");
 
         // Imposta le proprietà della finestra principaleuserIcon.png
         stage.setTitle("Maze Bank");
