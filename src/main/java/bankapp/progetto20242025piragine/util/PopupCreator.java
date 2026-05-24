@@ -18,6 +18,9 @@ public class PopupCreator
         Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
         Parent root = (Parent) p.getValue();
         BranchController controller =  p.getKey(); //getting the controller from the loader
+        Scene scene = new Scene(root);
+        ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
+        controller.initializer(); //initializing the controller
         Stage popupStage = new Stage(); //creating a new stage for the popup
         CurrentSession.setPopupStage(popupStage);
         popupStage.initStyle(StageStyle.TRANSPARENT);
@@ -27,11 +30,9 @@ public class PopupCreator
         popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
         Stage ownerStage = (Stage) CurrentSession.getRootController().rootWindow.getScene().getWindow();
         popupStage.initOwner(ownerStage);
-        Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         popupStage.setScene(scene);
         popupStage.show();
-        ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
         return controller;
     }
 
