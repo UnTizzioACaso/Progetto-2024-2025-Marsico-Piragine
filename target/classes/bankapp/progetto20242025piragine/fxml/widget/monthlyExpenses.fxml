@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="monthlyExpensesVBox" maxHeight="250.0" maxWidth="850.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.MonthlyExpensesController">
+<VBox id="vBoxMonthlyExpenses" maxHeight="250.0" maxWidth="850.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.MonthlyExpensesController">
 
     <children>
       <GridPane prefHeight="33.0" prefWidth="339.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0;">
@@ -63,7 +63,7 @@
 
         <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15;" styleClass="scroll-pane maze-scroll" VBox.vgrow="ALWAYS">
             <content>
-                <VBox fx:id="expensesVbox" />
+                <VBox fx:id="monthlyExpensesVBox" />
             </content>
         </ScrollPane>
 

@@ -47,12 +47,26 @@
                </font>
                <HBox.margin>
                   <Insets />
-               </HBox.margin></ToggleButton>
+               </HBox.margin>
+               <effect>
+                  <InnerShadow height="10.5" offsetY="-10.0" radius="2.125" width="0.0">
+                     <color>
+                        <Color opacity="0.15000000596046448" />
+                     </color>
+                  </InnerShadow>
+               </effect></ToggleButton>
 
                 <ToggleButton fx:id="togglePhoneNumber" maxWidth="1.7976931348623157E308" onAction="#switchToPhoneNumber" prefHeight="30.0" prefWidth="126.0" style="-fx-background-color: white; -fx-background-radius: 0 8 8 0; -fx-border-color: transparent;" text="Numero di telefono" textFill="#2b2b2b" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="12.0" />
-               </font></ToggleButton>
+               </font>
+               <effect>
+                  <InnerShadow height="10.5" offsetY="-10.0" radius="2.125" width="0.0">
+                     <color>
+                        <Color opacity="0.15000000596046448" />
+                     </color>
+                  </InnerShadow>
+               </effect></ToggleButton>
             </children>
          <effect>
             <InnerShadow choke="0.17" height="9.55" offsetX="-10.0" offsetY="-10.0" radius="21.82" width="79.73">
@@ -72,7 +86,7 @@
       <TextField id="textFieldFriendshipRequestPopupE" fx:id="searchByEmailField" layoutX="19.0" layoutY="83.0" onAction="#findHypotheticalFriend" prefHeight="30.0" prefWidth="376.0" promptText=" Email amico" style="-fx-background-radius: 12; -fx-border-radius: 12;" visible="false" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="84.0" />
       <TextField id="textFieldFriendshipRequestPopupN" fx:id="searchByPhoneNumberField" layoutX="19.0" layoutY="83.0" onAction="#findHypotheticalFriend" prefHeight="30.0" prefWidth="376.0" promptText=" Numero di telefono amico" style="-fx-background-radius: 12; -fx-border-radius: 12;" visible="false" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="84.0" />
 
-        <Button fx:id="sendButton" layoutX="332.8" layoutY="84.0" mnemonicParsing="false" onAction="#findHypotheticalFriend" prefHeight="29.0" prefWidth="67.0" style="-fx-background-radius: 0 12 12 0; -fx-border-radius: 0 12 12 0; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="84.2">
+        <Button fx:id="sendButton" layoutX="334.6" layoutY="84.0" mnemonicParsing="false" onAction="#findHypotheticalFriend" prefHeight="29.0" prefWidth="67.0" style="-fx-background-radius: 0 12 12 0; -fx-border-radius: 0 12 12 0; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" AnchorPane.rightAnchor="18.19999999999999" AnchorPane.topAnchor="84.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

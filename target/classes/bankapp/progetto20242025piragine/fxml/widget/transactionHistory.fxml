@@ -38,7 +38,7 @@
             <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField id="textFieldTransactionHistory" fx:id="transationHistoryTextField" maxHeight="26.0" maxWidth="450.0" minHeight="26.0" prefHeight="27.0" prefWidth="168.0" promptText=" Parola chiave" style="-fx-background-radius: 15;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <TextField id="textFieldTransactionHistory" fx:id="transactionHistoryTextField" maxHeight="26.0" maxWidth="450.0" minHeight="26.0" prefHeight="27.0" prefWidth="168.0" promptText=" Parola chiave" style="-fx-background-radius: 15;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <padding>
                   <Insets left="10.0" />
                </padding>

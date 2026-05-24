@@ -120,6 +120,59 @@
    DATE PICKER
    ========================================================== */
 
+/* Il container principale non deve avere bordi o sfondi nativi che fanno conflitto */
+.date-picker {
+    -fx-background-color: transparent !important;
+    -fx-border-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+}
+
+/* 1. APPLICA IL BORDO GRIGIO E ARROTONDA SOLO A SINISTRA */
+.date-picker > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color: white !important;
+    -fx-text-fill: black !important;
+    -fx-background-insets: 0 !important;
+
+    /* Applica il bordo grigio solo sui lati Top, Left e Bottom */
+    -fx-border-color: #c0c0c0 transparent #c0c0c0 #c0c0c0 !important;
+    -fx-border-width: 1px !important;
+
+    /* Arrotonda l'angolo in alto a sinistra (6px) e in basso a sinistra (6px) */
+    -fx-background-radius: 6px 0 0 6px !important;
+    -fx-border-radius: 6px 0 0 6px !important;
+}
+
+/* 2. BOTTONE ROSSO: ARROTONDA SOLO A DESTRA E CHIUDE IL BORDO GRIGIO */
+.date-picker > .arrow-button {
+    -fx-background-color: #ff0000 !important;
+    -fx-background-insets: 0 !important;
+
+    /* Continua il bordo grigio sui lati Top, Right e Bottom per chiudere il rettangolo */
+    -fx-border-color: #c0c0c0 #c0c0c0 #c0c0c0 transparent !important;
+    -fx-border-width: 1px !important;
+
+    /* Arrotonda l'angolo in alto a destra (6px) e in basso a destra (6px) */
+    -fx-background-radius: 0 6px 6px 0 !important;
+    -fx-border-radius: 0 6px 6px 0 !important;
+
+    -fx-effect: innershadow(
+        three-pass-box,
+        rgba(0,0,0,0.15),
+        27.63,
+        0.17,
+        -10,
+        -10
+    ) !important;
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white !important;
+}
+
+
+/* --- STRUTTURA POPUP CALENDARIO --- */
 .date-picker-popup .month-year-pane {
     -fx-background-color: #ff0000;
     -fx-effect: innershadow(
@@ -147,33 +200,16 @@
     -fx-background-color: white;
 }
 
-.date-picker > .arrow-button {
-    -fx-background-color: #ff0000;
-    -fx-effect: innershadow(
-        three-pass-box,
-        rgba(0,0,0,0.15),
-        27.63,
-        0.17,
-        -10,
-        -10
-    );
-}
-
-.date-picker > .arrow-button > .arrow {
-    -fx-background-color: white;
-}
-
 .date-picker-popup .day-name-cell {
     -fx-text-fill: black !important;
 }
 
-/* 1. Stile per i numeri della settimana (colonna sinistra) */
+/* Stile per i numeri della settimana (colonna sinistra) */
 .date-picker-popup .week-number-cell {
     -fx-text-fill: black !important;
 }
 
-
-/* 3. Assicuriamoci che la griglia non abbia spazi strani */
+/* Assicuriamoci che la griglia non abbia spazi strani */
 .date-picker-popup .calendar-grid {
     -fx-background-color: white !important;
 }
@@ -184,25 +220,23 @@
     -fx-background-insets: 0 !important;
 }
 
-/* Giorno selezionato */
-.date-picker-popup .selected {
+
+/* --- FIX REALE: IN JAVAFX SI USA .date-cell, NON .day-cell PER IL SELECTED --- */
+.date-picker-popup .date-cell:selected {
     -fx-background-color: #ff0000 !important;
-    -fx-effect: innershadow(
-            three-pass-box,
-            rgba(0,0,0,0.15),
-            27.63,
-            0.17,
-            -10,
-            -10
-        );
     -fx-text-fill: white !important;
+    -fx-background-insets: 0 !important;
+    -fx-effect: innershadow(
+        three-pass-box,
+        rgba(0,0,0,0.15),
+        27.63,
+        0.17,
+        -10,
+        -10
+    ) !important;
 }
 
-
-
-
-
-/* Forza il colore base e impedisce qualsiasi cambiamento al passaggio del mouse */
+/* Forza il colore base per i giorni normali */
 .date-picker-popup .day-cell {
     -fx-background-color: white;
     -fx-text-fill: black;
@@ -211,10 +245,10 @@
 .date-picker-popup .day-cell:hover {
     -fx-background-color: white !important;
     -fx-text-fill: black !important;
-    -fx-background-insets: 0 !important; /* Forza la rimozione di bordi/inset che creano l'alone */
+    -fx-background-insets: 0 !important;
 }
 
-/* Questa riga serve a bloccare l'eventuale cambio colore interno di JavaFX */
+/* Blocca l'eventuale cambio colore interno di JavaFX */
 .date-picker-popup .day-cell:focused {
     -fx-background-color: white !important;
 }
@@ -222,10 +256,28 @@
 /* GIORNI FUORI MESE (Più scuri) */
 .date-picker-popup .previous-month,
 .date-picker-popup .next-month {
-    -fx-background-color: #f2f2f2 !important; /* Grigio chiaro per i giorni non del mese */
-    -fx-text-fill: #b0b0b0 !important;        /* Testo grigio per renderli meno visibili */
+    -fx-background-color: #f2f2f2 !important;
+    -fx-text-fill: #b0b0b0 !important;
 }
 
+/* 1. Blocca l'altezza minima e massima delle celle dei giorni */
+.date-picker-popup .day-cell,
+.date-picker-popup .week-number-cell,
+.date-picker-popup .day-name-cell {
+    -fx-pref-width: 30px !important;  /* Larghezza perfetta per non stringere i numeri */
+    -fx-pref-height: 34px !important; /* Altezza standard nativa */
+    -fx-max-width: 30px !important;
+    -fx-max-height: 34px !important;
+    -fx-min-width: 30px !important;
+    -fx-min-height: 24px !important;
+}
+
+/* 2. Blocca l'altezza totale della griglia (7 righe totali da 24px ciascuna) */
+.date-picker-popup .calendar-grid {
+    -fx-pref-height: 180px !important;
+    -fx-max-height: 180px !important;
+    -fx-min-height: 180px !important;
+}
 /* ==========================================================
    ROOT E VARIEF
    ========================================================== */
@@ -330,10 +382,10 @@ Line {
 
 /* 2. IL QUADRATINO (BOX) - STATO NON SELEZIONATO (Bianco con bordo) */
 #checkBoxBankAccountSettingsPage .box {
-    /* Ripristina il look standard: bianco dentro e bordino grigio */
-    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, white !important;
-    -fx-background-insets: 0 0 -1 0, 0, 1, 2 !important;
-    -fx-background-radius: 3px !important;
+    -fx-border-width: 1 !important;
+    -fx-border-color: #5a5a5a  !important;
+    -fx-background-color: white !important;
+    -fx-background-radius: 3 !important;
 }
 
 /* 3. IL QUADRATINO (BOX) - STATO SELEZIONATO (Rosso Maze Bank) */
@@ -399,6 +451,7 @@ Line {
     -fx-border-color: #c0c0c0 !important;
     -fx-border-width: 1 !important;
 }
+
 
 /* Quando clicchi dentro */
 .text-field:focused {
@@ -504,4 +557,18 @@ Line {
 
 #notificationAnchorPane {
     -fx-border-color: #595959 !important;
+}
+
+#transactionValueLabel{
+    -fx-text-fill: red !important;
+}
+
+#textFieldTransactionHistory {
+    -fx-border-color: #e4e4e4 !important;
+    -fx-border-radius: 20 !important;
+}
+
+#transactionSubjectLabel,
+#TransactionDateLabel{
+    -fx-text-fill: black !important;
 }
