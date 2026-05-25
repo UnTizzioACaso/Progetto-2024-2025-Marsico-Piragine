@@ -22,7 +22,7 @@
       </Label>
       <HBox alignment="CENTER" layoutY="109.0" prefHeight="46.0" prefWidth="400.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: ff0000;" text="Aggiungi credito" textFill="WHITE">
+            <Button maxWidth="140.0" minWidth="60.0" mnemonicParsing="false" onAction="#loadAddAccountMoneyPage" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: ff0000;" text="Aggiungi credito" textFill="WHITE">
                <effect>
                   <InnerShadow choke="0.17" height="53.38" offsetX="-10.0" offsetY="-10.0" radius="26.93" width="56.34">
                      <color>

@@ -27,4 +27,10 @@ public class BankAccountController extends WidgetController
     {
         labelBankAccount.setText(CurrentSession.getLoggedAccount().getMoney().toString() + " €");
     }
+
+    @FXML
+    public void loadAddAccountMoneyPage()
+    {
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/addAccountMoneyPage.fxml");//loads the add account money page
+    }
 }
