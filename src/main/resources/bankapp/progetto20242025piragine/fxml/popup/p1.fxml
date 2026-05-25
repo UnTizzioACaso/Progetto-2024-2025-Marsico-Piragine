@@ -9,7 +9,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="514.0" prefWidth="378.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.fxml.popup.P1">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.4" layoutY="36.0" prefHeight="42.0" prefWidth="379.0" text="RIEPILOGO TRANSAZIONE" textAlignment="CENTER" AnchorPane.leftAnchor="10.4" AnchorPane.rightAnchor="10.399999999999977">
@@ -71,7 +70,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="28.8" layoutY="423.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="320.0" style="-fx-background-color: #ff0000; -fx-background-radius: 10;" text="CONFERMA RICARICA" textFill="WHITE" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="29.0">
+      <Button layoutX="28.8" layoutY="423.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="320.0" style="-fx-background-color: #ff0000; -fx-background-radius: 14;" text="CONFERMA RICARICA" textFill="WHITE" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="29.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
