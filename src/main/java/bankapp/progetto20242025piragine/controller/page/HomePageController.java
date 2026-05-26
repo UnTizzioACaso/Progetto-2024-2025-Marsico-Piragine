@@ -25,10 +25,9 @@ public class HomePageController extends BranchController
     public void initialize() //initializing the home page
     {
         if (CurrentSession.getHomePageController() == null) {CurrentSession.setHomePageController(this);}
-
-
-
         List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getUsedWidgetsByUserId(CurrentSession.getLoggedUser().getUserID());
+        addWidget("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml", 1, 0); //adding favouritesCard widget's fxml
+        addWidget("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml", 0, 0); //adding bankAccount widget's fxml
         for (HomeWidgetCustom widget : widgets) {
             switch (widget.getTypeWidget()) {
                 case "lastFiveExpensesVBox" ->
@@ -45,8 +44,7 @@ public class HomePageController extends BranchController
                         addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", widget.getColumn(), widget.getRow());
             }
         }
-        addWidget("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml", 1, 0); //getting favouritesCard widget's fxml
-        addWidget("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml", 0, 0); //getting favouritesCard widget's fxml
+
     }
 
 
@@ -84,6 +82,5 @@ public class HomePageController extends BranchController
         controller.homePageGridPane = homePageGridPane;
         controller.widget = node;
         HomeWidgetCustomDAO.updatePosition(CurrentSession.getLoggedUser().getUserID(), node.getId(), row, column);
-        System.out.println(CurrentSession.getLoggedUser().getUserID() + " " + node.getId() + " " + row + " " + column);
     }
 }

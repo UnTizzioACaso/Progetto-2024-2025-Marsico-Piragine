@@ -69,7 +69,7 @@ public  class RootWindowController extends BranchController {
     {
         Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml");
         Node node = p.getValue(); //creating the node from the loader
-        bankapp.progetto20242025piragine.util.CurrentSession.setSidebarController((SidebarController) p.getKey()); //getting the controller from the loader
+        CurrentSession.setSidebarController((SidebarController) p.getKey()); //getting the controller from the loader
         rootWindow.setLeft(node); //setting the node to the left
     }
 
@@ -84,7 +84,8 @@ public  class RootWindowController extends BranchController {
 
     private void setCenter(Node node)
     {
-        centerAnchorPane.getChildren().add(node);
+        centerAnchorPane.getChildren().clear(); //clears the centerAnchorPane
+        centerAnchorPane.getChildren().add(node); //adds the node to the centerAnchorPane
         double d = 0;
         AnchorPane.setBottomAnchor(node, d);
         AnchorPane.setLeftAnchor(node, d);

@@ -12,6 +12,16 @@
     -fx-background-color: transparent !important;
 }
 
+#darkAppleButton, #darkGoogleButton{
+    visibility: false ;
+}
+
+#whiteAppleButton, #whiteGoogleButton {
+    visibility: true ;
+}
+
+
+
 .scroll-bar .track {
     -fx-background-color: #8b0000 !important;
     -fx-background-radius: 8 !important;
