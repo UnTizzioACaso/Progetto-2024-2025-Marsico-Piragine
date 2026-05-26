@@ -10,5 +10,18 @@ public class AddAccountMoneyPageController extends BranchController
         {
 
         }
+
+        @FXML
+        public void payWithApplePay()
+        {
+
+        }
+
+        @FXML
+        public void payWithGooglePay()
+        {
+
+        }
+
 }
 
