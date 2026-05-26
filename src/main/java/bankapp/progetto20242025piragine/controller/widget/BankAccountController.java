@@ -26,7 +26,7 @@ public class BankAccountController extends WidgetController
     @FXML
     public void showBankTransferPopup()
     {
-        PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/addAccountMoneyPopup.fxml", 380, 510);//shows the bank transfer popupp
+        PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/bankTransferPopup.fxml", 500, 510);//shows the bank transfer popup
     }
 
     @FXML
