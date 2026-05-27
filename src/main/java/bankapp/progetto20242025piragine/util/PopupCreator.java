@@ -1,46 +1,40 @@
 package bankapp.progetto20242025piragine.util;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.io.IOException;
+import javafx.util.Pair;
 
 public class PopupCreator
 {
-    public static BranchController showPopup(String title, String fxml, int width, int height)
+    public static BranchController showPopup(String title, String fxml, double width, double height)
     {
-        try {
-            FXMLLoader loader = new FXMLLoader(PopupCreator.class.getResource(fxml)); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            BranchController controller = loader.getController(); //getting the controller from the loader
-            Stage popupStage = new Stage(); //creating a new stage for the popup
-            popupStage.setTitle(title); //setting the title
-            popupStage.initStyle(StageStyle.TRANSPARENT);
-            popupStage.setMinWidth(width); //setting popup's minimum width
-            popupStage.setMaxWidth(width);
-            popupStage.setMinHeight(height); //setting popup's minimum height
-            popupStage.setMaxHeight(height);
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            Scene scene =new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-            popupStage.setScene(scene);
-            controller.initializer();
-            popupStage.show();
-
-            return controller;
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the " + fxml + " popup " + e.getMessage());
-            e.printStackTrace();
-        }
-        return null;
+        if(!(CurrentSession.getPopupStage() == null)){CurrentSession.getPopupStage().close();}
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+        Parent root = (Parent) p.getValue();
+        BranchController controller =  p.getKey(); //getting the controller from the loader
+        Scene scene = new Scene(root);
+        ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
+        controller.initializer(); //initializing the controller
+        Stage popupStage = new Stage(); //creating a new stage for the popup
+        CurrentSession.setPopupStage(popupStage);
+        popupStage.initStyle(StageStyle.TRANSPARENT);
+        popupStage.setWidth(width); //setting popup's minimum width
+        popupStage.setHeight(height);
+        popupStage.setResizable(false);
+        popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
+        Stage ownerStage = (Stage) CurrentSession.getRootController().rootWindow.getScene().getWindow();
+        popupStage.initOwner(ownerStage);
+        scene.setFill(Color.TRANSPARENT);
+        popupStage.setScene(scene);
+        popupStage.show();
+        return controller;
     }
+
+
 }

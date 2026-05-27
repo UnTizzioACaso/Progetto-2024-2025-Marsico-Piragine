@@ -46,9 +46,8 @@ public class FavouritesCardController extends WidgetController{
 
     // Initializes the favourite cards widget with default cards
     @FXML
-    public void initializer()
+    public void initialize()
     {
-
         for (Card c : CardDAO.getCardsByUserId(CurrentSession.getLoggedUser().getUserID()))
         {
             if (c.isFavourite())

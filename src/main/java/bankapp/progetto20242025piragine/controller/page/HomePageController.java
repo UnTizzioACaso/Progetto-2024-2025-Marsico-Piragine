@@ -6,54 +6,47 @@ import bankapp.progetto20242025piragine.controller.widget.WidgetController;
 import bankapp.progetto20242025piragine.model.HomeWidgetCustom;
 import bankapp.progetto20242025piragine.dao.HomeWidgetCustomDAO;
 import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
+import javafx.util.Pair;
 
 import java.util.List;
 
 public class HomePageController extends BranchController
 {
     @FXML
-    private GridPane homePageGridPane;
+    public GridPane homePageGridPane;
 
-    @Override
-    public void initializer() //initializing the home page
+    @FXML
+    public void initialize() //initializing the home page
     {
-        try
-        {
-            addWidget("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml", 1, 0); //getting favouritesCard widget's fxml
-            addWidget("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml", 0, 0); //getting favouritesCard widget's fxml
-            List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getWidgetsByUserId(CurrentSession.getLoggedUser().getUserID());
-            for(HomeWidgetCustom widget : widgets)
-            {
-                if (!widget.isRemove())
-                {
-                    switch (widget.getTypeWidget()) {
-                        case "lastFiveExpensesVBox" ->
-                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", widget.getColumn(), widget.getRow());
-                        case "monthlyBalanceGridPane" ->
-                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyBalance.fxml", widget.getColumn(), widget.getRow());
-                        case "monthlyExpensesVBox" ->
-                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", widget.getColumn(), widget.getRow());
-                        case "monthlyIncomesVBox" ->
-                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", widget.getColumn(), widget.getRow());
-                        case "quickContactGridPane" ->
-                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/quickContact.fxml", widget.getColumn(), widget.getRow());
-                        case "transactionHistoryGridPane" ->
-                                addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", widget.getColumn(), widget.getRow());
-                    }
-                }
+        if (CurrentSession.getHomePageController() == null) {CurrentSession.setHomePageController(this);}
+        List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getUsedWidgetsByUserId(CurrentSession.getLoggedUser().getUserID());
+        addWidget("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml", 1, 0); //adding favouritesCard widget's fxml
+        addWidget("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml", 0, 0); //adding bankAccount widget's fxml
+        for (HomeWidgetCustom widget : widgets) {
+            switch (widget.getTypeWidget()) {
+                case "lastFiveExpensesVBox" ->
+                        addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", widget.getColumn(), widget.getRow());
+                case "monthlyBalanceGridPane" ->
+                        addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyBalance.fxml", widget.getColumn(), widget.getRow());
+                case "monthlyExpensesVBox" ->
+                        addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", widget.getColumn(), widget.getRow());
+                case "monthlyIncomesVBox" ->
+                        addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", widget.getColumn(), widget.getRow());
+                case "quickContactGridPane" ->
+                        addWidget("/bankapp/progetto20242025piragine/fxml/widget/quickContact.fxml", widget.getColumn(), widget.getRow());
+                case "transactionHistoryGridPane" ->
+                        addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", widget.getColumn(), widget.getRow());
             }
         }
-        catch (Exception e)
-        {
-            System.err.println("error during initializzation");
-            throw new RuntimeException(e);
-        }
+
     }
+
 
     @FXML
     public void loadAddWidget12()
@@ -81,22 +74,13 @@ public class HomePageController extends BranchController
 
     public void addWidget(String fxml, int column, int row)
     {
-        try
-        {
-            FXMLLoader loader = new FXMLLoader (getClass().getResource(fxml));
-            Node node = loader.load();
-            if (column == 0) {node.setStyle(node.getStyle() + "-fx-max-width: 400");}
-            WidgetController controller = loader.getController();
-            homePageGridPane.add(node, column, row);
-            controller.homePageGridPane = homePageGridPane;
-            controller.initializer();
-            controller.widget = node;
-            HomeWidgetCustomDAO.updatePosition(CurrentSession.getLoggedUser().getUserID(), controller.getWidgetType(), row, column, false);
-        }
-        catch (Exception e)
-        {
-            System.err.println("error during adding "+ fxml + "widget" + e.getMessage());
-            e.printStackTrace();
-        }
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+        Node node = p.getValue();
+        if (column == 0) {node.setStyle(node.getStyle() + "-fx-max-width: 400");}
+        WidgetController controller = (WidgetController) p.getKey();
+        homePageGridPane.add(node, column, row);
+        controller.homePageGridPane = homePageGridPane;
+        controller.widget = node;
+        HomeWidgetCustomDAO.updatePosition(CurrentSession.getLoggedUser().getUserID(), node.getId(), row, column);
     }
 }

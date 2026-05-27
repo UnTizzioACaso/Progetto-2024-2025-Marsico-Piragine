@@ -17,9 +17,9 @@ public class BankAccountDAO {
 
             stmt.setInt(1, userId);
 
-            try (ResultSet rs = stmt.executeQuery()) {
+            try (ResultSet rs = stmt.executeQuery())
+            {
                 if (!rs.next()) return null;
-
 
                 account.setIdAccount(rs.getInt("id_account"));
                 account.setUserId(rs.getInt("user_id"));

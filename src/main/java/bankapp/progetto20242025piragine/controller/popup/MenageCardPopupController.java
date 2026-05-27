@@ -36,15 +36,9 @@ public class MenageCardPopupController extends BranchController {
     @FXML
     private Label errorLabelMenageCardPopup;
 
-    private Stage s;
 
     public Card card;
 
-    @Override
-    public void initializer() {
-        s = (Stage) errorLabelMenageCardPopup.getScene().getWindow();
-        ThemeManager.applyTheme(s.getScene(), CurrentSession.getLoggedUser().getTheme());
-    }
 
     @FXML
     public void updateSpendingLimit() {
@@ -81,8 +75,8 @@ public class MenageCardPopupController extends BranchController {
             spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
             errorLabelMenageCardPopup.setText("");
 
-            if (CurrentSession.getRootController().topbarController != null) {
-                CurrentSession.getRootController().topbarController.reloadPage();
+            if (CurrentSession.getTopbarController() != null) {
+                CurrentSession.getTopbarController().reloadPage();
             }
 
         } catch (NumberFormatException e) {
@@ -99,7 +93,7 @@ public class MenageCardPopupController extends BranchController {
             card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), true));
             addFavouritesButton.setVisible(false);
             removeFavouritesButton.setVisible(true);
-            CurrentSession.getRootController().topbarController.reloadPage();
+            CurrentSession.getTopbarController().reloadPage();
         } catch (SQLException e) {
             System.out.println("error during updating card favourite state to true" + e.getMessage());
             e.printStackTrace();
@@ -112,7 +106,7 @@ public class MenageCardPopupController extends BranchController {
             card.setFavourite(CardDAO.updateCardFavourite(card.getIdCard(), false));
             addFavouritesButton.setVisible(true);
             removeFavouritesButton.setVisible(false);
-            CurrentSession.getRootController().topbarController.reloadPage();
+            CurrentSession.getTopbarController().reloadPage();
         } catch (SQLException e) {
             System.out.println("error during updating card favourite state to false" + e.getMessage());
             e.printStackTrace();
@@ -123,8 +117,8 @@ public class MenageCardPopupController extends BranchController {
     public void deleteCard() {
         try {
             CardDAO.deleteCard(card.getIdCard());
-            s.close();
-            CurrentSession.getRootController().topbarController.reloadPage();
+            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+            CurrentSession.getTopbarController().reloadPage();
         } catch (SQLException e) {
             System.out.println("error during deleting card" + e.getMessage());
             e.printStackTrace();
@@ -133,11 +127,14 @@ public class MenageCardPopupController extends BranchController {
 
     @FXML
     public void blockCard() {
-        try {
+        try
+        {
             CardDAO.updateCardStatus(card.getIdCard(), false);
-            s.close();
-            CurrentSession.getRootController().topbarController.reloadPage();
-        } catch (SQLException e) {
+            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+            CurrentSession.getTopbarController().reloadPage();
+        }
+        catch (SQLException e)
+        {
             System.out.println("error during blocking card" + e.getMessage());
             e.printStackTrace();
         }
@@ -145,11 +142,14 @@ public class MenageCardPopupController extends BranchController {
 
     @FXML
     public void unblockCard() {
-        try {
+        try
+        {
             CardDAO.updateCardStatus(card.getIdCard(), true);
-            s.close();
-            CurrentSession.getRootController().topbarController.reloadPage();
-        } catch (SQLException e) {
+            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+            CurrentSession.getTopbarController().reloadPage();
+        }
+        catch (SQLException e)
+        {
             System.out.println("error during updating card status state to true" + e.getMessage());
             e.printStackTrace();
         }
@@ -157,6 +157,6 @@ public class MenageCardPopupController extends BranchController {
 
     @FXML
     public void closePopup() {
-        s.close();
+        ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
     }
 }

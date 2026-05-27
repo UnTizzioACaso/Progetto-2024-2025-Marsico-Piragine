@@ -25,8 +25,8 @@ public class MonthlyExpensesController extends WidgetController {
         removeWidget();
     }
 
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
         List<Transaction> transactions = TransactionDAO.getCurrentMonthOutcome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for (Transaction transaction : transactions) {

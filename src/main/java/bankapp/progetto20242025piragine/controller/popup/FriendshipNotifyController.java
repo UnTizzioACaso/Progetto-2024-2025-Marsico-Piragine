@@ -38,12 +38,8 @@ public class FriendshipNotifyController extends BranchController
         FriendRequestDAO.acceptRequest(idRequest);
         FriendRequest r = FriendRequestDAO.getFriendRequestById(idRequest);
         FriendshipDAO.addFriendship(r.getRequester(), r.getRequested());
-        CurrentSession.getRootController().topbarController.updateNotifications();
+        CurrentSession.getTopbarController().updateNotifications();
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
-    @Override
-    public void initializer() {
-        ThemeManager.applyTheme(anchorPaneFriendshipNotify.getScene(), CurrentSession.getLoggedUser().getTheme());
-    }
 }

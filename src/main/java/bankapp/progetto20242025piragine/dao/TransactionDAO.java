@@ -268,6 +268,32 @@ public class TransactionDAO {
         return transactions;
     }
 
+
+    public static List<Transaction> getCompletedTransactionsBySender(int idAccount) {
+        String sql = """
+            SELECT * FROM Bank_Transaction
+            WHERE  sender = ? AND (status = null OR status = "accepted")
+            ORDER BY transaction_date DESC
+            """;
+
+        List<Transaction> transactions = new ArrayList<>();
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idAccount);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    transactions.add(mapRow(rs));
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error getting all account's transactions the db: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return transactions;
+    }
+
     public static Transaction getTransactionById(int idTransaction)
     {
         String sql = """

@@ -30,7 +30,7 @@ public class HomeWidgetCustomDAO {
     }
 
     // 🔹 WidgetController di un utente
-    public static List<HomeWidgetCustom> getWidgetsByUserId(int userId) throws SQLException {
+    public static List<HomeWidgetCustom> getWidgetsByUserId(int userId)   {
         String sql = "SELECT * FROM Home_Widget_Custom WHERE user_id = ? ORDER BY y,x";
         List<HomeWidgetCustom> list = new ArrayList<>();
 
@@ -45,11 +45,43 @@ public class HomeWidgetCustomDAO {
                 }
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during getting user's widgets: " + e.getMessage());
+            e.printStackTrace();
+            return list;
+        }
         return list;
     }
 
+    public static List<HomeWidgetCustom> getUsedWidgetsByUserId(int userId)   {
+        String sql = "SELECT * FROM Home_Widget_Custom WHERE user_id = ? AND remove = false ORDER BY y,x";
+        List<HomeWidgetCustom> list = new ArrayList<>();
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, userId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    list.add(mapRow(rs));
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during getting user's widgets: " + e.getMessage());
+            e.printStackTrace();
+            return list;
+        }
+        return list;
+    }
+
+
+
     // 🔹 Aggiorna posizione widget
-    public static boolean updatePosition(int userId, String widgetType, int newRow, int newColumn, Boolean remove) throws SQLException {
+    public static boolean updatePosition(int userId, String widgetType, int newRow, int newColumn)   {
         String sql = "UPDATE Home_Widget_Custom SET y = ?, x = ?, remove = ? WHERE type_widget = ? AND user_id = ?;";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -57,10 +89,16 @@ public class HomeWidgetCustomDAO {
 
             stmt.setInt(1, newRow);
             stmt.setInt(2, newColumn);
-            stmt.setBoolean(3, remove);
+            stmt.setBoolean(3, false);
             stmt.setString(4, widgetType);
             stmt.setInt(5, userId);
             return stmt.executeUpdate() > 0;
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during update position of " + widgetType + ": " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 

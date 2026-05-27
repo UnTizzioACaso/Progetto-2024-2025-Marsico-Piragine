@@ -16,6 +16,15 @@
 }
 
 
+#darkAppleButton, #darkGoogleButton{
+    visibility: true !important;
+}
+
+#whiteAppleButton, #whiteGoogleButton {
+    visibility: false !important;
+}
+
+
 /* ================= LABEL ================= */
 
 .label {

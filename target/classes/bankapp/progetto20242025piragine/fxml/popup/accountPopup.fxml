@@ -22,7 +22,7 @@
         <Separator layoutX="11.0" layoutY="67.0" prefWidth="562.1" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
 
         <Label fx:id="emailPopupAccountLabel" layoutX="34.0" layoutY="83.0" style="-fx-font-size: 15px; -fx-text-fill: #1F1F1F;" text="utente@gmail.com" AnchorPane.leftAnchor="34.0" />
-        <Button fx:id="logoutAccountPopupButton" layoutX="314.0" layoutY="78.0" mnemonicParsing="false" style="-fx-background-radius: 8; -fx-background-color: e0e0e0; -fx-text-fill: #1F1F1F; -fx-font-weight: 500; -fx-padding: 6 14;" text="Logout" AnchorPane.rightAnchor="33.0" />
+        <Button fx:id="logoutAccountPopupButton" layoutX="314.0" layoutY="78.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-radius: 8; -fx-background-color: e0e0e0; -fx-text-fill: #1F1F1F; -fx-font-weight: 500; -fx-padding: 6 14;" text="Logout" AnchorPane.rightAnchor="33.0" />
 
         <Separator layoutX="11.0" layoutY="118.0" prefWidth="562.1" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
 

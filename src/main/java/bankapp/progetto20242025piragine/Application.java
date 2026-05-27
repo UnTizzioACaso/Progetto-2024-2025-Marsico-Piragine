@@ -19,18 +19,13 @@ public class Application extends javafx.application.Application {
         DBInitializer.initialize();
 
         // Carica il FXML principale
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                Application.class.getResource("fxml/rootWindow.fxml")
-        );
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/rootWindow.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load());
 
-
         CurrentSession.setRootController(fxmlLoader.getController());
+        CurrentSession.setPrimaryStage(stage);
 
-
-        // Applica il tema globale (chiaro/scuro) all'apertura
-        ThemeManager.applyTheme(scene, "light");
 
         // Imposta le proprietà della finestra principaleuserIcon.png
         stage.setTitle("Maze Bank");

@@ -5,11 +5,13 @@ import bankapp.progetto20242025piragine.controller.component.CreditCardRectangle
 import bankapp.progetto20242025piragine.model.Card;
 import bankapp.progetto20242025piragine.dao.CardDAO;
 import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,37 +29,24 @@ public class CardPageController extends BranchController
         PopupCreator.showPopup("Crea e personalizza la carta","/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml", 500, 447);
     }
 
-    // Called automatically when the page is initialized
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
-
+        if(CurrentSession.getCardPageController() == null) {CurrentSession.setCardPageController(this);}
         // Retrieve all cards associated with the logged-in user
         List<Card> cards = CardDAO.getCardsByUserId(CurrentSession.getLoggedUser().getUserID());
-
         // Create a UI component for each card
         for (int i = 0; i < cards.size(); i++)
         {
-            try
-            {
-                // Load the credit card rectangle component
-                FXMLLoader cardRectangleLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/creditCardRectangle.fxml"));
-                // Create the node from the FXML
-                Node cardRectangle = cardRectangleLoader.load();
-                // Get the controller for the card component
-                CreditCardRectangleController controller = cardRectangleLoader.getController();
-                // Fill the card component with data
-                controller.fill(cards.get(i));
-
-                // Add the card component to the VBox
-                cardsContainerVBox.getChildren().add(cardRectangle);
-            }
-            catch (IOException e)
-            {
-                // Handle errors while loading card components
-                System.err.println("error loading the credit card rectangle: " + e.getMessage());
-                e.printStackTrace();
-            }
+            Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/creditCardRectangle.fxml");
+            // Create the node from the FXML
+            Node cardRectangle = p.getValue();
+            // Get the controller for the card component
+            CreditCardRectangleController controller = (CreditCardRectangleController) p.getKey();
+            // Fill the card component with data
+            controller.fill(cards.get(i));
+            // Add the card component to the VBox
+            cardsContainerVBox.getChildren().add(cardRectangle);
         }
 
     }

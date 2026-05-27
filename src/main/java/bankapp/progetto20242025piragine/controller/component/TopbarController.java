@@ -3,22 +3,22 @@ package bankapp.progetto20242025piragine.controller.component;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.model.Notify;
 import bankapp.progetto20242025piragine.dao.NotifyDAO;
-import bankapp.progetto20242025piragine.util.CurrentSession;
-import bankapp.progetto20242025piragine.util.VisualNotificationCreator;
+import bankapp.progetto20242025piragine.util.*;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,75 +27,94 @@ import java.util.Stack;
 public class TopbarController extends BranchController {
 
     @FXML
-    private ImageView notificationButton;
-    @FXML
     private ImageView backArrowButton;
     @FXML
-    private ImageView forwarArrowButton;
-    @FXML
-    private ImageView reloadPageButton;
-    @FXML
-    private Button assistanceButton;
+    public GridPane topbarGridPane;
 
     private Stage popupStage;
 
-    private AnchorPane notificationAnchorPane;
-    private NotificationSliderController notificationAnchorPaneController;
-    private Stack<String> backwardStack = new Stack<>();
-    private Stack<String> forwardStack = new Stack<>();
+    private NotificationSliderController notificationSliderController;
 
+    private Node notificationSlider;
 
-    @Override
-    public void initializer()
-    {
-        try
-        {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/notificationSlider.fxml"));
-            notificationAnchorPane =  loader.load();
-            notificationAnchorPaneController = loader.getController();
-            notificationAnchorPaneController.initializer();
-        }
-        catch (Exception e)
-        {
-            System.err.println("error during loading /bankapp/progetto20242025piragine/fxml/component/notificationAnchorPane.fxml" + e);
-            e.printStackTrace();
-        }
-    }
+    public boolean sliderIsActive = false;
+    public Stack<String> backwardStack = new Stack<>();
+    public Stack<String> forwardStack = new Stack<>();
 
 
     @FXML
-    public void showPopup()
+    public void initialize()
     {
-        if (CurrentSession.getRootController().rootWindow.getRight() == null)
-        {
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/notificationSlider.fxml");
+        notificationSliderController = (NotificationSliderController) p.getKey();
+        notificationSlider = p.getValue();
+        double d = 0;
+        AnchorPane.setTopAnchor(notificationSlider, d);
+        AnchorPane.setBottomAnchor(notificationSlider, d);
+        AnchorPane.setRightAnchor(notificationSlider, d);
+    }
+
+    public void showBottomRightPopup(String fxmlPath, Stage primaryStage)
+    {
+        if(!(CurrentSession.getPopupStage() == null)){CurrentSession.getPopupStage().close();}
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxmlPath);
+        Parent root = (Parent) p.getValue();
+        popupStage = new Stage();
+        popupStage.initStyle(StageStyle.TRANSPARENT);
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+        popupStage.initOwner(primaryStage);
+        ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
+        popupStage.setScene(scene);
+        popupStage.show();
+        CurrentSession.setPrimaryStage(popupStage);
+
+        // CALCOLO POSIZIONE RISPETTO ALLA FINESTRA PRINCIPALE
+        // Coordinata X: Inizio finestra + Larghezza finestra - Larghezza popup - Margine
+        double x = primaryStage.getX() + primaryStage.getWidth() - popupStage.getWidth() - 20;
+        // Coordinata Y: Inizio finestra + Altezza finestra - Altezza popup - Margine
+        double y = primaryStage.getY() + primaryStage.getHeight() - popupStage.getHeight() - 20;
+        // Chiude se clicchi fuori dal popup
+
+        popupStage.setX(x);
+        popupStage.setY(y);
+
+        TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), root);
+        slideIn.setFromY(y+400);
+        slideIn.setToY(0);
+        slideIn.play();
+    }
+
+    @FXML
+    public void showSlider()
+    {
+        if (!sliderIsActive) {
             updateNotifications();
-            CurrentSession.getRootController().rootWindow.setRight(notificationAnchorPane);
-            notificationAnchorPane.setTranslateX(190);
-            TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), notificationAnchorPane);
+            CurrentSession.getRootController().centerAnchorPane.getChildren().add(notificationSlider);
+            TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), notificationSlider);
             slideIn.setFromX(190);
             slideIn.setToX(0);
             slideIn.play();
+            sliderIsActive = true;
+            return;
         }
-        else
-        {
-            TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), notificationAnchorPane);
-            slideOut.setFromX(0);
-            slideOut.setToX(190);
-            slideOut.setOnFinished(e -> {CurrentSession.getRootController().rootWindow.setRight(null);});
-            slideOut.play();
-        }
+        TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), notificationSlider);
+        slideOut.setFromX(0);
+        slideOut.setToX(190);
+        slideOut.setOnFinished(event -> {CurrentSession.getRootController().centerAnchorPane.getChildren().remove(notificationSlider);  sliderIsActive = false;});
+        slideOut.play();
     }
 
     public void updateNotifications()
     {
-        notificationAnchorPaneController.notificationVBox.getChildren().clear();
+        notificationSliderController.notificationVBox.getChildren().clear();
         List<Notify> notifies = NotifyDAO.getNotifyByUserId(CurrentSession.getLoggedUser().getUserID());
 
         if (notifies.isEmpty())
         {
             Label empty = new Label("Nessuna notifica");
             empty.setStyle("-fx-padding: 5;");
-            notificationAnchorPaneController.notificationVBox.getChildren().add(empty);
+            notificationSliderController.notificationVBox.getChildren().add(empty);
         }
         else
         {
@@ -104,7 +123,7 @@ public class TopbarController extends BranchController {
                 if (!n.isRead())
                 {
                     Node notification = VisualNotificationCreator.createVisualTransaction(CurrentSession.getRootController(), n);
-                    notificationAnchorPaneController.notificationVBox.getChildren().add(notification);
+                    notificationSliderController.notificationVBox.getChildren().add(notification);
                 }
             }
         }
@@ -140,6 +159,7 @@ public class TopbarController extends BranchController {
         }
     }
 
+
     @FXML
     public void reloadPage()
     {
@@ -148,7 +168,6 @@ public class TopbarController extends BranchController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek()));
             Parent node = fxmlLoader.load();
             BranchController controller = fxmlLoader.getController();
-            controller.initializer();
             CurrentSession.getRootController().rootWindow.setCenter(node);
         }
         catch (IOException e)
@@ -159,46 +178,8 @@ public class TopbarController extends BranchController {
     }
 
 
-    public void showBottomRightPopup(String fxmlPath, Stage primaryStage) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent root = loader.load();
-            BranchController controller= loader.getController();
-            controller.initializer();
-
-            popupStage = new Stage();
-            popupStage.initStyle(StageStyle.TRANSPARENT);
-
-            // Chiude se clicchi fuori dal popup
-            popupStage.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
-                if (!isNowFocused) {
-                    popupStage.close();
-                }
-            });
-
-            Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-            popupStage.setScene(scene);
-
-            // Importante: mostrare prima di calcolare le dimensioni
-            popupStage.show();
-
-            // CALCOLO POSIZIONE RISPETTO ALLA FINESTRA PRINCIPALE
-            // Coordinata X: Inizio finestra + Larghezza finestra - Larghezza popup - Margine
-            double x = primaryStage.getX() + primaryStage.getWidth() - popupStage.getWidth() - 20;
-
-            // Coordinata Y: Inizio finestra + Altezza finestra - Altezza popup - Margine
-            double y = primaryStage.getY() + primaryStage.getHeight() - popupStage.getHeight() - 20;
-
-            popupStage.setX(x);
-            popupStage.setY(y);
 
 
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     @FXML
     public void showAssistance() {
 

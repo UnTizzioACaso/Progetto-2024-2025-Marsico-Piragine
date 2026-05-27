@@ -1,4 +1,6 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
-public class PinPopupController {
+import bankapp.progetto20242025piragine.controller.BranchController;
+
+public class PinPopupController extends BranchController {
 }

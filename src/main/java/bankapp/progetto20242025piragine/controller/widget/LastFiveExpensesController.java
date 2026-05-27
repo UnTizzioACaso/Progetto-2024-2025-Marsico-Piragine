@@ -19,10 +19,10 @@ public class LastFiveExpensesController extends WidgetController
     private VBox lastFiveExpensesVBox;
 
     // Initializes the widget and loads the last five expenses of the current user
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
-        List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
+        List<Transaction> transactions = TransactionDAO.getCompletedTransactionsBySender(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for (int i = 0; i < 5; i++)
         {
             if (i >= transactions.size())

@@ -27,14 +27,12 @@ public class AccountPopupController extends BranchController {
     private AnchorPane accountPopupRoot;
 
     // Fills the popup with the correct user data and current theme
-    @Override
-    public void initializer() {
+    @FXML
+    public void initialize() {
         // Display user's email
         emailPopupAccountLabel.setText(CurrentSession.getLoggedUser().getEmail());
-
         // Display user's full name
         nameSurnameAccountPopupLabel.setText(CurrentSession.getLoggedUser().getFirstName() + " " + CurrentSession.getLoggedUser().getLastName());
-
         // Update radio button and theme label based on user's theme
         if (CurrentSession.getLoggedUser().getTheme().equals("light")) {
             themeColorAccountPopupRadioButton.setSelected(false);
@@ -45,8 +43,6 @@ public class AccountPopupController extends BranchController {
         // Update theme color label based on radio button
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
 
-        // Apply the selected theme to the popup scene
-        ThemeManager.applyTheme(accountPopupRoot.getScene(), CurrentSession.getLoggedUser().getTheme());
 
     }
 
@@ -85,6 +81,17 @@ public class AccountPopupController extends BranchController {
         // Apply the selected theme to the main application window
         ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), themeColor);
     }
+
+    @FXML
+    public void logout()
+    {
+        CurrentSession.getTopbarController().backwardStack.clear();
+        CurrentSession.getTopbarController().forwardStack.clear();
+        CurrentSession.reset();
+        ((Stage) accountPopupRoot.getScene().getWindow()).close();
+        CurrentSession.getRootController().initialize();
+    }
+
 
     @FXML
     public void closePopup()

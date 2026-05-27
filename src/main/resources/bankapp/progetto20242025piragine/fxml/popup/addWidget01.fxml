@@ -47,16 +47,16 @@
                                           <Insets top="1.0" />
                                        </VBox.margin>
                                        <cursor>
-                                          <Cursor fx:constant="HAND" />
+                                          <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Label>
                                  </children>
                               </VBox>
                            </children>
                         </VBox>
-                        <Region onMouseClicked="#addLastFiveExpensesWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Region fx:id="lastFiveExpensesRegion" onMouseClicked="#addLastFiveExpensesWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
-                              <Cursor fx:constant="HAND" />
+                              <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Region>
                      </children>
@@ -68,7 +68,7 @@
                   </Separator>
                   <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <GridPane id="gridPaneAddWidget01B" fx:id="monthlyBalanceGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="202.0" prefWidth="200.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane fx:id="monthlyBalanceGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="202.0" prefWidth="200.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columnConstraints>
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="88.0" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="91.0" />
@@ -96,7 +96,7 @@
                                           <Insets top="1.0" />
                                        </VBox.margin>
                                        <cursor>
-                                          <Cursor fx:constant="HAND" />
+                                          <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Label>
                                  </children>
@@ -139,7 +139,7 @@
                               </VBox>
                            </children>
                         </GridPane>
-                        <Region onMouseClicked="#addMonthlyBalanceWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Region fx:id="monthlyBalanceRegion" onMouseClicked="#addMonthlyBalanceWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -165,7 +165,7 @@
                                           <Insets />
                                        </VBox.margin>
                                        <cursor>
-                                          <Cursor fx:constant="HAND" />
+                                          <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Label>
                                  </children>
@@ -184,7 +184,7 @@
                               </ScrollPane>
                            </children>
                         </VBox>
-                        <Region onMouseClicked="#addMonthlyExpensesWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Region fx:id="monthlyExpensesRegion" onMouseClicked="#addMonthlyExpensesWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -210,7 +210,7 @@
                                           <Insets />
                                        </VBox.margin>
                                        <cursor>
-                                          <Cursor fx:constant="HAND" />
+                                          <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Label>
                                  </children>
@@ -229,7 +229,7 @@
                               </ScrollPane>
                            </children>
                         </VBox>
-                        <Region onMouseClicked="#addMonthlyIncomeWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Region fx:id="monthlyIncomesRegion" onMouseClicked="#addMonthlyIncomeWidget" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -243,7 +243,7 @@
                   </Separator>
                   <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
                      <children>
-                        <GridPane id="gridPaneAddWidget01MB" fx:id="quickContactGridPane" alignment="CENTER" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane fx:id="quickContactGridPane" alignment="CENTER" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -313,7 +313,7 @@
                                           <Insets />
                                        </VBox.margin>
                                        <cursor>
-                                          <Cursor fx:constant="HAND" />
+                                          <Cursor fx:constant="DEFAULT" />
                                        </cursor>
                                     </Label>
                                  </children>
@@ -332,7 +332,7 @@
                               </TextField>
                            </children>
                         </GridPane>
-                        <Region minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#addQuickContactWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Region fx:id="quickContactRegion" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#addQuickContactWidget" style="-fx-background-radius: 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>

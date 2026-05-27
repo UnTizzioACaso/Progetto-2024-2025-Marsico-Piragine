@@ -36,8 +36,8 @@ public class MonthlyBalanceController extends WidgetController {
         return monthlyBalanceGridPane.getId();
     }
 
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
             List<Transaction> positiveTransaction = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
             List<Transaction> negativeTransaction = TransactionDAO.getCurrentMonthOutcome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
