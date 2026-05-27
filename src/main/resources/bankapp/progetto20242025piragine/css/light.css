@@ -582,3 +582,82 @@ Line {
 #TransactionDateLabel{
     -fx-text-fill: black !important;
 }
+
+#labelBankTransferPopup{
+    -fx-text-fill: #ff0000 !important;
+}
+
+#textCreditCardRectangle{
+    -fx-fill: black !important;
+}
+
+
+#separatorBankTransferPopup {
+    -fx-opacity: 1 !important;
+    -fx-background-color: transparent !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+}
+
+#separatorBankTransferPopup .line {
+    -fx-padding: 0 !important;
+
+    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+    -fx-stroke-width: 0 !important;
+
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+
+}
+
+#separatorCardPage {
+    -fx-opacity: 1 !important;
+    -fx-background-color: transparent !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+}
+
+#separatorCardPage .line {
+    -fx-padding: 0 !important;
+
+    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+    -fx-stroke-width: 0 !important;
+
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+
+}
+
+
+#ownerNameTextField,
+#cardNumberTextField,
+#cardNumberTextField,
+#expirationTextField,
+#cvvTextField,
+#MoneyTextField{
+    -fx-background-radius: 10 !important;
+    -fx-border-radius: 10 !important;
+}
+
+#separatorAddAccountMoneyPage {
+    -fx-opacity: 1 !important;
+    -fx-background-color: transparent !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+}
+
+#separatorAddAccountMoneyPage .line {
+    -fx-padding: 0 !important;
+
+    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+    -fx-stroke-width: 0 !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+
+}

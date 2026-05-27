@@ -27,10 +27,17 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Label>
-        <Text id="textCreditCardRectangle" fx:id="limitLabel" layoutX="812.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Limite:" wrappingWidth="53.3367919921875" AnchorPane.rightAnchor="76.6632080078125">
+        <Text id="textCreditCardRectangle" fx:id="textCreditCardRectangle" fill="RED" layoutX="812.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Limite:" wrappingWidth="53.3367919921875" AnchorPane.rightAnchor="76.6632080078125">
             <font>
                 <Font name="System Bold" size="16.0" />
             </font>
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color opacity="0.20000000298023224" />
+               </color>
+            </InnerShadow>
+         </effect>
         </Text>
     </children>
 </AnchorPane>

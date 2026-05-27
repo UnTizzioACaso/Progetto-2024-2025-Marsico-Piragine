@@ -40,7 +40,7 @@
     -fx-text-fill: black !important;
 }
 
-#accountAccountPopupLabel,
+
 #nameSurnameAccountPopupLabel,
 #emailPopupAccountLabel,
 #themeColorAccountPopupLabel {
@@ -467,12 +467,6 @@ Line {
 }
 
 
-
-#textCreditCardRectangle{
-    -fx-fill: white !important;
-}
-
-
 #labelAccountPopup,
 #nameAccountPopup {
     -fx-text-fill: linear-gradient(to bottom, #FFFFFF 0%, #F0F5FF 50%, #E0E8FF 100%) !important;
@@ -538,7 +532,11 @@ Line {
 
 #label1BankAccountSettingsPage,
 #label2BankAccountSettingsPage,
-#label3BankAccountSettingsPage {
+#label3BankAccountSettingsPage,
+#accountAccountPopupLabel,
+#labelBankTransferPopup1,
+#labelBankTransferPopup2,
+#labelBankTransferPopup{
 
     -fx-text-fill: linear-gradient(to bottom,
         #ff6666 0%,
@@ -852,7 +850,8 @@ Line {
 }
 
 #anchorPaneCardPage,
-#rootGridPaneBankSettingPage {
+#rootGridPaneBankSettingPage,
+#anchorPaneAddAccountMoneyPage{
     -fx-background-color: #3c3c3c !important;
 }
 
@@ -939,4 +938,98 @@ Line {
 #monthlyBalanceGridPane,
 #quickContactGridPane {
     -fx-border-color: white !important;
+}
+
+#gridPaneBankTransferPopUp{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#nameTextField,
+#ibanTextField,
+#amountTextField,
+#motivationTextField {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-border-color: #5a5a5a !important;
+    -fx-caret-color: white !important;
+}
+
+#separatorBankTransferPopup {
+    -fx-opacity: 1 !important;
+    -fx-background-color: transparent !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+}
+
+#separatorBankTransferPopup .line {
+    -fx-padding: 0 !important;
+
+    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+    -fx-stroke-width: 0 !important;
+
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+
+}
+
+#separatorCardPage {
+    -fx-opacity: 1 !important;
+    -fx-background-color: transparent !important;
+    -fx-pref-height: 5px !important;
+    -fx-min-height: 5px !important;
+}
+
+#separatorCardPage .line {
+    -fx-padding: 0 !important;
+
+    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+    -fx-stroke-width: 0 !important;
+
+    -fx-pref-height: 5px !important;
+    -fx-min-height: 5px !important;
+
+}
+
+#textCreditCardRectangle{
+
+    -fx-fill: linear-gradient(to bottom,
+        #ff6666 0%,
+        #ff0000 45%,
+        #e60000 100%
+    ) !important;
+
+    -fx-effect: null !important
+}
+
+#separatorAddAccountMoneyPage {
+    -fx-opacity: 1 !important;
+    -fx-background-color: transparent !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+}
+
+#separatorAddAccountMoneyPage .line {
+    -fx-padding: 0 !important;
+
+    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+    -fx-stroke-width: 0 !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+
+}
+
+#gridPaneAddAccountMoney{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#gridPaneAddAccountMoney1,
+#gridPaneAddAccountMoney2{
+    -fx-background-color: #3c3c3c !important;
 }
