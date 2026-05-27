@@ -51,6 +51,7 @@ public  class RootWindowController extends BranchController {
                 CurrentSession.getTopbarController().visitPage(fxml); //adds the loaded page to the backwardStack
             }
             setCenter(node);
+            ThemeManager.applyTheme(rootWindow.getScene(), "light");
         }
     }
 
