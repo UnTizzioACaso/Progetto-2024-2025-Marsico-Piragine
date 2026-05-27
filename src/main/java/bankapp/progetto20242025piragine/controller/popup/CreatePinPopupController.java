@@ -186,4 +186,12 @@ public class CreatePinPopupController extends BranchController
         stage.close();
     }
 
+    @FXML
+    public void closePopup()
+    {
+        // Close the PIN creation popup without saving any changes
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.close();
+    }
+
 }

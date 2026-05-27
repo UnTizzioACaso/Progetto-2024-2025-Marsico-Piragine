@@ -20,6 +20,16 @@
                </color>
             </InnerShadow>
          </effect>
+         <children>
+            <Button fx:id="closeCreatePinPopup" layoutX="282.0" layoutY="7.0" mnemonicParsing="false" onAction="#closePopup" prefHeight="21.0" prefWidth="22.0" style="-fx-background-color: transparent;" text="✕" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <padding>
+                  <Insets bottom="-6.0" left="-1.0" right="-1.0" top="-6.0" />
+               </padding>
+            </Button>
+         </children>
       </Pane>
       <Label contentDisplay="CENTER" text="Il pin viene richiesto per le operazioni sensibili" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0">
          <font>

@@ -594,85 +594,17 @@ Line {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#gridPaneMonthlyBalance,
+#gridPaneQuickContact{
+    -fx-background-color: #ff0000 !important;
+    -fx-border-color: white !important;
+}
 
 
 #vBoxLastFiveExpenses,
-#gridPaneMonthlyBalance,
+#rootMonthlyBalance,
 #vBoxMonthlyExpenses,
-#gridPaneQuickContact {
+#rootQuickContact {
     -fx-background-color: #4a4a4a !important;
 }
 
@@ -689,6 +621,11 @@ Line {
 #gridPaneAddWidget12,
 #vBoxAddWidget12{
     -fx-background-color: #595959 !important;
+}
+
+#gridPaneMonthlyIncomes,
+#gridPaneLastFiveExpenses{
+    -fx-border-color: white !important;
 }
 
 #gridPaneTransictionHistory {
@@ -884,20 +821,6 @@ Line {
     -fx-prompt-text-fill: #8a8a8a !important;
 }
 
-
-#notificationVBox{
-    -fx-background-color: white !important;
-}
-#vBoxNotificationSlider{
-    -fx-background-color: white !important;
-}
-
-#notificationSliderAnchorPane{
-    -fx-border-color: #e4e4e4 !important;
-    -fx-border-width: 0 0 0 1 !important;
-}
-
-
 #closeMenageCardPopup{
     -fx-text-fill: white !important;
 }
@@ -933,11 +856,6 @@ Line {
 #textFieldFriendshipRequestPopupE,
 #textFieldFriendshipRequestPopupN{
     -fx-border-color: #333333 !important;
-}
-
-#monthlyBalanceGridPane,
-#quickContactGridPane {
-    -fx-border-color: white !important;
 }
 
 #gridPaneBankTransferPopUp{
@@ -1032,4 +950,29 @@ Line {
 #gridPaneAddAccountMoney1,
 #gridPaneAddAccountMoney2{
     -fx-background-color: #3c3c3c !important;
+}
+
+#labelAddAccountMoneyPage1,
+#labelAddAccountMoneyPage2 {
+    -fx-text-fill: white !important;
+}
+
+#MoneyTextField,
+#ownerNameTextField,
+#cardNumberTextField,
+#expirationTextField,
+#cvvTextField {
+    -fx-background-color: #3c3c3c !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-border-color: #5a5a5a !important;
+    -fx-caret-color: white !important;
+    -fx-background-radius: 10 !important;
+    -fx-border-radius: 10 !important;
+}
+
+#addAccountMoneyPopupAnchorPane{
+    -fx-background-color: #4a4a4a !important;
+    -fx-background-radius: 20 !important;
+    -fx-border-radius: 20 !important;
 }

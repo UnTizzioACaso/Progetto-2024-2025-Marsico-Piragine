@@ -66,7 +66,7 @@
    ========================================================== */
 
 .scroll-pane {
-    -fx-background-color:  e4e4e4 !important;
+    -fx-background-color:  #e4e4e4 !important;
     -fx-padding: 0 !important;
     -fx-background-radius: 30;
 }
@@ -328,11 +328,11 @@ Line {
 
 
 #gridPaneTransictionHistory{
-    -fx-background-color: e4e4e4 !important;
+    -fx-background-color: #e4e4e4 !important;
 }
 
 #scrollPaneTransictionHistory{
-     -fx-background: e4e4e4 !important;
+     -fx-background: #e4e4e4 !important;
 }
 
 /* Seleziona la freccetta all'interno di tutti i MenuButton */
@@ -661,3 +661,30 @@ Line {
     -fx-min-height: 4px !important;
 
 }
+
+#addAccountMoneyPageTextField{
+    -fx-background-radius: 10 !important;
+    -fx-border-radius: 10 !important;
+    -fx-background-color: #ff0000 !important;
+    -fx-border-color: #ff0000 !important;
+    -fx-text-fill: white !important;
+}
+
+#closeAddAccountMoneyPopup{
+    -fx-text-fill: #5a5a5a !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
