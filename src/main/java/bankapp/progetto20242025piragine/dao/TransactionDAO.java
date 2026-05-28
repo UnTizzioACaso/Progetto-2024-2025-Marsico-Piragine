@@ -57,7 +57,34 @@ public class TransactionDAO {
     }
 
 
-    // 🔹 Inserisce una nuova transazione (Fix per SQLite "not implemented")
+    public static boolean insertTransactionWithConnection(Connection conn, Transaction t) throws SQLException {
+        String sql = """
+        INSERT INTO Bank_Transaction 
+        (sender, beneficiary, amount, note, type, status, used_card) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        """;
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setObject(1, t.getSender(), Types.INTEGER);
+            stmt.setObject(2, t.getBeneficiary(), Types.INTEGER);
+            stmt.setInt(3, t.getAmount().multiply(BigDecimal.valueOf(100)).intValue());
+            stmt.setString(4, t.getNote());
+            stmt.setString(5, t.getType());
+            stmt.setString(6, t.getStatus());
+
+            // Gestion used_card: if -1 o null, insert NULL in DB
+            if (t.getUsedCard() != null && t.getUsedCard() != -1) {
+                stmt.setInt(7, t.getUsedCard());
+            } else {
+                stmt.setNull(7, Types.INTEGER);
+            }
+
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+
+    // 🔹 Inserisce una nuova transazione
     public static boolean insertTransaction(Transaction t) {
         String sql = """
             INSERT INTO Bank_Transaction

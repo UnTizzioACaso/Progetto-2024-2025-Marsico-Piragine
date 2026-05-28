@@ -2,6 +2,7 @@ package bankapp.progetto20242025piragine.dao;
 
 import bankapp.progetto20242025piragine.db.DataSourceProvider;
 import bankapp.progetto20242025piragine.model.BankAccount;
+import bankapp.progetto20242025piragine.model.Transaction;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -148,46 +149,59 @@ public class BankAccountDAO {
     }
 
 
-    public static boolean transferMoney(BankAccount beneficiary, BankAccount sender, BigDecimal value)
+    public static boolean transferMoney(BankAccount beneficiary, BankAccount sender, Transaction t)
     {
-        if (sender.getMoney().compareTo(value) < 0) return false;
+        // 1. Money control (Pre-condition)
+        if (sender.getMoney().compareTo(t.getAmount()) < 0) return false;;
 
-        String sql = "UPDATE Bank_Account SET money = money + ? WHERE id_account = ?";
+        String sqlUpdate = "UPDATE Bank_Account SET money = money + ? WHERE id_account = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection()) {
+            // disabling auto commit
             conn.setAutoCommit(false);
 
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                int cents = value.movePointRight(2).intValueExact();
+            try {
+                int cents = t.getAmount().movePointRight(2).intValueExact();;
 
-                stmt.setInt(1, -cents);
-                stmt.setInt(2, sender.getIdAccount());
-                stmt.executeUpdate();
+                // 2. sender sub
+                try (PreparedStatement stmtSub = conn.prepareStatement(sqlUpdate)) {
+                    stmtSub.setInt(1, -cents);
+                    stmtSub.setInt(2, sender.getIdAccount());
+                    if (stmtSub.executeUpdate() == 0) throw new SQLException("Update sender failed");
+                }
 
-                stmt.setInt(1, cents);
-                stmt.setInt(2, beneficiary.getIdAccount());
-                stmt.executeUpdate();
+                // 3. beneficiary add
+                try (PreparedStatement stmtAdd = conn.prepareStatement(sqlUpdate)) {
+                    stmtAdd.setInt(1, cents);
+                    stmtAdd.setInt(2, beneficiary.getIdAccount());
+                    if (stmtAdd.executeUpdate() == 0) throw new SQLException("Update beneficiary failed");
+                }
 
+                // 4. Registering transaction (same connection)
+                if (!TransactionDAO.insertTransactionWithConnection(conn, t)) {
+                    throw new SQLException("Failed transaction registration");
+                }
+
+                // 5. if worked well commit
                 conn.commit();
 
-                sender.setMoney(sender.getMoney().subtract(value));
-                beneficiary.setMoney(beneficiary.getMoney().add(value));
+                // 6. uptate Java object
+                sender.setMoney(sender.getMoney().subtract(t.getAmount()));
+                beneficiary.setMoney(beneficiary.getMoney().add(t.getAmount()));
                 return true;
 
-            }
-            catch (SQLException e)
-            {
+            } catch (Exception e) {
+                // if something doesn't work, abort all operations
                 conn.rollback();
-                System.err.println("error during transfer money between accounts");
-                e.printStackTrace();
+                System.err.println("error during " + e.getMessage());
+                return false;
+            } finally {
+                conn.setAutoCommit(true);
             }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during transfer money between accounts");
+        } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
 

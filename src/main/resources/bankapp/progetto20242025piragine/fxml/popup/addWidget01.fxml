@@ -188,7 +188,7 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label fx:id="widgetTitleLabel12" alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="166.0" text="Entrate di questo mese" textFill="WHITE" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
+                                    <Label fx:id="widgetTitleLabel12" alignment="CENTER" contentDisplay="CENTER" prefHeight="9.0" prefWidth="166.0" text="Uscsite di questo mese" textFill="WHITE" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowSpan="2147483647">
                                        <font>
                                           <Font name="System Bold" size="15.0" />
                                        </font>

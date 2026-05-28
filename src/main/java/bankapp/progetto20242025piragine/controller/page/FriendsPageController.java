@@ -145,7 +145,7 @@ public class FriendsPageController extends BranchController
         }
 
         // creating the transaction java object
-        BankAccount senderAccount = BankAccountDAO.getAccountById(CurrentSession.getLoggedUser().getUserID());
+        BankAccount senderAccount = CurrentSession.getLoggedAccount();
         BankAccount beneficiaryAccount = BankAccountDAO.getAccountByUserId(friend.getUserID());
 
         if(senderAccount == null || beneficiaryAccount == null)
@@ -160,20 +160,14 @@ public class FriendsPageController extends BranchController
             return;
         }
 
-        if(!BankAccountDAO.transferMoney(beneficiaryAccount, senderAccount, value))
+        Transaction t = new Transaction(senderAccount.getIdAccount(), beneficiaryAccount.getIdAccount(), value, noteTextFiled.getText(), "donation", -1, "accepted");
+
+        if(!BankAccountDAO.transferMoney(beneficiaryAccount, senderAccount, t))
         {
             writeError("errore durante l'invio della donazione");
             return;
         }
 
-        Transaction t = new Transaction(senderAccount.getIdAccount(), beneficiaryAccount.getIdAccount(), value, noteTextFiled.getText(), "donation", -1);
-
-        //tring to insert the transaction in the db
-        if(!(TransactionDAO.insertTransaction(t)))
-        {
-            writeError("errore durante l'invio della donazione");
-            return;
-        }
 
         //creating and sending the notifies to each user
         Notify n = new Notify(friend.getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
@@ -211,6 +205,5 @@ public class FriendsPageController extends BranchController
             controller.friendUsernameLabel.setText(UserDAO.getUserByUserID(id).getUsername());
             friendsVBox.getChildren().add(friendContact);
         }
-
     }
 }
