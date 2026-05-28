@@ -43,19 +43,20 @@ public class PaymentRequestController extends BranchController {
     }
 
     @FXML
-    public void acceptRequest()
-    {
+    public void acceptRequest() {
 
-        if(n != null)
+        if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
         {
-            if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
+            if (n != null)
             {
-                NotifyDAO.markAsRead(n.getIdNotify());
                 CurrentSession.getTopbarController().updateNotifications();
+                NotifyDAO.markAsRead(n.getIdNotify());
+                ((Stage) moneyLabel.getScene().getWindow()).close();
             }
-            return;
+
         }
-        BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);;
+
+        BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
         CurrentSession.getFriendsPageController().currentFriendController.showChat();
         ((Stage) moneyLabel.getScene().getWindow()).close();
     }

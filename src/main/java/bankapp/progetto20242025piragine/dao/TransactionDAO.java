@@ -148,7 +148,7 @@ public class TransactionDAO {
     public static List<Transaction> getAllTransactionsByAccount(int accountId) {
         String sql = """
             SELECT * FROM Bank_Transaction
-            WHERE sender = ? OR beneficiary = ?
+            WHERE (sender = ? OR beneficiary = ?) AND status = "accepted"
             ORDER BY transaction_date ASC
             """;
         List<Transaction> transactions = new ArrayList<>();
@@ -201,7 +201,7 @@ public class TransactionDAO {
         String sql = """
             SELECT * FROM Bank_Transaction
             WHERE beneficiary = ?
-              AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
+              AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now') AND status = 'accepted'
             ORDER BY transaction_date DESC
             """;
         try {
@@ -219,7 +219,7 @@ public class TransactionDAO {
         String sql = """
             SELECT * FROM Bank_Transaction
             WHERE sender = ?
-              AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now')
+              AND strftime('%Y-%m', transaction_date) = strftime('%Y-%m', 'now') AND status = 'accepted'
             ORDER BY transaction_date DESC
             """;
         try {
