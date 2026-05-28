@@ -647,6 +647,7 @@ Line {
 #gridPaneAddWidget11TH,
 #gridPaneAddWidget12TH{
     -fx-background-color: #4a4a4a !important;
+    -fx-border-color: white !important;
 }
 
 #textFieldAddWidget11,
@@ -975,4 +976,28 @@ Line {
     -fx-background-color: #4a4a4a !important;
     -fx-background-radius: 20 !important;
     -fx-border-radius: 20 !important;
+}
+
+#addWidget01Border1,
+#addWidget01Border2,
+#addWidget01Border3,
+#addWidget01Border4,
+#addWidget01Border5,
+#addWidget02Border1,
+#addWidget02Border2,
+#addWidget02Border3,
+#addWidget02Border4,
+#addWidget02Border5,
+#addWidget11Border2,
+#addWidget11Border3,
+#addWidget11Border4,
+#addWidget12Border2,
+#addWidget12Border3,
+#addWidget12Border4 {
+    -fx-border-color: white !important;
+}
+
+#addWidget01Root1,
+#addWidget01Root2{
+    -fx-background-color: #4a4a4a !important;
 }

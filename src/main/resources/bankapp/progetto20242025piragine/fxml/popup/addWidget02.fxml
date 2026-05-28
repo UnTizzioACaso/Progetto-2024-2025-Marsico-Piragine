@@ -30,7 +30,7 @@
                      <children>
                         <VBox fx:id="lastFiveExpensesVBox" maxHeight="250.0" maxWidth="850.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                              <VBox id="addWidget02Border1" alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: #ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                                  <effect>
                                     <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                                        <color>
@@ -79,7 +79,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
+                              <VBox id="addWidget02Border2" alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: #ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: black; -fx-border-width: 0 0 1 0;" GridPane.columnSpan="2147483647">
                                  <effect>
                                     <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                                        <color>
@@ -155,7 +155,7 @@
                      <children>
                         <VBox fx:id="monthlyExpensesVBox" maxHeight="250.0" maxWidth="850.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                              <VBox id="addWidget02Border3" alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: #ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                                  <children>
                                     <Label fx:id="widgetTitleLabel2" alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="177.0" text="Spese di questo mese" textFill="WHITE">
                                        <font>
@@ -200,7 +200,7 @@
                      <children>
                         <VBox fx:id="monthlyIncomesVBox" maxHeight="250.0" maxWidth="850.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                              <VBox id="addWidget02Border4" alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: #ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                                  <children>
                                     <Label fx:id="widgetTitleLabel3" alignment="CENTER" contentDisplay="CENTER" prefHeight="11.0" prefWidth="187.0" text="Entrate di questo mese" textFill="WHITE">
                                        <font>
@@ -303,7 +303,7 @@
                                     <Insets bottom="12.0" top="12.0" />
                                  </GridPane.margin>
                               </Button>
-                              <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;" GridPane.columnSpan="2147483647">
+                              <VBox id="addWidget02Border5" alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: #ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: black; -fx-border-width: 0 0 1 0;" GridPane.columnSpan="2147483647">
                                  <children>
                                     <Label fx:id="widgetTitleLabel4" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="134.0" text="Contatto rapido" textFill="WHITE">
                                        <font>

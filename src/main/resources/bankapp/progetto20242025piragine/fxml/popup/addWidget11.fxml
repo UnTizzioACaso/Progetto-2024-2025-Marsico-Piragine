@@ -62,7 +62,7 @@
                                  </InnerShadow>
                               </effect>
                            </VBox>
-                           <GridPane id="gridPaneAddWidget11TH" prefHeight="61.0" prefWidth="556.0" style="-fx-background-color: e4e4e4;" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+                           <GridPane id="gridPaneAddWidget11TH" prefHeight="61.0" prefWidth="556.0" style="-fx-background-color: #e4e4e4; -fx-border-color: black; -fx-border-width: 0 0 1 0;" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
                               <columnConstraints>
                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -126,7 +126,7 @@
                   <children>
                      <VBox fx:id="monthlyExpensesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <children>
-                           <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                           <VBox id="addWidget11Border2" alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                               <children>
                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="205.0" text="Spese di questo mese" textFill="WHITE">
                                     <font>
@@ -171,7 +171,7 @@
                   <children>
                      <VBox fx:id="lastFiveExpensesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <children>
-                           <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                           <VBox id="addWidget11Border3" alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                               <effect>
                                  <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                                     <color>
@@ -211,7 +211,7 @@
                   <children>
                      <VBox fx:id="monthlyIncomesVBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="180.0" minWidth="0.0" prefHeight="174.0" prefWidth="205.0" style="-fx-background-radius: 15; -fx-border-color: null; -fx-background-color: e4e4e4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <children>
-                           <VBox alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: null;">
+                           <VBox id="addWidget11Border4" alignment="CENTER" prefHeight="33.0" prefWidth="339.0" spacing="1.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                               <children>
                                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="205.0" text="Entrate di questo mese" textFill="WHITE">
                                     <font>
