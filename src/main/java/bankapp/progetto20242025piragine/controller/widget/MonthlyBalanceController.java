@@ -59,8 +59,6 @@ public class MonthlyBalanceController extends WidgetController {
                 balanceVBox.setStyle(balanceVBox.getStyle() + "-fx-background-color: red;");}
             else if (balance.compareTo(BigDecimal.ZERO) > 0) {balanceVBox.setStyle(balanceVBox.getStyle() + "-fx-background-color: green;");}
             else {balanceVBox.setStyle(balanceVBox.getStyle() + "-fx-background-color: #bfb600;");}
-
-
     }
 
     @FXML

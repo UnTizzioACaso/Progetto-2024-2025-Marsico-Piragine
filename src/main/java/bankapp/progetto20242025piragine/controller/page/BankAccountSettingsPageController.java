@@ -20,7 +20,7 @@ public class BankAccountSettingsPageController extends BranchController
     @FXML
     public void initialize()
     {
-        if(CurrentSession.getBankAccountSettingsPageController() == null) {CurrentSession.setBankAccountSettingsPageController(this);}
+        CurrentSession.setBankAccountSettingsPageController(this);
         BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());
         ibanLabel.setText(bankAccount.getIban());
 

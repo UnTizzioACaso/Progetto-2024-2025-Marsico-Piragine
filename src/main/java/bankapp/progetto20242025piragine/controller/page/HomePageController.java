@@ -24,7 +24,7 @@ public class HomePageController extends BranchController
     @FXML
     public void initialize() //initializing the home page
     {
-        if (CurrentSession.getHomePageController() == null) {CurrentSession.setHomePageController(this);}
+        CurrentSession.setHomePageController(this);
         List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getUsedWidgetsByUserId(CurrentSession.getLoggedUser().getUserID());
         addWidget("/bankapp/progetto20242025piragine/fxml/widget/favouritesCard.fxml", 1, 0); //adding favouritesCard widget's fxml
         addWidget("/bankapp/progetto20242025piragine/fxml/widget/bankAccount.fxml", 0, 0); //adding bankAccount widget's fxml
@@ -44,7 +44,6 @@ public class HomePageController extends BranchController
                         addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", widget.getColumn(), widget.getRow());
             }
         }
-
     }
 
 
@@ -81,6 +80,8 @@ public class HomePageController extends BranchController
         homePageGridPane.add(node, column, row);
         controller.homePageGridPane = homePageGridPane;
         controller.widget = node;
+        controller.x = column;
+        controller.y = row;
         HomeWidgetCustomDAO.updatePosition(CurrentSession.getLoggedUser().getUserID(), node.getId(), row, column);
     }
 }

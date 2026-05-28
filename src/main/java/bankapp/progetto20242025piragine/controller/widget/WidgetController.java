@@ -23,29 +23,24 @@ public class WidgetController extends BranchController {
 
     public String getWidgetType(){ return "";}
 
+    public int x, y;
+
     public Node widget;
 
     @FXML
     public Label widgetTitleLabel;
 
     //takes the root of the widget and removes it from the home page grid pane
-    public void removeWidget()
-    {
-        List<Node> nodes = homePageGridPane.getChildren();
-        for(Node node : nodes)
-        {
-            if (widget.equals(node))
-            {
-                homePageGridPane.getChildren().remove(node);
-                try {HomeWidgetCustomDAO.markAsRemoved(CurrentSession.getLoggedUser().getUserID(),  widget.getId());}
-                catch (SQLException e)
-                {
-                    System.err.println("error during elimination of " + widget.getId() + e);
-                    e.printStackTrace();
-                }
-                return;
-            }
+    public void removeWidget() {
+        homePageGridPane.getChildren().remove(widget);
+
+        try {
+            HomeWidgetCustomDAO.markAsRemoved(CurrentSession.getLoggedUser().getUserID(), widget.getId());
+        } catch (SQLException e) {
+            System.err.println("error during elimination of " + widget.getId() + e);
+            e.printStackTrace();
         }
+
     }
 
     //same as menuShower, but without the option to show the bigger version of the widget

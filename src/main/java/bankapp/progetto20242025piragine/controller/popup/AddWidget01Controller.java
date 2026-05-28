@@ -28,7 +28,7 @@ public class AddWidget01Controller extends BranchController {
     private VBox widgetsVBox, lastFiveExpensesVBox,  monthlyExpensesVBox, monthlyIncomesVBox;
 
     @FXML
-    GridPane monthlyBalanceGridPane, quickContactGridPane;
+    private GridPane monthlyBalanceGridPane, quickContactGridPane;
 
     @FXML
     private Region lastFiveExpensesRegion, monthlyBalanceRegion, monthlyExpensesRegion, monthlyIncomesRegion, quickContactRegion;
