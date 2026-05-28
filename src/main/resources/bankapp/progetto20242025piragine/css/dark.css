@@ -35,8 +35,7 @@
 #cardCreditLabel,
 #cardNicknameLabel,
 #cardNumberLabel,
-#cardExpirationLabel,
-#lastFiveExpensesTitleLabel {
+#cardExpirationLabel{
     -fx-text-fill: black !important;
 }
 
@@ -47,9 +46,6 @@
     -fx-text-fill: #E0E0E0 !important;
 }
 
-#lastFiveExpensesVBox > .label {
-    -fx-text-fill: #E0E0E0 !important;
-}
 
 #favouritesCardScrollPane {
 
@@ -63,15 +59,12 @@
 
 /* ================= LAYOUT ================= */
 
-#lastFiveExpensesVBox,
+
 #sidebarGridPane,
 #transactionHistoryAnchorPane,
 #anchorePaneCardPopup,
 #anchorePaneMenageCardPopup,
-#anchorPaneFriendshipRequestPopup {
-    -fx-background-color: #4a4a4a !important;
-}
-
+#anchorPaneFriendshipRequestPopup,
 #homePageGridPane {
     -fx-background-color: #3c3c3c !important;
 }
@@ -406,7 +399,7 @@
     -fx-background-color: #cc0000 !important;
     -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6) !important;
 }
-
+ù
 #favouritesCardScrollPane .scroll-bar:horizontal .increment-button,
 #favouritesCardScrollPane .scroll-bar:horizontal .decrement-button,
 #favouritesCardScrollPane .scroll-bar:horizontal .increment-arrow,
@@ -423,13 +416,8 @@
     -fx-opacity: 0.5 !important;
 }
 
-Line {
-    -fx-stroke: white !important;
-}
 
-#labelBankAccount {
-    -fx-text-fill: black !important;
-}
+
 
 #quickContactNameLabel {
     -fx-text-fill: black !important;
@@ -581,104 +569,20 @@ Line {
 
 
 
+/* --------------------------- WIDGETS --------------------------- */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#vBoxLastFiveExpenses,
-#gridPaneMonthlyBalance,
-#vBoxMonthlyExpenses,
-#gridPaneQuickContact {
+#quickContactGridPane, #monthlyBalanceGridPane, #transactionHistoryGridPane
+{
     -fx-background-color: #4a4a4a !important;
+    -fx-background-radius: 15 !important;
+}
+#monthlyIncomesVBox, #lastFiveExpensesVBox, #monthlyExpensesVBox
+{
+    -fx-background-color: #4a4a4a !important;
+    -fx-background-radius: 15 !important;
 }
 
-#labelQuickContact{
+#quickContactNameLabel{
     -fx-text-fill: white !important;
 }
 
@@ -936,7 +840,3 @@ Line {
     -fx-border-color: #333333 !important;
 }
 
-#monthlyBalanceGridPane,
-#quickContactGridPane {
-    -fx-border-color: white !important;
-}
