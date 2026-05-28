@@ -197,7 +197,7 @@ public class FriendsPageController extends BranchController
     @FXML
     public void initialize()
     {
-        if(CurrentSession.getFriendsPageController() == null) {CurrentSession.setFriendsPageController(this);}
+        CurrentSession.setFriendsPageController(this);
         errorLabel.setText("");
         List<Integer> friends = new ArrayList<>();
         friends = FriendshipDAO.getFriendshipsByUserId(CurrentSession.getLoggedUser().getUserID());

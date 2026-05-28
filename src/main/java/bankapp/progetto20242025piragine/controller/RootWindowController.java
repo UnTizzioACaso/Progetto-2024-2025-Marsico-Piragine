@@ -82,7 +82,7 @@ public  class RootWindowController extends BranchController {
         CurrentSession.setTopbarController(controller);
     }
 
-    private void setCenter(Node node)
+    public void setCenter(Node node)
     {
         centerAnchorPane.getChildren().clear(); //clears the centerAnchorPane
         centerAnchorPane.getChildren().add(node); //adds the node to the centerAnchorPane
