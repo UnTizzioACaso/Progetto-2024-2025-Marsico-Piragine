@@ -57,7 +57,7 @@ public class BankAccountDAO {
     }
 
     public static int getUserIdByAccountId(int accountId) throws SQLException {
-        String sql = "SELECT user_id FROM Bank_Account WHERE account_id = ?";
+        String sql = "SELECT user_id FROM Bank_Account WHERE id_account = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql))
         {

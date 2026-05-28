@@ -569,22 +569,31 @@
 
 
 
-/* --------------------------- WIDGETS --------------------------- */
+/* --------------------------- INIZIO WIDGETS --------------------------- */
 
 #quickContactGridPane, #monthlyBalanceGridPane, #transactionHistoryGridPane
 {
     -fx-background-color: #4a4a4a !important;
     -fx-background-radius: 15 !important;
 }
+
 #monthlyIncomesVBox, #lastFiveExpensesVBox, #monthlyExpensesVBox
 {
     -fx-background-color: #4a4a4a !important;
     -fx-background-radius: 15 !important;
 }
 
-#quickContactNameLabel{
+#transactionHistoryFiltersGridPane
+{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#quickContactNameLabel
+{
     -fx-text-fill: white !important;
 }
+
+/* --------------------------- FINE WIDGETS --------------------------- */
 
 #vBoxAddWidget01,
 #gridPaneAddWidget01,
@@ -597,14 +606,9 @@
     -fx-background-color: #595959 !important;
 }
 
-#gridPaneTransictionHistory {
-    -fx-background-color: #4a4a4a !important;
-    -fx-border-color: #4a4a4a !important;
-}
 
-#scrollPaneTransictionHistory{
-    -fx-border-color: transparent !important;
-}
+
+
 
 #textFieldTransactionHistory {
     -fx-background-color: #3a3a3a !important;
