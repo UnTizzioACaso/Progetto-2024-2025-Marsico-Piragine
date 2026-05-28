@@ -63,7 +63,7 @@ public class FriendContactController extends BranchController
             {
                 sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
             }
-            else if (transaction.getBeneficiary().equals(userAccount)) //if user is beneficiary of a donation
+            else if (transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("donation")) //if user is beneficiary of a donation
             {
                 receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
             }
@@ -73,7 +73,7 @@ public class FriendContactController extends BranchController
                 controller.request = transaction;
                 controller.friendUsername = friendUsernameLabel.getText();
             }
-            else
+            else if (transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("request"))
             {
                sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
             }

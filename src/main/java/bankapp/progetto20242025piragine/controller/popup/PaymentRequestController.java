@@ -8,6 +8,7 @@ import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class PaymentRequestController extends BranchController {
 
@@ -44,17 +45,19 @@ public class PaymentRequestController extends BranchController {
     @FXML
     public void acceptRequest()
     {
+
         if(n != null)
         {
-            if (TransactionDAO.acceptTransacion(n.getIdTransaction()))
+            if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
             {
                 NotifyDAO.markAsRead(n.getIdNotify());
                 CurrentSession.getTopbarController().updateNotifications();
             }
             return;
         }
+        BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);;
         CurrentSession.getFriendsPageController().currentFriendController.showChat();
-        TransactionDAO.acceptTransacion(request.getIdTransaction());
+        ((Stage) moneyLabel.getScene().getWindow()).close();
     }
 
 }

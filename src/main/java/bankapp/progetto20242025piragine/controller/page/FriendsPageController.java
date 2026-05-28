@@ -85,9 +85,9 @@ public class FriendsPageController extends BranchController
             return;
         }
 
-        int beneficiaryAccount = BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID());
+        int beneficiaryAccount = CurrentSession.getLoggedAccount().getIdAccount();
         int senderAccount = BankAccountDAO.getIdAccountByUserId(friend.getUserID());
-        Transaction t = new Transaction(beneficiaryAccount, senderAccount,value, noteTextFiled.getText(), "request", -1, "pending");
+        Transaction t = new Transaction(senderAccount, beneficiaryAccount,value, noteTextFiled.getText(), "request", -1, "pending");
 
         if (!(TransactionDAO.insertTransaction(t)))
         {
@@ -162,7 +162,7 @@ public class FriendsPageController extends BranchController
 
         Transaction t = new Transaction(senderAccount.getIdAccount(), beneficiaryAccount.getIdAccount(), value, noteTextFiled.getText(), "donation", -1, "accepted");
 
-        if(!BankAccountDAO.transferMoney(beneficiaryAccount, senderAccount, t))
+        if(!BankAccountDAO.transferMoneyDonation(beneficiaryAccount, senderAccount, t))
         {
             writeError("errore durante l'invio della donazione");
             return;

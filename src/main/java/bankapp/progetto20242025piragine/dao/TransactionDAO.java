@@ -84,6 +84,21 @@ public class TransactionDAO {
     }
 
 
+
+    public static boolean updateTransactionWithConnection(Connection conn, Transaction t) throws SQLException {
+        String sql = """
+            UPDATE Bank_Transaction 
+            SET status = 'accepted' WHERE id_transaction = ?
+            """;
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, t.getIdTransaction());
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+
+
     // 🔹 Inserisce una nuova transazione
     public static boolean insertTransaction(Transaction t) {
         String sql = """
