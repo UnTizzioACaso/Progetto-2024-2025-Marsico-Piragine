@@ -45,12 +45,15 @@ public  class RootWindowController extends BranchController {
             currentPage = fxml;
             Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
             Node node = p.getValue(); //creating the node from the pair
+            ThemeManager.applyTheme(rootWindow.getScene(), "light");
             if (rootWindow.getTop() != null) //if topbar is already initialized
             {
                 if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
                 CurrentSession.getTopbarController().visitPage(fxml); //adds the loaded page to the backwardStack
+                ThemeManager.applyTheme(rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme()); //applies the user's theme to the scene
             }
             setCenter(node);
+
         }
     }
 
