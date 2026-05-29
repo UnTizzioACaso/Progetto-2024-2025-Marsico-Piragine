@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="notificationAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #595959; -fx-background-color: #ff0000;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.NotificationController">
+<AnchorPane fx:id="notificationAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="190.0" style="-fx-border-width: 0 0 1 0; -fx-border-color: #595959; -fx-background-color: #ff0000;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.NotificationController">
     <children>
-        <Label fx:id="notifyTitleLabel" layoutX="14.0" layoutY="7.2" prefHeight="3.0" prefWidth="199.0" text="Title" textFill="WHITE" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="0.0">
+        <Label fx:id="notifyTitleLabel" layoutX="10.0" layoutY="7.2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="16.0" prefWidth="84.0" text="Title" textFill="WHITE" AnchorPane.leftAnchor="9.0" AnchorPane.topAnchor="0.0">
             <font>
-                <Font name="System Bold" size="12.0" />
+                <Font name="System Bold" size="11.0" />
             </font>
         </Label>
-        <Label fx:id="secondaryLabel" layoutX="15.0" layoutY="20.0" prefHeight="0.0" prefWidth="199.0" text="Secondary" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0">
+        <Label fx:id="secondaryLabel" layoutX="10.0" layoutY="20.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="16.0" prefWidth="174.0" text="Secondary" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="9.0">
             <font>
                 <Font size="11.0" />
             </font>
         </Label>
-        <Label fx:id="valueLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="14.0" prefHeight="20.0" prefWidth="78.0" text="Value" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="1.0">
+        <Label fx:id="valueLabel" alignment="TOP_RIGHT" layoutX="218.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="16.0" prefWidth="84.0" text="Value" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="1.0">
             <font>
                 <Font size="11.0" />
             </font>

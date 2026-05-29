@@ -59,10 +59,10 @@ public class TransactionDAO {
 
     public static boolean insertTransactionWithConnection(Connection conn, Transaction t) throws SQLException {
         String sql = """
-        INSERT INTO Bank_Transaction 
-        (sender, beneficiary, amount, note, type, status, used_card) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-        """;
+    INSERT INTO Bank_Transaction 
+    (sender, beneficiary, amount, note, type, status, used_card) 
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+    """;
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setObject(1, t.getSender(), Types.INTEGER);
@@ -72,14 +72,24 @@ public class TransactionDAO {
             stmt.setString(5, t.getType());
             stmt.setString(6, t.getStatus());
 
-            // Gestion used_card: if -1 o null, insert NULL in DB
             if (t.getUsedCard() != null && t.getUsedCard() != -1) {
                 stmt.setInt(7, t.getUsedCard());
             } else {
                 stmt.setNull(7, Types.INTEGER);
             }
 
-            return stmt.executeUpdate() > 0;
+            int rows = stmt.executeUpdate();
+
+            if (rows > 0) {
+                try (Statement idStmt = conn.createStatement();
+                     ResultSet rs = idStmt.executeQuery("SELECT last_insert_rowid()")) {
+                    if (rs.next()) {
+                        t.setIdTransaction(rs.getInt(1));
+                    }
+                }
+                return true;
+            }
+            return false;
         }
     }
 

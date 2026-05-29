@@ -569,6 +569,8 @@
 
 
 
+
+
 /* --------------------------- INIZIO WIDGETS --------------------------- */
 
 #quickContactGridPane, #monthlyBalanceGridPane, #transactionHistoryGridPane
@@ -607,6 +609,8 @@
 }
 
 
+
+/* ----------------------------- COMPONENT ----------------------------- */
 
 
 
@@ -750,9 +754,7 @@
     -fx-background-color: #595959 !important;
 }
 
-#notificationVBox{
-    -fx-background-color: #4a4a4a !important;
-}
+
 
 #errorLabelMenageCardPopup,
 #errorLabel{
@@ -795,16 +797,13 @@
 
 
 #notificationVBox{
-    -fx-background-color: white !important;
+    -fx-background-color: #4a4a4a !important;
 }
 #vBoxNotificationSlider{
-    -fx-background-color: white !important;
+    -fx-background-color: #4a4a4a !important;
 }
 
-#notificationSliderAnchorPane{
-    -fx-border-color: #e4e4e4 !important;
-    -fx-border-width: 0 0 0 1 !important;
-}
+
 
 
 #closeMenageCardPopup{
