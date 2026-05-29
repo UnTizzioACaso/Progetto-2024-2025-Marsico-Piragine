@@ -32,7 +32,7 @@ public class CardPageController extends BranchController
     @FXML
     public void initialize()
     {
-        if(CurrentSession.getCardPageController() == null) {CurrentSession.setCardPageController(this);}
+        CurrentSession.setCardPageController(this);
         // Retrieve all cards associated with the logged-in user
         List<Card> cards = CardDAO.getCardsByUserId(CurrentSession.getLoggedUser().getUserID());
         // Create a UI component for each card

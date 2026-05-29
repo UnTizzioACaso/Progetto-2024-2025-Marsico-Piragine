@@ -16,6 +16,9 @@ public class MonthlyIncomesController extends WidgetController {
     @FXML
     private VBox monthlyIncomesVBox;
 
+    @FXML
+    private VBox monthlyIncomesContainerVBox;
+
     @Override
     public String getWidgetType(){ return monthlyIncomesVBox.getId();}
 
@@ -33,7 +36,7 @@ public class MonthlyIncomesController extends WidgetController {
         for(Transaction transaction : transactions)
         {
             Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
-            monthlyIncomesVBox.getChildren().add(visualTransaction);
+            monthlyIncomesContainerVBox.getChildren().add(visualTransaction);
         }
     }
 

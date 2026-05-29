@@ -61,21 +61,29 @@ public class FriendContactController extends BranchController
             if(transaction.getStatus() == null) transaction.setStatus("");
             if(transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("request")) //if user is beneficiary of a request
             {
-                sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+                String status = "";
+                if(transaction.getStatus().equals("pending")){status = "in attesa";}
+                else if(transaction.getStatus().equals("accepted")){status = "accettata";}
+                else if(transaction.getStatus().equals("declined")){status = "rifiutata";}
+                sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + status + ")");
             }
-            else if (transaction.getBeneficiary().equals(userAccount)) //if user is beneficiary of a donation
+            else if (transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("donation")) //if user is beneficiary of a donation
             {
-                receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+                receiveCloud(transaction.getNote() + ": " + transaction.getAmount());
             }
             else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("request")) //if friend is beneficiary of a request
             {
-                ToUserTextCloudController controller = receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+                String status = "";
+                if(transaction.getStatus().equals("pending")){status = "in attesa";}
+                else if(transaction.getStatus().equals("accepted")){status = "accettata";}
+                else if(transaction.getStatus().equals("declined")){status = "rifiutata";}
+                ToUserTextCloudController controller = receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + status + ")");
                 controller.request = transaction;
                 controller.friendUsername = friendUsernameLabel.getText();
             }
-            else
+            else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("donation"))
             {
-               sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + transaction.getStatus() + ")");
+               sendCloud(transaction.getNote() + ": " + transaction.getAmount());
             }
         }
     }
