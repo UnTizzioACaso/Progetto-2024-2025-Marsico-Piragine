@@ -2,7 +2,7 @@ package bankapp.progetto20242025piragine.util;
 
 import bankapp.progetto20242025piragine.controller.RootWindowController;
 import bankapp.progetto20242025piragine.controller.component.CardController;
-import bankapp.progetto20242025piragine.db.Card;
+import bankapp.progetto20242025piragine.model.Card;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
@@ -17,7 +17,6 @@ public class VisualCardCreator
             FXMLLoader cardLoader = new FXMLLoader(VisualCardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
             Node visualCard = cardLoader.load();
             CardController controller = cardLoader.getController();
-            controller.setRootController(rootController);
             controller.setup(card);
             return visualCard;
         }
@@ -38,7 +37,6 @@ public class VisualCardCreator
             FXMLLoader cardLoader = new FXMLLoader(VisualCardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
             Node visualCard = cardLoader.load();
             CardController controller = cardLoader.getController();
-            controller.setRootController(rootController);
             controller.setupFavourites(card);
             return visualCard;
         }
@@ -58,7 +56,6 @@ public class VisualCardCreator
             FXMLLoader cardLoader = new FXMLLoader(VisualCardCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/card.fxml"));
             Node visualCard = cardLoader.load();
             CardController controller = cardLoader.getController();
-            controller.setRootController(rootController);
             controller.removeButtons();
             return visualCard;
         }

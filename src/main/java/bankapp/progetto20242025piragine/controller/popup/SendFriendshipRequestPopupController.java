@@ -1,13 +1,18 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.FriendRequest;
+import bankapp.progetto20242025piragine.model.Notify;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
@@ -31,16 +36,15 @@ public class SendFriendshipRequestPopupController extends BranchController {
 
     // Dynamic color by user
     private String getBgInactive() {
-        return rootController.user.getTheme().equalsIgnoreCase("dark") ? "#4a4a4a" : "white";
+        return CurrentSession.getLoggedUser().getTheme().equalsIgnoreCase("dark") ? "#4a4a4a" : "white";
     }
 
     private String getTextInactive() {
-        return rootController.user.getTheme().equalsIgnoreCase("dark") ? "white" : "#2b2b2b";
+        return CurrentSession.getLoggedUser().getTheme().equalsIgnoreCase("dark") ? "white" : "#2b2b2b";
     }
 
-    @Override
-    public void initializer() {
-        ThemeManager.applyTheme(errorLabel.getScene(), rootController.user.getTheme());
+    @FXML
+    public void initialize() {
         switchToUsername();
     }
 
@@ -120,49 +124,66 @@ public class SendFriendshipRequestPopupController extends BranchController {
 
     }
 
+    @FXML
+    public void closePopup()
+    {
+        ((Stage) errorLabel.getScene().getWindow()).close();
+    }
+
     private void sendRequest() //sends the friendship request and notifies in the db
     {
         //filtering if user2 is also user
-        if (user2.getUserID() == rootController.user.getUserID())
+        if (user2.getUserID() == CurrentSession.getLoggedUser().getUserID())
         {
             errorLabel.setTextFill(Paint.valueOf("red"));
             errorLabel.setText("L'utente inserito sei tu");
             return;
         }
 
-            //filtering if user2 blocked user
-            if (BlockDAO.isBlocked(user2.getUserID(), rootController.user.getUserID()))
-            {
-                errorLabel.setTextFill(Paint.valueOf("red"));
-                errorLabel.setText("Utente non trovato");
-                return;
-            }
-
-            //filtering if there is an existing pending request
-            if(FriendRequestDAO.findRequestByUsersIds(rootController.user.getUserID(), user2.getUserID()))
-            {
-                errorLabel.setTextFill(Paint.valueOf("red"));
-                errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
-                return;
-            }
-
-            //sending friendship request
-            FriendRequest request = new FriendRequest(rootController.user.getUserID(), user2.getUserID());
-            FriendRequestDAO.sendRequest(request);
-
-            //sending notifies
-            Notify n = new Notify(user2.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
-            Notify n2 = new Notify(rootController.user.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
-            NotifyDAO.insertNotify(n);
-            NotifyDAO.insertNotify(n2);
-
-
-            errorLabel.setTextFill(Paint.valueOf("green"));
-            errorLabel.setText("Richiesta inviata correttamente");
-
-
+        //filtering if user2 blocked user
+        if (BlockDAO.isBlocked(user2.getUserID(), CurrentSession.getLoggedUser().getUserID()))
+        {
             errorLabel.setTextFill(Paint.valueOf("red"));
-            errorLabel.setText("Errore nell'invio della richiesta");
+            errorLabel.setText("Utente non trovato");
+            return;
+        }
+
+        //filtering if there is an existing pending request
+        if(FriendRequestDAO.findPendingRequestByUsersIds(CurrentSession.getLoggedUser().getUserID(), user2.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
+            return;
+        }
+
+        //filtering if there is an existing pending request
+        if(FriendRequestDAO.findPendingRequestByUsersIds(CurrentSession.getLoggedUser().getUserID(), user2.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Hai gia una richiesta in sospeso con questo utente");
+            return;
+        }
+
+        //filtering if there is an accepted request
+        if(FriendRequestDAO.findAcceptedRequestByUsersIds(CurrentSession.getLoggedUser().getUserID(), user2.getUserID()))
+        {
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            errorLabel.setText("Sei gia amico con questo utente");
+            return;
+        }
+
+        //sending friendship request
+        FriendRequest request = new FriendRequest(CurrentSession.getLoggedUser().getUserID(), user2.getUserID());
+        FriendRequestDAO.sendRequest(request);
+
+        //sending notifies
+        Notify n = new Notify(user2.getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
+        Notify n2 = new Notify(CurrentSession.getLoggedUser().getUserID(), null, request.getIdRequest(), "Richiesta d'amicizia");
+        NotifyDAO.insertNotify(n);
+        NotifyDAO.insertNotify(n2);
+
+        errorLabel.setTextFill(Paint.valueOf("green"));
+        errorLabel.setText("Richiesta inviata correttamente");
     }
 
 }

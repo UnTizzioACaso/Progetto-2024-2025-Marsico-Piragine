@@ -1,20 +1,23 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.TransactionDAO;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.dao.TransactionDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class MonthlyIncomesController extends WidgetController {
 
     @FXML
     private VBox monthlyIncomesVBox;
+
+    @FXML
+    private VBox monthlyIncomesContainerVBox;
 
     @Override
     public String getWidgetType(){ return monthlyIncomesVBox.getId();}
@@ -26,24 +29,15 @@ public class MonthlyIncomesController extends WidgetController {
         removeWidget();
     }
 
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
-        try
+        List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
+        for(Transaction transaction : transactions)
         {
-            List<Transaction> transactions = TransactionDAO.getCurrentMonthTransactionsByBeneficiary(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            for(Transaction transaction : transactions)
-            {
-                Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transaction);
-                monthlyIncomesVBox.getChildren().add(visualTransaction);
-            }
-        }
-        catch (SQLException e)
-        {
-           System.err.println("error during getting all positive transaction of this month " + e.getMessage());
-           e.printStackTrace();
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
+            monthlyIncomesContainerVBox.getChildren().add(visualTransaction);
         }
     }
-
 
 }

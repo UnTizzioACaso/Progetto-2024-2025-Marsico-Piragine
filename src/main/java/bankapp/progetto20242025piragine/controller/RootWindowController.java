@@ -1,179 +1,99 @@
 package bankapp.progetto20242025piragine.controller;
 
 
+import bankapp.progetto20242025piragine.controller.component.SidebarController;
 import bankapp.progetto20242025piragine.controller.component.TopbarController;
 import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
-import bankapp.progetto20242025piragine.controller.page.CardPageController;
-import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
-import bankapp.progetto20242025piragine.controller.page.HomePageController;
-import bankapp.progetto20242025piragine.controller.widget.BankAccountController;
-import bankapp.progetto20242025piragine.db.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.util.Pair;
 
 public  class RootWindowController extends BranchController {
     @FXML
     public BorderPane rootWindow;
 
-    public TopbarController topbarController = null;
-
-    private String currentPage = "";
-
-    public User user = new User();
-
-    public GridPane homePageGridPane;
-
-    public BankAccountSettingsPageController  bankAccountSettingsPageController;
-
-    public HomePageController homePageController;
-
-    public FriendsPageController friendsPageController;
-
-    public CardPageController cardPageController;
-
-
     @FXML
+    public AnchorPane centerAnchorPane;
+
+    public String currentPage = "";
+
+    public BankAccountSettingsPageController bankAccountSettingsPageController;
+
+
+
     public void switchPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
-    {   if (!(fxml.equals(currentPage)))
-        {
-            try {
-                currentPage = fxml;
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-                Parent node = fxmlLoader.load(); //creating the node from the loader
-                BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-                controller.setRootController(this); //giving to the new page's controller the current RootController instance
-                rootWindow.setCenter(node); //setting the page to the center
-                controller.initializer();
-            }
-            catch (IOException e)
-            {
-                System.err.println("error loading " + fxml + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public BranchController showPopup(String title, String fxml, int width, int height)
     {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-            Parent root = loader.load(); //creating the node from the loader
-            BranchController controller = loader.getController(); //getting the controller from the loader
-            controller.setRootController(this);
-            Stage popupStage = new Stage(); //creating a new stage for the popup
-            popupStage.setTitle(title); //setting the title
-            popupStage.setMinWidth(width); //setting popup's minimum width
-            popupStage.setMaxWidth(width);
-            popupStage.setMinHeight(height); //setting popup's minimum height
-            popupStage.setMaxHeight(height);
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-            popupStage.setScene(new Scene(root));
-            controller.initializer();
-            popupStage.show();
-            return controller;
-        }
-        catch (IOException e)
+        if (!(fxml.equals(currentPage)))
         {
-            System.err.println("error loading the " + fxml + " popup " + e.getMessage());
-            e.printStackTrace();
+            currentPage = fxml;
+            Node node = EasyFxmlLoader.loader(fxml).getValue(); //creating the node from the loader
+            if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
+            setCenter(node);
         }
-        return null;
     }
 
-    @FXML
+
     public void loadPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {
         if (!(fxml.equals(currentPage)))
         {
-            try {
-                currentPage = fxml;
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-                Parent node = fxmlLoader.load(); //creating the node from the loader
-                if(fxml.equals("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"))
-                {
-                    homePageController = fxmlLoader.getController();
-                    homePageGridPane = (GridPane) node;
-                }
-                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml"))
-                {
-                    friendsPageController = fxmlLoader.getController();
-                }
-                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml"))
-                {
-                    cardPageController = fxmlLoader.getController();
-                }
-                else if (fxml.equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
-                {
-                    bankAccountSettingsPageController = fxmlLoader.getController();
-                }
-                BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-                controller.setRootController(this);//giving to the new page's controller the current RootController instance
-                controller.initializer();
-                rootWindow.setCenter(node); //setting the page to the center
-                if (topbarController != null) //if topbarController's controller is already initialized
-                {
-                    topbarController.visitPage(fxml); //adds the loaded page to the backwardStack
-                }
-            }
-            catch (IOException e)
+            ThemeManager.applyTheme(rootWindow.getScene(), "light"); //forcing stock light theme
+            currentPage = fxml;
+            Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+            Node node = p.getValue(); //creating the node from the pair
+            if (rootWindow.getTop() != null) //if topbar is already initialized
             {
-                System.err.println("error loading " + fxml + e.getMessage());
-                e.printStackTrace();
+                if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
+                CurrentSession.getTopbarController().visitPage(fxml); //adds the loaded page to the backwardStack
+                ThemeManager.applyTheme(rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme()); //correcting user Theme
             }
+            setCenter(node);
+
         }
     }
 
     @FXML
     public void initialize() //initializing the first page to load
     {
+        currentPage = "";
+        rootWindow.setLeft(null); //setting left to null because the first page is login, and it doesn't need the sidebar
+        rootWindow.setTop(null); //setting top to null because the first page is login, and it doesn't need the topbar
         loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml"); //loading login.fxml
+        ThemeManager.applyTheme(rootWindow.getScene(), "light");
     }
 
 
-    public void loadSideBar(String fxml) //this method loads a node on the left side of root's BorderPane
+    public void loadSideBar() //this method loads a node on the left side of root's BorderPane
     {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-            Parent node = fxmlLoader.load(); //creating the node from the loader
-            BranchController controller = fxmlLoader.getController(); //getting the controller from the loader
-            controller.setRootController(this);
-            rootWindow.setLeft(node); //setting the node to the left
-            controller.initializer();
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading on the left " + fxml + e.getMessage());
-            e.printStackTrace();
-        }
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/sidebar.fxml");
+        Node node = p.getValue(); //creating the node from the loader
+        CurrentSession.setSidebarController((SidebarController) p.getKey()); //getting the controller from the loader
+        rootWindow.setLeft(node); //setting the node to the left
     }
 
-    public void loadTopBar(String fxml) //this method loads a node on the top side of root's BorderPane and gives back his controller
+    public void loadTopBar() //this method loads a node on the top side of root's BorderPane and gives back his controller
     {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxml)); //getting the fxml in the loader
-            Parent node = fxmlLoader.load(); //creating the node from the loader
-            topbarController = fxmlLoader.getController(); //getting the controller from the loader
-            topbarController.setRootController(this); //giving to the new page's controller the current RootController instance
-            rootWindow.setTop(node); //setting the node to the top
-            topbarController.initializer();
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading on top " + fxml + e.getMessage());
-            e.printStackTrace();
-        }
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/topbar.fxml");
+        Node node = p.getValue(); //creating the node from the loader
+        TopbarController controller = (TopbarController) p.getKey(); //getting the controller from the loader
+        rootWindow.setTop(node); //setting the node to the left
+        CurrentSession.setTopbarController(controller);
+    }
+
+    public void setCenter(Node node)
+    {
+        centerAnchorPane.getChildren().clear(); //clears the centerAnchorPane
+        centerAnchorPane.getChildren().add(node); //adds the node to the centerAnchorPane
+        double d = 0;
+        AnchorPane.setBottomAnchor(node, d);
+        AnchorPane.setLeftAnchor(node, d);
+        AnchorPane.setTopAnchor(node, d);
+        AnchorPane.setRightAnchor(node, d);
     }
 
 }

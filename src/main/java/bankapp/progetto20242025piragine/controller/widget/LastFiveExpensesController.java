@@ -1,17 +1,14 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
-import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.controller.component.TransactionController;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.TransactionDAO;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.dao.TransactionDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class LastFiveExpensesController extends WidgetController
@@ -22,23 +19,18 @@ public class LastFiveExpensesController extends WidgetController
     private VBox lastFiveExpensesVBox;
 
     // Initializes the widget and loads the last five expenses of the current user
-    @Override
-    public void initializer()
+    @FXML
+    public void initialize()
     {
-        try
+        List<Transaction> transactions = TransactionDAO.getCompletedTransactionsBySender(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
+        for (int i = 0; i < 5; i++)
         {
-            List<Transaction> transactions = TransactionDAO.getTransactionsBySender(BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID()));
-            for(int i = 0; i < 5; i++)
+            if (i >= transactions.size())
             {
-                if(i>=transactions.size()){return;}
-                Node visualTransaction = VisualTransactionCreator.createVisualTransaction(rootController, transactions.get(i));
-                lastFiveExpensesVBox.getChildren().add(visualTransaction);
+                return;
             }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting last 5 negative transaction " + e.getMessage());
-            e.printStackTrace();
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transactions.get(i));
+            lastFiveExpensesVBox.getChildren().add(visualTransaction);
         }
     }
 

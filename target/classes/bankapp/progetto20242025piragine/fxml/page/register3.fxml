@@ -90,17 +90,17 @@
                   </InnerShadow>
                </effect>
             </Button>
-            <TextField fx:id="cellphoneRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Numero di telefono" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <TextField fx:id="cellphoneRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#openCreatePinPopup" prefHeight="40.0" prefWidth="300.0" promptText="Numero di telefono" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </TextField>
-            <TextField fx:id="emailRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="emailRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#openCreatePinPopup" prefHeight="40.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </TextField>
-            <TextField fx:id="usernameRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Nome utente" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="usernameRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#openCreatePinPopup" prefHeight="40.0" prefWidth="300.0" promptText="Nome utente" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <padding>
                   <Insets left="10.0" />
                </padding>
@@ -119,12 +119,12 @@
                   <InnerShadow choke="1.0" height="255.0" radius="127.0" width="255.0" />
                </effect>
             </Label>
-            <PasswordField fx:id="passwordConfirmPasswordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-border-color: #d9d9d9; -fx-background-color: #f2f2f2; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <PasswordField fx:id="passwordConfirmPasswordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#openCreatePinPopup" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-border-color: #d9d9d9; -fx-background-color: #f2f2f2; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </PasswordField>
-            <PasswordField fx:id="passwordPasswordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-border-color: #d9d9d9; -fx-background-color: #f2f2f2; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <PasswordField fx:id="passwordPasswordField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#openCreatePinPopup" prefHeight="40.0" prefWidth="300.0" promptText="Password" style="-fx-border-color: #d9d9d9; -fx-background-color: #f2f2f2; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <padding>
                   <Insets left="10.0" />
                </padding>

@@ -1,14 +1,16 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Paint;
 
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 
 
 public class TransactionController extends BranchController
@@ -20,22 +22,18 @@ public class TransactionController extends BranchController
     public void setCorrectValues(Transaction transaction)
     {
         int id = 0;
-        try {id = BankAccountDAO.getIdAccountByUserId(rootController.user.getUserID());}
-        catch (SQLException e)
-        {
-            System.err.println("error finding id account by user id " + e.getMessage());
-            e.printStackTrace();
-            return;
-        }
+        id = BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID());
+
         if (transaction.getBeneficiary() == id) //positive transactions
         {
             try
             {
                 String username = UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getSender()));
                 transactionValueLabel.setText("+" + transaction.getAmount().toString() + " €");
-                transactionValueLabel.setTextFill(Paint.valueOf("green"));
                 transactionSubjectLabel.setText(username);
-                TransactionDateLabel.setText(transaction.getTransactionDate().toString());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                String cleanDate = transaction.getTransactionDate().toLocalDateTime().format(formatter);
+                TransactionDateLabel.setText(cleanDate);
             }
             catch (SQLException e)
             {
@@ -51,7 +49,9 @@ public class TransactionController extends BranchController
                 transactionValueLabel.setText("-" + transaction.getAmount().toString() + " €");
                 transactionValueLabel.setTextFill(Paint.valueOf("red"));
                 transactionSubjectLabel.setText(username);
-                TransactionDateLabel.setText(transaction.getTransactionDate().toString());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");;
+                String cleanDate = transaction.getTransactionDate().toLocalDateTime().format(formatter);
+                TransactionDateLabel.setText(cleanDate);
             }
             catch (SQLException e)
             {

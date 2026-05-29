@@ -1,90 +1,114 @@
 package bankapp.progetto20242025piragine.controller.component;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Transaction;
-import bankapp.progetto20242025piragine.db.TransactionDAO;
+import bankapp.progetto20242025piragine.controller.page.FriendsPageController;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.Friendship;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FriendContactController extends BranchController
 {
-    public VBox chatVBox;
+
+    public FriendsPageController friendsPageController = CurrentSession.getFriendsPageController();
 
     @FXML
     public Label friendUsernameLabel;
 
-    public void showChat(int friendId)
+    @FXML
+    public void showChat()
     {
-        chatVBox.getChildren().clear();
-        List<Transaction> transactions = new ArrayList<>();
-        int userAccount = 0;
-        int friendAccount = 0;
-        try
+        friendsPageController.chatVBox.setAlignment(Pos.TOP_CENTER);
+        if(friendsPageController.currentFriendController == null) {friendsPageController.currentFriendController = this;}
+        User friend = UserDAO.getUserByUsername(friendUsernameLabel.getText());
+        friendsPageController.chatVBox.getChildren().clear();
+
+        List<Transaction> transactions;
+        int userAccount;
+        int friendAccount;
+        friendsPageController.friend = friend;
+        userAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()).getIdAccount();
+        friendAccount = BankAccountDAO.getAccountByUserId(friend.getUserID()).getIdAccount();
+        transactions = TransactionDAO.getTransactionsBetweenAccounts(userAccount, friendAccount);
+        Friendship f = FriendshipDAO.getFriendship(friend.getUserID(), CurrentSession.getLoggedUser().getUserID());
+
+        friendsPageController.chatVBox.getChildren().clear();
+
+        if(f.getRequester() == CurrentSession.getLoggedUser().getUserID()) //if the user sent first the friendship and the friend accepted it
         {
-            userAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID()).getIdAccount();
-            friendAccount = BankAccountDAO.getAccountByUserId(friendId).getIdAccount();
-            transactions = TransactionDAO.getTransactionsBetweenUserAndUser2(userAccount, friendAccount);
+            sendCloud("Ciao, vuoi essere mio amico?");
+            receiveCloud("Certo!");
         }
-        catch(SQLException e)
+        else
         {
-            System.err.println("error during loading chat with friend" + e.getMessage());
-            e.printStackTrace();
+            receiveCloud("Ciao, vuoi essere mio amico?");
+            sendCloud("Certo!");
         }
+
+
         for (Transaction transaction : transactions)
         {
-            if(transaction.getSender().equals(userAccount))
+            if(transaction.getStatus() == null) transaction.setStatus("");
+            if(transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("request")) //if user is beneficiary of a request
             {
-                try
-                {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
-                    Node toFriend = fxmlLoader.load();
-                    ToFriendTransactionCloudController controller = fxmlLoader.getController();
-                    controller.textLabel.setText(transaction.getAmount().toString());
-                    VBox toFriendVBox = new VBox();
-                    toFriendVBox.setAlignment(Pos.CENTER_RIGHT);
-                    toFriendVBox.setMaxWidth(140.0);
-                    toFriendVBox.setMaxHeight(60.0);
-                    toFriendVBox.setMinWidth(140.0);
-                    toFriendVBox.setMinHeight(60.0);
-                    toFriendVBox.getChildren().add(toFriend);
-
-                } catch (Exception e)
-                {
-                    System.err.println("error loading transaction cloud in the chat" + e.getMessage());
-                }
+                String status = "";
+                if(transaction.getStatus().equals("pending")){status = "in attesa";}
+                else if(transaction.getStatus().equals("accepted")){status = "accettata";}
+                else if(transaction.getStatus().equals("declined")){status = "rifiutata";}
+                sendCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + status + ")");
             }
-            else
+            else if (transaction.getBeneficiary().equals(userAccount) && transaction.getType().equals("donation")) //if user is beneficiary of a donation
             {
-                try
-                {
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/component/fromFriendTransactionCloud.fxml"));
-                    Node toFriend = fxmlLoader.load();
-                    ToFriendTransactionCloudController controller = fxmlLoader.getController();
-                    controller.textLabel.setText(transaction.getAmount().toString());
-                    VBox toFriendVBox = new VBox();
-                    toFriendVBox.setAlignment(Pos.CENTER_LEFT);
-                    toFriendVBox.setMaxWidth(140.0);
-                    toFriendVBox.setMaxHeight(60.0);
-                    toFriendVBox.setMinWidth(140.0);
-                    toFriendVBox.setMinHeight(60.0);
-                    toFriendVBox.getChildren().add(toFriend);
-
-                } catch (Exception e)
-                {
-                    System.err.println("error loading transaction cloud in the chat" + e.getMessage());
-                }
+                receiveCloud(transaction.getNote() + ": " + transaction.getAmount());
             }
-
+            else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("request")) //if friend is beneficiary of a request
+            {
+                String status = "";
+                if(transaction.getStatus().equals("pending")){status = "in attesa";}
+                else if(transaction.getStatus().equals("accepted")){status = "accettata";}
+                else if(transaction.getStatus().equals("declined")){status = "rifiutata";}
+                ToUserTextCloudController controller = receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + status + ")");
+                controller.request = transaction;
+                controller.friendUsername = friendUsernameLabel.getText();
+            }
+            else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("donation"))
+            {
+               sendCloud(transaction.getNote() + ": " + transaction.getAmount());
+            }
         }
+    }
+
+    @FXML
+    public void initialize()
+    {
+        ThemeManager.applyTheme(CurrentSession.getFriendsPageController().chatVBox.getScene(), CurrentSession.getLoggedUser().getTheme());
+    }
+
+    private void sendCloud(String text)
+    {
+        Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/fromUserTextCloud.fxml");
+        FromUserTextCloudController controller = (FromUserTextCloudController) p.getKey();
+        controller.textLabel.setText(text);
+        friendsPageController.chatVBox.getChildren().add(p.getValue());
+    }
+
+    private ToUserTextCloudController receiveCloud(String text)
+    {
+        Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml");
+        ToUserTextCloudController controller = (ToUserTextCloudController) p.getKey();
+        controller.textLabel.setText(text);
+        friendsPageController.chatVBox.getChildren().add(p.getValue());
+        return controller;
     }
 
 }

@@ -103,18 +103,18 @@
                   </InnerShadow>
                </effect>
             </Button>
-            <TextField fx:id="nameRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Nome" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <TextField fx:id="nameRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="40.0" prefWidth="300.0" promptText="Nome" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </TextField>
-            <TextField fx:id="birthPlaceRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Luogo di nascita" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <TextField fx:id="birthPlaceRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="40.0" prefWidth="300.0" promptText="Luogo di nascita" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </TextField>
             <DatePicker fx:id="birthDateRegisterDatePicker" maxHeight="-Infinity" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="surnameRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" prefHeight="40.0" prefWidth="300.0" promptText="Cognome" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="surnameRegisterTextField" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="270.0" onAction="#loadRegisterPage2" prefHeight="40.0" prefWidth="300.0" promptText="Cognome" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <padding>
                   <Insets left="10.0" />
                </padding>

@@ -2,10 +2,11 @@ package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.component.CardController;
-import bankapp.progetto20242025piragine.db.BankAccount;
-import bankapp.progetto20242025piragine.db.BankAccountDAO;
-import bankapp.progetto20242025piragine.db.Card;
-import bankapp.progetto20242025piragine.db.CardDAO;
+import bankapp.progetto20242025piragine.model.BankAccount;
+import bankapp.progetto20242025piragine.dao.BankAccountDAO;
+import bankapp.progetto20242025piragine.model.Card;
+import bankapp.progetto20242025piragine.dao.CardDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import bankapp.progetto20242025piragine.util.VisualCardCreator;
 import bankapp.progetto20242025piragine.util.last4DigitsPan;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+
 
 public class CreateCardPopupController extends BranchController
 {
@@ -45,14 +47,12 @@ public class CreateCardPopupController extends BranchController
 
     private String color = "e4e4e4";
 
-    public Stage s;
-
     // Creates the card using last4DigitsPan and user's bank account data
     @FXML
     public void createCard() throws Exception {
         String spendingLimitText;
 
-        // Validazione formato
+        // format validation
         if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {
             spendingLimitText = spendingLimitTextField.getText().replace(",", ".");
         } else if (spendingLimitTextField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {
@@ -63,11 +63,11 @@ public class CreateCardPopupController extends BranchController
         }
 
         BigDecimal limit = new BigDecimal(spendingLimitText);
-        BigDecimal maxLimit = new BigDecimal("1000000000.00");
+        BigDecimal maxLimit = new BigDecimal("1000000.00");
 
-        // Validazione valore numerico
+        // numeric value validation
         if (limit.compareTo(maxLimit) > 0) {
-            errorLabel.setText("Il limite massimo è 1.000.000.000");
+            errorLabel.setText("Il limite massimo è 1.000.000");
             return;
         }
         if (limit.compareTo(BigDecimal.ZERO) < 0) {
@@ -76,7 +76,7 @@ public class CreateCardPopupController extends BranchController
         }
 
         try {
-            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(rootController.user.getUserID());
+            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());
 
             if (bankAccount == null) {
                 errorLabel.setText("Conto corrente non trovato");
@@ -84,7 +84,7 @@ public class CreateCardPopupController extends BranchController
             }
 
             Card card = new Card(
-                    rootController.user.getUserID(),
+                    CurrentSession.getLoggedUser().getUserID(),
                     bankAccount.getIdAccount(),
                     last4DigitsPan.generateLastFourDigits(),
                     nicknameTextField.getText(),
@@ -93,8 +93,8 @@ public class CreateCardPopupController extends BranchController
             );
 
             if (CardDAO.insertCard(card)) {
-                s.close(); // Assumendo che 's' sia lo Stage/Finestra
-                rootController.topbarController.reloadPage();
+                ((Stage) colorMenu.getScene().getWindow()).close(); // Assumendo che 's' sia lo Stage/Finestra
+                CurrentSession.getTopbarController().reloadPage();
             } else {
                 errorLabel.setText("Errore durante il salvataggio della carta");
             }
@@ -107,12 +107,10 @@ public class CreateCardPopupController extends BranchController
 
     // Initializes the popup by loading the card preview component
     @FXML
-    public void initializer()
+    public void initialize()
     {
-        s = (Stage) colorMenu.getScene().getWindow();
-        cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(rootController)); //add the card component to the VBox
+        cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(CurrentSession.getRootController())); //add the card component to the VBox
         colorMenu.setText("Bianco"); //set default color menu text
-        ThemeManager.applyTheme(colorMenu.getScene(), rootController.user.getTheme());
     }
 
     // Following methods handle color selection and update the card preview accordingly
@@ -154,5 +152,13 @@ public class CreateCardPopupController extends BranchController
         colorMenu.setText("Bianco");
         color = "e4e4e4";
         cardSlotVbox.getChildren().getFirst().setStyle(" -fx-background-radius: 15; -fx-border-radius: 15;-fx-background-color: e4e4e4;");
+    }
+
+    @FXML
+    public void closePopup() {
+        if (colorMenu != null && colorMenu.getScene() != null) {
+            Stage stage = (Stage) colorMenu.getScene().getWindow();
+            stage.close();
+        }
     }
 }

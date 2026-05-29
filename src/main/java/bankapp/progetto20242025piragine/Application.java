@@ -1,6 +1,7 @@
 package bankapp.progetto20242025piragine;
 
 import bankapp.progetto20242025piragine.db.DBInitializer;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,16 +19,15 @@ public class Application extends javafx.application.Application {
         DBInitializer.initialize();
 
         // Carica il FXML principale
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                Application.class.getResource("fxml/rootWindow.fxml")
-        );
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("fxml/rootWindow.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load());
 
-        // Applica il tema globale (chiaro/scuro) all'apertura
-        ThemeManager.applyTheme(scene, "light");
+        CurrentSession.setRootController(fxmlLoader.getController());
+        CurrentSession.setPrimaryStage(stage);
 
-        // Imposta le proprietà della finestra principale
+
+        // Imposta le proprietà della finestra principaleuserIcon.png
         stage.setTitle("Maze Bank");
         stage.setMinWidth(850);
         stage.setMinHeight(650);

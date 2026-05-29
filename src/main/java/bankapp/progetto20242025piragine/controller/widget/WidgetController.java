@@ -1,7 +1,9 @@
 package bankapp.progetto20242025piragine.controller.widget;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.HomeWidgetCustomDAO;
+import bankapp.progetto20242025piragine.dao.HomeWidgetCustomDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
@@ -21,29 +23,24 @@ public class WidgetController extends BranchController {
 
     public String getWidgetType(){ return "";}
 
+    public int x, y;
+
     public Node widget;
 
     @FXML
     public Label widgetTitleLabel;
 
     //takes the root of the widget and removes it from the home page grid pane
-    public void removeWidget()
-    {
-        List<Node> nodes = homePageGridPane.getChildren();
-        for(Node node : nodes)
-        {
-            if (widget.equals(node))
-            {
-                homePageGridPane.getChildren().remove(node);
-                try {HomeWidgetCustomDAO.markAsRemoved(rootController.user.getUserID(),  widget.getId());}
-                catch (SQLException e)
-                {
-                    System.err.println("error during elimination of " + widget.getId() + e);
-                    e.printStackTrace();
-                }
-                return;
-            }
+    public void removeWidget() {
+        homePageGridPane.getChildren().remove(widget);
+
+        try {
+            HomeWidgetCustomDAO.markAsRemoved(CurrentSession.getLoggedUser().getUserID(), widget.getId());
+        } catch (SQLException e) {
+            System.err.println("error during elimination of " + widget.getId() + e);
+            e.printStackTrace();
         }
+
     }
 
     //same as menuShower, but without the option to show the bigger version of the widget
@@ -56,7 +53,7 @@ public class WidgetController extends BranchController {
             return;
         }
         Bounds bounds = widgetTitleLabel.localToScreen(widgetTitleLabel.getBoundsInLocal());
-        ThemeManager.applyTheme(popup.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(popup.getScene(), CurrentSession.getLoggedUser().getTheme());
         popup.show(widgetTitleLabel, bounds.getMinX(), bounds.getMaxY());
     }
 
@@ -70,7 +67,7 @@ public class WidgetController extends BranchController {
             return;
         }
         Bounds bounds = widgetTitleLabel.localToScreen(widgetTitleLabel.getBoundsInLocal());
-        ThemeManager.applyTheme(popup.getScene(), rootController.user.getTheme());
+        ThemeManager.applyTheme(popup.getScene(), CurrentSession.getLoggedUser().getTheme());
         popup.show(widgetTitleLabel, bounds.getMinX(), bounds.getMaxY());
     }
 
@@ -108,7 +105,8 @@ public class WidgetController extends BranchController {
                 "            -10\n" +
                 "        );");
 
-        one.setOnAction(e -> {rootController.showPopup(title, fxml, 600, 600);});
+        one.setOnAction(e -> {
+            PopupCreator.showPopup(title, fxml, 600, 600);});
         two.setOnAction(e -> {removeWidget();});
         content.getChildren().addAll(one, two);
 

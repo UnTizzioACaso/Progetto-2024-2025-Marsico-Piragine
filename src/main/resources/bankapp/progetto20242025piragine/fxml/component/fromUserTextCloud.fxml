@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxWidth="1.7976931348623157E308" prefWidth="380.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.FromUserTextCloudController">
+   <children>
+      <StackPane fx:id="bubbleContainer" AnchorPane.rightAnchor="10.0">
+         <children>
+            <Polygon fill="RED" points="0.0, 0.0, 15.0, 15.0, 0.0, 15.0" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="BOTTOM_RIGHT">
+               <StackPane.margin>
+                  <Insets right="-8.0" />
+               </StackPane.margin>
+            </Polygon>
+
+            <Label fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" onMouseClicked="#showRequest" style="-fx-background-color: red; -fx-background-radius: 15 15 0 15; -fx-padding: 10;" text="Messaggio" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </StackPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" top="5.0" />
+   </padding>
+</AnchorPane>

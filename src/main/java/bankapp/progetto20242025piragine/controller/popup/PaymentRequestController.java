@@ -1,78 +1,64 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.FriendRequestDAO;
-import bankapp.progetto20242025piragine.db.FriendshipDAO;
-import bankapp.progetto20242025piragine.db.User;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.Notify;
+import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
-import java.sql.SQLException;
+import javafx.stage.Stage;
 
 public class PaymentRequestController extends BranchController {
 
-    public int idRequest;
+    public Transaction request;
+
+    public Notify n;
 
     @FXML
-    private Label friendshipUsernameLabel;
+    public Label friendshipUsernameLabel;
 
     @FXML
-    private Label moneyLabel;
+    public Label moneyLabel;
 
 
     @FXML
     public void declineRequest()
     {
-
-        try {
-            FriendRequestDAO.declineRequest(idRequest);}
-        catch (SQLException e)
-        {
-            System.err.println("error during friendship request declining " + e.getMessage());
-            e.printStackTrace();
-        }
-
-
-        BlockUserPopupController controller = (BlockUserPopupController) rootController.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
+        BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.username = friendshipUsernameLabel.getText();
+        if(n != null)
+        {
+            if (TransactionDAO.declineTransacion(n.getIdTransaction()))
+            {
+
+                NotifyDAO.markAsRead(n.getIdNotify());
+                return;
+            }
+        }
+        CurrentSession.getFriendsPageController().currentFriendController.showChat();
+        TransactionDAO.declineTransacion(request.getIdTransaction());
     }
 
     @FXML
-    public void acceptRequest()
-    {
+    public void acceptRequest() {
 
-        try
+        if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
         {
-            User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
-            try
+            if (n != null)
             {
+                CurrentSession.getTopbarController().updateNotifications();
+                NotifyDAO.markAsRead(n.getIdNotify());
+                ((Stage) moneyLabel.getScene().getWindow()).close();
+            }
 
-                try
-                {
-                    FriendshipDAO.addFriendship(rootController.user.getUserID(),  u.getUserID());
-                    rootController.topbarController.updateNotifications();
-                }
-                catch (SQLException e)
-                {
-                    System.err.println("error during adding the friendship in the db " + e.getMessage());
-                    e.printStackTrace();
-                }
-                FriendRequestDAO.acceptRequest(idRequest);
-            }
-            catch (SQLException e)
-            {
-                System.err.println("error during accepting the friendship request " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting user from the db " + e.getMessage());
-            e.printStackTrace();
         }
 
+        BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
+        CurrentSession.getFriendsPageController().currentFriendController.showChat();
+        ((Stage) moneyLabel.getScene().getWindow()).close();
     }
 
 }

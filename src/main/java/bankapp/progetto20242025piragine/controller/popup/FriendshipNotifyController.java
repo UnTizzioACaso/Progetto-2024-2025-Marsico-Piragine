@@ -1,14 +1,20 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.*;
+import bankapp.progetto20242025piragine.dao.*;
+import bankapp.progetto20242025piragine.model.FriendRequest;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
+import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
-import java.sql.SQLException;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class FriendshipNotifyController extends BranchController
 {
+    @FXML private AnchorPane anchorPaneFriendshipNotify;
     public int idRequest;
 
     @FXML
@@ -17,50 +23,23 @@ public class FriendshipNotifyController extends BranchController
     @FXML
     public void declineRequest()
     {
-        try {FriendRequestDAO.declineRequest(idRequest);}
-        catch (SQLException e)
-        {
-            System.err.println("error during friendship request declining " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        BlockUserPopupController controller = (BlockUserPopupController) rootController.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
+        FriendRequestDAO.declineRequest(idRequest);
+        BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 368, 224);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.username = friendshipUsernameLabel.getText();
+        ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
 
     @FXML
     public void acceptRequest()
     {
-        try
-        {
-            User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
-            try
-            {
-                FriendRequestDAO.acceptRequest(idRequest);
-                try
-                {
-                    FriendshipDAO.addFriendship(rootController.user.getUserID(),  u.getUserID());
-                    rootController.topbarController.updateNotifications();
-                }
-                catch (SQLException e)
-                {
-                    System.err.println("error during adding the friendship in the db " + e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-            catch (SQLException e)
-            {
-                System.err.println("error during accepting the friendship request " + e.getMessage());
-                e.printStackTrace();
-            }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during getting user from the db " + e.getMessage());
-            e.printStackTrace();
-        }
+        User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
+        FriendRequestDAO.acceptRequest(idRequest);
+        FriendRequest r = FriendRequestDAO.getFriendRequestById(idRequest);
+        FriendshipDAO.addFriendship(r.getRequester(), r.getRequested());
+        CurrentSession.getTopbarController().updateNotifications();
+        ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
 }

@@ -1,21 +1,16 @@
 package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.controller.popup.CreatePinPopupController;
-import bankapp.progetto20242025piragine.db.User;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.PasswordUtil;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class Register3Controller extends BranchController {
@@ -132,40 +127,18 @@ public class Register3Controller extends BranchController {
             return;
         }
 
-        rootController.user.setEmail(email);
-        rootController.user.setUsername(username);
-        rootController.user.setPhoneNumber(phone);
-        rootController.user.setPasswordHash(PasswordUtil.hashPassword(passwordPasswordField.getText()));
+        CurrentSession.getLoggedUser().setEmail(email);
+        CurrentSession.getLoggedUser().setUsername(username);
+        CurrentSession.getLoggedUser().setPhoneNumber(phone);
+        CurrentSession.getLoggedUser().setPasswordHash(PasswordUtil.hashPassword(passwordPasswordField.getText()));
 
-        try
-        {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/bankapp/progetto20242025piragine/fxml/popup/createPinPopup.fxml"));
-            Parent root = loader.load();
-
-            CreatePinPopupController controller = loader.getController();
-            controller.setRootController(rootController);
-
-            Stage popupStage = new Stage();
-            popupStage.setTitle("Crea un pin");
-            popupStage.setMinWidth(315);
-            popupStage.setMinHeight(280);
-            popupStage.setResizable(false);
-            popupStage.initModality(Modality.APPLICATION_MODAL);
-
-            popupStage.setScene(new Scene(root));
-            popupStage.showAndWait();
-        }
-        catch (IOException e)
-        {
-            System.err.println("error loading the create pin popup" + e.getMessage());
-            e.printStackTrace();
-        }
+        PopupCreator.showPopup("Crea un pin", "/bankapp/progetto20242025piragine/fxml/popup/createPinPopup.fxml", 314, 240);
     }
 
     @FXML
     public void loadLogin()
     {
-        rootController.user = new User();
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
+        CurrentSession.setLoggedUser(new User());
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 }

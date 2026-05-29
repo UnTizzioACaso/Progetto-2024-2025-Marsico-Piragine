@@ -1,9 +1,8 @@
 package bankapp.progetto20242025piragine.util;
 
-import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.controller.RootWindowController;
 import bankapp.progetto20242025piragine.controller.component.TransactionController;
-import bankapp.progetto20242025piragine.db.Transaction;
+import bankapp.progetto20242025piragine.model.Transaction;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
@@ -16,7 +15,6 @@ public class VisualTransactionCreator {
             FXMLLoader fxmlLoader = new FXMLLoader(VisualTransactionCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/transaction.fxml"));
             Node visualTransaction = fxmlLoader.load();
             TransactionController controller = fxmlLoader.getController();
-            controller.setRootController(rootController);
             controller.setCorrectValues(transaction);
             return visualTransaction;
         }

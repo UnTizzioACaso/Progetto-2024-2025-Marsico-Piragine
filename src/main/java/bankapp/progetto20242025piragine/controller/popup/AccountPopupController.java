@@ -1,7 +1,8 @@
 package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
-import bankapp.progetto20242025piragine.db.UserDAO;
+import bankapp.progetto20242025piragine.dao.UserDAO;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -23,38 +24,34 @@ public class AccountPopupController extends BranchController {
 
     // Root pane of the popup, used to apply theme changes
     @FXML
-    private AnchorPane root;
+    private AnchorPane accountPopupRoot;
 
     // Fills the popup with the correct user data and current theme
-    @Override
-    public void initializer() {
+    @FXML
+    public void initialize() {
         // Display user's email
-        emailPopupAccountLabel.setText(rootController.user.getEmail());
-
+        emailPopupAccountLabel.setText(CurrentSession.getLoggedUser().getEmail());
         // Display user's full name
-        nameSurnameAccountPopupLabel.setText(rootController.user.getFirstName() + " " + rootController.user.getLastName());
-
+        nameSurnameAccountPopupLabel.setText(CurrentSession.getLoggedUser().getFirstName() + " " + CurrentSession.getLoggedUser().getLastName());
         // Update radio button and theme label based on user's theme
-        if (rootController.user.getTheme().equals("light")) {
+        if (CurrentSession.getLoggedUser().getTheme().equals("light")) {
             themeColorAccountPopupRadioButton.setSelected(false);
-        } else if (rootController.user.getTheme().equals("dark")) {
+        } else if (CurrentSession.getLoggedUser().getTheme().equals("dark")) {
             themeColorAccountPopupRadioButton.setSelected(true);
         }
 
         // Update theme color label based on radio button
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
 
-        // Apply the selected theme to the popup scene
-        ThemeManager.applyTheme(root.getScene(), rootController.user.getTheme());
+
     }
 
 
     @FXML
     private void loadAccountSettingsPage()
     {
-        rootController.loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
-        Stage stage = (Stage)root.getScene().getWindow();
-        stage.close();
+        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
+        ((Stage) accountPopupRoot.getScene().getWindow()).close();
     }
 
 
@@ -65,11 +62,11 @@ public class AccountPopupController extends BranchController {
         // Update the theme label text based on the selected theme
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
         String themeColor = themeColorAccountPopupRadioButton.isSelected() ? "dark" : "light";
-        rootController.user.setTheme(themeColor);
+        CurrentSession.getLoggedUser().setTheme(themeColor);
 
         try
         {
-            UserDAO.updateUserTheme(rootController.user.getUserID(), themeColor);
+            UserDAO.updateUserTheme(CurrentSession.getLoggedUser().getUserID(), themeColor);
         }
         catch (SQLException e)
         {
@@ -79,9 +76,26 @@ public class AccountPopupController extends BranchController {
         }
 
         // Apply the selected theme to the popup window
-        ThemeManager.applyTheme(root.getScene(), themeColor);
+        ThemeManager.applyTheme(accountPopupRoot.getScene(), themeColor);
 
         // Apply the selected theme to the main application window
-        ThemeManager.applyTheme(rootController.rootWindow.getScene(), themeColor);
+        ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), themeColor);
+    }
+
+    @FXML
+    public void logout()
+    {
+        CurrentSession.getTopbarController().backwardStack.clear();
+        CurrentSession.getTopbarController().forwardStack.clear();
+        CurrentSession.reset();
+        ((Stage) accountPopupRoot.getScene().getWindow()).close();
+        CurrentSession.getRootController().initialize();
+    }
+
+
+    @FXML
+    public void closePopup()
+    {
+        ((Stage) accountPopupRoot.getScene().getWindow()).close();
     }
 }
