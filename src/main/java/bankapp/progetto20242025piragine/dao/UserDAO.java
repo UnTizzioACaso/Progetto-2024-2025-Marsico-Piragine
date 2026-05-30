@@ -324,4 +324,20 @@ public class UserDAO
         }
 
     }
+
+    public static boolean existsByUsername(String text)
+    {
+        String sql = "SELECT 1 FROM User WHERE username = ? LIMIT 1";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, text);
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            System.err.println("Error occurred while checking if username exists");
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

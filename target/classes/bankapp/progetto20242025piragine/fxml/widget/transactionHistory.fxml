@@ -29,7 +29,7 @@
             <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <TextField id="textFieldTransactionHistory" fx:id="transactionHistoryTextField" maxHeight="26.0" maxWidth="450.0" minHeight="26.0" prefHeight="26.0" prefWidth="166.0" promptText=" Parola chiave" style="-fx-background-radius: 15;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <TextField id="textFieldTransactionHistory" fx:id="transactionHistoryTextField" maxHeight="26.0" maxWidth="450.0" minHeight="26.0" onAction="#filter" prefHeight="26.0" prefWidth="166.0" promptText="Nome" style="-fx-background-radius: 15;" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <padding>
                   <Insets left="10.0" />
                </padding>
@@ -48,14 +48,14 @@
                <GridPane.margin>
                   <Insets right="105.0" />
                </GridPane.margin></DatePicker>
-            <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="26.0" style="-fx-background-color: red; -fx-background-radius: 10;" GridPane.halignment="RIGHT">
+            <Button mnemonicParsing="false" onAction="#filter" prefHeight="24.0" prefWidth="26.0" style="-fx-background-color: red; -fx-background-radius: 10;" GridPane.halignment="RIGHT">
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../imgs/lenticon.png" />
                      </image>
                      <effect>
-                        <ColorAdjust brightness="0.34" contrast="-1.0" hue="0.02" saturation="-0.05" />
+                        <ColorAdjust brightness="1.0" contrast="-1.0" hue="0.02" saturation="-0.05" />
                      </effect>
                   </ImageView>
                </graphic>
@@ -67,7 +67,7 @@
                   </InnerShadow>
                </effect>
                <padding>
-                  <Insets right="-1.0" />
+                  <Insets bottom="-1.0" right="-1.0" />
                </padding>
             </Button>
          </children>

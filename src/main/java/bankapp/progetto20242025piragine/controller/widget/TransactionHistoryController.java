@@ -8,10 +8,11 @@ import bankapp.progetto20242025piragine.util.VisualTransactionCreator;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-import java.awt.*;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -57,12 +58,12 @@ public class TransactionHistoryController extends WidgetController
 
     private void populate(String username, Timestamp from, Timestamp to)
     {
-        List<Transaction> transactions = TransactionDAO.getFilteredTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()), username, from, to);
-        for (Transaction transaction : transactions)
-        {
-            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
-            transactionHistoryVBox.getChildren().add(visualTransaction);
-        }
+//        List<Transaction> transactions = TransactionDAO.getFilteredTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()), username, from, to);
+//        for (Transaction transaction : transactions)
+//        {
+//            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
+//            transactionHistoryVBox.getChildren().add(visualTransaction);
+//        }
     }
 
 

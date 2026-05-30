@@ -43,7 +43,7 @@ public class BankAccountDAO {
     }
 
 
-    public static boolean existsByIban(String iban) throws SQLException {
+    public static boolean existsByIban(String iban)  {
         String sql = "SELECT 1 FROM Bank_Account WHERE iban = ? LIMIT 1";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -55,6 +55,11 @@ public class BankAccountDAO {
                 return rs.next();
             }
         }
+        catch (SQLException e) {
+            System.err.println("error searching existing Iban");
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static int getUserIdByAccountId(int accountId) throws SQLException {
