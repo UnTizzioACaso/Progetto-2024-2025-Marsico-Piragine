@@ -42,7 +42,7 @@ public class TransactionHistoryController extends WidgetController
     @FXML
     public void initialize()
     {
-        List<Transaction> transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
+        List<Transaction> transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID())).reversed();
         for (Transaction transaction : transactions)
         {
             Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
@@ -58,12 +58,15 @@ public class TransactionHistoryController extends WidgetController
 
     private void populate(String username, Timestamp from, Timestamp to)
     {
-//        List<Transaction> transactions = TransactionDAO.getFilteredTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()), username, from, to);
-//        for (Transaction transaction : transactions)
-//        {
-//            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
-//            transactionHistoryVBox.getChildren().add(visualTransaction);
-//        }
+        transactionHistoryVBox.getChildren().clear();
+        List<Transaction> transactions = TransactionDAO.getFilteredTransactionByAccount(CurrentSession.getLoggedAccount().getIdAccount(), username, from, to);
+        System.err.println(transactions.size());
+
+        for (Transaction transaction : transactions)
+        {
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
+            transactionHistoryVBox.getChildren().add(visualTransaction);
+        }
     }
 
 

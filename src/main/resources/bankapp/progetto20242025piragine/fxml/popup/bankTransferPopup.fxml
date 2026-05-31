@@ -46,7 +46,7 @@
             <Insets bottom="5.0" left="25.0" right="25.0" />
          </GridPane.margin>
       </Separator>
-      <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Dettagli Beneficiario" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Dettagli Beneficario" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -111,7 +111,7 @@
             </InnerShadow>
          </effect>
       </Label>
-      <Label text="Importo (€)" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+      <Label text="Importo () " GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets left="40.0" />
          </GridPane.margin>
@@ -139,7 +139,7 @@
       </TextField>
       <Button mnemonicParsing="false" onAction="#sendBankTransfer" prefHeight="58.0" prefWidth="225.0" style="-fx-background-radius: 14; -fx-background-color: #ff0000;" text="CONTINUA" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <GridPane.margin>
-            <Insets left="15.0" />
+            <Insets />
          </GridPane.margin>
          <font>
             <Font name="System Bold" size="18.0" />
@@ -154,7 +154,7 @@
       </Button>
       <Button mnemonicParsing="false" onAction="#abortBankTransfer" prefHeight="58.0" prefWidth="225.0" style="-fx-background-radius: 14; -fx-background-color: transparent; -fx-border-radius: 14; -fx-border-color: #ff0000;" text="ANNULLA" textFill="RED" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <GridPane.margin>
-            <Insets right="15.0" />
+            <Insets />
          </GridPane.margin>
          <font>
             <Font name="System Bold" size="18.0" />
@@ -167,24 +167,33 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Label fx:id="usernameErrorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="289.0" textFill="RED" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Label fx:id="usernameErrorLabel" alignment="CENTER" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets top="15.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="ibanErrorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="289.0" textFill="RED" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Label fx:id="ibanErrorLabel" alignment="CENTER" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets top="15.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="moneyErrorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="272.0" textFill="RED" GridPane.columnSpan="3" GridPane.rowIndex="6">
+      <Label fx:id="moneyErrorLabel" alignment="CENTER" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets top="15.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="noteErrorLabel" alignment="CENTER" prefHeight="17.0" prefWidth="272.0" textFill="RED" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" GridPane.rowIndex="6">
+      <Label fx:id="noteErrorLabel" alignment="CENTER" GridPane.columnIndex="3" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets top="15.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="successLabel" alignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Label alignment="CENTER" text="(verranno aggiunti 10 di commissione)" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="-10.0" />
          </GridPane.margin>
       </Label>
    </children>

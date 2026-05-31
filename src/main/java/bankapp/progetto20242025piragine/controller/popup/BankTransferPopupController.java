@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.math.BigDecimal;
 
@@ -23,12 +22,19 @@ public class BankTransferPopupController extends BranchController
     private TextField amountTextField, nameTextField, ibanTextField, noteTextField;
 
     @FXML
-    private Label usernameErrorLabel, ibanErrorLabel, moneyErrorLabel, noteErrorLabel;
+    private Label usernameErrorLabel, ibanErrorLabel, moneyErrorLabel, noteErrorLabel, successLabel;
 
     @FXML
     public void initialize()
     {
-
+            usernameErrorLabel.setText("");
+            ibanErrorLabel.setText("");
+            moneyErrorLabel.setText("");
+            noteErrorLabel.setText("");
+            amountTextField.setText("");
+            nameTextField.setText("");
+            ibanTextField.setText("");
+            noteTextField.setText("");
     }
 
     @FXML
@@ -56,7 +62,6 @@ public class BankTransferPopupController extends BranchController
         }
 
 
-
         BigDecimal amount = ValueValidator.validateFormat(amountTextField);
         if (amount == null)
         {
@@ -64,11 +69,29 @@ public class BankTransferPopupController extends BranchController
             moneyErrorLabel.setTextFill(Paint.valueOf("red"));
             return;
         }
+        int commission = 1000;
 
+        if (CurrentSession.getLoggedAccount().getMoney().compareTo(amount.add(new BigDecimal(commission))) < 0)
+        {
+            moneyErrorLabel.setText("Saldo insufficiente");
+            moneyErrorLabel.setTextFill(Paint.valueOf("red"));
+            return;
+        }
 
         int userBeneficiary = UserDAO.getUserByUsername(nameTextField.getText()).getUserID();
-        int accountBeneficiary = BankAccountDAO.getIdAccountByUserId(userBeneficiary);
-        Transaction T  = new Transaction(CurrentSession.getLoggedAccount().getIdAccount(), accountBeneficiary, amount, noteTextField.getText(), "payment", -1) ;;;;
+        BankAccount accountBeneficiary = BankAccountDAO.getAccountByUserId(userBeneficiary);
+        Transaction t  = new Transaction(CurrentSession.getLoggedAccount().getIdAccount(), accountBeneficiary.getIdAccount(), amount, noteTextField.getText(), "payment", -1, "accepted");
+        if(BankAccountDAO.transferMoneyWithCommission(accountBeneficiary, CurrentSession.getLoggedAccount(), t, commission))
+        {
+            successLabel.setText("Bonifico effettuato con successo");
+            successLabel.setTextFill(Paint.valueOf("green"));
+            initialize();
+        }
+        else {
+            successLabel.setText("Errore durante il bonifico");
+            successLabel.setTextFill(Paint.valueOf("red"));
+            initialize();
+        }
     }
     public void abortBankTransfer()
     {
