@@ -460,6 +460,7 @@ Line {
     -fx-background-insets: 0 !important;
     -fx-border-color: #c0c0c0 !important;
     -fx-border-width: 1 !important;
+    -fx-border-radius: 10 ;
 }
 
 
