@@ -179,6 +179,46 @@ public class TransactionDAO {
         return transactions;
     }
 
+    public static List<Transaction> getFilteredTransactionByAccount(int accountId, String username, Timestamp from, Timestamp to) {
+        List<Transaction> transactionList = new ArrayList<>();
+
+        String sql = "SELECT t.* FROM Bank_Transaction t " +
+                "JOIN Bank_Account ba_s ON t.sender = ba_s.id_account " +
+                "JOIN User u_s ON ba_s.user_id = u_s.user_id " +
+                "JOIN Bank_Account ba_b ON t.beneficiary = ba_b.id_account " +
+                "JOIN User u_b ON ba_b.user_id = u_b.user_id " +
+                "WHERE (t.sender = ? OR t.beneficiary = ?) " + // 1, 2
+                "AND (u_s.username = ? OR u_b.username = ?) " + // 3, 4
+                "AND t.transaction_date BETWEEN ? AND ?";      // 5, 6
+
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, accountId);
+            ps.setInt(2, accountId);
+            ps.setString(3, username);
+            ps.setString(4, username);
+            ps.setTimestamp(5, from);
+            ps.setTimestamp(6, to);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Transaction t = new Transaction();
+                    t.setIdTransaction(rs.getInt("id_transaction"));
+                    t.setAmount(BigDecimal.valueOf(rs.getInt("amount"), 2));
+                    t.setNote(rs.getString("note"));
+                    t.setTransactionDate(rs.getTimestamp("transaction_date"));
+
+                    transactionList.add(t);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error getting filtered transaction: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return transactionList;
+    }
+
     // 🔹 Transazioni tra due utenti specifici (Chat o Cronologia Amici)
     public static List<Transaction> getTransactionsBetweenAccounts(int user1, int user2) {
         String sql = """

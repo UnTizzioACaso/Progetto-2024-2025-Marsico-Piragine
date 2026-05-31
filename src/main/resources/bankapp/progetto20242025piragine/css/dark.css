@@ -107,11 +107,12 @@
 /* ================= BUTTON ================= */
 
 .button {
-    -fx-text-fill: white !important;
+    -fx-text-fill: white ;
 }
 
 #logoutAccountPopupButton {
     -fx-background-color: #595959 !important;
+    -fx-text-fill: white !important;
 }
 
 #settingsAccountPopupButton {
@@ -633,7 +634,8 @@
 
 #anchorPaneCardPage,
 #rootGridPaneBankSettingPage,
-#addAccountMoneyAnchorPane{
+#addAccountMoneyAnchorPane,
+#bankTransferGridPane{
     -fx-background-color: #3c3c3c !important;
 }
 

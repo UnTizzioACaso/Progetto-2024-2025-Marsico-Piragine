@@ -2,7 +2,7 @@ package bankapp.progetto20242025piragine.controller.popup;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 
-public class confirmPopupController extends BranchController {
+public class ConfirmPopupController extends BranchController {
 
 
 }

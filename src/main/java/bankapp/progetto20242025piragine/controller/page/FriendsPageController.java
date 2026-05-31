@@ -162,7 +162,7 @@ public class FriendsPageController extends BranchController
 
         Transaction t = new Transaction(senderAccount.getIdAccount(), beneficiaryAccount.getIdAccount(), value, noteTextFiled.getText(), "donation", -1, "accepted");
 
-        if(!BankAccountDAO.transferMoneyDonation(beneficiaryAccount, senderAccount, t))
+        if(!BankAccountDAO.transferMoney(beneficiaryAccount, senderAccount, t))
         {
             writeError("errore durante l'invio della donazione");
             return;
