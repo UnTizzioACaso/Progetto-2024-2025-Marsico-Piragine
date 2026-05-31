@@ -29,7 +29,7 @@ public class LastFiveExpensesController extends WidgetController
             {
                 return;
             }
-            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transactions.get(i));
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(transactions.get(i));
             lastFiveExpensesVBox.getChildren().add(visualTransaction);
         }
     }

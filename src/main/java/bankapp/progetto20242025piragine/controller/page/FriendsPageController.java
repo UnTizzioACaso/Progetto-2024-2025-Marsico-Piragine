@@ -162,7 +162,7 @@ public class FriendsPageController extends BranchController
 
         Transaction t = new Transaction(senderAccount.getIdAccount(), beneficiaryAccount.getIdAccount(), value, noteTextFiled.getText(), "donation", -1, "accepted");
 
-        if(!BankAccountDAO.transferMoneyDonation(beneficiaryAccount, senderAccount, t))
+        if(!BankAccountDAO.transferMoney(beneficiaryAccount, senderAccount, t))
         {
             writeError("errore durante l'invio della donazione");
             return;
@@ -171,9 +171,7 @@ public class FriendsPageController extends BranchController
 
         //creating and sending the notifies to each user
         Notify n = new Notify(friend.getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
-        Notify n2 = new Notify(CurrentSession.getLoggedUser().getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
         NotifyDAO.insertNotify(n);
-        NotifyDAO.insertNotify(n2);
 
         errorLabel.setTextFill(Paint.valueOf("green"));
         errorLabel.setText("Transazione effettuata con successo");

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Paint;
 
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 
 
 public class TransactionController extends BranchController
@@ -29,9 +30,10 @@ public class TransactionController extends BranchController
             {
                 String username = UserDAO.getUsernameByUserId(BankAccountDAO.getUserIdByAccountId(transaction.getSender()));
                 transactionValueLabel.setText("+" + transaction.getAmount().toString() + " €");
-                transactionValueLabel.setTextFill(Paint.valueOf("green"));
                 transactionSubjectLabel.setText(username);
-                TransactionDateLabel.setText(transaction.getTransactionDate().toString());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                String cleanDate = transaction.getTransactionDate().toLocalDateTime().format(formatter);
+                TransactionDateLabel.setText(cleanDate);
             }
             catch (SQLException e)
             {
@@ -47,7 +49,9 @@ public class TransactionController extends BranchController
                 transactionValueLabel.setText("-" + transaction.getAmount().toString() + " €");
                 transactionValueLabel.setTextFill(Paint.valueOf("red"));
                 transactionSubjectLabel.setText(username);
-                TransactionDateLabel.setText(transaction.getTransactionDate().toString());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");;
+                String cleanDate = transaction.getTransactionDate().toLocalDateTime().format(formatter);
+                TransactionDateLabel.setText(cleanDate);
             }
             catch (SQLException e)
             {

@@ -10,19 +10,19 @@ public class AddAccountMoneyPageController extends BranchController
         @FXML
         public void confirm()
         {
-                PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/addAccountMoneyPopup.fxml", 400, 500);
+                PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/confirmAddMoneyPopup.fxml", 400, 500);
         }
 
         @FXML
         public void payWithApplePay()
         {
-                PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/addAccountMoneyPopup.fxml", 400, 500);
+                PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/confirmAddMoneyPopup.fxml", 400, 500);
         }
 
         @FXML
         public void payWithGooglePay()
         {
-                PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/addAccountMoneyPopup.fxml", 400, 500);
+                PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/confirmAddMoneyPopup.fxml", 400, 500);
         }
 
 }

@@ -10,11 +10,11 @@ import javafx.scene.Node;
 
 public class VisualNotificationCreator {
 
-    public static Node createVisualTransaction(RootWindowController rootController, Notify notify)
+    public static Node createVisualNotification(Notify notify)
     {
         try
         {
-            FXMLLoader fxmlLoader = new FXMLLoader(VisualTransactionCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/notification.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(VisualNotificationCreator.class.getResource("/bankapp/progetto20242025piragine/fxml/component/notification.fxml"));;
             Node visualNotification = fxmlLoader.load();
             NotificationController controller = fxmlLoader.getController();
             controller.setCorrectValues(notify);
@@ -22,7 +22,7 @@ public class VisualNotificationCreator {
         }
         catch(Exception e)
         {
-            System.err.println("error during creating a transaction " + e.getMessage());
+            System.err.println("error during creating a notification " + e.getMessage());
             e.printStackTrace();
             return null;
         }

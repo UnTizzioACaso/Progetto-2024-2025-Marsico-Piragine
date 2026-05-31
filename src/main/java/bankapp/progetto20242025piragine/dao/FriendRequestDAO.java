@@ -13,9 +13,7 @@ public class FriendRequestDAO {
         String sql = "INSERT INTO Friend_Request (requester, requested, date, status) VALUES (?, ?, CURRENT_TIMESTAMP, ?)";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection()) {
-            // Disabilitiamo l'auto-commit per sicurezza (opzionale)
             conn.setAutoCommit(false);
-
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setInt(1, request.getRequester());
                 stmt.setInt(2, request.getRequested());

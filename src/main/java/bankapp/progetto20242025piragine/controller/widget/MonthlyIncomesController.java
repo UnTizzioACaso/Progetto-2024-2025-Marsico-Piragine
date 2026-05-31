@@ -35,7 +35,7 @@ public class MonthlyIncomesController extends WidgetController {
         List<Transaction> transactions = TransactionDAO.getCurrentMonthIncome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for(Transaction transaction : transactions)
         {
-            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(transaction);
             monthlyIncomesContainerVBox.getChildren().add(visualTransaction);
         }
     }

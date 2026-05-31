@@ -122,7 +122,7 @@ public class TopbarController extends BranchController {
             {
                 if (!n.isRead())
                 {
-                    Node notification = VisualNotificationCreator.createVisualTransaction(CurrentSession.getRootController(), n);
+                    Node notification = VisualNotificationCreator.createVisualNotification(n);
                     notificationSliderController.notificationVBox.getChildren().add(notification);
                 }
             }

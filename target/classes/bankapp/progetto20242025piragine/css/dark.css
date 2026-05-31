@@ -7,6 +7,9 @@
     -fx-border-radius: 20 !important;
 }
 
+
+
+
 .anchor-pane {
     -fx-background-color: #4a4a4a !important;
 }
@@ -104,162 +107,18 @@
 /* ================= BUTTON ================= */
 
 .button {
-    -fx-text-fill: white !important;
+    -fx-text-fill: white ;
 }
 
 #logoutAccountPopupButton {
     -fx-background-color: #595959 !important;
+    -fx-text-fill: white !important;
 }
 
 #settingsAccountPopupButton {
     -fx-text-fill: white !important;
 }
 
-
-/* ================= INPUT ================= */
-
-#spendingLimitTextField {
-    -fx-background-color: #3a3a3a !important;
-    -fx-text-fill: white !important;
-    -fx-prompt-text-fill: #bdbdbd !important;
-    -fx-background-radius: 6 !important;
-    -fx-border-radius: 6 !important;
-    -fx-border-color: #5a5a5a !important;
-    -fx-border-width: 1 !important;
-    -fx-caret-color: white !important;
-}
-
-
-/* ==========================================================
-   DATE PICKER
-   ========================================================== */
-
-/* --- PARTE 1: COMPONENTE ESTERNO (Input e Bottone) --- */
-.date-picker {
-    -fx-background-color: #3a3a3a !important;
-    -fx-background-radius: 6 !important;
-    -fx-border-color: #595959 !important;
-    -fx-border-radius: 6 !important;
-    -fx-background-insets: 0 !important;
-
-}
-
-.date-picker > .text-field {
-    -fx-background-color: transparent !important;
-    -fx-text-fill: white !important;
-}
-
-.date-picker > .arrow-button {
-    -fx-background-color: #ff0000 !important;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.15), 27.63, 0.17, -10, -10);
-    -fx-background-insets: 0 -1 0 0 !important;
-    -fx-background-radius: 0 5 5 0 !important;
-    -fx-max-height: infinity !important;
-    -fx-padding: 0 8 0 8 !important;
-}
-
-.date-picker > .arrow-button > .arrow {
-    -fx-background-color: white !important;
-}
-
-/* --- PARTE 2: POPUP (Calendario Interno) --- */
-.date-picker-popup {
-    -fx-background-color: #3a3a3a;
-    -fx-border-color: #555555;
-    -fx-border-width: 1px;
-}
-
-/* Header Rosso */
-.date-picker-popup .month-year-pane {
-    -fx-background-color: #ff0000;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10);
-}
-
-.date-picker-popup .month-year-pane .label {
-    -fx-text-fill: white !important;
-    -fx-font-weight: bold;
-}
-
-.date-picker-popup .left-arrow,
-.date-picker-popup .right-arrow {
-    -fx-background-color: white !important;
-}
-
-/* Griglia - Rimossa la spaziatura che allargava il picker */
-.date-picker-popup .calendar-grid {
-    -fx-background-color: #3a3a3a !important;
-    -fx-padding: 0;
-}
-
-/* Nomi dei giorni (Lun, Mar...) */
-.date-picker-popup .day-name-cell {
-    -fx-text-fill: #bdbdbd !important;
-    -fx-background-color: #3a3a3a;
-}
-
-/* Celle dei giorni numerici - Creazione della griglia visibile */
-.date-picker-popup .day-cell {
-    -fx-background-color: #4a4a4a;
-    -fx-text-fill: white;
-    -fx-border-color: #2a2a2a; /* Crea il contrasto della griglia come nel bianco */
-    -fx-border-width: 0.5px;
-}
-
-/* Rimozione blocchetti bianchi a sinistra (Settimane) */
-.date-picker-popup .week-number-cell {
-    -fx-background-color: #3a3a3a !important; /* Forza lo sfondo scuro */
-    -fx-text-fill: #bdbdbd !important;
-    -fx-border-color: #3a3a3a;
-    -fx-border-width: 0.5px;
-}
-
-/* Giorno Oggi */
-.date-picker-popup .today {
-    -fx-text-fill: #ff0000 !important;
-    -fx-font-weight: bold !important;
-    -fx-background-insets: 0 !important;
-}
-
-
-/* Giorni fuori dal mese */
-.date-picker-popup .previous-month,
-.date-picker-popup .next-month {
-    -fx-background-color: #3a3a3a;
-    -fx-text-fill: #666666 !important;
-}
-
-/* Hover */
-.date-picker-popup .day-cell:hover {
-    -fx-background-color: #4a4a4a;
-    -fx-text-fill: white !important;
-}
-
-.date-picker-popup .month-year-pane .button,
-.date-picker-popup .month-year-pane .button:focused,
-.date-picker-popup .month-year-pane .button:hover,
-.date-picker-popup .month-year-pane .button:armed {
-    -fx-background-color: transparent !important; /* Rende il corpo del bottone invisibile */
-    -fx-background-insets: 0 !important;
-    -fx-background-radius: 0 !important;
-}
-
-.date-picker-popup .day-cell,
-.date-picker-popup .week-number-cell,
-.date-picker-popup .day-name-cell {
-    -fx-pref-width: 30px !important;  /* Larghezza perfetta per non stringere i numeri */
-    -fx-pref-height: 34px !important; /* Altezza standard nativa */
-    -fx-max-width: 30px !important;
-    -fx-max-height: 34px !important;
-    -fx-min-width: 30px !important;
-    -fx-min-height: 24px !important;
-}
-
-/* 2. Blocca l'altezza totale della griglia (7 righe totali da 24px ciascuna) */
-.date-picker-popup .calendar-grid {
-    -fx-pref-height: 180px !important;
-    -fx-max-height: 180px !important;
-    -fx-min-height: 180px !important;
-}
 
 /* ================= MENU ================= */
 
@@ -467,6 +326,8 @@
 }
 
 
+
+
 #textFieldBankAccountSettingsPage,
 #valueField{
     -fx-background-color: #3a3a3a !important;
@@ -480,7 +341,7 @@
 }
 
 #gridPaneBankAccountSetting{
-    -fx-background-color: #595959 !important;
+    -fx-background-color: #3c3c3c !important;
 }
 
 
@@ -569,6 +430,8 @@
 
 
 
+
+
 /* --------------------------- INIZIO WIDGETS --------------------------- */
 
 #quickContactGridPane, #monthlyBalanceGridPane, #transactionHistoryGridPane
@@ -607,6 +470,8 @@
 }
 
 
+
+/* ----------------------------- COMPONENT ----------------------------- */
 
 
 
@@ -674,8 +539,18 @@
     -fx-border-color: #333333 !important;
 }
 
+
+.text-field, #spendingLimitTextField
+{
+    -fx-background-color: #595959 ;
+    -fx-text-fill: white ;
+    -fx-prompt-text-fill: #bdbdbd ;
+    -fx-border-color: #595959 ;
+    -fx-border-radius: 10 ;
+}
+
 #friendsSearchBar,
-#noteTextFiled {
+#noteTextFiled, #MoneyTextField {
     -fx-background-color: #3a3a3a !important;
     -fx-text-fill: white !important;
     -fx-prompt-text-fill: #bdbdbd !important;
@@ -750,9 +625,7 @@
     -fx-background-color: #595959 !important;
 }
 
-#notificationVBox{
-    -fx-background-color: #4a4a4a !important;
-}
+
 
 #errorLabelMenageCardPopup,
 #errorLabel{
@@ -760,9 +633,20 @@
 }
 
 #anchorPaneCardPage,
-#rootGridPaneBankSettingPage {
+#rootGridPaneBankSettingPage,
+#addAccountMoneyAnchorPane,
+#bankTransferGridPane,
+#confirmAddMoneyAnchorPane{
     -fx-background-color: #3c3c3c !important;
 }
+
+
+#optionAddMoneyGridPane
+{
+    -fx-background-color:  #595959 !important;
+}
+
+
 
 .text-input {
     -fx-highlight-fill: red;
@@ -795,16 +679,13 @@
 
 
 #notificationVBox{
-    -fx-background-color: white !important;
+    -fx-background-color: #4a4a4a !important;
 }
 #vBoxNotificationSlider{
-    -fx-background-color: white !important;
+    -fx-background-color: #4a4a4a !important;
 }
 
-#notificationSliderAnchorPane{
-    -fx-border-color: #e4e4e4 !important;
-    -fx-border-width: 0 0 0 1 !important;
-}
+
 
 
 #closeMenageCardPopup{
@@ -844,3 +725,136 @@
     -fx-border-color: #333333 !important;
 }
 
+
+/* ==========================================================
+   DATE PICKER
+   ========================================================== */
+
+/* --- PARTE 1: COMPONENTE ESTERNO (Input e Bottone) --- */
+.date-picker {
+    -fx-background-color: #3a3a3a !important;
+    -fx-background-radius: 6 !important;
+    -fx-border-color: #595959 !important;
+    -fx-border-radius: 6 !important;
+    -fx-background-insets: 0 !important;
+
+}
+
+.date-picker > .text-field {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: white !important;
+    -fx-border-color: transparent !important;
+
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: #ff0000 !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.15), 27.63, 0.17, -10, -10);
+    -fx-background-insets: 0 -1 0 0 !important;
+    -fx-background-radius: 0 5 5 0 !important;
+    -fx-max-height: infinity !important;
+    -fx-padding: 0 8 0 8 !important;
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white !important;
+}
+
+/* --- PARTE 2: POPUP (Calendario Interno) --- */
+.date-picker-popup {
+    -fx-background-color: #3a3a3a;
+    -fx-border-color: #555555;
+    -fx-border-width: 1px;
+}
+
+/* Header Rosso */
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #ff0000;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10);
+}
+
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white !important;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup .left-arrow,
+.date-picker-popup .right-arrow {
+    -fx-background-color: white !important;
+}
+
+/* Griglia - Rimossa la spaziatura che allargava il picker */
+.date-picker-popup .calendar-grid {
+    -fx-background-color: #3a3a3a !important;
+    -fx-padding: 0;
+}
+
+/* Nomi dei giorni (Lun, Mar...) */
+.date-picker-popup .day-name-cell {
+    -fx-text-fill: #bdbdbd !important;
+    -fx-background-color: #3a3a3a;
+}
+
+/* Celle dei giorni numerici - Creazione della griglia visibile */
+.date-picker-popup .day-cell {
+    -fx-background-color: #4a4a4a;
+    -fx-text-fill: white;
+    -fx-border-color: #2a2a2a; /* Crea il contrasto della griglia come nel bianco */
+    -fx-border-width: 0.5px;
+}
+
+/* Rimozione blocchetti bianchi a sinistra (Settimane) */
+.date-picker-popup .week-number-cell {
+    -fx-background-color: #3a3a3a !important; /* Forza lo sfondo scuro */
+    -fx-text-fill: #bdbdbd !important;
+    -fx-border-color: #3a3a3a;
+    -fx-border-width: 0.5px;
+}
+
+/* Giorno Oggi */
+.date-picker-popup .today {
+    -fx-text-fill: #ff0000 !important;
+    -fx-font-weight: bold !important;
+    -fx-background-insets: 0 !important;
+}
+
+
+/* Giorni fuori dal mese */
+.date-picker-popup .previous-month,
+.date-picker-popup .next-month {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #666666 !important;
+}
+
+/* Hover */
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #4a4a4a;
+    -fx-text-fill: white !important;
+}
+
+.date-picker-popup .month-year-pane .button,
+.date-picker-popup .month-year-pane .button:focused,
+.date-picker-popup .month-year-pane .button:hover,
+.date-picker-popup .month-year-pane .button:armed {
+    -fx-background-color: transparent !important; /* Rende il corpo del bottone invisibile */
+    -fx-background-insets: 0 !important;
+    -fx-background-radius: 0 !important;
+}
+
+.date-picker-popup .day-cell,
+.date-picker-popup .week-number-cell,
+.date-picker-popup .day-name-cell {
+    -fx-pref-width: 30px !important;  /* Larghezza perfetta per non stringere i numeri */
+    -fx-pref-height: 34px !important; /* Altezza standard nativa */
+    -fx-max-width: 30px !important;
+    -fx-max-height: 34px !important;
+    -fx-min-width: 30px !important;
+    -fx-min-height: 24px !important;
+}
+
+/* 2. Blocca l'altezza totale della griglia (7 righe totali da 24px ciascuna) */
+.date-picker-popup .calendar-grid {
+    -fx-pref-height: 180px !important;
+    -fx-max-height: 180px !important;
+    -fx-min-height: 180px !important;
+}
