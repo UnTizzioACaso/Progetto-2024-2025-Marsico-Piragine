@@ -20,7 +20,7 @@ public  class RootWindowController extends BranchController {
     @FXML
     public AnchorPane centerAnchorPane;
 
-    private String currentPage = "";
+    public String currentPage = "";
 
     public BankAccountSettingsPageController bankAccountSettingsPageController;
 
@@ -42,6 +42,7 @@ public  class RootWindowController extends BranchController {
     {
         if (!(fxml.equals(currentPage)))
         {
+            ThemeManager.applyTheme(rootWindow.getScene(), "light"); //forcing stock light theme
             currentPage = fxml;
             Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
             Node node = p.getValue(); //creating the node from the pair
@@ -49,19 +50,21 @@ public  class RootWindowController extends BranchController {
             {
                 if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
                 CurrentSession.getTopbarController().visitPage(fxml); //adds the loaded page to the backwardStack
+                ThemeManager.applyTheme(rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme()); //correcting user Theme
             }
             setCenter(node);
+
         }
     }
 
     @FXML
     public void initialize() //initializing the first page to load
     {
-        ThemeManager.applyTheme(rootWindow.getScene(), "light");
         currentPage = "";
         rootWindow.setLeft(null); //setting left to null because the first page is login, and it doesn't need the sidebar
         rootWindow.setTop(null); //setting top to null because the first page is login, and it doesn't need the topbar
         loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml"); //loading login.fxml
+        ThemeManager.applyTheme(rootWindow.getScene(), "light");
     }
 
 

@@ -20,7 +20,6 @@ public class Transaction {
 
     public Transaction( int sender, int beneficiary, BigDecimal amount, String note,  String type, int usedCard)
     {
-        this.idTransaction = idTransaction;
         this.sender = sender;
         this.beneficiary = beneficiary;
         this.amount = amount;
@@ -31,7 +30,6 @@ public class Transaction {
 
     public Transaction( int sender, int beneficiary, BigDecimal amount, String note,  String type, int usedCard, String status)
     {
-        this.idTransaction = idTransaction;
         this.sender = sender;
         this.beneficiary = beneficiary;
         this.amount = amount;

@@ -8,7 +8,7 @@ import javafx.scene.Node;
 
 public class VisualTransactionCreator {
 
-    public static Node createVisualTransaction(RootWindowController rootController, Transaction transaction)
+    public static Node createVisualTransaction(Transaction transaction)
     {
         try
         {

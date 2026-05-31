@@ -21,28 +21,37 @@ public class NotificationController extends BranchController{
 
     public Notify notify;
 
+    public String type;
+
     private Boolean imTheSender = false;
 
     @FXML
     public void readNotify()
     {
-        if (imTheSender )
+        if(imTheSender && secondaryLabel.getText().equals("Richiesta di denaro")) //if notify is a transaction request from user
         {
-            //NotifyDAO.markAsRead(notify.getIdNotify());
-            CurrentSession.getTopbarController().updateNotifications();
-            return;
+            Transaction t = TransactionDAO.getTransactionById(notify.getIdTransaction());
+            if(t.getStatus().equals("accepted") || t.getStatus().equals("declined")) //if it is not pending
+            {
+                NotifyDAO.markAsRead(notify.getIdNotify());
+                CurrentSession.getTopbarController().updateNotifications();
+            }
         }
 
-        if(secondaryLabel.getText().equals("Richiesta di denaro"))
+        else if(secondaryLabel.getText().equals("Richiesta di denaro"))
         {
-            if(TransactionDAO.getTransactionById(notify.getIdTransaction()).getType().equals("payment"))
-            {
-                //NotifyDAO.markAsRead(notify.getIdNotify());
-                CurrentSession.getTopbarController().updateNotifications();
-                return;
-            }
             PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
             controller.n = notify;
+        }
+
+        else if(secondaryLabel.getText().equals("Richiesta d'amicizia") && imTheSender) //if notify is a friendship request from user
+        {
+            FriendRequest f = FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest());
+            if(f.getStatus().equals("accepted") || f.getStatus().equals("declined")) //if it is not pending
+            {
+                NotifyDAO.markAsRead(notify.getIdNotify());
+                CurrentSession.getTopbarController().updateNotifications();
+            }
         }
 
         else if(secondaryLabel.getText().equals("Richiesta d'amicizia"))
@@ -66,16 +75,67 @@ public class NotificationController extends BranchController{
             friendshipRequestNotify();
         }
     }
+
     private void transactionRequestNotify()
     {
         Transaction t = TransactionDAO.getTransactionById(notify.getIdTransaction());
-        if (t.getBeneficiary() == BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()).getIdAccount())
+        String status;
+        switch (t.getStatus())
         {
-            notifyTitleLabel.setText(getBeneficiaryUsernameT(notify.getIdTransaction()));
-            valueLabel.setText(TransactionDAO.getTransactionById(notify.getIdTransaction()).getAmount().toString());
-            secondaryLabel.setText("Richiesta di denaro");
+            case "accepted":
+                status = "(accettata)";
+
+                break;
+            case "declined":
+                status = "(rifiutata)";
+                break;
+            case "pending":
+                status = "(in attesa)";
+                break;
+            default:
+                status = "";
         }
-        imTheSender = true;
+
+        String note = "";
+        if (t.getNote() != null || t.getNote() != "")
+        {
+            note =  t.getNote();
+        }
+        if(t.getType().equals("request") && t.getBeneficiary().equals(CurrentSession.getLoggedAccount().getIdAccount())) //if transaction is a request and the user is the beneficiary
+        {
+            imTheSender = true;
+            notifyTitleLabel.setText(getSenderUsernameT(t.getIdTransaction()));;
+            valueLabel.setText( t.getAmount().toString() + "€ " + status);
+            secondaryLabel.setText("Richiesta di denaro: " + note);
+        }
+        else if (t.getType().equals("request") && t.getSender().equals(CurrentSession.getLoggedAccount().getIdAccount())) //if transaction is a request and the user is the sender
+        {
+            imTheSender = false;
+            notifyTitleLabel.setText(getBeneficiaryUsernameT(t.getIdTransaction()));
+            valueLabel.setText(t.getAmount().toString() + "€");
+            secondaryLabel.setText("Richiesta di denaro: " + note);
+        }
+        else if (t.getType().equals("payment")) //if transaction is a payment
+        {
+            imTheSender = false;
+            notifyTitleLabel.setText(getBeneficiaryUsernameT(t.getIdTransaction()));
+            valueLabel.setText("-" + t.getAmount().toString() + "€");
+            secondaryLabel.setText("Pagamento " + note);
+        }
+        else if(t.getType().equals("donation") && t.getSender().equals(CurrentSession.getLoggedAccount().getIdAccount())) //if transaction is a donation from the user
+        {
+            imTheSender = true;
+            notifyTitleLabel.setText(getBeneficiaryUsernameT(t.getIdTransaction()));
+            valueLabel.setText("-" + t.getAmount().toString() + "€");
+            secondaryLabel.setText("Donazione " + note);
+        }
+        else if (t.getType().equals("donation") && t.getBeneficiary().equals(CurrentSession.getLoggedAccount().getIdAccount())) //if transaction is a donation to the user
+        {
+            imTheSender = false;
+            notifyTitleLabel.setText(getSenderUsernameT(t.getIdTransaction()));;
+            valueLabel.setText(t.getAmount().toString() + "€");
+            secondaryLabel.setText("Donazione " + note);
+        }
     }
 
     private void friendshipRequestNotify() //if notify is a friendship request
@@ -85,7 +145,7 @@ public class NotificationController extends BranchController{
         {
             valueLabel.setText("");
             secondaryLabel.setText("Richiesta d'amicizia");
-            notifyTitleLabel.setText(getRequesterUsernameF(notify.getIdFriendRequest()));
+            notifyTitleLabel.setText(getSenderUsernameF(notify.getIdFriendRequest()));
             return;
         }
 
@@ -131,7 +191,7 @@ public class NotificationController extends BranchController{
             }
     }
 
-    private String getRequesterUsernameF(int idFriendRequest) {
+    private String getSenderUsernameF(int idFriendRequest) {
 
             FriendRequest f = FriendRequestDAO.getFriendRequestById(idFriendRequest);
 
@@ -145,6 +205,23 @@ public class NotificationController extends BranchController{
                 e.printStackTrace();
                 return null;
             }
+
+    }
+
+    private String getSenderUsernameT(int idTransaction) {
+
+        Transaction t = TransactionDAO.getTransactionById(idTransaction);
+
+        try
+        {
+            return UserDAO.getUsernameByUserId(t.getSender());
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error getting username by user id " + e);
+            e.printStackTrace();
+            return null;
+        }
 
     }
 }

@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 public class CreatePinPopupController extends BranchController
@@ -88,10 +89,11 @@ public class CreatePinPopupController extends BranchController
             // Create a new bank account linked to the user
             BankAccount bankAccount = new BankAccount(id);
             bankAccount.setUserId(id);
+            bankAccount.setMoney(BigDecimal.valueOf(70.00)); //setting initial money
 
             // Insert the bank account into the database
             accountCreated = BankAccountDAO.insertAccount(bankAccount);
-
+            CurrentSession.setLoggedAccount(BankAccountDAO.getAccountByUserId(id));
             // If account creation fails, rollback user creation
             if (!accountCreated)
             {

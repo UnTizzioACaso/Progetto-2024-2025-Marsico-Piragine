@@ -122,7 +122,7 @@ public class TopbarController extends BranchController {
             {
                 if (!n.isRead())
                 {
-                    Node notification = VisualNotificationCreator.createVisualTransaction(CurrentSession.getRootController(), n);
+                    Node notification = VisualNotificationCreator.createVisualNotification(n);
                     notificationSliderController.notificationVBox.getChildren().add(notification);
                 }
             }
@@ -163,18 +163,8 @@ public class TopbarController extends BranchController {
     @FXML
     public void reloadPage()
     {
-        try
-        {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(backwardStack.peek()));
-            Parent node = fxmlLoader.load();
-            BranchController controller = fxmlLoader.getController();
-            CurrentSession.getRootController().setCenter(node);
-        }
-        catch (IOException e)
-        {
-            System.err.println("error reloading " + backwardStack.peek() + e.getMessage());
-            e.printStackTrace();
-        }
+        Node node = EasyFxmlLoader.loader(CurrentSession.getRootController().currentPage).getValue();
+        CurrentSession.getRootController().setCenter(node);
     }
 
 

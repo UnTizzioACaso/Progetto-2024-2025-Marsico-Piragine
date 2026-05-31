@@ -16,6 +16,9 @@ public class MonthlyExpensesController extends WidgetController {
     @FXML
     private VBox monthlyExpensesVBox;
 
+    @FXML
+    private VBox monthlyExpensesContainerVBox;
+
     @Override
     public String getWidgetType(){ return monthlyExpensesVBox.getId();}
 
@@ -30,8 +33,8 @@ public class MonthlyExpensesController extends WidgetController {
     {
         List<Transaction> transactions = TransactionDAO.getCurrentMonthOutcome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for (Transaction transaction : transactions) {
-            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(CurrentSession.getRootController(), transaction);
-            monthlyExpensesVBox.getChildren().add(visualTransaction);
+            Node visualTransaction = VisualTransactionCreator.createVisualTransaction(transaction);
+            monthlyExpensesContainerVBox.getChildren().add(visualTransaction);
         }
     }
 
