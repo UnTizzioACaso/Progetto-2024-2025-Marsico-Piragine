@@ -7,6 +7,9 @@
     -fx-border-radius: 20 !important;
 }
 
+
+
+
 .anchor-pane {
     -fx-background-color: #4a4a4a !important;
 }
@@ -467,6 +470,11 @@
 }
 
 
+.text-field
+{
+
+}
+
 #textFieldBankAccountSettingsPage,
 #valueField{
     -fx-background-color: #3a3a3a !important;
@@ -480,7 +488,7 @@
 }
 
 #gridPaneBankAccountSetting{
-    -fx-background-color: #595959 !important;
+    -fx-background-color: #3c3c3c !important;
 }
 
 
@@ -678,13 +686,16 @@
     -fx-border-color: #333333 !important;
 }
 
-#friendsSearchBar,
-#noteTextFiled {
+
+.text-field{
     -fx-background-color: #3a3a3a !important;
     -fx-text-fill: white !important;
+    -fx-border-radius: 10 !important;
     -fx-prompt-text-fill: #bdbdbd !important;
     -fx-border-color: #333333 !important;
 }
+
+
 
 #labelFromFriendTransactionCloud{
     -fx-background-color: #4a4a4a !important;
@@ -762,9 +773,18 @@
 }
 
 #anchorPaneCardPage,
-#rootGridPaneBankSettingPage {
+#rootGridPaneBankSettingPage,
+#addAccountMoneyAnchorPane{
     -fx-background-color: #3c3c3c !important;
 }
+
+
+#optionAddMoneyGridPane
+{
+    -fx-background-color:  #595959 !important;
+}
+
+
 
 .text-input {
     -fx-highlight-fill: red;
