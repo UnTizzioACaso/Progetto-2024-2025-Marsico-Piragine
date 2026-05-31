@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="514.0" prefWidth="378.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.ConfirmPopupController">
+<AnchorPane fx:id="confirmAddMoneyAnchorPane" prefHeight="514.0" prefWidth="378.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.ConfirmAddMoneyPopupController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.4" layoutY="36.0" prefHeight="42.0" prefWidth="379.0" text="RIEPILOGO TRANSAZIONE" textAlignment="CENTER" AnchorPane.leftAnchor="10.4" AnchorPane.rightAnchor="10.399999999999977">
          <font>

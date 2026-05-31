@@ -635,7 +635,8 @@
 #anchorPaneCardPage,
 #rootGridPaneBankSettingPage,
 #addAccountMoneyAnchorPane,
-#bankTransferGridPane{
+#bankTransferGridPane,
+#confirmAddMoneyAnchorPane{
     -fx-background-color: #3c3c3c !important;
 }
 
