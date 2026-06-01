@@ -26,7 +26,7 @@ public class FriendshipNotifyController extends BranchController
         FriendRequestDAO.declineRequest(idRequest);
         BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 368, 224);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
-        controller.username = friendshipUsernameLabel.getText();
+        controller.setUsername(friendshipUsernameLabel.getText());
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
@@ -34,7 +34,8 @@ public class FriendshipNotifyController extends BranchController
     @FXML
     public void acceptRequest()
     {
-        User u = UserDAO.getUserByUsername(friendshipUsernameLabel.getText());
+        PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if(!CurrentSession.isPinCorrect()){return;}
         FriendRequestDAO.acceptRequest(idRequest);
         FriendRequest r = FriendRequestDAO.getFriendRequestById(idRequest);
         FriendshipDAO.addFriendship(r.getRequester(), r.getRequested());

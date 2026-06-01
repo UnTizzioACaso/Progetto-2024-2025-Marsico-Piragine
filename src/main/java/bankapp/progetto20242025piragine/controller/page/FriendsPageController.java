@@ -57,11 +57,15 @@ public class FriendsPageController extends BranchController
     @FXML
     public void requestTransaction()
     {
+
         if (currentFriendController == null)
         {
             writeError("Devi selezionare un amico per richiedere denaro");
             return;
         }
+
+        PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if(!CurrentSession.isPinCorrect()){return;}
 
         // string validation
         BigDecimal value = ValueValidator.validateFormat(valueField);
@@ -115,6 +119,9 @@ public class FriendsPageController extends BranchController
             writeError("Devi selezionare un amico per inviare denaro");
             return;
         }
+
+        PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if(!CurrentSession.isPinCorrect()){return;}
 
         // string validation
         BigDecimal value = ValueValidator.validateFormat(valueField);

@@ -6,7 +6,6 @@ import bankapp.progetto20242025piragine.dao.NotifyDAO;
 import bankapp.progetto20242025piragine.util.*;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +19,6 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import javafx.util.Pair;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Stack;
 
@@ -141,6 +139,11 @@ public class TopbarController extends BranchController {
     {
         if (backwardStack.size() > 1)
         {
+            if (backwardStack.peek().equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml")) //if we are loading the bank account settings page,
+            {                                                                                                           // we need to ask for the PIN
+                PopupCreator.showAndWaitPopup("Inserisci il PIN", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+                if (!CurrentSession.isPinCorrect()) {return;}
+            }
             String current = backwardStack.pop();
             forwardStack.push(current);
             CurrentSession.getRootController().switchPage(backwardStack.peek());
@@ -152,6 +155,11 @@ public class TopbarController extends BranchController {
     {
         if (!forwardStack.isEmpty())
         {
+            if (forwardStack.peek().equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml")) //if we are loading the bank account settings page,
+            {                                                                                                           // we need to ask for the PIN
+                PopupCreator.showAndWaitPopup("Inserisci il PIN", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+                if (!CurrentSession.isPinCorrect()) {return;}
+            }
             String page = forwardStack.pop();
             backwardStack.push(page);
             CurrentSession.getRootController().switchPage(page);
@@ -170,10 +178,8 @@ public class TopbarController extends BranchController {
 
 
     @FXML
-    public void showAssistance() {
-
-            showBottomRightPopup("/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml", (Stage) backArrowButton.getScene().getWindow());
-
-
+    public void showAssistance()
+    {
+        showBottomRightPopup("/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml", (Stage) backArrowButton.getScene().getWindow());
     }
 }

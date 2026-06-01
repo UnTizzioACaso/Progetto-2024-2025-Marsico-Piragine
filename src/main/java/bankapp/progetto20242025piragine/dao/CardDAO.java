@@ -76,7 +76,7 @@ public class CardDAO {
         }
     }
 
-    public static Boolean updateCardStatus(int cardId, boolean status) throws SQLException {
+    public static Boolean updateCardStatus(int cardId, boolean status) {
         String sql = "UPDATE Card SET status = ? WHERE id_card = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -85,7 +85,9 @@ public class CardDAO {
             stmt.setInt(2, cardId);
             stmt.executeUpdate();
             return status;
-        } catch (SQLException e) {
+        }
+        catch (SQLException e)
+        {
             System.err.println("Error during update card status: " + e.getMessage());
             e.printStackTrace();
             return false;
@@ -166,4 +168,6 @@ public class CardDAO {
             return false;
         }
     }
+
+
 }

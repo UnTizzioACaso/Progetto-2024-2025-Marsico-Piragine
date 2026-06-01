@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.controller.popup;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.dao.UserDAO;
 import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -25,6 +26,7 @@ public class AccountPopupController extends BranchController {
     // Root pane of the popup, used to apply theme changes
     @FXML
     private AnchorPane accountPopupRoot;
+
 
     // Fills the popup with the correct user data and current theme
     @FXML
@@ -50,6 +52,7 @@ public class AccountPopupController extends BranchController {
     @FXML
     private void loadAccountSettingsPage()
     {
+
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
         ((Stage) accountPopupRoot.getScene().getWindow()).close();
     }

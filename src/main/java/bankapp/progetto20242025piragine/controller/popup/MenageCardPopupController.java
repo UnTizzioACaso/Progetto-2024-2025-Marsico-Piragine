@@ -126,33 +126,19 @@ public class MenageCardPopupController extends BranchController {
     }
 
     @FXML
-    public void blockCard() {
-        try
-        {
-            CardDAO.updateCardStatus(card.getIdCard(), false);
-            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
-            CurrentSession.getTopbarController().reloadPage();
-        }
-        catch (SQLException e)
-        {
-            System.out.println("error during blocking card" + e.getMessage());
-            e.printStackTrace();
-        }
+    public void blockCard()
+    {
+        CardDAO.updateCardStatus(card.getIdCard(), false);
+        ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+        CurrentSession.getTopbarController().reloadPage();
     }
 
     @FXML
-    public void unblockCard() {
-        try
-        {
-            CardDAO.updateCardStatus(card.getIdCard(), true);
-            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
-            CurrentSession.getTopbarController().reloadPage();
-        }
-        catch (SQLException e)
-        {
-            System.out.println("error during updating card status state to true" + e.getMessage());
-            e.printStackTrace();
-        }
+    public void unblockCard()
+    {
+        CardDAO.updateCardStatus(card.getIdCard(), true);
+        ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+        CurrentSession.getTopbarController().reloadPage();
     }
 
     @FXML

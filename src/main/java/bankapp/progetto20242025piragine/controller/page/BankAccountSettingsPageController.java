@@ -23,7 +23,6 @@ public class BankAccountSettingsPageController extends BranchController
         CurrentSession.setBankAccountSettingsPageController(this);
         BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());
         ibanLabel.setText(bankAccount.getIban());
-
     }
 
 }

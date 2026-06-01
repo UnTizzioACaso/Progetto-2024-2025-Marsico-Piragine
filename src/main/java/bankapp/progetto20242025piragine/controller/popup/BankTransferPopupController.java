@@ -6,6 +6,7 @@ import bankapp.progetto20242025piragine.dao.UserDAO;
 import bankapp.progetto20242025piragine.model.BankAccount;
 import bankapp.progetto20242025piragine.model.Transaction;
 import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ValueValidator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -81,6 +82,9 @@ public class BankTransferPopupController extends BranchController
         int userBeneficiary = UserDAO.getUserByUsername(nameTextField.getText()).getUserID();
         BankAccount accountBeneficiary = BankAccountDAO.getAccountByUserId(userBeneficiary);
         Transaction t  = new Transaction(CurrentSession.getLoggedAccount().getIdAccount(), accountBeneficiary.getIdAccount(), amount, noteTextField.getText(), "payment", -1, "accepted");
+        PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if(!CurrentSession.isPinCorrect())
+        {return;}
         if(BankAccountDAO.transferMoneyWithCommission(accountBeneficiary, CurrentSession.getLoggedAccount(), t, commission))
         {
             successLabel.setText("Bonifico effettuato con successo");

@@ -27,6 +27,7 @@ public class CurrentSession {
     private static BankAccount loggedAccount;
     private static Stage primaryStage;
     private static Node currentPage;
+    private static boolean isPinCorrect = false;
 
     public static User getLoggedUser() {
         return loggedUser;
@@ -116,4 +117,18 @@ public class CurrentSession {
     public static SidebarController getSidebarController() {return sidebarController;}
 
     public static void setSidebarController(SidebarController sidebarController) {CurrentSession.sidebarController = sidebarController;}
+
+
+    public static boolean isPinCorrect()
+    {
+        if (isPinCorrect)
+        {
+            isPinCorrect = false; //reset the value before returning true, so that the next time it is called
+            return true;          //it will return false unless the user has entered the correct PIN again
+
+        }
+        return false;
+    }
+
+    public static void setIsPinCorrect(boolean isPinCorrect) {CurrentSession.isPinCorrect = isPinCorrect;}
 }

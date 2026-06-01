@@ -25,6 +25,8 @@ public class ToUserTextCloudController extends BranchController
     @FXML
     public void showRequest()
     {
+        PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if(!CurrentSession.isPinCorrect()){return;}
         if(request == null) return;
         PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 200, 100);
         controller.request = request;
