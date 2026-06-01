@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="198.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.PinPopupController">
+<AnchorPane fx:id="rootPane" prefHeight="188.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.PinPopupController">
    <children>
       <Pane maxHeight="70.0" minHeight="57.0" prefHeight="57.0" prefWidth="314.0" style="-fx-background-color: #ff0000; -fx-background-radius: 10 10 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <effect>
@@ -29,7 +29,7 @@
          </children>
       </Pane>
       <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="22.0" layoutY="76.0" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="76.0" />
-      <Button fx:id="doneButton" layoutX="119.0" layoutY="122.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#checkPin" prefHeight="38.0" prefWidth="76.0" style="-fx-background-color: ff0000; fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="FATTO" textFill="WHITE" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="119.0" AnchorPane.topAnchor="122.0">
+      <Button fx:id="doneButton" layoutX="36.0" layoutY="135.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#checkPin" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: ff0000; fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="FATTO" textFill="WHITE" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="178.0" AnchorPane.topAnchor="135.0">
          <effect>
             <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                <color>
@@ -43,7 +43,16 @@
             <Insets left="10.0" />
          </padding>
       </PasswordField>
-      <Label fx:id="errorLabel" layoutX="143.0" layoutY="167.0" textFill="RED" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Label fx:id="errorLabel" layoutY="113.0" textFill="RED" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="abortButton" layoutX="181.0" layoutY="135.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#abort" prefHeight="38.0" prefWidth="100.0" style="fx-text-fill: red; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-background-color: white; -fx-border-width: 1;" text="ANNULLA" textFill="RED">
+         <effect>
+            <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Button>
    </children>
    <effect>
       <InnerShadow>

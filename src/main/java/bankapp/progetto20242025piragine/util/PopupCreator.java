@@ -14,7 +14,6 @@ public class PopupCreator
 {
     public static BranchController showPopup(String title, String fxml, double width, double height)
     {
-        if(!(CurrentSession.getPopupStage() == null)){CurrentSession.getPopupStage().close();}
         Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
         Parent root = (Parent) p.getValue();
         BranchController controller =  p.getKey(); //getting the controller from the loader
@@ -22,7 +21,6 @@ public class PopupCreator
         ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
         controller.initializer(); //initializing the controller
         Stage popupStage = new Stage(); //creating a new stage for the popup
-        CurrentSession.setPopupStage(popupStage);
         popupStage.initStyle(StageStyle.TRANSPARENT);
         popupStage.setWidth(width); //setting popup's minimum width
         popupStage.setHeight(height);
@@ -35,6 +33,30 @@ public class PopupCreator
         popupStage.show();
         return controller;
     }
+
+    public static BranchController showAndWaitPopup(String title, String fxml, double width, double height)
+    {
+        Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
+        Parent root = (Parent) p.getValue();
+        BranchController controller =  p.getKey(); //getting the controller from the loader
+        Scene scene = new Scene(root);
+        ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
+        controller.initializer(); //initializing the controller
+        Stage popupStage = new Stage(); //creating a new stage for the popup
+        popupStage.initStyle(StageStyle.TRANSPARENT);
+        popupStage.setWidth(width); //setting popup's minimum width
+        popupStage.setHeight(height);
+        popupStage.setResizable(false);
+        popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
+        Stage ownerStage = (Stage) CurrentSession.getRootController().rootWindow.getScene().getWindow();
+        popupStage.initOwner(ownerStage);
+        scene.setFill(Color.TRANSPARENT);
+        popupStage.setScene(scene);
+        popupStage.showAndWait();
+        return controller;
+    }
+
+
 
 
 }

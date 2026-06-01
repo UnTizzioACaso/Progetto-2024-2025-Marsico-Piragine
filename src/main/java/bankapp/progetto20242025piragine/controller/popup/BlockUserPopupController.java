@@ -22,6 +22,9 @@ public class BlockUserPopupController extends BranchController {
     @FXML
     public void acceptBlock()
     {
+        stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
+        stage.setOnCloseRequest(event -> declineBlock());
+
 
         int id = UserDAO.getUserByUsername(username).getUserID();
         BlockDAO.blockUser(CurrentSession.getLoggedUser().getUserID(), id);
@@ -33,13 +36,14 @@ public class BlockUserPopupController extends BranchController {
     @FXML
     public void initialize()
     {
-        stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
-        stage.setOnCloseRequest(event -> declineBlock());
+
     }
 
     @FXML
     public void declineBlock()
     {
+        stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
+        stage.setOnCloseRequest(event -> declineBlock());
         reloadNotification();
         stage.close();
     }
