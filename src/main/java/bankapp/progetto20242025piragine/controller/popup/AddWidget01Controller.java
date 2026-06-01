@@ -32,13 +32,17 @@ public class AddWidget01Controller extends BranchController {
 
     @FXML
     private Region lastFiveExpensesRegion, monthlyBalanceRegion, monthlyExpensesRegion, monthlyIncomesRegion, quickContactRegion;
-
-
     @FXML
     private ScrollPane root;
 
-    @Override
-    public void initializer()
+    public ScrollPane getRoot() {return root;}
+
+    public void setRoot(ScrollPane root) {
+        this.root = root;
+    }
+
+    @FXML
+    public void initialize()
     {
         List<HomeWidgetCustom> usedWidgets = HomeWidgetCustomDAO.getUsedWidgetsByUserId(CurrentSession.getLoggedUser().getUserID());
         for(HomeWidgetCustom widget : usedWidgets)
@@ -68,8 +72,6 @@ public class AddWidget01Controller extends BranchController {
             }
         }
 
-        root.requestFocus();
-        root.setVvalue(0.0);
     }
 
     @FXML

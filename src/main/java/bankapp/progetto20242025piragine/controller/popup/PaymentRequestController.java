@@ -16,7 +16,7 @@ public class PaymentRequestController extends BranchController {
 
     public Notify n;
 
-    private PinPopupController pinPopupController;
+
 
     @FXML
     public Label friendshipUsernameLabel;
@@ -27,7 +27,7 @@ public class PaymentRequestController extends BranchController {
     @FXML
     public void declineRequest()
     {
-        if (pinPopupController != null){pinPopupController.abort();}
+        if (getPinPopupController() != null){getPinPopupController().abort();} //if pin popup has been generated, we close it it
         BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
         controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.username = friendshipUsernameLabel.getText();
@@ -49,22 +49,25 @@ public class PaymentRequestController extends BranchController {
     @FXML
     public void acceptRequest()
     {
-        if (pinPopupController != null)
+        /* if pinPopupController is not null, it means that the user has already tried to accept the request and has entered the PIN,
+         so we check if the PIN is correct and if it is, we accept the request, otherwise we show the PIN popup again */
+        if (getPinPopupController() != null)
         {
-            if(pinPopupController.isPinCorrect())
+            if(getPinPopupController().isPinCorrect())
             {
-                pinPopupController.abort();
+                getPinPopupController().abort();
                 accept();
                 return;
             }
         }
-        pinPopupController = (PinPopupController) PopupCreator.showPopup("Inserisci il PIN", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        setPinPopupController((PinPopupController) PopupCreator.showPopup("Inserisci il PIN", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190));
     }
 
     private void accept()
     {
         if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
         {
+            //if this popup is generated from a notification, mark it as read and close the popup
             if (n != null)
             {
                 NotifyDAO.markAsRead(n.getIdNotify());
@@ -72,11 +75,14 @@ public class PaymentRequestController extends BranchController {
                 ((Stage) moneyLabel.getScene().getWindow()).close();
                 return;
             }
+
+            //if this popup is generated from a friend message, show the chat and close the popup
+            BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
+            CurrentSession.getFriendsPageController().currentFriendController.showChat();
+            ((Stage) moneyLabel.getScene().getWindow()).close();
         }
 
-        BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
-        CurrentSession.getFriendsPageController().currentFriendController.showChat();
-        ((Stage) moneyLabel.getScene().getWindow()).close();
+
     }
 
 

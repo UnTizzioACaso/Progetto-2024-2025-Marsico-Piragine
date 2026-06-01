@@ -19,7 +19,6 @@ public class PopupCreator
         BranchController controller =  p.getKey(); //getting the controller from the loader
         Scene scene = new Scene(root);
         ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
-        controller.initializer(); //initializing the controller
         Stage popupStage = new Stage(); //creating a new stage for the popup
         popupStage.initStyle(StageStyle.TRANSPARENT);
         popupStage.setWidth(width); //setting popup's minimum width
@@ -41,7 +40,6 @@ public class PopupCreator
         BranchController controller =  p.getKey(); //getting the controller from the loader
         Scene scene = new Scene(root);
         ThemeManager.applyTheme(scene, CurrentSession.getLoggedUser().getTheme());
-        controller.initializer(); //initializing the controller
         Stage popupStage = new Stage(); //creating a new stage for the popup
         popupStage.initStyle(StageStyle.TRANSPARENT);
         popupStage.setWidth(width); //setting popup's minimum width

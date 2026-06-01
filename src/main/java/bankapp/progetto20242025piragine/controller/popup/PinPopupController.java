@@ -30,7 +30,7 @@ public class PinPopupController extends BranchController
         if (PasswordUtil.checkPassword(insertPinPasswordField.getText(), CurrentSession.getLoggedUser().getPinHash()))
         {
             isPinCorrect = true;
-            ((Stage) insertPinPasswordField.getScene().getWindow()).hide();
+            insertPinPasswordField.getScene().getWindow().hide();
         }
          else
         {

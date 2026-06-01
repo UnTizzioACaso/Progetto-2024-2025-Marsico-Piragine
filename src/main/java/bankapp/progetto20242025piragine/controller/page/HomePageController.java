@@ -2,6 +2,10 @@ package bankapp.progetto20242025piragine.controller.page;
 
 import bankapp.progetto20242025piragine.controller.BranchController;
 
+import bankapp.progetto20242025piragine.controller.popup.AddWidget01Controller;
+import bankapp.progetto20242025piragine.controller.popup.AddWidget02Controller;
+import bankapp.progetto20242025piragine.controller.popup.AddWidget11Controller;
+import bankapp.progetto20242025piragine.controller.popup.AddWidget12Controller;
 import bankapp.progetto20242025piragine.controller.widget.WidgetController;
 import bankapp.progetto20242025piragine.model.HomeWidgetCustom;
 import bankapp.progetto20242025piragine.dao.HomeWidgetCustomDAO;
@@ -50,25 +54,33 @@ public class HomePageController extends BranchController
     @FXML
     public void loadAddWidget12()
     {
-        PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml", 600, 600);
+        AddWidget12Controller controller = (AddWidget12Controller) PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml", 600, 600);
+        controller.getRoot().requestFocus();
+        controller.getRoot().setVvalue(0.0);
     }
 
     @FXML
     public void loadAddWidget01()
     {
-        PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml", 600, 600);
+        AddWidget01Controller controller = (AddWidget01Controller) PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml", 600, 600);
+        controller.getRoot().requestFocus();
+        controller.getRoot().setVvalue(0.0);
     }
 
     @FXML
     public void loadAddWidget11()
     {
-        PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml", 600, 600);
+        AddWidget11Controller controller = (AddWidget11Controller) PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml", 600, 600);;
+        controller.getRoot().requestFocus();
+        controller.getRoot().setVvalue(0.0);
     }
 
     @FXML
     public void loadAddWidget02()
     {
-        PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml", 600, 600);
+        AddWidget02Controller controller = (AddWidget02Controller) PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml", 600, 600);
+        controller.getRoot().requestFocus();
+        controller.getRoot().setVvalue(0.0);
     }
 
     public void addWidget(String fxml, int column, int row)
