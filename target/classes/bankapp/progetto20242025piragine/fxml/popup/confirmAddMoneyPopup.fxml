@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -9,84 +10,205 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="confirmAddMoneyAnchorPane" prefHeight="514.0" prefWidth="378.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.ConfirmAddMoneyPopupController">
+<AnchorPane fx:id="confirmAddMoneyPopupAnchorPane"
+            prefHeight="514.0"
+            prefWidth="378.0"
+            style="-fx-background-color: white; -fx-background-radius: 15;"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="bankapp.progetto20242025piragine.controller.popup.ConfirmAddMoneyPopupController">
+
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.4" layoutY="36.0" prefHeight="42.0" prefWidth="379.0" text="RIEPILOGO TRANSAZIONE" textAlignment="CENTER" AnchorPane.leftAnchor="10.4" AnchorPane.rightAnchor="10.399999999999977">
+      <Label alignment="CENTER"
+             contentDisplay="CENTER"
+             layoutX="7.8"
+             layoutY="36.0"
+             prefHeight="42.0"
+             prefWidth="379.0"
+             text="RIEPILOGO TRANSAZIONE"
+             textAlignment="CENTER"
+             AnchorPane.leftAnchor="7.8"
+             AnchorPane.rightAnchor="13.0">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <TextField layoutX="28.8" layoutY="138.0" prefHeight="42.0" prefWidth="320.0" style="-fx-text-fill: white; -fx-background-color: #ff0000; -fx-background-radius: 10;" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="29.0">
+
+      <TextField fx:id="confirmAddMoneyPopupTextField"
+                 layoutX="28.8"
+                 layoutY="137.0"
+                 prefHeight="42.0"
+                 prefWidth="320.0"
+                 style="-fx-text-fill: white; -fx-background-color: #ff0000; -fx-background-radius: 10;"
+                 AnchorPane.leftAnchor="28.8"
+                 AnchorPane.rightAnchor="28.8">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
          <effect>
-            <InnerShadow choke="0.17" height="56.25" offsetX="-10.0" offsetY="-10.0" radius="27.6475" width="56.34">
+            <InnerShadow choke="0.17"
+                         height="56.25"
+                         offsetX="-10.0"
+                         offsetY="-10.0"
+                         radius="27.6475"
+                         width="56.34">
                <color>
                   <Color opacity="0.25" />
                </color>
             </InnerShadow>
          </effect>
       </TextField>
-      <Label layoutX="28.8" layoutY="100.0" text="IMPORTO DA RICARICARE (€)" AnchorPane.leftAnchor="28.8">
+
+      <Label layoutX="28.8"
+             layoutY="101.0"
+             text="IMPORTO DA RICARICARE (€)"
+             AnchorPane.leftAnchor="28.8">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="28.8" layoutY="228.0" text="Dettagli" AnchorPane.leftAnchor="29.0">
+
+      <Label layoutX="28.8"
+             layoutY="228.0"
+             text="Dettagli"
+             AnchorPane.leftAnchor="29.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="28.8" layoutY="258.0" text="Conto di destinazione" AnchorPane.leftAnchor="29.0">
+
+      <Label layoutX="28.8"
+             layoutY="258.0"
+             text="Conto di destinazione"
+             AnchorPane.leftAnchor="29.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="28.8" layoutY="291.0" text="Commissioni" AnchorPane.leftAnchor="29.0">
+
+      <Label layoutX="28.8"
+             layoutY="291.0"
+             text="Commissioni"
+             AnchorPane.leftAnchor="29.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="242.79999999999998" layoutY="258.0" prefHeight="18.0" prefWidth="106.0" text="**** 1234" textAlignment="RIGHT" AnchorPane.rightAnchor="29.0">
+
+      <Label alignment="CENTER_RIGHT"
+             layoutX="242.8"
+             layoutY="258.0"
+             prefHeight="18.0"
+             prefWidth="106.0"
+             text="**** 1234"
+             textAlignment="RIGHT"
+             AnchorPane.rightAnchor="29.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="266.0" layoutY="293.0" prefHeight="18.0" prefWidth="83.0" text="0.00 €" textAlignment="RIGHT" AnchorPane.rightAnchor="29.0">
+
+      <Label alignment="CENTER_RIGHT"
+             layoutX="266.0"
+             layoutY="293.0"
+             prefHeight="18.0"
+             prefWidth="83.0"
+             text="0.00 €"
+             textAlignment="RIGHT"
+             AnchorPane.rightAnchor="29.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Separator layoutX="35.0" layoutY="338.0" prefHeight="18.0" prefWidth="320.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="29.0" />
-      <Separator layoutX="29.0" layoutY="201.0" prefHeight="18.0" prefWidth="320.0" />
-      <Label layoutX="33.0" layoutY="376.0" text="Totale:" AnchorPane.leftAnchor="29.0">
+
+      <Separator layoutX="35.0"
+                 layoutY="338.0"
+                 prefHeight="18.0"
+                 prefWidth="320.0"
+                 AnchorPane.leftAnchor="29.0"
+                 AnchorPane.rightAnchor="29.0" />
+
+      <Separator layoutX="29.0"
+                 layoutY="201.0"
+                 prefHeight="18.0"
+                 prefWidth="320.0"
+                 AnchorPane.leftAnchor="29.0"
+                 AnchorPane.rightAnchor="29.0" />
+
+      <Label layoutX="33.0"
+             layoutY="376.0"
+             text="Totale:"
+             AnchorPane.leftAnchor="29.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="233.2" layoutY="376.0" prefHeight="26.0" prefWidth="116.0" text="0.00 €" textAlignment="RIGHT" AnchorPane.rightAnchor="29.0">
+
+      <Label alignment="CENTER_RIGHT"
+             layoutX="233.2"
+             layoutY="376.0"
+             prefHeight="26.0"
+             prefWidth="116.0"
+             text="0.00 €"
+             textAlignment="RIGHT"
+             AnchorPane.rightAnchor="29.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="28.8" layoutY="423.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="320.0" style="-fx-background-color: #ff0000; -fx-background-radius: 14;" text="CONFERMA RICARICA" textFill="WHITE" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="29.0">
+
+      <Button layoutX="28.8"
+              layoutY="423.0"
+              mnemonicParsing="false"
+              prefHeight="40.0"
+              prefWidth="320.0"
+              style="-fx-background-color: #ff0000; -fx-background-radius: 14;"
+              text="CONFERMA RICARICA"
+              textFill="WHITE"
+              AnchorPane.leftAnchor="29.0"
+              AnchorPane.rightAnchor="29.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
          <effect>
-            <InnerShadow choke="0.17" height="56.25" offsetX="-10.0" offsetY="-10.0" radius="27.6475" width="56.34">
+            <InnerShadow choke="0.17"
+                         height="56.25"
+                         offsetX="-10.0"
+                         offsetY="-10.0"
+                         radius="27.6475"
+                         width="56.34">
                <color>
                   <Color opacity="0.25" />
                </color>
             </InnerShadow>
          </effect>
       </Button>
+
+      <Button fx:id="closeAddAccountMoneyPopup"
+              layoutX="343.6"
+              layoutY="10.2"
+              mnemonicParsing="false"
+              onAction="#closePopup"
+              prefHeight="21.0"
+              prefWidth="22.0"
+              style="-fx-background-color: transparent;"
+              text="✕"
+              textFill="#5a5a5a"
+              AnchorPane.rightAnchor="12.0"
+              AnchorPane.topAnchor="10.2">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <padding>
+            <Insets bottom="-6.0" left="-1.0" right="-1.0" top="-6.0" />
+         </padding>
+      </Button>
    </children>
+
    <effect>
       <InnerShadow>
          <color>
-            <Color opacity="0.30000001192092896" />
+            <Color opacity="0.3" />
          </color>
       </InnerShadow>
    </effect>
