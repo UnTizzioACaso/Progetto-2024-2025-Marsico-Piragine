@@ -12,23 +12,27 @@ import javafx.stage.Stage;
 
 public class PaymentRequestController extends BranchController {
 
-    public Transaction request;
+    private Transaction request;
 
-    public Notify n;
-
-
+    private Notify n;
 
     @FXML
-    public Label friendshipUsernameLabel;
+    private Label friendshipUsernameLabel;
 
     @FXML
-    public Label moneyLabel;
+    private Label moneyLabel;
+
+    public void setUsername(String username) {friendshipUsernameLabel.setText(username);}
+
+    public void setNotify(Notify n) {this.n = n;}
+
+    public void setTransaction(Transaction request) {this.request = request;}
 
     @FXML
-    public void declineRequest()
+    private void declineRequest()
     {
         BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
-        controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
+        controller.setQuestion("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.setUsername(friendshipUsernameLabel.getText());
         if(n != null)
         {
@@ -40,13 +44,13 @@ public class PaymentRequestController extends BranchController {
                 return;
             }
         }
-        CurrentSession.getFriendsPageController().currentFriendController.showChat();
+        CurrentSession.getFriendsPageController().getCurrentFriendController().showChat();
         TransactionDAO.declineTransacion(request.getIdTransaction());
         ((Stage) moneyLabel.getScene().getWindow()).close();
     }
 
     @FXML
-    public void acceptRequest()
+    private void acceptRequest()
     {
         PopupCreator.showAndWaitPopup("Inserisci il PIN", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
             if (CurrentSession.isPinCorrect())
@@ -64,7 +68,7 @@ public class PaymentRequestController extends BranchController {
 
                     //if this popup is generated from a friend message, show the chat and close the popup
                     BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
-                    CurrentSession.getFriendsPageController().currentFriendController.showChat();
+                    CurrentSession.getFriendsPageController().getCurrentFriendController().showChat();
                     ((Stage) moneyLabel.getScene().getWindow()).close();
                 }
             }

@@ -60,7 +60,7 @@ public class CardDAO {
         }
     }
 
-    public static Boolean updateCardFavourite(int cardId, boolean favourite) throws SQLException {
+    public static Boolean updateCardFavourite(int cardId, boolean favourite)  {
         String sql = "UPDATE Card SET favourite = ? WHERE id_card = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -127,7 +127,7 @@ public class CardDAO {
         }
     }
 
-    public static void deleteCard(int cardId) throws SQLException {
+    public static void deleteCard(int cardId)  {
         String sql = "DELETE FROM Card WHERE id_card = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -140,7 +140,7 @@ public class CardDAO {
             e.printStackTrace();
         }
     }
-    public static boolean insertCard(Card card) throws SQLException {
+    public static boolean insertCard(Card card)  {
         String sql = "INSERT INTO Card (user_id, id_account, pan_last4, expired, nickname, color, favourite, spending_limit, status) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -162,8 +162,10 @@ public class CardDAO {
             if (affectedRows == 0) return false;
 
             return true;
-        } catch (Exception e) {
-            System.err.println("Error during insert card by id: " + e.getMessage());
+        }
+        catch (Exception e)
+        {
+            System.err.println("Error during insert card: " + e.getMessage());
             e.printStackTrace();
             return false;
         }

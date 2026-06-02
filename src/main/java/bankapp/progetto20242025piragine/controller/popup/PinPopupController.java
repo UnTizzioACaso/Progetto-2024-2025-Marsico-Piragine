@@ -19,7 +19,7 @@ public class PinPopupController extends BranchController
 
 
     @FXML
-    public void checkPin()
+    private void checkPin()
     {
         if (PasswordUtil.checkPassword(insertPinPasswordField.getText(), CurrentSession.getLoggedUser().getPinHash()))
         {
@@ -35,7 +35,7 @@ public class PinPopupController extends BranchController
     }
 
     @FXML
-    public void abort()
+    private void abort()
     {
         ((Stage)insertPinPasswordField.getScene().getWindow()).close();
     }

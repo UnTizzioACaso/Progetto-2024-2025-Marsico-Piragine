@@ -17,10 +17,12 @@ import java.util.List;
 public class NotificationSliderController extends BranchController
 {
     @FXML
-    public VBox notificationVBox;
+    private VBox notificationVBox;
+
+    public VBox getNotificationVBox() {return notificationVBox;}
 
     @FXML
-    public AnchorPane notificationSliderAnchorPane;
+    private AnchorPane notificationSliderAnchorPane;
 
     @FXML
     public void close()
@@ -29,10 +31,7 @@ public class NotificationSliderController extends BranchController
     }
 
     @FXML
-    public void initialize()
-    {
-        ThemeManager.applyTheme(notificationSliderAnchorPane.getScene(), CurrentSession.getLoggedUser().getTheme());
-    }
+    private void initialize() {ThemeManager.applyTheme(notificationSliderAnchorPane.getScene(), CurrentSession.getLoggedUser().getTheme());}
 
 
 

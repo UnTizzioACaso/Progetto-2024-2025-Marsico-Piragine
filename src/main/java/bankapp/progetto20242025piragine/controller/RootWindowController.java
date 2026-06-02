@@ -33,7 +33,7 @@ public  class RootWindowController extends BranchController {
         {
             currentPage = fxml;
             Node node = EasyFxmlLoader.loader(fxml).getValue(); //creating the node from the loader
-            if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
+            if(CurrentSession.getTopbarController().isSliderActive()){CurrentSession.getTopbarController().showSlider();}
             setCenter(node);
         }
     }
@@ -49,17 +49,16 @@ public  class RootWindowController extends BranchController {
             Node node = p.getValue(); //creating the node from the pair
             if (rootWindow.getTop() != null) //if topbar is already initialized
             {
-                if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
+                if(CurrentSession.getTopbarController().isSliderActive()){CurrentSession.getTopbarController().showSlider();}
                 CurrentSession.getTopbarController().visitPage(fxml); //adds the loaded page to the backwardStack
                 ThemeManager.applyTheme(rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme()); //correcting user Theme
             }
             setCenter(node);
-
         }
     }
 
     @FXML
-    public void initialize() //initializing the first page to load
+    private void initialize() //initializing the first page to load
     {
         currentPage = "";
         rootWindow.setLeft(null); //setting left to null because the first page is login, and it doesn't need the sidebar
@@ -68,6 +67,7 @@ public  class RootWindowController extends BranchController {
         ThemeManager.applyTheme(rootWindow.getScene(), "light");
     }
 
+    public void reInitialize() {initialize();}
 
     public void loadSideBar() //this method loads a node on the left side of root's BorderPane
     {

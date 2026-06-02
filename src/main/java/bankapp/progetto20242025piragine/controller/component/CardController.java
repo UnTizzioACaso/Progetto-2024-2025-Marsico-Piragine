@@ -36,16 +36,12 @@ public class CardController extends BranchController
     }
 
     @FXML
-    public void loadSettings()
+    private void loadSettings()
     {
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}
         MenageCardPopupController controller = (MenageCardPopupController) PopupCreator.showPopup("Gestisci la carta", "/bankapp/progetto20242025piragine/fxml/popup/menageCardPopup.fxml", 500, 300);
-        controller.card = card;
-        controller.removeFavouritesButton.setVisible(card.isFavourite());
-        controller.addFavouritesButton.setVisible(!card.isFavourite());
-        controller.blockButton.setVisible(card.isStatus());
-        controller.unblockButton.setVisible(!card.isStatus());
+        controller.setCard(card);
     }
 
 
@@ -73,7 +69,7 @@ public class CardController extends BranchController
     }
 
     @FXML
-    public void blockCard()
+    private void blockCard()
     {
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}

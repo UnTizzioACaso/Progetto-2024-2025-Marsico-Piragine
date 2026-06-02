@@ -26,7 +26,7 @@ public class BankTransferPopupController extends BranchController
     private Label usernameErrorLabel, ibanErrorLabel, moneyErrorLabel, noteErrorLabel, successLabel;
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
             usernameErrorLabel.setText("");
             ibanErrorLabel.setText("");
@@ -39,7 +39,7 @@ public class BankTransferPopupController extends BranchController
     }
 
     @FXML
-    public void sendBankTransfer()
+    private void sendBankTransfer()
     {
         if(!BankAccountDAO.existsByIban(ibanTextField.getText()))
         {
@@ -91,13 +91,15 @@ public class BankTransferPopupController extends BranchController
             successLabel.setTextFill(Paint.valueOf("green"));
             initialize();
         }
-        else {
+        else
+        {
             successLabel.setText("Errore durante il bonifico");
             successLabel.setTextFill(Paint.valueOf("red"));
             initialize();
         }
     }
-    public void abortBankTransfer()
+    @FXML
+    private void abortBankTransfer()
     {
         ((Stage) amountTextField.getScene().getWindow()).close();
     }

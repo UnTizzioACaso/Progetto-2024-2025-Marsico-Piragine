@@ -14,12 +14,12 @@ import javafx.scene.layout.AnchorPane;
 public class CreditCardRectangleController extends BranchController
 {
     @FXML
-    public Label limitValueLabel;
+    private Label limitValueLabel;
 
-    public Card card;
+    private Card card;
 
     @FXML
-    public AnchorPane rectangleAnchorPane;
+    private AnchorPane rectangleAnchorPane;
 
     public void fill(Card c)
     {
@@ -38,10 +38,6 @@ public class CreditCardRectangleController extends BranchController
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}
         MenageCardPopupController controller = (MenageCardPopupController) PopupCreator.showPopup("Gestisci la carta", "/bankapp/progetto20242025piragine/fxml/popup/menageCardPopup.fxml", 500, 300);
-        controller.card = card;
-        controller.removeFavouritesButton.setVisible(card.isFavourite());
-        controller.addFavouritesButton.setVisible(!card.isFavourite());
-        controller.blockButton.setVisible(card.isStatus());
-        controller.unblockButton.setVisible(!card.isStatus());
+        controller.setCard(card);
     }
 }

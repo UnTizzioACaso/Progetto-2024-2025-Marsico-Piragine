@@ -13,15 +13,17 @@ import javafx.stage.Stage;
 public class BlockUserPopupController extends BranchController {
 
     @FXML
-    public Label wouldYouLikeToBlockLabel;
+    private Label wouldYouLikeToBlockLabel;
 
     private Stage stage;
 
     private String username;
 
+    public void setQuestion(String s) {wouldYouLikeToBlockLabel.setText(s);}
     public void setUsername(String username) {this.username = username;}
+
     @FXML
-    public void acceptBlock()
+    private void acceptBlock()
     {
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}
@@ -32,20 +34,19 @@ public class BlockUserPopupController extends BranchController {
         stage.close();
     }
 
-
     @FXML
-    public void declineBlock()
+    private void declineBlock()
     {
         stage = (Stage) wouldYouLikeToBlockLabel.getScene().getWindow();
         reloadNotification();
         stage.close();
     }
 
-
     private void reloadNotification()
     {
         CurrentSession.getTopbarController().updateNotifications();
     }
+
 
 
 }

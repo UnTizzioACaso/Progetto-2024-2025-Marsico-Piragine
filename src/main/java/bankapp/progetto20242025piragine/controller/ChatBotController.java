@@ -27,7 +27,7 @@ public class ChatBotController extends BranchController {
     private final ChatSessionSaver sessionSaver = ChatSessionSaver.getInstance();
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         loadMessages();
         if (sessionSaver.getHistory().isEmpty()) {
@@ -38,7 +38,7 @@ public class ChatBotController extends BranchController {
     }
 
     @FXML
-    public void close()
+    private void close()
     {
         Stage primaryStage = (Stage) CurrentSession.getRootController().rootWindow.getScene().getWindow();
         Stage popupStage = (Stage) botGridPane.getScene().getWindow();
@@ -103,7 +103,7 @@ public class ChatBotController extends BranchController {
         Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml");
         Node cloud = p.getValue();
         ToUserTextCloudController controller = (ToUserTextCloudController) p.getKey();
-        controller.textLabel.setText(text);
+        controller.setText(text);
         chatDisplay.getChildren().add(cloud);
     }
 
@@ -112,7 +112,7 @@ public class ChatBotController extends BranchController {
         Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/FromUserTextCloud.fxml");
         Node cloud = p.getValue();
         FromUserTextCloudController controller = (FromUserTextCloudController) p.getKey();
-        controller.textLabel.setText(text);
+        controller.setText(text);
         chatDisplay.getChildren().add(cloud);
         VBox.setMargin(cloud, new Insets(0, -100, 0, 0));
     }

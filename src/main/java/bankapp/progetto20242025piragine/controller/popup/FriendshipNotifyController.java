@@ -14,25 +14,28 @@ import javafx.stage.Stage;
 
 public class FriendshipNotifyController extends BranchController
 {
-    @FXML private AnchorPane anchorPaneFriendshipNotify;
-    public int idRequest;
+
+    private int idRequest;
 
     @FXML
-    public Label friendshipUsernameLabel;
+    private Label friendshipUsernameLabel;
+
+    public void setUsername(String username) {friendshipUsernameLabel.setText(username);}
+
+    public void setIdRequest(int idRequest) {this.idRequest = idRequest;}
 
     @FXML
-    public void declineRequest()
+    private void declineRequest()
     {
         FriendRequestDAO.declineRequest(idRequest);
         BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 368, 224);
-        controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
+        controller.setQuestion("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
         controller.setUsername(friendshipUsernameLabel.getText());
         ((Stage)friendshipUsernameLabel.getScene().getWindow()).close();
     }
 
-
     @FXML
-    public void acceptRequest()
+    private void acceptRequest()
     {
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}

@@ -20,29 +20,33 @@ import java.util.List;
 public class FriendContactController extends BranchController
 {
 
-    public FriendsPageController friendsPageController = CurrentSession.getFriendsPageController();
 
     @FXML
-    public Label friendUsernameLabel;
+    private Label friendUsernameLabel;
+
+    public void setFriendUsername(String username)
+    {
+        friendUsernameLabel.setText(username);
+    }
 
     @FXML
     public void showChat()
     {
-        friendsPageController.chatVBox.setAlignment(Pos.TOP_CENTER);
-        if(friendsPageController.currentFriendController == null) {friendsPageController.currentFriendController = this;}
+        CurrentSession.getFriendsPageController().getChatVBox().setAlignment(Pos.TOP_CENTER);
+        if(CurrentSession.getFriendsPageController().getCurrentFriendController() == null) {CurrentSession.getFriendsPageController().setCurrentFriendController(this);}
         User friend = UserDAO.getUserByUsername(friendUsernameLabel.getText());
-        friendsPageController.chatVBox.getChildren().clear();
+        CurrentSession.getFriendsPageController().getChatVBox().getChildren().clear();
 
         List<Transaction> transactions;
         int userAccount;
         int friendAccount;
-        friendsPageController.friend = friend;
+        CurrentSession.getFriendsPageController().setFriend(friend);
         userAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()).getIdAccount();
         friendAccount = BankAccountDAO.getAccountByUserId(friend.getUserID()).getIdAccount();
         transactions = TransactionDAO.getTransactionsBetweenAccounts(userAccount, friendAccount);
         Friendship f = FriendshipDAO.getFriendship(friend.getUserID(), CurrentSession.getLoggedUser().getUserID());
 
-        friendsPageController.chatVBox.getChildren().clear();
+        CurrentSession.getFriendsPageController().getChatVBox().getChildren().clear();
 
         if(f.getRequester() == CurrentSession.getLoggedUser().getUserID()) //if the user sent first the friendship and the friend accepted it
         {
@@ -78,8 +82,8 @@ public class FriendContactController extends BranchController
                 else if(transaction.getStatus().equals("accepted")){status = "accettata";}
                 else if(transaction.getStatus().equals("declined")){status = "rifiutata";}
                 ToUserTextCloudController controller = receiveCloud(transaction.getNote() + ": " + transaction.getAmount() + " (" + status + ")");
-                controller.request = transaction;
-                controller.friendUsername = friendUsernameLabel.getText();
+                controller.setRequest(transaction);
+                controller.setFriendUsername(friendUsernameLabel.getText());;
             }
             else if (transaction.getBeneficiary().equals(friendAccount) && transaction.getType().equals("donation"))
             {
@@ -89,25 +93,25 @@ public class FriendContactController extends BranchController
     }
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
-        ThemeManager.applyTheme(CurrentSession.getFriendsPageController().chatVBox.getScene(), CurrentSession.getLoggedUser().getTheme());
+        ThemeManager.applyTheme(CurrentSession.getFriendsPageController().getChatVBox().getScene(), CurrentSession.getLoggedUser().getTheme());;
     }
 
     private void sendCloud(String text)
     {
         Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/fromUserTextCloud.fxml");
         FromUserTextCloudController controller = (FromUserTextCloudController) p.getKey();
-        controller.textLabel.setText(text);
-        friendsPageController.chatVBox.getChildren().add(p.getValue());
+        controller.setText(text);
+        CurrentSession.getFriendsPageController().getChatVBox().getChildren().add(p.getValue());
     }
 
     private ToUserTextCloudController receiveCloud(String text)
     {
         Pair <BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/toUserTextCloud.fxml");
         ToUserTextCloudController controller = (ToUserTextCloudController) p.getKey();
-        controller.textLabel.setText(text);
-        friendsPageController.chatVBox.getChildren().add(p.getValue());
+        controller.setText(text);
+        CurrentSession.getFriendsPageController().getChatVBox().getChildren().add(p.getValue());
         return controller;
     }
 

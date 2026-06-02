@@ -40,7 +40,7 @@ public class Register3Controller extends BranchController {
     private static final String PHONE_REGEX = "^[0-9]{10}$";
 
     @FXML
-    public void openCreatePinPopup()
+    private void openCreatePinPopup()
     {
         if (emailRegisterTextField.getText().isEmpty() || usernameRegisterTextField.getText().isEmpty() || cellphoneRegisterTextField.getText().isEmpty() || passwordPasswordField.getText().isEmpty() || passwordConfirmPasswordField.getText().isEmpty())
         {
@@ -52,74 +52,19 @@ public class Register3Controller extends BranchController {
         String username = usernameRegisterTextField.getText();
         String phone = cellphoneRegisterTextField.getText();
 
-        if (!username.matches(USERNAME_REGEX))
-        {
-            errorMessageLabel.setText("L'username può contenere solo lettere minuscole, numeri e '_'");
-            return;
-        }
+        if (!username.matches(USERNAME_REGEX)) {errorMessageLabel.setText("L'username può contenere solo lettere minuscole, numeri e '_'");return;}
 
-        if (!email.matches(EMAIL_REGEX))
-        {
-            errorMessageLabel.setText("Email non valida!");
-            return;
-        }
+        if (!email.matches(EMAIL_REGEX)) {errorMessageLabel.setText("Email non valida!");return;}
 
-        if (!phone.matches(PHONE_REGEX))
-        {
-            errorMessageLabel.setText("Numero di telefono non valido!");
-            return;
-        }
+        if (!phone.matches(PHONE_REGEX)) {errorMessageLabel.setText("Numero di telefono non valido!");return;}
 
-        try
-        {
-            if(UserDAO.existUserByUsername(username))
-            {
-                errorMessageLabel.setText("Username già in uso!");
-                return;
-            }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during username research " + e.getMessage());
-            e.printStackTrace();
-            return;
-        }
+        if(UserDAO.existUserByUsername(username)) {errorMessageLabel.setText("Username già in uso!");return;}
 
-        try
-        {
-            if(UserDAO.existUserByPhone(phone))
-            {
-                errorMessageLabel.setText("Numero di telefono già in uso!");
-                return;
-            }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during phone number research " + e.getMessage());
-            e.printStackTrace();
-            return;
-        }
+        if(UserDAO.existUserByPhone(phone)) {errorMessageLabel.setText("Numero di telefono già in uso!");return;}
 
-        try
-        {
-            if(UserDAO.existUserByEmail(email))
-            {
-                errorMessageLabel.setText("Email già in uso!");
-                return;
-            }
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during email research " + e.getMessage());
-            e.printStackTrace();
-            return;
-        }
+        if(UserDAO.existUserByEmail(email)) {errorMessageLabel.setText("Email già in uso!");return;}
 
-        if (!passwordPasswordField.getText().equals(passwordConfirmPasswordField.getText()))
-        {
-            errorMessageLabel.setText("Le password non coincidono!");
-            return;
-        }
+        if (!passwordPasswordField.getText().equals(passwordConfirmPasswordField.getText())) {errorMessageLabel.setText("Le password non coincidono!");return;}
 
         if (!passwordPasswordField.getText().matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^a-zA-Z0-9]).{8,}$"))
         {
@@ -136,7 +81,7 @@ public class Register3Controller extends BranchController {
     }
 
     @FXML
-    public void loadLogin()
+    private void loadLogin()
     {
         CurrentSession.setLoggedUser(new User());
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");

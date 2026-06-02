@@ -12,13 +12,13 @@ import javafx.scene.control.TextField;
 public class BankAccountSettingsPageController extends BranchController
 {
     @FXML
-    public TextField sendingLimitTextfield;
+    private TextField sendingLimitTextfield;
 
     @FXML
-    public Label ibanLabel;
+    private Label ibanLabel;
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         CurrentSession.setBankAccountSettingsPageController(this);
         BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());

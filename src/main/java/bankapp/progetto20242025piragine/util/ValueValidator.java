@@ -7,13 +7,13 @@ import java.math.BigDecimal;
 public class ValueValidator {
     public static BigDecimal validateFormat(TextField valueField)
     {
-        String value;
-        if (valueField.getText().matches("^\\d+(,\\d{1,2})?$")) {
-            value = valueField.getText().replace(",", ".");
-            return new BigDecimal(value);
-        } else if (valueField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {
-            value = valueField.getText();
-            return new BigDecimal(value);
+        String text = valueField.getText().trim();
+
+        if (text.matches("^\\d+(,\\d{1,2})?$")) {
+            text = text.replace(",", ".");
+            return new BigDecimal(text);
+        } else if (text.matches("^\\d+(\\.\\d{1,2})?$")) {
+            return new BigDecimal(text);
         }
        return null;
     }

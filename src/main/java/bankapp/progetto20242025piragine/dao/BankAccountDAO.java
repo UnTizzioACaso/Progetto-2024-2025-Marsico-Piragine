@@ -132,7 +132,7 @@ public class BankAccountDAO {
 
 
     // 🔹 Inserisce un nuovo conto
-    public static boolean insertAccount(BankAccount account) throws SQLException
+    public static boolean insertAccount(BankAccount account)
     {
         String sql = "INSERT INTO Bank_Account ( user_id, money, currency, iban, max_transfer, force_pin, check_account) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -151,6 +151,13 @@ public class BankAccountDAO {
             stmt.executeUpdate();
             return true;
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during inserting new account: " + e.getMessage());
+            e.printStackTrace();
+
+        }
+        return false;
     }
 
 
@@ -347,5 +354,22 @@ public class BankAccountDAO {
             stmt.setInt(1, idAccount);
             return stmt.executeUpdate() > 0;
         }
+    }
+
+    public static Boolean deleteAccountById(int idAccount) {
+        String sql = "DELETE FROM Bank_Account WHERE id_account = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idAccount);
+            return stmt.executeUpdate() > 0;
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error during deleting account by id: " + e.getMessage());
+            e.printStackTrace();
+
+        }
+        return false;
     }
 }

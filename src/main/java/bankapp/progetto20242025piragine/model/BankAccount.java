@@ -17,7 +17,7 @@ public class BankAccount {
     private boolean forcePin = true;
     private String checkAccount = "open"; // open / closed
 
-    public BankAccount(int Id) throws SQLException {
+    public BankAccount(int Id) {
         iban = IbanGenerator.generateItalianIban();
         while(BankAccountDAO.existsByIban(iban))
         {

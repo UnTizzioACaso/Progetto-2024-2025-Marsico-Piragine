@@ -9,35 +9,24 @@ import javafx.scene.control.Button;
 public class SidebarController extends BranchController {
 
     @FXML
-    public Button accountPopupButton;
+    private Button accountPopupButton;
 
     @FXML
-    public Button settingsButton;
+    private Button settingsButton;
 
     @FXML
-    public Button homeButton;
+    private Button homeButton;
+
+    @FXML  //opening the account popup
+    private void openAccountPopup() {PopupCreator.showPopup("Account", "/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml", 420, 240);}
 
     @FXML
-    void openAccountPopup() //opening the account popup
-    {
-        PopupCreator.showPopup("Account", "/bankapp/progetto20242025piragine/fxml/popup/accountPopup.fxml", 420, 240);
-    }
+    private void loadHomePage() {CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");}
 
     @FXML
-    public void loadHomePage() {
-        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml");
-    }
+    private void loadCardsPage() {CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml");}
 
     @FXML
-    public void loadCardsPage() {
-
-        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/cardPage.fxml");
-    }
-
-    @FXML
-    public void loadFriendsPage()
-    {
-        CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml");
-    }
+    private void loadFriendsPage() {CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/friendsPage.fxml");}
 
 }

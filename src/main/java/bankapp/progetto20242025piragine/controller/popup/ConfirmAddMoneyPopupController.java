@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import java.math.BigDecimal;
 
 public class ConfirmAddMoneyPopupController extends BranchController {
+
     @FXML
     private TextField moneyConfirmTextField;
 

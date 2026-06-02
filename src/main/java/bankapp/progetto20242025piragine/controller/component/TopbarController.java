@@ -27,7 +27,7 @@ public class TopbarController extends BranchController {
     @FXML
     private ImageView backArrowButton;
     @FXML
-    public GridPane topbarGridPane;
+    private GridPane topbarGridPane;
 
     private Stage popupStage;
 
@@ -35,13 +35,22 @@ public class TopbarController extends BranchController {
 
     private Node notificationSlider;
 
-    public boolean sliderIsActive = false;
-    public Stack<String> backwardStack = new Stack<>();
-    public Stack<String> forwardStack = new Stack<>();
+    private boolean sliderIsActive = false;
 
+    private Stack<String> backwardStack = new Stack<>();
+
+    private Stack<String> forwardStack = new Stack<>();
+
+    public void clear()
+    {
+        backwardStack.clear();
+        forwardStack.clear();
+    }
+
+    public boolean isSliderActive() {return sliderIsActive;}
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/notificationSlider.fxml");
         notificationSliderController = (NotificationSliderController) p.getKey();
@@ -52,7 +61,7 @@ public class TopbarController extends BranchController {
         AnchorPane.setRightAnchor(notificationSlider, d);
     }
 
-    public void showBottomRightPopup(String fxmlPath, Stage primaryStage)
+    private void showBottomRightPopup(String fxmlPath, Stage primaryStage)
     {
         Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxmlPath);
         Parent root = (Parent) p.getValue();
@@ -104,14 +113,14 @@ public class TopbarController extends BranchController {
 
     public void updateNotifications()
     {
-        notificationSliderController.notificationVBox.getChildren().clear();
+        notificationSliderController.getNotificationVBox().getChildren().clear();
         List<Notify> notifies = NotifyDAO.getNotifyByUserId(CurrentSession.getLoggedUser().getUserID());
 
         if (notifies.isEmpty())
         {
             Label empty = new Label("Nessuna notifica");
             empty.setStyle("-fx-padding: 5;");
-            notificationSliderController.notificationVBox.getChildren().add(empty);
+            notificationSliderController.getNotificationVBox().getChildren().add(empty);
         }
         else
         {
@@ -120,12 +129,11 @@ public class TopbarController extends BranchController {
                 if (!n.isRead())
                 {
                     Node notification = VisualNotificationCreator.createVisualNotification(n);
-                    notificationSliderController.notificationVBox.getChildren().add(notification);
+                    notificationSliderController.getNotificationVBox().getChildren().add(notification);
                 }
             }
         }
     }
-
 
     @FXML
     public void visitPage(String fxml)
@@ -135,7 +143,7 @@ public class TopbarController extends BranchController {
     }
 
     @FXML
-    public void backPage()
+    private void backPage()
     {
         if (backwardStack.size() > 1)
         {
@@ -151,7 +159,7 @@ public class TopbarController extends BranchController {
     }
 
     @FXML
-    public void nextPage()
+    private void nextPage()
     {
         if (!forwardStack.isEmpty())
         {
@@ -166,7 +174,6 @@ public class TopbarController extends BranchController {
         }
     }
 
-
     @FXML
     public void reloadPage()
     {
@@ -174,11 +181,8 @@ public class TopbarController extends BranchController {
         CurrentSession.getRootController().setCenter(node);
     }
 
-
-
-
     @FXML
-    public void showAssistance()
+    private void showAssistance()
     {
         showBottomRightPopup("/bankapp/progetto20242025piragine/fxml/popup/chatSupport.fxml", (Stage) backArrowButton.getScene().getWindow());
     }

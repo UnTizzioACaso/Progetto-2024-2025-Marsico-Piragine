@@ -26,36 +26,37 @@ import java.util.List;
 
 public class FriendsPageController extends BranchController
 {
-    public User friend;
+    private User friend;
 
-    public FriendContactController currentFriendController = null;
-
-    @FXML
-    public VBox friendsVBox;
+    private FriendContactController currentFriendController = null;
 
     @FXML
-    public TextField noteTextFiled;
+    private VBox friendsVBox, chatVBox;
 
     @FXML
-    public Label errorLabel;
+    private TextField noteTextFiled, valueField;
 
     @FXML
-    public VBox chatVBox;
+    private Label errorLabel;
+
+    public VBox getChatVBox() {return chatVBox;}
+
+    public void setChatVBox(VBox chatVBox) {this.chatVBox = chatVBox;}
+
+    public void setFriend(User friend) {this.friend = friend;}
+
+    public FriendContactController getCurrentFriendController() {return currentFriendController;}
+
+    public void setCurrentFriendController(FriendContactController currentFriendController) {this.currentFriendController = currentFriendController;}
 
     @FXML
-    private TextField valueField;
-
-    @FXML
-    public ScrollPane chatScrollPane;
-
-    @FXML
-    public void loadFriendshipRequestPopup()
+    private void loadFriendshipRequestPopup()
     {
         PopupCreator.showPopup("Invia aggiungi un amico", "/bankapp/progetto20242025piragine/fxml/popup/friendshipRequestPopup.fxml", 420, 250);
     }
 
     @FXML
-    public void requestTransaction()
+    private void requestTransaction()
     {
 
         if (currentFriendController == null)
@@ -112,7 +113,7 @@ public class FriendsPageController extends BranchController
     }
 
     @FXML
-    public void sendTransaction()
+    private void sendTransaction()
     {
         if (currentFriendController == null)
         {
@@ -194,7 +195,7 @@ public class FriendsPageController extends BranchController
     }
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         CurrentSession.setFriendsPageController(this);
         errorLabel.setText("");
@@ -206,8 +207,7 @@ public class FriendsPageController extends BranchController
             Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/friendContact.fxml");
             Node friendContact = p.getValue();
             FriendContactController controller = (FriendContactController) p.getKey();
-            controller.friendsPageController = this;
-            controller.friendUsernameLabel.setText(UserDAO.getUserByUserID(id).getUsername());
+            controller.setFriendUsername(UserDAO.getUserByUserID(id).getUsername());
             friendsVBox.getChildren().add(friendContact);
         }
     }

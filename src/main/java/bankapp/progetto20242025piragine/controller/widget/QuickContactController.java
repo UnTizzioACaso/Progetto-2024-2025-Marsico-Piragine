@@ -9,7 +9,7 @@ public class QuickContactController extends WidgetController
     private GridPane quickContactGridPane;
 
     @FXML
-    public void showMenu()
+    private void showMenu()
     {
         removeWidget();
     }

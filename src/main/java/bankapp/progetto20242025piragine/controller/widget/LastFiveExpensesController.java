@@ -20,7 +20,7 @@ public class LastFiveExpensesController extends WidgetController
 
     // Initializes the widget and loads the last five expenses of the current user
     @FXML
-    public void initialize()
+    private void initialize()
     {
         List<Transaction> transactions = TransactionDAO.getCompletedTransactionsBySender(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for (int i = 0; i < 5; i++)
@@ -35,10 +35,7 @@ public class LastFiveExpensesController extends WidgetController
     }
 
     @FXML
-    public void showMenu()
-    {
-        miniMenuShower(lastFiveExpensesVBox);
-    }
+    private void showMenu() {removeWidget();}
 
     @Override
     public String getWidgetType()

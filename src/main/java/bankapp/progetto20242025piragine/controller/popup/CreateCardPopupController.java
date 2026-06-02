@@ -25,22 +25,16 @@ public class CreateCardPopupController extends BranchController
 {
     // VBox container to hold the card preview component
     @FXML
-    public VBox cardSlotVbox;
+    private VBox cardSlotVbox;
 
     // MenuButton to select the card color
     @FXML
-    public MenuButton colorMenu;
-
-    // Controller of the card preview component
-    public CardController controller;
+    private MenuButton colorMenu;
 
     // TextField for the card nickname
-    @FXML
-    public TextField nicknameTextField;
-
     // TextField for the card spending limit
     @FXML
-    public TextField spendingLimitTextField;
+    private TextField nicknameTextField, spendingLimitTextField;
 
     @FXML
     private Label errorLabel;
@@ -49,18 +43,14 @@ public class CreateCardPopupController extends BranchController
 
     // Creates the card using last4DigitsPan and user's bank account data
     @FXML
-    public void createCard() throws Exception {
+    private void createCard()
+    {
         String spendingLimitText;
 
         // format validation
-        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {
-            spendingLimitText = spendingLimitTextField.getText().replace(",", ".");
-        } else if (spendingLimitTextField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {
-            spendingLimitText = spendingLimitTextField.getText();
-        } else {
-            errorLabel.setText("Formato non valido (es: 10,10 o 10.10)");
-            return;
-        }
+        if (spendingLimitTextField.getText().matches("^\\d+(,\\d{1,2})?$")) {spendingLimitText = spendingLimitTextField.getText().replace(",", ".");}
+        else if (spendingLimitTextField.getText().matches("^\\d+(\\.\\d{1,2})?$")) {spendingLimitText = spendingLimitTextField.getText();}
+        else {errorLabel.setText("Formato non valido (es: 10,10 o 10.10)");return;}
 
         BigDecimal limit = new BigDecimal(spendingLimitText);
         BigDecimal maxLimit = new BigDecimal("1000000.00");
@@ -75,39 +65,33 @@ public class CreateCardPopupController extends BranchController
             return;
         }
 
-        try {
-            BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());
-
-            if (bankAccount == null) {
-                errorLabel.setText("Conto corrente non trovato");
-                return;
-            }
-
-            Card card = new Card(
-                    CurrentSession.getLoggedUser().getUserID(),
-                    bankAccount.getIdAccount(),
-                    last4DigitsPan.generateLastFourDigits(),
-                    nicknameTextField.getText(),
-                    color,
-                    limit
-            );
-
-            if (CardDAO.insertCard(card)) {
-                ((Stage) colorMenu.getScene().getWindow()).close(); // Assumendo che 's' sia lo Stage/Finestra
-                CurrentSession.getTopbarController().reloadPage();
-            } else {
-                errorLabel.setText("Errore durante il salvataggio della carta");
-            }
-
-        } catch (SQLException e) {
-            errorLabel.setText("Errore database: contattare assistenza");
-            e.printStackTrace();
+        BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());
+        if (bankAccount == null)
+        {
+            errorLabel.setText("Conto corrente non trovato");
+            return;
         }
+
+        Card card = new Card(
+                CurrentSession.getLoggedUser().getUserID(),
+                bankAccount.getIdAccount(),
+                last4DigitsPan.generateLastFourDigits(),
+                nicknameTextField.getText(),
+                color,
+                limit
+        );
+
+        if (CardDAO.insertCard(card))
+        {
+            ((Stage) colorMenu.getScene().getWindow()).close();
+            CurrentSession.getTopbarController().reloadPage();
+        }
+        else {errorLabel.setText("Errore durante il salvataggio della carta");}
     }
 
     // Initializes the popup by loading the card preview component
     @FXML
-    public void initialize()
+    private void initialize()
     {
         cardSlotVbox.getChildren().add(VisualCardCreator.cardWithoutButtons(CurrentSession.getRootController())); //add the card component to the VBox
         colorMenu.setText("Bianco"); //set default color menu text
@@ -115,7 +99,7 @@ public class CreateCardPopupController extends BranchController
 
     // Following methods handle color selection and update the card preview accordingly
     @FXML
-    public void selectRed()
+    private void selectRed()
     {
         colorMenu.setText("Rosso");
         color = "red";
@@ -123,7 +107,7 @@ public class CreateCardPopupController extends BranchController
     }
 
     @FXML
-    public void selectGreen()
+    private void selectGreen()
     {
         colorMenu.setText("Verde");
         color = "green";
@@ -131,7 +115,7 @@ public class CreateCardPopupController extends BranchController
     }
 
     @FXML
-    public void selectBlue()
+    private void selectBlue()
     {
         colorMenu.setText("Blu");
         color = "blue";
@@ -139,7 +123,7 @@ public class CreateCardPopupController extends BranchController
     }
 
     @FXML
-    public void selectYellow()
+    private void selectYellow()
     {
         colorMenu.setText("Giallo");
         color = "yellow";
@@ -147,7 +131,7 @@ public class CreateCardPopupController extends BranchController
     }
 
     @FXML
-    public void selectWhite()
+    private void selectWhite()
     {
         colorMenu.setText("Bianco");
         color = "e4e4e4";
@@ -155,10 +139,9 @@ public class CreateCardPopupController extends BranchController
     }
 
     @FXML
-    public void closePopup() {
-        if (colorMenu != null && colorMenu.getScene() != null) {
-            Stage stage = (Stage) colorMenu.getScene().getWindow();
-            stage.close();
-        }
+    private void closePopup()
+    {
+        Stage stage = (Stage) colorMenu.getScene().getWindow();
+        stage.close();
     }
 }

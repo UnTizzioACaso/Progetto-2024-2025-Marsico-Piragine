@@ -27,10 +27,10 @@ public class AccountPopupController extends BranchController {
     @FXML
     private AnchorPane accountPopupRoot;
 
-
     // Fills the popup with the correct user data and current theme
     @FXML
-    public void initialize() {
+    private void initialize()
+    {
         // Display user's email
         emailPopupAccountLabel.setText(CurrentSession.getLoggedUser().getEmail());
         // Display user's full name
@@ -44,15 +44,11 @@ public class AccountPopupController extends BranchController {
 
         // Update theme color label based on radio button
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
-
-
     }
-
 
     @FXML
     private void loadAccountSettingsPage()
     {
-
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
         ((Stage) accountPopupRoot.getScene().getWindow()).close();
     }
@@ -67,16 +63,7 @@ public class AccountPopupController extends BranchController {
         String themeColor = themeColorAccountPopupRadioButton.isSelected() ? "dark" : "light";
         CurrentSession.getLoggedUser().setTheme(themeColor);
 
-        try
-        {
-            UserDAO.updateUserTheme(CurrentSession.getLoggedUser().getUserID(), themeColor);
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during updating" + e.getMessage());
-            e.printStackTrace();
-            return;
-        }
+        UserDAO.updateUserTheme(CurrentSession.getLoggedUser().getUserID(), themeColor);
 
         // Apply the selected theme to the popup window
         ThemeManager.applyTheme(accountPopupRoot.getScene(), themeColor);
@@ -86,19 +73,15 @@ public class AccountPopupController extends BranchController {
     }
 
     @FXML
-    public void logout()
+    private void logout()
     {
-        CurrentSession.getTopbarController().backwardStack.clear();
-        CurrentSession.getTopbarController().forwardStack.clear();
+        CurrentSession.getTopbarController().clear();
         CurrentSession.reset();
         ((Stage) accountPopupRoot.getScene().getWindow()).close();
-        CurrentSession.getRootController().initialize();
+        CurrentSession.getRootController().reInitialize();
     }
 
 
     @FXML
-    public void closePopup()
-    {
-        ((Stage) accountPopupRoot.getScene().getWindow()).close();
-    }
+    private void closePopup() {((Stage) accountPopupRoot.getScene().getWindow()).close();}
 }

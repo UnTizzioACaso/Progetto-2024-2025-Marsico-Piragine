@@ -19,7 +19,6 @@ public class FavouritesCardController extends WidgetController{
     @FXML
     private HBox favouriteCardsHBox;
 
-
     public String getWidgetType()
     {
         return favouriteCardsHBox.getId();
@@ -27,7 +26,7 @@ public class FavouritesCardController extends WidgetController{
 
     // Adds a card to the favouriteCardsHBox along with a spacer
     @FXML
-    public void addFavouriteCard(Node card)
+    private void addFavouriteCard(Node card)
     {
         try
         {
@@ -46,7 +45,7 @@ public class FavouritesCardController extends WidgetController{
 
     // Initializes the favourite cards widget with default cards
     @FXML
-    public void initialize()
+    private void initialize()
     {
         for (Card c : CardDAO.getCardsByUserId(CurrentSession.getLoggedUser().getUserID()))
         {
@@ -56,7 +55,6 @@ public class FavouritesCardController extends WidgetController{
                 addFavouriteCard(card);
             }
         }
-
     }
 }
 
