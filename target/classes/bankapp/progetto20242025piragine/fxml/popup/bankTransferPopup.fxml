@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<GridPane fx:id="bankTransferGridPane" maxHeight="650.0" maxWidth="850.0" minHeight="586.0" minWidth="540.0" prefHeight="589.0" prefWidth="540.0" style="-fx-background-color: white; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.BankTransferPopupController">
+<GridPane fx:id="bankTransferGridPane" maxHeight="650.0" maxWidth="850.0" minHeight="586.0" minWidth="540.0" prefHeight="589.0" prefWidth="540.0" style="-fx-background-color: white; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.BankTransferPopupController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -41,7 +46,7 @@
             <Insets bottom="5.0" left="25.0" right="25.0" />
          </GridPane.margin>
       </Separator>
-      <Label alignment="TOP_CENTER" contentDisplay="TOP" text="Dettagli Beneficario" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Label fx:id="bankTransferPopupLabel1" alignment="TOP_CENTER" contentDisplay="TOP" text="Dettagli Beneficario" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -49,9 +54,9 @@
             <Insets bottom="10.0" left="40.0" />
          </GridPane.margin>
          <effect>
-            <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+            <InnerShadow choke="0.17" height="56.25" offsetX="-10.0" offsetY="-10.0" radius="27.6475" width="56.34">
                <color>
-                  <Color opacity="0.25" />
+                  <Color opacity="0.10000000149011612" />
                </color>
             </InnerShadow>
          </effect>
@@ -64,9 +69,9 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="nameTextField" prefHeight="26.0" prefWidth="126.0" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <TextField fx:id="nameTextField" prefHeight="27.0" prefWidth="202.0" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets left="40.0" right="25.0" top="10.0" />
+            <Insets left="40.0" right="30.0" top="10.0" />
          </GridPane.margin>
          <font>
             <Font size="13.0" />
@@ -83,15 +88,15 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Label>
-      <TextField fx:id="ibanTextField" prefHeight="27.0" prefWidth="202.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <TextField fx:id="ibanTextField" prefHeight="32.0" prefWidth="202.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <font>
             <Font size="13.0" />
          </font>
          <GridPane.margin>
-            <Insets left="20.0" right="30.0" top="10.0" />
+            <Insets left="30.0" right="40.0" top="10.0" />
          </GridPane.margin>
       </TextField>
-      <Label text="Dettagli Pagamento" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+      <Label fx:id="bankTransferPopupLabel2" text="Dettagli Pagamento" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" left="40.0" />
          </GridPane.margin>
@@ -99,9 +104,9 @@
             <Font name="System Bold" size="19.0" />
          </font>
          <effect>
-            <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+            <InnerShadow choke="0.17" height="56.25" offsetX="-10.0" offsetY="-10.0" radius="27.6475" width="56.34">
                <color>
-                  <Color opacity="0.25" />
+                  <Color opacity="0.10000000149011612" />
                </color>
             </InnerShadow>
          </effect>
@@ -122,15 +127,21 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="amountTextField" GridPane.columnSpan="3" GridPane.rowIndex="6" GridPane.valignment="TOP">
+      <TextField fx:id="amountTextField" prefHeight="31.0" prefWidth="202.0" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets left="40.0" right="25.0" top="10.0" />
+            <Insets left="40.0" right="30.0" top="10.0" />
          </GridPane.margin>
+         <font>
+            <Font size="13.0" />
+         </font>
       </TextField>
-      <TextField fx:id="noteTextField" prefHeight="27.0" prefWidth="202.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+      <TextField fx:id="noteTextField" prefHeight="32.0" prefWidth="202.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
          <GridPane.margin>
-            <Insets left="20.0" right="30.0" top="10.0" />
+            <Insets left="30.0" right="40.0" top="10.0" />
          </GridPane.margin>
+         <font>
+            <Font size="13.0" />
+         </font>
       </TextField>
       <Button mnemonicParsing="false" onAction="#sendBankTransfer" prefHeight="58.0" prefWidth="225.0" style="-fx-background-radius: 14; -fx-background-color: #ff0000;" text="CONTINUA" textFill="WHITE" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <GridPane.margin>
@@ -147,7 +158,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button mnemonicParsing="false" onAction="#abortBankTransfer" prefHeight="58.0" prefWidth="225.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-border-color: #ff0000; -fx-text-fill: red;" text="ANNULLA" textFill="RED" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+      <Button fx:id="bankTransferPopupButton" mnemonicParsing="false" onAction="#abortBankTransfer" prefHeight="58.0" prefWidth="225.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-border-color: #ff0000; -fx-text-fill: red; -fx-background-color: transparent;" text="ANNULLA" textFill="RED" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
@@ -155,9 +166,9 @@
             <Font name="System Bold" size="18.0" />
          </font>
          <effect>
-            <InnerShadow choke="0.17" height="56.16" offsetX="-10.0" offsetY="-10.0" radius="27.625" width="56.34">
+            <InnerShadow choke="0.17" height="56.25" offsetX="-10.0" offsetY="-10.0" radius="27.6475" width="56.34">
                <color>
-                  <Color opacity="0.25" />
+                  <Color opacity="0.10000000149011612" />
                </color>
             </InnerShadow>
          </effect>
@@ -183,12 +194,12 @@
          </GridPane.margin>
       </Label>
       <Label fx:id="successLabel" alignment="CENTER" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-      <Label alignment="CENTER" text="(verranno aggiunti 10 di commissione)" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+      <Label alignment="CENTER" text="(Verranno aggiunti 10,00 € di commissione)" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.rowSpan="2147483647" GridPane.valignment="CENTER">
          <font>
             <Font size="13.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="-10.0" />
+            <Insets top="50.0" />
          </GridPane.margin>
       </Label>
    </children>

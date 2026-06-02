@@ -84,17 +84,14 @@
 #gridPaneFriends,
 #AnchorPaneFriendsPage,
 #regionFriend,
-#friendsVBox,
-#widgetsVBox {
+#friendsVBox {
     -fx-background-color: white !important;
 }
 
 /* PARTE DESTRA: Grigia (Il contrasto con il bianco crea il "bordino") */
 #anchorPaneChat,
 #scrollPaneChat,
-#chatVBox,
-#scrollPaneAddWidget01,
-#favouritesCardScrollPane {
+#chatVBox {
     -fx-background-color: #e4e4e4 !important;
 }
 
@@ -103,17 +100,11 @@
     -fx-text-fill: black !important;
 }
 
-
 /* ==========================================================
    BUTTON E MENU
    ========================================================== */
 
 .button {
-    -fx-text-fill: white;
-}
-
-#settingsAccountPopupButton {
-    -fx-background-color: #ff0000;
     -fx-text-fill: white;
 }
 
@@ -292,17 +283,7 @@
    ROOT E VARIEF
    ========================================================== */
 
-#root {
-    -fx-background-color: white;
-    -fx-background-radius: 12;
-}
 
-#accountPopupRoot
-{
-    -fx-background-color: white !important;
-    -fx-background-radius: 15 !important;
-    -fx-border-radius: 15 !important;
-}
 
 .separator {
     -fx-opacity: 1 !important;
@@ -318,7 +299,11 @@ Line {
     -fx-border-width: 2 !important;
 }
 
-/* ================= FAVOURITES SCROLLPANE (ORIZZONTALE) ================= */
+/* ================= FAVOURITES SCROLLPANE ================= */
+
+#favouritesCardScrollPane {
+    -fx-background-color: #e4e4e4 !important;
+}
 
 #favouritesCardScrollPane .scroll-bar:horizontal {
     -fx-padding: 0 15 0 15 !important;
@@ -331,9 +316,6 @@ Line {
     -fx-background-color: #e4e4e4 !important;
 }
 
-#scrollPaneTransictionHistory{
-     -fx-background: #e4e4e4 !important;
-}
 
 /* Seleziona la freccetta all'interno di tutti i MenuButton */
 .menu-button .arrow {
@@ -425,25 +407,13 @@ Line {
     -fx-focus-color: transparent !important;
 }
 
-#scrollPaneTransictionHistory{
-    -fx-border-color: transparent !important;
-}
 
-#vBoxAddWidget01,
+/*
 #vBoxAddWidget02,
 #vBoxAddWidget11,
+*/
 #vBoxAddWidget12{
     -fx-background-color: white !important;
-}
-
-#chatDisplay{
- -fx-background-color: #ffffff !important;
-}
-
-#scrollPaneChatSupport
-{
-    -fx-background-color: #ffffff !important;
-    -fx-border-color: transparent !important;
 }
 
 #closeAccountPopup{
@@ -458,7 +428,7 @@ Line {
     -fx-background-color: white !important;
     -fx-text-fill: black !important;
     -fx-background-insets: 0 !important;
-    -fx-border-color: #c0c0c0 !important;
+    -fx-border-color: #c0c0c0 ;
     -fx-border-width: 1 !important;
     -fx-border-radius: 10 ;
 }
@@ -574,11 +544,6 @@ Line {
     -fx-text-fill: red !important;
 }
 
-#textFieldTransactionHistory {
-    -fx-border-color: #e4e4e4 !important;
-    -fx-border-radius: 20 !important;
-}
-
 #transactionSubjectLabel,
 #TransactionDateLabel{
     -fx-text-fill: black !important;
@@ -675,17 +640,58 @@ Line {
     -fx-text-fill: #5a5a5a !important;
 }
 
+#transactionHistoryTextField {
+    -fx-border-color: transparent !important;
+    -fx-border-radius: 15 !important;
+}
+
+/* ==========================================================
+   POPUP
+   ========================================================== */
 
 
+#root{
+    -fx-background-color: white !important;
+}
 
+#AddWidget01GridPane .label {
+    -fx-text-fill: white;
+}
 
+#quickContactNameLabel{
+    -fx-text-fill: black !important;
+}
 
+#transationHistoryTextField
+{
+    -fx-background-radius: 15 !important;
+    -fx-border-radius: 15 !important;
+    -fx-border-color: transparent !important;
+}
 
+#nameTextField,
+#ibanTextField,
+#amountTextField,
+#noteTextField{
+    -fx-background-color: #e4e4e4 !important;
+    -fx-background-radius: 7 !important;
+    -fx-border-radius: 7 !important;
+    -fx-border-color: transparent !important;
+}
 
+#anchorPaneBlockUserPopup{
+    -fx-background-color: white !important;
+}
 
+#chatSupportScrollPane{
+    -fx-background-color: #ffffff !important;
+    -fx-border-color: transparent !important;
+}
 
+#chatDisplay{
+ -fx-background-color: #ffffff !important;
+}
 
-
-
-
-
+#confirmAddMoneyPopupTextField{
+    -fx-background-color: #ff0000 !important;
+}

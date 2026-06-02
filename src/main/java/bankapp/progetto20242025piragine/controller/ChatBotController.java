@@ -19,9 +19,9 @@ import javafx.util.Pair;
 public class ChatBotController extends BranchController {
 
     @FXML private VBox chatDisplay;
-    @FXML private TextField inputField;
+    @FXML private TextField chatSupportTextField;
     @FXML private GridPane botGridPane;
-    @FXML private ScrollPane scrollPaneChatSupport;
+    @FXML private ScrollPane chatSupportScrollPane;
 
     private final ChatBot geminiService = new ChatBot();
     private final ChatSessionSaver sessionSaver = ChatSessionSaver.getInstance();
@@ -68,7 +68,7 @@ public class ChatBotController extends BranchController {
     @FXML
     private void onSendButtonClick() {
 
-        String userMessage = inputField.getText();
+        String userMessage = chatSupportTextField.getText();
 
         if (userMessage == null || userMessage.trim().isEmpty()) {
             return;
@@ -76,7 +76,7 @@ public class ChatBotController extends BranchController {
 
         sessionSaver.addMessage(userMessage, true);
         processMessage(userMessage);
-        inputField.clear();
+        chatSupportTextField.clear();
     }
 
     private void processMessage(String text) {
@@ -88,9 +88,9 @@ public class ChatBotController extends BranchController {
             Platform.runLater(() -> {
                 sessionSaver.addMessage(aiResponse, false);
                 renderBotCloud(aiResponse + "\n");
-                if (scrollPaneChatSupport != null)
+                if (chatSupportScrollPane != null)
                 {
-                    scrollPaneChatSupport.setVvalue(1.0);
+                    chatSupportScrollPane.setVvalue(1.0);
                 }
             });
 

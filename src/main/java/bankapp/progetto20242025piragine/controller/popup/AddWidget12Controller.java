@@ -26,7 +26,7 @@ public class AddWidget12Controller extends BranchController
     private Region transactionHistoryRegion, monthlyExpensesRegion, lastFiveExpensesRegion, monthlyIncomesRegion;
 
     @FXML
-    private VBox widgetsVBox;
+    private VBox addWidget12VBox;
 
     @FXML
     private ScrollPane root;
@@ -63,7 +63,7 @@ public class AddWidget12Controller extends BranchController
     public void addTransactionHistoryWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", 1, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget12VBox.getScene().getWindow();
         stage.close();
     }
 
@@ -71,7 +71,7 @@ public class AddWidget12Controller extends BranchController
     public void addMonthlyIncomeWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", 1, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget12VBox.getScene().getWindow();
         stage.close();
     }
 
@@ -79,7 +79,7 @@ public class AddWidget12Controller extends BranchController
     public void addMonthlyExpensesWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", 1, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget12VBox.getScene().getWindow();
         stage.close();
     }
 
@@ -87,7 +87,7 @@ public class AddWidget12Controller extends BranchController
     public void addLastFiveExpensesWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", 1, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget12VBox.getScene().getWindow();
         stage.close();
     }
     @FXML

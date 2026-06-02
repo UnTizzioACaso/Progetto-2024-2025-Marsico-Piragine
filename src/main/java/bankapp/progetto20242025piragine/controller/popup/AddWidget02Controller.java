@@ -24,7 +24,7 @@ public class AddWidget02Controller extends BranchController {
     private Node closeAddWidget02;
 
     @FXML
-    private VBox widgetsVBox, lastFiveExpensesVBox,  monthlyExpensesVBox, monthlyIncomesVBox;
+    private VBox addWidget02VBox, lastFiveExpensesVBox, monthlyExpensesVBox, monthlyIncomesVBox;
 
     @FXML
     private GridPane monthlyBalanceGridPane, quickContactGridPane;
@@ -73,14 +73,14 @@ public class AddWidget02Controller extends BranchController {
     @FXML
     public void addQuickContactWidget() {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/quickContact.fxml", 0, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget02VBox.getScene().getWindow();
         stage.close();
     }
 
     @FXML
     public void addMonthlyBalanceWidget() {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyBalance.fxml", 0, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget02VBox.getScene().getWindow();
         stage.close();
     }
 
@@ -88,7 +88,7 @@ public class AddWidget02Controller extends BranchController {
     public void addMonthlyExpensesWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", 0, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget02VBox.getScene().getWindow();
         stage.close();
     }
 
@@ -96,7 +96,7 @@ public class AddWidget02Controller extends BranchController {
     public void addLastFiveExpensesWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", 0, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget02VBox.getScene().getWindow();
         stage.close();
     }
 
@@ -104,7 +104,7 @@ public class AddWidget02Controller extends BranchController {
     public void addMonthlyIncomeWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", 0, 2);
-        Stage stage = (Stage) widgetsVBox.getScene().getWindow();
+        Stage stage = (Stage) addWidget02VBox.getScene().getWindow();
         stage.close();
     }
     @FXML

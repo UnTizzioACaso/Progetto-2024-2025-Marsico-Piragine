@@ -14,7 +14,7 @@ public class BankAccountController extends WidgetController
     private Button accountSettingsButton;
 
     @FXML
-    private Label labelBankAccount;
+    private Label bankAccountLabel;
 
     // Opens the bank account settings page when the button is clicked
     @FXML
@@ -32,7 +32,7 @@ public class BankAccountController extends WidgetController
     @FXML
     public void initialize()
     {
-        labelBankAccount.setText(CurrentSession.getLoggedAccount().getMoney().toString() + " €");
+        bankAccountLabel.setText(CurrentSession.getLoggedAccount().getMoney().toString() + " €");
     }
 
     @FXML
