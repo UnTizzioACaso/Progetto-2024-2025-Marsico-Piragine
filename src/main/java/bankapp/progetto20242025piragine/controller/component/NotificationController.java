@@ -61,6 +61,12 @@ public class NotificationController extends BranchController{
             controller.setIdRequest(notify.getIdFriendRequest());
             controller.setUsername(notifyTitleLabel.getText());
         }
+
+        else
+        {
+            NotifyDAO.markAsRead(notify.getIdNotify());
+            CurrentSession.getTopbarController().updateNotifications();
+        }
     }
 
 
