@@ -26,6 +26,8 @@ public class NotificationController extends BranchController{
     @FXML
     private void readNotify()
     {
+        PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if (!CurrentSession.isPinCorrect()) {return;}
         if(imTheSender && secondaryLabel.getText().contains("Richiesta di denaro")) //if notify is a transaction request from user
         {
             Transaction t = TransactionDAO.getTransactionById(notify.getIdTransaction());

@@ -125,7 +125,6 @@ public class CurrentSession {
         {
             isPinCorrect = false; //reset the value before returning true, so that the next time it is called
             return true;          //it will return false unless the user has entered the correct PIN again
-
         }
         return false;
     }

@@ -49,6 +49,9 @@ public class AccountPopupController extends BranchController {
     @FXML
     private void loadAccountSettingsPage()
     {
+        PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if (!CurrentSession.isPinCorrect()) {return;}   // If the PIN is not correct, do not proceed to load the account settings page
+
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
         ((Stage) accountPopupRoot.getScene().getWindow()).close();
     }

@@ -21,6 +21,8 @@ public class BankAccountController extends WidgetController
     @FXML
     private void showBankTransferPopup()
     {
+        PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if (!CurrentSession.isPinCorrect()) {return;}
         PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/bankTransferPopup.fxml", 500, 510);//shows the bank transfer popup
     }
 

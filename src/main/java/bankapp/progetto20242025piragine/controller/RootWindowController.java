@@ -31,6 +31,11 @@ public  class RootWindowController extends BranchController {
     {
         if (!(fxml.equals(currentPage)))
         {
+            if(fxml.equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
+            {
+                PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+                if (!CurrentSession.isPinCorrect()) {return;}   // If the PIN is not correct, do not proceed to load the account settings page
+            }
             currentPage = fxml;
             Node node = EasyFxmlLoader.loader(fxml).getValue(); //creating the node from the loader
             if(CurrentSession.getTopbarController().isSliderActive()){CurrentSession.getTopbarController().showSlider();}
@@ -43,6 +48,11 @@ public  class RootWindowController extends BranchController {
     {
         if (!(fxml.equals(currentPage)))
         {
+            if(fxml.equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
+            {
+                PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+                if (!CurrentSession.isPinCorrect()) {return;}   // If the PIN is not correct, do not proceed to load the account settings page
+            }
             ThemeManager.applyTheme(rootWindow.getScene(), "light"); //forcing stock light theme
             currentPage = fxml;
             Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);

@@ -52,26 +52,25 @@ public class PaymentRequestController extends BranchController {
     @FXML
     private void acceptRequest()
     {
-        PopupCreator.showAndWaitPopup("Inserisci il PIN", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
-            if (CurrentSession.isPinCorrect())
-            {
-                if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
-                {
-                    //if this popup is generated from a notification, mark it as read and close the popup
-                    if (n != null)
-                    {
-                        NotifyDAO.markAsRead(n.getIdNotify());
-                        CurrentSession.getTopbarController().updateNotifications();
-                        ((Stage) moneyLabel.getScene().getWindow()).close();
-                        return;
-                    }
+        PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if (!CurrentSession.isPinCorrect()) {return;}
 
-                    //if this popup is generated from a friend message, show the chat and close the popup
-                    BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
-                    CurrentSession.getFriendsPageController().getCurrentFriendController().showChat();
-                    ((Stage) moneyLabel.getScene().getWindow()).close();
-                }
+        if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
+        {
+            //if this popup is generated from a notification, mark it as read and close the popup
+            if (n != null)
+            {
+                NotifyDAO.markAsRead(n.getIdNotify());
+                CurrentSession.getTopbarController().updateNotifications();
+                ((Stage) moneyLabel.getScene().getWindow()).close();
+                return;
             }
+
+            //if this popup is generated from a friend message, show the chat and close the popup
+            BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
+            CurrentSession.getFriendsPageController().getCurrentFriendController().showChat();
+            ((Stage) moneyLabel.getScene().getWindow()).close();
+        }
     }
 
 
