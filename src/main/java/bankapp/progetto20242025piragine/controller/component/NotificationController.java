@@ -43,6 +43,7 @@ public class NotificationController extends BranchController{
             PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
             controller.setNotify(notify);
             controller.setTransaction(TransactionDAO.getTransactionById(notify.getIdTransaction()));
+            controller.setUsername(notifyTitleLabel.getText());
         }
 
         else if(secondaryLabel.getText().contains("Richiesta d'amicizia") && imTheSender) //if notify is a friendship request from user
