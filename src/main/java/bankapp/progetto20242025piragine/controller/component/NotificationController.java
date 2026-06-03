@@ -40,7 +40,7 @@ public class NotificationController extends BranchController{
 
         else if(secondaryLabel.getText().contains("Richiesta di denaro"))
         {
-            PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
+            PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 250, 150);
             controller.setNotify(notify);
             controller.setTransaction(TransactionDAO.getTransactionById(notify.getIdTransaction()));
             controller.setUsername(notifyTitleLabel.getText());
@@ -60,6 +60,7 @@ public class NotificationController extends BranchController{
         {
             FriendshipNotifyController controller = (FriendshipNotifyController) PopupCreator.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/frienshipNotify.fxml", 300, 200);
             controller.setIdRequest(notify.getIdFriendRequest());
+            controller.setNotify(notify);
             controller.setUsername(notifyTitleLabel.getText());
         }
 
@@ -97,6 +98,7 @@ public class NotificationController extends BranchController{
             default:
                 status = "";
         }
+
 
         String note = "";
         if (t.getNote() != null || t.getNote() != "") {note =  t.getNote();}

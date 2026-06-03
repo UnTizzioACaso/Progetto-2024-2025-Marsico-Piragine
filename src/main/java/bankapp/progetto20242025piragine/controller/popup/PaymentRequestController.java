@@ -17,16 +17,18 @@ public class PaymentRequestController extends BranchController {
     private Notify n;
 
     @FXML
-    private Label friendshipUsernameLabel;
-
-    @FXML
-    private Label moneyLabel;
+    private Label friendshipUsernameLabel, moneyLabel, noteLabel;
 
     public void setUsername(String username) {friendshipUsernameLabel.setText(username);}
 
     public void setNotify(Notify n) {this.n = n;}
 
-    public void setTransaction(Transaction request) {this.request = request;}
+    public void setTransaction(Transaction request)
+    {
+        this.request = request;
+        this.noteLabel.setText(request.getNote());
+        this.moneyLabel.setText(String.format("%.2f€", request.getAmount()));
+    }
 
     @FXML
     private void declineRequest()

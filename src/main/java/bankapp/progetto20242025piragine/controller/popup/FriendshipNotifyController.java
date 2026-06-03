@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.controller.popup;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.dao.*;
 import bankapp.progetto20242025piragine.model.FriendRequest;
+import bankapp.progetto20242025piragine.model.Notify;
 import bankapp.progetto20242025piragine.model.User;
 import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.PopupCreator;
@@ -17,6 +18,10 @@ public class FriendshipNotifyController extends BranchController
 
     private int idRequest;
 
+    private Notify notify;
+
+    public void setNotify(Notify notify) {this.notify = notify;}
+
     @FXML
     private Label friendshipUsernameLabel;
 
@@ -27,6 +32,7 @@ public class FriendshipNotifyController extends BranchController
     @FXML
     private void declineRequest()
     {
+        NotifyDAO.markAsRead(notify.getIdNotify());
         FriendRequestDAO.declineRequest(idRequest);
         BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 368, 224);
         controller.setQuestion("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
@@ -37,6 +43,7 @@ public class FriendshipNotifyController extends BranchController
     @FXML
     private void acceptRequest()
     {
+        NotifyDAO.markAsRead(notify.getIdNotify());
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}
         FriendRequestDAO.acceptRequest(idRequest);
