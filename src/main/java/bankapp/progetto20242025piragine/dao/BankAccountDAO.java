@@ -331,8 +331,8 @@ public class BankAccountDAO {
 
 
 
-    public static boolean updateBalance(int idAccount, BigDecimal newBalance) throws SQLException {
-        String sql = "UPDATE Bank_Account SET money = ? WHERE id_account = ?";
+    public static boolean updateBalance(int idAccount, BigDecimal newBalance)  {
+        String sql = "UPDATE Bank_Account SET money = money+ ? WHERE id_account = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -342,6 +342,12 @@ public class BankAccountDAO {
 
             return stmt.executeUpdate() > 0;
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during updating balance: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
 
     // 🔹 Chiude il conto

@@ -105,6 +105,7 @@ public  class RootWindowController extends BranchController {
         AnchorPane.setLeftAnchor(node, d);
         AnchorPane.setTopAnchor(node, d);
         AnchorPane.setRightAnchor(node, d);
+
     }
 
 }
