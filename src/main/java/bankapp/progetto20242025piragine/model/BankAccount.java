@@ -13,7 +13,7 @@ public class BankAccount {
     private BigDecimal money = BigDecimal.valueOf(0);
     private String currency = "EUR";
     private String iban;
-    private BigDecimal maxTransfer = BigDecimal.valueOf(50);
+    private static BigDecimal maxTransfer = BigDecimal.valueOf(50);
     private boolean forcePin = true;
     private String checkAccount = "open"; // open / closed
 
@@ -70,7 +70,7 @@ public class BankAccount {
         this.iban = iban;
     }
 
-    public BigDecimal getMaxTransfer() {
+    public static BigDecimal getMaxTransfer() {
         return maxTransfer;
     }
 

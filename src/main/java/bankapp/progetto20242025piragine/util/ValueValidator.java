@@ -17,5 +17,22 @@ public class ValueValidator {
         }
        return null;
     }
+    public static BigDecimal validateFormat(String text) {
+        if (text == null) {
+            return null;
+        }
+
+        text = text.trim();
+
+        if (text.matches("^\\d+(,\\d{1,2})?$")) {
+            text = text.replace(",", ".");
+            return new BigDecimal(text);
+        }
+        else if (text.matches("^\\d+(\\.\\d{1,2})?$")) {
+            return new BigDecimal(text);
+        }
+
+        return null;
+    }
 
 }
