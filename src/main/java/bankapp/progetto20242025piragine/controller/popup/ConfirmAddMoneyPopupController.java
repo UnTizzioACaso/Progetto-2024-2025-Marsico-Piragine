@@ -37,6 +37,10 @@ public class ConfirmAddMoneyPopupController extends BranchController {
                 LabelConfirmAddMoney.setText("L'importo deve essere maggiore di 0");
                 isCorrect = false;
             }
+            if ((total.add(CurrentSession.getLoggedAccount().getMoney()).compareTo(new BigDecimal("9223372036854775807,00")) > 0)) {
+                LabelConfirmAddMoney.setText("il database non puo gestire un saldo cosi grande");
+                isCorrect = false;
+            }
         });
     }
 

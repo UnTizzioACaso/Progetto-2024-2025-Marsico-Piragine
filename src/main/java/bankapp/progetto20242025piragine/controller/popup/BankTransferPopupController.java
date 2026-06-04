@@ -63,7 +63,7 @@ public class BankTransferPopupController extends BranchController
         }
 
 
-        BigDecimal amount = ValueValidator.validateFormat(amountTextField);
+        BigDecimal amount = ValueValidator.validateFormat(amountTextField.getText());
         if (amount == null)
         {
             moneyErrorLabel.setText("formato non valido");;
@@ -81,6 +81,14 @@ public class BankTransferPopupController extends BranchController
 
         int userBeneficiary = UserDAO.getUserByUsername(nameTextField.getText()).getUserID();
         BankAccount accountBeneficiary = BankAccountDAO.getAccountByUserId(userBeneficiary);
+
+        if (amount.add(accountBeneficiary.getMoney()).compareTo(new BigDecimal("9223372036854775807,00")) > 0)
+        {
+            moneyErrorLabel.setText("errore durante l'invio el bonifico");
+            moneyErrorLabel.setTextFill(Paint.valueOf("red"));
+            return;
+        }
+
         Transaction t  = new Transaction(CurrentSession.getLoggedAccount().getIdAccount(), accountBeneficiary.getIdAccount(), amount, noteTextField.getText(), "payment", -1, "accepted");
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect())

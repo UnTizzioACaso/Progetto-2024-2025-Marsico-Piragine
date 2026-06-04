@@ -64,7 +64,7 @@ public class FriendsPageController extends BranchController
         if(!CurrentSession.isPinCorrect()){return;}
 
         // string validation
-        BigDecimal value = ValueValidator.validateFormat(valueField);
+        BigDecimal value = ValueValidator.validateFormat(valueField.getText());
         if (value == null){writeError("Il valore inserito è in formato non valido");return;}
 
         BigDecimal maxLimit = new BigDecimal("1000.00");
@@ -101,22 +101,24 @@ public class FriendsPageController extends BranchController
         if(!CurrentSession.isPinCorrect()){return;}
 
         // string validation
-        BigDecimal value = ValueValidator.validateFormat(valueField);
+        BigDecimal value = ValueValidator.validateFormat(valueField.getText());
         if (value == null) {writeError("Il valore inserito è in formato non valido");return;}
 
-        BigDecimal maxLimit = new BigDecimal("1000.00");
+        BigDecimal maxLimit = new BigDecimal("100.00");
         BigDecimal userLimit = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()).getMaxTransfer();
 
         // numeric value validation
-        if (value.compareTo(maxLimit) > 0) {writeError("Il limite massimo di invio è 10.000");return;}
+        if (value.compareTo(maxLimit) > 0) {writeError("Il limite massimo di invio è 100");return;}
 
         if (value.compareTo(BigDecimal.ZERO) < 0) {writeError("Il limite non può essere negativo");return;}
 
         if(value.compareTo(userLimit) > 0) {writeError("Il limite d'invio prestabilito dall'utente è: " + userLimit);return;}
 
-        // creating the transaction java object
-        BankAccount senderAccount = CurrentSession.getLoggedAccount();
         BankAccount beneficiaryAccount = BankAccountDAO.getAccountByUserId(friend.getUserID());
+        BankAccount senderAccount = CurrentSession.getLoggedAccount();
+
+
+
 
         if(senderAccount == null || beneficiaryAccount == null) {writeError("errore durante l'invio della donazione");return;}
 

@@ -40,16 +40,16 @@ public class MenageCardPopupController extends BranchController {
     @FXML
     private void updateSpendingLimit()
     {
-        BigDecimal limit = ValueValidator.validateFormat(spendingLimitTextField);
+        BigDecimal limit = ValueValidator.validateFormat(spendingLimitTextField.getText());
         if (limit == null) {
             errorLabelMenageCardPopup.setText("Formato del limite non valido");
             return;
         }
 
-        BigDecimal maxLimit = new BigDecimal("1000000000.00");
+        BigDecimal maxLimit = new BigDecimal("1000.00");
 
         if (limit.compareTo(maxLimit) > 0) {
-            errorLabelMenageCardPopup.setText("Il limite massimo è 1.000.000.000");
+            errorLabelMenageCardPopup.setText("Il limite massimo è 1.000,00");
             return;
         }
 

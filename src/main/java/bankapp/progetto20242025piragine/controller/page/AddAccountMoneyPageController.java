@@ -40,7 +40,7 @@ public class AddAccountMoneyPageController extends BranchController
                         return;
                 }
 
-                BigDecimal value= ValueValidator.validateFormat(MoneyTextField);
+                BigDecimal value= ValueValidator.validateFormat(MoneyTextField.getText());
                 if (value == null) {
                         errorLabel.setText("Il formato del importo inserito non è valido");
                         return;

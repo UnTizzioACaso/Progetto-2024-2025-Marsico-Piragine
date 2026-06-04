@@ -7,14 +7,20 @@ import bankapp.progetto20242025piragine.model.Transaction;
 import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import java.math.BigDecimal;
 
 public class PaymentRequestController extends BranchController {
 
     private Transaction request;
 
     private Notify n;
+
+    @FXML
+    private Button acceptButton;
 
     @FXML
     private Label friendshipUsernameLabel, moneyLabel, noteLabel;
@@ -56,6 +62,12 @@ public class PaymentRequestController extends BranchController {
     {
         PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if (!CurrentSession.isPinCorrect()) {return;}
+
+        if ((request.getAmount().add(CurrentSession.getLoggedAccount().getMoney()).compareTo(new BigDecimal("9223372036854775807,00")) > 0)) {
+            noteLabel.setText("il database non puo gestire un saldo cosi grande");
+            acceptButton.setDisable(true);
+            return;
+        }
 
         if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
         {

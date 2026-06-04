@@ -6,6 +6,7 @@ import bankapp.progetto20242025piragine.model.BankAccount;
 import bankapp.progetto20242025piragine.dao.BankAccountDAO;
 import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.PopupCreator;
+import bankapp.progetto20242025piragine.util.ValueValidator;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Label;
@@ -31,22 +32,33 @@ public class BankAccountSettingsPageController extends BranchController
     @FXML
     private void changePin()
     {
-        ChangePinPopupController controller = (ChangePinPopupController) PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/changePinPopup.fxml", 315, 320);
+        PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/changePinPopup.fxml", 315, 320);
     }
     @FXML
-    private void saveLimitButton() { // Assicurati di collegare questo metodo al bottone
-        try {
-            BigDecimal nuovoLimite = new BigDecimal(sendingLimitTextfield.getText());
-            int idAccount = CurrentSession.getLoggedAccount().getIdAccount();
-            boolean isUpdated = BankAccountDAO.updateLimit(idAccount, nuovoLimite);
-            if (isUpdated) {
-                maxTransferLabel.setText("Limite aggiornato!");
-            } else {
-                maxTransferLabel.setText("Errore nell'aggiornamento.");
-            }
-        } catch (NumberFormatException e) {
-            maxTransferLabel.setText("Inserisci un numero valido!");
+    private void saveLimitButton()
+    {
+        BigDecimal newLimit = ValueValidator.validateFormat(sendingLimitTextfield.getText());
+
+        if (newLimit == null)
+        {
+            maxTransferLabel.setText("Il formato del limite inserito non è valido");
+            maxTransferLabel.setStyle("-fx-text-fill: red;");
+            return;
         }
+
+        if (newLimit.compareTo(new BigDecimal("100.00")) > 0)
+        {
+            maxTransferLabel.setText("Il limite massimo è 100,00");
+            maxTransferLabel.setStyle("-fx-text-fill: red;");
+            return;
+        }
+
+        boolean isUpdated = BankAccountDAO.updateLimit(CurrentSession.getLoggedAccount().getIdAccount(), newLimit);
+
+        if (isUpdated) {maxTransferLabel.setText("Limite aggiornato!"); maxTransferLabel.setStyle("-fx-text-fill: green;");}
+
+        else {maxTransferLabel.setText("Errore durante l'aggiornamento del limite"); maxTransferLabel.setStyle("-fx-text-fill: red;");}
+
     }
 
 

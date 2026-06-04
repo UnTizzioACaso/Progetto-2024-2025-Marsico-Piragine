@@ -53,11 +53,11 @@ public class CreateCardPopupController extends BranchController
         else {errorLabel.setText("Formato non valido (es: 10,10 o 10.10)");return;}
 
         BigDecimal limit = new BigDecimal(spendingLimitText);
-        BigDecimal maxLimit = new BigDecimal("1000000.00");
+        BigDecimal maxLimit = new BigDecimal("1000.00");
 
         // numeric value validation
         if (limit.compareTo(maxLimit) > 0) {
-            errorLabel.setText("Il limite massimo è 1.000.000");
+            errorLabel.setText("Il limite massimo è 1.000,00");
             return;
         }
         if (limit.compareTo(BigDecimal.ZERO) < 0) {
