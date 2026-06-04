@@ -124,6 +124,12 @@ public class FriendsPageController extends BranchController
 
         if (senderAccount.getMoney().compareTo(value) < 0) {writeError("Non hai credito sufficiente per inviare la donazione");return;}
 
+        if (value.add(beneficiaryAccount.getMoney()).compareTo(new BigDecimal("9223372036854775807,00")) > 0)
+        {
+            writeError("errore durante l'invio della donazione");
+            return;
+        }
+
         Transaction t = new Transaction(senderAccount.getIdAccount(), beneficiaryAccount.getIdAccount(), value, noteTextFiled.getText(), "donation", -1, "accepted");
 
         if(!BankAccountDAO.transferMoney(beneficiaryAccount, senderAccount, t)) {writeError("errore durante l'invio della donazione");return;}

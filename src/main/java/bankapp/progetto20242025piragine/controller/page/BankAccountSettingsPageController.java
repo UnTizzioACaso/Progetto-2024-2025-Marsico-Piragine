@@ -27,6 +27,7 @@ public class BankAccountSettingsPageController extends BranchController
     {
         CurrentSession.setBankAccountSettingsPageController(this);
         BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());
+        sendingLimitTextfield.setText(CurrentSession.getLoggedAccount().getMaxTransfer().toString());
         ibanLabel.setText(bankAccount.getIban());
     }
     @FXML
@@ -48,8 +49,8 @@ public class BankAccountSettingsPageController extends BranchController
 
         if (newLimit.compareTo(new BigDecimal("100.00")) > 0)
         {
-            maxTransferLabel.setText("Il limite massimo è 100,00");
             maxTransferLabel.setStyle("-fx-text-fill: red;");
+            maxTransferLabel.setText("Il limite massimo è 100,00");
             return;
         }
 
