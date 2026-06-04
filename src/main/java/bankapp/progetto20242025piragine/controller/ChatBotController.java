@@ -40,7 +40,7 @@ public class ChatBotController extends BranchController {
     @FXML
     private void close()
     {
-        Stage primaryStage = (Stage) CurrentSession.getRootController().rootWindow.getScene().getWindow();
+        Stage primaryStage = (Stage) CurrentSession.getRootController().getRootWindow().getScene().getWindow();;
         Stage popupStage = (Stage) botGridPane.getScene().getWindow();
         double y = primaryStage.getY() + primaryStage.getHeight() - popupStage.getHeight() - 20;
         TranslateTransition slideOut = new TranslateTransition(Duration.millis(400), botGridPane);

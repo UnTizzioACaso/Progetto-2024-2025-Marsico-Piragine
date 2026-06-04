@@ -25,7 +25,7 @@ public class PopupCreator
         popupStage.setHeight(height);
         popupStage.setResizable(false);
         popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-        Stage ownerStage = (Stage) CurrentSession.getRootController().rootWindow.getScene().getWindow();
+        Stage ownerStage = (Stage) CurrentSession.getRootController().getRootWindow().getScene().getWindow();
         popupStage.initOwner(ownerStage);
         scene.setFill(Color.TRANSPARENT);
         popupStage.setScene(scene);
@@ -46,7 +46,7 @@ public class PopupCreator
         popupStage.setHeight(height);
         popupStage.setResizable(false);
         popupStage.initModality(Modality.APPLICATION_MODAL); //blocking all application's windows except the popup
-        Stage ownerStage = (Stage) CurrentSession.getRootController().rootWindow.getScene().getWindow();
+        Stage ownerStage = (Stage) CurrentSession.getRootController().getRootWindow().getScene().getWindow();
         popupStage.initOwner(ownerStage);
         scene.setFill(Color.TRANSPARENT);
         popupStage.setScene(scene);

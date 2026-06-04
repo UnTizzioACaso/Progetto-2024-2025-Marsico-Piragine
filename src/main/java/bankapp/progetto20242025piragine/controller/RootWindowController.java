@@ -16,16 +16,16 @@ import javafx.util.Pair;
 
 public  class RootWindowController extends BranchController {
     @FXML
-    public BorderPane rootWindow;
+    private BorderPane rootWindow;
 
     @FXML
-    public AnchorPane centerAnchorPane;
+    private AnchorPane centerAnchorPane;
 
-    public String currentPage = "";
+    private String currentPage = "";
 
-    public BankAccountSettingsPageController bankAccountSettingsPageController;
+    public BorderPane getRootWindow() {return rootWindow;}
 
-
+    public String getCurrentPage() {return currentPage;}
 
     public void switchPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {
@@ -67,6 +67,16 @@ public  class RootWindowController extends BranchController {
         }
     }
 
+    public void addSlider(Node notificationSlider)
+    {
+        centerAnchorPane.getChildren().add(notificationSlider);
+    }
+
+    public void removeSlider(Node notificationSlider)
+    {
+        centerAnchorPane.getChildren().remove(notificationSlider);
+    }
+
     @FXML
     private void initialize() //initializing the first page to load
     {
@@ -105,7 +115,6 @@ public  class RootWindowController extends BranchController {
         AnchorPane.setLeftAnchor(node, d);
         AnchorPane.setTopAnchor(node, d);
         AnchorPane.setRightAnchor(node, d);
-
     }
 
 }

@@ -96,7 +96,7 @@ public class TopbarController extends BranchController {
     {
         if (!sliderIsActive) {
             updateNotifications();
-            CurrentSession.getRootController().centerAnchorPane.getChildren().add(notificationSlider);
+            CurrentSession.getRootController().addSlider(notificationSlider);
             TranslateTransition slideIn = new TranslateTransition(Duration.millis(400), notificationSlider);
             slideIn.setFromX(190);
             slideIn.setToX(0);
@@ -107,7 +107,7 @@ public class TopbarController extends BranchController {
         TranslateTransition slideOut = new TranslateTransition(Duration.millis(250), notificationSlider);
         slideOut.setFromX(0);
         slideOut.setToX(190);
-        slideOut.setOnFinished(event -> {CurrentSession.getRootController().centerAnchorPane.getChildren().remove(notificationSlider);  sliderIsActive = false;});
+        slideOut.setOnFinished(event -> {CurrentSession.getRootController().removeSlider(notificationSlider);  sliderIsActive = false;});;
         slideOut.play();
     }
 
@@ -177,7 +177,7 @@ public class TopbarController extends BranchController {
     @FXML
     public void reloadPage()
     {
-        Node node = EasyFxmlLoader.loader(CurrentSession.getRootController().currentPage).getValue();
+        Node node = EasyFxmlLoader.loader(CurrentSession.getRootController().getCurrentPage()).getValue();
         CurrentSession.getRootController().setCenter(node);
     }
 
