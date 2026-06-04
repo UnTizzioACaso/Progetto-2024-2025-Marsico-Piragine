@@ -10,6 +10,7 @@ import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
 import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ValueValidator;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -39,6 +40,9 @@ public class FriendsPageController extends BranchController
     @FXML
     private Label errorLabel;
 
+    @FXML
+    private ScrollPane chatScrollPane;
+
     public VBox getChatVBox() {return chatVBox;}
 
     public void setFriend(User friend) {this.friend = friend;}
@@ -54,46 +58,27 @@ public class FriendsPageController extends BranchController
     private void requestTransaction()
     {
 
-        if (currentFriendController == null)
-        {
-            writeError("Devi selezionare un amico per richiedere denaro");
-            return;
-        }
+        if (currentFriendController == null) {writeError("Devi selezionare un amico per richiedere denaro");return;}
 
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}
 
         // string validation
         BigDecimal value = ValueValidator.validateFormat(valueField);
-        if (value == null)
-        {
-            writeError("Il valore inserito è in formato non valido");
-            return;
-        }
+        if (value == null){writeError("Il valore inserito è in formato non valido");return;}
 
         BigDecimal maxLimit = new BigDecimal("1000.00");
 
         // numeric value validation
-        if (value.compareTo(maxLimit) > 0)
-        {
-            writeError("Il limite massimo di richiesta è 10.000");
-            return;
-        }
-        if (value.compareTo(BigDecimal.ZERO) < 0)
-        {
-            writeError("la richiesta non può essere negativa");
-            return;
-        }
+        if (value.compareTo(maxLimit) > 0) {writeError("Il limite massimo di richiesta è 10.000");return;}
+
+        if (value.compareTo(BigDecimal.ZERO) < 0) {writeError("la richiesta non può essere negativa");return;}
 
         int beneficiaryAccount = CurrentSession.getLoggedAccount().getIdAccount();
         int senderAccount = BankAccountDAO.getIdAccountByUserId(friend.getUserID());
         Transaction t = new Transaction(senderAccount, beneficiaryAccount,value, noteTextFiled.getText(), "request", -1, "pending");
 
-        if (!(TransactionDAO.insertTransaction(t)))
-        {
-            writeError("errore durante l'invio della richiesta");
-            return;
-        }
+        if (!(TransactionDAO.insertTransaction(t))) {writeError("errore durante l'invio della richiesta");return;}
 
         //creating and sending the notifies to each user
         Notify n = new Notify(friend.getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
@@ -110,67 +95,36 @@ public class FriendsPageController extends BranchController
     @FXML
     private void sendTransaction()
     {
-        if (currentFriendController == null)
-        {
-            writeError("Devi selezionare un amico per inviare denaro");
-            return;
-        }
+        if (currentFriendController == null) {writeError("Devi selezionare un amico per inviare denaro");return;}
 
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}
 
         // string validation
         BigDecimal value = ValueValidator.validateFormat(valueField);
-        if (value == null)
-        {
-            writeError("Il valore inserito è in formato non valido");
-            return;
-        }
+        if (value == null) {writeError("Il valore inserito è in formato non valido");return;}
 
         BigDecimal maxLimit = new BigDecimal("1000.00");
         BigDecimal userLimit = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID()).getMaxTransfer();
 
         // numeric value validation
-        if (value.compareTo(maxLimit) > 0)
-        {
-            writeError("Il limite massimo di invio è 10.000");
-            return;
-        }
-        if (value.compareTo(BigDecimal.ZERO) < 0)
-        {
-            writeError("Il limite non può essere negativo");
-            return;
-        }
-        if(value.compareTo(userLimit) > 0)
-        {
-            writeError("Il limite d'invio prestabilito dall'utente è: " + userLimit);
-            return;
-        }
+        if (value.compareTo(maxLimit) > 0) {writeError("Il limite massimo di invio è 10.000");return;}
+
+        if (value.compareTo(BigDecimal.ZERO) < 0) {writeError("Il limite non può essere negativo");return;}
+
+        if(value.compareTo(userLimit) > 0) {writeError("Il limite d'invio prestabilito dall'utente è: " + userLimit);return;}
 
         // creating the transaction java object
         BankAccount senderAccount = CurrentSession.getLoggedAccount();
         BankAccount beneficiaryAccount = BankAccountDAO.getAccountByUserId(friend.getUserID());
 
-        if(senderAccount == null || beneficiaryAccount == null)
-        {
-            writeError("errore durante l'invio della donazione");
-            return;
-        }
+        if(senderAccount == null || beneficiaryAccount == null) {writeError("errore durante l'invio della donazione");return;}
 
-        if (senderAccount.getMoney().compareTo(value) < 0)
-        {
-            writeError("Non hai credito sufficiente per inviare la donazione");
-            return;
-        }
+        if (senderAccount.getMoney().compareTo(value) < 0) {writeError("Non hai credito sufficiente per inviare la donazione");return;}
 
         Transaction t = new Transaction(senderAccount.getIdAccount(), beneficiaryAccount.getIdAccount(), value, noteTextFiled.getText(), "donation", -1, "accepted");
 
-        if(!BankAccountDAO.transferMoney(beneficiaryAccount, senderAccount, t))
-        {
-            writeError("errore durante l'invio della donazione");
-            return;
-        }
-
+        if(!BankAccountDAO.transferMoney(beneficiaryAccount, senderAccount, t)) {writeError("errore durante l'invio della donazione");return;}
 
         //creating and sending the notifies to each user
         Notify n = new Notify(friend.getUserID(), t.getIdTransaction(), null, noteTextFiled.getText());
@@ -183,11 +137,7 @@ public class FriendsPageController extends BranchController
     }
 
 
-    private void writeError(String message)
-    {
-        errorLabel.setTextFill(Paint.valueOf("red"));
-        errorLabel.setText(message);
-    }
+
 
     @FXML
     private void initialize()
@@ -266,6 +216,11 @@ public class FriendsPageController extends BranchController
                 sendCloud(transaction.getNote() + ": " + transaction.getAmount());
             }
         }
+
+        Platform.runLater(() -> {
+            chatScrollPane.requestFocus();
+            chatScrollPane.setVvalue(1.0); // Scroll to the bottom
+        });
     }
 
     private void sendCloud(String text)
@@ -285,4 +240,9 @@ public class FriendsPageController extends BranchController
         return controller;
     }
 
+    private void writeError(String message)
+    {
+        errorLabel.setTextFill(Paint.valueOf("red"));
+        errorLabel.setText(message);
+    }
 }
