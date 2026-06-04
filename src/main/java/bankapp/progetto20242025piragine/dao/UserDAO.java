@@ -2,6 +2,7 @@ package bankapp.progetto20242025piragine.dao;
 
 import bankapp.progetto20242025piragine.db.DataSourceProvider;
 import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
@@ -386,12 +387,13 @@ public class UserDAO
         }
         return false;
     }
-    public static boolean updatepin(int idAccount)
+
+    public static boolean updatepin(int idAccount, String newPinHash)
     {
         String sql= "UPDATE User SET pin_hash = ? WHERE user_id = ?";
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, User.getPinHash());
+            stmt.setString(1, newPinHash);
             stmt.setInt(2, idAccount);
             return stmt.executeUpdate() > 0;
         }

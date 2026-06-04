@@ -15,55 +15,71 @@ import javafx.stage.Stage;
 
 public class ChangePinPopupController extends BranchController {
 
-    @FXML private AnchorPane rootPane;
-    @FXML private Label errorMessageLabel;
-    @FXML private PasswordField currentPinPasswordField;
-    @FXML private PasswordField newPinPasswordField;
-    @FXML private PasswordField confirmNewPinPasswordField;
     @FXML
-    private void closePopup() {
+    private AnchorPane rootPane;
+
+    @FXML
+    private Label errorMessageLabel;
+
+    @FXML
+    private PasswordField currentPinPasswordField, newPinPasswordField, confirmNewPinPasswordField;
+
+    @FXML
+    private void closePopup()
+    {
         Stage stage = (Stage) rootPane.getScene().getWindow();
         stage.close();
     }
+
     @FXML
-    private void completeChange() {
+    private void completeChange()
+    {
         String currentPin = currentPinPasswordField.getText();
         String newPin = newPinPasswordField.getText();
         String confirmPin = confirmNewPinPasswordField.getText();
 
-        if (currentPin.isEmpty() || newPin.isEmpty() || confirmPin.isEmpty()) {
+        if (currentPin.isEmpty() || newPin.isEmpty() || confirmPin.isEmpty())
+        {
             errorMessageLabel.setText("Compila tutti i campi.");
             return;
         }
-        if (!newPin.equals(confirmPin)) {
+        if (!newPin.equals(confirmPin))
+        {
             errorMessageLabel.setText("I nuovi PIN non corrispondono.");
             return;
         }
-        if (currentPin.equals(newPin)) {
+        if (currentPin.equals(newPin))
+        {
             errorMessageLabel.setText("Il nuovo PIN deve essere diverso da quello attuale.");
             return;
         }
-        if (newPin.length() < 4) {
+        if (newPin.length() < 4)
+        {
             errorMessageLabel.setText("Il PIN deve essere di almeno 4 cifre.");
             return;
         }
-        var loggedUser = CurrentSession.getLoggedUser();
+
+        User loggedUser = CurrentSession.getLoggedUser();
 
         boolean isCurrentPinCorrect = PasswordUtil.checkPassword(currentPin, loggedUser.getPinHash());
 
-        if (!isCurrentPinCorrect) {
+        if (!isCurrentPinCorrect)
+        {
             errorMessageLabel.setText("Il PIN corrente è errato.");
             return;
         }
 
-        loggedUser.setPinHash(PasswordUtil.hashPassword(newPin));
-        boolean isUpdated = UserDAO.updatepin(loggedUser.getUserID());
-        if (isUpdated) {
+
+        boolean isUpdated = UserDAO.updatepin(loggedUser.getUserID(), PasswordUtil.hashPassword(newPin));
+
+
+        if (isUpdated)
+        {
+            loggedUser.setPinHash(PasswordUtil.hashPassword(newPin));
             System.out.println("PIN aggiornato e hash salvato con successo!");
             errorMessageLabel.setText("");
             closePopup();
-        } else {
-            errorMessageLabel.setText("Errore durante il salvataggio nel database.");
         }
+        else {errorMessageLabel.setText("Errore durante il salvataggio nel database.");}
     }
 }

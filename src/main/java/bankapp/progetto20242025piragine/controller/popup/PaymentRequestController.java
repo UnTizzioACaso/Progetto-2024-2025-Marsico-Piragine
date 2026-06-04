@@ -46,7 +46,7 @@ public class PaymentRequestController extends BranchController {
                 return;
             }
         }
-        CurrentSession.getFriendsPageController().getCurrentFriendController().showChat();
+        CurrentSession.getFriendsPageController().showChatWith(friendshipUsernameLabel.getText());
         TransactionDAO.declineTransacion(request.getIdTransaction());
         ((Stage) moneyLabel.getScene().getWindow()).close();
     }
@@ -70,7 +70,7 @@ public class PaymentRequestController extends BranchController {
 
             //if this popup is generated from a friend message, show the chat and close the popup
             BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
-            CurrentSession.getFriendsPageController().getCurrentFriendController().showChat();
+            CurrentSession.getFriendsPageController().showChatWith(friendshipUsernameLabel.getText());
             ((Stage) moneyLabel.getScene().getWindow()).close();
         }
     }

@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="320.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.ChangePinPopupController">
+<AnchorPane fx:id="rootPane" prefHeight="320.0" prefWidth="315.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.ChangePinPopupController">
     <children>
         <Pane layoutX="5.0" maxHeight="70.0" minHeight="70.0" style="-fx-background-color: #ff0000; -fx-background-radius: 10 10 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <effect>
@@ -45,7 +45,7 @@
 
         <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="22.0" layoutY="76.0" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="76.0" />
 
-        <Button fx:id="confirmChangeButton" layoutX="117.0" layoutY="260.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#completeChange" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #ff0000; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="CAMBIA" textFill="WHITE" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="260.0">
+        <Button fx:id="confirmChangeButton" layoutX="105.0" layoutY="259.0" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" onAction="#completeChange" prefHeight="38.0" prefWidth="105.0" style="-fx-background-color: #ff0000; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10;" text="CAMBIA" textFill="WHITE" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="259.0">
             <effect>
                 <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
                     <color>

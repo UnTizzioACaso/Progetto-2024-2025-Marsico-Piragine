@@ -31,7 +31,7 @@ public class BankAccountSettingsPageController extends BranchController
     @FXML
     private void changePin()
     {
-        ChangePinPopupController controller = (ChangePinPopupController) PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/changePinPopup.fxml", 400, 500);
+        ChangePinPopupController controller = (ChangePinPopupController) PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/changePinPopup.fxml", 315, 320);
     }
     @FXML
     private void saveLimitButton() { // Assicurati di collegare questo metodo al bottone
