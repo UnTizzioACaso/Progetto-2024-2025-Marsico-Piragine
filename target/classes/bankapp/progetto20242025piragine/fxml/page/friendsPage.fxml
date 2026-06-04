@@ -71,7 +71,7 @@
       </AnchorPane>
       <AnchorPane id="anchorePaneFriends2" fx:id="anchorPaneChat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="580.0" prefWidth="300.0" GridPane.columnIndex="1">
          <children>
-            <ScrollPane id="chatScrollPane" fx:id="chatScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="19.0" layoutY="120.0" maxWidth="1.7976931348623157E308" prefHeight="502.0" prefWidth="300.0" style="-fx-border-width: 0;" vvalue="1.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane id="chatScrollPane" fx:id="chatScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="19.0" layoutY="120.0" maxWidth="1.7976931348623157E308" prefHeight="502.0" prefWidth="300.0" style="-fx-border-width: 0;" vvalue="1.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
                   <VBox id="chatVBox" fx:id="chatVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-width: 0;">
                      <padding>
@@ -89,7 +89,10 @@
             <Insets />
          </GridPane.margin>
       </AnchorPane>
-      <Region id="regionChat" fx:id="regionChat" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Region id="regionChat" fx:id="regionChat" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets top="-35.0" />
+         </GridPane.margin></Region>
       <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendTransaction" prefHeight="41.0" prefWidth="80.0" style="-fx-background-radius: 10; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -133,7 +136,7 @@
             <Font name="System Italic" size="13.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="30.0" left="20.0" right="20.0" top="-70.0" />
+            <Insets bottom="30.0" left="20.0" right="20.0" top="-60.0" />
          </GridPane.margin>
       </TextField>
    </children>
