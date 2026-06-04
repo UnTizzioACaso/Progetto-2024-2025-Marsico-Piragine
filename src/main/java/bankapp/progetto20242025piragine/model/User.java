@@ -12,7 +12,7 @@ public class User {
     private String gender;
     private String email;
     private String passwordHash;
-    private String pinHash;
+    private static String pinHash;
     private String phoneNumber;
     private String state;
     private String province;
@@ -72,8 +72,8 @@ public class User {
     public String getPasswordHash() { return passwordHash; }
     public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
 
-    public String getPinHash() { return pinHash; }
-    public void setPinHash(String pinHash) { this.pinHash = pinHash; }
+    public static String getPinHash() { return pinHash; }
+    public void setPinHash(String pinHash) { this.pinHash = pinHash;}
 
     public boolean isRememberCredentials() { return rememberCredentials; }
     public void setRememberCredentials(boolean rememberCredentials) { this.rememberCredentials = rememberCredentials; }

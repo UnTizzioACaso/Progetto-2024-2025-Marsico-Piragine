@@ -386,4 +386,20 @@ public class UserDAO
         }
         return false;
     }
+    public static boolean updatepin(int idAccount)
+    {
+        String sql= "UPDATE User SET pin_hash = ? WHERE user_id = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, User.getPinHash());
+            stmt.setInt(2, idAccount);
+            return stmt.executeUpdate() > 0;
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during updating pin: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

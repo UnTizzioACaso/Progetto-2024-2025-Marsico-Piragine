@@ -108,12 +108,14 @@ public class AddAccountMoneyPageController extends BranchController
         @FXML
         private void payWithApplePay()
         {
+                errorLabel.setStyle("-fx-text-fill: red");
                 errorLabel.setText("Apple Pay non è al momento disponibile, usare un altra modalità di pagamento");
         }
 
         @FXML
         private void payWithGooglePay()
         {
+                errorLabel.setStyle("-fx-text-fill: red");
                 errorLabel.setText("Google Pay non è al momento disponibile, usare un altra modalità di pagamento");
         }
 
