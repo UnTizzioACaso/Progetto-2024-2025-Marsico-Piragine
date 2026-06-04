@@ -58,7 +58,7 @@ public class LoginController extends BranchController {
                 CurrentSession.getRootController().loadSideBar(); // loading the sidebar
                 CurrentSession.getRootController().loadTopBar(); // loading the topbar
                 CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
-                ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme());
+                ThemeManager.applyTheme(CurrentSession.getRootController().getRootWindow().getScene(), CurrentSession.getLoggedUser().getTheme());
                 if (rememberAccessCheckBox.isSelected())
                 {
                     try {RememberMeUtil.saveEmail(emailLoginTextField.getText());}
@@ -81,7 +81,7 @@ public class LoginController extends BranchController {
                 CurrentSession.getRootController().loadSideBar(); // loading the sidebar
                 CurrentSession.getRootController().loadTopBar(); // loading the topbar
                 CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
-                ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme());
+                ThemeManager.applyTheme(CurrentSession.getRootController().getRootWindow().getScene(), CurrentSession.getLoggedUser().getTheme());
 
                 if (rememberAccessCheckBox.isSelected())
                     {
