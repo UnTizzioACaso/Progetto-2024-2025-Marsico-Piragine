@@ -21,14 +21,13 @@ public class NotificationController extends BranchController{
 
     public Notify notify;
 
-    public String type;
-
     private Boolean imTheSender = false;
 
     @FXML
     public void readNotify()
     {
-        if(imTheSender && secondaryLabel.getText().equals("Richiesta di denaro")) //if notify is a transaction request from user
+
+        if(imTheSender && secondaryLabel.getText().contains("Richiesta di denaro")) //if notify is a transaction request from user
         {
             Transaction t = TransactionDAO.getTransactionById(notify.getIdTransaction());
             if(t.getStatus().equals("accepted") || t.getStatus().equals("declined")) //if it is not pending
@@ -38,13 +37,14 @@ public class NotificationController extends BranchController{
             }
         }
 
-        else if(secondaryLabel.getText().equals("Richiesta di denaro"))
+        else if(secondaryLabel.getText().contains("Richiesta di denaro"))
         {
             PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
             controller.n = notify;
+            controller.request = TransactionDAO.getTransactionById(notify.getIdTransaction());
         }
 
-        else if(secondaryLabel.getText().equals("Richiesta d'amicizia") && imTheSender) //if notify is a friendship request from user
+        else if(secondaryLabel.getText().contains("Richiesta d'amicizia") && imTheSender) //if notify is a friendship request from user
         {
             FriendRequest f = FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest());
             if(f.getStatus().equals("accepted") || f.getStatus().equals("declined")) //if it is not pending
@@ -54,7 +54,7 @@ public class NotificationController extends BranchController{
             }
         }
 
-        else if(secondaryLabel.getText().equals("Richiesta d'amicizia"))
+        else if(secondaryLabel.getText().contains("Richiesta d'amicizia"))
         {
             FriendshipNotifyController controller = (FriendshipNotifyController) PopupCreator.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/frienshipNotify.fxml", 300, 200);
             controller.idRequest = notify.getIdFriendRequest();

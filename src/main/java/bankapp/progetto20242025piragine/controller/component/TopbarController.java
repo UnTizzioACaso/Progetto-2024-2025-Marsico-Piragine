@@ -56,7 +56,6 @@ public class TopbarController extends BranchController {
 
     public void showBottomRightPopup(String fxmlPath, Stage primaryStage)
     {
-        if(!(CurrentSession.getPopupStage() == null)){CurrentSession.getPopupStage().close();}
         Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxmlPath);
         Parent root = (Parent) p.getValue();
         popupStage = new Stage();

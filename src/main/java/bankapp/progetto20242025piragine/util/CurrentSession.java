@@ -25,7 +25,6 @@ public class CurrentSession {
     private static CardPageController cardPageController;
     private static BankAccountSettingsPageController bankAccountSettingsPageController;
     private static BankAccount loggedAccount;
-    private static Stage popupStage;
     private static Stage primaryStage;
     private static Node currentPage;
 
@@ -81,7 +80,6 @@ public class CurrentSession {
         cardPageController = null;
         bankAccountSettingsPageController = null;
         loggedAccount = null;
-        popupStage = null;
         primaryStage = null;
     }
 
@@ -104,11 +102,6 @@ public class CurrentSession {
     public static BankAccount getLoggedAccount() {return loggedAccount;}
 
     public static void setLoggedAccount(BankAccount loggedAccount) {CurrentSession.loggedAccount = loggedAccount;}
-
-
-    public static Stage getPopupStage() {return popupStage;}
-
-    public static void setPopupStage(Stage popupStage) {CurrentSession.popupStage = popupStage;}
 
 
     public static Stage getPrimaryStage() {return primaryStage;}
