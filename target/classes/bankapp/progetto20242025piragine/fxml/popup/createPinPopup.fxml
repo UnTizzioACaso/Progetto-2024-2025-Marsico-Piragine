@@ -36,9 +36,9 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label style="-fx-font-weight: bold;" text="Crea un pin" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
+      <Label text="Crea un pin" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0">
          <font>
-            <Font size="26.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
       </Label>
       <Label fx:id="errorMessageLabel" alignment="CENTER" layoutX="22.0" layoutY="76.0" maxWidth="300.0" minWidth="270.0" prefHeight="18.0" prefWidth="253.0" textFill="#a10000" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="76.0" />

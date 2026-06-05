@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorePaneMenageCardPopup" fx:id="anchorePaneMenageCardPopup" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.MenageCardPopupController">
+<AnchorPane fx:id="menageCardPopupAnchorPane" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.MenageCardPopupController">
 
     <children>
 
@@ -74,7 +74,7 @@
             </font>
         </Button>
 
-        <Label id="labelMenageCardPopup" fx:id="labelMenageCardPopup" contentDisplay="CENTER" layoutX="27.2" layoutY="131.0" prefHeight="36.0" prefWidth="163.0" text="Spesa massima:" AnchorPane.leftAnchor="27.2" AnchorPane.topAnchor="131.0">
+        <Label id="labelMenageCardPopup" fx:id="menageCardPopupLabel" contentDisplay="CENTER" layoutX="27.2" layoutY="131.0" prefHeight="36.0" prefWidth="163.0" text="Spesa massima:" AnchorPane.leftAnchor="27.2" AnchorPane.topAnchor="131.0">
             <font>
                 <Font name="System Bold" size="22.0" />
             </font>
@@ -103,7 +103,7 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Label fx:id="errorLabelMenageCardPopup" alignment="CENTER" contentDisplay="CENTER" layoutY="183.0" prefHeight="27.0" prefWidth="500.0" textFill="RED" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="183.0" prefHeight="27.0" prefWidth="500.0" textFill="RED" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="15.0" />
          </font></Label>

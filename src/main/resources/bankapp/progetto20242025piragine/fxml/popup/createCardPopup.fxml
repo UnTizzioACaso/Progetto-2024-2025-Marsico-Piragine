@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorePaneCardPopup" prefHeight="447.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController">
+<AnchorPane fx:id="cardPopupAnchorPane" prefHeight="447.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController">
    <children>
       <Button fx:id="createCardButton" alignment="CENTER" contentDisplay="CENTER" layoutX="112.8" layoutY="339.6" mnemonicParsing="false" onAction="#createCard" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="Crea carta" textFill="WHITE" AnchorPane.bottomAnchor="59.39999999999998" AnchorPane.leftAnchor="112.8" AnchorPane.rightAnchor="112.0">
          <effect>
@@ -32,7 +37,7 @@
             <Insets left="10.0" />
          </padding>
       </TextField>
-      <MenuButton id="menuButtonCreateCardPopup" fx:id="colorMenu" layoutX="46.4" layoutY="61.4" style="-fx-background-color: ff0000; -fx-background-radius: 6;" text="Scegli colore" textFill="WHITE" AnchorPane.leftAnchor="46.4" AnchorPane.topAnchor="61.4">
+      <MenuButton fx:id="colorMenu" layoutX="46.4" layoutY="61.4" style="-fx-background-color: ff0000; -fx-background-radius: 6;" text="Scegli colore" textFill="WHITE" AnchorPane.leftAnchor="46.4" AnchorPane.topAnchor="61.4">
          <items>
             <MenuItem onAction="#selectRed" text="Rosso" />
             <MenuItem onAction="#selectGreen" text="Verde" />

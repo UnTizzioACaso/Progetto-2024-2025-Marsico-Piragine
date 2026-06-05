@@ -34,7 +34,7 @@ public class MenageCardPopupController extends BranchController {
     private TextField spendingLimitTextField;
 
     @FXML
-    private Label errorLabelMenageCardPopup;
+    private Label errorLabel;
 
 
     public Card card;
@@ -51,7 +51,7 @@ public class MenageCardPopupController extends BranchController {
         } else if (input.matches("^\\d+(\\.\\d{1,2})?$")) {
             spendingLimitText = input;
         } else {
-            errorLabelMenageCardPopup.setText("Formato non valido (es: 10,10 o 10.10)");
+            errorLabel.setText("Formato non valido (es: 10,10 o 10.10)");
             return;
         }
 
@@ -60,12 +60,12 @@ public class MenageCardPopupController extends BranchController {
             BigDecimal maxLimit = new BigDecimal("1000000000.00");
 
             if (limit.compareTo(maxLimit) > 0) {
-                errorLabelMenageCardPopup.setText("Il limite massimo è 1.000.000.000");
+                errorLabel.setText("Il limite massimo è 1.000.000.000");
                 return;
             }
 
             if (limit.compareTo(BigDecimal.ZERO) <= 0) {
-                errorLabelMenageCardPopup.setText("Il limite deve essere maggiore di zero");
+                errorLabel.setText("Il limite deve essere maggiore di zero");
                 return;
             }
 
@@ -73,16 +73,16 @@ public class MenageCardPopupController extends BranchController {
             card.setSpendingLimit(updatedLimitFromDB);
 
             spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
-            errorLabelMenageCardPopup.setText("");
+            errorLabel.setText("");
 
             if (CurrentSession.getTopbarController() != null) {
                 CurrentSession.getTopbarController().reloadPage();
             }
 
         } catch (NumberFormatException e) {
-            errorLabelMenageCardPopup.setText("Errore nella conversione del numero");
+            errorLabel.setText("Errore nella conversione del numero");
         } catch (Exception e) {
-            errorLabelMenageCardPopup.setText("Errore durante l'aggiornamento");
+            errorLabel.setText("Errore durante l'aggiornamento");
             e.printStackTrace();
         }
     }
@@ -117,7 +117,7 @@ public class MenageCardPopupController extends BranchController {
     public void deleteCard() {
         try {
             CardDAO.deleteCard(card.getIdCard());
-            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+            ((Stage) errorLabel.getScene().getWindow()).close();
             CurrentSession.getTopbarController().reloadPage();
         } catch (SQLException e) {
             System.out.println("error during deleting card" + e.getMessage());
@@ -130,7 +130,7 @@ public class MenageCardPopupController extends BranchController {
         try
         {
             CardDAO.updateCardStatus(card.getIdCard(), false);
-            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+            ((Stage) errorLabel.getScene().getWindow()).close();
             CurrentSession.getTopbarController().reloadPage();
         }
         catch (SQLException e)
@@ -145,7 +145,7 @@ public class MenageCardPopupController extends BranchController {
         try
         {
             CardDAO.updateCardStatus(card.getIdCard(), true);
-            ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+            ((Stage) errorLabel.getScene().getWindow()).close();
             CurrentSession.getTopbarController().reloadPage();
         }
         catch (SQLException e)
@@ -157,6 +157,6 @@ public class MenageCardPopupController extends BranchController {
 
     @FXML
     public void closePopup() {
-        ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+        ((Stage) errorLabel.getScene().getWindow()).close();
     }
 }

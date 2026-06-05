@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 public class BankAccountSettingsPageController extends BranchController
 {
     @FXML
-    public TextField sendingLimitTextfield;
+    public TextField moneyTextField;
 
     @FXML
     public Label ibanLabel;

@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPaneCardPage" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="550.0" prefHeight="800.0" prefWidth="736.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.CardPageController">
+<AnchorPane fx:id="cardPageAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="550.0" prefHeight="800.0" prefWidth="736.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.CardPageController">
 
     <children>
       <GridPane layoutY="-14.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="200.0" minWidth="200.0" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -22,10 +29,10 @@
         </rowConstraints>
          <children>
       
-              <ScrollPane id="scrollPaneCardPage" fx:id="scrollPaneCardPage" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="950.0" minHeight="200.0" minWidth="200.0" prefHeight="490.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-border-color: transparent; -fx-border-width: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+              <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="950.0" minHeight="200.0" minWidth="200.0" prefHeight="490.0" prefWidth="500.0" style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-border-color: transparent; -fx-border-width: 0;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
       
                   <content>
-                      <VBox id="cardsContainerVBox" fx:id="cardsContainerVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="780.0" spacing="10.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 30;">
+                      <VBox fx:id="cardsContainerVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="780.0" spacing="10.0" style="-fx-background-color: e4e4e4; -fx-background-radius: 30;">
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
@@ -37,13 +44,13 @@
       
               </ScrollPane>
       
-              <Label fx:id="labelCardPage" minWidth="0" prefHeight="74.0" prefWidth="550.0" style="-fx-font-weight: BOLD;" styleClass="title" text="LE TUE CARTE" textOverrun="ELLIPSIS" GridPane.columnIndex="1">
+              <Label minWidth="0" prefHeight="74.0" prefWidth="550.0" text="LE TUE CARTE" textOverrun="ELLIPSIS" GridPane.columnIndex="1">
                   <font>
-                      <Font size="38.0" />
+                      <Font name="System Bold" size="38.0" />
                   </font>
               </Label>
       
-              <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="165.0" minWidth="165.0" mnemonicParsing="false" onAction="#openCreateCard" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" styleClass="create-card" text="CREA NUOVA CARTA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+              <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="165.0" minWidth="165.0" mnemonicParsing="false" onAction="#openCreateCard" prefHeight="40.0" prefWidth="165.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="CREA NUOVA CARTA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                   <font>
                       <Font name="System Bold" size="14.0" />
                   </font>
@@ -56,7 +63,7 @@
                   </effect>
               </Button>
       
-              <Separator opacity="0.8" prefHeight="6.0" prefWidth="794.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+              <Separator fx:id="pageSeparator" opacity="0.8" prefHeight="6.0" prefWidth="794.0" style="-fx-background-color: #ff0000; -fx-border-color: #ff0000;" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="13.0" />
                </GridPane.margin>

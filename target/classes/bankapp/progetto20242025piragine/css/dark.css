@@ -1,102 +1,19 @@
-
+/* ==========================================================
+   ROOT / CONTROLLI GENERALI
+   ========================================================== */
 
 .anchor-pane {
     -fx-background-color: #4a4a4a !important;
 }
 
-#rectangleAnchorPane {
-    -fx-background-color: gray !important;
-}
-
-
-#darkAppleButton, #darkGoogleButton{
-    visibility: true !important;
-}
-
-#whiteAppleButton, #whiteGoogleButton {
-    visibility: false !important;
-}
-
-
-/* ================= LABEL ================= */
 
 .label {
     -fx-text-fill: white !important;
 }
 
-
-#cardCreditLabel,
-#cardNicknameLabel,
-#cardNumberLabel,
-#cardExpirationLabel{
-    -fx-text-fill: black !important;
-}
-
-#accountAccountPopupLabel {
-    -fx-text-fill: #E0E0E0 !important;
-}
-
-
-
-
-#labelMenageCardPopup {
-    -fx-text-fill: white !important;
-}
-
-
-/* ================= LAYOUT ================= */
-
-
-#sidebarGridPane,
-#transactionHistoryAnchorPane,
-#anchorePaneCardPopup,
-#anchorePaneMenageCardPopup,
-#anchorPaneFriendshipRequestPopup,
-#homePageGridPane {
-    -fx-background-color: #3c3c3c !important;
-}
-
-#sidebarGridPane {
-    -fx-background-color: #595959 !important;
-}
-
-#gridPaneFriends,
-#AnchorPaneFriendsPage,
-#regionFriend,
-#friendsVBox {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#anchorPaneChat,
-#chatVBox {
-    -fx-background-color: #595959 !important;
-}
-
-
-#regionChat {
-    -fx-border-color: #595959 !important;
-    -fx-background-color: #4a4a4a !important;
-    -fx-border-width: 2 !important;
-}
-
-#vBoxNotificationSlider {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#notificationAnchorPane {
-    -fx-border-color: white !important;
-}
-
-
-/* ================= BUTTON ================= */
-
 .button {
     -fx-text-fill: white ;
 }
-
-
-
-/* ================= MENU ================= */
 
 .menu-button .arrow {
     -fx-background-color: white !important;
@@ -120,49 +37,65 @@
     -fx-background-color: #444444;
 }
 
+.separator {
+    -fx-opacity: 1 !important;
+}
 
-/* ================= SCROLLPANE ================= */
+.text-field {
+    -fx-background-color: #595959 ;
+    -fx-text-fill: white ;
+    -fx-prompt-text-fill: #bdbdbd ;
+    -fx-border-color: #595959 ;
+    -fx-border-radius: 10 ;
+}
 
+.check-box > .box {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 2px !important;
+}
+
+.check-box:focused > .box {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+}
+
+.radio-button > .radio {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 10px !important;
+}
+
+.radio-button:focused > .radio {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+}
+
+.text-input {
+    -fx-highlight-fill: red;
+    -fx-highlight-text-fill: white;
+}
+
+
+/* ==========================================================
+   SCROLLBAR E SCROLLPANE UNIFICATE (TUTTI I COMPONENTI)
+   ========================================================== */
 .scroll-pane {
     -fx-background-color: #4a4a4a;
-    -fx-padding: 0 !important; /* Correzione bordino */
-    -fx-background-insets: 0 !important; /* Correzione bordino */
+    -fx-padding: 0 !important;
+    -fx-background-insets: 0 !important;
     -fx-background-radius: 15;
 }
 
 .scroll-pane > .viewport {
     -fx-background-color: transparent !important;
 }
-
-#scrollPaneFriends,
-#chatScrollPane {
-    -fx-background-insets: 0 !important;
-    -fx-padding: 0 !important;
-    -fx-border-color: transparent !important;
-    -fx-border-width: 0 !important;
-    -fx-focus-color: transparent !important;
-    -fx-faint-focus-color: transparent !important;
-}
-
-#scrollPaneFriends {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#chatScrollPane {
-    -fx-background-color: #595959 !important;
-}
-
-#scrollPaneFriends .viewport,
-#scrollPaneFriends .content,
-#scrollPaneFriends .corner,
-#chatScrollPane .viewport,
-#chatScrollPane .content,
-#chatScrollPane .corner {
-    -fx-background-color: transparent !important;
-}
-
-
-/* ================= SCROLLBAR ================= */
 
 .scroll-bar {
     -fx-background-color: transparent;
@@ -198,9 +131,6 @@
     -fx-shape: "";
     -fx-padding: 0;
 }
-
-
-/* ================= FAVOURITES SCROLLPANE ================= */
 
 #favouritesCardScrollPane {
     -fx-background-color: #e4e4e4 !important;
@@ -248,347 +178,31 @@
     -fx-shape: "" !important;
 }
 
-
-/* ================= MISC ================= */
-
-.separator {
-    -fx-opacity: 0.5 !important;
-}
-
-#buttonNotificationSlider {
-    -fx-background-radius: 6 !important;
-    -fx-font-weight: bold !important;
-}
-
-#limitLabelCreditCardRectangle {
-    -fx-font-weight: bold !important;
-    -fx-text-fill: white !important;
-}
-
-#buttonBankAccount{
-    -fx-background-color: transparent !important;
-}
-
-#imageViewBankAccount {
-    -fx-effect: innershadow(three-pass-box, white, 100, 1, 0, 0);
-}
-
-#textCreditCardRectangle{
-    -fx-fill: white !important;
-}
-
-
-
-
-
-#textFieldBankAccountSettingsPage{
-    -fx-background-color: #3a3a3a !important;
-    -fx-text-fill: white !important;
-    -fx-prompt-text-fill: #bdbdbd !important;
-    -fx-background-radius: 6 !important;
-    -fx-border-radius: 6 !important;
-    -fx-border-color: #5a5a5a !important;
-    -fx-border-width: 1 !important;
-    -fx-caret-color: white !important;
-}
-
-#gridPaneBankAccountSetting{
-    -fx-background-color: #3c3c3c !important;
-}
-
-
-/* 1. TESTO BIANCO */
-#checkBoxBankAccountSettingsPage,
-#checkBoxBankAccountSettingsPage .label,
-#checkBoxBankAccountSettingsPage .text {
-    -fx-text-fill: white !important;
-}
-
-/* 2. IL QUADRATINO (BOX) */
-#checkBoxBankAccountSettingsPage .box {
-    -fx-border-width: 1 !important;
-    -fx-border-color: #5a5a5a !important;
-    -fx-background-color: #333333 !important; /* Grigio quando spento */
-    -fx-background-radius: 3 !important;
-}
-
-#checkBoxBankAccountSettingsPage:selected .box {
-    -fx-background-color: #ff0000 !important;
-    -fx-background-insets: 0 !important;
-    -fx-background-radius: 3px !important;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10) !important;
-}
-
-#checkBoxBankAccountSettingsPage .mark {
-    /* Invisibile di default per evitare il pallino */
-    -fx-background-color: transparent !important;
-    -fx-shape: "M1.23,6.32 L3.58,8.67 L8.77,3.48 L9.71,4.42 L3.58,10.55 L0.29,7.26 Z" !important;
-    -fx-background-insets: 0 !important;
-}
-
-/* Quando CLICCATO: la V appare bianca sul quadratino rosso */
-#checkBoxBankAccountSettingsPage:selected .mark {
-    -fx-background-color: white !important;
-}
-
-/* 4. RIMUOVI ALONE FOCUS */
-#checkBoxBankAccountSettingsPage:focused .box {
-    -fx-faint-focus-color: transparent !important;
-    -fx-focus-color: transparent !important;
-}
-
-#label1BankAccountSettingsPage,
-#label2BankAccountSettingsPage,
-#label3BankAccountSettingsPage {
-
-    -fx-text-fill: linear-gradient(to bottom,
-        #ff6666 0%,
-        #ff0000 45%,
-        #e60000 100%
-    ) !important;
-
-    -fx-effect: null !important
-}
-
-
-#separatorBankAccountSettingsPage {
-    -fx-opacity: 1 !important;
-    -fx-background-color: transparent !important;
-    /* Forza l'altezza di tutto il componente */
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-}
-
-#separatorBankAccountSettingsPage .line {
-    /* Fondamentale: togliamo il padding che schiaccia la linea */
-    -fx-padding: 0 !important;
-
-    /* Gradiente e reset bordi (il tuo codice) */
-    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-width: 0 !important;
-    -fx-stroke-width: 0 !important; /* Rimuovi lo stroke che blocca lo spessore */
-
-    /* Forza la linea a riempire tutto lo spazio dei 10px */
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-
-}
-
-#buttonBankAccountSettingsPage{
-    -fx-background-color: #4a4a4a !important;
-    -fx-text-fill: white !important;
-}
-
-
-
-
-
-
-/* ----------------------------- COMPONENT ----------------------------- */
-
-#textFieldFriendshipRequestPopupU,
-#textFieldFriendshipRequestPopupE,
-#textFieldFriendshipRequestPopupN {
-         -fx-background-color: #3a3a3a !important;
-         -fx-border-color: transparent !important;
-         -fx-text-fill: white !important;
-         -fx-prompt-text-fill: #bdbdbd !important;
-}
-
-
-#labelFriendshipRequestPopup {
-    -fx-text-fill: #ff0000 !important;
-    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.15), 27.65, 0.17, -10.0, -10.0) !important;
-}
-
-.text-field, #spendingLimitTextField
-{
-    -fx-background-color: #595959 ;
-    -fx-text-fill: white ;
-    -fx-prompt-text-fill: #bdbdbd ;
-    -fx-border-color: #595959 ;
-    -fx-border-radius: 10 ;
-}
-
-#friendsSearchBar,
-#noteTextFiled, #MoneyTextField {
-    -fx-background-color: #3a3a3a !important;
-    -fx-text-fill: white !important;
-    -fx-prompt-text-fill: #bdbdbd !important;
-    -fx-border-color: #333333 !important;
-}
-
-#labelFromFriendTransactionCloud{
-    -fx-background-color: #4a4a4a !important;
-}
-
-#polygonFromFriendTransactionCloud{
-    -fx-fill:#4a4a4a !important;
-}
-
-
-#anchorPaneFriendshipNotify {
-    -fx-background-color: #4a4a4a !important;
-}
-
-#friendshipUsernameLabel{
-    -fx-text-fill: white !important;
-}
-
-
-#friendAnchorPane{
-    -fx-border-color: white !important;
-}
-
-
-/* --- CHECK BOX --- */
-/* Stato normale: definiamo il bordo */
-.check-box > .box {
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important; /* Grigio standard */
-    -fx-border-width: 1px !important;
-    -fx-border-radius: 2px !important;
-}
-
-/* Stato premuto: manteniamo lo stesso bordo */
-.check-box:focused > .box {
-    -fx-focus-color: transparent !important;
-    -fx-faint-focus-color: transparent !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
-}
-
-/* --- RADIO BUTTON --- */
-/* Stato normale */
-.radio-button > .radio {
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important;
-    -fx-border-width: 1px !important;
-    -fx-border-radius: 10px !important; /* Lo rende tondo */
-}
-
-/* Stato premuto */
-.radio-button:focused > .radio {
-    -fx-focus-color: transparent !important;
-    -fx-faint-focus-color: transparent !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
-}
-
-#errorLabelMenageCardPopup,
-#errorLabel{
-    -fx-text-fill: #ff0000 !important;
-}
-
-#anchorPaneCardPage,
-#rootGridPaneBankSettingPage,
-#addAccountMoneyAnchorPane,
-#bankTransferGridPane,
-#confirmAddMoneyAnchorPane{
-    -fx-background-color: #3c3c3c !important;
-}
-
-
-#optionAddMoneyGridPane
-{
-    -fx-background-color:  #595959 !important;
-}
-
-
-
-.text-input {
-    -fx-highlight-fill: red;
-    -fx-highlight-text-fill: white;
-}
-
-#notificationSliderAnchorPane{
-    -fx-border-color: #595959 !important;
-    -fx-border-width: 0 0 0 1 !important;
-}
-
-#transactionGridPane{
-    -fx-border-color: white !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-#notificationVBox{
-    -fx-background-color: #4a4a4a !important;
-}
-#vBoxNotificationSlider{
-    -fx-background-color: #4a4a4a !important;
-}
-
-
-
-
-#closeMenageCardPopup{
-    -fx-text-fill: white !important;
-}
-
-.text-input {
-    -fx-highlight-fill: red;
-    -fx-highlight-text-fill: white;
-}
-
-#scrollPaneFriends,
-#chatScrollPane {
+#scrollPaneFriends{
     -fx-background-insets: 0 !important;
     -fx-padding: 0 !important;
     -fx-border-color: transparent !important;
     -fx-border-width: 0 !important;
     -fx-focus-color: transparent !important;
     -fx-faint-focus-color: transparent !important;
-}
-
-#textLabel {
-    -fx-text-fill: white !important;
-}
-
-#labelFromFriendTransactionCloud{
-    -fx-text-fill: white !important;
-}
-
-#notificationAnchorPane {
-    -fx-border-color: #595959 !important;
-}
-
-#textFieldFriendshipRequestPopupU,
-#textFieldFriendshipRequestPopupE,
-#textFieldFriendshipRequestPopupN{
-    -fx-border-color: #333333 !important;
 }
 
 
 /* ==========================================================
    DATE PICKER
    ========================================================== */
-
-/* --- PARTE 1: COMPONENTE ESTERNO (Input e Bottone) --- */
 .date-picker {
     -fx-background-color: #3a3a3a !important;
     -fx-background-radius: 6 !important;
     -fx-border-color: #595959 !important;
     -fx-border-radius: 6 !important;
     -fx-background-insets: 0 !important;
-
 }
 
 .date-picker > .text-field {
     -fx-background-color: transparent !important;
     -fx-text-fill: white !important;
     -fx-border-color: transparent !important;
-
 }
 
 .date-picker > .arrow-button {
@@ -604,14 +218,12 @@
     -fx-background-color: white !important;
 }
 
-/* --- PARTE 2: POPUP (Calendario Interno) --- */
 .date-picker-popup {
     -fx-background-color: #3a3a3a;
     -fx-border-color: #555555;
     -fx-border-width: 1px;
 }
 
-/* Header Rosso */
 .date-picker-popup .month-year-pane {
     -fx-background-color: #ff0000;
     -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10);
@@ -627,50 +239,42 @@
     -fx-background-color: white !important;
 }
 
-/* Griglia - Rimossa la spaziatura che allargava il picker */
 .date-picker-popup .calendar-grid {
     -fx-background-color: #3a3a3a !important;
     -fx-padding: 0;
 }
 
-/* Nomi dei giorni (Lun, Mar...) */
 .date-picker-popup .day-name-cell {
     -fx-text-fill: #bdbdbd !important;
     -fx-background-color: #3a3a3a;
 }
 
-/* Celle dei giorni numerici - Creazione della griglia visibile */
 .date-picker-popup .day-cell {
     -fx-background-color: #4a4a4a;
     -fx-text-fill: white;
-    -fx-border-color: #2a2a2a; /* Crea il contrasto della griglia come nel bianco */
+    -fx-border-color: #2a2a2a;
     -fx-border-width: 0.5px;
 }
 
-/* Rimozione blocchetti bianchi a sinistra (Settimane) */
 .date-picker-popup .week-number-cell {
-    -fx-background-color: #3a3a3a !important; /* Forza lo sfondo scuro */
+    -fx-background-color: #3a3a3a !important;
     -fx-text-fill: #bdbdbd !important;
     -fx-border-color: #3a3a3a;
     -fx-border-width: 0.5px;
 }
 
-/* Giorno Oggi */
 .date-picker-popup .today {
     -fx-text-fill: #ff0000 !important;
     -fx-font-weight: bold !important;
     -fx-background-insets: 0 !important;
 }
 
-
-/* Giorni fuori dal mese */
 .date-picker-popup .previous-month,
 .date-picker-popup .next-month {
     -fx-background-color: #3a3a3a;
     -fx-text-fill: #666666 !important;
 }
 
-/* Hover */
 .date-picker-popup .day-cell:hover {
     -fx-background-color: #4a4a4a;
     -fx-text-fill: white !important;
@@ -680,7 +284,7 @@
 .date-picker-popup .month-year-pane .button:focused,
 .date-picker-popup .month-year-pane .button:hover,
 .date-picker-popup .month-year-pane .button:armed {
-    -fx-background-color: transparent !important; /* Rende il corpo del bottone invisibile */
+    -fx-background-color: transparent !important;
     -fx-background-insets: 0 !important;
     -fx-background-radius: 0 !important;
 }
@@ -688,24 +292,27 @@
 .date-picker-popup .day-cell,
 .date-picker-popup .week-number-cell,
 .date-picker-popup .day-name-cell {
-    -fx-pref-width: 30px !important;  /* Larghezza perfetta per non stringere i numeri */
-    -fx-pref-height: 34px !important; /* Altezza standard nativa */
+    -fx-pref-width: 30px !important;
+    -fx-pref-height: 34px !important;
     -fx-max-width: 30px !important;
     -fx-max-height: 34px !important;
     -fx-min-width: 30px !important;
     -fx-min-height: 24px !important;
 }
 
-/* 2. Blocca l'altezza totale della griglia (7 righe totali da 24px ciascuna) */
 .date-picker-popup .calendar-grid {
     -fx-pref-height: 180px !important;
     -fx-max-height: 180px !important;
     -fx-min-height: 180px !important;
 }
 
+
 /* ==========================================================
    WIDGET
    ========================================================== */
+#bankAccountImageView{
+    -fx-effect: innershadow(three-pass-box, white, 100, 1, 0, 0);
+}
 
 #bankAccountRegion{
     -fx-background-color: #595959 !important;
@@ -756,7 +363,6 @@
 /* ==========================================================
    POPUP
    ========================================================== */
-
 #accountPopupRoot{
     -fx-background-color: #4a4a4a !important;
     -fx-background-radius: 20 !important;
@@ -787,7 +393,8 @@
 }
 
 
-#AddWidget01GridPane{
+#addWidget01GridPane,
+#addWidget02GridPane{
     -fx-background-color: #595959 !important;
 }
 
@@ -801,8 +408,7 @@
     -fx-background-radius: 15 !important;
 }
 
-#monthlyBalanceTitleGridPane,
-#addWidget01GridPane{
+#monthlyBalanceTitleGridPane{
     -fx-border-color: white !important;
 }
 
@@ -833,7 +439,6 @@
 
 #root,
 #addWidget02VBox,
-#addWiget02GridPane,
 #addWidget11GridPane,
 #addWidget12GridPane,
 #addWidget11VBox,
@@ -847,8 +452,7 @@
 
 #nameTextField,
 #ibanTextField,
-#amountTextField,
-#noteTextField{
+#amountTextField{
     -fx-text-fill: white !important;
     -fx-prompt-text-fill: #bdbdbd !important;
     -fx-background-radius: 7 !important;
@@ -859,7 +463,7 @@
 #bankTransferPopupLabel2,
 #bankTransferPopupButton {
     -fx-text-fill: #ff0000 !important;
-    -fx-effect: dropshadow(gaussian, rgba(120, 0, 0, 0.30), 5, 0.15, 0, 1);
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.15), 27.65, 0.17, -10.0, -10.0) !important;
 }
 
 #wouldYouLikeToBlockLabel{
@@ -877,6 +481,7 @@
     -fx-border: #595959 !important;
 }
 
+
 #chatSupportAnchorPane,
 #chatDisplay {
     -fx-background-color: #595959 !important;
@@ -887,4 +492,288 @@
     -fx-text-fill: white !important;
     -fx-prompt-text-fill: #8a8a8a !important;
     -fx-border-color: #333333 !important;
+}
+
+#confirmAddMoneyPopupTextField{
+    -fx-background-color: #ff0000 !important;
+    -fx-border-color: #ff0000 !important;
+}
+
+#friendshipRequestPopupAnchorPane,
+#confirmAddMoneyPopupAnchorPane,
+#cardPopupAnchorPane{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#errorLabel{
+   -fx-text-fill: #ff0000 !important;
+   -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.15), 27.65, 0.17, -10.0, -10.0) !important;
+}
+
+#menageCardPopupAnchorPane,
+#friendshipNotifyAnchorPane {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#menageCardPopupLabel {
+    -fx-text-fill: white !important;
+}
+
+#paymentRequestAnchorPane {
+    -fx-background-color: #4a4a4a !important;
+    -fx-border-color: white !important;
+}
+
+#moneyLabel,
+#friendshipUsernameLabel{
+     -fx-text-fill: white !important;
+}
+
+#rootPane{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#searchByUsernameField,
+#searchByEmailField,
+#searchByPhoneNumberField {
+         -fx-background-color: #3a3a3a !important;
+         -fx-border-color: transparent !important;
+         -fx-text-fill: white !important;
+         -fx-prompt-text-fill: #bdbdbd !important;
+}
+
+#accountAccountPopupLabel {
+    -fx-text-fill: #E0E0E0 !important;
+}
+
+#bankTransferGridPane,
+#confirmAddMoneyAnchorPane{
+    -fx-background-color: #3c3c3c !important;
+}
+
+#closeMenageCardPopup{
+    -fx-text-fill: white !important;
+}
+
+
+/* ==========================================================
+   COMPONENT
+   ========================================================== */
+#sidebarGridPane {
+    -fx-background-color: #595959 !important;
+}
+
+#cardNumberLabel,
+#cardExpirationLabel{
+    -fx-text-fill: black !important;
+}
+
+#rectangleAnchorPane {
+    -fx-background-color: gray !important;
+}
+
+#creditCardRectangleText{
+    -fx-fill: white !important;
+}
+
+#friendAnchorPane{
+    -fx-border-color: white !important;
+}
+
+#textLabel {
+    -fx-text-fill: white !important;
+}
+
+#notificationAnchorPane {
+    -fx-border-color: white !important;
+}
+
+#notificationSliderAnchorPane{
+    -fx-border-color: #595959 !important;
+    -fx-border-width: 0 0 0 1 !important;
+}
+
+#notificationSliderVBox{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#notificationVBox{
+    -fx-background-color: #4a4a4a !important;
+}
+
+#sidebarLine1,
+#sidebarLine2 {
+    -fx-stroke: white !important;
+}
+
+#transactionGridPane{
+    -fx-border-color: white !important;
+}
+
+#cardCreditLabel,
+#cardNicknameLabel{
+    -fx-text-fill: black !important;
+}
+
+#notificationVBox{
+    -fx-background-color: #4a4a4a !important;
+}
+
+
+/* ==========================================================
+   PAGE
+   ========================================================== */
+   #addAccountMoneyAnchorPane,
+   #addAccountMoneyPageGridPane,
+   #rootBankSettingPageGridPane{
+       -fx-background-color: #3c3c3c !important;
+   }
+
+   #pageSeparator {
+       -fx-opacity: 1 !important;
+       -fx-background-color: transparent !important;
+       -fx-pref-height: 4px !important;
+       -fx-min-height: 4px !important;
+   }
+
+   #pageSeparator .line {
+       -fx-padding: 0 !important;
+       -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+       -fx-background-insets: 0 !important;
+       -fx-border-width: 0 !important;
+       -fx-stroke-width: 0 !important;
+       -fx-pref-height: 4px !important;
+       -fx-min-height: 4px !important;
+   }
+
+#bankAccountSettingsPageLabel {
+
+       -fx-text-fill: linear-gradient(to bottom,
+           #ff6666 0%,
+           #ff0000 45%,
+           #e60000 100%
+       ) !important;
+
+}
+
+
+
+#bankAccountSettingsPageCheckBox,
+#bankAccountSettingsPageCheckBox .label,
+#bankAccountSettingsPageCheckBox .text {
+    -fx-text-fill: white !important;
+}
+
+#bankAccountSettingsPageCheckBox .box {
+    -fx-border-width: 1 !important;
+    -fx-border-color: #5a5a5a  !important;
+    -fx-background-color: white !important;
+    -fx-background-radius: 3 !important;
+}
+
+#bankAccountSettingsPageCheckBox:selected .box {
+    -fx-background-color: #ff0000 !important;
+    -fx-background-insets: 0 !important;
+    -fx-background-radius: 3px !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10) !important;
+}
+
+#bankAccountSettingsPageCheckBox .mark {
+    -fx-background-color: transparent !important;
+    -fx-shape: "M1.23,6.32 L3.58,8.67 L8.77,3.48 L9.71,4.42 L3.58,10.55 L0.29,7.26 Z" !important;
+    -fx-background-insets: 0 !important;
+}
+
+#bankAccountSettingsPageCheckBox:selected .mark {
+    -fx-background-color: white !important;
+}
+
+#bankAccountSettingsPageCheckBox:focused .box {
+    -fx-faint-focus-color: transparent !important;
+    -fx-focus-color: transparent !important;
+}
+
+#bankAccountSettingsPageGridPane {
+    -fx-background-color: #595959 !important;
+}
+
+#bankAccountSettingsPageButton{
+    -fx-background-color: #4a4a4a !important;
+    -fx-text-fill: white !important;
+}
+
+#darkAppleButton, #darkGoogleButton{
+    visibility: true !important;
+}
+
+#whiteAppleButton, #whiteGoogleButton {
+    visibility: false !important;
+}
+
+#cardPageAnchorPane{
+    -fx-background-color: #3c3c3c !important;
+}
+
+#friendsGridPane,
+#friendsPageAnchorPane {
+    -fx-background-color: #4a4a4a !important;
+}
+
+#friendsScrollPane{
+    -fx-background-color: #4a4a4a !important;
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+}
+
+#friendsVBox {
+     -fx-background-color: #4a4a4a !important;
+ }
+
+ #regionFriend{
+     -fx-background-color: #4a4a4a !important;
+ }
+
+#friendsSearchBar,
+#noteTextField, #moneyTextField {
+    -fx-background-color: #3a3a3a !important;
+    -fx-text-fill: white !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-border-color: #333333 !important;
+}
+
+#chatAnchorPane {
+    -fx-background-color: #595959 !important;
+}
+
+#chatScrollPane {
+    -fx-background-color: #595959 !important;
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+}
+
+#chatVBox {
+    -fx-background-color: #595959 !important;
+}
+
+#regionChat {
+    -fx-border-color: #595959 !important;
+    -fx-background-color: #4a4a4a !important;
+    -fx-border-width: 2 !important;
+}
+
+#transactionHistoryAnchorPane,
+#homePageGridPane {
+    -fx-background-color: #3c3c3c !important;
+}
+
+#optionAddMoneyGridPane{
+    -fx-background-color:  #595959 !important;
 }

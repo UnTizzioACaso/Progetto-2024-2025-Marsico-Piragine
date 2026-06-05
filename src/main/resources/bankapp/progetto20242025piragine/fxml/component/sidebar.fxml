@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 
-<GridPane fx:id="sidebarGridPane" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="30.0" prefHeight="398.0" prefWidth="85.0" style="-fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.SidebarController">
+<GridPane fx:id="sidebarGridPane" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="30.0" prefHeight="398.0" prefWidth="85.0" style="-fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.SidebarController">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="85.0" minWidth="0.0" prefWidth="80.0" />
     </columnConstraints>
@@ -70,12 +70,12 @@
                 </InnerShadow>
             </effect>
         </Button>
-        <Line endX="-6.498425483703613" endY="-0.2070990949869156" startX="-72.92466735839844" startY="-0.20710445940494537" stroke="#4b4b4b" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+        <Line fx:id="sidebarLine1" endX="-6.498425483703613" endY="-0.2070990949869156" startX="-72.92466735839844" startY="-0.20710445940494537" stroke="#4b4b4b" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
             <GridPane.margin>
                 <Insets bottom="10.0" />
             </GridPane.margin>
         </Line>
-        <Line endX="-6.498425483703613" endY="-0.2070990949869156" fill="#848484" startX="-72.92466735839844" startY="-0.20710445940494537" stroke="#4b4b4b" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+        <Line fx:id="sidebarLine2" endX="-6.498425483703613" endY="-0.2070990949869156" fill="#848484" startX="-72.92466735839844" startY="-0.20710445940494537" stroke="#4b4b4b" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
             <GridPane.margin>
                 <Insets top="10.0" />
             </GridPane.margin>

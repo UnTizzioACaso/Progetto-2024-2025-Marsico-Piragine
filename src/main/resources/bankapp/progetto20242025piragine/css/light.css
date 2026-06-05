@@ -1,25 +1,98 @@
-/* ================= ROOT ================= */
+/* ==========================================================
+   ROOT / CONTROLLI GENERALI
+   ========================================================== */
 
 .root {
     -fx-background-color: white !important;
 }
 
+.button {
+    -fx-text-fill: white;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    -fx-border-color: #d9d9d9;
+}
+
+.context-menu .label {
+    -fx-text-fill: black;
+}
+
+.separator {
+    -fx-opacity: 1 !important;
+}
+
+Line {
+    -fx-stroke: #595959 !important;
+}
+
+.menu-button .arrow {
+    -fx-background-color: white !important;
+}
+
+.menu-button:hover .arrow {
+    -fx-background-color: #f0f0f0 !important;
+}
+
+.text-field {
+    -fx-background-color: white !important;
+    -fx-text-fill: black !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #c0c0c0 ;
+    -fx-border-width: 1 !important;
+    -fx-border-radius: 10 ;
+}
+
+.text-field:focused {
+    -fx-background-color: white !important;
+    -fx-text-fill: black !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-border-width: 1 !important;
+    -fx-background-insets: 0 !important;
+}
+
+.check-box > .box {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 2px !important;
+}
+
+.check-box:focused > .box {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+}
+
+.radio-button > .radio {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 10px !important;
+}
+
+.radio-button:focused > .radio {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+}
+
+.text-input {
+    -fx-highlight-fill: red;
+    -fx-highlight-text-fill: white;
+}
+
 /* ==========================================================
-   SCROLLBAR UNIFICATE (TUTTI I COMPONENTI)
+   SCROLLBAR E SCROLLPANE UNIFICATE (TUTTI I COMPONENTI)
    ========================================================== */
 
 .scroll-bar {
     -fx-background-color: transparent !important;
 }
-
-#darkAppleButton, #darkGoogleButton{
-    visibility: false ;
-}
-
-#whiteAppleButton, #whiteGoogleButton {
-    visibility: true ;
-}
-
 
 
 .scroll-bar .track {
@@ -61,10 +134,6 @@
     -fx-padding: 0 15 0 15 !important;
 }
 
-/* ==========================================================
-   CONFIGURAZIONE SCROLLPANE SPECIFICI
-   ========================================================== */
-
 .scroll-pane {
     -fx-background-color:  #e4e4e4 !important;
     -fx-padding: 0 !important;
@@ -75,53 +144,19 @@
     -fx-background-color: transparent !important;
 }
 
-/* ==========================================================
-   GESTIONE COLORI E CONTRASTO (EFFETTO BORDINO)
-   ========================================================== */
-
-/* PARTE SINISTRA: Bianca */
-#scrollPaneFriends,
-#gridPaneFriends,
-#AnchorPaneFriendsPage,
-#regionFriend,
-#friendsVBox {
-    -fx-background-color: white !important;
-}
-
-/* PARTE DESTRA: Grigia (Il contrasto con il bianco crea il "bordino") */
-#anchorPaneChat,
-#scrollPaneChat,
-#chatVBox {
+#favouritesCardScrollPane {
     -fx-background-color: #e4e4e4 !important;
 }
 
-
-#eyeButton {
-    -fx-text-fill: black !important;
-}
-
-/* ==========================================================
-   BUTTON E MENU
-   ========================================================== */
-
-.button {
-    -fx-text-fill: white;
-}
-
-.context-menu {
-    -fx-background-color: white;
-    -fx-border-color: #d9d9d9;
-}
-
-.context-menu .label {
-    -fx-text-fill: black;
+#favouritesCardScrollPane .scroll-bar:horizontal {
+    -fx-padding: 0 15 0 15 !important;
+    -fx-background-color: transparent !important;
 }
 
 /* ==========================================================
    DATE PICKER
    ========================================================== */
 
-/* Il container principale non deve avere bordi o sfondi nativi che fanno conflitto */
 .date-picker {
     -fx-background-color: transparent !important;
     -fx-border-color: transparent !important;
@@ -129,32 +164,22 @@
     -fx-border-width: 0 !important;
 }
 
-/* 1. APPLICA IL BORDO GRIGIO E ARROTONDA SOLO A SINISTRA */
 .date-picker > .text-field,
 .date-picker > .text-field:focused {
     -fx-background-color: white !important;
     -fx-text-fill: black !important;
     -fx-background-insets: 0 !important;
-
-    /* Applica il bordo grigio solo sui lati Top, Left e Bottom */
     -fx-border-color: #c0c0c0 transparent #c0c0c0 #c0c0c0 !important;
     -fx-border-width: 1px !important;
-
-    /* Arrotonda l'angolo in alto a sinistra (6px) e in basso a sinistra (6px) */
     -fx-background-radius: 6px 0 0 6px !important;
     -fx-border-radius: 6px 0 0 6px !important;
 }
 
-/* 2. BOTTONE ROSSO: ARROTONDA SOLO A DESTRA E CHIUDE IL BORDO GRIGIO */
 .date-picker > .arrow-button {
     -fx-background-color: #ff0000 !important;
     -fx-background-insets: 0 !important;
-
-    /* Continua il bordo grigio sui lati Top, Right e Bottom per chiudere il rettangolo */
     -fx-border-color: #c0c0c0 #c0c0c0 #c0c0c0 transparent !important;
     -fx-border-width: 1px !important;
-
-    /* Arrotonda l'angolo in alto a destra (6px) e in basso a destra (6px) */
     -fx-background-radius: 0 6px 6px 0 !important;
     -fx-border-radius: 0 6px 6px 0 !important;
 
@@ -172,8 +197,6 @@
     -fx-background-color: white !important;
 }
 
-
-/* --- STRUTTURA POPUP CALENDARIO --- */
 .date-picker-popup .month-year-pane {
     -fx-background-color: #ff0000;
     -fx-effect: innershadow(
@@ -205,12 +228,10 @@
     -fx-text-fill: black !important;
 }
 
-/* Stile per i numeri della settimana (colonna sinistra) */
 .date-picker-popup .week-number-cell {
     -fx-text-fill: black !important;
 }
 
-/* Assicuriamoci che la griglia non abbia spazi strani */
 .date-picker-popup .calendar-grid {
     -fx-background-color: white !important;
 }
@@ -221,8 +242,6 @@
     -fx-background-insets: 0 !important;
 }
 
-
-/* --- FIX REALE: IN JAVAFX SI USA .date-cell, NON .day-cell PER IL SELECTED --- */
 .date-picker-popup .date-cell:selected {
     -fx-background-color: #ff0000 !important;
     -fx-text-fill: white !important;
@@ -237,7 +256,6 @@
     ) !important;
 }
 
-/* Forza il colore base per i giorni normali */
 .date-picker-popup .day-cell {
     -fx-background-color: white;
     -fx-text-fill: black;
@@ -249,401 +267,33 @@
     -fx-background-insets: 0 !important;
 }
 
-/* Blocca l'eventuale cambio colore interno di JavaFX */
 .date-picker-popup .day-cell:focused {
     -fx-background-color: white !important;
 }
 
-/* GIORNI FUORI MESE (Più scuri) */
 .date-picker-popup .previous-month,
 .date-picker-popup .next-month {
     -fx-background-color: #f2f2f2 !important;
     -fx-text-fill: #b0b0b0 !important;
 }
 
-/* 1. Blocca l'altezza minima e massima delle celle dei giorni */
 .date-picker-popup .day-cell,
 .date-picker-popup .week-number-cell,
 .date-picker-popup .day-name-cell {
-    -fx-pref-width: 30px !important;  /* Larghezza perfetta per non stringere i numeri */
-    -fx-pref-height: 34px !important; /* Altezza standard nativa */
+    -fx-pref-width: 30px !important;
+    -fx-pref-height: 34px !important;
     -fx-max-width: 30px !important;
     -fx-max-height: 34px !important;
     -fx-min-width: 30px !important;
     -fx-min-height: 24px !important;
 }
 
-/* 2. Blocca l'altezza totale della griglia (7 righe totali da 24px ciascuna) */
 .date-picker-popup .calendar-grid {
     -fx-pref-height: 180px !important;
     -fx-max-height: 180px !important;
     -fx-min-height: 180px !important;
 }
-/* ==========================================================
-   ROOT E VARIEF
-   ========================================================== */
 
-
-
-.separator {
-    -fx-opacity: 1 !important;
-}
-
-Line {
-    -fx-stroke: #595959 !important;
-}
-
-#regionChat {
-    -fx-border-color: #e4e4e4 !important;
-    -fx-background-color: white !important;
-    -fx-border-width: 2 !important;
-}
-
-/* ================= FAVOURITES SCROLLPANE ================= */
-
-#favouritesCardScrollPane {
-    -fx-background-color: #e4e4e4 !important;
-}
-
-#favouritesCardScrollPane .scroll-bar:horizontal {
-    -fx-padding: 0 15 0 15 !important;
-    -fx-background-color: transparent !important;
-}
-
-
-
-#gridPaneTransictionHistory{
-    -fx-background-color: #e4e4e4 !important;
-}
-
-
-/* Seleziona la freccetta all'interno di tutti i MenuButton */
-.menu-button .arrow {
-    -fx-background-color: white !important;
-}
-
-/* Opzionale: se vuoi cambiare colore anche quando ci passi sopra col mouse */
-.menu-button:hover .arrow {
-    -fx-background-color: #f0f0f0 !important;
-}
-
-#label1BankAccountSettingsPage,
-#label2BankAccountSettingsPage,
-#label3BankAccountSettingsPage {
-
-    -fx-text-fill: linear-gradient(to bottom,
-        #ff6666 0%,
-        #ff0000 45%,
-        #e60000 100%
-    ) !important;
-
-    -fx-effect: null !important
-}
-
-
-#separatorBankAccountSettingsPage {
-    -fx-opacity: 1 !important;
-    -fx-background-color: transparent !important;
-    /* Forza l'altezza di tutto il componente */
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-}
-
-#separatorBankAccountSettingsPage .line {
-    /* Fondamentale: togliamo il padding che schiaccia la linea */
-    -fx-padding: 0 !important;
-
-    /* Gradiente e reset bordi (il tuo codice) */
-    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-width: 0 !important;
-    -fx-stroke-width: 0 !important; /* Rimuovi lo stroke che blocca lo spessore */
-
-    /* Forza la linea a riempire tutto lo spazio dei 10px */
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-
-}
-
-/* 1. TESTO DEL CHECKBOX: Lo impostiamo NERO */
-#checkBoxBankAccountSettingsPage,
-#checkBoxBankAccountSettingsPage .label,
-#checkBoxBankAccountSettingsPage .text {
-    -fx-text-fill: black !important;
-}
-
-/* 2. IL QUADRATINO (BOX) - STATO NON SELEZIONATO (Bianco con bordo) */
-#checkBoxBankAccountSettingsPage .box {
-    -fx-border-width: 1 !important;
-    -fx-border-color: #5a5a5a  !important;
-    -fx-background-color: white !important;
-    -fx-background-radius: 3 !important;
-}
-
-/* 3. IL QUADRATINO (BOX) - STATO SELEZIONATO (Rosso Maze Bank) */
-#checkBoxBankAccountSettingsPage:selected .box {
-    -fx-background-color: #ff0000 !important;
-    -fx-background-insets: 0 !important;
-    -fx-background-radius: 3px !important;
-    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10) !important;
-}
-
-/* 4. LA SPUNTA (MARK) */
-#checkBoxBankAccountSettingsPage .mark {
-    /* Invisibile di default per evitare il pallino */
-    -fx-background-color: transparent !important;
-    -fx-shape: "M1.23,6.32 L3.58,8.67 L8.77,3.48 L9.71,4.42 L3.58,10.55 L0.29,7.26 Z" !important;
-    -fx-background-insets: 0 !important;
-}
-
-/* Quando CLICCATO: la V appare bianca sul quadratino rosso */
-#checkBoxBankAccountSettingsPage:selected .mark {
-    -fx-background-color: white !important;
-}
-
-/* 5. FIX FOCUS (Evita che diventi azzurro al click) */
-#checkBoxBankAccountSettingsPage:focused .box {
-    -fx-faint-focus-color: transparent !important;
-    -fx-focus-color: transparent !important;
-}
-
-
-/*
-#vBoxAddWidget02,
-#vBoxAddWidget11,
-*/
-#vBoxAddWidget12{
-    -fx-background-color: white !important;
-}
-
-#closeAccountPopup{
-    -fx-text-fill: #696969 !important;
-}
-
-#closeCreateCardPopup{
-    -fx-text-fill: #696969 !important;
-}
-
-.text-field {
-    -fx-background-color: white !important;
-    -fx-text-fill: black !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #c0c0c0 ;
-    -fx-border-width: 1 !important;
-    -fx-border-radius: 10 ;
-}
-
-
-/* Quando clicchi dentro */
-.text-field:focused {
-
-    -fx-background-color: white !important;
-    -fx-text-fill: black !important;
-
-    -fx-focus-color: transparent !important;
-    -fx-faint-focus-color: transparent !important;
-
-    /*-fx-border-color: #ff0000 !important;*/
-    -fx-border-width: 1 !important;
-
-    -fx-background-insets: 0 !important;
-}
-
-#closeFriendshipRequestPopup{
-    -fx-text-fill: #696969 !important;
-}
-
-
-
-
-
-/* --- CHECK BOX --- */
-/* Stato normale: definiamo il bordo */
-.check-box > .box {
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important; /* Grigio standard */
-    -fx-border-width: 1px !important;
-    -fx-border-radius: 2px !important;
-}
-
-/* Stato premuto: manteniamo lo stesso bordo */
-.check-box:focused > .box {
-    -fx-focus-color: transparent !important;
-    -fx-faint-focus-color: transparent !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important; /* Fondamentale per non farlo sparire */
-}
-
-/* --- RADIO BUTTON --- */
-/* Stato normale */
-.radio-button > .radio {
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important;
-    -fx-border-width: 1px !important;
-    -fx-border-radius: 10px !important; /* Lo rende tondo */
-}
-
-/* Stato premuto */
-.radio-button:focused > .radio {
-    -fx-focus-color: transparent !important;
-    -fx-faint-focus-color: transparent !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-color: #bababa !important;
-}
-
-#textFieldChatSupport{
-    -fx-prompt-text-fill: #8a8a8a !important;
-}
-
-
-#notificationVBox{
-    -fx-background-color: white !important;
-}
-#vBoxNotificationSlider{
-    -fx-background-color: white !important;
-}
-
-#notificationSliderAnchorPane{
-    -fx-border-color: #e4e4e4 !important;
-    -fx-border-width: 0 0 0 1 !important;
-}
-
-
-#closeMenageCardPopup{
-    -fx-text-fill: #696969 !important;
-}
-
-.text-input {
-    -fx-highlight-fill: red;
-    -fx-highlight-text-fill: white;
-}
-
-#scrollPaneFriends,
-#chatScrollPane {
-    -fx-background-insets: 0 !important;
-    -fx-padding: 0 !important;
-    -fx-border-color: transparent !important;
-    -fx-border-width: 0 !important;
-    -fx-focus-color: transparent !important;
-    -fx-faint-focus-color: transparent !important;
-}
-
-#textLabel {
-    -fx-text-fill: white !important;
-}
-
-#labelFromFriendTransactionCloud{
-    -fx-text-fill: white !important;
-}
-
-#notificationAnchorPane {
-    -fx-border-color: #595959 !important;
-}
-
-#transactionValueLabel{
-    -fx-text-fill: red !important;
-}
-
-#transactionSubjectLabel,
-#TransactionDateLabel{
-    -fx-text-fill: black !important;
-}
-
-#labelBankTransferPopup{
-    -fx-text-fill: #ff0000 !important;
-}
-
-#textCreditCardRectangle{
-    -fx-fill: black !important;
-}
-
-
-#separatorBankTransferPopup {
-    -fx-opacity: 1 !important;
-    -fx-background-color: transparent !important;
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-}
-
-#separatorBankTransferPopup .line {
-    -fx-padding: 0 !important;
-
-    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-width: 0 !important;
-    -fx-stroke-width: 0 !important;
-
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-
-}
-
-#separatorCardPage {
-    -fx-opacity: 1 !important;
-    -fx-background-color: transparent !important;
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-}
-
-#separatorCardPage .line {
-    -fx-padding: 0 !important;
-
-    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-width: 0 !important;
-    -fx-stroke-width: 0 !important;
-
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-
-}
-
-
-#ownerNameTextField,
-#cardNumberTextField,
-#cardNumberTextField,
-#expirationTextField,
-#cvvTextField,
-#MoneyTextField{
-    -fx-background-radius: 10 !important;
-    -fx-border-radius: 10 !important;
-}
-
-#separatorAddAccountMoneyPage {
-    -fx-opacity: 1 !important;
-    -fx-background-color: transparent !important;
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-}
-
-#separatorAddAccountMoneyPage .line {
-    -fx-padding: 0 !important;
-
-    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
-    -fx-background-insets: 0 !important;
-    -fx-border-width: 0 !important;
-    -fx-stroke-width: 0 !important;
-    -fx-pref-height: 4px !important;
-    -fx-min-height: 4px !important;
-
-}
-
-#addAccountMoneyPageTextField{
-    -fx-background-radius: 10 !important;
-    -fx-border-radius: 10 !important;
-    -fx-background-color: #ff0000 !important;
-    -fx-border-color: #ff0000 !important;
-    -fx-text-fill: white !important;
-}
-
-#closeAddAccountMoneyPopup{
-    -fx-text-fill: #5a5a5a !important;
-}
-
-#transactionHistoryTextField {
-    -fx-border-color: transparent !important;
-    -fx-border-radius: 15 !important;
-}
 
 /* ==========================================================
    POPUP
@@ -654,7 +304,7 @@ Line {
     -fx-background-color: white !important;
 }
 
-#AddWidget01GridPane .label {
+#addWidget01GridPane .label {
     -fx-text-fill: white;
 }
 
@@ -662,8 +312,7 @@ Line {
     -fx-text-fill: black !important;
 }
 
-#transationHistoryTextField
-{
+#transactionHistoryTextField {
     -fx-background-radius: 15 !important;
     -fx-border-radius: 15 !important;
     -fx-border-color: transparent !important;
@@ -671,12 +320,9 @@ Line {
 
 #nameTextField,
 #ibanTextField,
-#amountTextField,
-#noteTextField{
-    -fx-background-color: #e4e4e4 !important;
+#amountTextField{
     -fx-background-radius: 7 !important;
     -fx-border-radius: 7 !important;
-    -fx-border-color: transparent !important;
 }
 
 #anchorPaneBlockUserPopup{
@@ -694,4 +340,212 @@ Line {
 
 #confirmAddMoneyPopupTextField{
     -fx-background-color: #ff0000 !important;
+    -fx-border-color: #ff0000 !important;
+}
+
+#spendingLimitTextField {
+    -fx-background-color: #595959 ;
+    -fx-text-fill: white ;
+    -fx-prompt-text-fill: #bdbdbd ;
+    -fx-border-radius: 10 ;
+}
+
+#closeAccountPopup{
+    -fx-text-fill: #696969 !important;
+}
+
+#closeCreateCardPopup{
+    -fx-text-fill: #696969 !important;
+}
+
+#closeFriendshipRequestPopup{
+    -fx-text-fill: #696969 !important;
+}
+
+#closeAddAccountMoneyPopup{
+    -fx-text-fill: #5a5a5a !important;
+}
+
+#transactionHistoryTextField {
+    -fx-border-color: transparent !important;
+    -fx-border-radius: 15 !important;
+}
+
+#textFieldChatSupport{
+    -fx-prompt-text-fill: #8a8a8a !important;
+}
+
+#closeMenageCardPopup{
+    -fx-text-fill: #696969 !important;
+}
+
+/* ==========================================================
+   COMPONENT
+   ========================================================== */
+
+#creditCardRectangleText{
+    -fx-fill: black !important;
+}
+
+#textLabel {
+    -fx-text-fill: white !important;
+}
+
+#notificationAnchorPane {
+    -fx-border-color: #595959 !important;
+}
+
+#notificationSliderAnchorPane{
+    -fx-border-color: #e4e4e4 !important;
+    -fx-border-width: 0 0 0 1 !important;
+}
+
+#notificationSliderVBox{
+    -fx-background-color: white !important;
+}
+
+#notificationVBox{
+    -fx-background-color: white !important;
+}
+
+#transactionSubjectLabel,
+#transactionDateLabel{
+    -fx-text-fill: black !important;
+}
+
+#transactionValueLabel{
+    -fx-text-fill: red !important;
+}
+
+#addAccountMoneyPageLabel{
+    -fx-text-fill: black !important;
+}
+
+/* ==========================================================
+   PAGE
+   ========================================================== */
+
+   #bankAccountSettingsPageLabel {
+
+       -fx-text-fill: linear-gradient(to bottom,
+           #ff6666 0%,
+           #ff0000 45%,
+           #e60000 100%
+       ) !important;
+
+   }
+
+
+#bankAccountSettingsPageCheckBox,
+#bankAccountSettingsPageCheckBox .label,
+#bankAccountSettingsPageCheckBox .text {
+    -fx-text-fill: black !important;
+}
+
+#bankAccountSettingsPageCheckBox .box {
+    -fx-border-width: 1 !important;
+    -fx-border-color: #5a5a5a  !important;
+    -fx-background-color: white !important;
+    -fx-background-radius: 3 !important;
+}
+
+#bankAccountSettingsPageCheckBox:selected .box {
+    -fx-background-color: #ff0000 !important;
+    -fx-background-insets: 0 !important;
+    -fx-background-radius: 3px !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10) !important;
+}
+
+#bankAccountSettingsPageCheckBox .mark {
+    -fx-background-color: transparent !important;
+    -fx-shape: "M1.23,6.32 L3.58,8.67 L8.77,3.48 L9.71,4.42 L3.58,10.55 L0.29,7.26 Z" !important;
+    -fx-background-insets: 0 !important;
+}
+
+#bankAccountSettingsPageCheckBox:selected .mark {
+    -fx-background-color: white !important;
+}
+
+#bankAccountSettingsPageCheckBox:focused .box {
+    -fx-faint-focus-color: transparent !important;
+    -fx-focus-color: transparent !important;
+}
+
+#darkAppleButton, #darkGoogleButton{
+    visibility: false ;
+}
+
+#whiteAppleButton, #whiteGoogleButton {
+    visibility: true ;
+}
+
+#pageSeparator {
+       -fx-opacity: 1 !important;
+       -fx-background-color: transparent !important;
+       -fx-pref-height: 4px !important;
+       -fx-min-height: 4px !important;
+   }
+
+   #pageSeparator .line {
+       -fx-padding: 0 !important;
+       -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+       -fx-background-insets: 0 !important;
+       -fx-border-width: 0 !important;
+       -fx-stroke-width: 0 !important;
+       -fx-pref-height: 4px !important;
+       -fx-min-height: 4px !important;
+   }
+
+#friendsScrollPane{
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+}
+
+#chatAnchorPane {
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#chatScrollPane {
+    -fx-background-insets: 0 !important;
+    -fx-padding: 0 !important;
+    -fx-border-color: transparent !important;
+    -fx-border-width: 0 !important;
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+}
+
+#chatVBox {
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#regionChat {
+    -fx-border-color: #e4e4e4 !important;
+    -fx-background-color: white !important;
+    -fx-border-width: 2 !important;
+}
+
+#eyeButton {
+    -fx-text-fill: black !important;
+}
+
+#ownerNameTextField,
+#cardNumberTextField,
+#cardNumberTextField,
+#expirationTextField,
+#cvvTextField,
+#moneyTextField{
+    -fx-background-radius: 10 !important;
+    -fx-border-radius: 10 !important;
+}
+
+#addAccountMoneyPageTextField{
+    -fx-background-radius: 10 !important;
+    -fx-border-radius: 10 !important;
+    -fx-background-color: #ff0000 !important;
+    -fx-border-color: #ff0000 !important;
+    -fx-text-fill: white !important;
 }

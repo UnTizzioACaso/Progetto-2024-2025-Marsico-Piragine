@@ -20,7 +20,7 @@
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label fx:id="TransactionDateLabel" text="30 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label fx:id="transactionDateLabel" text="30 novembre" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="-3.0" />
          </GridPane.margin>

@@ -50,9 +50,9 @@
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
-            <Button id="buttonBankAccount" fx:id="accountSettingsButton" minWidth="35.0" mnemonicParsing="false" onAction="#openAccountSettings" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: transparent;">
+            <Button fx:id="accountSettingsButton" minWidth="35.0" mnemonicParsing="false" onAction="#openAccountSettings" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <ImageView id="imageViewBankAccount" fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bankAccountImageView" fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../imgs/settingsicon.png" />
                      </image>
