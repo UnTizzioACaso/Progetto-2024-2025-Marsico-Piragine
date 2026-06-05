@@ -20,14 +20,10 @@ public class Register1Controller extends BranchController {
     private static final int BIRTH_PLACE_MAX_LENGTH = 255;
     private static final String NAME_REGEX = "^[A-Za-zÀ-ÿ ]+$";
 
-    @FXML
-    private TextField nameRegisterTextField;
+   ;
 
     @FXML
-    private TextField surnameRegisterTextField;
-
-    @FXML
-    private TextField birthPlaceRegisterTextField;
+    private TextField surnameRegisterTextField, nameRegisterTextField, birthPlaceRegisterTextField;
 
     @FXML
     private DatePicker birthDateRegisterDatePicker;
@@ -39,7 +35,7 @@ public class Register1Controller extends BranchController {
     private Label errorMessageLabel;
 
     @FXML
-    public void loadRegisterPage2()
+    private void loadRegisterPage2()
     {
         String name = nameRegisterTextField.getText().trim();
         String surname = surnameRegisterTextField.getText().trim();
@@ -95,13 +91,13 @@ public class Register1Controller extends BranchController {
     }
 
     @FXML
-    public void loadLogin()
+    private void loadLogin()
     {
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/login.fxml");
     }
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         CurrentSession.setLoggedUser(new User());
         sexChoiceBox.setValue("- Sesso -");

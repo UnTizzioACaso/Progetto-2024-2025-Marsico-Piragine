@@ -17,20 +17,14 @@ public class PinPopupController extends BranchController
     @FXML
     private Label errorLabel;
 
-    private boolean isPinCorrect;
-
-    public boolean isPinCorrect() {
-        return isPinCorrect;
-    }
 
     @FXML
-    public void checkPin()
+    private void checkPin()
     {
-
         if (PasswordUtil.checkPassword(insertPinPasswordField.getText(), CurrentSession.getLoggedUser().getPinHash()))
         {
-            isPinCorrect = true;
-            insertPinPasswordField.getScene().getWindow().hide();
+            CurrentSession.setIsPinCorrect(true);
+            ((Stage)insertPinPasswordField.getScene().getWindow()).close();
         }
          else
         {
@@ -41,9 +35,10 @@ public class PinPopupController extends BranchController
     }
 
     @FXML
-    public void abort()
+    private void abort()
     {
-        isPinCorrect = false;
-        ((Stage) insertPinPasswordField.getScene().getWindow()).close();
+        ((Stage)insertPinPasswordField.getScene().getWindow()).close();
     }
+
+
 }

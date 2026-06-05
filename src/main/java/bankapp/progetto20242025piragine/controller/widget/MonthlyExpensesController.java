@@ -23,13 +23,13 @@ public class MonthlyExpensesController extends WidgetController {
     public String getWidgetType(){ return monthlyExpensesVBox.getId();}
 
     @FXML
-    public void showMenu()
+    private void showMenu()
     {
         removeWidget();
     }
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         List<Transaction> transactions = TransactionDAO.getCurrentMonthOutcome(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID()));
         for (Transaction transaction : transactions) {

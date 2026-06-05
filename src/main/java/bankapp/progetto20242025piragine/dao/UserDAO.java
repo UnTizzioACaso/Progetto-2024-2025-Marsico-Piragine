@@ -2,6 +2,7 @@ package bankapp.progetto20242025piragine.dao;
 
 import bankapp.progetto20242025piragine.db.DataSourceProvider;
 import bankapp.progetto20242025piragine.model.User;
+import bankapp.progetto20242025piragine.util.CurrentSession;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
@@ -28,7 +29,8 @@ public class UserDAO
         }
     }
 
-    public static boolean deleteUserById(int userId) throws SQLException {
+    public static boolean deleteUserById(int userId)
+    {
 
         String sql = "DELETE FROM User WHERE user_id = ?";
 
@@ -40,9 +42,15 @@ public class UserDAO
             int affectedRows = stmt.executeUpdate();
             return affectedRows > 0;
         }
+        catch (SQLException e)
+        {
+            System.err.println("Error during deleting user: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public static boolean updateUserTheme(int userId, String theme) throws SQLException
+    public static boolean updateUserTheme(int userId, String theme)
     {
         if (!"light".equalsIgnoreCase(theme) && !"dark".equalsIgnoreCase(theme))
         {
@@ -59,10 +67,17 @@ public class UserDAO
 
             return stmt.executeUpdate() > 0;
         }
+
+        catch (SQLException e)
+        {
+            System.err.println("error during updating" + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
 
 
-    public static boolean registerUser(User user) throws SQLException
+    public static boolean registerUser(User user)
     {
 
         String sql = "INSERT INTO User (" + "first_name, last_name, username, birth_day, birth_place, " + "gender, email, password_hash, phone_number, state, province, city, " + "address, street_number, cap, pin_hash, remember_credentials, last_access_date, theme" + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -99,6 +114,13 @@ public class UserDAO
             stmt.executeUpdate();
             return true;
         }
+        catch (Exception e)
+        {
+            // Handle any exception during user registration
+            System.err.println("error registering user: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
 
     }
 
@@ -220,7 +242,7 @@ public class UserDAO
         return user;
     }
 
-    public static boolean existUserByUsername(String username) throws SQLException
+    public static boolean existUserByUsername(String username)
     {
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE username = ? LIMIT 1"))
@@ -231,6 +253,13 @@ public class UserDAO
                 return rs.next();
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during username research " + e.getMessage());
+            e.printStackTrace();
+
+        }
+        return false;
     }
 
 
@@ -247,7 +276,7 @@ public class UserDAO
         }
     }
 
-    public static boolean existUserByPhone(String phone) throws SQLException
+    public static boolean existUserByPhone(String phone)
     {
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE phone_number = ? LIMIT 1"))
@@ -258,9 +287,16 @@ public class UserDAO
                 return rs.next();
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during phone number research " + e.getMessage());
+            e.printStackTrace();
+
+        }
+        return false;
     }
 
-    public static String getUsernameByUserId(int userId) throws  SQLException
+    public static String getUsernameByUserId(int userId)
     {
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT username FROM User WHERE user_id = ? LIMIT 1"))
@@ -271,10 +307,15 @@ public class UserDAO
                 if (rs.next()) {return rs.getString("username");}
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("error getting username by user id " + e);
+            e.printStackTrace();
+        }
         return null;
     }
 
-    public static boolean existUserByEmail(String email) throws SQLException
+    public static boolean existUserByEmail(String email)
     {
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT 1 FROM User WHERE email = ? LIMIT 1"))
@@ -285,6 +326,12 @@ public class UserDAO
                 return rs.next();
             }
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during email research " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static User getUserByCellphone(String phoneNumber) throws SQLException {
@@ -336,6 +383,23 @@ public class UserDAO
             }
         } catch (SQLException e) {
             System.err.println("Error occurred while checking if username exists");
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean updatepin(int idAccount, String newPinHash)
+    {
+        String sql= "UPDATE User SET pin_hash = ? WHERE user_id = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, newPinHash);
+            stmt.setInt(2, idAccount);
+            return stmt.executeUpdate() > 0;
+        }
+        catch (SQLException e)
+        {
+            System.err.println("error during updating pin: " + e.getMessage());
             e.printStackTrace();
         }
         return false;

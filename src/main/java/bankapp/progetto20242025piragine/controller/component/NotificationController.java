@@ -19,14 +19,15 @@ public class NotificationController extends BranchController{
     @FXML
     private Label notifyTitleLabel, valueLabel, secondaryLabel;
 
-    public Notify notify;
+    private Notify notify;
 
     private Boolean imTheSender = false;
 
     @FXML
-    public void readNotify()
+    private void readNotify()
     {
-
+        PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if (!CurrentSession.isPinCorrect()) {return;}
         if(imTheSender && secondaryLabel.getText().contains("Richiesta di denaro")) //if notify is a transaction request from user
         {
             Transaction t = TransactionDAO.getTransactionById(notify.getIdTransaction());
@@ -39,9 +40,10 @@ public class NotificationController extends BranchController{
 
         else if(secondaryLabel.getText().contains("Richiesta di denaro"))
         {
-            PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
-            controller.n = notify;
-            controller.request = TransactionDAO.getTransactionById(notify.getIdTransaction());
+            PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 250, 150);
+            controller.setNotify(notify);
+            controller.setTransaction(TransactionDAO.getTransactionById(notify.getIdTransaction()));
+            controller.setUsername(notifyTitleLabel.getText());
         }
 
         else if(secondaryLabel.getText().contains("Richiesta d'amicizia") && imTheSender) //if notify is a friendship request from user
@@ -57,8 +59,15 @@ public class NotificationController extends BranchController{
         else if(secondaryLabel.getText().contains("Richiesta d'amicizia"))
         {
             FriendshipNotifyController controller = (FriendshipNotifyController) PopupCreator.showPopup("Richiesta d'amicizia", "/bankapp/progetto20242025piragine/fxml/popup/frienshipNotify.fxml", 300, 200);
-            controller.idRequest = notify.getIdFriendRequest();
-            controller.friendshipUsernameLabel.setText(notifyTitleLabel.getText());
+            controller.setIdRequest(notify.getIdFriendRequest());
+            controller.setNotify(notify);
+            controller.setUsername(notifyTitleLabel.getText());
+        }
+
+        else
+        {
+            NotifyDAO.markAsRead(notify.getIdNotify());
+            CurrentSession.getTopbarController().updateNotifications();
         }
     }
 
@@ -66,14 +75,8 @@ public class NotificationController extends BranchController{
     public void setCorrectValues(Notify n)
     {
         notify = n;
-        if(notify.getIdTransaction() != null)
-        {
-            transactionRequestNotify();
-        }
-        else if(notify.getIdFriendRequest() != null)
-        {
-            friendshipRequestNotify();
-        }
+        if(notify.getIdTransaction() != null) {transactionRequestNotify();}
+        else if(notify.getIdFriendRequest() != null) {friendshipRequestNotify();}
     }
 
     private void transactionRequestNotify()
@@ -96,11 +99,9 @@ public class NotificationController extends BranchController{
                 status = "";
         }
 
+
         String note = "";
-        if (t.getNote() != null || t.getNote() != "")
-        {
-            note =  t.getNote();
-        }
+        if (t.getNote() != null || t.getNote() != "") {note =  t.getNote();}
         if(t.getType().equals("request") && t.getBeneficiary().equals(CurrentSession.getLoggedAccount().getIdAccount())) //if transaction is a request and the user is the beneficiary
         {
             imTheSender = true;
@@ -150,13 +151,8 @@ public class NotificationController extends BranchController{
         }
 
         imTheSender = true;
-        try
-        {
-            notifyTitleLabel.setText(UserDAO.getUsernameByUserId(id));
-        } catch (SQLException e) {
-            System.err.println("error getting the receiver" + e.getMessage());
-            e.printStackTrace();
-        }
+        notifyTitleLabel.setText(UserDAO.getUsernameByUserId(id));
+
         switch (FriendRequestDAO.getFriendRequestById(notify.getIdFriendRequest()).getStatus())
         {
             case "accepted":
@@ -172,56 +168,21 @@ public class NotificationController extends BranchController{
     }
 
 
-
-
     private String getBeneficiaryUsernameT(int idTransaction)
     {
-
-            Transaction t = TransactionDAO.getTransactionById(idTransaction);
-            try
-            {
-                return UserDAO.getUsernameByUserId(t.getBeneficiary());
-
-            }
-            catch(SQLException e)
-            {
-                System.err.println("error getting username by user id " + e);
-                e.printStackTrace();
-                return null;
-            }
-    }
-
-    private String getSenderUsernameF(int idFriendRequest) {
-
-            FriendRequest f = FriendRequestDAO.getFriendRequestById(idFriendRequest);
-
-            try
-            {
-                return UserDAO.getUsernameByUserId(f.getRequester());
-            }
-            catch (SQLException e) 
-            {
-                System.err.println("error getting username by user id " + e);
-                e.printStackTrace();
-                return null;
-            }
-
-    }
-
-    private String getSenderUsernameT(int idTransaction) {
-
         Transaction t = TransactionDAO.getTransactionById(idTransaction);
+        return UserDAO.getUsernameByUserId(t.getBeneficiary());
+    }
 
-        try
-        {
-            return UserDAO.getUsernameByUserId(t.getSender());
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error getting username by user id " + e);
-            e.printStackTrace();
-            return null;
-        }
+    private String getSenderUsernameF(int idFriendRequest)
+    {
+        FriendRequest f = FriendRequestDAO.getFriendRequestById(idFriendRequest);
+        return UserDAO.getUsernameByUserId(f.getRequester());
+    }
 
+    private String getSenderUsernameT(int idTransaction)
+    {
+        Transaction t = TransactionDAO.getTransactionById(idTransaction);
+        return UserDAO.getUsernameByUserId(t.getSender());
     }
 }

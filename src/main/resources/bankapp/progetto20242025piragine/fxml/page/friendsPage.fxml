@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="friendsGridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="550.0" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.FriendsPageController">
+<GridPane id="gridPaneFriends" fx:id="gridPaneFriends" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="550.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.FriendsPageController">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="362.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="50.0" prefWidth="238.0" />
@@ -28,23 +28,23 @@
       <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <AnchorPane fx:id="friendsPageAnchorPane" GridPane.rowSpan="2147483647">
+      <AnchorPane id="AnchorPaneFriendsPage" fx:id="AnchorPaneFriendsPage" GridPane.rowSpan="2147483647">
          <children>
-            <ScrollPane fx:id="friendsScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane id="scrollPaneFriends" fx:id="scrollPaneFriends" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <VBox fx:id="friendsVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="100.0" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: white;">
+                  <VBox id="friendsVBox" fx:id="friendsVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="100.0" prefHeight="200.0" prefWidth="100.0">
                      <padding>
                         <Insets top="57.0" />
                      </padding></VBox>
                </content>
             </ScrollPane>
-            <Region fx:id="regionFriend" prefHeight="58.0" prefWidth="300.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <TextField fx:id="friendsSearchBar" layoutX="52.0" layoutY="16.0" prefHeight="26.0" prefWidth="183.0" promptText=" Cerca amico" style="-fx-background-radius: 15; -fx-border-radius: 15;" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="16.0">
+            <Region id="regionFriend" fx:id="regionFriend" prefHeight="58.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <TextField fx:id="friendsSearchBar" layoutX="52.0" layoutY="16.0" prefHeight="26.0" prefWidth="183.0" promptText=" Cerca amico" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: transparent;" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font name="System Italic" size="13.0" />
                </font>
             </TextField>
-            <ImageView fitHeight="13.0" fitWidth="14.0" layoutX="207.2" layoutY="24.2" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.08754329681398" AnchorPane.topAnchor="24.2">
+            <ImageView fitHeight="13.0" fitWidth="14.0" layoutX="207.2" layoutY="23.8" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="80.08754329681398" AnchorPane.topAnchor="23.8">
                <image>
                   <Image url="@../../imgs/lenticon.png" />
                </image>
@@ -69,11 +69,11 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="chatAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="580.0" prefWidth="300.0" GridPane.columnIndex="1">
+      <AnchorPane id="anchorePaneFriends2" fx:id="anchorPaneChat" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="580.0" prefWidth="300.0" GridPane.columnIndex="1">
          <children>
-            <ScrollPane fx:id="chatScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="19.0" layoutY="120.0" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" vvalue="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane id="chatScrollPane" fx:id="chatScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="19.0" layoutY="120.0" maxWidth="1.7976931348623157E308" prefHeight="502.0" prefWidth="300.0" style="-fx-border-width: 0;" vvalue="1.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <content>
-                  <VBox fx:id="chatVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox id="chatVBox" fx:id="chatVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-width: 0;">
                      <padding>
                         <Insets right="10.0" top="10.0" />
                      </padding></VBox>
@@ -89,7 +89,10 @@
             <Insets />
          </GridPane.margin>
       </AnchorPane>
-      <Region fx:id="regionChat" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Region id="regionChat" fx:id="regionChat" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets top="-35.0" />
+         </GridPane.margin></Region>
       <Button fx:id="sendButton" mnemonicParsing="false" onAction="#sendTransaction" prefHeight="41.0" prefWidth="80.0" style="-fx-background-radius: 10; -fx-background-color: ff0000;" text="INVIA" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -120,7 +123,7 @@
             <Insets right="190.0" />
          </GridPane.margin>
       </Button>
-      <TextField fx:id="moneyTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="28.0" prefHeight="38.0" prefWidth="79.0" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 6; -fx-border-radius: 6;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <TextField id="valueField" fx:id="valueField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="28.0" prefHeight="38.0" prefWidth="79.0" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 6; -fx-border-radius: 6;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <padding>
             <Insets left="10.0" />
          </padding>
@@ -128,12 +131,12 @@
             <Insets left="105.0" right="105.0" />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="noteTextField" prefHeight="27.0" prefWidth="271.0" promptText="Scrivi la nota" style="-fx-background-radius: 15; -fx-border-radius: 15;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="noteTextFiled" prefHeight="27.0" prefWidth="271.0" promptText="Scrivi la nota" style="-fx-background-radius: 15; -fx-border-radius: 15;" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font name="System Italic" size="13.0" />
          </font>
          <GridPane.margin>
-            <Insets bottom="30.0" left="20.0" right="20.0" top="-70.0" />
+            <Insets bottom="30.0" left="20.0" right="20.0" top="-60.0" />
          </GridPane.margin>
       </TextField>
    </children>

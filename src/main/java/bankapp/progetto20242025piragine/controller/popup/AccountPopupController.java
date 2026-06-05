@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.controller.popup;
 import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.dao.UserDAO;
 import bankapp.progetto20242025piragine.util.CurrentSession;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -28,7 +29,8 @@ public class AccountPopupController extends BranchController {
 
     // Fills the popup with the correct user data and current theme
     @FXML
-    public void initialize() {
+    private void initialize()
+    {
         // Display user's email
         emailPopupAccountLabel.setText(CurrentSession.getLoggedUser().getEmail());
         // Display user's full name
@@ -42,16 +44,16 @@ public class AccountPopupController extends BranchController {
 
         // Update theme color label based on radio button
         themeColorAccountPopupLabel.setText(themeColorAccountPopupRadioButton.isSelected() ? "Scuro" : "Chiaro");
-
-
     }
-
 
     @FXML
     private void loadAccountSettingsPage()
     {
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml");
-        ((Stage) accountPopupRoot.getScene().getWindow()).close();
+        if (CurrentSession.getRootController().getCurrentPage().equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
+        {
+            ((Stage) accountPopupRoot.getScene().getWindow()).close();
+        }
     }
 
 
@@ -64,38 +66,25 @@ public class AccountPopupController extends BranchController {
         String themeColor = themeColorAccountPopupRadioButton.isSelected() ? "dark" : "light";
         CurrentSession.getLoggedUser().setTheme(themeColor);
 
-        try
-        {
-            UserDAO.updateUserTheme(CurrentSession.getLoggedUser().getUserID(), themeColor);
-        }
-        catch (SQLException e)
-        {
-            System.err.println("error during updating" + e.getMessage());
-            e.printStackTrace();
-            return;
-        }
+        UserDAO.updateUserTheme(CurrentSession.getLoggedUser().getUserID(), themeColor);
 
         // Apply the selected theme to the popup window
         ThemeManager.applyTheme(accountPopupRoot.getScene(), themeColor);
 
         // Apply the selected theme to the main application window
-        ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), themeColor);
+        ThemeManager.applyTheme(CurrentSession.getRootController().getRootWindow().getScene(), themeColor);
     }
 
     @FXML
-    public void logout()
+    private void logout()
     {
-        CurrentSession.getTopbarController().backwardStack.clear();
-        CurrentSession.getTopbarController().forwardStack.clear();
+        CurrentSession.getTopbarController().clear();
         CurrentSession.reset();
         ((Stage) accountPopupRoot.getScene().getWindow()).close();
-        CurrentSession.getRootController().initialize();
+        CurrentSession.getRootController().reInitialize();
     }
 
 
     @FXML
-    public void closePopup()
-    {
-        ((Stage) accountPopupRoot.getScene().getWindow()).close();
-    }
+    private void closePopup() {((Stage) accountPopupRoot.getScene().getWindow()).close();}
 }

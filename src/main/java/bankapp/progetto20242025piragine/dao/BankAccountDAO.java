@@ -3,6 +3,7 @@ package bankapp.progetto20242025piragine.dao;
 import bankapp.progetto20242025piragine.db.DataSourceProvider;
 import bankapp.progetto20242025piragine.model.BankAccount;
 import bankapp.progetto20242025piragine.model.Transaction;
+import bankapp.progetto20242025piragine.model.User;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -132,7 +133,7 @@ public class BankAccountDAO {
 
 
     // 🔹 Inserisce un nuovo conto
-    public static boolean insertAccount(BankAccount account) throws SQLException
+    public static boolean insertAccount(BankAccount account)
     {
         String sql = "INSERT INTO Bank_Account ( user_id, money, currency, iban, max_transfer, force_pin, check_account) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -151,6 +152,13 @@ public class BankAccountDAO {
             stmt.executeUpdate();
             return true;
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during inserting new account: " + e.getMessage());
+            e.printStackTrace();
+
+        }
+        return false;
     }
 
 
@@ -324,8 +332,8 @@ public class BankAccountDAO {
 
 
 
-    public static boolean updateBalance(int idAccount, BigDecimal newBalance) throws SQLException {
-        String sql = "UPDATE Bank_Account SET money = ? WHERE id_account = ?";
+    public static boolean updateBalance(int idAccount, BigDecimal newBalance)  {
+        String sql = "UPDATE Bank_Account SET money = money+ ? WHERE id_account = ?";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -335,6 +343,12 @@ public class BankAccountDAO {
 
             return stmt.executeUpdate() > 0;
         }
+        catch (SQLException e)
+        {
+            System.err.println("error during updating balance: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
 
     // 🔹 Chiude il conto
@@ -348,4 +362,38 @@ public class BankAccountDAO {
             return stmt.executeUpdate() > 0;
         }
     }
+
+    public static boolean deleteAccountById(int idAccount) {
+        String sql = "DELETE FROM Bank_Account WHERE id_account = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idAccount);
+            return stmt.executeUpdate() > 0;
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error during deleting account by id: " + e.getMessage());
+            e.printStackTrace();
+
+        }
+        return false;
+    }
+    public static boolean updateLimit(int IdAccount, BigDecimal NewMaxTransfer)
+    {
+        String sql = "UPDATE Bank_Account SET max_transfer = ? WHERE id_account = ?";
+        try (Connection conn = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setBigDecimal(1, NewMaxTransfer);
+            stmt.setInt(2, IdAccount);
+            return stmt.executeUpdate() > 0;
+        }
+        catch (SQLException e)
+        {
+            System.err.println("Error during deleting account by id: " + e.getMessage());
+            e.printStackTrace();
+
+        }
+        return false;
+    }
+
 }

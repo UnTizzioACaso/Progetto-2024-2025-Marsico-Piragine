@@ -6,6 +6,7 @@ import bankapp.progetto20242025piragine.controller.component.TopbarController;
 import bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController;
 import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.EasyFxmlLoader;
+import bankapp.progetto20242025piragine.util.PopupCreator;
 import bankapp.progetto20242025piragine.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -15,24 +16,29 @@ import javafx.util.Pair;
 
 public  class RootWindowController extends BranchController {
     @FXML
-    public BorderPane rootWindow;
+    private BorderPane rootWindow;
 
     @FXML
-    public AnchorPane centerAnchorPane;
+    private AnchorPane centerAnchorPane;
 
-    public String currentPage = "";
+    private String currentPage = "";
 
-    public BankAccountSettingsPageController bankAccountSettingsPageController;
+    public BorderPane getRootWindow() {return rootWindow;}
 
-
+    public String getCurrentPage() {return currentPage;}
 
     public void switchPage(String fxml) //this method sets to the center the application's main pages "rootWindow"
     {
         if (!(fxml.equals(currentPage)))
         {
+            if(fxml.equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
+            {
+                PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+                if (!CurrentSession.isPinCorrect()) {return;}   // If the PIN is not correct, do not proceed to load the account settings page
+            }
             currentPage = fxml;
             Node node = EasyFxmlLoader.loader(fxml).getValue(); //creating the node from the loader
-            if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
+            if(CurrentSession.getTopbarController().isSliderActive()){CurrentSession.getTopbarController().showSlider();}
             setCenter(node);
         }
     }
@@ -42,23 +48,37 @@ public  class RootWindowController extends BranchController {
     {
         if (!(fxml.equals(currentPage)))
         {
+            if(fxml.equals("/bankapp/progetto20242025piragine/fxml/page/bankAccountSettingsPage.fxml"))
+            {
+                PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+                if (!CurrentSession.isPinCorrect()) {return;}   // If the PIN is not correct, do not proceed to load the account settings page
+            }
             ThemeManager.applyTheme(rootWindow.getScene(), "light"); //forcing stock light theme
             currentPage = fxml;
             Pair<BranchController, Node> p = EasyFxmlLoader.loader(fxml);
             Node node = p.getValue(); //creating the node from the pair
             if (rootWindow.getTop() != null) //if topbar is already initialized
             {
-                if(CurrentSession.getTopbarController().sliderIsActive){CurrentSession.getTopbarController().showSlider();}
+                if(CurrentSession.getTopbarController().isSliderActive()){CurrentSession.getTopbarController().showSlider();}
                 CurrentSession.getTopbarController().visitPage(fxml); //adds the loaded page to the backwardStack
                 ThemeManager.applyTheme(rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme()); //correcting user Theme
             }
             setCenter(node);
-
         }
     }
 
+    public void addSlider(Node notificationSlider)
+    {
+        centerAnchorPane.getChildren().add(notificationSlider);
+    }
+
+    public void removeSlider(Node notificationSlider)
+    {
+        centerAnchorPane.getChildren().remove(notificationSlider);
+    }
+
     @FXML
-    public void initialize() //initializing the first page to load
+    private void initialize() //initializing the first page to load
     {
         currentPage = "";
         rootWindow.setLeft(null); //setting left to null because the first page is login, and it doesn't need the sidebar
@@ -67,6 +87,7 @@ public  class RootWindowController extends BranchController {
         ThemeManager.applyTheme(rootWindow.getScene(), "light");
     }
 
+    public void reInitialize() {initialize();}
 
     public void loadSideBar() //this method loads a node on the left side of root's BorderPane
     {

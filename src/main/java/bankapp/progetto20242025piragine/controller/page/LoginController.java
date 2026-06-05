@@ -17,8 +17,10 @@ import java.sql.SQLException;
 public class LoginController extends BranchController {
 
     // TextField for the user's email input
+    // TextField used when the password is shown in plain text
+
     @FXML
-    private TextField emailLoginTextField;
+    private TextField emailLoginTextField, passwordLoginTextField;
 
     @FXML
     private CheckBox rememberAccessCheckBox;
@@ -27,24 +29,20 @@ public class LoginController extends BranchController {
     @FXML
     private PasswordField passwordLoginPasswordField;
 
-    // TextField used when the password is shown in plain text
-    @FXML
-    private TextField passwordLoginTextField;
-
     // Label used to display login error messages
     @FXML
     private Label accessErrorMessageLabel;
 
     // Loads the first registration page
     @FXML
-    public void loadRegisterPage() // switching to the register section
+    private void loadRegisterPage() // switching to the register section
     {
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/register1.fxml"); // loading first register page
     }
 
     // Attempts to log the user in and load the home page
     @FXML
-    public void loadHomePage() throws SQLException //giving access to the homepage
+    private void loadHomePage() throws SQLException //giving access to the homepage
     {
         // Check if the password is currently shown in plain text
         if(passwordLoginPasswordField.isDisabled())
@@ -60,7 +58,7 @@ public class LoginController extends BranchController {
                 CurrentSession.getRootController().loadSideBar(); // loading the sidebar
                 CurrentSession.getRootController().loadTopBar(); // loading the topbar
                 CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
-                ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme());
+                ThemeManager.applyTheme(CurrentSession.getRootController().getRootWindow().getScene(), CurrentSession.getLoggedUser().getTheme());
                 if (rememberAccessCheckBox.isSelected())
                 {
                     try {RememberMeUtil.saveEmail(emailLoginTextField.getText());}
@@ -69,9 +67,7 @@ public class LoginController extends BranchController {
                 }
                 RememberMeUtil.deleteSavedEmail();
             }
-
             accessErrorMessageLabel.setText("Credenziali errate riprova"); // error message for invalid credentials
-
         }
         else
         {
@@ -85,7 +81,7 @@ public class LoginController extends BranchController {
                 CurrentSession.getRootController().loadSideBar(); // loading the sidebar
                 CurrentSession.getRootController().loadTopBar(); // loading the topbar
                 CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/homePage.fxml"); // loading the home page
-                ThemeManager.applyTheme(CurrentSession.getRootController().rootWindow.getScene(), CurrentSession.getLoggedUser().getTheme());
+                ThemeManager.applyTheme(CurrentSession.getRootController().getRootWindow().getScene(), CurrentSession.getLoggedUser().getTheme());
 
                 if (rememberAccessCheckBox.isSelected())
                     {
@@ -99,7 +95,7 @@ public class LoginController extends BranchController {
     }
 
     @FXML
-    public void deleteEmail() throws SQLException
+    private void deleteEmail() throws SQLException
     {
         if(!(rememberAccessCheckBox.isSelected())){RememberMeUtil.deleteSavedEmail();}
     }
@@ -107,7 +103,7 @@ public class LoginController extends BranchController {
 
     // Toggles password visibility between hidden and plain text
     @FXML
-    public void showPassword()
+    private void showPassword()
     {
         // If the password is currently hidden
         if(passwordLoginTextField.isDisabled())
@@ -139,7 +135,7 @@ public class LoginController extends BranchController {
     }
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         emailLoginTextField.setText(RememberMeUtil.loadSavedEmail());
         rememberAccessCheckBox.setSelected(emailLoginTextField.getText() != (null));

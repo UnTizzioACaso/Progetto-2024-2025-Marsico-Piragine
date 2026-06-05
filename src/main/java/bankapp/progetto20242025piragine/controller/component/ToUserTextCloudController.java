@@ -12,22 +12,26 @@ import javafx.scene.layout.StackPane;
 public class ToUserTextCloudController extends BranchController
 {
     @FXML
-    public Label textLabel;
+    private Label textLabel;
 
-    public Transaction request  = null;
+    private Transaction request  = null;
 
-    public String friendUsername;
+    private String friendUsername;
+
+    public void setRequest(Transaction request) {this.request = request;}
+
+    public void setText(String text) {this.textLabel.setText(text);}
+
+    public void setFriendUsername(String friendUsername) {this.friendUsername = friendUsername;}
 
     @FXML
-    public StackPane bubbleContainer;
-
-
-    @FXML
-    public void showRequest()
+    private void showRequest()
     {
+        PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if(!CurrentSession.isPinCorrect()){return;}
         if(request == null) return;
         PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 200, 100);
-        controller.request = request;
-        controller.friendshipUsernameLabel.setText(friendUsername);
+        controller.setTransaction(request);
+        controller.setUsername(friendUsername);
     }
 }

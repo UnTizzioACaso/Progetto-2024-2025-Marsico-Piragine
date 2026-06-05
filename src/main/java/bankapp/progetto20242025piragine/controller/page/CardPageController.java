@@ -20,23 +20,21 @@ public class CardPageController extends BranchController
 {
     // VBox that will contain all the user's cards
     @FXML
-    VBox cardsContainerVBox;
+    private VBox cardsContainerVBox;
 
     // Opens the popup to create a new card
     @FXML
-    public void openCreateCard()
+    private void openCreateCard()
     {
         PopupCreator.showPopup("Crea e personalizza la carta","/bankapp/progetto20242025piragine/fxml/popup/createCardPopup.fxml", 500, 447);
     }
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         CurrentSession.setCardPageController(this);
-        // Retrieve all cards associated with the logged-in user
-        List<Card> cards = CardDAO.getCardsByUserId(CurrentSession.getLoggedUser().getUserID());
-        // Create a UI component for each card
-        for (int i = 0; i < cards.size(); i++)
+        List<Card> cards = CardDAO.getCardsByUserId(CurrentSession.getLoggedUser().getUserID()); // Retrieve all cards associated with the logged-in user
+        for (int i = 0; i < cards.size(); i++) // Create a UI component for each card
         {
             Pair<BranchController, Node> p = EasyFxmlLoader.loader("/bankapp/progetto20242025piragine/fxml/component/creditCardRectangle.fxml");
             // Create the node from the FXML
@@ -48,6 +46,5 @@ public class CardPageController extends BranchController
             // Add the card component to the VBox
             cardsContainerVBox.getChildren().add(cardRectangle);
         }
-
     }
 }

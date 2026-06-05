@@ -235,6 +235,11 @@
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </ImageView>
+            <Label fx:id="errorLabel" alignment="CENTER" style="-fx-text-fill: red;" textFill="RED" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="3.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
 

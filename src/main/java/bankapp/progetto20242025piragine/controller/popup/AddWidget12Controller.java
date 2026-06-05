@@ -38,7 +38,7 @@ public class AddWidget12Controller extends BranchController
     }
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         List<HomeWidgetCustom> usedWidgets = HomeWidgetCustomDAO.getUsedWidgetsByUserId(CurrentSession.getLoggedUser().getUserID());
         for(HomeWidgetCustom widget : usedWidgets)
@@ -68,7 +68,7 @@ public class AddWidget12Controller extends BranchController
     }
 
     @FXML
-    public void addTransactionHistoryWidget()
+    private void addTransactionHistoryWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/transactionHistory.fxml", 1, 2);
         Stage stage = (Stage) addWidget12VBox.getScene().getWindow();
@@ -76,7 +76,7 @@ public class AddWidget12Controller extends BranchController
     }
 
     @FXML
-    public void addMonthlyIncomeWidget()
+    private void addMonthlyIncomeWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyIncomes.fxml", 1, 2);
         Stage stage = (Stage) addWidget12VBox.getScene().getWindow();
@@ -84,7 +84,7 @@ public class AddWidget12Controller extends BranchController
     }
 
     @FXML
-    public void addMonthlyExpensesWidget()
+    private void addMonthlyExpensesWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/monthlyExpenses.fxml", 1, 2);
         Stage stage = (Stage) addWidget12VBox.getScene().getWindow();
@@ -92,14 +92,15 @@ public class AddWidget12Controller extends BranchController
     }
 
     @FXML
-    public void addLastFiveExpensesWidget()
+    private void addLastFiveExpensesWidget()
     {
         CurrentSession.getHomePageController().addWidget("/bankapp/progetto20242025piragine/fxml/widget/lastFiveExpenses.fxml", 1, 2);
         Stage stage = (Stage) addWidget12VBox.getScene().getWindow();
         stage.close();
     }
     @FXML
-    public void closeWidget() {
+    private void closeWidget()
+    {
         if (closeAddWidget12 != null && closeAddWidget12.getScene() != null) {
             Stage stage = (Stage) closeAddWidget12.getScene().getWindow();
             stage.close();

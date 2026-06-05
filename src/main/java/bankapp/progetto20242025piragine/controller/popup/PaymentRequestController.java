@@ -7,30 +7,41 @@ import bankapp.progetto20242025piragine.model.Transaction;
 import bankapp.progetto20242025piragine.util.CurrentSession;
 import bankapp.progetto20242025piragine.util.PopupCreator;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.math.BigDecimal;
+
 public class PaymentRequestController extends BranchController {
 
-    public Transaction request;
+    private Transaction request;
 
-    public Notify n;
-
-
+    private Notify n;
 
     @FXML
-    public Label friendshipUsernameLabel;
+    private Button acceptButton;
 
     @FXML
-    public Label moneyLabel;
+    private Label friendshipUsernameLabel, moneyLabel, noteLabel;
 
-    @FXML
-    public void declineRequest()
+    public void setUsername(String username) {friendshipUsernameLabel.setText(username);}
+
+    public void setNotify(Notify n) {this.n = n;}
+
+    public void setTransaction(Transaction request)
     {
-        if (getPinPopupController() != null){getPinPopupController().abort();} //if pin popup has been generated, we close it it
+        this.request = request;
+        this.noteLabel.setText(request.getNote());
+        this.moneyLabel.setText(String.format("%.2f€", request.getAmount()));
+    }
+
+    @FXML
+    private void declineRequest()
+    {
         BlockUserPopupController controller = (BlockUserPopupController) PopupCreator.showPopup("Blocca un utente", "/bankapp/progetto20242025piragine/fxml/popup/blockUserPopup.fxml", 420, 300);
-        controller.wouldYouLikeToBlockLabel.setText("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
-        controller.username = friendshipUsernameLabel.getText();
+        controller.setQuestion("Vorresti bloccare " + friendshipUsernameLabel.getText() + "?");
+        controller.setUsername(friendshipUsernameLabel.getText());
         if(n != null)
         {
             if (TransactionDAO.declineTransacion(n.getIdTransaction()))
@@ -41,30 +52,23 @@ public class PaymentRequestController extends BranchController {
                 return;
             }
         }
-        CurrentSession.getFriendsPageController().currentFriendController.showChat();
+        CurrentSession.getFriendsPageController().showChatWith(friendshipUsernameLabel.getText());
         TransactionDAO.declineTransacion(request.getIdTransaction());
         ((Stage) moneyLabel.getScene().getWindow()).close();
     }
 
     @FXML
-    public void acceptRequest()
+    private void acceptRequest()
     {
-        /* if pinPopupController is not null, it means that the user has already tried to accept the request and has entered the PIN,
-         so we check if the PIN is correct and if it is, we accept the request, otherwise we show the PIN popup again */
-        if (getPinPopupController() != null)
-        {
-            if(getPinPopupController().isPinCorrect())
-            {
-                getPinPopupController().abort();
-                accept();
-                return;
-            }
-        }
-        setPinPopupController((PinPopupController) PopupCreator.showPopup("Inserisci il PIN", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190));
-    }
+        PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if (!CurrentSession.isPinCorrect()) {return;}
 
-    private void accept()
-    {
+        if ((request.getAmount().add(CurrentSession.getLoggedAccount().getMoney()).compareTo(new BigDecimal("9223372036854775807,00")) > 0)) {
+            noteLabel.setText("il database non puo gestire un saldo cosi grande");
+            acceptButton.setDisable(true);
+            return;
+        }
+
         if (BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request))
         {
             //if this popup is generated from a notification, mark it as read and close the popup
@@ -78,12 +82,12 @@ public class PaymentRequestController extends BranchController {
 
             //if this popup is generated from a friend message, show the chat and close the popup
             BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
-            CurrentSession.getFriendsPageController().currentFriendController.showChat();
+            CurrentSession.getFriendsPageController().showChatWith(friendshipUsernameLabel.getText());
             ((Stage) moneyLabel.getScene().getWindow()).close();
         }
-
-
     }
+
+
 
 
 }

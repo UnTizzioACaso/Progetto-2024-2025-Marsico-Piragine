@@ -7,27 +7,42 @@ import java.util.ArrayList;
 import java.util.List;
 public class HomeWidgetCustomDAO {
 
-    // 🔹 Inserisce un widget
-    public static boolean insertWidget(HomeWidgetCustom w) throws SQLException {
+    public static boolean insertWidgets(List<HomeWidgetCustom> widgetList) {
+
         String sql = """
-            INSERT INTO Home_Widget_Custom
-            (user_id, type_widget, y, x, remove)
-            VALUES (?, ?, ?, ?, ?)
-            """;
+        INSERT INTO Home_Widget_Custom
+        (user_id, type_widget, y, x, remove)
+        VALUES (?, ?, ?, ?, ?)
+        """;
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, w.getUserId());
-            stmt.setString(2, w.getTypeWidget());
-            stmt.setInt(3, w.getRow());
-            stmt.setInt(4, w.getColumn());
-            stmt.setBoolean(5, w.isRemove());
+            conn.setAutoCommit(false);
 
-            stmt.executeUpdate();
+            for (HomeWidgetCustom w : widgetList) {
+                stmt.setInt(1, w.getUserId());
+                stmt.setString(2, w.getTypeWidget());
+                stmt.setInt(3, w.getRow());
+                stmt.setInt(4, w.getColumn());
+                stmt.setBoolean(5, w.isRemove());
+
+                stmt.addBatch();
+            }
+
+            int[] results = stmt.executeBatch();
+            conn.commit();
             return true;
         }
+        catch (SQLException e) {
+            System.err.println("Error during batch inserting widgets: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
+
+
+
 
     // 🔹 WidgetController di un utente
     public static List<HomeWidgetCustom> getWidgetsByUserId(int userId)   {
@@ -103,7 +118,7 @@ public class HomeWidgetCustomDAO {
     }
 
     // 🔹 Rimuove (soft delete)
-    public static boolean markAsRemoved(int userid, String widgetType) throws SQLException {
+    public static boolean markAsRemoved(int userid, String widgetType)  {
         String sql = "UPDATE Home_Widget_Custom SET remove = true WHERE user_id = ? AND type_widget = ?;";
 
         try (Connection conn = DataSourceProvider.getDataSource().getConnection();
@@ -113,6 +128,11 @@ public class HomeWidgetCustomDAO {
             stmt.setString(2, widgetType);
             return stmt.executeUpdate() > 0;
         }
+        catch (SQLException e) {
+            System.err.println("error during elimination of " + widgetType + ": " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
 
     // 🔹 Cancella definitivamente

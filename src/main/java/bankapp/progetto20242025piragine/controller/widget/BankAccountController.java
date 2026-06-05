@@ -8,11 +8,6 @@ import javafx.scene.control.Label;
 
 public class BankAccountController extends WidgetController
 {
-
-    // Button to open the bank account settings page
-    @FXML
-    private Button accountSettingsButton;
-
     @FXML
     private Label bankAccountLabel;
 
@@ -24,19 +19,21 @@ public class BankAccountController extends WidgetController
     }
 
     @FXML
-    public void showBankTransferPopup()
+    private void showBankTransferPopup()
     {
+        PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
+        if (!CurrentSession.isPinCorrect()) {return;}
         PopupCreator.showPopup("", "/bankapp/progetto20242025piragine/fxml/popup/bankTransferPopup.fxml", 500, 510);//shows the bank transfer popup
     }
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         bankAccountLabel.setText(CurrentSession.getLoggedAccount().getMoney().toString() + " €");
     }
 
     @FXML
-    public void loadAddAccountMoneyPage()
+    private void loadAddAccountMoneyPage()
     {
         CurrentSession.getRootController().loadPage("/bankapp/progetto20242025piragine/fxml/page/addAccountMoneyPage.fxml");//loads the add account money page
     }

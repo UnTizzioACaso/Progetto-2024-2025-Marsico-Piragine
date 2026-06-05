@@ -18,19 +18,11 @@ import java.sql.SQLException;
 
 public class SendFriendshipRequestPopupController extends BranchController {
     @FXML
-    private TextField searchByUsernameField;
-    @FXML
-    private TextField searchByPhoneNumberField;
-    @FXML
-    private TextField searchByEmailField;
+    private TextField searchByUsernameField, searchByPhoneNumberField, searchByEmailField;
     @FXML
     private Label errorLabel;
     @FXML
-    private ToggleButton toggleUsername;
-    @FXML
-    private ToggleButton toggleEmail;
-    @FXML
-    private ToggleButton togglePhoneNumber;
+    private ToggleButton toggleUsername, toggleEmail, togglePhoneNumber;
 
     private User user2 = null;
 
@@ -44,22 +36,22 @@ public class SendFriendshipRequestPopupController extends BranchController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         switchToUsername();
     }
 
     @FXML
-    public void switchToUsername() {
+    private void switchToUsername() {
         updateUI(true, false, false);
     }
 
     @FXML
-    public void switchToEmail() {
+    private void switchToEmail() {
         updateUI(false, true, false);
     }
 
     @FXML
-    public void switchToPhoneNumber() {
+    private void switchToPhoneNumber() {
         updateUI(false, false, true);
     }
 
@@ -83,7 +75,7 @@ public class SendFriendshipRequestPopupController extends BranchController {
     }
 
     @FXML
-    public void findHypotheticalFriend() //Finds a user in the db and stores it in the controller
+    private void findHypotheticalFriend() //Finds a user in the db and stores it in the controller
     {
         user2 = null; //resetting the user2
         errorLabel.setText(""); //resetting error label
@@ -125,7 +117,7 @@ public class SendFriendshipRequestPopupController extends BranchController {
     }
 
     @FXML
-    public void closePopup()
+    private void closePopup()
     {
         ((Stage) errorLabel.getScene().getWindow()).close();
     }

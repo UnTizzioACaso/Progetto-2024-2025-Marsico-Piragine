@@ -35,7 +35,7 @@ public class TransactionHistoryController extends WidgetController
     public String getWidgetType(){ return transactionHistoryGridPane.getId();}
 
     @FXML
-    public void showMenu()
+    private void showMenu()
     {
         removeWidget();
     }
@@ -43,7 +43,7 @@ public class TransactionHistoryController extends WidgetController
     private List<Transaction> transactions;
 
     @FXML
-    public void initialize()
+    private void initialize()
     {
         transactions = TransactionDAO.getAllTransactionsByAccount(BankAccountDAO.getIdAccountByUserId(CurrentSession.getLoggedUser().getUserID())).reversed();
         for (Transaction transaction : transactions)
@@ -54,7 +54,7 @@ public class TransactionHistoryController extends WidgetController
     }
 
     @FXML
-    public void filter()
+    private void filter()
     {
         populate(transactionHistoryTextField.getText(), Timestamp.valueOf(fromDatePicker.getValue().atStartOfDay()), Timestamp.valueOf(toDatePicker.getValue().atStartOfDay()));
     }
@@ -75,10 +75,4 @@ public class TransactionHistoryController extends WidgetController
             }
         }
     }
-
-
-
-
-
-
 }

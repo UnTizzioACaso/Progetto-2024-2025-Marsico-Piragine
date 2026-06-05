@@ -23,10 +23,10 @@ import java.util.List;
 public class HomePageController extends BranchController
 {
     @FXML
-    public GridPane homePageGridPane;
+    private GridPane homePageGridPane;
 
     @FXML
-    public void initialize() //initializing the home page
+    private void initialize() //initializing the home page
     {
         CurrentSession.setHomePageController(this);
         List<HomeWidgetCustom> widgets = HomeWidgetCustomDAO.getUsedWidgetsByUserId(CurrentSession.getLoggedUser().getUserID());
@@ -52,7 +52,7 @@ public class HomePageController extends BranchController
 
 
     @FXML
-    public void loadAddWidget12()
+    private void loadAddWidget12()
     {
         AddWidget12Controller controller = (AddWidget12Controller) PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget12.fxml", 600, 600);
         controller.getRoot().requestFocus();
@@ -60,7 +60,7 @@ public class HomePageController extends BranchController
     }
 
     @FXML
-    public void loadAddWidget01()
+    private void loadAddWidget01()
     {
         AddWidget01Controller controller = (AddWidget01Controller) PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget01.fxml", 600, 600);
         controller.getRoot().requestFocus();
@@ -68,7 +68,7 @@ public class HomePageController extends BranchController
     }
 
     @FXML
-    public void loadAddWidget11()
+    private void loadAddWidget11()
     {
         AddWidget11Controller controller = (AddWidget11Controller) PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget11.fxml", 600, 600);;
         controller.getRoot().requestFocus();
@@ -76,7 +76,7 @@ public class HomePageController extends BranchController
     }
 
     @FXML
-    public void loadAddWidget02()
+    private void loadAddWidget02()
     {
         AddWidget02Controller controller = (AddWidget02Controller) PopupCreator.showPopup("Aggiungi un widget", "/bankapp/progetto20242025piragine/fxml/popup/addWidget02.fxml", 600, 600);
         controller.getRoot().requestFocus();
@@ -90,10 +90,9 @@ public class HomePageController extends BranchController
         if (column == 0) {node.setStyle(node.getStyle() + "-fx-max-width: 400");}
         WidgetController controller = (WidgetController) p.getKey();
         homePageGridPane.add(node, column, row);
-        controller.homePageGridPane = homePageGridPane;
-        controller.widget = node;
-        controller.x = column;
-        controller.y = row;
+        controller.setHomePageGridPane(homePageGridPane);
+        controller.setWidget(node);
+        controller.setXY(column, row);
         HomeWidgetCustomDAO.updatePosition(CurrentSession.getLoggedUser().getUserID(), node.getId(), row, column);
     }
 }
