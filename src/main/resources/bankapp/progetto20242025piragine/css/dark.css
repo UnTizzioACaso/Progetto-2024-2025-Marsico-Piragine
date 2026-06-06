@@ -2,9 +2,18 @@
    ALL GENERAL COMPONENTS
    ========================================================== */
 
+
+/* ====== general label ====== */
+
+
 .label {
     -fx-text-fill: white ;
 }
+
+/* ====== END  ====== */
+
+/* ====== general menu ====== */
+
 
 .menu-button .arrow {
     -fx-background-color: white !important;
@@ -29,6 +38,11 @@
     -fx-background-color: #444444;
 }
 
+/* ====== END  ====== */
+
+/* ====== general text field ====== */
+
+
 .text-field {
     -fx-background-color: #595959 !important;
     -fx-text-fill: white !important;
@@ -38,6 +52,7 @@
     -fx-background-radius: 10 !important;
 }
 
+/* ====== END  ====== */
 
 /* ====== general check boxes and radio buttons ====== */
 
@@ -250,6 +265,14 @@
 }
 
 /* ====== END  ====== */
+
+
+
+/* ==========================================================
+   ALL SPECIFIC COMPONENTS
+   ========================================================== */
+
+
 
 /* ====== all grid pane ====== */
 
