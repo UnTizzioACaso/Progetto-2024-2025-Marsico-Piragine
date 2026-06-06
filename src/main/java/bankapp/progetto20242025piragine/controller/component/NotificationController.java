@@ -40,7 +40,7 @@ public class NotificationController extends BranchController{
 
         else if(secondaryLabel.getText().contains("Richiesta di denaro"))
         {
-            PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 250, 150);
+            PaymentRequestController controller = (PaymentRequestController) PopupCreator.showPopup("Richiesta di denaro", "/bankapp/progetto20242025piragine/fxml/popup/paymentRequest.fxml", 300, 200);
             controller.setNotify(notify);
             controller.setTransaction(TransactionDAO.getTransactionById(notify.getIdTransaction()));
             controller.setUsername(notifyTitleLabel.getText());

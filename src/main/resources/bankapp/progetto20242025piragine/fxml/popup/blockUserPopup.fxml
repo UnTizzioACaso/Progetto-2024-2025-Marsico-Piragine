@@ -7,7 +7,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPaneBlockUserPopup" prefHeight="224.0" prefWidth="368.0" style="-fx-background-radius: 10; -fx-background-color: #4a4a4a;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.BlockUserPopupController">
+<AnchorPane fx:id="anchorPaneBlockUserPopup" prefHeight="224.0" prefWidth="368.0" style="-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.BlockUserPopupController">
    <children>
       <Button layoutX="224.0" layoutY="134.0" mnemonicParsing="false" onAction="#declineBlock" prefHeight="44.0" prefWidth="96.0" style="-fx-background-color: ff0000; -fx-background-radius: 14;" text="✖" textFill="WHITE" AnchorPane.rightAnchor="48.0">
          <effect>

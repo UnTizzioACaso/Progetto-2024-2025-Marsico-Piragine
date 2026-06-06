@@ -34,7 +34,7 @@
 
     <ImageView fitHeight="159.0" fitWidth="310.0" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.valignment="CENTER">
         <image>
-            <Image url="@../../imgs/LogoMazeBank.png" />
+            <Image url="@../../imgs/mazeBankLogo.png" />
         </image>
     </ImageView>
 
@@ -141,7 +141,7 @@
                     <Insets left="10.0" />
                 </padding>
             </TextField>
-            <TextField fx:id="passwordLoginTextField" disable="true" maxHeight="40.0" maxWidth="300.0" minHeight="0.0" minWidth="270.0" prefHeight="0.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <TextField fx:id="passwordLoginTextField" disable="true" maxHeight="40.0" maxWidth="300.0" minHeight="0.0" minWidth="270.0" onAction="#loadHomePage" prefHeight="0.0" prefWidth="300.0" promptText="Password" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 10; -fx-border-radius: 10;" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                 <padding>
                     <Insets left="10.0" />
                 </padding>

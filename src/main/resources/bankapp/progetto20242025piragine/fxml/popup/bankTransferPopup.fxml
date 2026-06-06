@@ -158,7 +158,7 @@
             </InnerShadow>
          </effect>
       </Button>
-      <Button fx:id="bankTransferPopupButton" mnemonicParsing="false" onAction="#abortBankTransfer" prefHeight="58.0" prefWidth="225.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-border-color: #ff0000; -fx-text-fill: red; -fx-background-color: transparent;" text="ANNULLA" textFill="RED" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+      <Button fx:id="bankTransferPopupButton" mnemonicParsing="false" onAction="#abortBankTransfer" prefHeight="58.0" prefWidth="225.0" style="-fx-background-radius: 14; -fx-border-radius: 14; -fx-border-color: #ff0000; -fx-text-fill: red; -fx-background-color: white;" text="ANNULLA" textFill="RED" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>

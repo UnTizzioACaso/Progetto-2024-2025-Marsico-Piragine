@@ -4,7 +4,6 @@ import bankapp.progetto20242025piragine.controller.BranchController;
 import bankapp.progetto20242025piragine.model.Card;
 import bankapp.progetto20242025piragine.dao.CardDAO;
 import bankapp.progetto20242025piragine.util.CurrentSession;
-import bankapp.progetto20242025piragine.util.ThemeManager;
 import bankapp.progetto20242025piragine.util.ValueValidator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.math.BigDecimal;
-import java.sql.SQLException;
 
 public class MenageCardPopupController extends BranchController {
 
@@ -24,7 +22,7 @@ public class MenageCardPopupController extends BranchController {
     private TextField spendingLimitTextField;
 
     @FXML
-    private Label errorLabelMenageCardPopup;
+    private Label errorLabel;
 
     private Card card;
 
@@ -42,19 +40,19 @@ public class MenageCardPopupController extends BranchController {
     {
         BigDecimal limit = ValueValidator.validateFormat(spendingLimitTextField.getText());
         if (limit == null) {
-            errorLabelMenageCardPopup.setText("Formato del limite non valido");
+            errorLabel.setText("Formato del limite non valido");
             return;
         }
 
         BigDecimal maxLimit = new BigDecimal("1000.00");
 
         if (limit.compareTo(maxLimit) > 0) {
-            errorLabelMenageCardPopup.setText("Il limite massimo è 1.000,00");
+            errorLabel.setText("Il limite massimo è 1.000,00");
             return;
         }
 
         if (limit.compareTo(BigDecimal.ZERO) <= 0) {
-            errorLabelMenageCardPopup.setText("Il limite deve essere maggiore di zero");
+            errorLabel.setText("Il limite deve essere maggiore di zero");
             return;
         }
 
@@ -62,7 +60,7 @@ public class MenageCardPopupController extends BranchController {
         card.setSpendingLimit(updatedLimitFromDB);
 
         spendingLimitTextField.setText(String.valueOf(card.getSpendingLimit()));
-        errorLabelMenageCardPopup.setText("");
+        errorLabel.setText("");
         CurrentSession.getTopbarController().reloadPage();
     }
 
@@ -88,7 +86,7 @@ public class MenageCardPopupController extends BranchController {
     private void deleteCard()
     {
         CardDAO.deleteCard(card.getIdCard());
-        ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+        ((Stage) errorLabel.getScene().getWindow()).close();
         CurrentSession.getTopbarController().reloadPage();
     }
 
@@ -96,7 +94,7 @@ public class MenageCardPopupController extends BranchController {
     private void blockCard()
     {
         CardDAO.updateCardStatus(card.getIdCard(), false);
-        ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+        ((Stage) errorLabel.getScene().getWindow()).close();
         CurrentSession.getTopbarController().reloadPage();
     }
 
@@ -104,12 +102,12 @@ public class MenageCardPopupController extends BranchController {
     private void unblockCard()
     {
         CardDAO.updateCardStatus(card.getIdCard(), true);
-        ((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();
+        ((Stage) errorLabel.getScene().getWindow()).close();
         CurrentSession.getTopbarController().reloadPage();
     }
 
     @FXML
-    private void closePopup() {((Stage) errorLabelMenageCardPopup.getScene().getWindow()).close();}
+    private void closePopup() {((Stage) errorLabel.getScene().getWindow()).close();}
 
 
 }

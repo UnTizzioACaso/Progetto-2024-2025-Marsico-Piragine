@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="quickContactGridPane2" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.QuickContactController">
+<GridPane fx:id="quickContactGridPane" maxHeight="250.0" maxWidth="400.0" prefHeight="200.0" prefWidth="350.0" style="-fx-background-radius: 15; -fx-background-color: e4e4e4;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.widget.QuickContactController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
@@ -28,7 +28,7 @@
    <children>
       <ImageView fitHeight="59.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER">
          <image>
-            <Image url="@../../imgs/quickContact.png" />
+            <Image url="@../../imgs/contact.png" />
          </image>
          <effect>
             <ColorAdjust brightness="0.02" contrast="0.4" hue="-0.82" />
@@ -75,7 +75,7 @@
             <Insets bottom="12.0" right="30.0" top="12.0" />
          </GridPane.margin>
       </Button>
-      <TextField fx:id="quickContactTextField" alignment="CENTER" maxHeight="32.0" maxWidth="80.0" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #f2f2f2; -fx-border-color: #d9d9d9; -fx-background-radius: 6; -fx-border-radius: 6;" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <TextField fx:id="quickContactTextField" maxHeight="32.0" maxWidth="80.0" prefHeight="40.0" prefWidth="100.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <padding>
             <Insets left="10.0" />
          </padding>

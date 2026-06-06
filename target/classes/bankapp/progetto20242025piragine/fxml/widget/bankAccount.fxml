@@ -54,7 +54,7 @@
                <graphic>
                   <ImageView fx:id="bankAccountImageView" fitHeight="32.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../imgs/settingsicon.png" />
+                        <Image url="@../../imgs/settingsIcon.png" />
                      </image>
                   </ImageView>
                </graphic>

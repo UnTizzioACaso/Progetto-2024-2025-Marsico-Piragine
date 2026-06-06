@@ -61,7 +61,7 @@
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../imgs/lenticon.png" />
+                        <Image url="@../../imgs/lentIcon.png" />
                      </image>
                      <effect>
                         <ColorAdjust brightness="1.0" contrast="-1.0" hue="0.02" saturation="-0.05" />
@@ -81,9 +81,9 @@
             </Button>
          </children>
       </GridPane>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="150.0" prefWidth="383.0" style="-fx-background: e4e4e4; -fx-background-radius: 0 0 15 15; -fx-border-color: transparent;" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="150.0" prefWidth="383.0" style="-fx-background: transparent; -fx-background-radius: 0 0 15 15; -fx-border-color: transparent;" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
          <content>
-            <VBox fx:id="transactionHistoryVBox" />
+            <VBox fx:id="transactionHistoryVBox" style="-fx-background-radius: 0 0 15 15;" />
          </content>
       </ScrollPane>
       <GridPane prefHeight="33.0" prefWidth="339.0" style="-fx-background-color: ff0000; -fx-background-radius: 15 15 0 0;" GridPane.columnSpan="2147483647">

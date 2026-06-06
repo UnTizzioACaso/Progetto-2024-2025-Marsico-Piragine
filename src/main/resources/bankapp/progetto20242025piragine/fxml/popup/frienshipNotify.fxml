@@ -19,9 +19,9 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="55.0" layoutX="124.8" layoutY="54.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="124.8" AnchorPane.rightAnchor="120.19999999999999">
+      <ImageView fitHeight="55.0" layoutX="123.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="122.5" AnchorPane.rightAnchor="122.5" AnchorPane.topAnchor="55.0">
          <image>
-            <Image url="@../../imgs/quickContact.png" />
+            <Image url="@../../imgs/contact.png" />
          </image>
          <effect>
             <ColorAdjust brightness="-0.18" contrast="1.0" hue="-0.84">
@@ -35,7 +35,7 @@
             </ColorAdjust>
          </effect>
       </ImageView>
-      <Button layoutX="42.6" layoutY="144.8" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="✔" textFill="WHITE" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="42.0">
+      <Button fx:id="acceptButton" layoutX="42.6" layoutY="144.8" mnemonicParsing="false" onAction="#acceptRequest" prefHeight="30.0" prefWidth="74.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="✔" textFill="WHITE" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="42.0">
          <effect>
             <InnerShadow offsetX="-10.0" offsetY="-10.0">
                <color>

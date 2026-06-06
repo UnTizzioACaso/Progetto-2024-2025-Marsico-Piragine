@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="cardPopupAnchorPane" prefHeight="447.0" prefWidth="500.0" style="-fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController">
+<AnchorPane fx:id="cardPopupAnchorPane" prefHeight="447.0" prefWidth="500.0" style="-fx-background-radius: 10;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.CreateCardPopupController">
    <children>
       <Button fx:id="createCardButton" alignment="CENTER" contentDisplay="CENTER" layoutX="112.8" layoutY="339.6" mnemonicParsing="false" onAction="#createCard" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: ff0000; -fx-background-radius: 10;" text="Crea carta" textFill="WHITE" AnchorPane.bottomAnchor="59.39999999999998" AnchorPane.leftAnchor="112.8" AnchorPane.rightAnchor="112.0">
          <effect>
@@ -27,12 +27,12 @@
          </font>
       </Button>
       <VBox fx:id="cardSlotVbox" alignment="CENTER" layoutX="46.4" layoutY="77.4" prefHeight="200.0" prefWidth="322.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="46.4" AnchorPane.rightAnchor="46.39999999999998" AnchorPane.topAnchor="77.4" />
-      <TextField fx:id="nicknameTextField" layoutX="277.4" layoutY="159.00000000000003" maxHeight="40.0" maxWidth="300.0" minWidth="76.0" onAction="#createCard" prefHeight="25.0" prefWidth="76.0" promptText="Nickname" style="-fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.bottomAnchor="264.0" AnchorPane.rightAnchor="146.0">
+      <TextField fx:id="nicknameTextField" layoutX="277.4" layoutY="159.00000000000003" maxHeight="40.0" maxWidth="300.0" minWidth="76.0" onAction="#createCard" prefHeight="25.0" prefWidth="76.0" promptText="Nickname" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: gray;" AnchorPane.bottomAnchor="264.0" AnchorPane.rightAnchor="146.0">
          <padding>
             <Insets left="10.0" />
          </padding>
       </TextField>
-      <TextField fx:id="spendingLimitTextField" layoutX="353.6" layoutY="61.4" maxHeight="40.0" maxWidth="300.0" minWidth="58.0" onAction="#createCard" prefHeight="25.0" prefWidth="92.0" promptText="Limite spesa" style="-fx-background-radius: 8; -fx-border-radius: 8;" AnchorPane.rightAnchor="54.39999999999998" AnchorPane.topAnchor="61.4">
+      <TextField fx:id="spendingLimitTextField" layoutX="353.6" layoutY="61.4" maxHeight="40.0" maxWidth="300.0" minWidth="58.0" onAction="#createCard" prefHeight="25.0" prefWidth="92.0" promptText="Limite spesa" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: gray;" AnchorPane.rightAnchor="54.39999999999998" AnchorPane.topAnchor="61.4">
          <padding>
             <Insets left="10.0" />
          </padding>

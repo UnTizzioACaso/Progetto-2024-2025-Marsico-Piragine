@@ -29,8 +29,6 @@ public class FriendsPageController extends BranchController
 {
     private User friend;
 
-    private FriendContactController currentFriendController = null;
-
     @FXML
     private VBox friendsVBox, chatVBox;
 
@@ -58,7 +56,7 @@ public class FriendsPageController extends BranchController
     private void requestTransaction()
     {
 
-        if (currentFriendController == null) {writeError("Devi selezionare un amico per richiedere denaro");return;}
+        if (friend == null) {writeError("Devi selezionare un amico per richiedere denaro");return;}
 
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}
@@ -89,13 +87,13 @@ public class FriendsPageController extends BranchController
         errorLabel.setTextFill(Paint.valueOf("green"));
         errorLabel.setText("Richiesta effettuata con successo");
 
-        currentFriendController.showChat();
+        showChatWith(friend.getUsername());
     }
 
     @FXML
     private void sendTransaction()
     {
-        if (currentFriendController == null) {writeError("Devi selezionare un amico per inviare denaro");return;}
+        if (friend == null) {writeError("Devi selezionare un amico per inviare denaro");return;}
 
         PopupCreator.showAndWaitPopup("inserisci il pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if(!CurrentSession.isPinCorrect()){return;}
@@ -141,7 +139,7 @@ public class FriendsPageController extends BranchController
         errorLabel.setTextFill(Paint.valueOf("green"));
         errorLabel.setText("Transazione effettuata con successo");
 
-        currentFriendController.showChat();
+        showChatWith(friend.getUsername());
     }
 
 
@@ -168,7 +166,7 @@ public class FriendsPageController extends BranchController
     public void showChatWith(String username)
     {
         CurrentSession.getFriendsPageController().getChatVBox().setAlignment(Pos.TOP_CENTER);
-        User friend = UserDAO.getUserByUsername(username);
+        friend = UserDAO.getUserByUsername(username);
         CurrentSession.getFriendsPageController().getChatVBox().getChildren().clear();
 
         List<Transaction> transactions;

@@ -37,7 +37,7 @@ public class ConfirmAddMoneyPopupController extends BranchController {
                 LabelConfirmAddMoney.setText("L'importo deve essere maggiore di 0");
                 isCorrect = false;
             }
-            if ((total.add(CurrentSession.getLoggedAccount().getMoney()).compareTo(new BigDecimal("9223372036854775807,00")) > 0)) {
+            if ((total.add(CurrentSession.getLoggedAccount().getMoney()).compareTo(new BigDecimal("9223372036854775807.00")) > 0)) {
                 LabelConfirmAddMoney.setText("il database non puo gestire un saldo cosi grande");
                 isCorrect = false;
             }
@@ -66,6 +66,12 @@ public class ConfirmAddMoneyPopupController extends BranchController {
         CurrentSession.setLoggedAccount(BankAccountDAO.getAccountById(CurrentSession.getLoggedAccount().getIdAccount())); //update logged account to get the correct balance after a transaction request is accepted
         ((Stage) moneyConfirmTextField.getScene().getWindow()).close();
 
+    }
+
+    @FXML
+    private void closePopup()
+    {
+        ((Stage) moneyConfirmTextField.getScene().getWindow()).close();
     }
 
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rectangleAnchorPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="300.0" prefHeight="201.0" prefWidth="942.0" style="-fx-background-color: white; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CreditCardRectangleController">
+<AnchorPane fx:id="rectangleAnchorPane" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="200.0" prefHeight="201.0" prefWidth="942.0" style="-fx-background-color: white; -fx-background-radius: 18;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.component.CreditCardRectangleController">
     <children>
         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="766.0" layoutY="115.0" mnemonicParsing="false" onAction="#menageCard" prefHeight="42.0" prefWidth="126.0" style="-fx-background-color: ff0000; -fx-background-radius: 8;" text="GESTISCI" textFill="WHITE" AnchorPane.rightAnchor="40.0">
             <effect>

@@ -13,7 +13,7 @@
 <AnchorPane fx:id="accountPopupRoot" prefHeight="246.0" prefWidth="413.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.popup.AccountPopupController">
 
     <children>
-        <Label fx:id="accountPopupLabel" layoutX="35.0" layoutY="26.0" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1F1F1F;" text="Account" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="26.0">
+        <Label fx:id="accountPopupLabel" layoutX="35.0" layoutY="26.0" style="-fx-font-size: 18px; -fx-font-weight: 700;" text="Account" textFill="#1f1f1f" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="26.0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -21,17 +21,17 @@
 
         <Separator layoutX="11.0" layoutY="67.0" prefWidth="562.1" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
 
-        <Label fx:id="emailPopupAccountLabel" layoutX="34.0" layoutY="83.0" style="-fx-font-size: 15px; -fx-text-fill: #1F1F1F;" text="utente@gmail.com" AnchorPane.leftAnchor="34.0" />
+        <Label fx:id="emailPopupAccountLabel" layoutX="34.0" layoutY="83.0" style="-fx-font-size: 15px;" text="utente@gmail.com" textFill="#1f1f1f" AnchorPane.leftAnchor="34.0" />
         <Button fx:id="logoutAccountPopupButton" layoutX="314.0" layoutY="78.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-radius: 8; -fx-background-color: e0e0e0; -fx-text-fill: #1F1F1F; -fx-font-weight: 500; -fx-padding: 6 14;" text="Logout" AnchorPane.rightAnchor="33.0" />
 
         <Separator layoutX="11.0" layoutY="118.0" prefWidth="562.1" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />
 
         <!-- Theme row -->
-        <Label fx:id="themeApplicationAccountPopupLabel" layoutX="34.0" layoutY="135.0" style="-fx-text-fill: #5F6368;" text="Tema applicazione" AnchorPane.leftAnchor="34.0">
+        <Label fx:id="themeApplicationAccountPopupLabel" layoutX="34.0" layoutY="135.0" text="Tema applicazione" textFill="#5f6368" AnchorPane.leftAnchor="34.0">
          <font>
             <Font size="14.0" />
          </font></Label>
-        <Label fx:id="themeColorAccountPopupLabel" layoutX="319.0" layoutY="134.0" style="-fx-text-fill: #1F1F1F; -fx-mark-color: #10A37F; -fx-padding: 2 0;" text="Chiaro" AnchorPane.rightAnchor="59.0" />
+        <Label fx:id="themeColorAccountPopupLabel" layoutX="319.0" layoutY="134.0" style="-fx-padding: 2 0;" text="Chiaro" textFill="#1f1f1f" AnchorPane.rightAnchor="59.0" />
         <RadioButton fx:id="themeColorAccountPopupRadioButton" layoutX="360.0" layoutY="136.0" mnemonicParsing="false" onAction="#toggleTheme" AnchorPane.rightAnchor="37.0" />
 
         <Separator layoutX="11.0" layoutY="168.0" prefHeight="3.0" prefWidth="562.0" style="-fx-opacity: 0.70;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" />

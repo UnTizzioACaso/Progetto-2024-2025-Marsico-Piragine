@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
 
-<GridPane id="rootGridPaneBankSettingPage" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="550.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController">
+<GridPane fx:id="rootBankAccountSettingsGridPane" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="100.0" minWidth="550.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bankapp.progetto20242025piragine.controller.page.BankAccountSettingsPageController">
 
     <padding>
         <Insets bottom="25" left="25" right="25" top="25" />
@@ -22,7 +31,7 @@
     <children>
 
         <!-- LINEA ROSSA (Separator) -->
-        <Separator id="separatorBankAccountSettingsPage" prefWidth="760" style="-fx-background-color: ff0000; -fx-border-color: ff0000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <Separator id="separatorBankAccountSettingsPage" fx:id="pageSeparator" prefWidth="760" style="-fx-background-color: ff0000; -fx-border-color: ff0000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets bottom="10.0" top="10.0" />
             </GridPane.margin>
@@ -36,7 +45,7 @@
         </Separator>
       <ImageView fitHeight="101.0" fitWidth="329.0" GridPane.halignment="CENTER">
          <image>
-            <Image url="@../../imgs/LogoMazeBank2.png" />
+            <Image url="@../../imgs/mazeBankLogo2.png" />
          </image>
          <effect>
             <ColorAdjust brightness="-0.32" contrast="1.0" saturation="1.0">
@@ -52,7 +61,7 @@
       </ImageView>
 
                     <!-- CARD (contenuto) -->
-        <GridPane id="gridPaneBankAccountSetting" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="760" minHeight="10.0" prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: white; -fx-background-radius: 26;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <GridPane fx:id="bankAccountSettingsGridPane" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="760" minHeight="10.0" prefHeight="600.0" prefWidth="760.0" style="-fx-background-color: white; -fx-background-radius: 26;" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
 
                         <padding>
                 <Insets left="32.0" right="32.0" />
@@ -104,8 +113,7 @@
                         <Label style="-fx-font-size: 15px;" text="Soglia massima per invii rapidi" GridPane.rowIndex="6" />
 
                         <HBox alignment="CENTER_RIGHT" spacing="14" GridPane.columnIndex="1" GridPane.rowIndex="6">
-            <Label fx:id="maxTransferLabel" />
-                <TextField id="textFieldBankAccountSettingsPage" fx:id="sendingLimitTextfield" alignment="CENTER" prefHeight="38.0" prefWidth="90" style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #cfcfcf;" text="50" />
+                <TextField id="textFieldBankAccountSettingsPage" fx:id="sendingLimitTextfield" alignment="CENTER" prefHeight="38.0" prefWidth="90" style="-fx-background-radius: 6; -fx-border-radius: 6;" text="50" />
                 <Button fx:id="saveLimitButton" onMouseClicked="#saveLimitButton" prefHeight="32.0" prefWidth="129.0" style="-fx-background-color: ff0000; -fx-font-weight: 800; -fx-padding: 10 22; -fx-background-radius: 8; -fx-text-fill: white;" text="SALVA SOGLIA">
                <effect>
                   <InnerShadow choke="0.17" height="55.97" offsetX="-10.0" offsetY="-10.0" radius="27.5775" width="56.34">
@@ -142,7 +150,7 @@
             </effect></Button>
 
                         <HBox alignment="CENTER_LEFT" spacing="12" GridPane.columnSpan="2" GridPane.rowIndex="10">
-                <CheckBox id="checkBoxBankAccountSettingsPage" fx:id="richiediSempreCheck" nodeOrientation="RIGHT_TO_LEFT" selected="true" style="-fx-font-size: 15px;" text="Richiedi sempre il codice anche per invii rapidi">
+                <CheckBox fx:id="askAlwaysCheck" nodeOrientation="RIGHT_TO_LEFT" selected="true" style="-fx-font-size: 15px;" text="Richiedi sempre il codice anche per invii rapidi">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin></CheckBox>
@@ -171,6 +179,7 @@
                </InnerShadow>
             </effect>
          </Button>
+         <Label fx:id="maxTransferLabel" alignment="CENTER" prefHeight="17.0" prefWidth="496.0" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
             <rowConstraints>
                 <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
                 <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />

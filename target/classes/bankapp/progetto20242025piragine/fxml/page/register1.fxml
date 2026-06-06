@@ -36,7 +36,7 @@
    <children>
       <ImageView fitHeight="159.0" fitWidth="310.0" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
          <image>
-            <Image url="@../../imgs/LogoMazeBank.png" />
+            <Image url="@../../imgs/mazeBankLogo.png" />
          </image>
       </ImageView>
       <Pane minWidth="-Infinity" prefHeight="70.0" prefWidth="857.0" style="-fx-background-color: ff0000;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">

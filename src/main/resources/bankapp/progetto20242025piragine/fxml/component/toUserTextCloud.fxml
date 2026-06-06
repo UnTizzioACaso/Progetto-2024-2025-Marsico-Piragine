@@ -11,17 +11,17 @@
 
    <children>
 
-      <StackPane id="stackPaneFromFriendTransactionCloud" fx:id="bubbleContainer" style="-fx-color: #0078ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="22.0">
+      <StackPane fx:id="bubbleContainer" style="-fx-color: #0078ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="22.0">
 
          <children>
 
-            <Polygon id="polygonFromFriendTransactionCloud" fill="#4a4a4a" points="0.0,0.0, -15.0,15.0, 0.0,15.0" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="BOTTOM_LEFT">
+            <Polygon fill="#6f0000" points="0.0,0.0, -15.0,15.0, 0.0,15.0" strokeType="INSIDE" strokeWidth="0.0" StackPane.alignment="BOTTOM_LEFT">
                <StackPane.margin>
                   <Insets left="-8.0" />
                </StackPane.margin>
             </Polygon>
 
-            <Label fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" onMouseClicked="#showRequest" style="-fx-background-color: #4a4a4a; -fx-background-radius: 15 15 15 0; -fx-padding: 10;" text="Messaggio del MazeBot" textFill="WHITE" wrapText="true" StackPane.alignment="BOTTOM_LEFT">
+            <Label fx:id="textLabel" maxWidth="250.0" minHeight="-Infinity" onMouseClicked="#showRequest" style="-fx-background-color: #6f0000; -fx-background-radius: 15 15 15 0; -fx-padding: 10;" text="Messaggio del MazeBot" textFill="WHITE" wrapText="true" StackPane.alignment="BOTTOM_LEFT">
 
                <font>
                   <Font size="14.0" />

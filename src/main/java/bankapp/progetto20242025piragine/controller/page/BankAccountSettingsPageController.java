@@ -27,7 +27,7 @@ public class BankAccountSettingsPageController extends BranchController
     {
         CurrentSession.setBankAccountSettingsPageController(this);
         BankAccount bankAccount = BankAccountDAO.getAccountByUserId(CurrentSession.getLoggedUser().getUserID());
-        sendingLimitTextfield.setText(CurrentSession.getLoggedAccount().getMaxTransfer().toString());
+        sendingLimitTextfield.setText(CurrentSession.getLoggedAccount().getMaxTransfer().movePointRight(2).toString());
         ibanLabel.setText(bankAccount.getIban());
     }
     @FXML

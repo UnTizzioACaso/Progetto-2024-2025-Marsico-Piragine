@@ -82,7 +82,7 @@ public class BankTransferPopupController extends BranchController
         int userBeneficiary = UserDAO.getUserByUsername(nameTextField.getText()).getUserID();
         BankAccount accountBeneficiary = BankAccountDAO.getAccountByUserId(userBeneficiary);
 
-        if (amount.add(accountBeneficiary.getMoney()).compareTo(new BigDecimal("9223372036854775807,00")) > 0)
+        if (amount.add(accountBeneficiary.getMoney()).compareTo(new BigDecimal("9223372036854775807.00")) > 0)
         {
             moneyErrorLabel.setText("errore durante l'invio el bonifico");
             moneyErrorLabel.setTextFill(Paint.valueOf("red"));

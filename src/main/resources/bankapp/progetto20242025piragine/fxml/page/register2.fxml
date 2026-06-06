@@ -40,7 +40,7 @@
       </Pane>
       <ImageView fitHeight="159.0" fitWidth="310.0" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.rowSpan="2" GridPane.valignment="CENTER">
          <image>
-            <Image url="@../../imgs/LogoMazeBank.png" />
+            <Image url="@../../imgs/mazeBankLogo.png" />
          </image>
       </ImageView>
       <Label id="registerTitleLabel2" style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;" text="Registrati" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />

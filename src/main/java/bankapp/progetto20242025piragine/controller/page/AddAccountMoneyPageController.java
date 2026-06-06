@@ -8,8 +8,6 @@ import bankapp.progetto20242025piragine.util.ValueValidator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 import java.math.BigDecimal;
 import java.time.YearMonth;
@@ -21,26 +19,27 @@ public class AddAccountMoneyPageController extends BranchController
         {
                 if(CurrentSession.isPinCorrect())
                 {
+                        errorLabel.setStyle("-fx-text-fill: green !important;");
                         errorLabel.setText("Ricarica avvenuta con successo");
-                        errorLabel.setStyle("-fx-text-fill: green");
+
                 }
         }
         @FXML
         private Label errorLabel;
 
         @FXML
-        private TextField ownerNameTextField, cardNumberTextField, expirationTextField, cvvTextField, MoneyTextField;
+        private TextField ownerNameTextField, cardNumberTextField, expirationTextField, cvvTextField, moneyTextField;
 
         @FXML
         private void confirm()
         {
-                if(ownerNameTextField.getText().isEmpty() || cardNumberTextField.getText().isEmpty() || expirationTextField.getText().isEmpty() || cvvTextField.getText().isEmpty() || MoneyTextField.getText().isEmpty())
+                if(ownerNameTextField.getText().isEmpty() || cardNumberTextField.getText().isEmpty() || expirationTextField.getText().isEmpty() || cvvTextField.getText().isEmpty() || moneyTextField.getText().isEmpty())
                 {
                         errorLabel.setText("Tutti i campi devono essere compilati");
                         return;
                 }
 
-                BigDecimal value= ValueValidator.validateFormat(MoneyTextField.getText());
+                BigDecimal value= ValueValidator.validateFormat(moneyTextField.getText());
                 if (value == null) {
                         errorLabel.setText("Il formato del importo inserito non è valido");
                         return;
@@ -49,7 +48,7 @@ public class AddAccountMoneyPageController extends BranchController
                 String ownerName = ownerNameTextField.getText().trim();
                 if (ownerName.isEmpty() || cardNumberTextField.getText().isEmpty() ||
                         expirationTextField.getText().isEmpty() || cvvTextField.getText().isEmpty() ||
-                        MoneyTextField.getText().isEmpty()) {
+                        moneyTextField.getText().isEmpty()) {
                         errorLabel.setText("Tutti i campi devono essere compilati");
                         return;
                 }
@@ -78,22 +77,24 @@ public class AddAccountMoneyPageController extends BranchController
                 try {
                         String[] parts = expiration.split("/");
                         int month = Integer.parseInt(parts[0]);
-                        int year = 2000 + Integer.parseInt(parts[1]); // Conversione yy -> 20yy
+                        int year = 2000 + Integer.parseInt(parts[1]); // Conversion yy -> 20yy
 
                         YearMonth expirationDate = YearMonth.of(year, month);
                         YearMonth now = YearMonth.now();
 
-                        // Se la data di scadenza è prima del mese corrente, la carta è scaduta
                         if (expirationDate.isBefore(now)) {
+                                errorLabel.setStyle("-fx-text-fill: red !important;");
                                 errorLabel.setText("Carta scaduta!");
                                 return;
                         }
                 } catch (Exception e) {
+                        errorLabel.setStyle("-fx-text-fill: red !important;");
                         errorLabel.setText("Errore nella data");
                         return;
                 }
                 String cvv = cvvTextField.getText().trim();
                 if (!cvv.matches("\\d{3}")) {
+                        errorLabel.setStyle("-fx-text-fill: red !important;");
                         errorLabel.setText("CVV non valido (deve contenere 3 cifre)");
                         return;
                 }
@@ -108,14 +109,14 @@ public class AddAccountMoneyPageController extends BranchController
         @FXML
         private void payWithApplePay()
         {
-                errorLabel.setStyle("-fx-text-fill: red");
+                errorLabel.setStyle("-fx-text-fill: red !important;");
                 errorLabel.setText("Apple Pay non è al momento disponibile, usare un altra modalità di pagamento");
         }
 
         @FXML
         private void payWithGooglePay()
         {
-                errorLabel.setStyle("-fx-text-fill: red");
+                errorLabel.setStyle("-fx-text-fill: red !important;");
                 errorLabel.setText("Google Pay non è al momento disponibile, usare un altra modalità di pagamento");
         }
 

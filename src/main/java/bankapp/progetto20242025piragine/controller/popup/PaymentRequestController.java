@@ -23,7 +23,7 @@ public class PaymentRequestController extends BranchController {
     private Button acceptButton;
 
     @FXML
-    private Label friendshipUsernameLabel, moneyLabel, noteLabel;
+    private Label friendshipUsernameLabel, noteLabel;
 
     public void setUsername(String username) {friendshipUsernameLabel.setText(username);}
 
@@ -32,8 +32,7 @@ public class PaymentRequestController extends BranchController {
     public void setTransaction(Transaction request)
     {
         this.request = request;
-        this.noteLabel.setText(request.getNote());
-        this.moneyLabel.setText(String.format("%.2f€", request.getAmount()));
+        this.noteLabel.setText(request.getNote() + ": " + String.format("%.2f€", request.getAmount()));
     }
 
     @FXML
@@ -48,13 +47,13 @@ public class PaymentRequestController extends BranchController {
             {
 
                 NotifyDAO.markAsRead(n.getIdNotify());
-                ((Stage) moneyLabel.getScene().getWindow()).close();
+                ((Stage) noteLabel.getScene().getWindow()).close();
                 return;
             }
         }
         CurrentSession.getFriendsPageController().showChatWith(friendshipUsernameLabel.getText());
         TransactionDAO.declineTransacion(request.getIdTransaction());
-        ((Stage) moneyLabel.getScene().getWindow()).close();
+        ((Stage) noteLabel.getScene().getWindow()).close();
     }
 
     @FXML
@@ -63,7 +62,7 @@ public class PaymentRequestController extends BranchController {
         PopupCreator.showAndWaitPopup("inserisci un pin", "/bankapp/progetto20242025piragine/fxml/popup/pinPopup.fxml", 315, 190);
         if (!CurrentSession.isPinCorrect()) {return;}
 
-        if ((request.getAmount().add(CurrentSession.getLoggedAccount().getMoney()).compareTo(new BigDecimal("9223372036854775807,00")) > 0)) {
+        if ((request.getAmount().add(CurrentSession.getLoggedAccount().getMoney()).compareTo(new BigDecimal("9223372036854775807.00")) > 0)) {
             noteLabel.setText("il database non puo gestire un saldo cosi grande");
             acceptButton.setDisable(true);
             return;
@@ -76,14 +75,14 @@ public class PaymentRequestController extends BranchController {
             {
                 NotifyDAO.markAsRead(n.getIdNotify());
                 CurrentSession.getTopbarController().updateNotifications();
-                ((Stage) moneyLabel.getScene().getWindow()).close();
+                ((Stage) noteLabel.getScene().getWindow()).close();
                 return;
             }
 
             //if this popup is generated from a friend message, show the chat and close the popup
             BankAccountDAO.transferMoneyRequest(BankAccountDAO.getAccountById(request.getBeneficiary()), CurrentSession.getLoggedAccount(), request);
             CurrentSession.getFriendsPageController().showChatWith(friendshipUsernameLabel.getText());
-            ((Stage) moneyLabel.getScene().getWindow()).close();
+            ((Stage) noteLabel.getScene().getWindow()).close();
         }
     }
 

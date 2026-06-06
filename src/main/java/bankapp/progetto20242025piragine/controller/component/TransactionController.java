@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 public class TransactionController extends BranchController
 {
     @FXML
-    private Label transactionSubjectLabel, TransactionDateLabel, transactionValueLabel;
+    private Label transactionSubjectLabel, transactionDateLabel, transactionValueLabel;
 
 
     public void setCorrectValues(Transaction transaction)
@@ -33,7 +33,7 @@ public class TransactionController extends BranchController
                 transactionSubjectLabel.setText(username);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
                 String cleanDate = transaction.getTransactionDate().toLocalDateTime().format(formatter);
-                TransactionDateLabel.setText(cleanDate);
+                transactionDateLabel.setText(cleanDate);
             }
             catch (SQLException e)
             {
@@ -51,7 +51,7 @@ public class TransactionController extends BranchController
                 transactionSubjectLabel.setText(username);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");;
                 String cleanDate = transaction.getTransactionDate().toLocalDateTime().format(formatter);
-                TransactionDateLabel.setText(cleanDate);
+                transactionDateLabel.setText(cleanDate);
             }
             catch (SQLException e)
             {
