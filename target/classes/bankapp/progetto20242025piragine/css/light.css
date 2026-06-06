@@ -1,18 +1,437 @@
 /* ==========================================================
-   GENERAL COMPONENTS
+   ALL GENERAL COMPONENTS
    ========================================================== */
 
 
 
-.scroll-pane > .viewport {
-    -fx-background-color: transparent !important;
+/* ====== general menu ====== */
+
+
+.menu-button .arrow {
+    -fx-background-color: white !important;
 }
+
+.context-menu {
+    -fx-background-radius: 6;
+    -fx-background-color: white;
+}
+
+
+.context-menu .menu-item {
+    -fx-background-color: transparent;
+}
+
+.context-menu .menu-item .label {
+    -fx-text-fill: black !important;
+}
+
+.context-menu .menu-item:hover {
+    -fx-background-color: #444444;
+}
+
+/* ====== END  ====== */
+
+/* ====== general text field ====== */
+
 
 .text-field {
     -fx-background-color: white !important;
     -fx-text-fill: black !important;
+    -fx-prompt-text-fill: #bdbdbd !important;
+    -fx-border-color: #595959 !important;
+    -fx-border-radius: 10 !important;
+    -fx-background-radius: 10 !important;
+}
+
+/* ====== END  ====== */
+
+/* ====== general check boxes and radio buttons ====== */
+
+.check-box > .box {
     -fx-background-insets: 0 !important;
-    -fx-border-color: #c0c0c0 ;
+    -fx-border-color: #bababa !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 2px !important;
+}
+
+.check-box:focused > .box {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+}
+
+.radio-button > .radio {
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+    -fx-border-width: 1px !important;
+    -fx-border-radius: 10px !important;
+}
+
+.radio-button:focused > .radio {
+    -fx-focus-color: transparent !important;
+    -fx-faint-focus-color: transparent !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-color: #bababa !important;
+}
+
+/* ====== END  ====== */
+
+/* ====== text input ====== */
+
+
+.text-input {
+    -fx-highlight-fill: red;
+    -fx-highlight-text-fill: white;
+}
+
+/* ====== END  ====== */
+
+/* ====== scroll pane and scroll pane components ====== */
+
+.scroll-pane {
+    -fx-background-color: #e4e4e4;
+    -fx-padding: 0 ;
+    -fx-background-insets: 0;
+    -fx-background: transparent !important;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-radius: 15;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #8b0000;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #ff0000;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-effect: innershadow(three-pass-box, #ff0000, 28, 0.17, -10, -10);
+}
+
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #cc0000;
+    -fx-effect: innershadow(three-pass-box, #cc0000, 28, 0.20, -6, -6);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/* ====== END  ====== */
+
+/* ====== date picker and date picker components  ====== */
+
+
+.date-picker {
+    -fx-background-color: white !important;
+    -fx-background-radius: 6 !important;
+    -fx-border-color: gray !important;
+    -fx-border-radius: 6 !important;
+    -fx-background-insets: 0 !important;
+}
+
+.date-picker > .text-field {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: black !important;
+    -fx-border-color: transparent !important;
+}
+
+
+.date-picker > .arrow-button {
+    -fx-background-color: #ff0000 !important;
+    -fx-background-insets: 0 !important;
     -fx-border-width: 1 !important;
-    -fx-border-radius: 10 ;
+    -fx-background-radius: 0 6 6 0 !important;
+    -fx-border-radius: 0 6 6 0 !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.15), 27.63, 0.17, -10, -10) !important;
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: white !important;
+}
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #ff0000;-fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.25), 27.63, 0.17, -10, -10);
+}
+
+.date-picker-popup .month-year-pane .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.date-picker-popup .month-year-pane .button {
+    -fx-background-color: transparent;
+    -fx-mark-color: white;
+}
+
+.date-picker-popup .left-arrow,
+.date-picker-popup .right-arrow {
+    -fx-background-color: white;
+}
+
+.date-picker-popup .day-name-cell,
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: black !important;
+}
+
+
+.date-picker-popup .calendar-grid {
+    -fx-background-color: white !important;
+}
+
+.date-picker-popup .today {
+    -fx-text-fill: #ff0000  !important;
+    -fx-font-weight: bold !important;
+    -fx-background-insets: 0 !important;
+}
+
+.date-picker-popup .date-cell:selected {
+    -fx-background-color: #ff0000 !important;
+    -fx-text-fill: white !important;
+    -fx-background-insets: 0 !important;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.15), 27.63, .17, -10, -10) !important;
+}
+
+.date-picker-popup .day-cell {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: white !important;
+    -fx-text-fill: black !important;
+    -fx-background-insets: 0 !important;
+}
+
+.date-picker-popup .day-cell:focused {
+    -fx-background-color: white !important;
+}
+
+.date-picker-popup .previous-month,
+.date-picker-popup .next-month {
+    -fx-background-color: #f2f2f2 !important;
+    -fx-text-fill: #b0b0b0 !important;
+}
+
+.date-picker-popup .day-cell,
+.date-picker-popup .week-number-cell,
+.date-picker-popup .day-name-cell {
+    -fx-pref-width: 30px !important;
+    -fx-pref-height: 34px !important;
+    -fx-max-width: 30px !important;
+    -fx-max-height: 34px !important;
+    -fx-min-width: 30px !important;
+    -fx-min-height: 24px !important;
+}
+
+.date-picker-popup .calendar-grid {
+    -fx-pref-height: 180px !important;
+    -fx-max-height: 180px !important;
+    -fx-min-height: 180px !important;
+}
+
+/* ====== END  ====== */
+
+
+
+/* ==========================================================
+   ALL SPECIFIC COMPONENTS
+   ========================================================== */
+
+
+
+/* ====== all grid pane ====== */
+
+#monthlyBalanceGridPane,
+#quickContactGridPane,
+#transactionHistoryGridPane,
+#transactionHistoryFiltersGridPane,
+#bankAccountSettingsGridPane,
+#addAccountMoneyPageGridPane,
+#menageCardPopupAnchorPane,
+#rootPane,
+#accountPopupRoot,
+#bankTransferGridPane,
+#confirmAddMoneyAnchorPane,
+#friendshipNotifyAnchorPane,
+#paymentRequestPopupAnchorPane,
+#botGridPane
+{
+    -fx-background-color: #e4e4e4 !important;
+}
+
+
+#rootBankAccountSettingsGridPane,
+#homePageGridPane,
+#cardPageGridPane,
+#friendsGridPane
+{
+    -fx-background-color: white !important;
+}
+
+#optionAddMoneyGridPane,
+#sidebarGridPane{
+    -fx-background-color: #aaaaaa !important;
+}
+#addWidget01GridPane,
+#addWidget02GridPane,
+#addWidget11GridPane,
+#addWidget12GridPane
+{
+    -fx-background-color: transparent !important;
+}
+
+
+/* ====== END  ====== */
+
+/* ====== all anchor pane ====== */
+
+#rectangleAnchorPane,
+#friendshipRequestAnchorPane,
+#cardPopupAnchorPane
+{
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#addAccountMoneyAnchorPane
+{
+    -fx-background-color: white !important;
+}
+
+/* ====== END  ====== */
+
+/* ====== all Vbox ====== */
+
+#root
+{
+    -fx-background-color: white !important;
+    -fx-background-radius: 0 0 15 15 !important;
+}
+
+#lastFiveExpensesVBox,
+#notificationSliderVBox
+{
+    -fx-background-color: #e4e4e4 !important;
+}
+
+#chatVBox
+{
+    -fx-background-color: white !important;
+}
+
+/* ====== END  ====== */
+
+/* ====== all region ====== */
+
+#bankAccountRegion,
+#regionChat
+{
+    -fx-background-color: #e4e4e4 !important;
+}
+
+/* ====== END  ====== */
+
+/* ====== all scroll pane ====== */
+
+#cardPageScrollPane
+{
+    -fx-background-color: #aaaaaa !important;
+}
+
+
+/* ====== END  ====== */
+
+/* ====== all image view ====== */
+
+#bankAccountImageView
+{
+    -fx-effect: innershadow(three-pass-box, black, 100, 1, 0, 0);
+}
+
+/* ====== END  ====== */
+
+/* ====== all buttons ====== */
+
+#logoutAccountPopupButton
+{
+    -fx-background-color: #aaaaaa !important;
+    -fx-text-fill: white !important;
+}
+
+#whiteAppleButton,
+#whiteGoogleButton
+{
+    visibility: true !important;
+}
+
+#darkGoogleButton,
+#darkAppleButton
+{
+    visibility: false !important;
+}
+
+#closeCreateCardPopup,
+#closeAccountPopup,
+#closeChangePinPopupButton,
+#closeMenageCardPopup,
+#closeConfirmAddMoneyPopupButton,
+#closeFriendshipRequestPopup
+{
+    -fx-text-fill: white !important;
+}
+
+/* ====== END  ====== */
+
+/* ====== all line and separator ====== */
+
+#sidebarLine1,
+#sidebarLine2
+{
+    -fx-fill: #aaaaaa !important;
+    -fx-stroke: #aaaaaa !important;
+}
+
+#pageSeparator {
+    -fx-opacity: 1 !important;
+    -fx-background-color: transparent !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+}
+
+#pageSeparator .line {
+    -fx-padding: 0 !important;
+    -fx-background-color: linear-gradient(to bottom, #FF3333 0%, #FF0000 50%, #CC0000 100%) !important;
+    -fx-background-insets: 0 !important;
+    -fx-border-width: 0 !important;
+    -fx-stroke-width: 0 !important;
+    -fx-pref-height: 4px !important;
+    -fx-min-height: 4px !important;
+}
+
+/* ====== END  ====== */
+
+/* ====== all line and separator ====== */
+
+#transactionSubjectLabel,
+#transactionDateLabel
+{
+    -fx-text-fill: black !important;
 }

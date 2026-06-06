@@ -92,7 +92,7 @@
             <Insets />
          </GridPane.margin>
       </AnchorPane>
-      <Region id="regionChat" fx:id="regionChat" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 0 0 15 0;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Region id="regionChat" fx:id="regionChat" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="2.0" right="2.0" top="-35.0" />
          </GridPane.margin></Region>
